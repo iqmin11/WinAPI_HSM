@@ -1,21 +1,11 @@
 #pragma once
-class GameEngineMath
+
+class float4
 {
 public:
-	// construtor destructor
-	GameEngineMath();
-	~GameEngineMath();
-
-	// delete Function
-	GameEngineMath(const GameEngineMath& _Other) = delete;
-	GameEngineMath(GameEngineMath&& _Other) noexcept = delete;
-	GameEngineMath& operator=(const GameEngineMath& _Other) = delete;
-	GameEngineMath& operator=(GameEngineMath&& _Other) noexcept = delete;
-
-protected:
-
-
-private:
-
+	float x = 0.0f;
+	float y = 0.0f;
+	float z = 0.0f;
+	// 마지막이 1인제 3d 때 배우고.
+	float w = 1.0f;
 };
-
