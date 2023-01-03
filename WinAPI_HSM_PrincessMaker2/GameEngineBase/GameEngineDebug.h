@@ -6,9 +6,7 @@
 class GameEngineDebug
 {
 public:
-	// constrcuter destructer
-	GameEngineDebug();
-	~GameEngineDebug();
+	static void LeakCheck();
 
 	// delete Function
 	GameEngineDebug(const GameEngineDebug& _Other) = delete;
@@ -19,9 +17,10 @@ public:
 protected:
 
 private:
+	// constrcuter destructer
+	GameEngineDebug();
+	~GameEngineDebug();
 
 };
 
-void LeakCheck();
-
-#define MessageBoxAssert(MsgText) MessageBoxA(nullptr, MsgText, "Error", MB_OK);	assert(false);
+// #define MsgBoxAssert(MsgText) MessageBoxA(nullptr, MsgText, "Error", MB_OK);	assert(false);
