@@ -2,10 +2,9 @@
 
 GameEngineActor::GameEngineActor()
 {
-
 }
 
 GameEngineActor::~GameEngineActor()
 {
-
 }
+

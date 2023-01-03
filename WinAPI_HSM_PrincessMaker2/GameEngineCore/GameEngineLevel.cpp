@@ -2,10 +2,9 @@
 
 GameEngineLevel::GameEngineLevel()
 {
-
 }
 
 GameEngineLevel::~GameEngineLevel()
 {
-
 }
+

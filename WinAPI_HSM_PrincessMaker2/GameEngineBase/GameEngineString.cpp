@@ -2,10 +2,9 @@
 
 GameEngineString::GameEngineString()
 {
-
 }
 
 GameEngineString::~GameEngineString()
 {
-
 }
+

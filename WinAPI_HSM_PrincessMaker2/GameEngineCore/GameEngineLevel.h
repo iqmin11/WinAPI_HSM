@@ -1,8 +1,10 @@
 #pragma once
+
+// Ό³Έν :
 class GameEngineLevel
 {
 public:
-	// construtor destructor
+	// constrcuter destructer
 	GameEngineLevel();
 	~GameEngineLevel();
 
@@ -13,7 +15,6 @@ public:
 	GameEngineLevel& operator=(GameEngineLevel&& _Other) noexcept = delete;
 
 protected:
-
 
 private:
 
