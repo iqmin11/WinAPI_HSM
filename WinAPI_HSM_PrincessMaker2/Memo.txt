@@ -1,0 +1,63 @@
+
+wcex.style = CS_HREDRAW | CS_VREDRAW; // WNDCLASS 스타일 지정
+CS_VREDRAW : 윈도우 창의 세로크기 변경시 윈도우를 다시 그린다.
+CS_HREDRAW : 윈도우 창의 가로크기 변경시 윈도우를 다시 그린다.
+CS_DBLCLKS : 마우스 더블클릭 버튼 활성화
+CS_OWNDC : 윈도우가 하나의 DC(출력에 필요한 모든 정보를 가지는 데이터 구조체)를 독점적으로 사용한다
+CS_CLASSDC : DC를 공유한다
+CS_PARENTDC : 자식윈도우가 부모윈도우의 DC를 사용한다
+CS_NOCLOSE : 닫기 메세지 전달 불가.
+CS_SAVEBITS : 화면영역을 비트맵으로 저장한다
+
+
+
+
+
+
+    wcex.lpfnWndProc = MessageFunction; // 
+    wcex.cbClsExtra = 0;
+    wcex.cbWndExtra = 0;
+    wcex.hInstance = _hInstance;
+    // 넣어주지 않으면 윈도우 기본Icon이 됩니다.
+    wcex.hIcon = nullptr;//LoadIcon(_hInstance, MAKEINTRESOURCE(IDI_WINDOWSPROJECT1));
+    wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1); // 흰색 
+    wcex.lpszMenuName = nullptr;//MAKEINTRESOURCEW(IDC_WINDOWSPROJECT1);
+    wcex.lpszClassName = "GameEngineWindowDefault";
+    wcex.hIconSm = nullptr;//LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+
+    // 윈도우에게 이런 내용을 window클래스를 GameEngineWindowDefault라는 이름으로 등록해줘.
+    // 나중에 윈도우 만들때 쓸꺼냐.
+    if (0 == RegisterClassEx(&wcex))
+    {
+        MsgAssert("윈도우 클래스 등록에 실패했습니다.");
+        return;
+    }
+
+    // hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
+
+    // 1000번 프로그램이 윈도우를 띄워달라고 요청했다.
+    // 윈도우는 다시 특정 숫자이라는 윈도우가 만들어졌다고 우리에게 알려주는데.
+    // 특정 숫자로 인식되는 우리의 윈도우에게 크기변경 떠라
+
+    // (WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX)
+
+    HWnd = CreateWindow("GameEngineWindowDefault", _TitleName.data(), WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, _hInstance, nullptr);
+
+    if (!HWnd)
+    {
+        MsgAssert("윈도우 클래스 생성에 실패했습니다.");
+        return;
+    }
+
+    DrawHdc = GetDC(HWnd);
+
+    ShowWindow(HWnd, SW_SHOW);
+    UpdateWindow(HWnd);
+
+    SettingWindowSize(_Size);
+    SettingWindowPos(_Pos);
+
+    return;
+}
