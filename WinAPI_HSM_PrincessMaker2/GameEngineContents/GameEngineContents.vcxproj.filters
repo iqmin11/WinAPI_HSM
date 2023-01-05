@@ -2,8 +2,12 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PM2Core.h" />
+    <ClInclude Include="TitleLevel.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PM2Core.cpp" />
+    <ClCompile Include="TitleLevel.cpp" />
   </ItemGroup>
 </Project>

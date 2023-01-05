@@ -85,7 +85,7 @@ void GameEngineWindow::WindowCreate(HINSTANCE _hInstance, const std::string_view
 
     // 윈도우에게 이런 내용을 window클래스를 GameEngineWindowDefault라는 이름으로 등록해줘.
     // 나중에 윈도우 만들때 쓸꺼냐.
-    if (0 == RegisterClassEx(&wcex)) // WNDCLASS의 ptr을 받아 ATOM을 반환하는 함수, 이러저러한 문제가 있으면 윈도우를 종료
+    if (0 == RegisterClassEx(&wcex)) // WNDCLASS의 ptr을 받아 ATOM을 반환하는 함수, 이러저러한 문제가 있으면 0을 반환하고 윈도우를 종료
     {
         MsgAssert("윈도우 클래스 등록에 실패했습니다.");
         return;
@@ -102,7 +102,7 @@ void GameEngineWindow::WindowCreate(HINSTANCE _hInstance, const std::string_view
     HWnd = CreateWindow("GameEngineWindowDefault", _TitleName.data(), WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, _hInstance, nullptr);
 
-    if (!HWnd)
+    if (!HWnd) //HWnd가 0(nullptr)이면 true
     {
         MsgAssert("윈도우 클래스 생성에 실패했습니다.");
         return;
@@ -148,7 +148,8 @@ int GameEngineWindow::WindowLoop(void(*_Start)(), void(*_Loop)(), void(*_End)())
         // => 게임은 쉴새없이 돌아야 하는데
         // GetMessage라는 함수는 => 윈도우에 무슨일이 생기면 리턴되는 함수
         // 윈도우에 무슨일이 생기게 만들어야 한다.
-        if (GetMessage(&msg, nullptr, 0, 0))
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
+        // PeekMessage동기 메세지 있어? 없어? 난 갈게 PM_REMOVE 쌓여있는 메세지 삭제명령
         {
             if (nullptr != _Loop)
             {
@@ -157,6 +158,11 @@ int GameEngineWindow::WindowLoop(void(*_Start)(), void(*_Loop)(), void(*_End)())
 
             TranslateMessage(&msg);
             DispatchMessage(&msg);
+        }
+        
+        if (nullptr != _Loop)
+        {
+            _Loop();
         }
     }
 
@@ -178,7 +184,7 @@ void GameEngineWindow::SettingWindowSize(float4 _Size)
 
     ScreenSize = _Size;
 
-    // 내가 원하는 크기를 넣으면 타이틀바까지 고려한 크기를 리턴주는 함수.
+    // 내가 원하는 스크린 크기를 넣으면 타이틀바까지 고려한 크기를 리턴주는 함수.
     AdjustWindowRect(&Rc, WS_OVERLAPPEDWINDOW, FALSE);
 
     WindowSize = { static_cast<float>(Rc.right - Rc.left), static_cast<float>(Rc.bottom - Rc.top) };
