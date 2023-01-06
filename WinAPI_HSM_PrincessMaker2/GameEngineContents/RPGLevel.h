@@ -14,6 +14,8 @@ public:
 	RPGLevel& operator=(const RPGLevel& _Other) = delete;
 	RPGLevel& operator=(RPGLevel&& _Other) noexcept = delete;
 
+	void Loading() override;
+	void Update() override;
 protected:
 
 

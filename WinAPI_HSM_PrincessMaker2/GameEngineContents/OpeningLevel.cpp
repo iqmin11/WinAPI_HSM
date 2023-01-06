@@ -9,3 +9,11 @@ OpeningLevel::~OpeningLevel()
 {
 
 }
+
+void OpeningLevel::Loading()
+{
+}
+
+void OpeningLevel::Update()
+{
+}

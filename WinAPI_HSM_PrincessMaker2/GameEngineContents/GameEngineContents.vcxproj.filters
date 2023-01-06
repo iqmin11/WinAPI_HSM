@@ -21,6 +21,9 @@
     <ClInclude Include="EndingLevel.h">
       <Filter>ContentsLevel</Filter>
     </ClInclude>
+    <ClInclude Include="Olive.h">
+      <Filter>ContentsActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp" />
@@ -43,10 +46,16 @@
     <ClCompile Include="EndingLevel.cpp">
       <Filter>ContentsLevel</Filter>
     </ClCompile>
+    <ClCompile Include="Olive.cpp">
+      <Filter>ContentsActor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsLevel">
       <UniqueIdentifier>{6ab125f6-0000-4f0c-8e56-1820bad3249b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsActor">
+      <UniqueIdentifier>{a02ee4b8-cf6c-4024-b9fa-e5abde4db657}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

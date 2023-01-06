@@ -14,6 +14,8 @@ public:
 	OpeningLevel& operator=(const OpeningLevel& _Other) = delete;
 	OpeningLevel& operator=(OpeningLevel&& _Other) noexcept = delete;
 
+	void Loading() override;
+	void Update() override;
 protected:
 
 

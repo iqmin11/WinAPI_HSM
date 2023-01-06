@@ -9,3 +9,11 @@ TitleLevel::~TitleLevel()
 {
 
 }
+
+void TitleLevel::Loading()
+{
+}
+
+void TitleLevel::Update()
+{
+}

@@ -14,6 +14,8 @@ public:
 	FirstSetLevel& operator=(const FirstSetLevel& _Other) = delete;
 	FirstSetLevel& operator=(FirstSetLevel&& _Other) noexcept = delete;
 
+	void Loading() override;
+	void Update() override;
 protected:
 
 

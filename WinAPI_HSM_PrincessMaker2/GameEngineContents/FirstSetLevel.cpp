@@ -9,3 +9,11 @@ FirstSetLevel::~FirstSetLevel()
 {
 
 }
+
+void FirstSetLevel::Loading()
+{
+}
+
+void FirstSetLevel::Update()
+{
+}

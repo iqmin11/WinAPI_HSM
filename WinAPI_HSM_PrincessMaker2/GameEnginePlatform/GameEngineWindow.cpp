@@ -151,15 +151,19 @@ int GameEngineWindow::WindowLoop(void(*_Start)(), void(*_Loop)(), void(*_End)())
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
         // PeekMessage동기 메세지 있어? 없어? 난 갈게 PM_REMOVE 쌓여있는 메세지 삭제명령
         {
+            TranslateMessage(&msg);
+            DispatchMessage(&msg);
+            
+            // 메세지가 있어도 게임을 실행
             if (nullptr != _Loop)
             {
                 _Loop();
             }
-
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
+            continue;
         }
         
+        // 데드타임
+
         if (nullptr != _Loop)
         {
             _Loop();

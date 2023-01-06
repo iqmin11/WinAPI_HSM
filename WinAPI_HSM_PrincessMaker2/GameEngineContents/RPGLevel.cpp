@@ -9,3 +9,11 @@ RPGLevel::~RPGLevel()
 {
 
 }
+
+void RPGLevel::Loading()
+{
+}
+
+void RPGLevel::Update()
+{
+}

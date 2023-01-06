@@ -14,6 +14,8 @@ public:
 	RaisingSimLevel& operator=(const RaisingSimLevel& _Other) = delete;
 	RaisingSimLevel& operator=(RaisingSimLevel&& _Other) noexcept = delete;
 
+	void Loading() override;
+	void Update() override;
 protected:
 
 
