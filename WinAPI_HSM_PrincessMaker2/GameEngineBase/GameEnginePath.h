@@ -2,6 +2,7 @@
 // c++이 실행되는 곳에서 사용할수 있는 모든 경로 관련 처리방식을 지원해준다.
 #include <filesystem> 
 
+//이동 등 경로를 움직이는것에대한 역할인것 같아
 class GameEnginePath // 경로에 관련한 기능을 대표하는 클래스
 {
 public:

@@ -50,7 +50,7 @@ void GameEnginePath::MoveParentToChildPath(const std::string_view& _String)
 	{
 		if (true == IsExistsToPlusString(_String)) // 있으면 해당경로에 접근이 가능해? (지금 디렉토리에 해당 파일이 있어?)
 		{
-			return; //그 폴더가 있는 Path인채로 함수 종료
+			return; //그 폴더가 있는 Path인채로 함수 종료...인데 이거 의도대로라면 여기 Move가 있어야하는거아닌가? 아래로갔다가 자식폴더로 쇽 이동하려면
 		}
 
 		MoveParent(); // 상위폴더를 Path로
