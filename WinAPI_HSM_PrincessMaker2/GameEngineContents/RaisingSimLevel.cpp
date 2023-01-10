@@ -1,6 +1,8 @@
 #include "RaisingSimLevel.h"
 #include "Olive.h"
+#include "Background.h"
 #include <GameEngineBase/GameEngineDirectory.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 RaisingSimLevel::RaisingSimLevel()
 {
@@ -19,9 +21,9 @@ void RaisingSimLevel::Loading()
 	Dir.MoveParentToDirectory("ContentsResources");
 	Dir.Move("ContentsResources");
 	Dir.Move("RaisingLevel");
-	Dir.GetPlusFileName("Background.BMP");
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Background.BMP"));
 
-	CreateActor<Olive>();
+	CreateActor<Background>();
 }
 
 void RaisingSimLevel::Update()

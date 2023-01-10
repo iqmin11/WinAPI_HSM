@@ -5,6 +5,20 @@
 
 GameEngineResources GameEngineResources::Inst;
 
+void GameEngineResources::Relase()
+{
+	// 내가 원하는 시점에 원하는 순간 정확하게 
+	for (std::pair<std::string, GameEngineImage*> Pair : AllImage)
+	{
+		if (nullptr == Pair.second)
+		{
+			continue;
+		}
+		delete Pair.second;
+	}
+	AllImage.clear();
+}
+
 bool GameEngineResources::ImageLoad(const GameEnginePath& _Path)
 {
 	return ImageLoad(_Path.GetPathToString().c_str(), _Path.GetFileName().c_str());

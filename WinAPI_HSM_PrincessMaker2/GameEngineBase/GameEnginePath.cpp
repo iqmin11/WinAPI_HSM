@@ -34,6 +34,11 @@ GameEnginePath::GameEnginePath(GameEnginePath&& _Other)
 {
 }
 
+std::string GameEnginePath::GetFileName() const
+{
+	return Path.filename().string();
+}
+
 std::string GameEnginePath::GetPathToString() const
 {
 	return Path.string();

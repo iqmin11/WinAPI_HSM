@@ -1,18 +1,19 @@
 #include "GameEngineWindow.h"
 #include <GameEngineBase/GameEngineDebug.h>
+#include <GameEnginePlatform/GameEngineImage.h>
 
 // LRESULT(CALLBACK* WNDPROC)(HWND, UINT, WPARAM, LPARAM)
 
 HWND GameEngineWindow::HWnd = nullptr;
-HDC GameEngineWindow::DrawHdc = nullptr;
-float4 GameEngineWindow::WindowSize = { 800, 640 };
+HDC GameEngineWindow::WindowBackBufferHdc = nullptr;
+float4 GameEngineWindow::WindowSize = { 800, 600 };
 float4 GameEngineWindow::WindowPos = { 100, 100 };
-float4 GameEngineWindow::ScreenSize = { 800, 640 };
+float4 GameEngineWindow::ScreenSize = { 800, 600 };
+GameEngineImage* GameEngineWindow::BackBufferImage = nullptr;
 
 
 bool IsWindowUpdate = true;
 
-//MessageFunction은 동기함수(특정 Input이 들어오기 전까지 멈춤)
 LRESULT CALLBACK MessageFunction(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lParam)
 {
     switch (_message)
@@ -58,34 +59,34 @@ GameEngineWindow::GameEngineWindow()
 
 GameEngineWindow::~GameEngineWindow()
 {
+
 }
 
-//인자로 인스턴스 핸들(OS에서 직접 부여), 제목표시줄 aka캡션, 사이즈(픽셀단위), 위치(윈도우 좌표계 0,0 기준) 
+
 void GameEngineWindow::WindowCreate(HINSTANCE _hInstance, const std::string_view& _TitleName, float4 _Size, float4 _Pos)
 {
-    WNDCLASSEX wcex; // 윈도우 클래스를 지정. 커서 모양, 메뉴모양 등 만들 수 있음
+    // 윈도우를 찍어낼수 있는 class를 만들어내는 것이다.
+    // 나는 이러이러한 윈도우를 만들어줘...
+    WNDCLASSEX wcex;
 
-    wcex.cbSize = sizeof(WNDCLASSEX); // WNDCLASS 구조체의 크기를 저장
+    wcex.cbSize = sizeof(WNDCLASSEX);
 
-    wcex.style = CS_HREDRAW | CS_VREDRAW; // WNDCLASS 스타일 지정
-    wcex.lpfnWndProc = MessageFunction; //함수 포인터// 윈도우 프로시저의 함수는 MessageFunction
+    wcex.style = CS_HREDRAW | CS_VREDRAW;
+    wcex.lpfnWndProc = MessageFunction;
     wcex.cbClsExtra = 0;
     wcex.cbWndExtra = 0;
-    wcex.hInstance = _hInstance; // 인스턴스 핸들을 전달
-    // 아이콘 핸들, 넣어주지 않으면 윈도우 기본Icon이 됩니다.
+    wcex.hInstance = _hInstance;
+    // 넣어주지 않으면 윈도우 기본Icon이 됩니다.
     wcex.hIcon = nullptr;//LoadIcon(_hInstance, MAKEINTRESOURCE(IDI_WINDOWSPROJECT1));
-    // 커서 핸들
     wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
-    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 0); // 기본 배경 색상 WHITE_BRUSH, BLACK_BRUSH 
-    //메뉴
-    wcex.lpszMenuName = nullptr;//MAKEINTRESOURCEW(IDC_WINDOWSPROJECT1); // 메뉴리소스
+    wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1); // 흰색 
+    wcex.lpszMenuName = nullptr;//MAKEINTRESOURCEW(IDC_WINDOWSPROJECT1);
     wcex.lpszClassName = "GameEngineWindowDefault";
-    //작은 아이콘 핸들
     wcex.hIconSm = nullptr;//LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
     // 윈도우에게 이런 내용을 window클래스를 GameEngineWindowDefault라는 이름으로 등록해줘.
     // 나중에 윈도우 만들때 쓸꺼냐.
-    if (0 == RegisterClassEx(&wcex)) // WNDCLASS의 ptr을 받아 ATOM을 반환하는 함수, 이러저러한 문제가 있으면 0을 반환하고 윈도우를 종료
+    if (0 == RegisterClassEx(&wcex))
     {
         MsgAssert("윈도우 클래스 등록에 실패했습니다.");
         return;
@@ -102,13 +103,17 @@ void GameEngineWindow::WindowCreate(HINSTANCE _hInstance, const std::string_view
     HWnd = CreateWindow("GameEngineWindowDefault", _TitleName.data(), WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, _hInstance, nullptr);
 
-    if (!HWnd) //HWnd가 0(nullptr)이면 true
+    if (nullptr == HWnd)
     {
         MsgAssert("윈도우 클래스 생성에 실패했습니다.");
         return;
     }
 
-    DrawHdc = GetDC(HWnd);
+    // 윈도우가 만들어지면서부터 만들어진 색깔의 2차원배열의 수정권한을 얻어오는 것이다.
+    WindowBackBufferHdc = GetDC(HWnd);
+
+    BackBufferImage = new GameEngineImage();
+    BackBufferImage->ImageCreate(WindowBackBufferHdc);
 
     ShowWindow(HWnd, SW_SHOW);
     UpdateWindow(HWnd);
@@ -148,22 +153,28 @@ int GameEngineWindow::WindowLoop(void(*_Start)(), void(*_Loop)(), void(*_End)())
         // => 게임은 쉴새없이 돌아야 하는데
         // GetMessage라는 함수는 => 윈도우에 무슨일이 생기면 리턴되는 함수
         // 윈도우에 무슨일이 생기게 만들어야 한다.
+
+        // if (GetMessage(&msg, nullptr, 0, 0))
+        // 동기 메세지 있어? 없어? 있을때까지 기다릴께.
+
+        // 메세지가 있든 없든 리턴됩니다.
+        // 쌓여있는 메세지를 삭제하라는 명령입니다.
         if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
-        // PeekMessage동기 메세지 있어? 없어? 난 갈게 PM_REMOVE 쌓여있는 메세지 삭제명령
+            // 동기 메세지 있어? 없어 난 갈께.
         {
             TranslateMessage(&msg);
             DispatchMessage(&msg);
-            
-            // 메세지가 있어도 게임을 실행
+
+            // 메세지가 있을때도 게임을 실행합니다.
             if (nullptr != _Loop)
             {
                 _Loop();
             }
             continue;
         }
-        
-        // 데드타임
 
+        // 데드타임
+        // 데드타임에 게임을 실행하는것. 
         if (nullptr != _Loop)
         {
             _Loop();
@@ -173,6 +184,12 @@ int GameEngineWindow::WindowLoop(void(*_Start)(), void(*_Loop)(), void(*_End)())
     if (nullptr != _End)
     {
         _End();
+    }
+
+    if (nullptr != BackBufferImage)
+    {
+        delete BackBufferImage;
+        BackBufferImage = nullptr;
     }
 
     return (int)msg.wParam;
@@ -188,7 +205,7 @@ void GameEngineWindow::SettingWindowSize(float4 _Size)
 
     ScreenSize = _Size;
 
-    // 내가 원하는 스크린 크기를 넣으면 타이틀바까지 고려한 크기를 리턴주는 함수.
+    // 내가 원하는 크기를 넣으면 타이틀바까지 고려한 크기를 리턴주는 함수.
     AdjustWindowRect(&Rc, WS_OVERLAPPEDWINDOW, FALSE);
 
     WindowSize = { static_cast<float>(Rc.right - Rc.left), static_cast<float>(Rc.bottom - Rc.top) };

@@ -2,6 +2,7 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineBase/GameEngineDebug.h>
 #include "GameEngineLevel.h"
+#include "GameEngineResources.h"
 
 GameEngineCore* Core; // 전역변수 선언이지 이건, CPP파일을 전처리기로 include하지 않을거기때문에 괜찮지 이건
 
@@ -25,6 +26,7 @@ void GameEngineCore::GlobalUpdate()
 void GameEngineCore::GlobalEnd()
 {
 	Core->End();
+	GameEngineResources::GetInst().Relase();
 }
 
 GameEngineCore::GameEngineCore()

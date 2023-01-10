@@ -1,4 +1,7 @@
 #include "Background.h"
+#include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEngineBase/GameEnginePath.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 Background::Background()
 {
@@ -23,4 +26,7 @@ void Background::Update()
 void Background::Render()
 {
 	float4 PlayerPos = GetPos();
+	GameEngineImage* Image = GameEngineResources::GetInst().ImageFind("Background.bmp");
+	GameEngineWindow::GetBackBufferImage()->BitCopy(Image, PlayerPos + float4{ 0,0 }, { 800, 640 });
+
 }

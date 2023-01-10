@@ -18,6 +18,8 @@ public:
 	GameEnginePath& operator=(const GameEnginePath& _Other) = delete;
 	GameEnginePath& operator=(GameEnginePath&& _Other) noexcept = delete;
 
+	std::string GetFileName() const;
+
 	std::string GetPathToString() const;
 	void MoveParent(); //Path를 상위폴더Path로 바꿈
 	void MoveParentToChildPath(const std::string_view& _String); // 인자의 파일명이 있을때까지 상위폴더로 이동 리소스 폴더는 상위폴더에 만들거기 떄문에 이렇게 구성했나봐

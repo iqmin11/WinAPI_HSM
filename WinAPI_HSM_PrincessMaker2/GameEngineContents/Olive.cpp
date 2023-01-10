@@ -25,7 +25,7 @@ void Olive::Render()
 {
 	float4 PlayerPos = GetPos();
 	Rectangle(
-		GameEngineWindow::GetDrawHdc(),
+		GameEngineWindow::GetWindowBackBufferHdc(),
 		PlayerPos.ix() - 50,
 		PlayerPos.iy() - 50,
 		PlayerPos.ix() + 50,
