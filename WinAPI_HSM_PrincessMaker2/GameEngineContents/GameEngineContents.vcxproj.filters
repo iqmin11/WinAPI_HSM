@@ -22,7 +22,10 @@
       <Filter>ContentsLevel</Filter>
     </ClInclude>
     <ClInclude Include="Olive.h">
-      <Filter>ContentsActor</Filter>
+      <Filter>ContentsActor\RasingLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>ContentsActor\RasingLevel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -47,7 +50,10 @@
       <Filter>ContentsLevel</Filter>
     </ClCompile>
     <ClCompile Include="Olive.cpp">
-      <Filter>ContentsActor</Filter>
+      <Filter>ContentsActor\RasingLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>ContentsActor\RasingLevel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -56,6 +62,9 @@
     </Filter>
     <Filter Include="ContentsActor">
       <UniqueIdentifier>{a02ee4b8-cf6c-4024-b9fa-e5abde4db657}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsActor\RasingLevel">
+      <UniqueIdentifier>{018ab065-16bd-4dc6-867c-2c266be3dda9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
