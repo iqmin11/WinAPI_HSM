@@ -158,27 +158,27 @@ void GameEngineImage::BitCopy(const GameEngineImage* _OtherImage, float4 _Pos, f
 void GameEngineImage::TransCopy(const GameEngineImage* _OtherImage, float4 _CopyPos, float4 _CopySize, float4 _OtherImagePos, float4 _OtherImageSize, int _Color)
 {
 	// 기본지원 함수가 아닙니다.
-	//TransparentBlt(ImageDC,
-	//	_CopyPos.ix(),
-	//	_CopyPos.iy(),
-	//	_CopySize.ix(),
-	//	_CopySize.iy(),
-	//	_OtherImage->GetImageDC(),
-	//	_OtherImagePos.ix(),
-	//	_OtherImagePos.iy(),
-	//	_OtherImageSize.ix(),
-	//	_OtherImageSize.iy(),
-	//	_Color);
-
 	TransparentBlt(ImageDC,
 		_CopyPos.ix(),
 		_CopyPos.iy(),
-		100,
-		100,
+		_CopySize.ix(),
+		_CopySize.iy(),
 		_OtherImage->GetImageDC(),
-		0,
-		0,
-		100,
-		100,
+		_OtherImagePos.ix(),
+		_OtherImagePos.iy(),
+		_OtherImageSize.ix(),
+		_OtherImageSize.iy(),
 		_Color);
+
+	//TransparentBlt(ImageDC,
+	//	_CopyPos.ix(),
+	//	_CopyPos.iy(),
+	//	100,
+	//	100,
+	//	_OtherImage->GetImageDC(),
+	//	0,
+	//	0,
+	//	100,
+	//	100,
+	//	_Color);
 }

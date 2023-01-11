@@ -15,17 +15,22 @@ Olive::~Olive()
 
 void Olive::Start()
 {
-	SetPos({145, 304});
+	SetPos({145, 307});
 }
 
 void Olive::Update()
 {
-	SetMove(float4::Left * 0.01f);
+	//SetMove(float4::Left * 0.01f);
 }
 
 void Olive::Render()
 {
-	float4 PlayerPos = GetPos();
-	GameEngineImage* Image = GameEngineResources::GetInst().ImageFind("body_10_nomal.bmp");
-	GameEngineWindow::GetDoubleBufferImage()->BitCopy(Image, PlayerPos + float4{ 0,0 }, Image->GetImageScale());
+	float4 BodyPos = GetPos();
+	GameEngineImage* BodyImage = GameEngineResources::GetInst().ImageFind("body_10_nomal.bmp");
+	GameEngineImage* HeadImage = GameEngineResources::GetInst().ImageFind("head_10_nomal.bmp");
+	float4 HeadPos = GetPos() - float4{0,BodyImage->GetImageScale().y};
+	GameEngineWindow::GetDoubleBufferImage()->BitCopy(BodyImage, BodyPos + float4{ 0,0 }, BodyImage->GetImageScale());
+	GameEngineWindow::GetDoubleBufferImage()->BitCopy(HeadImage, HeadPos + float4{ 0,-14.0f }, HeadImage->GetImageScale());
+	//GameEngineWindow::GetDoubleBufferImage()->TransCopy(BodyImage, BodyPos + float4{ 0,0 }, { 100, 100 }, float4::Left, BodyImage->GetImageScale());
+
 }
