@@ -42,12 +42,21 @@ protected:
 
 	// 키입력을 받거나 인공지능을 점수를 계산하거나 하는 것들을 여기서 처리
 	virtual void Update() {}
+	
+	// 순서를 제어 함수를 한번 더실행하고 
+	virtual void LateUpdate() {}
 
 	// 화면에 그려지는 기능들을 여기서 처리
 	virtual void Render() {}
 
 private:
+	int Order; // 대응하는 인덱스 (map의 Key)값
 	float4 Pos = { 0.0f, 0.0f };
+
+	void SetOrder(int _Order)
+	{
+		Order = _Order;
+	}
 
 };
 

@@ -53,7 +53,7 @@ GameEngineCore::~GameEngineCore()
 
 void GameEngineCore::CoreStart(HINSTANCE _instance)
 {
-	GameEngineWindow::WindowCreate(_instance, "PrincessMaker2", { 800, 640 }, { 0, 0 });
+	GameEngineWindow::WindowCreate(_instance, "PrincessMaker2", { 800, 600 }, { 0, 0 });
 	GameEngineWindow::WindowLoop(GameEngineCore::GlobalStart, GameEngineCore::GlobalUpdate, GameEngineCore::GlobalEnd);
 }
 

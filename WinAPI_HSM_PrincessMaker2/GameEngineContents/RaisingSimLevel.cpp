@@ -21,7 +21,7 @@ void RaisingSimLevel::Loading()
 	Dir.MoveParentToDirectory("ContentsResources");
 	Dir.Move("ContentsResources");
 	Dir.Move("RaisingLevel");
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Background.BMP"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("808.BMP"));
 
 	CreateActor<Background>();
 }
