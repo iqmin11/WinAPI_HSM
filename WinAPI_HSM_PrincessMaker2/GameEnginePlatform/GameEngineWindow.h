@@ -33,11 +33,19 @@ public:
 		return WindowBackBufferHdc;
 	}
 
-	static GameEngineImage* GetBackBufferImage()
+	static GameEngineImage* GetDoubleBufferImage()
+	{
+		return DoubleBufferImage;
+	}
+
+	/*static GameEngineImage* GetBackBufferImage()
 	{
 		return BackBufferImage;
-	}
+	}*/
 	// 윈도우에 그림을 그릴수 있는 권한.
+
+	static void DoubleBufferClear();
+	static void DoubleBufferRender();
 
 	// 오직 나는 외부에서 오는게 실행시켜주기만 하면 되게 만드는것.
 	// 그러면 다른 클래스나 컨텐츠와의 관련을 맺지 않고 오로지 시키는 일을 하는 클래스가 되는것
@@ -64,5 +72,6 @@ private:
 	static HWND HWnd;
 	static HDC WindowBackBufferHdc; // 윈도우에 그림을 그릴수 있는 권한.
 	static GameEngineImage* BackBufferImage;
+	static GameEngineImage* DoubleBufferImage;
 };
 

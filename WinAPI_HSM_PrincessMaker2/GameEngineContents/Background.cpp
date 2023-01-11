@@ -27,5 +27,5 @@ void Background::Render()
 {
 	float4 PlayerPos = GetPos();
 	GameEngineImage* Image = GameEngineResources::GetInst().ImageFind("background.bmp");
-	GameEngineWindow::GetBackBufferImage()->BitCopy(Image, PlayerPos + float4{ 0,0 }, Image->GetImageScale()/*{ 800, 600 }*/);
+	GameEngineWindow::GetDoubleBufferImage()->BitCopy(Image, PlayerPos + float4{ 0,0 }, Image->GetImageScale()/*{ 800, 600 }*/);
 }

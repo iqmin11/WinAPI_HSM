@@ -4,8 +4,12 @@
 #include <string_view>
 #include <GameEngineBase/GameEngineDebug.h>
 
+// core도 여러개 만들어진다고 생각하지는 않을겁니다.
+
+// 설명 : 엔진에서 응당 로드해야할 필수적인 리소스나 
+// 순수가상함수가 있으니까 추상클래이다.
 class GameEngineLevel;
-class GameEngineCore // 순수가상함수가 있는 클래스는 추상클래스
+class GameEngineCore
 {
 private:
 	static void GlobalStart();
@@ -13,7 +17,7 @@ private:
 	static void GlobalEnd();
 
 public:
-	// construtor destructor
+	// constrcuter destructer
 	GameEngineCore();
 	~GameEngineCore();
 
@@ -23,12 +27,15 @@ public:
 	GameEngineCore& operator=(const GameEngineCore& _Other) = delete;
 	GameEngineCore& operator=(GameEngineCore&& _Other) noexcept = delete;
 
-	void CoreStart(HINSTANCE _instance); // Core의 윈도우를 실행
+	void CoreStart(HINSTANCE _instance);
+
 
 protected:
 	template<typename LevelType>
 	void CreateLevel(const std::string_view& _Name)
 	{
+		// Title을 만들었는데
+		// 또 Title을 만들겠다고 한 상황
 		if (Levels.end() != Levels.find(_Name.data()))
 		{
 			std::string Name = _Name.data();
@@ -36,26 +43,29 @@ protected:
 			return;
 		}
 
+		// 업캐스팅이 벌어지죠?
 		GameEngineLevel* Level = new LevelType();
 		LevelLoading(Level);
+		// Level->Loading();
+		// insert할때마다 새로운 string이 생기면서 자신만의 메모리를 가지게 됩니다.
 		Levels.insert(std::make_pair(_Name.data(), Level));
 	}
 
 	void ChangeLevel(const std::string_view& _Name);
 
-	virtual void Start() = 0; // 순수 가상함수, 자식들은 무조건 구현해야하는 함수
+	virtual void Start() = 0;
 	virtual void Update() = 0;
 	virtual void End() = 0;
 
-
-
-
 private:
-	// 직관적이어서 map 애용
+	// 그래서 map을 사용한다. 
+	// 레벨이라는것은 장면입니다.
+	// GameEngineLevel을 "어떠한 이름"으로 찾고 이름으로 실행시키고.
 	std::map<std::string, GameEngineLevel*> Levels;
-	
+
 	GameEngineLevel* MainLevel = nullptr;
 
 	void LevelLoading(GameEngineLevel* _Level);
+
 };
 

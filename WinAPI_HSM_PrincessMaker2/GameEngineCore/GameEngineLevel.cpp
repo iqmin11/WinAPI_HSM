@@ -8,13 +8,14 @@ GameEngineLevel::GameEngineLevel()
 
 GameEngineLevel::~GameEngineLevel()
 {
-	for (std::pair<int, std::list<GameEngineActor*>> UpdateGroup : Actors) // GameEngineAtor* 형의 Actor라는 자료형으로 이루어져있는 list Actors를 순회해
+	// 편하게 for문을 돌리게 하기 위해서 17인부터 
+	for (std::pair<int, std::list<GameEngineActor*>> UpdateGroup : Actors)
 	{
 		std::list<GameEngineActor*>& ActorList = UpdateGroup.second;
-		
+
 		for (GameEngineActor* Actor : ActorList)
 		{
-			// for based range 에서는 Actors.erase() 이건 하면 안됩니다
+			// Actors.erase()
 			if (nullptr != Actor)
 			{
 				delete Actor;
@@ -23,7 +24,7 @@ GameEngineLevel::~GameEngineLevel()
 		}
 	}
 
-	Actors.clear(); 
+	Actors.clear();
 }
 
 void GameEngineLevel::ActorStart(GameEngineActor* _Actor, int _Order)
@@ -85,6 +86,7 @@ void GameEngineLevel::ActorsUpdate()
 
 void GameEngineLevel::ActorsRender()
 {
+
 	{
 		std::map<int, std::list<GameEngineActor*>>::iterator GroupStartIter = Actors.begin();
 		std::map<int, std::list<GameEngineActor*>>::iterator GroupEndIter = Actors.end();
@@ -106,6 +108,3 @@ void GameEngineLevel::ActorsRender()
 		}
 	}
 }
-
-
-

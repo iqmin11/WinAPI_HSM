@@ -2,14 +2,13 @@
 #include <list>
 #include <map>
 
-// 추상클래스로 만들고 구체적인 게임 레벨을 콘텐츠에서 구현
-
-
+// 설명 :
 class GameEngineCore;
 class GameEngineActor;
 class GameEngineLevel
 {
 	friend GameEngineCore;
+
 public:
 	// constrcuter destructer
 	GameEngineLevel();
@@ -21,14 +20,24 @@ public:
 	GameEngineLevel& operator=(const GameEngineLevel& _Other) = delete;
 	GameEngineLevel& operator=(GameEngineLevel&& _Other) noexcept = delete;
 
+	/// <summary>
+	/// 액터를 만드는 함수
+	/// </summary>
+	/// <typeparam name="ActorType"> GameEngineActor를 상속받은 클래스 타입 </typeparam>
+	/// <param name="_Order"> Actor의 업데이트 순서 숫자가 작을수록 먼저 업데이트 됩니다. </param>
 	template<typename ActorType>
-	void CreateActor(int _Order = 0) // 디폴트 인자 설정시 인자를 넣지 않은 함수는 자동으로 디폴트 인자가 들어감
+	void CreateActor(int _Order = 0)
 	{
+		//if (Actors.end() == Actors.find(_Order))
+		//{
+		//	Actors.insert(std::make_pair(_Order, std::list<GameEngineActor*>()));
+		//}
+
 		GameEngineActor* Actor = new ActorType();
 
 		ActorStart(Actor, _Order);
 
-		//맵의 새로운 문법 [key]를 가진 노드가 없으면 insert, 있으면 find
+		// 맵의 새로운 문법
 		Actors[_Order].push_back(Actor);
 	}
 
@@ -37,11 +46,20 @@ protected:
 	virtual void Update() = 0;
 
 private:
+	// 컨텐츠를 알아서도 안되지만
+	//std::list<Player*> Actors;
+	//std::list<Monster*> Actors;
+	//std::list<Background*> Actors;
+
+	// 하나의 자료형으로 모든 화면내에 등장하는 것들을 표현할수 있게 됩니다.
+	// 
 	std::map<int, std::list<GameEngineActor*>> Actors;
 
-	void ActorStart(GameEngineActor* _Actor, int _Order);
 	void ActorsUpdate();
 	void ActorsRender();
+
+
+	void ActorStart(GameEngineActor* _Actor, int _Order);
 
 };
 
