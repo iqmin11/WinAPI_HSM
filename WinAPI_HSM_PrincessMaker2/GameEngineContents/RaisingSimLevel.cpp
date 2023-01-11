@@ -21,9 +21,13 @@ void RaisingSimLevel::Loading()
 	Dir.MoveParentToDirectory("ContentsResources");
 	Dir.Move("ContentsResources");
 	Dir.Move("RaisingLevel");
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("808.BMP"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("body_10_nomal.BMP"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("head_10_nomal.BMP"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("background.BMP"));
 
 	CreateActor<Background>();
+	CreateActor<Olive>();
+
 }
 
 void RaisingSimLevel::Update()

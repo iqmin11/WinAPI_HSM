@@ -23,6 +23,8 @@ public:
 	static const float4 Down;
 	static const float4 Forward;
 	static const float4 Back;
+	static const float4 Zero;
+	static const float4 Null;
 
 public:
 	float x = 0.0f;
@@ -31,25 +33,34 @@ public:
 	float w = 1.0f;
 	// 마지막이 1인지는 3d 때 배우게 될겁니다.
 
-	int ix() {
+	int ix() const
+	{
 		return static_cast<int>(x);
 	}
 
-	int iy() {
+	int iy() const
+	{
 		return static_cast<int>(y);
 	}
 
-	int iz() {
+	int iz() const
+	{
 		return static_cast<int>(z);
 	}
 
-	int iw() {
+	int iw() const
+	{
 		return static_cast<int>(w);
 	}
 
-	float4 half()
+	float4 half() const
 	{
 		return { x * 0.5f,y * 0.5f,z * 0.5f,w };
+	}
+
+	bool IsZero() const
+	{
+		return x == 0.0f && y == 0.0f && z == 0.0f;
 	}
 
 	float4 operator *(const float _Value) const
@@ -61,7 +72,17 @@ public:
 		return Return;
 	}
 
-	float4 operator +(const float4& _Value) const
+
+	float4 operator -(const float4 _Value) const
+	{
+		float4 Return;
+		Return.x = x - _Value.x;
+		Return.y = y - _Value.y;
+		Return.z = z - _Value.z;
+		return Return;
+	}
+
+	float4 operator +(const float4 _Value) const
 	{
 		float4 Return;
 		Return.x = x + _Value.x;
@@ -70,15 +91,6 @@ public:
 		return Return;
 	}
 
-	float4 operator -(const float4& _Value) const
-	{
-		float4 Return;
-		Return.x = x - _Value.x;
-		Return.y = y - _Value.y;
-		Return.z = z - _Value.z;
-		return Return;
-	}
-	
 	float4& operator +=(const float4& _Other)
 	{
 		x += _Other.x;
@@ -86,5 +98,4 @@ public:
 		z += _Other.z;
 		return *this;
 	}
-
 };

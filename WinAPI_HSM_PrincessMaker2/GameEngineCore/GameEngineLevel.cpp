@@ -14,7 +14,7 @@ GameEngineLevel::~GameEngineLevel()
 		
 		for (GameEngineActor* Actor : ActorList)
 		{
-			// Actors.erase() 이건 하면 안됩니다
+			// for based range 에서는 Actors.erase() 이건 하면 안됩니다
 			if (nullptr != Actor)
 			{
 				delete Actor;
