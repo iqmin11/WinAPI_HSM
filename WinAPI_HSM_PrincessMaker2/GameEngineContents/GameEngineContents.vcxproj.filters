@@ -29,6 +29,9 @@
     <ClInclude Include="Animation.h">
       <Filter>ContentsActor\RasingLevel</Filter>
     </ClInclude>
+    <ClInclude Include="MenuFrame.h">
+      <Filter>ContentsActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -58,6 +61,9 @@
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>ContentsActor\RasingLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuFrame.cpp">
+      <Filter>ContentsActor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
