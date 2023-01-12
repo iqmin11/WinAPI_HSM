@@ -151,6 +151,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Background.h">
       <SubType>
       </SubType>
@@ -168,10 +172,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="OpeningLevel.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Player.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -193,6 +193,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Background.cpp">
       <SubType>
       </SubType>
@@ -210,10 +214,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="OpeningLevel.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
       <SubType>
       </SubType>
     </ClCompile>
