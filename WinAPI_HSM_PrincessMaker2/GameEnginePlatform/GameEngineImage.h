@@ -2,6 +2,8 @@
 #include <Windows.h>
 #include <string_view>
 #include <GameEngineBase/GameEngineMath.h>
+#include <vector>
+#include <GameEngineBase/GameEngineDebug.h>
 
 // 이미지란
 // => 컴퓨터에서 뭔가 파일이나 크기를 가지고 있다면
@@ -29,6 +31,25 @@
 
 
 // 설명 :
+struct ImageCutData // 자른 이미지 자료형
+{
+	float StartX = 0.0f; // 시작 좌표
+	float StartY = 0.0f;
+	float SizeX = 0.0f; // 시작좌표로부터의 사이즈
+	float SizeY = 0.0f;
+
+	float4 GetStartPos() // 자른 이미지의 시작 위치
+	{
+		return { StartX, StartY };
+	}
+	
+	float4 GetScale() // 사이즈
+	{
+		return { SizeX, SizeY };
+	}
+};
+
+
 class GameEnginePath;
 class GameEngineImage
 {
@@ -63,12 +84,48 @@ public:
 		return float4{ static_cast<float>(Info.bmWidth), static_cast<float>(Info.bmHeight) };
 	}
 
+	bool IsImageCutting()
+	{
+		return IsCut;
+	}
+
+	bool IsCutIndexValid(int _Index) const
+	{
+		if (0 > _Index)
+		{
+			return false;
+		}
+
+		if (ImageCutDatas.size() <= _Index)
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+	ImageCutData GetCutData(int _Index) const
+	{
+		if (false == IsCutIndexValid(_Index))
+		{
+			MsgAssert("유효하지 않은 컷 인덱스 입니다.");
+		}
+
+		return ImageCutDatas[_Index];
+	}
+
+	void Cut(int X, int Y); // 가로로몇개 세로로 몇개로 자를겨
+
 	// Copy
 
 	void BitCopy(const GameEngineImage* _OtherImage, float4 _Pos, float4 _Scale);
 
 	// 랜더링을 제외할 컬러.
 	void TransCopy(const GameEngineImage* _OtherImage, float4 _CopyPos, float4 _CopySize, float4 _OtherImagePos, float4 _OtherImageSize, int _Color = RGB(255, 0, 255));
+
+	// 디폴트 인자는 선언에서만 가능함
+	// 자른 이미지 전용 TransCopy
+	void TransCopy(const GameEngineImage* _OtherImage, int _CutIndex, float4 _CopyCenterPos, float4 _CopySize, int _Color = RGB(255, 0, 255));
 
 protected:
 
@@ -77,6 +134,9 @@ private:
 	HBITMAP BitMap = nullptr;
 	HBITMAP OldBitMap = nullptr;
 	BITMAP Info = BITMAP();
+	bool IsCut = false;
+
+	std::vector<ImageCutData> ImageCutDatas; // 컷이미지는 벡터로 관리
 
 	void ImageScaleCheck();
 

@@ -15,7 +15,7 @@ Background::~Background()
 
 void Background::Start()
 {
-	SetPos({0,0});
+	SetPos(GameEngineWindow::GetScreenSize().half());
 }
 
 void Background::Update()
@@ -27,5 +27,5 @@ void Background::Render()
 {
 	float4 PlayerPos = GetPos();
 	GameEngineImage* Image = GameEngineResources::GetInst().ImageFind("background.bmp");
-	GameEngineWindow::GetDoubleBufferImage()->BitCopy(Image, PlayerPos + float4{ 0,0 }, Image->GetImageScale()/*{ 800, 600 }*/);
+	GameEngineWindow::GetDoubleBufferImage()->BitCopy(Image, PlayerPos, Image->GetImageScale()/*{ 800, 600 }*/);
 }

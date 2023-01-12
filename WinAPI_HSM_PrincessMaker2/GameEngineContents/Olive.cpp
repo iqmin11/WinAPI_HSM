@@ -15,7 +15,7 @@ Olive::~Olive()
 
 void Olive::Start()
 {
-	SetPos({145, 307});
+	//SetPos({145, 307});
 }
 
 void Olive::Update()
@@ -25,11 +25,11 @@ void Olive::Update()
 
 void Olive::Render()
 {
-	float4 BodyPos = GetPos();
-	GameEngineImage* BodyImage = GameEngineResources::GetInst().ImageFind("body_10_nomal.bmp");
-	GameEngineImage* HeadImage = GameEngineResources::GetInst().ImageFind("head_10_nomal.bmp");
-	float4 HeadPos = GetPos() - float4{0,BodyImage->GetImageScale().y};
-	GameEngineWindow::GetDoubleBufferImage()->TransCopy(HeadImage, HeadPos + float4{ 0,-14 }, HeadImage->GetImageScale(), { 0,0 }, HeadImage->GetImageScale());
-	GameEngineWindow::GetDoubleBufferImage()->TransCopy(BodyImage, BodyPos + float4{ 0,0 }, BodyImage->GetImageScale(), { 0,0 }, BodyImage->GetImageScale());
+	//float4 BodyPos = GetPos();
+	//GameEngineImage* BodyImage = GameEngineResources::GetInst().ImageFind("body_10_nomal.bmp");
+	//GameEngineImage* HeadImage = GameEngineResources::GetInst().ImageFind("head_10_nomal.bmp");
+	//float4 HeadPos = GetPos() - float4{0,BodyImage->GetImageScale().y};
+	//GameEngineWindow::GetDoubleBufferImage()->TransCopy(HeadImage, HeadPos + float4{ 0,-14 }, HeadImage->GetImageScale(), { 0,0 }, HeadImage->GetImageScale());
+	//GameEngineWindow::GetDoubleBufferImage()->TransCopy(BodyImage, BodyPos + float4{ 0,0 }, BodyImage->GetImageScale(), { 0,0 }, BodyImage->GetImageScale());
 
 }

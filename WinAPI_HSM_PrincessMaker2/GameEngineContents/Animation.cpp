@@ -15,7 +15,7 @@ Animation::~Animation()
 
 void Animation::Start()
 {
-	SetPos({0,0});
+	SetPos(GameEngineWindow::GetScreenSize().half());
 }
 
 void Animation::Update()
@@ -27,6 +27,7 @@ void Animation::Render()
 {
 	float4 ImagePos = GetPos();
 	GameEngineImage* Image = GameEngineResources::GetInst().ImageFind("PartTimeJobAnimation.bmp");
-	GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, ImagePos + float4{ 0,0 }, Image->GetImageScale(), { 0,0 }, Image->GetImageScale());
-
+	//GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, ImagePos + float4{ 0,0 }, Image->GetImageScale(), { 0,0 }, Image->GetImageScale());
+	//GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, ImagePos + float4{ 0,0 }, { 50, 100 }, { 50,0 }, {50,100}/*좌표가 아니라 시작위치부터 사이즈*/, RGB(0, 204, 0));
+	GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, 13, ImagePos, { 50, 100 }/*좌표가 아니라 시작위치부터 사이즈*/, RGB(0, 204, 0));
 }

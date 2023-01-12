@@ -139,13 +139,33 @@ void GameEngineImage::ImageScaleCheck()
 }
 
 
+void GameEngineImage::Cut(int X, int Y)
+{
+	ImageCutData Data;
+	Data.SizeX = static_cast<float>(GetImageScale().x / X);
+	Data.SizeY = static_cast<float>(GetImageScale().y / Y);
+
+	for (size_t i = 0; i < Y; i++)
+	{
+		for (size_t i = 0; i < X; i++)
+		{
+			ImageCutDatas.push_back(Data);
+			Data.StartX += Data.SizeX;
+		}
+		Data.StartX = 0.0f;
+		Data.StartY += Data.SizeY;
+	}
+
+	IsCut = true;
+}
+
 // Copy
-void GameEngineImage::BitCopy(const GameEngineImage* _OtherImage, float4 _Pos, float4 _Scale)
+void GameEngineImage::BitCopy(const GameEngineImage* _OtherImage, float4 _CenterPos, float4 _Scale)
 {
 	BitBlt(
 		ImageDC, // 복사 당할 이미지
-		_Pos.ix(), // 위치 
-		_Pos.iy(),
+		_CenterPos.ix() - _Scale.hix(), // 위치 
+		_CenterPos.iy() - _Scale.hiy(),
 		_Scale.ix(),
 		_Scale.iy(),
 		_OtherImage->GetImageDC(), // 복사할 이미지
@@ -155,7 +175,7 @@ void GameEngineImage::BitCopy(const GameEngineImage* _OtherImage, float4 _Pos, f
 	);
 }
 
-void GameEngineImage::TransCopy(const GameEngineImage* _OtherImage, float4 _CopyPos, float4 _CopySize, float4 _OtherImagePos, float4 _OtherImageSize, int _Color)
+void GameEngineImage::TransCopy(const GameEngineImage* _OtherImage, float4 _CopyCenterPos, float4 _CopySize, float4 _OtherImagePos, float4 _OtherImageSize, int _Color)
 {
 	// 기본지원 함수가 아닙니다.
 	TransparentBlt(ImageDC, // 여기에 그려라.
@@ -163,11 +183,24 @@ void GameEngineImage::TransCopy(const GameEngineImage* _OtherImage, float4 _Copy
 		_CopyCenterPos.iy() - _CopySize.hiy(),
 		_CopySize.ix(), // 이 크기로
 		_CopySize.iy(),
-		_OtherImage->GetImageDC(),
-		_OtherImagePos.ix(),// 이미지의 x y에서부터
+		_OtherImage->GetImageDC(), // 이걸 그려라
+		_OtherImagePos.ix(), // 이미지의 x y에서부터
 		_OtherImagePos.iy(),
 		_OtherImageSize.ix(), // 이미지의 x y까지의 위치를
 		_OtherImageSize.iy(),
 		_Color);
 
+}
+
+void GameEngineImage::TransCopy(const GameEngineImage* _OtherImage, int _CutIndex, float4 _CopyCenterPos, float4 _CopySize, int _Color)
+{
+	if (false == _OtherImage->IsCut)
+	{
+		MsgAssert(" 잘리지 않은 이미지로 cut출력 함수를 사용하려고 했습니다.");
+		return;
+	}
+
+	ImageCutData Data = _OtherImage->GetCutData(_CutIndex);
+
+	TransCopy(_OtherImage, _CopyCenterPos, _CopySize, Data.GetStartPos(), Data.GetScale(), _Color);
 }
