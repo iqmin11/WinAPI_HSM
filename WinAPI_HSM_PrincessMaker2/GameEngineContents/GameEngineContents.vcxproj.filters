@@ -30,7 +30,7 @@
       <Filter>ContentsActor\RasingLevel</Filter>
     </ClInclude>
     <ClInclude Include="MenuFrame.h">
-      <Filter>ContentsActor</Filter>
+      <Filter>ContentsActor\Interface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -63,7 +63,7 @@
       <Filter>ContentsActor\RasingLevel</Filter>
     </ClCompile>
     <ClCompile Include="MenuFrame.cpp">
-      <Filter>ContentsActor</Filter>
+      <Filter>ContentsActor\Interface</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +75,9 @@
     </Filter>
     <Filter Include="ContentsActor\RasingLevel">
       <UniqueIdentifier>{018ab065-16bd-4dc6-867c-2c266be3dda9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsActor\Interface">
+      <UniqueIdentifier>{f5b06760-be4d-4cdf-915a-36df843904c2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

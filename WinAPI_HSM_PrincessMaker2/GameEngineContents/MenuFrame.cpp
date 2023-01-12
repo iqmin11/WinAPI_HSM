@@ -81,7 +81,7 @@ void MenuFrame::MenuFrameRender()
 
 void MenuFrame::Start()
 {
-	CreateMenuFrame(GameEngineWindow::GetScreenSize().half(), { 15,6 }, 0);
+	CreateMenuFrame(GameEngineWindow::GetScreenSize().half(), { 15,8 }, 0);
 }
 
 void MenuFrame::Update()

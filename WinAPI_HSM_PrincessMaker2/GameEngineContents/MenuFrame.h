@@ -30,6 +30,10 @@ public:
 	void CreateMenuFrame(const float4& _pos, const float4& _tilesize, const int _style = 2); //위치, 크기, 스타일
 	void SetMenuFrameSize(const float4& _tilesize)
 	{
+		if (_tilesize.x < 3 || _tilesize.y < 3)
+		{
+			MsgAssert("메뉴프레임의 최소 크기는 3*3입니다")
+		}
 		MenuFramePixelSize = _tilesize*16;
 		MenuFrameSize = _tilesize;
 	}
@@ -53,7 +57,7 @@ protected:
 
 
 private:
-	float4 MenuFrameSize = {}; // 타일기준 사이즈
+	float4 MenuFrameSize = {}; // 타일기준 사이즈 16*16픽셀
 	float4 MenuFramePixelSize = {}; // 픽셀기준 사이즈
 	int MenuFrameStyle = -1;
 //	std::vector<MenuTile> Frame;
