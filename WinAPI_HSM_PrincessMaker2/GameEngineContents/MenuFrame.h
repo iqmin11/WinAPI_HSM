@@ -50,8 +50,8 @@ public:
 	void MenuFrameRender();
 
 	void Start();
-	void Update();
-	void Render();
+	void Update(float _Deltatime);
+	void Render(float _Deltatime);
 
 protected:
 

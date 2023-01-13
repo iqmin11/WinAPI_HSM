@@ -84,11 +84,11 @@ void MenuFrame::Start()
 	CreateMenuFrame(GameEngineWindow::GetScreenSize().half(), { 15,8 }, 0);
 }
 
-void MenuFrame::Update()
+void MenuFrame::Update(float _Deltatime)
 {
 }
 
-void MenuFrame::Render()
+void MenuFrame::Render(float _Deltatime)
 {
 	MenuFrameRender();
 }
