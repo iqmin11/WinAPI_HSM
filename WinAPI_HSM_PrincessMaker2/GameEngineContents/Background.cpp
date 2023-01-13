@@ -19,7 +19,6 @@ void Background::Start()
 {
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	GameEngineRender* Render = CreateRender("background.BMP", 0);
-	Render->SetScale({ 800,600 });
 
 }
 

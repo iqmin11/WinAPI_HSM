@@ -36,6 +36,10 @@ public:
 		return Order;
 	}
 
+	inline GameEngineImage* GetImage() const
+	{
+		return Image;
+	}
 
 private:
 	GameEngineActor* Owner = nullptr; // 이 이미지를 갖고있는 소유권자 액터의 주소값
