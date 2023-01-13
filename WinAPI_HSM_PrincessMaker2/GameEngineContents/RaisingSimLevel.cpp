@@ -26,14 +26,14 @@ void RaisingSimLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("head_10_nomal.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("background.BMP"));
 	
-	{
-		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PartTimeJobAnimation.BMP"));
-		Image->Cut(13, 2);
-	}
+	//{
+	//	GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PartTimeJobAnimation.BMP"));
+	//	Image->Cut(13, 2);
+	//}
 
 	CreateActor<Background>();
 	CreateActor<Olive>(1);
-	CreateActor<Animation>(2);
+	//CreateActor<Animation>(2);
 
 }
 

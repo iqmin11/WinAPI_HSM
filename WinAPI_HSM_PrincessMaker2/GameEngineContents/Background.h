@@ -1,6 +1,5 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
-#include <GameEngineBase/GameEngineMath.h>
 
 class Background : public GameEngineActor
 {

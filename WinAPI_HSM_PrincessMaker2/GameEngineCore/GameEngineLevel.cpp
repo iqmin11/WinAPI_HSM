@@ -36,6 +36,7 @@ void GameEngineLevel::ActorStart(GameEngineActor* _Actor, int _Order)
 		return;
 	}
 
+	_Actor->Level = this;
 	_Actor->SetOrder(_Order);
 	_Actor->Start();
 }
@@ -88,6 +89,26 @@ void GameEngineLevel::ActorsUpdate(float _DeltaTime)
 
 void GameEngineLevel::ActorsRender(float _DeltaTime)
 {
+	{
+		std::map<int, std::list<GameEngineRender*>>::iterator GroupStartIter = Renders.begin();
+		std::map<int, std::list<GameEngineRender*>>::iterator GroupEndIter = Renders.end();
+
+		for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
+		{
+			std::list<GameEngineRender*>& RenderList = GroupStartIter->second;
+
+			for (GameEngineRender* Actor : RenderList)
+			{
+				// Actors.erase()
+				if (nullptr == Actor)
+				{
+					continue;
+				}
+
+				Actor->Render(_DeltaTime);
+			}
+		}
+	}
 
 	{
 		std::map<int, std::list<GameEngineActor*>>::iterator GroupStartIter = Actors.begin();

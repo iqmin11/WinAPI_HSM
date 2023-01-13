@@ -23,6 +23,7 @@ protected:
 
 
 private:
-
+	float AccTime = 0.0f;
+	int StartFrame = 0;
 };
 

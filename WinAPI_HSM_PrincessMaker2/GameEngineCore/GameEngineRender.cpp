@@ -34,7 +34,7 @@ void GameEngineRender::Render(float _DeltaTime)
 	}
 	else
 	{
-		GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, RenderPos, { 100, 200 }, { 0, 0 }, Image->GetImageScale()); // 통이미지면 전체 출력
+		GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, RenderPos, Image->GetImageScale(), { 0, 0 }, Image->GetImageScale()); // 통이미지면 전체 출력 // 일단 메모
 	}
 }
 

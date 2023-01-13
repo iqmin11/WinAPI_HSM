@@ -2,69 +2,69 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="PM2Core.h" />
-    <ClInclude Include="FirstSetLevel.h">
-      <Filter>ContentsLevel</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleLevel.h">
-      <Filter>ContentsLevel</Filter>
-    </ClInclude>
-    <ClInclude Include="OpeningLevel.h">
-      <Filter>ContentsLevel</Filter>
-    </ClInclude>
-    <ClInclude Include="RaisingSimLevel.h">
-      <Filter>ContentsLevel</Filter>
-    </ClInclude>
-    <ClInclude Include="RPGLevel.h">
-      <Filter>ContentsLevel</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingLevel.h">
-      <Filter>ContentsLevel</Filter>
-    </ClInclude>
     <ClInclude Include="Olive.h">
-      <Filter>ContentsActor\RasingLevel</Filter>
+      <Filter>ContentsActor\RaisingSimLevel</Filter>
     </ClInclude>
     <ClInclude Include="Background.h">
-      <Filter>ContentsActor\RasingLevel</Filter>
+      <Filter>ContentsActor\RaisingSimLevel</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
-      <Filter>ContentsActor\RasingLevel</Filter>
+      <Filter>ContentsActor\RaisingSimLevel</Filter>
     </ClInclude>
     <ClInclude Include="MenuFrame.h">
       <Filter>ContentsActor\Interface</Filter>
     </ClInclude>
     <ClInclude Include="ContentsEnums.h" />
+    <ClInclude Include="TitleLevel.h">
+      <Filter>ContentsLevel\TitleLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="RPGLevel.h">
+      <Filter>ContentsLevel\RPGLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="RaisingSimLevel.h">
+      <Filter>ContentsLevel\RaisingSimLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="OpeningLevel.h">
+      <Filter>ContentsLevel\OpeningLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstSetLevel.h">
+      <Filter>ContentsLevel\FirstSetLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingLevel.h">
+      <Filter>ContentsLevel\EndingLevel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
-    <ClCompile Include="FirstSetLevel.cpp">
-      <Filter>ContentsLevel</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleLevel.cpp">
-      <Filter>ContentsLevel</Filter>
-    </ClCompile>
-    <ClCompile Include="OpeningLevel.cpp">
-      <Filter>ContentsLevel</Filter>
-    </ClCompile>
-    <ClCompile Include="RaisingSimLevel.cpp">
-      <Filter>ContentsLevel</Filter>
-    </ClCompile>
-    <ClCompile Include="RPGLevel.cpp">
-      <Filter>ContentsLevel</Filter>
-    </ClCompile>
-    <ClCompile Include="EndingLevel.cpp">
-      <Filter>ContentsLevel</Filter>
-    </ClCompile>
     <ClCompile Include="Olive.cpp">
-      <Filter>ContentsActor\RasingLevel</Filter>
+      <Filter>ContentsActor\RaisingSimLevel</Filter>
     </ClCompile>
     <ClCompile Include="Background.cpp">
-      <Filter>ContentsActor\RasingLevel</Filter>
+      <Filter>ContentsActor\RaisingSimLevel</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
-      <Filter>ContentsActor\RasingLevel</Filter>
+      <Filter>ContentsActor\RaisingSimLevel</Filter>
     </ClCompile>
     <ClCompile Include="MenuFrame.cpp">
       <Filter>ContentsActor\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleLevel.cpp">
+      <Filter>ContentsLevel\TitleLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="RPGLevel.cpp">
+      <Filter>ContentsLevel\RPGLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="RaisingSimLevel.cpp">
+      <Filter>ContentsLevel\RaisingSimLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="OpeningLevel.cpp">
+      <Filter>ContentsLevel\OpeningLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstSetLevel.cpp">
+      <Filter>ContentsLevel\FirstSetLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingLevel.cpp">
+      <Filter>ContentsLevel\EndingLevel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -74,11 +74,29 @@
     <Filter Include="ContentsActor">
       <UniqueIdentifier>{a02ee4b8-cf6c-4024-b9fa-e5abde4db657}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ContentsActor\RasingLevel">
-      <UniqueIdentifier>{018ab065-16bd-4dc6-867c-2c266be3dda9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ContentsActor\Interface">
       <UniqueIdentifier>{f5b06760-be4d-4cdf-915a-36df843904c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\TitleLevel">
+      <UniqueIdentifier>{bd64f859-9cb7-4be2-b175-56965601d1d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\FirstSetLevel">
+      <UniqueIdentifier>{8a36c3b6-c728-480b-b945-e0e3414fb1fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\OpeningLevel">
+      <UniqueIdentifier>{a7661aee-32f4-456f-827d-725088b4e37e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\RaisingSimLevel">
+      <UniqueIdentifier>{38f65c83-0fed-40de-b96b-3f1dea59b017}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\RPGLevel">
+      <UniqueIdentifier>{a7c9c09a-5369-4166-8954-c65b59f59370}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\EndingLevel">
+      <UniqueIdentifier>{a8b975ff-76b0-4c06-bd53-4cb5c27c1f3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsActor\RaisingSimLevel">
+      <UniqueIdentifier>{018ab065-16bd-4dc6-867c-2c266be3dda9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

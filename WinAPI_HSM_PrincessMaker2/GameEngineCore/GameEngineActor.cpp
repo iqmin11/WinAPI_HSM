@@ -32,6 +32,6 @@ GameEngineRender* GameEngineActor::CreateRender(int _Order)
 	Render->Owner = this;
 	Render->SetOrder(_Order);
 	RenderList.push_back(Render);
-	return nullptr;
+	return Render;
 }
 
