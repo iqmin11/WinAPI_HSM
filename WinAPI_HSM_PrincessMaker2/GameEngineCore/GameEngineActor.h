@@ -1,12 +1,15 @@
 #pragma once
-#include <GameEngineBase/GameEngineMath.h>
+#include <list>
+#include <string_view>
 #include <Windows.h>
+#include <GameEngineBase/GameEngineMath.h>
 
 // 화면에 존재하고 위치가 있어야하는 모든것들의 기본기능을 지원해줄 겁니다.
 // 그려져야 한다.
 
 // 설명 :
 class GameEngineLevel;
+class GameEngineRender;
 class GameEngineActor
 {
 	friend GameEngineLevel;
@@ -42,6 +45,26 @@ public:
 		return Level;
 	}
 
+#pragma region CreateRenderEnumOverLoadings
+
+	template<typename EnumType>
+	GameEngineRender* CreateRender(const std::string_view& _Image, EnumType _Order)
+	{
+		return CreateRender(_Image, static_cast<int>(_Order));
+	}
+
+	template<typename EnumType>
+	GameEngineRender* CreateRender(EnumType _Order)
+	{
+		return CreateRender(static_cast<int>(_Order));
+	}
+
+#pragma endregion
+	GameEngineRender* CreateRender(const std::string_view& _Image, int _Order = 0);
+	GameEngineRender* CreateRender(int _Order = 0);
+
+
+
 protected:
 	// 안구현할수도 있다.
 	// ex) 나무는 Update를 안구현할수도 있다.
@@ -58,12 +81,18 @@ protected:
 	// 화면에 그려지는 기능들을 여기서 처리
 	virtual void Render(float _DeltaTime) {}
 
-private:
-	GameEngineLevel* Level;
+	inline float GetLiveTime()
+	{
+		return LiveTime;
+	}
 
-	int Order;
+private:
+	GameEngineLevel* Level = nullptr;
+
+	int Order = 0;
 	float LiveTime = 0.0;
 	float4 Pos = { 0.0f, 0.0f };
+	std::list<GameEngineRender*> RenderList; // 렌더를 관리하는 식별자
 	
 
 	void SetOrder(int _Order)

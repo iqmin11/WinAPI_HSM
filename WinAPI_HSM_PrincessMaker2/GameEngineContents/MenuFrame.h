@@ -51,7 +51,7 @@ public:
 
 	void Start();
 	void Update(float _Deltatime);
-	void Render(float _Deltatime);
+	void Render(float _Time);
 
 protected:
 

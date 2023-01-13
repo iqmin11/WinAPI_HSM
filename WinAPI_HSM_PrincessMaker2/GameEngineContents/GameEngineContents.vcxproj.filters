@@ -32,6 +32,7 @@
     <ClInclude Include="MenuFrame.h">
       <Filter>ContentsActor\Interface</Filter>
     </ClInclude>
+    <ClInclude Include="ContentsEnums.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />

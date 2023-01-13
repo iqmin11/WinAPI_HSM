@@ -23,7 +23,7 @@ void Olive::Update(float _Deltatime)
 	//SetMove(float4::Left * 0.01f);
 }
 
-void Olive::Render(float _Deltatime)
+void Olive::Render(float _Time)
 {
 	//float4 BodyPos = GetPos();
 	//GameEngineImage* BodyImage = GameEngineResources::GetInst().ImageFind("body_10_nomal.bmp");

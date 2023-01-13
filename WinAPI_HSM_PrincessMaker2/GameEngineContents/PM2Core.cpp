@@ -17,7 +17,7 @@ void PM2Core::Start()
 	CreateLevel<RPGLevel>("RPG");
 	CreateLevel<EndingLevel>("Ending");
 
-	ChangeLevel("Title");
+	ChangeLevel("RaisingSim");
 }
 
 void PM2Core::Update()

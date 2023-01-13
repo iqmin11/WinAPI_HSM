@@ -23,7 +23,7 @@ void Background::Update(float _Deltatime)
 
 }
 
-void Background::Render(float _Deltatime)
+void Background::Render(float _Time)
 {
 	float4 PlayerPos = GetPos();
 	GameEngineImage* Image = GameEngineResources::GetInst().ImageFind("background.bmp");

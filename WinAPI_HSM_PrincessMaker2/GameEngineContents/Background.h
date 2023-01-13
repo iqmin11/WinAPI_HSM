@@ -17,7 +17,7 @@ public:
 
 	void Start() override;
 	void Update(float _Deltatime) override;
-	void Render(float _Deltatime) override;
+	void Render(float _Time) override;
 
 protected:
 
