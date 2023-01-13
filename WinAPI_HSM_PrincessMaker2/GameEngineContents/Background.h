@@ -16,8 +16,8 @@ public:
 	Background& operator=(Background&& _Other) noexcept = delete;
 
 	void Start() override;
-	void Update() override;
-	void Render() override;
+	void Update(float _Deltatime) override;
+	void Render(float _Deltatime) override;
 
 protected:
 

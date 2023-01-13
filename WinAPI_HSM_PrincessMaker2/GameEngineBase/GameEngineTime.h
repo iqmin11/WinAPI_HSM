@@ -5,6 +5,8 @@
 class GameEngineTime
 {
 public:
+	static GameEngineTime GlobalTime;
+
 	// construtor destructor
 	GameEngineTime();
 	~GameEngineTime();

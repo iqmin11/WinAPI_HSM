@@ -18,12 +18,12 @@ void Background::Start()
 	SetPos(GameEngineWindow::GetScreenSize().half());
 }
 
-void Background::Update()
+void Background::Update(float _Deltatime)
 {
 
 }
 
-void Background::Render()
+void Background::Render(float _Deltatime)
 {
 	float4 PlayerPos = GetPos();
 	GameEngineImage* Image = GameEngineResources::GetInst().ImageFind("background.bmp");

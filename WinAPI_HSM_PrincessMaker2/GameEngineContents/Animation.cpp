@@ -18,12 +18,12 @@ void Animation::Start()
 	SetPos(GameEngineWindow::GetScreenSize().half());
 }
 
-void Animation::Update()
+void Animation::Update(float _Deltatime)
 {
 	//SetMove(float4::Left * 0.01f);
 }
 
-void Animation::Render()
+void Animation::Render(float _Deltatime)
 {
 	float4 ImagePos = GetPos();
 	GameEngineImage* Image = GameEngineResources::GetInst().ImageFind("PartTimeJobAnimation.bmp");

@@ -1,5 +1,7 @@
 #include "GameEngineTime.h"
 
+GameEngineTime GameEngineTime::GlobalTime;
+
 GameEngineTime::GameEngineTime()
 {
 	QueryPerformanceFrequency(&Second); // 이 컴퓨터는 1초를 정수n이라는 숫자로 표현할꺼야
