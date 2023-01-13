@@ -5,9 +5,11 @@
 // 설명 :
 class GameEngineCore;
 class GameEngineActor;
+class GameEngineRender;
 class GameEngineLevel
 {
 	friend GameEngineCore;
+	friend GameEngineRender;
 
 public:
 	// constrcuter destructer
@@ -58,8 +60,10 @@ private:
 	void ActorsUpdate(float _DeltaTime);
 	void ActorsRender(float _DeltaTime);
 
-
 	void ActorStart(GameEngineActor* _Actor, int _Order);
 
+	std::map<int, std::list<GameEngineRender*>> Renders; // 랜더링 이미지들
+	
+	void PushRender(GameEngineRender* _Render);
 };
 

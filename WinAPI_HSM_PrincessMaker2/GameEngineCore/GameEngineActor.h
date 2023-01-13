@@ -37,6 +37,11 @@ public:
 		Pos += _MovePos;
 	}
 
+	inline GameEngineLevel* GetLevel()
+	{
+		return Level;
+	}
+
 protected:
 	// 안구현할수도 있다.
 	// ex) 나무는 Update를 안구현할수도 있다.
@@ -54,6 +59,8 @@ protected:
 	virtual void Render(float _DeltaTime) {}
 
 private:
+	GameEngineLevel* Level;
+
 	int Order;
 	float LiveTime = 0.0;
 	float4 Pos = { 0.0f, 0.0f };
