@@ -1,9 +1,10 @@
 #pragma once
 #include <GameEnginePlatform/GameEngineImage.h>
+#include <GameEngineCore/GameEngineObject.h>
 
 class GameEngineActor;
 class GameEngineLevel;
-class GameEngineRender
+class GameEngineRender : public GameEngineObject
 {
 	friend GameEngineActor;
 	friend GameEngineLevel;
@@ -30,6 +31,8 @@ public:
 	{
 		Scale = _Scale;
 	}
+	
+	void SetFrame(int _Frame);
 
 	inline int GetOrder() const
 	{
@@ -40,6 +43,12 @@ public:
 	{
 		return Image;
 	}
+
+	inline int GetFrame() const
+	{
+		return Frame;
+	}
+
 
 private:
 	GameEngineActor* Owner = nullptr; // 이 이미지를 갖고있는 소유권자 액터의 주소값

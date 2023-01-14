@@ -3,6 +3,8 @@
 class Olive : public GameEngineActor
 {
 public:
+	static Olive* OlivePlayer;
+
 	// construtor destructor
 	Olive();
 	~Olive();
@@ -19,6 +21,6 @@ protected:
 	void Render(float _Time) override;
 
 private:
-
+	float MoveSpeed = 100.0f;
 };
 

@@ -22,7 +22,7 @@ void Background::Start()
 
 }
 
-void Background::Update(float _Deltatime)
+void Background::Update(float _DeltaTime)
 {
 
 }

@@ -29,6 +29,7 @@ GameEngineRender* GameEngineActor::CreateRender(const std::string_view& _Image, 
 GameEngineRender* GameEngineActor::CreateRender(int _Order)
 {
 	GameEngineRender* Render = new GameEngineRender();
+	Render->SetParent(this);
 	Render->Owner = this;
 	Render->SetOrder(_Order);
 	RenderList.push_back(Render);

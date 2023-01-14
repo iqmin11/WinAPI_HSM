@@ -4,6 +4,7 @@
 #include "Animation.h"
 #include <GameEngineBase/GameEngineDirectory.h>
 #include <GameEngineCore/GameEngineResources.h>
+#include <GameEnginePlatform/GameEngineInput.h>
 
 RaisingSimLevel::RaisingSimLevel()
 {
@@ -35,8 +36,18 @@ void RaisingSimLevel::Loading()
 	CreateActor<Olive>(1);
 	//CreateActor<Animation>(2);
 
+	if (false == GameEngineInput::IsKey("PlayerOff"))
+	{
+		GameEngineInput::CreateKey("PlayerOff", 'R');
+	}
+
 }
 
-void RaisingSimLevel::Update()
+void RaisingSimLevel::Update(float _DeltaTime)
 {
+	if (GameEngineInput::IsDown("PlayerOff"))
+	{
+		Olive::OlivePlayer->OnOffSwtich();
+		// Player::MainPlayer->Death()p;
+	}
 }

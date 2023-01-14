@@ -20,7 +20,7 @@ void Animation::Start()
 	SetPos(GameEngineWindow::GetScreenSize().half());
 }
 
-void Animation::Update(float _Deltatime)
+void Animation::Update(float _DeltaTime)
 {
 	//SetMove(float4::Left * 0.01f);
 }

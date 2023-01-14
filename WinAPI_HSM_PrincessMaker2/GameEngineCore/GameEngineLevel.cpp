@@ -54,7 +54,7 @@ void GameEngineLevel::ActorsUpdate(float _DeltaTime)
 			for (GameEngineActor* Actor : ActorList)
 			{
 				// Actors.erase()
-				if (nullptr == Actor)
+				if (nullptr == Actor || false == Actor->IsUpdate())
 				{
 					continue;
 				}
@@ -73,15 +73,15 @@ void GameEngineLevel::ActorsUpdate(float _DeltaTime)
 		{
 			std::list<GameEngineActor*>& ActorList = GroupStartIter->second;
 
-			for (GameEngineActor* Renderer : ActorList)
+			for (GameEngineActor* Actor : ActorList)
 			{
 				// Actors.erase()
-				if (nullptr == Renderer)
+				if (nullptr == Actor || false == Actor->IsUpdate())
 				{
 					continue;
 				}
 
-				Renderer->LateUpdate(_DeltaTime);
+				Actor->LateUpdate(_DeltaTime);
 			}
 		}
 	}
@@ -94,18 +94,18 @@ void GameEngineLevel::ActorsRender(float _DeltaTime)
 		std::map<int, std::list<GameEngineRender*>>::iterator GroupEndIter = Renders.end();
 
 		for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
-		{
+		{	
 			std::list<GameEngineRender*>& RenderList = GroupStartIter->second;
 
-			for (GameEngineRender* Actor : RenderList)
+			for (GameEngineRender* Renderer : RenderList)
 			{
-				// Actors.erase()
-				if (nullptr == Actor)
+				// Renders.erase()
+				if (nullptr == Renderer || false == Renderer->IsUpdate())
 				{
 					continue;
 				}
 
-				Actor->Render(_DeltaTime);
+				Renderer->Render(_DeltaTime);
 			}
 		}
 	}
@@ -121,7 +121,7 @@ void GameEngineLevel::ActorsRender(float _DeltaTime)
 			for (GameEngineActor* Actor : ActorList)
 			{
 				// Actors.erase()
-				if (nullptr == Actor)
+				if (nullptr == Actor || false == Actor->IsUpdate())
 				{
 					continue;
 				}

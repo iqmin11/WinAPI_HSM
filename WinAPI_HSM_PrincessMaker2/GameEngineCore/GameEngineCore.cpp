@@ -1,6 +1,7 @@
 #include "GameEngineCore.h"
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEnginePlatform/GameEngineInput.h>
 #include "GameEngineLevel.h"
 #include "GameEngineResources.h"
 #include <GameEngineBase/GameEngineTime.h>
@@ -16,8 +17,28 @@ void GameEngineCore::GlobalStart()
 
 void GameEngineCore::GlobalUpdate()
 {
+	if (nullptr != Core->NextLevel)
+	{
+		GameEngineLevel* PrevLevel = Core->MainLevel;
+		GameEngineLevel* NextLevel = Core->NextLevel;
+
+		if (nullptr != PrevLevel)
+		{
+			PrevLevel->LevelChangeEnd(NextLevel);
+		}
+
+		Core->MainLevel = NextLevel;
+		Core->NextLevel = nullptr;
+
+		if (nullptr != NextLevel)
+		{
+			NextLevel->LevelChangeStart(PrevLevel);
+		}
+	}
+	
 	//프레임 시작할 때 한번 델타타임을 정하고
 	float TimeDeltaTime = GameEngineTime::GlobalTime.TimeCheck();
+	GameEngineInput::Update(TimeDeltaTime);
 
 	Core->Update();
 	if (nullptr == Core->MainLevel)
@@ -26,6 +47,7 @@ void GameEngineCore::GlobalUpdate()
 		return;
 	}
 
+	Core->MainLevel->Update(TimeDeltaTime);
 	Core->MainLevel->ActorsUpdate(TimeDeltaTime);
 	GameEngineWindow::DoubleBufferClear();
 	Core->MainLevel->ActorsRender(TimeDeltaTime);
@@ -81,7 +103,12 @@ void GameEngineCore::ChangeLevel(const std::string_view& _Name)
 		return;
 	}
 
-	MainLevel = FindIter->second;
+	NextLevel = FindIter->second;
+}
+
+GameEngineCore* GameEngineCore::GetInst()
+{
+	return Core;
 }
 
 void GameEngineCore::LevelLoading(GameEngineLevel* _Level)

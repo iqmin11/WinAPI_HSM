@@ -1,8 +1,11 @@
 #include "TitleLevel.h"
-#include "MenuFrame.h"
+
 #include <GameEngineBase/GameEngineDirectory.h>
 #include <GameEngineCore/GameEngineResources.h>
+#include <GameEngineCore/GameEngineCore.h>
+#include <GameEnginePlatform/GameEngineInput.h>
 
+#include "MenuFrame.h"
 
 TitleLevel::TitleLevel()
 {
@@ -36,12 +39,19 @@ void TitleLevel::Loading()
 		Image->Cut(3, 3);
 	}
 
+	if (false == GameEngineInput::IsKey("LevelChange"))
+	{
+		GameEngineInput::CreateKey("LevelChange", 'P');
+	}
 
 	CreateActor<MenuFrame>(1);
 
 }
 
-void TitleLevel::Update()
+void TitleLevel::Update(float _DeltaTime)
 {
-
+	if (true == GameEngineInput::IsDown("LevelChange"))	
+	{
+		GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
+	}
 }

@@ -45,7 +45,10 @@ public:
 
 protected:
 	virtual void Loading() = 0;
-	virtual void Update() = 0;
+	virtual void Update(float _DeltaTime) = 0;
+	virtual void LevelChangeEnd(GameEngineLevel* _NextLevel) = 0;
+	virtual void LevelChangeStart(GameEngineLevel* _PrevLevel) = 0;
+
 
 private:
 	// 컨텐츠를 알아서도 안되지만

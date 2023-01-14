@@ -14,6 +14,6 @@ void OpeningLevel::Loading()
 {
 }
 
-void OpeningLevel::Update()
+void OpeningLevel::Update(float _DeltaTime)
 {
 }

@@ -14,6 +14,6 @@ void FirstSetLevel::Loading()
 {
 }
 
-void FirstSetLevel::Update()
+void FirstSetLevel::Update(float _DeltaTime)
 {
 }

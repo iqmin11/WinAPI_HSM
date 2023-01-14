@@ -14,6 +14,6 @@ void RPGLevel::Loading()
 {
 }
 
-void RPGLevel::Update()
+void RPGLevel::Update(float _DeltaTime)
 {
 }
