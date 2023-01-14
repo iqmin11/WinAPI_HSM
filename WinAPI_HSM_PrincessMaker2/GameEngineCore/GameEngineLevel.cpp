@@ -73,15 +73,15 @@ void GameEngineLevel::ActorsUpdate(float _DeltaTime)
 		{
 			std::list<GameEngineActor*>& ActorList = GroupStartIter->second;
 
-			for (GameEngineActor* Actor : ActorList)
+			for (GameEngineActor* Renderer : ActorList)
 			{
 				// Actors.erase()
-				if (nullptr == Actor)
+				if (nullptr == Renderer)
 				{
 					continue;
 				}
 
-				Actor->LateUpdate(_DeltaTime);
+				Renderer->LateUpdate(_DeltaTime);
 			}
 		}
 	}
