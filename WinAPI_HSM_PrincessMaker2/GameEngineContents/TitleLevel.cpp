@@ -6,6 +6,7 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 
 #include "MenuFrame.h"
+#include "TitleBackground.h"
 
 TitleLevel::TitleLevel()
 {
@@ -39,11 +40,15 @@ void TitleLevel::Loading()
 		Image->Cut(3, 3);
 	}
 
+	Dir.Move("TitleLevel");
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TitleBackground.BMP"));
+
+
 	if (false == GameEngineInput::IsKey("LevelChange"))
 	{
 		GameEngineInput::CreateKey("LevelChange", 'P');
 	}
-
+	CreateActor<TitleBackground>(0);
 	CreateActor<MenuFrame>(1);
 
 }

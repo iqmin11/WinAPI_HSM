@@ -22,7 +22,7 @@ void MenuFrame::CreateMenuFrame(const float4& _centerpos, const float4& _TileBas
 	SetMenuFrameStyle(_style);
 }
 
-void MenuFrame::MenuFrameRender()
+void MenuFrame::MenuFrameRender(const int _Order)
 {
 	std::vector<std::vector<GameEngineRender*>> RenderVec = std::vector<std::vector<GameEngineRender*>>();
 	RenderVec.resize(MenuFrameSize.iy());
@@ -38,7 +38,7 @@ void MenuFrame::MenuFrameRender()
 		{
 			for (size_t x = 0; x < RenderVec[y].size(); ++x)
 			{
-				RenderVec[y][x] = CreateRender("FrameSample1.bmp", 0);
+				RenderVec[y][x] = CreateRender("FrameSample1.bmp", _Order);
 				RenderVec[y][x]->SetScale({ 16,16 });
 			}
 		}
@@ -49,7 +49,7 @@ void MenuFrame::MenuFrameRender()
 		{
 			for (size_t x = 0; x < RenderVec[y].size(); ++x)
 			{
-				RenderVec[y][x] = CreateRender("FrameSample2.bmp", 0);
+				RenderVec[y][x] = CreateRender("FrameSample2.bmp", _Order);
 				RenderVec[y][x]->SetScale({ 16,16 });
 			}
 		}
@@ -60,7 +60,7 @@ void MenuFrame::MenuFrameRender()
 		{
 			for (size_t x = 0; x < RenderVec[y].size(); ++x)
 			{
-				RenderVec[y][x] = CreateRender("FrameSample3.bmp", 0);
+				RenderVec[y][x] = CreateRender("FrameSample3.bmp", _Order);
 				RenderVec[y][x]->SetScale({ 16,16 });
 			}
 		}
@@ -117,8 +117,8 @@ void MenuFrame::MenuFrameRender()
 
 void MenuFrame::Start()
 {
-	CreateMenuFrame(GameEngineWindow::GetScreenSize().half(), {2,2}, 2);
-	MenuFrameRender();
+	CreateMenuFrame(GameEngineWindow::GetScreenSize().half(), {13,8}, 0);
+	MenuFrameRender(1);
 }
 
 void MenuFrame::Update(float _Deltatime)

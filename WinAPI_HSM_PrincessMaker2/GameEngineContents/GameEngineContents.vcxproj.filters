@@ -33,6 +33,9 @@
     <ClInclude Include="EndingLevel.h">
       <Filter>ContentsLevel\6. EndingLevel</Filter>
     </ClInclude>
+    <ClInclude Include="TitleBackground.h">
+      <Filter>ContentsLevel\1. TitleLevel\TitleActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -66,6 +69,9 @@
     <ClCompile Include="EndingLevel.cpp">
       <Filter>ContentsLevel\6. EndingLevel</Filter>
     </ClCompile>
+    <ClCompile Include="TitleBackground.cpp">
+      <Filter>ContentsLevel\1. TitleLevel\TitleActor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsLevel">
@@ -94,6 +100,9 @@
     </Filter>
     <Filter Include="ContentsLevel\0. InterfaceActor">
       <UniqueIdentifier>{f5b06760-be4d-4cdf-915a-36df843904c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\1. TitleLevel\TitleActor">
+      <UniqueIdentifier>{93fa830d-b5e5-430a-a284-a4675f9511df}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

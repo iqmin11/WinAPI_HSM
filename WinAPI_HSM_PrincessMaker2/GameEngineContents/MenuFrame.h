@@ -28,14 +28,14 @@ public:
 	MenuFrame& operator=(MenuFrame&& _Other) noexcept = delete;
 
 	void CreateMenuFrame(const float4& _pos, const float4& _TileBasedSize, const int _style = 2); //위치, 크기, 스타일
-	void SetMenuFrameSize(const float4& _tilesize)
+	void SetMenuFrameSize(const float4& _TileBasedSize)
 	{
-		if (_tilesize.x < 2 || _tilesize.y < 2)
+		if (_TileBasedSize.x < 2 || _TileBasedSize.y < 2)
 		{
 			MsgAssert("메뉴프레임의 최소 크기는 2*2입니다")
 		}
-		MenuFramePixelSize = _tilesize*16;
-		MenuFrameSize = _tilesize;
+		MenuFramePixelSize = _TileBasedSize *16;
+		MenuFrameSize = _TileBasedSize;
 	}
 
 	void SetMenuFrameStyle(const int _style)
@@ -47,7 +47,7 @@ public:
 		MenuFrameStyle = _style;
 	}
 
-	void MenuFrameRender();
+	void MenuFrameRender(const int _Order);
 
 	void Start();
 	void Update(float _Deltatime);
