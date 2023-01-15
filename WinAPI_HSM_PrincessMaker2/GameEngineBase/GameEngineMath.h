@@ -126,4 +126,13 @@ public:
 		z += _Other.z;
 		return *this;
 	}
+
+	float4 operator -() const
+	{
+		float4 Return;
+		Return.x = -x;
+		Return.y = -y;
+		Return.z = -z;
+		return Return;
+	}
 };

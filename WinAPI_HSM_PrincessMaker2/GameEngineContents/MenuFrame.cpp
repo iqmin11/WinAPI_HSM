@@ -1,6 +1,8 @@
 #include "MenuFrame.h"
+#include <vector>
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineBase/GameEnginePath.h>
+#include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineResources.h>
 
 MenuFrame::MenuFrame()
@@ -13,75 +15,110 @@ MenuFrame::~MenuFrame()
 
 }
 
-void MenuFrame::CreateMenuFrame(const float4& _centerpos, const float4& _tilesize, const int _style)
+void MenuFrame::CreateMenuFrame(const float4& _centerpos, const float4& _TileBasedSize, const int _style)
 {
 	SetPos(_centerpos);
-	SetMenuFrameSize(_tilesize);
+	SetMenuFrameSize(_TileBasedSize);
 	SetMenuFrameStyle(_style);
 }
 
 void MenuFrame::MenuFrameRender()
 {
-	float4 ImagePos = GetPos() - MenuFramePixelSize.half();
-	GameEngineImage* Image = nullptr;
+	std::vector<std::vector<GameEngineRender*>> RenderVec = std::vector<std::vector<GameEngineRender*>>();
+	RenderVec.resize(MenuFrameSize.iy());
+	for (int y = 0; y < MenuFrameSize.iy(); y++)
+	{
+		RenderVec[y].resize(MenuFrameSize.ix());
+	}
+
 	switch (MenuFrameStyle)
 	{
 	case 0:
-		Image = GameEngineResources::GetInst().ImageFind("FrameSample1.bmp");
+		for (size_t y = 0; y < RenderVec.size(); ++y)
+		{
+			for (size_t x = 0; x < RenderVec[y].size(); ++x)
+			{
+				RenderVec[y][x] = CreateRender("FrameSample1.bmp", 0);
+				RenderVec[y][x]->SetScale({ 16,16 });
+			}
+		}
 		break;
 
 	case 1:
-		Image = GameEngineResources::GetInst().ImageFind("FrameSample2.bmp");
+		for (size_t y = 0; y < RenderVec.size(); ++y)
+		{
+			for (size_t x = 0; x < RenderVec[y].size(); ++x)
+			{
+				RenderVec[y][x] = CreateRender("FrameSample2.bmp", 0);
+				RenderVec[y][x]->SetScale({ 16,16 });
+			}
+		}
 		break;
 
 	case 2:
-		Image = GameEngineResources::GetInst().ImageFind("FrameSample3.bmp");
+		for (size_t y = 0; y < RenderVec.size(); ++y)
+		{
+			for (size_t x = 0; x < RenderVec[y].size(); ++x)
+			{
+				RenderVec[y][x] = CreateRender("FrameSample3.bmp", 0);
+				RenderVec[y][x]->SetScale({ 16,16 });
+			}
+		}
 		break;
 
 	default:
 		break;
 	}
 
-
 	for (size_t y = 0; y < MenuFrameSize.y; y++)
 	{
 		float fy = static_cast<float>(y);
 		if (0 == y)
 		{
-			GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, 0, ImagePos + float4{ 0, fy * 16 }, { 16, 16 });
+			RenderVec[y][0]->SetFrame(0);
+			RenderVec[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }));
 			for (size_t x = 1; x < (MenuFrameSize.x - 1); x++)
 			{
 				float fx = static_cast<float>(x);
-				GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, 1, ImagePos + float4{ fx * 16, fy * 16 }, { 16, 16 });
+				RenderVec[y][x]->SetFrame(1);
+				RenderVec[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy }));
 			}
-			GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, 2, ImagePos + float4{ (MenuFrameSize.x - 1) * 16, fy * 16 }, { 16, 16 });
+			RenderVec[y][MenuFrameSize.ix() - 1]->SetFrame(2);
+			RenderVec[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }));
 		}
 		else if ((MenuFrameSize.y - 1) == y)
 		{
-			GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, 6, ImagePos + float4{ 0, fy * 16 }, { 16, 16 });
+			RenderVec[y][0]->SetFrame(6);
+			RenderVec[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }));
 			for (size_t x = 1; x < (MenuFrameSize.x - 1); x++)
 			{
 				float fx = static_cast<float>(x);
-				GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, 7, ImagePos + float4{ fx * 16, fy * 16 }, { 16, 16 });
+				RenderVec[y][x]->SetFrame(7);
+				RenderVec[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy }));
 			}
-			GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, 8, ImagePos + float4{ (MenuFrameSize.x - 1) * 16, (MenuFrameSize.y - 1) * 16 }, { 16, 16 });
+			RenderVec[y][MenuFrameSize.ix() - 1]->SetFrame(8);
+			RenderVec[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }));
 		}
 		else
 		{
-			GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, 3, ImagePos + float4{ 0, fy * 16 }, { 16, 16 });
+			RenderVec[y][0]->SetFrame(3);
+			RenderVec[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }));
 			for (size_t x = 1; x < (MenuFrameSize.x - 1); x++)
 			{
 				float fx = static_cast<float>(x);
-				GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, 4, ImagePos + float4{ fx * 16, fy * 16 }, { 16, 16 });
+				RenderVec[y][x]->SetFrame(4);
+				RenderVec[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy }));
 			}
-			GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, 5, ImagePos + float4{ (MenuFrameSize.x - 1) * 16, fy * 16 }, { 16, 16 });
+			RenderVec[y][MenuFrameSize.ix() - 1]->SetFrame(5);
+			RenderVec[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }));
 		}
 	}
 }
 
 void MenuFrame::Start()
 {
-	CreateMenuFrame(GameEngineWindow::GetScreenSize().half(), { 15,8 }, 0);
+	CreateMenuFrame(GameEngineWindow::GetScreenSize().half(), {2,2}, 2);
+	MenuFrameRender();
 }
 
 void MenuFrame::Update(float _Deltatime)
@@ -90,7 +127,7 @@ void MenuFrame::Update(float _Deltatime)
 
 void MenuFrame::Render(float _Time)
 {
-	MenuFrameRender();
+	//MenuFrameRender();
 }
 
 //이상적 5*4 메뉴

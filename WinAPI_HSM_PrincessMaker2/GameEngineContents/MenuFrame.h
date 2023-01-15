@@ -27,12 +27,12 @@ public:
 	MenuFrame& operator=(const MenuFrame& _Other) = delete;
 	MenuFrame& operator=(MenuFrame&& _Other) noexcept = delete;
 
-	void CreateMenuFrame(const float4& _pos, const float4& _tilesize, const int _style = 2); //위치, 크기, 스타일
+	void CreateMenuFrame(const float4& _pos, const float4& _TileBasedSize, const int _style = 2); //위치, 크기, 스타일
 	void SetMenuFrameSize(const float4& _tilesize)
 	{
-		if (_tilesize.x < 3 || _tilesize.y < 3)
+		if (_tilesize.x < 2 || _tilesize.y < 2)
 		{
-			MsgAssert("메뉴프레임의 최소 크기는 3*3입니다")
+			MsgAssert("메뉴프레임의 최소 크기는 2*2입니다")
 		}
 		MenuFramePixelSize = _tilesize*16;
 		MenuFrameSize = _tilesize;
@@ -40,7 +40,7 @@ public:
 
 	void SetMenuFrameStyle(const int _style)
 	{
-		if (0 < _style || 2 < _style )
+		if (0 > _style || 2 < _style )
 		{
 			MsgAssert("프레임 스타일 인덱스 범위는 0~2 입니다. 해당하지 않는 값을 입력하였습니다")
 		}
