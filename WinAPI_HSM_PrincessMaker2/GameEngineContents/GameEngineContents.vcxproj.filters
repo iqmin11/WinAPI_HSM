@@ -45,6 +45,9 @@
     <ClInclude Include="SetOliveName.h">
       <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
     </ClInclude>
+    <ClInclude Include="Calendar.h">
+      <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -88,6 +91,9 @@
       <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
     </ClCompile>
     <ClCompile Include="SetOliveName.cpp">
+      <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
+    </ClCompile>
+    <ClCompile Include="Calendar.cpp">
       <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
     </ClCompile>
   </ItemGroup>

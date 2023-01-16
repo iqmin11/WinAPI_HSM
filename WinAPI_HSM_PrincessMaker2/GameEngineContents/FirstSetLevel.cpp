@@ -6,6 +6,7 @@
 
 #include "SetPlayerName.h"
 #include "SetOliveName.h"
+#include "Calendar.h"
 
 FirstSetLevel::FirstSetLevel()
 {
@@ -40,16 +41,8 @@ void FirstSetLevel::Loading()
 		Image->Cut(32, 3);
 	}
 
-	{
-		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OliveWeek.BMP"));
-		Image->Cut(7, 1);
-	}
-
-	{
-		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PlayerWeek.BMP"));
-		Image->Cut(7, 1);
-	}
-
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OliveWeek.BMP"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PlayerWeek.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SetOliveBackground.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SetOliveBirth.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SetPlayerBackground.BMP"));
@@ -60,8 +53,9 @@ void FirstSetLevel::Loading()
 		GameEngineInput::CreateKey("LevelChange", 'P');
 	}
 
-	CreateActor<SetPlayerName>(10);
-	CreateActor<SetOliveName>(9);
+	//CreateActor<SetPlayerName>(10);
+	//CreateActor<SetOliveName>(9);
+	CreateActor<Calendar>(11);
 
 }
 
