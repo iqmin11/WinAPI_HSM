@@ -192,6 +192,18 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SelectionMenu.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SetOliveName.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SetPlayerName.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="TitleBackground.h">
       <SubType>
       </SubType>
@@ -239,6 +251,18 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="RPGLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SelectionMenu.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SetOliveName.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SetPlayerName.cpp">
       <SubType>
       </SubType>
     </ClCompile>

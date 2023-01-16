@@ -5,7 +5,7 @@
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 
-#include "MenuFrame.h"
+#include "SelectionMenu.h"
 #include "TitleBackground.h"
 
 TitleLevel::TitleLevel()
@@ -49,7 +49,7 @@ void TitleLevel::Loading()
 		GameEngineInput::CreateKey("LevelChange", 'P');
 	}
 	CreateActor<TitleBackground>(0);
-	CreateActor<MenuFrame>(1);
+	CreateActor<SelectionMenu>(1);
 
 }
 
@@ -57,6 +57,6 @@ void TitleLevel::Update(float _DeltaTime)
 {
 	if (true == GameEngineInput::IsDown("LevelChange"))	
 	{
-		GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
+		GameEngineCore::GetInst()->ChangeLevel("FirstSet");
 	}
 }

@@ -82,4 +82,22 @@ CS_SAVEBITS : 화면영역을 비트맵으로 저장한다
 이미지 자르기구현 고고
 
 
--단항연산자 말하기
+
+GameEngineKey
+else if (true == press) 프레스 조건 이게 맞음
+
+Up은
+Up true, free true 이게 맞음
+
+Up true, free false 이거면
+가정: 1프레임 단위로 Up Down 반복 →
+첫프레임. 키 입력O Down 및 Press true /
+둘프레임. 키 입력X  Up true Free false /
+셋 프레임. 키 입력O 로직에 안걸림 그대로 탈출 /
+넷프레임. 키 입력X false false false true가 되겠네 /
+다섯번째 프레임. Down이 되겠네
+문제는 세번쨰 프레임때 입력이 씹혔다는것
+
+GameEngineObject Isdeath 함수 &&에서 ||으로 바꾸기
+float4 -단항연산자 만들어줘
+
