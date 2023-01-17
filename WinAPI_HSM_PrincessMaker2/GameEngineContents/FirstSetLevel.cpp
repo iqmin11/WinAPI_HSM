@@ -6,7 +6,7 @@
 
 #include "SetPlayerName.h"
 #include "SetOliveName.h"
-#include "Calendar.h"
+#include "OliveCalendar.h"
 
 FirstSetLevel::FirstSetLevel()
 {
@@ -24,7 +24,7 @@ void FirstSetLevel::Loading()
 
 	Dir.MoveParentToDirectory("ContentsResources");
 	Dir.Move("ContentsResources");
-	Dir.Move("FirstSettingLevel");
+	Dir.Move("FirstSetLevel");
 
 	{
 		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BirthNum.BMP"));
@@ -55,7 +55,7 @@ void FirstSetLevel::Loading()
 
 	//CreateActor<SetPlayerName>(10);
 	//CreateActor<SetOliveName>(9);
-	CreateActor<Calendar>(11);
+	CreateActor<OliveCalendar>(11);
 
 }
 

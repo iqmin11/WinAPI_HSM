@@ -159,7 +159,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Calendar.h">
+    <ClInclude Include="OliveCalendar.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -226,7 +226,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Calendar.cpp">
+    <ClCompile Include="OliveCalendar.cpp">
       <SubType>
       </SubType>
     </ClCompile>
