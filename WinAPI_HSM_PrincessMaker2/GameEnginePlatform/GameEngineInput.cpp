@@ -125,13 +125,13 @@ void GameEngineInput::GameEngineKey::Update(float _DeltaTime)
 {
 	if (true == KeyCheck()) // 키입력이 있다
 	{
+		PressTime += _DeltaTime; // Down 시점 체크
 		if (true == Free) // 키입력이 있기 전까지 Free상태였다 → Down
 		{
 			Down = true;
 			Press = true;
 			Up = false;
 			Free = false;
-			PressTime = _DeltaTime; // Down 시점 체크
 		}
 		else if (true == Press) //키입력이 있는데, 그전에도 키 입력이 있었다 → Press
 		{
@@ -139,7 +139,6 @@ void GameEngineInput::GameEngineKey::Update(float _DeltaTime)
 			Press = true;
 			Up = false;
 			Free = false;
-			PressTime += _DeltaTime;
 		}
 	}
 	else // 키입력이 없다
