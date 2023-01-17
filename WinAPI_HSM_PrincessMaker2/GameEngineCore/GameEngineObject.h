@@ -4,7 +4,7 @@ class GameEngineObject
 public:
 	// construtor destructor
 	GameEngineObject();
-	~GameEngineObject();
+	virtual ~GameEngineObject();
 
 	// delete Function
 	GameEngineObject(const GameEngineObject& _Other) = delete;
@@ -14,12 +14,12 @@ public:
 
 	bool IsUpdate()
 	{
-		return nullptr != Parent ? (ObjectUpdate && !ObjectDeath && Parent->IsUpdate() == true) : (ObjectUpdate && !ObjectDeath);
+		return nullptr != Parent ? ((ObjectUpdate && false == IsDeath()) || Parent->IsUpdate()) : (ObjectUpdate && false == IsDeath());
 	}
 
 	bool IsDeath()
 	{
-		return nullptr != Parent ? ObjectDeath || Parent->IsDeath() : ObjectDeath;
+		return nullptr != Parent ? (true == ObjectDeath || Parent->IsDeath()) : (true == ObjectDeath);
 	}
 	
 	void Death()
