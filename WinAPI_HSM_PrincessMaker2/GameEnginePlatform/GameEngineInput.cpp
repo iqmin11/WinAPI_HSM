@@ -2,6 +2,8 @@
 #include <GameEngineBase/GameEngineString.h>
 #include <GameEngineBase/GameEngineDebug.h>
 
+bool GameEngineInput::IsAnyKeyValue = false;
+
 void GameEngineInput::Update(float _DeltaTime)
 {
 	/*std::map<std::string, GameEngineKey>::iterator StartKeyIter = Keys.begin();

@@ -29,9 +29,9 @@ void Calendar::Start()
 		CalendarNum[y].resize(7);
 	}
 
-	for (size_t y = 0; y < CalendarNum.size(); y++)
+	for (int y = 0; y < CalendarNum.size(); y++)
 	{
-		for (size_t x = 0; x < CalendarNum[y].size(); x++)
+		for (int x = 0; x < CalendarNum[y].size(); x++)
 		{
 			float fx = static_cast<float>(x);
 			float fy = static_cast<float>(y);
