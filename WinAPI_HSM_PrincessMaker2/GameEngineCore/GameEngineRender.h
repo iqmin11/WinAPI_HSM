@@ -74,6 +74,11 @@ public:
 		return Position;
 	}
 
+	void SetTransColor(int _Color)
+	{
+		TransColor = _Color;
+	}
+
 	void CreateAnimation(const FrameAnimationParameter& _Paramter);
 	void ChangeAnimation(const std::string_view& _AnimationName);
 
@@ -90,6 +95,8 @@ private:
 
 	void SetOrder(int _Order); // 
 	void Render(float _DeltaTime);
+
+	int TransColor = RGB(255, 0, 255);
 
 	class FrameAnimation
 	{

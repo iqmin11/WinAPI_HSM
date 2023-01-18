@@ -62,11 +62,13 @@ void Olive::Update(float _DeltaTime)
 
 void Olive::Render(float _Time)
 {
-	//float4 BodyPos = GetPos();
-	//GameEngineImage* BodyImage = GameEngineResources::GetInst().ImageFind("body_10_nomal.bmp");
-	//GameEngineImage* HeadImage = GameEngineResources::GetInst().ImageFind("head_10_nomal.bmp");
-	//float4 HeadPos = GetPos() - float4{0,BodyImage->GetImageScale().y};
-	//GameEngineWindow::GetDoubleBufferImage()->TransCopy(HeadImage, HeadPos + float4{ 0,-14 }, HeadImage->GetImageScale(), { 0,0 }, HeadImage->GetImageScale());
-	//GameEngineWindow::GetDoubleBufferImage()->TransCopy(BodyImage, BodyPos + float4{ 0,0 }, BodyImage->GetImageScale(), { 0,0 }, BodyImage->GetImageScale());
+	/*HDC DoubleDC = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
+	float4 ActorPos = GetPos();
 
+	Rectangle(DoubleDC,
+		ActorPos.ix() - 5,
+		ActorPos.iy() - 5,
+		ActorPos.ix() + 5,
+		ActorPos.iy() + 5
+	);*/ // µð¹ö±ë¿ë
 }

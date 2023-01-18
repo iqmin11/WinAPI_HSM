@@ -138,11 +138,11 @@ void GameEngineRender::Render(float _DeltaTime)
 	float4 RenderPos = Owner->GetPos() + Position;
 	if (true == Image->IsImageCutting())
 	{
-		GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, Frame, RenderPos, Scale); // 자른 이미지면 이렇게 출력
+		GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, Frame, RenderPos, Scale, TransColor); // 자른 이미지면 이렇게 출력
 	}
 	else
 	{
-		GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, RenderPos, Image->GetImageScale(), { 0, 0 }, Image->GetImageScale()); // 통이미지면 전체 출력 // 일단 메모
+		GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, RenderPos, Image->GetImageScale(), { 0, 0 }, Image->GetImageScale(), TransColor); // 통이미지면 전체 출력 // 일단 메모
 	}
 }
 
@@ -159,8 +159,9 @@ void GameEngineRender::FrameAnimation::Render(float _DeltaTime)
 			{
 				CurrentIndex = 0;
 			}
-			else {
-				CurrentIndex = FrameIndex.size() - 1;
+			else 
+			{
+				CurrentIndex = static_cast<int>(FrameIndex.size()) - 1;
 			}
 		}
 

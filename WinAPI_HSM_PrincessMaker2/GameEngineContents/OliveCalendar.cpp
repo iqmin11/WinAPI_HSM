@@ -54,39 +54,9 @@ void OliveCalendar::Update(float _DeltaTime)
 
 void OliveCalendar::Render(float _DeltaTime)
 {
+	
 }
 
-//void Calendar::CreateCalendar(int _year)
-//{
-//	// 윤년이야? 31 29 31 30 31 30 31 31 30 31 30 31
-//	// 평년이야? 31 28 31 30 31 30 31 31 30 31 30 31
-//	if (_month > 0 && _month < 13)
-//	{
-//		if (2 == _month) //2월이야?
-//		{
-//			if (0 == _year % 4) // 윤년이야?
-//			{
-//				//29일까지 채우기
-//			}
-//			else
-//			{
-//				//28일까지 채우기
-//			}
-//		}
-//		else if (_month == 4||
-//			_month == 6	||
-//			_month == 9 || 
-//			_month == 11) //작은달이야?
-//		{
-//			//30일까지 채우기
-//		}
-//		else // 큰달이야?
-//		{
-//			//31일까지 채우기
-//		}
-//	}
-//	
-//}
 
 int OliveCalendar::FindFirstWeekday()
 {
@@ -122,34 +92,37 @@ void OliveCalendar::CalendarNumRender()
 		{
 			int i = 1;
 			int Month = (z + 1) + (w * 3);
-			for (int y = 0; y < CalendarNum[w][z].size(); y++)
+			for (int y = 0; y < CalendarNum[w][z].size(); y++) // 한달
 			{
-				for (int x = 0; x < CalendarNum[w][z][y].size(); x++)
+				for (int x = 0; x < CalendarNum[w][z][y].size(); x++) // 일주일
 				{
 					float fx = static_cast<float>(x);
 					float fy = static_cast<float>(y);
 					float fz = static_cast<float>(z);
 					float fw = static_cast<float>(w);
 					CalendarNum[w][z][y][x] = CreateRender("OliveCalendarNum.BMP", 1);
+					CalendarNum[w][z][y][x]->SetScale({ 20,15 });
+					CalendarNum[w][z][y][x]->SetPosition(-float4{ 315, 240 } + float4{ (30 * fx) + (210 * fz), (20 * fy) + (120 * fw) });
 					if (IsLeapYear())
 					{
 						if (x + (y * 7) < MonthFirstWeekday)
 						{
 							CalendarNum[w][z][y][x]->SetFrame(0);
-							CalendarNum[w][z][y][x]->SetScale({ 20,15 });
-							CalendarNum[w][z][y][x]->SetPosition(-float4{ 315, 240 } + float4{ (30 * fx) + (210 * fz), (20 * fy) + (120 * fw) });
 						}
 						else if (x + (y * 7) < MonthFirstWeekday + MonthLen_Leap[Month - 1])
 						{
-							CalendarNum[w][z][y][x]->SetFrame(i++);
-							CalendarNum[w][z][y][x]->SetScale({ 20,15 });
-							CalendarNum[w][z][y][x]->SetPosition(-float4{ 315, 240 } + float4{ (30 * fx) + (210 * fz), (20 * fy) + (120 * fw) });
+							if (0 == x)
+							{
+								CalendarNum[w][z][y][x]->SetFrame(32 + (i++));
+							}
+							else
+							{
+								CalendarNum[w][z][y][x]->SetFrame(i++);
+							}
 						}
 						else
 						{
 							CalendarNum[w][z][y][x]->SetFrame(0);
-							CalendarNum[w][z][y][x]->SetScale({ 20,15 });
-							CalendarNum[w][z][y][x]->SetPosition(-float4{ 315, 240 } + float4{ (30 * fx) + (210 * fz), (20 * fy) + (120 * fw) });
 						}
 					}
 					else
@@ -157,23 +130,23 @@ void OliveCalendar::CalendarNumRender()
 						if (x + (y * 7) < MonthFirstWeekday)
 						{
 							CalendarNum[w][z][y][x]->SetFrame(0);
-							CalendarNum[w][z][y][x]->SetScale({ 20,15 });
-							CalendarNum[w][z][y][x]->SetPosition(-float4{ 315, 240 } + float4{ (30 * fx) + (210 * fz), (20 * fy) + (120 * fw) });
 						}
 						else if (x + (y * 7) < MonthFirstWeekday + MonthLen_NonLeap[Month - 1])
 						{
-							CalendarNum[w][z][y][x]->SetFrame(i++);
-							CalendarNum[w][z][y][x]->SetScale({ 20,15 });
-							CalendarNum[w][z][y][x]->SetPosition(-float4{ 315, 240 } + float4{ (30 * fx) + (210 * fz), (20 * fy) + (120 * fw) });
+							if (0 == x)
+							{
+								CalendarNum[w][z][y][x]->SetFrame(32 + (i++));
+							}
+							else
+							{
+								CalendarNum[w][z][y][x]->SetFrame(i++);
+							}
 						}
 						else
 						{
 							CalendarNum[w][z][y][x]->SetFrame(0);
-							CalendarNum[w][z][y][x]->SetScale({ 20,15 });
-							CalendarNum[w][z][y][x]->SetPosition(-float4{ 315, 240 } + float4{ (30 * fx) + (210 * fz), (20 * fy) + (120 * fw) });
 						}
 					}
-					
 				}
 			}
 			if (IsLeapYear())
@@ -186,31 +159,9 @@ void OliveCalendar::CalendarNumRender()
 			}
 		}
 	}
-
-	/*for (int w = 0; w < CalendarNum.size(); w++)
-	{
-		for (int z = 0; z < CalendarNum[w].size(); z++)
-		{
-			for (int y = 0; y < CalendarNum[w][z].size(); y++)
-			{
-				for (int x = 0; x < CalendarNum[w][z][y].size(); x++)
-				{
-					float fx = static_cast<float>(x);
-					float fy = static_cast<float>(y);
-					float fz = static_cast<float>(z);
-					float fw = static_cast<float>(w);
-					CalendarNum[w][z][y][x] = CreateRender("OliveCalendarNum.BMP", 1);
-					CalendarNum[w][z][y][x]->SetFrame((x + 1) + (y * 7));
-					CalendarNum[w][z][y][x]->SetScale({ 20,15 });
-					CalendarNum[w][z][y][x]->SetPosition(-float4{ 315, 240 } + float4{ (30 * fx) + (210 * fz), (20 * fy) + (120 * fw) });
-				}
-			}
-		}
-	}*/
-
 }
 
-bool OliveCalendar::IsLeapYear()
+bool OliveCalendar::IsLeapYear() // 윤년이니?
 {
 	if ((0 == (YearValue % 4) && 0 != (YearValue % 100)) || 0 == (YearValue % 400))
 	{
