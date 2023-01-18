@@ -21,13 +21,13 @@ void Olive::Start()
 {
 	OlivePlayer = this;
 
-	if (false == GameEngineInput::IsKey("LeftMove"))
+	/*if (false == GameEngineInput::IsKey("LeftMove"))
 	{
 		GameEngineInput::CreateKey("LeftMove", 'A');
 		GameEngineInput::CreateKey("RightMove", 'D');
 		GameEngineInput::CreateKey("DownMove", 'S');
 		GameEngineInput::CreateKey("UpMove", 'W');
-	}
+	}*/
 
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	GameEngineRender* BodyRender = CreateRender("body_10_nomal.BMP", 1); 
@@ -39,7 +39,7 @@ void Olive::Start()
 
 void Olive::Update(float _DeltaTime)
 {
-	if (true == GameEngineInput::IsPress("LeftMove"))
+	/*if (true == GameEngineInput::IsPress("LeftMove"))
 	{
 		SetMove(float4::Left * MoveSpeed * _DeltaTime);
 	}
@@ -57,7 +57,7 @@ void Olive::Update(float _DeltaTime)
 	if (true == GameEngineInput::IsPress("DownMove"))
 	{
 		SetMove(float4::Down * MoveSpeed * _DeltaTime);
-	}
+	}*/
 }
 
 void Olive::Render(float _Time)

@@ -48,6 +48,9 @@
     <ClInclude Include="OliveCalendar.h">
       <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
     </ClInclude>
+    <ClInclude Include="RPGOlive.h">
+      <Filter>ContentsLevel\5. RPGLevel\RPGActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -96,6 +99,9 @@
     <ClCompile Include="OliveCalendar.cpp">
       <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
     </ClCompile>
+    <ClCompile Include="RPGOlive.cpp">
+      <Filter>ContentsLevel\5. RPGLevel\RPGActor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsLevel">
@@ -130,6 +136,9 @@
     </Filter>
     <Filter Include="ContentsLevel\2. FirstSetLevel\FirstSetActor">
       <UniqueIdentifier>{a1029247-d985-43da-ab3b-e8171e861771}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\5. RPGLevel\RPGActor">
+      <UniqueIdentifier>{d2501da1-b309-4879-9b45-a6078da5223a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

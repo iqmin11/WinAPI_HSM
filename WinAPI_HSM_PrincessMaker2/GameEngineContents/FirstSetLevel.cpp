@@ -48,10 +48,10 @@ void FirstSetLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SetPlayerBackground.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SetPlayerBirth.BMP"));
 
-	if (false == GameEngineInput::IsKey("LevelChange"))
+	/*if (false == GameEngineInput::IsKey("LevelChange"))
 	{
 		GameEngineInput::CreateKey("LevelChange", 'P');
-	}
+	}*/
 
 	//CreateActor<SetPlayerName>(10);
 	//CreateActor<SetOliveName>(9);

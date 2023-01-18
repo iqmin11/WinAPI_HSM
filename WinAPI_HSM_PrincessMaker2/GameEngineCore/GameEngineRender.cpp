@@ -136,6 +136,10 @@ void GameEngineRender::Render(float _DeltaTime)
 	}
 
 	float4 RenderPos = Owner->GetPos() + Position;
+	if (nullptr == Image)
+	{
+		MsgAssert("멤버변수 Image가 nullptr입니다")
+	}
 	if (true == Image->IsImageCutting())
 	{
 		GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, Frame, RenderPos, Scale, TransColor); // 자른 이미지면 이렇게 출력
