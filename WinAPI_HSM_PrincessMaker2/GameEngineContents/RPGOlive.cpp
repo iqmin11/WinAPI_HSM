@@ -1,6 +1,7 @@
 #include "RPGOlive.h"
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 RPGOlive* RPGOlive::MainPlayer;
 
@@ -46,7 +47,6 @@ void RPGOlive::Start()
 
 void RPGOlive::Update(float _DeltaTime)
 {
-	DirCheck();
 	UpdateState(_DeltaTime);
 
 }
@@ -58,8 +58,11 @@ void RPGOlive::Render(float _Time)
 
 
 
-void RPGOlive::DirCheck()
+void RPGOlive::DirCheck(const std::string_view& _AnimationName)
 {
+	std::string PrevDirString = DirString;
+	AnimationRender->ChangeAnimation(DirString + _AnimationName.data());
+
 	if (GameEngineInput::IsPress("LeftMove"))
 	{
 		DirString = "Left_";
@@ -76,7 +79,13 @@ void RPGOlive::DirCheck()
 	{
 		DirString = "Down_";
 	}
+
+	if (PrevDirString != DirString)
+	{
+		AnimationRender->ChangeAnimation(DirString + _AnimationName.data());
+	}
 }
+
 
 void RPGOlive::ChangeState(PlayerState _State)
 {
@@ -119,7 +128,7 @@ void RPGOlive::UpdateState(float _Time)
 
 void RPGOlive::IdleStart()
 {
-	AnimationRender->ChangeAnimation(DirString + "Idle");
+	DirCheck("Idle");
 }
 
 void RPGOlive::IdleUpdate(float _DeltaTime)
@@ -137,7 +146,7 @@ void RPGOlive::IdleEnd()
 
 void RPGOlive::MoveStart()
 {
-	AnimationRender->ChangeAnimation(DirString + "Move");
+	DirCheck("Move");
 }
 
 void RPGOlive::MoveUpdate(float _DeltaTime)
@@ -155,18 +164,19 @@ void RPGOlive::MoveUpdate(float _DeltaTime)
 	{
 		SetMove(float4::Left * MoveSpeed * _DeltaTime);
 	}
-	if (GameEngineInput::IsPress("RightMove"))
+	else if (GameEngineInput::IsPress("RightMove"))
 	{
 		SetMove(float4::Right * MoveSpeed * _DeltaTime);
 	}
-	if (GameEngineInput::IsPress("UpMove"))
+	else if (GameEngineInput::IsPress("UpMove"))
 	{
 		SetMove(float4::Up * MoveSpeed * _DeltaTime);
 	}
-	if (GameEngineInput::IsPress("DownMove"))
+	else if (GameEngineInput::IsPress("DownMove"))
 	{
 		SetMove(float4::Down * MoveSpeed * _DeltaTime);
 	}
+	DirCheck("Move");
 }
 
 void RPGOlive::MoveEnd()

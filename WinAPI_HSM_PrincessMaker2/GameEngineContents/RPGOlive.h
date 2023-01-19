@@ -36,7 +36,7 @@ private:
 	PlayerState StateValue = PlayerState::IDLE;
 	std::string DirString = "Right_";
 
-	void DirCheck();
+	void DirCheck(const std::string_view& _AnimationName);
 
 
 	void ChangeState(PlayerState _State);

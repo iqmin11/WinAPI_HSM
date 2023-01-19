@@ -41,10 +41,7 @@ public:
 		Pos += _MovePos;
 	}
 
-	inline GameEngineLevel* GetLevel()
-	{
-		return Level;
-	}
+	GameEngineLevel* GetLevel();
 
 #pragma region CreateRenderEnumOverLoadings
 

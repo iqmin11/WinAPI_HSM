@@ -1,6 +1,6 @@
 #pragma once
 #include <GameEnginePlatform/GameEngineImage.h>
-#include <GameEngineCore/GameEngineObject.h>
+#include "GameEngineObject.h"
 #include <map>
 
 class FrameAnimationParameter
@@ -63,6 +63,8 @@ public:
 	{
 		return Frame;
 	}
+
+	GameEngineActor* GetActor();
 	
 	inline float4 GetScale()
 	{
@@ -79,17 +81,22 @@ public:
 		TransColor = _Color;
 	}
 
+	inline void EffectCameraOff()
+	{
+		IsEffectCamera = false;
+	}
+
 	void CreateAnimation(const FrameAnimationParameter& _Paramter);
 	void ChangeAnimation(const std::string_view& _AnimationName);
 
 
 private:
-	GameEngineActor* Owner = nullptr; // 이 이미지를 갖고있는 소유권자 액터의 주소값
 
 	int Order = 0; // 이미지 랜더 순서를 정해주는 요소
 	float4 Position = float4::Zero; // 이미지의 상대적 위치 -> 액터의 위치를 기준으로 정해짐
 	float4 Scale= float4::Zero; // 이미지 크기
 	GameEngineImage* Image = nullptr; // 랜더 이미지
+	bool IsEffectCamera = true;
 
 	int Frame = 0; // 아마 애니메이션 관련 요소
 

@@ -42,9 +42,20 @@ public:
 		ObjectUpdate = !ObjectUpdate;
 	}
 
-	void SetParent(GameEngineObject* _Parent)
+	void SetOwner(GameEngineObject* _Parent)
 	{
 		Parent = _Parent;
+	}
+	
+	template<typename ConvertType>
+	ConvertType* GetOwner()
+	{
+		return dynamic_cast<ConvertType*>(Parent);
+	}
+
+	GameEngineObject* GetOwner()
+	{
+		return Parent;
 	}
 
 protected:
