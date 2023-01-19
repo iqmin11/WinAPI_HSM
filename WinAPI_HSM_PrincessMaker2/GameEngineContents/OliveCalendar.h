@@ -30,16 +30,21 @@ public:
 
 	//void CreateCalendar(int _year);
 
-	void CalendarNumRender();
+	void DateNumRender();
+	void YearNumRender();
+	void WeekdayRender();
+	void MonthNumRender();
+	
+	
 	bool IsLeapYear();
 
 protected:
 
 
 private:
-	int YearValue = 2023;
+	int YearValue = 1200;
 	int FindFirstWeekday();
-
+	
 
 };
 

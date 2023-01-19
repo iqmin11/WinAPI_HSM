@@ -37,6 +37,16 @@ void FirstSetLevel::Loading()
 	}
 
 	{
+		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OliveYearNum.BMP"));
+		Image->Cut(10, 3);
+	}
+
+	{
+		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PlayerYearNum.BMP"));
+		Image->Cut(10, 3);
+	}
+
+	{
 		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PlayerCalendarNum.BMP"));
 		Image->Cut(32, 3);
 	}

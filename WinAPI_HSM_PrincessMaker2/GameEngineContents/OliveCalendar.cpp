@@ -20,36 +20,15 @@ void OliveCalendar::Start()
 	//GameEngineRender* WeekRender = CreateRender("OliveWeek.BMP");
 
 	GameEngineRender* Background = CreateRender("SetOliveBirth.BMP", 0);
-	
-	CalendarNumRender();
-
-
-
-	/*for (int y = 0; y < CalendarNum.size(); y++)
-	{
-		for (int x = 0; x < CalendarNum[y].size(); x++)
-		{
-			float fx = static_cast<float>(x);
-			float fy = static_cast<float>(y);
-			CalendarNum[y][x] = CreateRender("OliveCalendarNum.BMP", 1);
-			if (31 < (x + 1) + (y * 7))
-			{
-				break;
-			}
-			CalendarNum[y][x]->SetFrame((x+1) + (y*7));
-			CalendarNum[y][x]->SetScale({ 20,15 });
-			CalendarNum[y][x]->SetPosition(float4{ -105,-51 } + float4{ 30 * (fx), 20 * fy });
-		}
-	}
-	GameEngineRender* Week = CreateRender("OliveWeek.BMP", 2);
-	Week->SetScale({ 210,10 });
-	Week->SetPosition(float4{ -10,-66 });*/
-
-
+	DateNumRender();
+	YearNumRender();
+	MonthNumRender();
+	WeekdayRender();
 }
 
 void OliveCalendar::Update(float _DeltaTime)
 {
+
 }
 
 void OliveCalendar::Render(float _DeltaTime)
@@ -64,7 +43,7 @@ int OliveCalendar::FindFirstWeekday()
 	return (PrevYear + ((PrevYear / 4) - (PrevYear / 100) + (PrevYear / 400)) + 1) % 7;
 }
 
-void OliveCalendar::CalendarNumRender()
+void OliveCalendar::DateNumRender()
 {
 	std::vector<std::vector<std::vector<std::vector<GameEngineRender*>>>> CalendarNum = std::vector<std::vector<std::vector<std::vector<GameEngineRender*>>>>();
 	CalendarNum.resize(4); // 인터페이스 세로열
@@ -101,8 +80,8 @@ void OliveCalendar::CalendarNumRender()
 					float fz = static_cast<float>(z);
 					float fw = static_cast<float>(w);
 					CalendarNum[w][z][y][x] = CreateRender("OliveCalendarNum.BMP", 1);
-					CalendarNum[w][z][y][x]->SetScale({ 20,15 });
-					CalendarNum[w][z][y][x]->SetPosition(-float4{ 315, 240 } + float4{ (30 * fx) + (210 * fz), (20 * fy) + (120 * fw) });
+					CalendarNum[w][z][y][x]->SetScale({20,14}); //default {20,15}
+					CalendarNum[w][z][y][x]->SetPosition(-float4{ 315 + 15, 192 - (15 * 1) } + float4{ (30 * fx) + ((210 + (10 * 4)) * fz), (15 * fy) + ((15 * 6 + 15) * fw) });
 					if (IsLeapYear())
 					{
 						if (x + (y * 7) < MonthFirstWeekday)
@@ -160,6 +139,104 @@ void OliveCalendar::CalendarNumRender()
 		}
 	}
 }
+
+void OliveCalendar::YearNumRender()
+{
+	int Year1000 = YearValue / 1000;
+	int Year100 = (YearValue - (Year1000*1000)) / 100;
+	int Year10 = (YearValue - (Year1000*1000) - (Year100*100)) / 10;
+	int Year1 = YearValue - (Year1000 * 1000) - (Year100 * 100) - (Year10 * 10);
+	
+	
+	std::vector<std::vector<std::vector<GameEngineRender*>>> YearNum = std::vector<std::vector<std::vector<GameEngineRender*>>>();
+	
+	YearNum.resize(4);
+	for (int y = 0; y < YearNum.size(); y++)
+	{
+		YearNum[y].resize(3);
+		for (int x = 0; x < YearNum[y].size(); x++)
+		{
+			YearNum[y][x].resize(4);
+		}
+	}
+
+	for (int z = 0; z < YearNum.size(); z++)
+	{
+		for (int y = 0; y < YearNum[z].size(); y++)
+		{
+			int CurYear = YearValue;
+			
+			for (int x = 0; x < YearNum[z][y].size(); x++)
+			{
+				float fx = static_cast<float>(x);
+				float fy = static_cast<float>(y);
+				float fz = static_cast<float>(z);
+				YearNum[z][y][x] = CreateRender("OliveYearNum.BMP", 1); // 인덱스상 3이 1,  5가 2 (인덱스 -1 / 2가 원래 숫자임)
+				YearNum[z][y][x]->SetScale({ 8,12 }); //default {10,15} -> 8*6짜리 숫자가 년도로 들어가야함
+				YearNum[z][y][x]->SetPosition(-float4{ 315 + 40 + 15, 192 - (15 * 1) + 5 } + float4{ (8 * fx) + ((210 + (10 * 4)) * fy), (15 * 6 + 15) * fz });
+				//CalendarNum[w][z][y][x]->SetPosition(-float4{ 315, 192 - (15 * 1) } + float4{ (30 * fx) + (242 * fz), (15 * fy) + ((15 * 6 + 15) * fw) });
+			}
+			
+			YearNum[z][y][0]->SetFrame(Year1000);
+			YearNum[z][y][1]->SetFrame(Year100);
+			YearNum[z][y][2]->SetFrame(Year10);
+			YearNum[z][y][3]->SetFrame(Year1);
+		
+		}
+	}
+}
+
+void OliveCalendar::WeekdayRender()
+{
+	std::vector<std::vector<GameEngineRender*>> Weekday = std::vector<std::vector<GameEngineRender*>>();
+
+	Weekday.resize(4);
+	for (int y = 0; y < Weekday.size(); y++)
+	{
+		Weekday[y].resize(3);
+	}
+
+	for (int y = 0; y < Weekday.size(); y++)
+	{
+		for (int x = 0; x < Weekday[y].size(); x++)
+		{
+			float fx = static_cast<float>(x);
+			float fy = static_cast<float>(y);
+			Weekday[y][x] = CreateRender("OliveWeek.BMP", 1); 
+			Weekday[y][x]->SetScale({ 210,10 }); //default {10,15} -> 8*6짜리 숫자가 년도로 들어가야함
+			Weekday[y][x]->SetPosition(-float4{ 315-95 + 15, 192 + 15 - (15 * 1) } + float4{ ((210 + (10 * 4)) * fx), (15 * 6 + 15) * fy });
+			//CalendarNum[w][z][y][x]->SetPosition(-float4{ 315, 192 - (15 * 1) } + float4{ (30 * fx) + (242 * fz), (15 * fy) + ((15 * 6 + 15) * fw) });
+
+		}
+	}
+}
+
+void OliveCalendar::MonthNumRender()
+{
+	std::vector<std::vector<GameEngineRender*>> MonthNum = std::vector<std::vector<GameEngineRender*>>();
+
+	MonthNum.resize(4);
+	for (int y = 0; y < MonthNum.size(); y++)
+	{
+		MonthNum[y].resize(3);
+	}
+
+	for (int y = 0; y < MonthNum.size(); y++)
+	{
+		for (int x = 0; x < MonthNum[y].size(); x++)
+		{
+			float fx = static_cast<float>(x);
+			float fy = static_cast<float>(y);
+			MonthNum[y][x] = CreateRender("OliveCalendarNum.BMP", 1);
+			MonthNum[y][x]->SetFrame(x + 1 + (y*3)); 
+			MonthNum[y][x]->SetScale({ 20,16 });
+			MonthNum[y][x]->SetPosition(-float4{ 315 + 30 + 15, 192 - (15 * 1) - 12 } + float4{ ((210 + (10*4)) * fx), (15 * 6 + 15) * fy });
+			//CalendarNum[w][z][y][x]->SetPosition(-float4{ 315, 192 - (15 * 1) } + float4{ (30 * fx) + (242 * fz), (15 * fy) + ((15 * 6 + 15) * fw) });
+		}
+	}
+}
+
+
 
 bool OliveCalendar::IsLeapYear() // 윤년이니?
 {
