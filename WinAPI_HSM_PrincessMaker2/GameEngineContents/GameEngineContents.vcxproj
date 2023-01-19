@@ -159,6 +159,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Date.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="OliveCalendar.h">
       <SubType>
       </SubType>
@@ -181,6 +185,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="OpeningLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayerCalendar.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -230,6 +238,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Date.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="OliveCalendar.cpp">
       <SubType>
       </SubType>
@@ -251,6 +263,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="OpeningLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PlayerCalendar.cpp">
       <SubType>
       </SubType>
     </ClCompile>

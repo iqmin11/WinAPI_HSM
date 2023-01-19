@@ -12,7 +12,7 @@
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClInclude>
     <ClInclude Include="MenuFrame.h">
-      <Filter>ContentsLevel\0. InterfaceActor</Filter>
+      <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClInclude>
     <ClInclude Include="ContentsEnums.h" />
     <ClInclude Include="TitleLevel.h">
@@ -51,6 +51,12 @@
     <ClInclude Include="RPGOlive.h">
       <Filter>ContentsLevel\5. RPGLevel\RPGActor</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerCalendar.h">
+      <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
+    </ClInclude>
+    <ClInclude Include="Date.h">
+      <Filter>ContentsLevel\0. PM2Base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -64,7 +70,7 @@
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClCompile>
     <ClCompile Include="MenuFrame.cpp">
-      <Filter>ContentsLevel\0. InterfaceActor</Filter>
+      <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClCompile>
     <ClCompile Include="TitleLevel.cpp">
       <Filter>ContentsLevel\1. TitleLevel</Filter>
@@ -102,6 +108,12 @@
     <ClCompile Include="RPGOlive.cpp">
       <Filter>ContentsLevel\5. RPGLevel\RPGActor</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerCalendar.cpp">
+      <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
+    </ClCompile>
+    <ClCompile Include="Date.cpp">
+      <Filter>ContentsLevel\0. PM2Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsLevel">
@@ -128,9 +140,6 @@
     <Filter Include="ContentsLevel\6. EndingLevel">
       <UniqueIdentifier>{a8b975ff-76b0-4c06-bd53-4cb5c27c1f3c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ContentsLevel\0. InterfaceActor">
-      <UniqueIdentifier>{f5b06760-be4d-4cdf-915a-36df843904c2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ContentsLevel\1. TitleLevel\TitleActor">
       <UniqueIdentifier>{93fa830d-b5e5-430a-a284-a4675f9511df}</UniqueIdentifier>
     </Filter>
@@ -139,6 +148,9 @@
     </Filter>
     <Filter Include="ContentsLevel\5. RPGLevel\RPGActor">
       <UniqueIdentifier>{d2501da1-b309-4879-9b45-a6078da5223a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\0. PM2Base">
+      <UniqueIdentifier>{f5b06760-be4d-4cdf-915a-36df843904c2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

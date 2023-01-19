@@ -1,29 +1,18 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 #include "Date.h"
-enum Week
-{
-	Sun,
-	Mon,
-	Tue,
-	Wed,
-	Thu,
-	Fri,
-	Sat
-};
-
-class OliveCalendar : public GameEngineActor
+class PlayerCalendar : public GameEngineActor
 {
 public:
 	// construtor destructor
-	OliveCalendar();
-	~OliveCalendar();
+	PlayerCalendar();
+	~PlayerCalendar();
 
 	// delete Function
-	OliveCalendar(const OliveCalendar& _Other) = delete;
-	OliveCalendar(OliveCalendar&& _Other) noexcept = delete;
-	OliveCalendar& operator=(const OliveCalendar& _Other) = delete;
-	OliveCalendar& operator=(OliveCalendar&& _Other) noexcept = delete;
+	PlayerCalendar(const PlayerCalendar& _Other) = delete;
+	PlayerCalendar(PlayerCalendar&& _Other) noexcept = delete;
+	PlayerCalendar& operator=(const PlayerCalendar& _Other) = delete;
+	PlayerCalendar& operator=(PlayerCalendar&& _Other) noexcept = delete;
 
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -35,18 +24,20 @@ public:
 	void YearNumRender();
 	void WeekdayRender();
 	void MonthNumRender();
-	
-	
+
+
 	bool IsLeapYear();
+
+	void SetOliveBirth(); // юс╫ц
 
 protected:
 
 
 private:
-	int CalendarYear = 0;
 	Date OliveBirth = Date();
+	Date PlayerBirth = Date();
+	int CalendarYear = 1200;
 	int FindFirstWeekday();
-	
 
 };
 

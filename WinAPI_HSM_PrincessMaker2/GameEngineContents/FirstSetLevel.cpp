@@ -7,6 +7,7 @@
 #include "SetPlayerName.h"
 #include "SetOliveName.h"
 #include "OliveCalendar.h"
+#include "PlayerCalendar.h"
 
 FirstSetLevel::FirstSetLevel()
 {
@@ -65,7 +66,8 @@ void FirstSetLevel::Loading()
 
 	//CreateActor<SetPlayerName>(10);
 	//CreateActor<SetOliveName>(9);
-	CreateActor<OliveCalendar>(11);
+	//CreateActor<OliveCalendar>(11);
+	CreateActor<PlayerCalendar>(11);
 
 }
 
