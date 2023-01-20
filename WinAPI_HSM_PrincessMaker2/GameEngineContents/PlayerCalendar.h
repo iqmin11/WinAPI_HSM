@@ -27,6 +27,7 @@ public:
 
 
 	bool IsLeapYear();
+	bool IsLeapYear(int _YYYY);
 
 	void SetOliveBirth(); // юс╫ц
 
@@ -36,8 +37,10 @@ protected:
 private:
 	Date OliveBirth = Date();
 	Date PlayerBirth = Date();
-	int CalendarYear = 1200;
+	int CalendarYear = 2023;
 	int FindFirstWeekday();
+	int FindFirstWeekday(int _YYYY);
+	int FindMonthFirstWeekday(int _YYYY, int _MM);
 
 };
 
