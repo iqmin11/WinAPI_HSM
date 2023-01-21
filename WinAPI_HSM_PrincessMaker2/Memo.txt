@@ -102,3 +102,5 @@ GameEngineObject Isdeath 함수 &&에서 ||으로 바꾸기
 float4 -단항연산자 만들어줘
 
 달력 몇년도 몇월을 넣으면 그 해당 달의 달력 만들어줘
+
+TextOut에 대해서 알아보고 해보기

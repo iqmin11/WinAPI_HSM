@@ -29,7 +29,8 @@ public:
 	bool IsLeapYear();
 	bool IsLeapYear(int _YYYY);
 
-	void SetOliveBirth(); // 임시
+	void SetOliveBirth(int _YYYY, int _MM, int _DD); // 임시
+	void SetCalendarYear(int _YYYY);// 임시
 
 protected:
 

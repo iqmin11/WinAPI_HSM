@@ -64,8 +64,8 @@ void FirstSetLevel::Loading()
 		GameEngineInput::CreateKey("LevelChange", 'P');
 	}*/
 
-	//CreateActor<SetPlayerName>(10);
 	//CreateActor<SetOliveName>(9);
+	//CreateActor<SetPlayerName>(10);
 	//CreateActor<OliveCalendar>(11);
 	CreateActor<PlayerCalendar>(11);
 

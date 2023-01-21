@@ -140,6 +140,11 @@ void GameEngineRender::Render(float _DeltaTime)
 		Image = CurrentAnimation->Image;
 	}
 
+	if (nullptr == Image)
+	{
+		MsgAssert("이미지를 세팅해주지 않았습니다.");
+	}
+
 	float4 CameraPos = float4::Zero;
 
 	if (true == IsEffectCamera)

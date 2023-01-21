@@ -16,8 +16,8 @@ PlayerCalendar::~PlayerCalendar()
 
 void PlayerCalendar::Start()
 {
-	SetOliveBirth();
-
+	SetOliveBirth(1200, 8, 15);
+	SetCalendarYear(1156);
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	//GameEngineRender* WeekRender = CreateRender("OliveWeek.BMP");
 
@@ -31,7 +31,7 @@ void PlayerCalendar::Start()
 
 void PlayerCalendar::Update(float _DeltaTime)
 {
-
+	
 }
 
 void PlayerCalendar::Render(float _DeltaTime)
@@ -205,10 +205,11 @@ void PlayerCalendar::DateNumRender()
 void PlayerCalendar::YearNumRender()
 {
 	int Month = OliveBirth.GetMonth();
-	int Year1000 = CalendarYear / 1000;
-	int Year100 = (CalendarYear - (Year1000 * 1000)) / 100;
-	int Year10 = (CalendarYear - (Year1000 * 1000) - (Year100 * 100)) / 10;
-	int Year1 = CalendarYear - (Year1000 * 1000) - (Year100 * 100) - (Year10 * 10);
+	int Year = CalendarYear;
+	int Year1000 = Year / 1000;
+	int Year100 = (Year - (Year1000 * 1000)) / 100;
+	int Year10 = (Year - (Year1000 * 1000) - (Year100 * 100)) / 10;
+	int Year1 = Year - (Year1000 * 1000) - (Year100 * 100) - (Year10 * 10);
 
 
 	std::vector<std::vector<std::vector<GameEngineRender*>>> YearNum = std::vector<std::vector<std::vector<GameEngineRender*>>>();
@@ -231,7 +232,11 @@ void PlayerCalendar::YearNumRender()
 			if (Month == 13)
 			{
 				Month = 1;
-				Year1++;
+				Year++;
+				Year1000 = Year / 1000;
+				Year100 = (Year - (Year1000 * 1000)) / 100;
+				Year10 = (Year - (Year1000 * 1000) - (Year100 * 100)) / 10;
+				Year1 = Year - (Year1000 * 1000) - (Year100 * 100) - (Year10 * 10);
 			}
 
 			for (int x = 0; x < YearNum[z][y].size(); x++)
@@ -330,7 +335,12 @@ bool PlayerCalendar::IsLeapYear(int _YYYY)
 	return false;
 }
 
-void PlayerCalendar::SetOliveBirth()
+void PlayerCalendar::SetOliveBirth(int _YYYY, int _MM, int _DD)
 {
-	OliveBirth.SetDate(1200,8,15);
+	OliveBirth.SetDate(_YYYY,_MM,_DD);
+}
+
+void PlayerCalendar::SetCalendarYear(int _YYYY)
+{
+	CalendarYear = _YYYY;
 }
