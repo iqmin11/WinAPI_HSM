@@ -78,3 +78,51 @@ void FirstSetLevel::Update(float _DeltaTime)
 		GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
 	}
 }
+
+void FirstSetLevel::SetPlayerNameStart()
+{
+}
+
+void FirstSetLevel::SetPlayerNameUpdate()
+{
+}
+
+void FirstSetLevel::SetPlayerNameEnd()
+{
+}
+
+void FirstSetLevel::SetOliveNameStart()
+{
+}
+
+void FirstSetLevel::SetOliveNameUpdate()
+{
+}
+
+void FirstSetLevel::SetOliveNameEnd()
+{
+}
+
+void FirstSetLevel::OliveCalendarStart()
+{
+}
+
+void FirstSetLevel::OliveCalendarUpdate()
+{
+}
+
+void FirstSetLevel::OliveCalendarEnd()
+{
+}
+
+void FirstSetLevel::PlayerCalendarStart()
+{
+}
+
+void FirstSetLevel::PlayerCalendarUpdate()
+{
+}
+
+void FirstSetLevel::PlayerCalendarEnd()
+{
+}

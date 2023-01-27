@@ -22,6 +22,20 @@ protected:
 
 
 private:
+	void SetPlayerNameStart();
+	void SetPlayerNameUpdate();
+	void SetPlayerNameEnd();
 
+	void SetOliveNameStart();
+	void SetOliveNameUpdate();
+	void SetOliveNameEnd();
+
+	void OliveCalendarStart();
+	void OliveCalendarUpdate();
+	void OliveCalendarEnd();
+
+	void PlayerCalendarStart();
+	void PlayerCalendarUpdate();
+	void PlayerCalendarEnd();
 };
 

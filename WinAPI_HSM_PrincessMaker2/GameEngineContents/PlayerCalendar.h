@@ -43,5 +43,11 @@ private:
 	int FindFirstWeekday(int _YYYY);
 	int FindMonthFirstWeekday(int _YYYY, int _MM);
 
+	GameEngineRender* DateRender[4][3][6][7] = {}; //달력 열, 행, 날짜 열, 행
+	GameEngineRender* WeekRender[4][3] = {}; //달력 열, 행, 날짜 열, 행
+	GameEngineRender* YearRender[4][3][4] = {}; // 달력 열, 행, 년도 네글자
+	GameEngineRender* MonthRender[4][3] = {}; // 달력 열, 행 
+	GameEngineRender* BackgroundRender = nullptr;
+
 };
 

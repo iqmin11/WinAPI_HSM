@@ -21,7 +21,7 @@ void SetOliveName::Start()
 	}*/
 
 	SetPos(GameEngineWindow::GetScreenSize().half());
-	GameEngineRender* BackGroundRender = CreateRender("SetOliveBackground.BMP", 9);
+	BackgroundRender = CreateRender("SetOliveBackground.BMP", 9);
 	
 	/*Off();*/
 }

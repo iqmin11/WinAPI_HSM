@@ -14,21 +14,21 @@ SetPlayerName::~SetPlayerName()
 
 void SetPlayerName::Start()
 {
-	if (false == GameEngineInput::IsKey("OffPlayerNameSet"))
+	/*if (false == GameEngineInput::IsKey("OffPlayerNameSet"))
 	{
 		GameEngineInput::CreateKey("OffPlayerNameSet", 'D');
-	}
+	}*/
 
 	SetPos(GameEngineWindow::GetScreenSize().half());
-	GameEngineRender* BackGroundRender = CreateRender("SetPlayerBackground.BMP", 10);
+	BackgroundRender = CreateRender("SetPlayerBackground.BMP", 10);
 }
 
 void SetPlayerName::Update(float _DeltaTime)
 {
-	if (GameEngineInput::IsDown("OffPlayerNameSet"))
+	/*if (GameEngineInput::IsDown("OffPlayerNameSet"))
 	{
 		Off();
-	}
+	}*/
 }
 
 void SetPlayerName::Render(float _DeltaTime)

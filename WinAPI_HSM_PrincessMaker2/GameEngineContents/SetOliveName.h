@@ -21,6 +21,7 @@ protected:
 
 
 private:
+	GameEngineRender* BackgroundRender = nullptr;
 
 };
 
