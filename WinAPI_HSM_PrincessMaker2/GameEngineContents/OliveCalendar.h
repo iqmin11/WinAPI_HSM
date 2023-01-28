@@ -33,7 +33,7 @@ protected:
 
 
 private:
-	int CalendarYear = 0;
+	int CalendarYear = 1200;
 	Date OliveBirth = Date();
 	int FindFirstWeekday();
 

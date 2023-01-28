@@ -61,9 +61,9 @@ public:
 		return CameraPos;
 	}
 
-	std::map<int, std::list<GameEngineActor*>> GetActors() const // 추가
+	const std::map<int, std::list<GameEngineActor*>>* GetActors() const // 추가
 	{
-		return Actors;
+		return &Actors;
 	}
 
 protected:

@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
+#include <list>
 
 enum class ActorState
 {
@@ -10,6 +11,7 @@ enum class ActorState
 	PlayerCalendar
 };
 
+class GameEngineActor;
 class FirstSetLevel : public GameEngineLevel
 {
 public:
@@ -27,16 +29,20 @@ public:
 	void Update(float _DeltaTime) override;
 	void LevelChangeEnd(GameEngineLevel* _NextLevel) override {};
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override {};
-	void ChangeActor(int _Order);
 protected:
 
 
 private:
-	
+	const std::list<GameEngineActor*>* UpdateActor = nullptr;
 
 	ActorState StateValue = ActorState::NULLSTATE;
+	ActorState NextStateValue = ActorState::NULLSTATE;
 
 	void ChangeState(ActorState _State);
+	void ChangeActor(int _Order);
+
+	void OnUpdateActor();
+	void OffUpdateActor();
 
 	void NULLStateStart();
 	void NULLStateEnd();

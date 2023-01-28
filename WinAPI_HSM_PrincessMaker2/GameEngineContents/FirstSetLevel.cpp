@@ -59,13 +59,13 @@ void FirstSetLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SetPlayerBackground.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SetPlayerBirth.BMP"));
 
-	/*if (false == GameEngineInput::IsKey("LevelChange"))
+	if (false == GameEngineInput::IsKey("ActorChange"))
 	{
-		GameEngineInput::CreateKey("LevelChange", 'P');
-	}*/
+		GameEngineInput::CreateKey("ActorChange", 'R');
+	}
 
-	CreateActor<SetOliveName>(0);
-	CreateActor<SetPlayerName>(1);
+	CreateActor<SetPlayerName>(0);
+	CreateActor<SetOliveName>(1);
 	CreateActor<OliveCalendar>(2);
 	CreateActor<PlayerCalendar>(3);
 
@@ -78,13 +78,16 @@ void FirstSetLevel::Update(float _DeltaTime)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
 	}
+
+	if (true == GameEngineInput::IsDown("ActorChange"))
+	{
+		ChangeState(NextStateValue);
+	}
 }
 
 void FirstSetLevel::ChangeActor(int _Order)
 {
-	std::map<int, std::list<GameEngineActor*>>::iterator FindIter = GetActors().find(_Order);
-
-	if (FindIter == GetActors().end())
+	if (GetActors()->find(_Order) == GetActors()->end())
 	{
 		MsgAssert("존재하지 않는 액터를 실행시키려고 했습니다 Order" + _Order);
 		return;
@@ -93,7 +96,33 @@ void FirstSetLevel::ChangeActor(int _Order)
 	//해당 오더안에있는 액터 리스트를 순회하면서 업데이트하는게 내 목적
 	//이전에 실행되던 액터는 끄고..
 
-	//FindIter->second.
+	UpdateActor = &(GetActors()->find(_Order)->second);
+}
+
+void FirstSetLevel::OnUpdateActor()
+{
+	if (nullptr == UpdateActor)
+	{
+		return;
+	}
+
+	for (auto i : *UpdateActor)
+	{
+		i->On();
+	}
+}
+
+void FirstSetLevel::OffUpdateActor()
+{
+	if (nullptr == UpdateActor)
+	{
+		return;
+	}
+
+	for (auto i : *UpdateActor)
+	{
+		i->Off();
+	}
 }
 
 void FirstSetLevel::ChangeState(ActorState _State)
@@ -105,23 +134,24 @@ void FirstSetLevel::ChangeState(ActorState _State)
 	switch (PrevState)
 	{
 	case ActorState::NULLSTATE:
-		void NULLStateEnd();
+		NULLStateEnd();
 		break;
 
 	case ActorState::SetPlayerName:
-		void SetPlayerNameEnd();
+		
+		SetPlayerNameEnd();
 		break;
 
 	case ActorState::SetOliveName:
-		void SetOliveNameEnd();
+		SetOliveNameEnd();
 		break;
 
 	case ActorState::OliveCalendar:
-		void OliveCalendarEnd();
+		OliveCalendarEnd();
 		break;
 
 	case ActorState::PlayerCalendar:
-		void PlayerCalendarEnd();
+		PlayerCalendarEnd();
 		break;
 
 	default:
@@ -134,19 +164,19 @@ void FirstSetLevel::ChangeState(ActorState _State)
 		break;
 
 	case ActorState::SetPlayerName:
-		void SetPlayerNameStart();
+		SetPlayerNameStart();
 		break;
 
 	case ActorState::SetOliveName:
-		void SetOliveNameStart();
+		SetOliveNameStart();
 		break;
 
 	case ActorState::OliveCalendar:
-		void OliveCalendarStart();
+		OliveCalendarStart();
 		break;
 
 	case ActorState::PlayerCalendar:
-		void PlayerCalendarStart();
+		PlayerCalendarStart();
 		break;
 
 	default:
@@ -156,60 +186,77 @@ void FirstSetLevel::ChangeState(ActorState _State)
 
 void FirstSetLevel::NULLStateStart()
 {
+	int a = 0;
 }
 
 void FirstSetLevel::NULLStateEnd()
 {
-	ChangeState(ActorState::SetPlayerName);
+	int a = 0;
 }
 
 void FirstSetLevel::SetPlayerNameStart()
 {
+	ChangeActor(0);
+	OnUpdateActor();
+	NextStateValue = ActorState::SetOliveName;
 }
 
 void FirstSetLevel::SetPlayerNameUpdate()
 {
+	int a = 0;
 }
 
 void FirstSetLevel::SetPlayerNameEnd()
 {
-	ChangeState(ActorState::SetOliveName);
+	OffUpdateActor();
 }
 
 void FirstSetLevel::SetOliveNameStart()
 {
+	ChangeActor(1);
+	OnUpdateActor();
+	NextStateValue = ActorState::OliveCalendar;
 }
 
 void FirstSetLevel::SetOliveNameUpdate()
 {
+	int a = 0;
 }
 
 void FirstSetLevel::SetOliveNameEnd()
 {
-	ChangeState(ActorState::OliveCalendar);
+	OffUpdateActor();
 }
 
 void FirstSetLevel::OliveCalendarStart()
 {
+	ChangeActor(2);
+	OnUpdateActor();
+	NextStateValue = ActorState::PlayerCalendar;
 }
 
 void FirstSetLevel::OliveCalendarUpdate()
 {
+	int a = 0;
 }
 
 void FirstSetLevel::OliveCalendarEnd()
 {
-	ChangeState(ActorState::PlayerCalendar);
+	OffUpdateActor();
 }
 
 void FirstSetLevel::PlayerCalendarStart()
 {
+	ChangeActor(3);
+	OnUpdateActor();
 }
 
 void FirstSetLevel::PlayerCalendarUpdate()
 {
+	int a = 0;
 }
 
 void FirstSetLevel::PlayerCalendarEnd()
 {
+	OffUpdateActor();
 }
