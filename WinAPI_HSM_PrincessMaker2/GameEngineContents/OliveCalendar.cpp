@@ -2,6 +2,7 @@
 #include <vector>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include "ContentsEnums.h"
 
 
 OliveCalendar::OliveCalendar()
@@ -19,7 +20,7 @@ void OliveCalendar::Start()
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	//GameEngineRender* WeekRender = CreateRender("OliveWeek.BMP");
 
-	BackgroundRender = CreateRender("SetOliveBirth.BMP", 0);
+	BackgroundRender = CreateRender("SetOliveBirth.BMP", PM2RenderOrder::BackGround);
 	DateNumRender();
 	MonthNumRender();
 	YearNumRender();
@@ -65,7 +66,7 @@ void OliveCalendar::DateNumRender()
 					float fy = static_cast<float>(y);
 					float fz = static_cast<float>(z);
 					float fw = static_cast<float>(w);
-					DateRender[w][z][y][x] = CreateRender("OliveCalendarNum.BMP", 1);
+					DateRender[w][z][y][x] = CreateRender("OliveCalendarNum.BMP", PM2RenderOrder::Contents);
 					DateRender[w][z][y][x]->SetScale({20,14}); //default {20,15}
 					DateRender[w][z][y][x]->SetPosition(-float4{ 315 + 15, 192 - (15 * 1) } + float4{ (30 * fx) + ((210 + (10 * 4)) * fz), (15 * fy) + ((15 * 6 + 15) * fw) });
 					if (IsLeapYear())
@@ -144,7 +145,7 @@ void OliveCalendar::YearNumRender()
 				float fx = static_cast<float>(x);
 				float fy = static_cast<float>(y);
 				float fz = static_cast<float>(z);
-				YearRender[z][y][x] = CreateRender("OliveYearNum.BMP", 1); // 인덱스상 3이 1,  5가 2 (인덱스 -1 / 2가 원래 숫자임)
+				YearRender[z][y][x] = CreateRender("OliveYearNum.BMP", PM2RenderOrder::Contents); // 인덱스상 3이 1,  5가 2 (인덱스 -1 / 2가 원래 숫자임)
 				YearRender[z][y][x]->SetScale({ 8,12 }); //default {10,15} -> 8*6짜리 숫자가 년도로 들어가야함
 				YearRender[z][y][x]->SetPosition(-float4{ 315 + 40 + 15, 192 - (15 * 1) + 5 } + float4{ (8 * fx) + ((210 + (10 * 4)) * fy), (15 * 6 + 15) * fz });
 				//CalendarNum[w][z][y][x]->SetPosition(-float4{ 315, 192 - (15 * 1) } + float4{ (30 * fx) + (242 * fz), (15 * fy) + ((15 * 6 + 15) * fw) });
@@ -167,7 +168,7 @@ void OliveCalendar::WeekdayRender()
 		{
 			float fx = static_cast<float>(x);
 			float fy = static_cast<float>(y);
-			WeekRender[y][x] = CreateRender("OliveWeek.BMP", 1); 
+			WeekRender[y][x] = CreateRender("OliveWeek.BMP", PM2RenderOrder::Contents);
 			WeekRender[y][x]->SetScale({ 210,10 }); //default {10,15} -> 8*6짜리 숫자가 년도로 들어가야함
 			WeekRender[y][x]->SetPosition(-float4{ 315-95 + 15, 192 + 15 - (15 * 1) } + float4{ ((210 + (10 * 4)) * fx), (15 * 6 + 15) * fy });
 			//CalendarNum[w][z][y][x]->SetPosition(-float4{ 315, 192 - (15 * 1) } + float4{ (30 * fx) + (242 * fz), (15 * fy) + ((15 * 6 + 15) * fw) });
@@ -184,7 +185,7 @@ void OliveCalendar::MonthNumRender()
 		{
 			float fx = static_cast<float>(x);
 			float fy = static_cast<float>(y);
-			MonthRender[y][x] = CreateRender("OliveCalendarNum.BMP", 1);
+			MonthRender[y][x] = CreateRender("OliveCalendarNum.BMP", PM2RenderOrder::Contents);
 			MonthRender[y][x]->SetFrame(x + 1 + (y*3)); 
 			MonthRender[y][x]->SetScale({ 20,16 });
 			MonthRender[y][x]->SetPosition(-float4{ 315 + 30 + 15, 192 - (15 * 1) - 12 } + float4{ ((210 + (10*4)) * fx), (15 * 6 + 15) * fy });

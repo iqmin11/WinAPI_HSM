@@ -8,6 +8,8 @@
 #include "SetOliveName.h"
 #include "OliveCalendar.h"
 #include "PlayerCalendar.h"
+#include "SetPlayerAge.h"
+#include "SetOliveBooldType.h"
 
 FirstSetLevel::FirstSetLevel()
 {
@@ -64,10 +66,12 @@ void FirstSetLevel::Loading()
 		GameEngineInput::CreateKey("ActorChange", 'R');
 	}
 
-	CreateActor<SetPlayerName>(0);
-	CreateActor<SetOliveName>(1);
-	CreateActor<OliveCalendar>(2);
-	CreateActor<PlayerCalendar>(3);
+	CreateActor<SetPlayerName>(static_cast<int>(ActorState::SetPlayerName));
+	CreateActor<SetOliveName>(static_cast<int>(ActorState::SetOliveName));
+	CreateActor<OliveCalendar>(static_cast<int>(ActorState::OliveCalendar));
+	CreateActor<PlayerCalendar>(static_cast<int>(ActorState::PlayerCalendar));
+	CreateActor<SetOliveBooldType>(static_cast<int>(ActorState::SetOliveBloodType));
+	CreateActor<SetPlayerAge>(static_cast<int>(ActorState::SetPlayerAge));
 
 	ChangeState(ActorState::SetPlayerName);
 }
@@ -97,6 +101,11 @@ void FirstSetLevel::ChangeActor(int _Order)
 	//이전에 실행되던 액터는 끄고..
 
 	UpdateActor = &(GetActors()->find(_Order)->second);
+}
+
+void FirstSetLevel::ChangeActor(ActorState _State)
+{
+	FirstSetLevel::ChangeActor(static_cast<int>(_State));
 }
 
 void FirstSetLevel::OnUpdateActor()
@@ -136,24 +145,24 @@ void FirstSetLevel::ChangeState(ActorState _State)
 	case ActorState::NULLSTATE:
 		NULLStateEnd();
 		break;
-
 	case ActorState::SetPlayerName:
-		
 		SetPlayerNameEnd();
 		break;
-
 	case ActorState::SetOliveName:
 		SetOliveNameEnd();
 		break;
-
 	case ActorState::OliveCalendar:
 		OliveCalendarEnd();
 		break;
-
+	case ActorState::SetPlayerAge:
+		SetPlayerAgeEnd();
+		break;
 	case ActorState::PlayerCalendar:
 		PlayerCalendarEnd();
 		break;
-
+	case ActorState::SetOliveBloodType:
+		SetOliveBloodTypeEnd();
+		break;
 	default:
 		break;
 	}
@@ -162,23 +171,24 @@ void FirstSetLevel::ChangeState(ActorState _State)
 	{
 	case ActorState::NULLSTATE:
 		break;
-
 	case ActorState::SetPlayerName:
 		SetPlayerNameStart();
 		break;
-
 	case ActorState::SetOliveName:
 		SetOliveNameStart();
 		break;
-
 	case ActorState::OliveCalendar:
 		OliveCalendarStart();
 		break;
-
+	case ActorState::SetPlayerAge:
+		SetPlayerAgeStart();
+		break;
 	case ActorState::PlayerCalendar:
 		PlayerCalendarStart();
 		break;
-
+	case ActorState::SetOliveBloodType:
+		SetOliveBloodTypeStart();
+		break;
 	default:
 		break;
 	}
@@ -186,24 +196,21 @@ void FirstSetLevel::ChangeState(ActorState _State)
 
 void FirstSetLevel::NULLStateStart()
 {
-	int a = 0;
 }
 
 void FirstSetLevel::NULLStateEnd()
 {
-	int a = 0;
 }
 
 void FirstSetLevel::SetPlayerNameStart()
 {
-	ChangeActor(0);
+	ChangeActor(ActorState::SetPlayerName);
 	OnUpdateActor();
 	NextStateValue = ActorState::SetOliveName;
 }
 
 void FirstSetLevel::SetPlayerNameUpdate()
 {
-	int a = 0;
 }
 
 void FirstSetLevel::SetPlayerNameEnd()
@@ -213,14 +220,13 @@ void FirstSetLevel::SetPlayerNameEnd()
 
 void FirstSetLevel::SetOliveNameStart()
 {
-	ChangeActor(1);
+	ChangeActor(ActorState::SetOliveName);
 	OnUpdateActor();
 	NextStateValue = ActorState::OliveCalendar;
 }
 
 void FirstSetLevel::SetOliveNameUpdate()
 {
-	int a = 0;
 }
 
 void FirstSetLevel::SetOliveNameEnd()
@@ -230,9 +236,9 @@ void FirstSetLevel::SetOliveNameEnd()
 
 void FirstSetLevel::OliveCalendarStart()
 {
-	ChangeActor(2);
+	ChangeActor(ActorState::OliveCalendar);
 	OnUpdateActor();
-	NextStateValue = ActorState::PlayerCalendar;
+	NextStateValue = ActorState::SetPlayerAge;
 }
 
 void FirstSetLevel::OliveCalendarUpdate()
@@ -245,18 +251,49 @@ void FirstSetLevel::OliveCalendarEnd()
 	OffUpdateActor();
 }
 
+void FirstSetLevel::SetPlayerAgeStart()
+{
+	ChangeActor(ActorState::SetPlayerAge);
+	OnUpdateActor();
+	NextStateValue = ActorState::PlayerCalendar;
+}
+
+void FirstSetLevel::SetPlayerAgeUpdate()
+{
+}
+
+void FirstSetLevel::SetPlayerAgeEnd()
+{
+	OffUpdateActor();
+}
+
 void FirstSetLevel::PlayerCalendarStart()
 {
-	ChangeActor(3);
+	ChangeActor(ActorState::PlayerCalendar);
 	OnUpdateActor();
+	NextStateValue = ActorState::SetOliveBloodType;
 }
 
 void FirstSetLevel::PlayerCalendarUpdate()
 {
-	int a = 0;
 }
 
 void FirstSetLevel::PlayerCalendarEnd()
 {
 	OffUpdateActor();
+}
+
+void FirstSetLevel::SetOliveBloodTypeStart()
+
+{
+	ChangeActor(ActorState::SetOliveBloodType);
+	OnUpdateActor();
+}
+
+void FirstSetLevel::SetOliveBloodTypeUpdate()
+{
+}
+
+void FirstSetLevel::SetOliveBloodTypeEnd()
+{
 }

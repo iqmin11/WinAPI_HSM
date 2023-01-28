@@ -8,7 +8,9 @@ enum class ActorState
 	SetPlayerName,
 	SetOliveName,
 	OliveCalendar,
-	PlayerCalendar
+	SetPlayerAge,
+	PlayerCalendar,
+	SetOliveBloodType
 };
 
 class GameEngineActor;
@@ -40,6 +42,7 @@ private:
 
 	void ChangeState(ActorState _State);
 	void ChangeActor(int _Order);
+	void ChangeActor(ActorState _State);
 
 	void OnUpdateActor();
 	void OffUpdateActor();
@@ -59,8 +62,16 @@ private:
 	void OliveCalendarUpdate();
 	void OliveCalendarEnd();
 
+	void SetPlayerAgeStart();
+	void SetPlayerAgeUpdate();
+	void SetPlayerAgeEnd();
+
 	void PlayerCalendarStart();
 	void PlayerCalendarUpdate();
 	void PlayerCalendarEnd();
+
+	void SetOliveBloodTypeStart();
+	void SetOliveBloodTypeUpdate();
+	void SetOliveBloodTypeEnd();
 };
 

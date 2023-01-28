@@ -57,6 +57,12 @@
     <ClInclude Include="Date.h">
       <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClInclude>
+    <ClInclude Include="SetPlayerAge.h">
+      <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
+    </ClInclude>
+    <ClInclude Include="SetOliveBooldType.h">
+      <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -113,6 +119,12 @@
     </ClCompile>
     <ClCompile Include="Date.cpp">
       <Filter>ContentsLevel\0. PM2Base</Filter>
+    </ClCompile>
+    <ClCompile Include="SetPlayerAge.cpp">
+      <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
+    </ClCompile>
+    <ClCompile Include="SetOliveBooldType.cpp">
+      <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

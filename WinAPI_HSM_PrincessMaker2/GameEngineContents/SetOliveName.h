@@ -14,10 +14,10 @@ public:
 	SetOliveName& operator=(const SetOliveName& _Other) = delete;
 	SetOliveName& operator=(SetOliveName&& _Other) noexcept = delete;
 
+protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
-protected:
 
 
 private:

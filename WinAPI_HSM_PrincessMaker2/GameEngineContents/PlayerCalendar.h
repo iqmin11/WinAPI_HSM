@@ -14,9 +14,6 @@ public:
 	PlayerCalendar& operator=(const PlayerCalendar& _Other) = delete;
 	PlayerCalendar& operator=(PlayerCalendar&& _Other) noexcept = delete;
 
-	void Start() override;
-	void Update(float _DeltaTime) override;
-	void Render(float _DeltaTime) override;
 
 	//void CreateCalendar(int _year);
 
@@ -33,6 +30,9 @@ public:
 	void SetCalendarYear(int _YYYY);// юс╫ц
 
 protected:
+	void Start() override;
+	void Update(float _DeltaTime) override;
+	void Render(float _DeltaTime) override;
 
 
 private:

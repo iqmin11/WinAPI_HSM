@@ -14,11 +14,11 @@ public:
 	SetPlayerName& operator=(const SetPlayerName& _Other) = delete;
 	SetPlayerName& operator=(SetPlayerName&& _Other) noexcept = delete;
 
+
+protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
-
-protected:
 
 
 private:

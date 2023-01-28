@@ -212,7 +212,15 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SetOliveBooldType.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="SetOliveName.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SetPlayerAge.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -290,7 +298,15 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SetOliveBooldType.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="SetOliveName.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SetPlayerAge.cpp">
       <SubType>
       </SubType>
     </ClCompile>
