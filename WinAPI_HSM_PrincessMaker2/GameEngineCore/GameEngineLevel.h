@@ -61,6 +61,11 @@ public:
 		return CameraPos;
 	}
 
+	std::map<int, std::list<GameEngineActor*>> GetActors() const // Ãß°¡
+	{
+		return Actors;
+	}
+
 protected:
 	virtual void Loading() = 0;
 	virtual void Update(float _DeltaTime) = 0;

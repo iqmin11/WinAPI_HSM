@@ -64,11 +64,12 @@ void FirstSetLevel::Loading()
 		GameEngineInput::CreateKey("LevelChange", 'P');
 	}*/
 
-	//CreateActor<SetOliveName>(9);
-	//CreateActor<SetPlayerName>(10);
-	//CreateActor<OliveCalendar>(11);
-	CreateActor<PlayerCalendar>(11);
+	CreateActor<SetOliveName>(0);
+	CreateActor<SetPlayerName>(1);
+	CreateActor<OliveCalendar>(2);
+	CreateActor<PlayerCalendar>(3);
 
+	ChangeState(ActorState::SetPlayerName);
 }
 
 void FirstSetLevel::Update(float _DeltaTime)
@@ -77,6 +78,89 @@ void FirstSetLevel::Update(float _DeltaTime)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
 	}
+}
+
+void FirstSetLevel::ChangeActor(int _Order)
+{
+	std::map<int, std::list<GameEngineActor*>>::iterator FindIter = GetActors().find(_Order);
+
+	if (FindIter == GetActors().end())
+	{
+		MsgAssert("존재하지 않는 액터를 실행시키려고 했습니다 Order" + _Order);
+		return;
+	}
+
+	//해당 오더안에있는 액터 리스트를 순회하면서 업데이트하는게 내 목적
+	//이전에 실행되던 액터는 끄고..
+
+	//FindIter->second.
+}
+
+void FirstSetLevel::ChangeState(ActorState _State)
+{
+	ActorState PrevState = StateValue;
+	ActorState NextState = _State;
+	StateValue = NextState;
+
+	switch (PrevState)
+	{
+	case ActorState::NULLSTATE:
+		void NULLStateEnd();
+		break;
+
+	case ActorState::SetPlayerName:
+		void SetPlayerNameEnd();
+		break;
+
+	case ActorState::SetOliveName:
+		void SetOliveNameEnd();
+		break;
+
+	case ActorState::OliveCalendar:
+		void OliveCalendarEnd();
+		break;
+
+	case ActorState::PlayerCalendar:
+		void PlayerCalendarEnd();
+		break;
+
+	default:
+		break;
+	}
+
+	switch (NextState)
+	{
+	case ActorState::NULLSTATE:
+		break;
+
+	case ActorState::SetPlayerName:
+		void SetPlayerNameStart();
+		break;
+
+	case ActorState::SetOliveName:
+		void SetOliveNameStart();
+		break;
+
+	case ActorState::OliveCalendar:
+		void OliveCalendarStart();
+		break;
+
+	case ActorState::PlayerCalendar:
+		void PlayerCalendarStart();
+		break;
+
+	default:
+		break;
+	}
+}
+
+void FirstSetLevel::NULLStateStart()
+{
+}
+
+void FirstSetLevel::NULLStateEnd()
+{
+	ChangeState(ActorState::SetPlayerName);
 }
 
 void FirstSetLevel::SetPlayerNameStart()
@@ -89,6 +173,7 @@ void FirstSetLevel::SetPlayerNameUpdate()
 
 void FirstSetLevel::SetPlayerNameEnd()
 {
+	ChangeState(ActorState::SetOliveName);
 }
 
 void FirstSetLevel::SetOliveNameStart()
@@ -101,6 +186,7 @@ void FirstSetLevel::SetOliveNameUpdate()
 
 void FirstSetLevel::SetOliveNameEnd()
 {
+	ChangeState(ActorState::OliveCalendar);
 }
 
 void FirstSetLevel::OliveCalendarStart()
@@ -113,6 +199,7 @@ void FirstSetLevel::OliveCalendarUpdate()
 
 void FirstSetLevel::OliveCalendarEnd()
 {
+	ChangeState(ActorState::PlayerCalendar);
 }
 
 void FirstSetLevel::PlayerCalendarStart()

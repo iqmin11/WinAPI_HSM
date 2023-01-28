@@ -1,6 +1,15 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
 
+enum class ActorState
+{
+	NULLSTATE,
+	SetPlayerName,
+	SetOliveName,
+	OliveCalendar,
+	PlayerCalendar
+};
+
 class FirstSetLevel : public GameEngineLevel
 {
 public:
@@ -18,10 +27,20 @@ public:
 	void Update(float _DeltaTime) override;
 	void LevelChangeEnd(GameEngineLevel* _NextLevel) override {};
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override {};
+	void ChangeActor(int _Order);
 protected:
 
 
 private:
+	
+
+	ActorState StateValue = ActorState::NULLSTATE;
+
+	void ChangeState(ActorState _State);
+
+	void NULLStateStart();
+	void NULLStateEnd();
+
 	void SetPlayerNameStart();
 	void SetPlayerNameUpdate();
 	void SetPlayerNameEnd();

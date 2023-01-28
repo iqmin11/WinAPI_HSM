@@ -14,7 +14,7 @@ public:
 
 	bool IsUpdate()
 	{
-		return nullptr != Parent ? ((ObjectUpdate && false == IsDeath()) || Parent->IsUpdate()) : (ObjectUpdate && false == IsDeath());
+		return nullptr != Parent ? ((ObjectUpdate && false == IsDeath()) && Parent->IsUpdate()) : (ObjectUpdate && false == IsDeath());
 	}
 
 	bool IsDeath()

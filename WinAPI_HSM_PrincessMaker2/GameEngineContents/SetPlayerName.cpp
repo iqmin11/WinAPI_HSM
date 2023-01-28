@@ -21,6 +21,7 @@ void SetPlayerName::Start()
 
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	BackgroundRender = CreateRender("SetPlayerBackground.BMP", 10);
+	Off();
 }
 
 void SetPlayerName::Update(float _DeltaTime)

@@ -24,6 +24,7 @@ void OliveCalendar::Start()
 	MonthNumRender();
 	YearNumRender();
 	WeekdayRender();
+	Off();
 }
 
 void OliveCalendar::Update(float _DeltaTime)

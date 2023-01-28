@@ -23,7 +23,7 @@ void SetOliveName::Start()
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	BackgroundRender = CreateRender("SetOliveBackground.BMP", 9);
 	
-	/*Off();*/
+	Off();
 }
 
 void SetOliveName::Update(float _DeltaTime)

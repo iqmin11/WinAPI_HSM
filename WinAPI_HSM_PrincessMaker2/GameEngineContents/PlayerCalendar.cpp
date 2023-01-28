@@ -27,6 +27,7 @@ void PlayerCalendar::Start()
 	MonthNumRender();
 	YearNumRender();
 	WeekdayRender();
+	Off();
 }
 
 void PlayerCalendar::Update(float _DeltaTime)
