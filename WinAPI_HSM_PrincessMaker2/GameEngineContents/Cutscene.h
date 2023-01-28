@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include <GameEngineCore/GameEngineActor.h>
 class Cutscene : public GameEngineActor
 {
@@ -16,7 +17,9 @@ public:
 protected:
 
 
+
 private:
+	std::map<int, GameEngineRender*> CutScenes = std::map<int, GameEngineRender*>();
 
 };
 

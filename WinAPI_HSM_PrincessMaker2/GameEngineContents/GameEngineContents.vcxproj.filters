@@ -63,6 +63,15 @@
     <ClInclude Include="SetOliveBooldType.h">
       <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
     </ClInclude>
+    <ClInclude Include="Cutscene.h">
+      <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
+    </ClInclude>
+    <ClInclude Include="Dialog.h">
+      <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleLogo.h">
+      <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -125,6 +134,15 @@
     </ClCompile>
     <ClCompile Include="SetOliveBooldType.cpp">
       <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
+    </ClCompile>
+    <ClCompile Include="Cutscene.cpp">
+      <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialog.cpp">
+      <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleLogo.cpp">
+      <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
