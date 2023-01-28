@@ -57,12 +57,10 @@ protected:
 
 
 private:
+	std::vector<std::vector<GameEngineRender*>> FrameRender = std::vector<std::vector<GameEngineRender*>>();
 	float4 MenuFrameSize = {}; // 타일기준 사이즈 16*16픽셀
 	float4 MenuFramePixelSize = {}; // 픽셀기준 사이즈
 	int MenuFrameStyle = -1;
 //	std::vector<MenuTile> Frame;
-	
-
-
 };
 

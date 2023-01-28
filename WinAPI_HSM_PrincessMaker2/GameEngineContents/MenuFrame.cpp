@@ -22,44 +22,43 @@ void MenuFrame::CreateMenuFrame(const float4& _centerpos, const float4& _TileBas
 
 void MenuFrame::MenuFrameRender(const int _Order)
 {
-	std::vector<std::vector<GameEngineRender*>> RenderVec = std::vector<std::vector<GameEngineRender*>>();
-	RenderVec.resize(MenuFrameSize.iy());
+	FrameRender.resize(MenuFrameSize.iy());
 	for (int y = 0; y < MenuFrameSize.iy(); y++)
 	{
-		RenderVec[y].resize(MenuFrameSize.ix());
+		FrameRender[y].resize(MenuFrameSize.ix());
 	}
 
 	switch (MenuFrameStyle)
 	{
 	case 0:
-		for (size_t y = 0; y < RenderVec.size(); ++y)
+		for (size_t y = 0; y < FrameRender.size(); ++y)
 		{
-			for (size_t x = 0; x < RenderVec[y].size(); ++x)
+			for (size_t x = 0; x < FrameRender[y].size(); ++x)
 			{
-				RenderVec[y][x] = CreateRender("FrameSample1.bmp", _Order);
-				RenderVec[y][x]->SetScale({ 16,16 });
+				FrameRender[y][x] = CreateRender("FrameSample1.bmp", _Order);
+				FrameRender[y][x]->SetScale({ 16,16 });
 			}
 		}
 		break;
 
 	case 1:
-		for (size_t y = 0; y < RenderVec.size(); ++y)
+		for (size_t y = 0; y < FrameRender.size(); ++y)
 		{
-			for (size_t x = 0; x < RenderVec[y].size(); ++x)
+			for (size_t x = 0; x < FrameRender[y].size(); ++x)
 			{
-				RenderVec[y][x] = CreateRender("FrameSample2.bmp", _Order);
-				RenderVec[y][x]->SetScale({ 16,16 });
+				FrameRender[y][x] = CreateRender("FrameSample2.bmp", _Order);
+				FrameRender[y][x]->SetScale({ 16,16 });
 			}
 		}
 		break;
 
 	case 2:
-		for (size_t y = 0; y < RenderVec.size(); ++y)
+		for (size_t y = 0; y < FrameRender.size(); ++y)
 		{
-			for (size_t x = 0; x < RenderVec[y].size(); ++x)
+			for (size_t x = 0; x < FrameRender[y].size(); ++x)
 			{
-				RenderVec[y][x] = CreateRender("FrameSample3.bmp", _Order);
-				RenderVec[y][x]->SetScale({ 16,16 });
+				FrameRender[y][x] = CreateRender("FrameSample3.bmp", _Order);
+				FrameRender[y][x]->SetScale({ 16,16 });
 			}
 		}
 		break;
@@ -73,42 +72,42 @@ void MenuFrame::MenuFrameRender(const int _Order)
 		float fy = static_cast<float>(y);
 		if (0 == y)
 		{
-			RenderVec[y][0]->SetFrame(0);
-			RenderVec[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }));
+			FrameRender[y][0]->SetFrame(0);
+			FrameRender[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }));
 			for (size_t x = 1; x < (MenuFrameSize.x - 1); x++)
 			{
 				float fx = static_cast<float>(x);
-				RenderVec[y][x]->SetFrame(1);
-				RenderVec[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy }));
+				FrameRender[y][x]->SetFrame(1);
+				FrameRender[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy }));
 			}
-			RenderVec[y][MenuFrameSize.ix() - 1]->SetFrame(2);
-			RenderVec[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }));
+			FrameRender[y][MenuFrameSize.ix() - 1]->SetFrame(2);
+			FrameRender[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }));
 		}
 		else if ((MenuFrameSize.y - 1) == y)
 		{
-			RenderVec[y][0]->SetFrame(6);
-			RenderVec[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }));
+			FrameRender[y][0]->SetFrame(6);
+			FrameRender[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }));
 			for (size_t x = 1; x < (MenuFrameSize.x - 1); x++)
 			{
 				float fx = static_cast<float>(x);
-				RenderVec[y][x]->SetFrame(7);
-				RenderVec[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy }));
+				FrameRender[y][x]->SetFrame(7);
+				FrameRender[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy }));
 			}
-			RenderVec[y][MenuFrameSize.ix() - 1]->SetFrame(8);
-			RenderVec[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }));
+			FrameRender[y][MenuFrameSize.ix() - 1]->SetFrame(8);
+			FrameRender[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }));
 		}
 		else
 		{
-			RenderVec[y][0]->SetFrame(3);
-			RenderVec[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }));
+			FrameRender[y][0]->SetFrame(3);
+			FrameRender[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }));
 			for (size_t x = 1; x < (MenuFrameSize.x - 1); x++)
 			{
 				float fx = static_cast<float>(x);
-				RenderVec[y][x]->SetFrame(4);
-				RenderVec[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy }));
+				FrameRender[y][x]->SetFrame(4);
+				FrameRender[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy }));
 			}
-			RenderVec[y][MenuFrameSize.ix() - 1]->SetFrame(5);
-			RenderVec[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }));
+			FrameRender[y][MenuFrameSize.ix() - 1]->SetFrame(5);
+			FrameRender[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }));
 		}
 	}
 }

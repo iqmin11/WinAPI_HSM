@@ -15,9 +15,6 @@ public:
 	OliveCalendar& operator=(const OliveCalendar& _Other) = delete;
 	OliveCalendar& operator=(OliveCalendar&& _Other) noexcept = delete;
 
-	void Start() override;
-	void Update(float _DeltaTime) override;
-	void Render(float _DeltaTime) override;
 
 	//void CreateCalendar(int _year);
 
@@ -30,6 +27,9 @@ public:
 	bool IsLeapYear();
 
 protected:
+	void Start() override;
+	void Update(float _DeltaTime) override;
+	void Render(float _DeltaTime) override;
 
 
 private:

@@ -164,5 +164,8 @@
     <Filter Include="ContentsLevel\0. PM2Base">
       <UniqueIdentifier>{f5b06760-be4d-4cdf-915a-36df843904c2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ContentsLevel\3. OpeningLevel\OpeningActor">
+      <UniqueIdentifier>{b4e51cc0-6218-4453-b2f6-709ec5204ca0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

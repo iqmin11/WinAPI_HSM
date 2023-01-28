@@ -80,7 +80,7 @@ void FirstSetLevel::Update(float _DeltaTime)
 {
 	if (true == GameEngineInput::IsDown("LevelChange"))
 	{
-		GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
+		GameEngineCore::GetInst()->ChangeLevel("Opening");
 	}
 
 	if (true == GameEngineInput::IsDown("ActorChange"))
