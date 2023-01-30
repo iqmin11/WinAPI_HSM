@@ -20,6 +20,7 @@ protected:
 
 
 private:
+	GameEngineRender* Render = nullptr;
 
 };
 

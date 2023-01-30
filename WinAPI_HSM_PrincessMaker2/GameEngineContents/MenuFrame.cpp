@@ -20,6 +20,11 @@ void MenuFrame::CreateMenuFrame(const float4& _centerpos, const float4& _TileBas
 	SetMenuFrameStyle(_style);
 }
 
+void MenuFrame::MenuFrameRender(PM2RenderOrder _Order)
+{
+	MenuFrame::MenuFrameRender(static_cast<int>(_Order));
+}
+
 void MenuFrame::MenuFrameRender(const int _Order)
 {
 	FrameRender.resize(MenuFrameSize.iy());

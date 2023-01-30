@@ -1,6 +1,11 @@
 #include "OpeningLevel.h"
 #include <GameEngineBase/GameEngineDirectory.h>
+#include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineResources.h>
+#include <GameEnginePlatform/GameEngineInput.h>
+
+#include "Dialog.h"
+#include "Cutscene.h"
 
 OpeningLevel::OpeningLevel()
 {
@@ -18,20 +23,7 @@ void OpeningLevel::Loading()
 
 	Dir.MoveParentToDirectory("ContentsResources");
 	Dir.Move("ContentsResources");
-	{
-		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample1.BMP"));
-		Image->Cut(3, 3);
-	}
 
-	{
-		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample2.BMP"));
-		Image->Cut(3, 3);
-	}
-
-	{
-		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample3.BMP"));
-		Image->Cut(3, 3);
-	}
 
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MugShotFrame_God.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MugShotFrame_Nomal.BMP"));
@@ -56,10 +48,15 @@ void OpeningLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Cutscene7.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OpeningDate.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TitleLogo.BMP"));
-
+	CreateActor<Dialog>();
+	CreateActor<Cutscene>();
 }
 
 void OpeningLevel::Update(float _DeltaTime)
 {
+	if (true == GameEngineInput::IsDown("LevelChange"))
+	{
+		GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
+	}
 
 }

@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <vector>
 #include <GameEngineBase/GameEngineDebug.h>
+#include "ContentsEnums.h"
 
 //class MenuTile
 //{
@@ -48,10 +49,16 @@ public:
 	}
 
 	void MenuFrameRender(const int _Order);
+	void MenuFrameRender(PM2RenderOrder _Order);
 
 	void Start();
 	void Update(float _Deltatime);
 	void Render(float _Time);
+
+	std::vector<std::vector<GameEngineRender*>>* GetFrameRender()
+	{
+		return &FrameRender;
+	}
 
 protected:
 

@@ -16,6 +16,6 @@ TitleBackground::~TitleBackground()
 void TitleBackground::Start()
 {
 	SetPos(GameEngineWindow::GetScreenSize().half());
-	GameEngineRender* Render = CreateRender("titlebackground.BMP", 0);
+	Render = CreateRender("titlebackground.BMP", 0);
 }
 
