@@ -66,12 +66,12 @@ void FirstSetLevel::Loading()
 		GameEngineInput::CreateKey("ActorChange", 'R');
 	}
 
-	CreateActor<SetPlayerName>(static_cast<int>(ActorState::SetPlayerName));
-	CreateActor<SetOliveName>(static_cast<int>(ActorState::SetOliveName));
-	CreateActor<OliveCalendar>(static_cast<int>(ActorState::OliveCalendar));
-	CreateActor<PlayerCalendar>(static_cast<int>(ActorState::PlayerCalendar));
-	CreateActor<SetOliveBooldType>(static_cast<int>(ActorState::SetOliveBloodType));
-	CreateActor<SetPlayerAge>(static_cast<int>(ActorState::SetPlayerAge));
+	AcSetPlayerName = CreateActor<SetPlayerName>(static_cast<int>(ActorState::SetPlayerName));
+	AcSetOliveName = CreateActor<SetOliveName>(static_cast<int>(ActorState::SetOliveName));
+	AcOliveCalendar = CreateActor<OliveCalendar>(static_cast<int>(ActorState::OliveCalendar));
+	AcPlayerCalendar = CreateActor<PlayerCalendar>(static_cast<int>(ActorState::PlayerCalendar));
+	AcSetOliveBloodType = CreateActor<SetOliveBooldType>(static_cast<int>(ActorState::SetOliveBloodType));
+	AcSetPlayerAge = CreateActor<SetPlayerAge>(static_cast<int>(ActorState::SetPlayerAge));
 
 	ChangeState(ActorState::SetPlayerName);
 }
@@ -89,18 +89,43 @@ void FirstSetLevel::Update(float _DeltaTime)
 	}
 }
 
-void FirstSetLevel::ChangeActor(int _Order)
+void FirstSetLevel::ChangeActor(int _State)
 {
-	if (GetActors()->find(_Order) == GetActors()->end())
+	if (_State < 0 || _State > 6)
 	{
-		MsgAssert("존재하지 않는 액터를 실행시키려고 했습니다 Order" + _Order);
+		MsgAssert("존재하지 않는 상태의 액터를 실행시키려고 했습니다" + _State);
 		return;
 	}
 
 	//해당 오더안에있는 액터 리스트를 순회하면서 업데이트하는게 내 목적
 	//이전에 실행되던 액터는 끄고..
+	switch (_State)
+	{
+	case 0:
+		UpdateActor = nullptr;
+		break;
+	case 1:
+		UpdateActor = AcSetPlayerName; 
+		break;
+	case 2:
+		UpdateActor = AcSetOliveName; 
+		break;
+	case 3:
+		UpdateActor = AcOliveCalendar; 
+		break;
+	case 4:
+		UpdateActor = AcSetPlayerAge; 
+		break;
+	case 5:
+		UpdateActor = AcPlayerCalendar; 
+		break;
+	case 6:
+		UpdateActor = AcSetOliveBloodType;
+		break;
 
-	UpdateActor = &(GetActors()->find(_Order)->second);
+	default:
+		break;
+	}
 }
 
 void FirstSetLevel::ChangeActor(ActorState _State)
@@ -115,10 +140,7 @@ void FirstSetLevel::OnUpdateActor()
 		return;
 	}
 
-	for (auto i : *UpdateActor)
-	{
-		i->On();
-	}
+	UpdateActor->On();
 }
 
 void FirstSetLevel::OffUpdateActor()
@@ -128,10 +150,7 @@ void FirstSetLevel::OffUpdateActor()
 		return;
 	}
 
-	for (auto i : *UpdateActor)
-	{
-		i->Off();
-	}
+	UpdateActor->Off();
 }
 
 void FirstSetLevel::ChangeState(ActorState _State)

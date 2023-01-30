@@ -14,6 +14,12 @@ enum class ActorState
 };
 
 class GameEngineActor;
+class SetPlayerName;
+class SetOliveName;
+class OliveCalendar;
+class SetPlayerAge;
+class PlayerCalendar;
+class SetOliveBooldType;
 class FirstSetLevel : public GameEngineLevel
 {
 public:
@@ -35,10 +41,17 @@ protected:
 
 
 private:
-	const std::list<GameEngineActor*>* UpdateActor = nullptr;
+	GameEngineActor* UpdateActor = nullptr;
 
 	ActorState StateValue = ActorState::NULLSTATE;
 	ActorState NextStateValue = ActorState::NULLSTATE;
+
+	SetPlayerName* AcSetPlayerName = nullptr;
+	SetOliveName* AcSetOliveName = nullptr; 
+	OliveCalendar* AcOliveCalendar = nullptr; 
+	SetPlayerAge* AcSetPlayerAge = nullptr;
+	PlayerCalendar* AcPlayerCalendar = nullptr;
+	SetOliveBooldType* AcSetOliveBloodType = nullptr;
 
 	void ChangeState(ActorState _State);
 	void ChangeActor(int _Order);

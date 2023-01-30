@@ -61,10 +61,10 @@ public:
 		return CameraPos;
 	}
 
-	const std::map<int, std::list<GameEngineActor*>>* GetActors() const // 추가
-	{
-		return &Actors;
-	}
+	//const std::map<int, std::list<GameEngineActor*>>* GetActors() const // 추가
+	//{
+	//	return &Actors;
+	//}
 
 protected:
 	virtual void Loading() = 0;
