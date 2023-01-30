@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
 
+class Cutscene;
 class OpeningLevel : public GameEngineLevel
 {
 public:
@@ -22,6 +23,6 @@ protected:
 
 
 private:
-
+	Cutscene* AcCutScene = nullptr;
 };
 

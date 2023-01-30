@@ -25,6 +25,17 @@ void MenuFrame::MenuFrameRender(PM2RenderOrder _Order)
 	MenuFrame::MenuFrameRender(static_cast<int>(_Order));
 }
 
+void MenuFrame::SetMoveFrameRenderPos(const float4& _Pos)
+{
+	for (auto y : FrameRender)
+	{
+		for (auto x : y)
+		{
+			x->SetMove(_Pos);
+		}
+	}
+}
+
 void MenuFrame::MenuFrameRender(const int _Order)
 {
 	FrameRender.resize(MenuFrameSize.iy());
@@ -115,12 +126,13 @@ void MenuFrame::MenuFrameRender(const int _Order)
 			FrameRender[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }));
 		}
 	}
+
+	SetMoveFrameRenderPos({ 8,8 });
 }
 
 void MenuFrame::Start()
 {
-	CreateMenuFrame(GameEngineWindow::GetScreenSize().half(), {13,8}, 0);
-	MenuFrameRender(1);
+
 }
 
 void MenuFrame::Update(float _Deltatime)
@@ -129,7 +141,7 @@ void MenuFrame::Update(float _Deltatime)
 
 void MenuFrame::Render(float _Time)
 {
-	//MenuFrameRender();
+
 }
 
 //이상적 5*4 메뉴

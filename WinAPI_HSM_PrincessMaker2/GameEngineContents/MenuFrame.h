@@ -14,7 +14,6 @@
 //
 //};
 
-
 class MenuFrame : public GameEngineActor
 {
 public:
@@ -48,8 +47,12 @@ public:
 		MenuFrameStyle = _style;
 	}
 
+	void SetMoveFrameRenderPos(const float4& _Pos);
+	
+
 	void MenuFrameRender(const int _Order);
 	void MenuFrameRender(PM2RenderOrder _Order);
+	
 
 	void Start();
 	void Update(float _Deltatime);
@@ -58,6 +61,11 @@ public:
 	std::vector<std::vector<GameEngineRender*>>* GetFrameRender()
 	{
 		return &FrameRender;
+	}
+
+	float4 GetMenuFramePixelSize()
+	{
+		return MenuFramePixelSize;
 	}
 
 protected:

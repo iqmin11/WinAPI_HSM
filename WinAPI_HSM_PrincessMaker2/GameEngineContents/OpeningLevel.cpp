@@ -48,8 +48,9 @@ void OpeningLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Cutscene7.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OpeningDate.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TitleLogo.BMP"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Mug_Devil.BMP"));
 	CreateActor<Dialog>();
-	CreateActor<Cutscene>();
+	AcCutScene = CreateActor<Cutscene>();
 }
 
 void OpeningLevel::Update(float _DeltaTime)
@@ -59,4 +60,5 @@ void OpeningLevel::Update(float _DeltaTime)
 		GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
 	}
 
+	AcCutScene->OnRenderScene();
 }

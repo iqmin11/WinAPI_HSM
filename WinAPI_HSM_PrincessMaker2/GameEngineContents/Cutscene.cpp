@@ -51,6 +51,8 @@ void Cutscene::Start()
 	{
 		i->Off();
 	}
+	
+	RenderScene = CutScenes[0];
 }
 
 void Cutscene::Update(float _DeltaTime)
