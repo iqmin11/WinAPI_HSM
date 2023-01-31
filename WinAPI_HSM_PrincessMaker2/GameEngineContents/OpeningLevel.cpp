@@ -1,4 +1,5 @@
 #include "OpeningLevel.h"
+#include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineBase/GameEngineDirectory.h>
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineResources.h>
@@ -49,7 +50,11 @@ void OpeningLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OpeningDate.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TitleLogo.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Mug_Devil.BMP"));
-	CreateActor<Dialog>();
+	UpperDialog = CreateActor<Dialog>();
+	UpperDialog->SetDialog(MugShotStyle::Nomal, MugShotLR::Left, GameEngineWindow::GetScreenSize().half());
+	BottomDialog = CreateActor<Dialog>();
+	UpperDialog->SetDialog(MugShotStyle::Nomal, MugShotLR::Right, GameEngineWindow::GetScreenSize().half());
+	BottomDialog->SetMove({ 0, 176 });
 	AcCutScene = CreateActor<Cutscene>();
 }
 

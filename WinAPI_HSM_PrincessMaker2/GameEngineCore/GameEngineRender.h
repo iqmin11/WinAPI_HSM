@@ -42,7 +42,7 @@ public:
 		Position = _Position;
 	}
 
-	inline void SetMove(const float4& _Position)
+	inline void SetMove(float4 _Position)
 	{
 		Position += _Position;
 	}
@@ -51,7 +51,9 @@ public:
 	{
 		Scale = _Scale;
 	}
-	
+
+	void SetScaleToImage();
+
 	void SetFrame(int _Frame);
 
 	inline int GetOrder() const
@@ -91,9 +93,9 @@ public:
 		IsEffectCamera = false;
 	}
 
+	bool IsAnimationEnd();
 	void CreateAnimation(const FrameAnimationParameter& _Paramter);
-	void ChangeAnimation(const std::string_view& _AnimationName);
-
+	void ChangeAnimation(const std::string_view& _AnimationName, bool _ForceChange = false);
 
 private:
 
@@ -120,6 +122,9 @@ private:
 		int CurrentIndex = 0;
 		float CurrentTime = 0.0f;
 		bool Loop = true;
+
+
+		bool IsEnd();
 
 		void Render(float _DeltaTime);
 

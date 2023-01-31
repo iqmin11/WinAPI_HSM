@@ -1,6 +1,19 @@
 #pragma once
 #include "MenuFrame.h"
 
+enum class MugShotStyle
+{
+	Non,
+	Nomal,
+	God,
+};
+
+enum class MugShotLR
+{
+	Left,
+	Right,
+};
+
 class Dialog : public MenuFrame
 {
 public:
@@ -14,12 +27,10 @@ public:
 	Dialog& operator=(const Dialog& _Other) = delete;
 	Dialog& operator=(Dialog&& _Other) noexcept = delete;
 
-	void MugShotRender();
-	void LeftMugDialogRender();
-	void RightMugDialogRender();
 	void SetMoveMugShotRender(const float4& _Move);
 	void SetMoveDialogRender(const float4& _Move);
-
+	void SetDialog(int _MugShotFrameStyle, int _MugShotLoc, const float4& _Pos);
+	void SetDialog(MugShotStyle _MugShotFrameStyle, MugShotLR _MugShotLoc, const float4& _Pos);
 
 protected:
 	void Start() override;
@@ -33,6 +44,9 @@ private:
 	GameEngineRender* MugShotFrame = nullptr;
 	GameEngineRender* MugShot = nullptr;
 
+	void SetRightMugDialog();
+	void SetLeftMugDialog();
+	void MugShotRender();
 };
 
 // 대화창에게 필요한거

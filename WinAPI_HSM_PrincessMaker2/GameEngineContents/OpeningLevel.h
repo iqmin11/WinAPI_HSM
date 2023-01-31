@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 
 class Cutscene;
+class Dialog;
 class OpeningLevel : public GameEngineLevel
 {
 public:
@@ -24,5 +25,7 @@ protected:
 
 private:
 	Cutscene* AcCutScene = nullptr;
+	Dialog* UpperDialog = nullptr;
+	Dialog* BottomDialog = nullptr;
 };
 
