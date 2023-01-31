@@ -25,7 +25,7 @@ void MenuFrame::MenuFrameRender(PM2RenderOrder _Order)
 	MenuFrame::MenuFrameRender(static_cast<int>(_Order));
 }
 
-void MenuFrame::SetMoveFrameRenderPos(const float4& _Pos)
+void MenuFrame::SetMoveFrameRender(const float4& _Pos)
 {
 	for (auto y : FrameRender)
 	{
@@ -34,6 +34,55 @@ void MenuFrame::SetMoveFrameRenderPos(const float4& _Pos)
 			x->SetMove(_Pos);
 		}
 	}
+}
+
+void MenuFrame::SetPosFrameRender(const float4& _Pos)
+{
+	for (size_t y = 0; y < MenuFrameSize.y; y++)
+	{
+		float fy = static_cast<float>(y);
+		if (0 == y)
+		{
+			FrameRender[y][0]->SetFrame(0);
+			FrameRender[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }) + _Pos);
+			for (size_t x = 1; x < (MenuFrameSize.x - 1); x++)
+			{
+				float fx = static_cast<float>(x);
+				FrameRender[y][x]->SetFrame(1);
+				FrameRender[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy } + _Pos));
+			}
+			FrameRender[y][MenuFrameSize.ix() - 1]->SetFrame(2);
+			FrameRender[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }) + _Pos);
+		}
+		else if ((MenuFrameSize.y - 1) == y)
+		{
+			FrameRender[y][0]->SetFrame(6);
+			FrameRender[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }) + _Pos);
+			for (size_t x = 1; x < (MenuFrameSize.x - 1); x++)
+			{
+				float fx = static_cast<float>(x);
+				FrameRender[y][x]->SetFrame(7);
+				FrameRender[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy }) + _Pos);
+			}
+			FrameRender[y][MenuFrameSize.ix() - 1]->SetFrame(8);
+			FrameRender[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }) + _Pos);
+		}
+		else
+		{
+			FrameRender[y][0]->SetFrame(3);
+			FrameRender[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }) + _Pos);
+			for (size_t x = 1; x < (MenuFrameSize.x - 1); x++)
+			{
+				float fx = static_cast<float>(x);
+				FrameRender[y][x]->SetFrame(4);
+				FrameRender[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy }) + _Pos);
+			}
+			FrameRender[y][MenuFrameSize.ix() - 1]->SetFrame(5);
+			FrameRender[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }) + _Pos);
+		}
+	}
+
+	SetMoveFrameRender({ 8,8 }); // 미세조정(중심맞추기)
 }
 
 void MenuFrame::MenuFrameRender(const int _Order)
@@ -83,51 +132,7 @@ void MenuFrame::MenuFrameRender(const int _Order)
 		break;
 	}
 
-	for (size_t y = 0; y < MenuFrameSize.y; y++)
-	{
-		float fy = static_cast<float>(y);
-		if (0 == y)
-		{
-			FrameRender[y][0]->SetFrame(0);
-			FrameRender[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }));
-			for (size_t x = 1; x < (MenuFrameSize.x - 1); x++)
-			{
-				float fx = static_cast<float>(x);
-				FrameRender[y][x]->SetFrame(1);
-				FrameRender[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy }));
-			}
-			FrameRender[y][MenuFrameSize.ix() - 1]->SetFrame(2);
-			FrameRender[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }));
-		}
-		else if ((MenuFrameSize.y - 1) == y)
-		{
-			FrameRender[y][0]->SetFrame(6);
-			FrameRender[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }));
-			for (size_t x = 1; x < (MenuFrameSize.x - 1); x++)
-			{
-				float fx = static_cast<float>(x);
-				FrameRender[y][x]->SetFrame(7);
-				FrameRender[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy }));
-			}
-			FrameRender[y][MenuFrameSize.ix() - 1]->SetFrame(8);
-			FrameRender[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }));
-		}
-		else
-		{
-			FrameRender[y][0]->SetFrame(3);
-			FrameRender[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }));
-			for (size_t x = 1; x < (MenuFrameSize.x - 1); x++)
-			{
-				float fx = static_cast<float>(x);
-				FrameRender[y][x]->SetFrame(4);
-				FrameRender[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy }));
-			}
-			FrameRender[y][MenuFrameSize.ix() - 1]->SetFrame(5);
-			FrameRender[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }));
-		}
-	}
-
-	SetMoveFrameRenderPos({ 8,8 });
+	SetPosFrameRender({ 0,0 });
 }
 
 void MenuFrame::Start()

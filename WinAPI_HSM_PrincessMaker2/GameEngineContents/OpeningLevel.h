@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
 
+class OpeningCredit;
 class Cutscene;
 class Dialog;
 class OpeningLevel : public GameEngineLevel
@@ -27,5 +28,6 @@ private:
 	Cutscene* AcCutScene = nullptr;
 	Dialog* UpperDialog = nullptr;
 	Dialog* BottomDialog = nullptr;
+	OpeningCredit* AcOpeningCredit = nullptr;
 };
 

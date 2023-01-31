@@ -66,10 +66,13 @@
     <ClInclude Include="Cutscene.h">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClInclude>
-    <ClInclude Include="Dialog.h">
+    <ClInclude Include="TitleLogo.h">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClInclude>
-    <ClInclude Include="TitleLogo.h">
+    <ClInclude Include="Dialog.h">
+      <Filter>ContentsLevel\0. PM2Base</Filter>
+    </ClInclude>
+    <ClInclude Include="OpeningCredit.h">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClInclude>
   </ItemGroup>
@@ -138,10 +141,13 @@
     <ClCompile Include="Cutscene.cpp">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClCompile>
-    <ClCompile Include="Dialog.cpp">
+    <ClCompile Include="TitleLogo.cpp">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClCompile>
-    <ClCompile Include="TitleLogo.cpp">
+    <ClCompile Include="Dialog.cpp">
+      <Filter>ContentsLevel\0. PM2Base</Filter>
+    </ClCompile>
+    <ClCompile Include="OpeningCredit.cpp">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClCompile>
   </ItemGroup>

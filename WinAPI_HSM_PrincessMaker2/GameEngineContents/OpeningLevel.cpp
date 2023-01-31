@@ -7,6 +7,7 @@
 
 #include "Dialog.h"
 #include "Cutscene.h"
+#include "OpeningCredit.h"
 
 OpeningLevel::OpeningLevel()
 {
@@ -52,10 +53,14 @@ void OpeningLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Mug_Devil.BMP"));
 	UpperDialog = CreateActor<Dialog>();
 	UpperDialog->SetDialog(MugShotStyle::Nomal, MugShotLR::Left, GameEngineWindow::GetScreenSize().half());
+	UpperDialog->Off();
 	BottomDialog = CreateActor<Dialog>();
-	UpperDialog->SetDialog(MugShotStyle::Nomal, MugShotLR::Right, GameEngineWindow::GetScreenSize().half());
+	BottomDialog->SetDialog(MugShotStyle::Nomal, MugShotLR::Right, GameEngineWindow::GetScreenSize().half());
 	BottomDialog->SetMove({ 0, 176 });
+	BottomDialog->Off();
 	AcCutScene = CreateActor<Cutscene>();
+	AcOpeningCredit = CreateActor<OpeningCredit>();
+	
 }
 
 void OpeningLevel::Update(float _DeltaTime)
@@ -64,6 +69,11 @@ void OpeningLevel::Update(float _DeltaTime)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
 	}
-
-	AcCutScene->OnRenderScene();
+	
+	if (AcOpeningCredit->IsUpdate() == false)
+	{
+		AcCutScene->OnRenderScene();
+		UpperDialog->On();
+		BottomDialog->On();
+	}
 }

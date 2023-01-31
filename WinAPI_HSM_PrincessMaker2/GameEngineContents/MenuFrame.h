@@ -47,8 +47,6 @@ public:
 		MenuFrameStyle = _style;
 	}
 
-	void SetMoveFrameRenderPos(const float4& _Pos);
-	
 
 	void MenuFrameRender(const int _Order);
 	void MenuFrameRender(PM2RenderOrder _Order);
@@ -69,6 +67,8 @@ public:
 	}
 
 protected:
+	void SetMoveFrameRender(const float4& _Pos);
+	void SetPosFrameRender(const float4& _Pos);
 
 
 private:

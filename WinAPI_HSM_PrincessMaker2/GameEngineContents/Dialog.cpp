@@ -19,16 +19,24 @@ void Dialog::MugShotRender()
 	MugShot = CreateRender("Mug_Devil.bmp", 10);
 }
 
+void Dialog::InitRenderPos()
+{
+	SetPosFrameRender({ 0,0 });
+	SetPosMugShotRender({ 0,0 });
+}
+
 void Dialog::SetLeftMugDialog()
 {
+	InitRenderPos();
 	SetMoveMugShotRender({ -170, 0 });
-	SetMoveFrameRenderPos(float4{ 80,0 });
+	SetMoveFrameRender(float4{ 80,0 });
 }
 
 void Dialog::SetRightMugDialog()
 {
+	InitRenderPos();
 	SetMoveMugShotRender({ 170,0 });
-	SetMoveFrameRenderPos(float4{ -80,0 });
+	SetMoveFrameRender(float4{ -80,0 });
 }
 
 void Dialog::SetMoveMugShotRender(const float4& _Move)
@@ -37,10 +45,16 @@ void Dialog::SetMoveMugShotRender(const float4& _Move)
 	MugShot->SetMove(_Move);
 }
 
+void Dialog::SetPosMugShotRender(const float4& _Pos)
+{
+	MugShotFrame->SetPosition(_Pos);
+	MugShot->SetPosition(_Pos);
+}
+
 void Dialog::SetMoveDialogRender(const float4& _Move)
 {
 	SetMoveMugShotRender(_Move);
-	SetMoveFrameRenderPos(_Move);
+	SetMoveFrameRender(_Move);
 }
 
 void Dialog::SetDialog(int _MugShotFrameStyle, int _MugShotLoc, const float4& _Pos)
@@ -58,20 +72,7 @@ void Dialog::SetDialog(MugShotStyle _MugShotFrameStyle, MugShotLR _MugShotLoc, c
 void Dialog::Start()
 {
 	CreateMenuFrame(GameEngineWindow::GetScreenSize().half(), { 20,10 }); // 이건 디폴트값
-	MenuFrameRender(PM2RenderOrder::Menu); // 고정
 	
-	if (static_cast<int>(MugShotStyle::Non) != MugShotFrameStyle)
-	{
-		MugShotRender();
-		if (static_cast<int>(MugShotLR::Left) == MugShotLoc)
-		{
-			SetLeftMugDialog();
-		}
-		else
-		{
-			SetRightMugDialog();
-		}
-	}
 	//LeftMugDialogRender();
 	// 머그샷 가로 140 세로 150 / 대화창 가로 320 세로 160 /사이간격 가로 20 총 가로 480 세로 160
 	// 대화창 가로로 120만큼 오른쪽으로
@@ -81,7 +82,19 @@ void Dialog::Start()
 
 void Dialog::Update(float _DeltaTime)
 {
-
+	MenuFrameRender(PM2RenderOrder::Menu); // 고정
+	if (static_cast<int>(MugShotStyle::Non) != MugShotFrameStyle)
+	{
+		MugShotRender();
+		if (static_cast<int>(MugShotLR::Left) == MugShotLoc)
+		{
+			SetLeftMugDialog();
+		}
+		else if (static_cast<int>(MugShotLR::Right) == MugShotLoc)
+		{
+			SetRightMugDialog();
+		}
+	}
 }
 
 void Dialog::Render(float _Time)

@@ -1,11 +1,12 @@
 #include "RaisingSimLevel.h"
-#include "Olive.h"
-#include "Background.h"
-#include "Animation.h"
 #include <GameEngineBase/GameEngineDirectory.h>
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+
+#include "Olive.h"
+#include "Background.h"
+#include "Animation.h"
 
 RaisingSimLevel::RaisingSimLevel()
 {

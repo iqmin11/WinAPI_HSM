@@ -27,10 +27,16 @@ public:
 	Dialog& operator=(const Dialog& _Other) = delete;
 	Dialog& operator=(Dialog&& _Other) noexcept = delete;
 
-	void SetMoveMugShotRender(const float4& _Move);
-	void SetMoveDialogRender(const float4& _Move);
-	void SetDialog(int _MugShotFrameStyle, int _MugShotLoc, const float4& _Pos);
+	void SetDialog(int _MugShotFrameStyle, int _MugShotLoc, const float4& _Pos); // 수정할게 많음 일단 임시 생성....
+	//레벨 단계에서 어떻게 작동할 지 생각.
+	// 1. 머그 스타일, 머그 사진, 머그 위치, 대화창 위치 넣고
+	// 2. 안에 출력 대사를 배열로 입력
+	// 3. 출력 시작 차례로 대화를 출력하고.
+	// 3. 끝나면 랜더 끄기, 안에있는 설정들 (대화내용 메모리, 기타 등등...) 초기화
+
+	// 다음 대화창 사용시 같은 대화창을 쓰지만, 다시 입력해야되는식으로....
 	void SetDialog(MugShotStyle _MugShotFrameStyle, MugShotLR _MugShotLoc, const float4& _Pos);
+	void SetMoveDialogRender(const float4& _Move);
 
 protected:
 	void Start() override;
@@ -44,9 +50,12 @@ private:
 	GameEngineRender* MugShotFrame = nullptr;
 	GameEngineRender* MugShot = nullptr;
 
-	void SetRightMugDialog();
-	void SetLeftMugDialog();
+	void SetRightMugDialog(); // 머그샷이 오른쪽에 있는 대화창
+	void SetLeftMugDialog(); // 머그샷이 왼쪽에 있는 대화창
+	void SetMoveMugShotRender(const float4& _Move);
+	void SetPosMugShotRender(const float4& _Pos);
 	void MugShotRender();
+	void InitRenderPos();
 };
 
 // 대화창에게 필요한거
