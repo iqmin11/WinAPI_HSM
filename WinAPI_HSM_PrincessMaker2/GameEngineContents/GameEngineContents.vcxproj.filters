@@ -75,6 +75,12 @@
     <ClInclude Include="OpeningCredit.h">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClInclude>
+    <ClInclude Include="Flower.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
+    </ClInclude>
+    <ClInclude Include="Paint.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -149,6 +155,12 @@
     </ClCompile>
     <ClCompile Include="OpeningCredit.cpp">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
+    </ClCompile>
+    <ClCompile Include="Flower.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
+    </ClCompile>
+    <ClCompile Include="Paint.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

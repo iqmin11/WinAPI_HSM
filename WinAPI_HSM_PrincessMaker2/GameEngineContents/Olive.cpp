@@ -5,6 +5,8 @@
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineRender.h>
 
+#include "ContentsEnums.h"
+
 Olive* Olive::OlivePlayer;
 
 Olive::Olive()
@@ -30,9 +32,9 @@ void Olive::Start()
 	}*/
 
 	SetPos(GameEngineWindow::GetScreenSize().half());
-	GameEngineRender* BodyRender = CreateRender("body_10_nomal.BMP", 1); 
+	GameEngineRender* BodyRender = CreateRender("body_10_nomal.BMP", PM2RenderOrder::Player); 
 	SetMove(float4::Down * ((GameEngineWindow::GetScreenSize().half()) - (BodyRender->GetImage()->GetImageScale().half())));
-	GameEngineRender* HeadRender = CreateRender("head_10_nomal.BMP", 1);
+	GameEngineRender* HeadRender = CreateRender("head_10_nomal.BMP", PM2RenderOrder::Player);
 	HeadRender->SetPosition(float4::Up * ((BodyRender->GetImage()->GetImageScale().half()) + (HeadRender->GetImage()->GetImageScale().half())));
 	
 }

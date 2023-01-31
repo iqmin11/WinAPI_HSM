@@ -1,6 +1,9 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
 
+class Background;
+class Flower;
+class Paint;
 class RaisingSimLevel : public GameEngineLevel
 {
 public:
@@ -22,6 +25,8 @@ protected:
 
 
 private:
-
+	Background* AcBackground = nullptr;
+	Flower* AcFlower = nullptr;
+	Paint* AcPaint= nullptr;
 };
 

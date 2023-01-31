@@ -3,6 +3,7 @@
 enum class PM2RenderOrder
 {
 	BackGround,
+	BackGroundObj,
 	Map,
 	Contents,
 	Player,

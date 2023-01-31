@@ -21,6 +21,6 @@ protected:
 	void Render(float _Time) override;
 
 private:
-	float MoveSpeed = 100.0f;
+
 };
 

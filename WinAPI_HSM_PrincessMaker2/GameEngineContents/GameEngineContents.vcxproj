@@ -171,6 +171,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Flower.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="OliveCalendar.h">
       <SubType>
       </SubType>
@@ -197,6 +201,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="OpeningLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Paint.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -274,6 +282,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Flower.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="OliveCalendar.cpp">
       <SubType>
       </SubType>
@@ -299,6 +311,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="OpeningLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Paint.cpp">
       <SubType>
       </SubType>
     </ClCompile>
