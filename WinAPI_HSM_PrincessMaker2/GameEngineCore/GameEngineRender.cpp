@@ -142,7 +142,7 @@ void GameEngineRender::ChangeAnimation(const std::string_view& _AnimationName, b
 
 void GameEngineRender::SetOrder(int _Order)
 {
-	Order = _Order;
+	GameEngineObject::SetOrder(_Order);
 	GetActor()->GetLevel()->PushRender(this);
 }
 

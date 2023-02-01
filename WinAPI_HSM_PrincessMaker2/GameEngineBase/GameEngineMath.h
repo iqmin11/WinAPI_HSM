@@ -1,5 +1,6 @@
 #pragma once
-
+#include <math.h>
+#include <cmath>
 
 // final 더이상 상속내릴지 못한다.
 // 상속도 못하고 만들지도 못하게 만든 상태로
@@ -73,6 +74,19 @@ public:
 		return static_cast<int>(w * 0.5f);
 	}
 
+	float Size() const
+	{
+		return sqrtf(x * x + y * y);
+	}
+
+	void Nomalize()
+	{
+		float SizeValue = Size();
+		x /= SizeValue;
+		y /= SizeValue;
+		z /= SizeValue;
+	}
+
 	float4 half() const
 	{
 		return { x * 0.5f,y * 0.5f,z * 0.5f,w };
@@ -131,6 +145,15 @@ public:
 		return Return;
 	}
 
+	float4 operator /(const float4 _Value) const
+	{
+		float4 Return;
+		Return.x = x / _Value.x;
+		Return.y = y / _Value.y;
+		Return.z = z / _Value.z;
+		return Return;
+	}
+
 	float4 operator +(const float4 _Value) const
 	{
 		float4 Return;
@@ -176,6 +199,14 @@ public:
 		x -= _Other.x;
 		y -= _Other.y;
 		z -= _Other.z;
+		return *this;
+	}
+
+	float4& operator /=(const float4& _Other)
+	{
+		x /= _Other.x;
+		y /= _Other.y;
+		z /= _Other.z;
 		return *this;
 	}
 };

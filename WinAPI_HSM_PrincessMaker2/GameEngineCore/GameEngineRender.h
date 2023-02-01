@@ -56,11 +56,7 @@ public:
 
 	void SetFrame(int _Frame);
 
-	inline int GetOrder() const
-	{
-		return Order;
-	}
-
+	
 	inline GameEngineImage* GetImage() const
 	{
 		return Image;
@@ -97,9 +93,10 @@ public:
 	void CreateAnimation(const FrameAnimationParameter& _Paramter);
 	void ChangeAnimation(const std::string_view& _AnimationName, bool _ForceChange = false);
 
+	void SetOrder(int _Order) override;
+
 private:
 
-	int Order = 0; // 이미지 랜더 순서를 정해주는 요소
 	float4 Position = float4::Zero; // 이미지의 상대적 위치 -> 액터의 위치를 기준으로 정해짐
 	float4 Scale= float4::Zero; // 이미지 크기
 	GameEngineImage* Image = nullptr; // 랜더 이미지
@@ -107,7 +104,6 @@ private:
 
 	int Frame = 0; // 아마 애니메이션 관련 요소
 
-	void SetOrder(int _Order); // 
 	void Render(float _DeltaTime);
 
 	int TransColor = RGB(255, 0, 255);
