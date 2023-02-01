@@ -29,5 +29,7 @@ private:
 	Dialog* UpperDialog = nullptr;
 	Dialog* BottomDialog = nullptr;
 	OpeningCredit* AcOpeningCredit = nullptr;
+
+	float Time = 0.0f;
 };
 

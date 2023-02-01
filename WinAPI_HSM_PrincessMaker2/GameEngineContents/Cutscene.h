@@ -23,6 +23,11 @@ public:
 	
 	void OffRenderScene();
 
+	void OnBlackBackground();
+	
+	void OffBlackBackground();
+	
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -30,7 +35,9 @@ protected:
 
 private:
 	std::vector<GameEngineRender*> CutScenes = std::vector<GameEngineRender*>();
+	GameEngineRender* BlackBackground = nullptr;
 	GameEngineRender* RenderScene = nullptr;
+	int PrevRenderIndex = -1;
 };
 
 // 컷신들은 렌더, 위치와 움직임이 있도록 만들기

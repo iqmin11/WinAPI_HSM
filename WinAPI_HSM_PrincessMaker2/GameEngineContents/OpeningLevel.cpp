@@ -65,15 +65,76 @@ void OpeningLevel::Loading()
 
 void OpeningLevel::Update(float _DeltaTime)
 {
+	Time += _DeltaTime;
+
 	if (true == GameEngineInput::IsDown("LevelChange"))
 	{
 		GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
 	}
 	
-	if (AcOpeningCredit->IsUpdate() == false)
+	//if (AcOpeningCredit->IsUpdate() == false)
+	//{
+	//	AcCutScene->OnRenderScene();
+	//	//UpperDialog->On();
+	//	//BottomDialog->On();
+	//}
+	
+	// ¿ÀÇÁ´× Å¸ÀÓ¶óÀÎ
+	// 0~20 ¿ÀÇÁ´× Å©·¹µ÷, ~35 ÄÆ½Å1,  ~75 ÄÆ½Å2, ~115 ÄÆ½Å3, ~119 °ËÀºÈ­¸é, ~122 ¿Õ±¹·Â ³¯Â¥,
+	// ~143 ÄÆ½Å4, ~148 °ËÀºÈ­¸é, ~ 172 ÄÆ½Å5, ~200 ÄÆ½Å6, ~205 °ËÀºÈ­¸é, ~215 ÄÆ½Å7
+	if (0 <= Time && 5 > Time)//(0 <= Time && 20 > Time)
 	{
-		AcCutScene->OnRenderScene();
-		UpperDialog->On();
-		BottomDialog->On();
+		AcCutScene->OnBlackBackground();
+		AcCutScene->ChangeRenderScene(0);
+	}
+	else if (5 <= Time && 10 > Time)//(20 <= Time && 35 > Time)
+	{
+		AcCutScene->OffBlackBackground();
+		AcCutScene->ChangeRenderScene(1);
+	}
+	else if (10 <= Time && 15 > Time)//(35 <= Time && 75 > Time)
+	{
+		AcCutScene->ChangeRenderScene(2);
+	}
+	else if (15 <= Time && 20 > Time)//(75 <= Time && 115 > Time)
+	{
+		AcCutScene->ChangeRenderScene(3);
+	}
+	else if (20 <= Time && 25> Time)//(115 <= Time && 119> Time)
+	{
+		AcCutScene->OnBlackBackground();
+		AcCutScene->ChangeRenderScene(0);
+	}
+	else if (25 <= Time && 30> Time)//(119 <= Time && 122 > Time)
+	{
+		AcCutScene->ChangeRenderScene(0);
+	}
+	else if (30 <= Time && 35> Time)//(122 <= Time && 143 > Time)
+	{
+		AcCutScene->ChangeRenderScene(4);
+	}
+	else if (35 <= Time && 40> Time)//(143 <= Time && 148 > Time)
+	{
+		AcCutScene->ChangeRenderScene(0);
+	}
+	else if (40 <= Time && 45> Time)//(148 <= Time && 172 > Time)
+	{
+		AcCutScene->ChangeRenderScene(5);
+	}
+	else if (45 <= Time && 50> Time)//(172 <= Time && 200 > Time)
+	{
+		AcCutScene->ChangeRenderScene(6);
+	}
+	else if (50 <= Time && 55> Time)//(200 <= Time && 205 > Time)
+	{
+		AcCutScene->ChangeRenderScene(0);
+	}
+	else if (55 <= Time && 60> Time)//(205 <= Time && 215> Time)
+	{
+		AcCutScene->ChangeRenderScene(7);
+	}
+	else
+	{
+		GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
 	}
 }

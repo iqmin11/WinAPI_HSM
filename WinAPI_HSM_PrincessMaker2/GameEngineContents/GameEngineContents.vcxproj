@@ -256,10 +256,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="TitleLogo.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp">
@@ -363,10 +359,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="TitleLevel.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="TitleLogo.cpp">
       <SubType>
       </SubType>
     </ClCompile>
