@@ -51,13 +51,14 @@ void OpeningLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OpeningDate.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TitleLogo.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Mug_Devil.BMP"));
-	UpperDialog = CreateActor<Dialog>();
-	UpperDialog->SetDialog(MugShotStyle::Nomal, MugShotLR::Left, GameEngineWindow::GetScreenSize().half());
-	UpperDialog->Off();
-	BottomDialog = CreateActor<Dialog>();
-	BottomDialog->SetDialog(MugShotStyle::Nomal, MugShotLR::Right, GameEngineWindow::GetScreenSize().half());
-	BottomDialog->SetMove({ 0, 176 });
-	BottomDialog->Off();
+	
+	//UpperDialog = CreateActor<Dialog>();
+	//UpperDialog->SetDialog(MugShotLR::Left, GameEngineWindow::GetScreenSize().half(), "Mug_Devil.BMP");
+	//UpperDialog->Off();
+	
+	//BottomDialog = CreateActor<Dialog>();
+	//BottomDialog->SetDialog(MugShotLR::Right, GameEngineWindow::GetScreenSize().half() + float4{0, 176}, "Mug_Devil.BMP");
+	//BottomDialog->Off();
 	AcCutScene = CreateActor<Cutscene>();
 	AcOpeningCredit = CreateActor<OpeningCredit>();
 	
@@ -75,22 +76,27 @@ void OpeningLevel::Update(float _DeltaTime)
 	//if (AcOpeningCredit->IsUpdate() == false)
 	//{
 	//	AcCutScene->OnRenderScene();
-	//	//UpperDialog->On();
-	//	//BottomDialog->On();
 	//}
 	
 	// 오프닝 타임라인
 	// 0~20 오프닝 크레딧, ~35 컷신1,  ~75 컷신2, ~115 컷신3, ~119 검은화면, ~122 왕국력 날짜,
-	// ~143 컷신4, ~148 검은화면, ~ 172 컷신5, ~200 컷신6, ~205 검은화면, ~215 컷신7
+	// ~143 컷신4, ~148 검은화면, ~ 172 컷신5, ~200 컷신6, ~205 검은화면, ~215 컷신7 
 	if (0 <= Time && 5 > Time)//(0 <= Time && 20 > Time)
 	{
+		//어떤 머그샷과 스크립트가 있는 대화창을 출력
+		//InputMug, InputScript 만들기
 		AcCutScene->OnBlackBackground();
 		AcCutScene->ChangeRenderScene(0);
+		//UpperDialog->On();
+
 	}
 	else if (5 <= Time && 10 > Time)//(20 <= Time && 35 > Time)
 	{
 		AcCutScene->OffBlackBackground();
 		AcCutScene->ChangeRenderScene(1);
+		//BottomDialog->On();
+		//UpperDialog->Off();
+
 	}
 	else if (10 <= Time && 15 > Time)//(35 <= Time && 75 > Time)
 	{

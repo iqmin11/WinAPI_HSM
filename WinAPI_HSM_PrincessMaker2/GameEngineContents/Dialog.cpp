@@ -15,8 +15,12 @@ Dialog::~Dialog()
 
 void Dialog::MugShotRender()
 {
-	MugShotFrame = CreateRender("MugShotFrame_Nomal.bmp", 9);
-	MugShot = CreateRender("Mug_Devil.bmp", 10);
+	if (nullptr == (MugShot->GetImage()))
+	{
+		return; // 렌더 안키는게 맞음
+	}
+	MugShotFrame->On();
+	MugShot->On();
 }
 
 void Dialog::InitRenderPos()
@@ -51,41 +55,97 @@ void Dialog::SetPosMugShotRender(const float4& _Pos)
 	MugShot->SetPosition(_Pos);
 }
 
-void Dialog::SetMoveDialogRender(const float4& _Move)
+void Dialog::SetMugShot(const std::string_view& _ImageFileName)
 {
-	SetMoveMugShotRender(_Move);
-	SetMoveFrameRender(_Move);
+	if (MugShotLoc == -1)
+	{
+		MsgAssert("대화창 설정이 선행되어야 합니다")
+	}
+
+	if (IsMugShot == false)
+	{
+		MsgAssert("머그샷이 없는 대화창입니다")
+	}
+	
+	std::string Upper = GameEngineString::ToUpper(_ImageFileName);
+
+	if (std::string::npos != Upper.find("_GOD"))  // 신의 머그샷 이미지엔 _GOD를 꼭 붙일것
+	{
+		MugShotFrame->SetImage("MugShotFrame_God.bmp");
+	}
+	else
+	{
+		MugShotFrame->SetImage("MugShotFrame_Nomal.bmp");
+	}
+	
+	MugShot->SetImage(_ImageFileName);
 }
 
-void Dialog::SetDialog(int _MugShotFrameStyle, int _MugShotLoc, const float4& _Pos)
+void Dialog::SetDialog(int _MugShotLoc, const float4& _Pos, const std::string_view& _ImageFileName)
 {
-	MugShotFrameStyle = _MugShotFrameStyle;
+	if (_ImageFileName == "\0" && _MugShotLoc != 0)
+	{
+		MsgAssert("머그샷이 존재하지 않는 대화창입니다. 머그샷의 위치를 정할 수 없습니다");
+	}
+	
+	if (_ImageFileName != "\0" && _MugShotLoc == 0)
+	{
+		MsgAssert("머그샷이 존재하는 대화창입니다. 머그샷의 위치를 정해야합니다");
+	}
+
 	MugShotLoc = _MugShotLoc;
-	CreateMenuFrame(_Pos, { 20,10 }); // 크기는 고정
+	switch (MugShotLoc)
+	{
+	case 0:
+		break;
+	case 1:
+		SetLeftMugDialog();
+		break;
+	case 2:
+		SetRightMugDialog();
+		break;
+	default:
+		break;
+	}
+
+	CreateMenuFrame(_Pos, { 20,10 }); // 크기는 고정하자
+	
+	if (_ImageFileName == "\0")
+	{
+		IsMugShot = false;
+		MugShot = nullptr;
+		MugShotFrame = nullptr;
+	}
+	else
+	{
+		IsMugShot = true;
+		SetMugShot(_ImageFileName);
+	}
 }
 
-void Dialog::SetDialog(MugShotStyle _MugShotFrameStyle, MugShotLR _MugShotLoc, const float4& _Pos)
+void Dialog::SetDialog(MugShotLR _MugShotLoc, const float4& _Pos, std::string_view _ImageFileName = nullptr)
 {
-	SetDialog(static_cast<int>(_MugShotFrameStyle), static_cast<int>(_MugShotLoc), _Pos);
+	SetDialog(static_cast<int>(_MugShotLoc), _Pos, _ImageFileName);
 }
 
 void Dialog::Start()
 {
 	CreateMenuFrame(GameEngineWindow::GetScreenSize().half(), { 20,10 }); // 이건 디폴트값
-	
-	//LeftMugDialogRender();
+	MugShot = CreateRender(PM2RenderOrder::MugShot);
+	MugShot->Off();
+	MugShotFrame = CreateRender(PM2RenderOrder::MugShotFrame);
+	MugShot->Off();
 	// 머그샷 가로 140 세로 150 / 대화창 가로 320 세로 160 /사이간격 가로 20 총 가로 480 세로 160
 	// 대화창 가로로 120만큼 오른쪽으로
 	// 머그샷 가로로 170만큼 왼쪽으로
-	//MugShotFrame->SetPosition(float4::Left * (GetMenuFramePixelSize().half() + MugShotFrame->GetImage()->GetImageScale().half()));
 }
 
 void Dialog::Update(float _DeltaTime)
 {
-	MenuFrameRender(PM2RenderOrder::Menu); // 고정
-	if (static_cast<int>(MugShotStyle::Non) != MugShotFrameStyle)
+	MenuFrameRender(PM2RenderOrder::Menu); // 먼가...먼가잘못댐
+	MugShotRender();
+	if (IsMugShot)
 	{
-		MugShotRender();
 		if (static_cast<int>(MugShotLR::Left) == MugShotLoc)
 		{
 			SetLeftMugDialog();

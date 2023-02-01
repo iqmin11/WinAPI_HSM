@@ -8,6 +8,8 @@ enum class PM2RenderOrder
 	Contents,
 	Player,
 	Menu,
+	MugShotFrame,
+	MugShot
 };
 
 
