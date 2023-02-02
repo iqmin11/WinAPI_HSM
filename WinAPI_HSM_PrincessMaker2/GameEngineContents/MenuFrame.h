@@ -19,9 +19,9 @@ public:
 	void SetMenuFrame(const float4& _pos, const float4& _TileBasedSize, const int _style = 2); //위치, 크기, 스타일
 	void SetMenuFrameSize(const float4& _Size)
 	{
-		if (_Size.x <= 32 || _Size.y <= 32)
+		if (_Size.x < 34 || _Size.y < 34)
 		{
-			MsgAssert("메뉴프레임의 최소 크기는 32*32입니다")
+			MsgAssert("메뉴프레임의 최소 크기는 34*34입니다")
 		}
 		MenuFrameSize = _Size;
 	}
