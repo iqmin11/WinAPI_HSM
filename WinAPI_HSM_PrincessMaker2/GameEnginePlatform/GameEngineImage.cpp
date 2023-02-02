@@ -139,26 +139,6 @@ void GameEngineImage::ImageScaleCheck()
 }
 
 
-void GameEngineImage::Cut(int X, int Y)
-{
-	ImageCutData Data;
-	Data.SizeX = static_cast<float>(GetImageScale().x / X);
-	Data.SizeY = static_cast<float>(GetImageScale().y / Y);
-
-	for (size_t i = 0; i < Y; i++)
-	{
-		for (size_t i = 0; i < X; i++)
-		{
-			ImageCutDatas.push_back(Data);
-			Data.StartX += Data.SizeX;
-		}
-		Data.StartX = 0.0f;
-		Data.StartY += Data.SizeY;
-	}
-
-	IsCut = true;
-}
-
 // Copy
 void GameEngineImage::BitCopy(const GameEngineImage* _OtherImage, float4 _CenterPos, float4 _Scale)
 {
@@ -175,24 +155,8 @@ void GameEngineImage::BitCopy(const GameEngineImage* _OtherImage, float4 _Center
 	);
 }
 
-void GameEngineImage::TransCopy(const GameEngineImage* _OtherImage, float4 _CopyCenterPos, float4 _CopySize, float4 _OtherImagePos, float4 _OtherImageSize, int _Color)
-{
-	// 기본지원 함수가 아닙니다.
-	TransparentBlt(ImageDC, // 여기에 그려라.
-		_CopyCenterPos.ix() - _CopySize.hix(), // 여기를 시작으로
-		_CopyCenterPos.iy() - _CopySize.hiy(),
-		_CopySize.ix(), // 이 크기로
-		_CopySize.iy(),
-		_OtherImage->GetImageDC(), // 이걸 그려라
-		_OtherImagePos.ix(), // 이미지의 x y에서부터
-		_OtherImagePos.iy(),
-		_OtherImageSize.ix(), // 이미지의 x y까지의 위치를
-		_OtherImageSize.iy(),
-		_Color);
-
-}
-
-void GameEngineImage::TransCopy(const GameEngineImage* _OtherImage, int _CutIndex, float4 _CopyCenterPos, float4 _CopySize, int _Color)
+// 구현쪽에서는 디폴트 인자를 표시할 필요가 없습니다.
+void GameEngineImage::TransCopy(const GameEngineImage* _OtherImage, int _CutIndex, float4 _CopyCenterPos, float4 _CopySize, int _Color/* = RGB(255, 0, 255)*/)
 {
 	if (false == _OtherImage->IsCut)
 	{
@@ -205,6 +169,68 @@ void GameEngineImage::TransCopy(const GameEngineImage* _OtherImage, int _CutInde
 	TransCopy(_OtherImage, _CopyCenterPos, _CopySize, Data.GetStartPos(), Data.GetScale(), _Color);
 }
 
+void GameEngineImage::TransCopy(const GameEngineImage* _OtherImage, float4 _CopyCenterPos, float4 _CopySize, float4 _OtherImagePos, float4 _OtherImageSize, int _Color)
+{
+
+	TransparentBlt(ImageDC, // 여기에 그려라.
+		_CopyCenterPos.ix() - _CopySize.hix(), // 여기를 시작으로
+		_CopyCenterPos.iy() - _CopySize.hiy(),
+		_CopySize.ix(), // 이 크기로
+		_CopySize.iy(),
+		_OtherImage->GetImageDC(),
+		_OtherImagePos.ix(),// 이미지의 x y에서부터
+		_OtherImagePos.iy(),
+		_OtherImageSize.ix(), // 이미지의 x y까지의 위치를
+		_OtherImageSize.iy(),
+		_Color);
+}
+
+void GameEngineImage::Cut(int _X, int _Y)
+{
+	ImageCutData Data;
+
+	Data.SizeX = static_cast<float>(GetImageScale().ix() / _X);
+	Data.SizeY = static_cast<float>(GetImageScale().iy() / _Y);
+
+	for (size_t i = 0; i < _Y; i++)
+	{
+		for (size_t i = 0; i < _X; i++)
+		{
+			ImageCutDatas.push_back(Data);
+			Data.StartX += Data.SizeX;
+		}
+
+		Data.StartX = 0.0f;
+		Data.StartY += Data.SizeY;
+	}
+
+	IsCut = true;
+}
+
+void GameEngineImage::Cut(float4 _Start, float4 _End, int _X, int _Y)
+{
+	ImageCutData Data;
+
+	Data.SizeX = static_cast<float>((_End.x - _Start.x) / _X);
+	Data.SizeY = static_cast<float>((_End.y - _Start.y) / _Y);
+
+	Data.StartX = _Start.x;
+	Data.StartY = _Start.y;
+
+	for (size_t i = 0; i < _Y; i++)
+	{
+		for (size_t i = 0; i < _X; i++)
+		{
+			ImageCutDatas.push_back(Data);
+			Data.StartX += Data.SizeX;
+		}
+
+		Data.StartX = _Start.x;
+		Data.StartY += Data.SizeY;
+	}
+
+	IsCut = true;
+}
 
 DWORD GameEngineImage::GetPixelColor(float4 _Pos, DWORD _OutColor)
 {

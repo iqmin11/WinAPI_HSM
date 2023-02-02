@@ -1,7 +1,8 @@
 #pragma once
 #include <GameEnginePlatform/GameEngineImage.h>
-#include "GameEngineObject.h"
 #include <map>
+#include "GameEngineComponent.h"
+// 랜더링에 관련된 기능을 모두 집약한다.
 
 class FrameAnimationParameter
 {
@@ -17,15 +18,17 @@ public:
 	std::vector<float> FrameTime = std::vector<float>();
 };
 
+
+// 설명 :
 class GameEngineActor;
 class GameEngineLevel;
-class GameEngineRender : public GameEngineObject
+class GameEngineRender : public GameEngineComponent
 {
 	friend GameEngineActor;
 	friend GameEngineLevel;
 
 public:
-	// construtor destructor
+	// constrcuter destructer
 	GameEngineRender();
 	~GameEngineRender();
 
@@ -37,46 +40,18 @@ public:
 
 	void SetImage(const std::string_view& _ImageName);
 
-	inline void SetPosition(float4 _Position)
-	{
-		Position = _Position;
-	}
-
-	inline void SetMove(float4 _Position)
-	{
-		Position += _Position;
-	}
-
-	inline void SetScale(float4 _Scale)
-	{
-		Scale = _Scale;
-	}
-
 	void SetScaleToImage();
 
 	void SetFrame(int _Frame);
 
-	
-	inline GameEngineImage* GetImage() const
+	inline GameEngineImage* GetImage()
 	{
 		return Image;
 	}
 
-	inline int GetFrame() const
+	inline int GetFrame()
 	{
 		return Frame;
-	}
-
-	GameEngineActor* GetActor();
-	
-	inline float4 GetScale()
-	{
-		return Scale;
-	}
-	
-	inline float4 GetPosition()
-	{
-		return Position;
 	}
 
 	void SetTransColor(int _Color)
@@ -95,23 +70,23 @@ public:
 
 	void SetOrder(int _Order) override;
 
-private:
+protected:
 
-	float4 Position = float4::Zero; // 이미지의 상대적 위치 -> 액터의 위치를 기준으로 정해짐
-	float4 Scale= float4::Zero; // 이미지 크기
-	GameEngineImage* Image = nullptr; // 랜더 이미지
+private:
+	GameEngineImage* Image = nullptr;
 	bool IsEffectCamera = true;
 
-	int Frame = 0; // 아마 애니메이션 관련 요소
+	int TransColor = RGB(255, 0, 255);
+
+	int Frame = 0;
 
 	void Render(float _DeltaTime);
-
-	int TransColor = RGB(255, 0, 255);
 
 	class FrameAnimation
 	{
 	public:
 		GameEngineRender* Parent = nullptr;
+		// 짤려있는 이미지여야 한다.
 		GameEngineImage* Image = nullptr;
 		std::vector<int> FrameIndex;
 		std::vector<float> FrameTime;

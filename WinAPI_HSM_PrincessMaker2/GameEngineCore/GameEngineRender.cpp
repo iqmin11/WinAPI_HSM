@@ -7,13 +7,12 @@
 
 GameEngineRender::GameEngineRender()
 {
-
 }
 
 GameEngineRender::~GameEngineRender()
 {
-
 }
+
 
 void GameEngineRender::SetImage(const std::string_view& _ImageName)
 {
@@ -27,7 +26,13 @@ void GameEngineRender::SetScaleToImage()
 		MsgAssert("이미지를 세팅하지 않았는데 이미지의 크기로 변경하려고 했습니다.");
 	}
 
-	Scale = Image->GetImageScale();
+	SetScale(Image->GetImageScale());
+}
+
+void GameEngineRender::SetOrder(int _Order)
+{
+	GameEngineObject::SetOrder(_Order);
+	GetActor()->GetLevel()->PushRender(this);
 }
 
 void GameEngineRender::SetFrame(int _Frame)
@@ -50,9 +55,67 @@ void GameEngineRender::SetFrame(int _Frame)
 	Frame = _Frame;
 }
 
-GameEngineActor* GameEngineRender::GetActor()
+bool GameEngineRender::FrameAnimation::IsEnd()
 {
-	return GetOwner<GameEngineActor>();
+	int Value = (static_cast<int>(FrameIndex.size()) - 1);
+	return CurrentIndex == Value;
+}
+
+void GameEngineRender::FrameAnimation::Render(float _DeltaTime)
+{
+	CurrentTime -= _DeltaTime;
+
+	if (CurrentTime <= 0.0f)
+	{
+		++CurrentIndex;
+
+		if (FrameIndex.size() <= CurrentIndex)
+		{
+			if (true == Loop)
+			{
+				CurrentIndex = 0;
+			}
+			else {
+				CurrentIndex = static_cast<int>(FrameIndex.size()) - 1;
+			}
+		}
+
+		CurrentTime = FrameTime[CurrentIndex];
+	}
+}
+
+void GameEngineRender::Render(float _DeltaTime)
+{
+
+	if (nullptr != CurrentAnimation)
+	{
+		CurrentAnimation->Render(_DeltaTime);
+		Frame = CurrentAnimation->FrameIndex[CurrentAnimation->CurrentIndex];
+		Image = CurrentAnimation->Image;
+	}
+
+	if (nullptr == Image)
+	{
+		MsgAssert("이미지를 세팅해주지 않았습니다.");
+	}
+
+	float4 CameraPos = float4::Zero;
+
+	if (true == IsEffectCamera)
+	{
+		CameraPos = GetActor()->GetLevel()->GetCameraPos();
+	}
+
+	float4 RenderPos = GetActorPlusPos() - CameraPos;
+
+	if (true == Image->IsImageCutting())
+	{
+		GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, Frame, RenderPos, GetScale(), TransColor);
+	}
+	else
+	{
+		GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, RenderPos, GetScale(), { 0, 0 }, Image->GetImageScale(), TransColor);
+	}
 }
 
 bool GameEngineRender::IsAnimationEnd()
@@ -116,7 +179,7 @@ void GameEngineRender::CreateAnimation(const FrameAnimationParameter& _Paramter)
 	NewAnimation.Parent = this;
 }
 
-void GameEngineRender::ChangeAnimation(const std::string_view& _AnimationName, bool _ForceChange)
+void GameEngineRender::ChangeAnimation(const std::string_view& _AnimationName, bool _ForceChange /*= false*/)
 {
 	// 이미 같은 애니메이션으로 바꾸라고 리턴할껍니다.
 
@@ -127,6 +190,7 @@ void GameEngineRender::ChangeAnimation(const std::string_view& _AnimationName, b
 		MsgAssert("존재하지 않는 애니메이션으로 바꾸려고 했습니다." + UpperName);
 	}
 
+	// 강제로 바꾸지 않는 상황에서 애니메이션이 같으면
 	if (false == _ForceChange && CurrentAnimation == &Animation[UpperName])
 	{
 		return;
@@ -137,75 +201,4 @@ void GameEngineRender::ChangeAnimation(const std::string_view& _AnimationName, b
 	CurrentAnimation->CurrentIndex = 0;
 	// 0.1
 	CurrentAnimation->CurrentTime = CurrentAnimation->FrameTime[CurrentAnimation->CurrentIndex];
-}
-
-
-void GameEngineRender::SetOrder(int _Order)
-{
-	GameEngineObject::SetOrder(_Order);
-	GetActor()->GetLevel()->PushRender(this);
-}
-
-void GameEngineRender::Render(float _DeltaTime)
-{
-	if (nullptr != CurrentAnimation)
-	{
-		CurrentAnimation->Render(_DeltaTime);
-		Frame = CurrentAnimation->FrameIndex[CurrentAnimation->CurrentIndex];
-		Image = CurrentAnimation->Image;
-	}
-
-	if (nullptr == Image)
-	{
-		MsgAssert("이미지를 세팅해주지 않았습니다.");
-	}
-
-	float4 CameraPos = float4::Zero;
-
-	if (true == IsEffectCamera)
-	{
-		CameraPos = GetActor()->GetLevel()->GetCameraPos();
-	}
-	float4 RenderPos = GetActor()->GetPos() + Position - CameraPos;
-	if (nullptr == Image)
-	{
-		MsgAssert("멤버변수 Image가 nullptr입니다")
-	}
-	if (true == Image->IsImageCutting())
-	{
-		GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, Frame, RenderPos, Scale, TransColor); // 자른 이미지면 이렇게 출력
-	}
-	else
-	{
-		GameEngineWindow::GetDoubleBufferImage()->TransCopy(Image, RenderPos, Image->GetImageScale(), { 0, 0 }, Image->GetImageScale(), TransColor); // 통이미지면 전체 출력 // 일단 메모
-	}
-}
-
-bool GameEngineRender::FrameAnimation::IsEnd()
-{
-	int Value = (static_cast<int>(FrameIndex.size()) - 1);
-	return CurrentIndex == Value;
-}
-
-void GameEngineRender::FrameAnimation::Render(float _DeltaTime)
-{
-	CurrentTime -= _DeltaTime;
-	if (CurrentTime <= 0.0f)
-	{
-		++CurrentIndex;
-
-		if (FrameIndex.size() <= CurrentIndex)
-		{
-			if (true == Loop)
-			{
-				CurrentIndex = 0;
-			}
-			else 
-			{
-				CurrentIndex = static_cast<int>(FrameIndex.size()) - 1;
-			}
-		}
-
-		CurrentTime = FrameTime[CurrentIndex];
-	}
 }

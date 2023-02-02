@@ -1,8 +1,8 @@
 #pragma once
 #include <Windows.h>
 #include <string_view>
-#include <GameEngineBase/GameEngineMath.h>
 #include <vector>
+#include <GameEngineBase/GameEngineMath.h>
 #include <GameEngineBase/GameEngineDebug.h>
 
 // 이미지란
@@ -29,27 +29,25 @@
 // 배열에 대한 뭔가를 할수 있는 권한을 주는데 그게 HDC이다.
 // HDC는 그래서 색깔의 배열과 연결되어 있고. 그걸 제어할수 있게 도와주는 통로이다.
 
-
-// 설명 :
-struct ImageCutData // 자른 이미지 자료형
+struct ImageCutData
 {
-	float StartX = 0.0f; // 시작 좌표
+	float StartX = 0.0f;
 	float StartY = 0.0f;
-	float SizeX = 0.0f; // 시작좌표로부터의 사이즈
+	float SizeX = 0.0f;
 	float SizeY = 0.0f;
 
-	float4 GetStartPos() // 자른 이미지의 시작 위치
+	float4 GetStartPos()
 	{
 		return { StartX, StartY };
 	}
-	
-	float4 GetScale() // 사이즈
+
+	float4 GetScale()
 	{
 		return { SizeX, SizeY };
 	}
 };
 
-
+// 설명 :
 class GameEnginePath;
 class GameEngineImage
 {
@@ -114,18 +112,24 @@ public:
 		return ImageCutDatas[_Index];
 	}
 
-	void Cut(int X, int Y); // 가로로몇개 세로로 몇개로 자를겨
+
+
+	void Cut(float4 _Start, float4 _End, int _X, int _Y);
+
+	void Cut(int _X, int _Y);
 
 	// Copy
 
 	void BitCopy(const GameEngineImage* _OtherImage, float4 _Pos, float4 _Scale);
 
 	// 랜더링을 제외할 컬러.
-	void TransCopy(const GameEngineImage* _OtherImage, float4 _CopyPos, float4 _CopySize, float4 _OtherImagePos, float4 _OtherImageSize, int _Color = RGB(255, 0, 255));
+	// 당연히 느립니다.
+	// 크기조절이 느리기 때문에
+	void TransCopy(const GameEngineImage* _OtherImage, float4 _CopyCenterPos, float4 _CopySize, float4 _OtherImagePos, float4 _OtherImageSize, int _Color = RGB(255, 0, 255));
 
-	// 디폴트 인자는 선언에서만 가능함
-	// 자른 이미지 전용 TransCopy
+	// 디폴트 인자는 선언에서만 가능합니다.
 	void TransCopy(const GameEngineImage* _OtherImage, int _CutIndex, float4 _CopyCenterPos, float4 _CopySize, int _Color = RGB(255, 0, 255));
+
 
 	DWORD GetPixelColor(float4 _Pos, DWORD _OutColor);
 
@@ -140,7 +144,7 @@ private:
 	BITMAP Info = BITMAP();
 	bool IsCut = false;
 
-	std::vector<ImageCutData> ImageCutDatas; // 컷이미지는 벡터로 관리
+	std::vector<ImageCutData> ImageCutDatas;
 
 	void ImageScaleCheck();
 

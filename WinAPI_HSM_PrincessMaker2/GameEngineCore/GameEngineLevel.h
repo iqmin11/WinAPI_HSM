@@ -10,10 +10,12 @@
 class GameEngineCore;
 class GameEngineActor;
 class GameEngineRender;
+class GameEngineCollision;
 class GameEngineLevel : public GameEngineObject
 {
 	friend GameEngineCore;
 	friend GameEngineRender;
+	friend GameEngineCollision;
 
 public:
 	// constrcuter destructer
@@ -143,5 +145,10 @@ private:
 	std::map<int, std::list<GameEngineRender*>> Renders; // 랜더링 이미지들
 	
 	void PushRender(GameEngineRender* _Render);
+	std::map<int, std::list<GameEngineCollision*>> Collisions;
+	void PushCollision(GameEngineCollision* _Collision);
+
+	// 엔진수준의 기능이기 때문에 private으로 둔다.
+	void Release();
 };
 

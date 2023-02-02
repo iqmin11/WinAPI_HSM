@@ -141,3 +141,23 @@ Opening 생각
 이미지 클리어에 있는 하얀색 네모상자 테두리 없었으면 좋겠다 아니다 걍 하얀색 이미지 넣자 랙탱귤만들어버리자
 
 firstset에서 달력 액터에는 마우스와 충돌할 충돌체들의 배열과, 해당 충돌체마다 반응할 렌더의 배열, 그리고 클릭했을때 입력될 날짜의 배열도 포함되어야함.
+
+크리에이터 렌더때 이미지를 추가했을때 셋스케일을 안해줘도 렌더 스케일에 이미지 크기를 셋해줬으면 좋겠다 
+선생님 지금 CreatRender함수는 SetScale을 해주지 않으면 디폴트 RenderScale이 0인데, 이미지를 넣어주면 그 이미지의 스케일로 Render의 스케일을 Set해주도록 해주실수 있나요??
+
+GameEngineRender* GameEngineActor::CreateRender(const std::string_view& _Image, int _Order)
+{
+	GameEngineRender* Render = CreateRender(_Order);
+	Render->SetImage(_Image);
+	return Render;
+}
+에서
+
+GameEngineRender* GameEngineActor::CreateRender(const std::string_view& _Image, int _Order)
+{
+	GameEngineRender* Render = CreateRender(_Order);
+	Render->SetImage(_Image);
+	Render->SetScale(Render->GetImage()->GetImageScale());
+	return Render;
+}
+로

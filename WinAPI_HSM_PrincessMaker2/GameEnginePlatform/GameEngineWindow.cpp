@@ -17,7 +17,6 @@ bool GameEngineWindow::IsWindowUpdate = true;
 
 
 LRESULT CALLBACK GameEngineWindow::MessageFunction(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lParam)
-
 {
     switch (_message)
     {
@@ -192,8 +191,8 @@ int GameEngineWindow::WindowLoop(void(*_Start)(), void(*_Loop)(), void(*_End)())
             {
                 _Loop();
             }
-            GameEngineInput::IsAnyKeyOff();
 
+            GameEngineInput::IsAnyKeyOff();
             continue;
         }
 

@@ -19,6 +19,17 @@ GameEngineActor::~GameEngineActor()
 		delete _Render;
 		_Render = nullptr;
 	}
+
+	for (GameEngineCollision* _Collision : CollisionList)
+	{
+		if (nullptr == _Collision)
+		{
+			continue;
+		}
+
+		delete _Collision;
+		_Collision = nullptr;
+	}
 }
 
 GameEngineLevel* GameEngineActor::GetLevel()
@@ -30,6 +41,7 @@ GameEngineRender* GameEngineActor::CreateRender(const std::string_view& _Image, 
 {
 	GameEngineRender* Render = CreateRender(_Order);
 	Render->SetImage(_Image);
+	Render->SetScale(Render->GetImage()->GetImageScale());
 	return Render;
 }
 

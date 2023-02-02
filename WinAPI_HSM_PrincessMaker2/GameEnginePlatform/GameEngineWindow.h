@@ -45,7 +45,6 @@ public:
 		IsWindowUpdate = false;
 	}
 
-	
 	static void DoubleBufferClear();
 	static void DoubleBufferRender();
 
@@ -55,6 +54,7 @@ public:
 	// void(*Start)(), void(*Loop)(), void(*End)() 외부에서 함수포인터를 맡기는 방식.
 	// => 컨텐츠와 기능을 분리하기 위해서
 	static int WindowLoop(void(*Start)(), void(*Loop)(), void(*End)());
+
 
 	GameEngineWindow();
 	~GameEngineWindow();
