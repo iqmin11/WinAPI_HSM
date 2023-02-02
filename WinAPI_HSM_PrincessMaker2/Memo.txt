@@ -144,20 +144,9 @@ firstset에서 달력 액터에는 마우스와 충돌할 충돌체들의 배열과, 해당 충돌체마다 반
 
 크리에이터 렌더때 이미지를 추가했을때 셋스케일을 안해줘도 렌더 스케일에 이미지 크기를 셋해줬으면 좋겠다 
 선생님 지금 CreatRender함수는 SetScale을 해주지 않으면 디폴트 RenderScale이 0인데, 이미지를 넣어주면 그 이미지의 스케일로 Render의 스케일을 Set해주도록 해주실수 있나요??
+이유 1. 어차피 이미지 크기를 원본 그대로 씀
+이유 2. SetRenderScale을 안했을때 경고가 안떠서 크기를 설정 안할걸 모를 수 도 있음.
 
-GameEngineRender* GameEngineActor::CreateRender(const std::string_view& _Image, int _Order)
-{
-	GameEngineRender* Render = CreateRender(_Order);
-	Render->SetImage(_Image);
-	return Render;
-}
-에서
+마우스 충돌과 관련된 기능들이 필요
 
-GameEngineRender* GameEngineActor::CreateRender(const std::string_view& _Image, int _Order)
-{
-	GameEngineRender* Render = CreateRender(_Order);
-	Render->SetImage(_Image);
-	Render->SetScale(Render->GetImage()->GetImageScale());
-	return Render;
-}
-로
+메뉴프레임을 9개의 렌더 파츠로 관리

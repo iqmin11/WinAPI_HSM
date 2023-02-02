@@ -15,7 +15,7 @@ SelectionMenu::~SelectionMenu()
 
 void SelectionMenu::Start()
 {
-	CreateMenuFrame(GameEngineWindow::GetScreenSize().half(), { 14,7 }, 0);
+	SetMenuFrame(GameEngineWindow::GetScreenSize().half(), { 230,112 }, 0);
 	MenuFrameRender(1);
 }
 

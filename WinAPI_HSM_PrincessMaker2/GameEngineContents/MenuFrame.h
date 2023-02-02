@@ -1,18 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
-#include <vector>
 #include <GameEngineBase/GameEngineDebug.h>
 #include "ContentsEnums.h"
-
-//class MenuTile
-//{
-//	friend MenuFrame;
-//
-//
-//private:
-//	//float4 SelectTile(int _numpad);
-//
-//};
 
 class MenuFrame : public GameEngineActor
 {
@@ -27,15 +16,14 @@ public:
 	MenuFrame& operator=(const MenuFrame& _Other) = delete;
 	MenuFrame& operator=(MenuFrame&& _Other) noexcept = delete;
 
-	void CreateMenuFrame(const float4& _pos, const float4& _TileBasedSize, const int _style = 2); //위치, 크기, 스타일
-	void SetMenuFrameSize(const float4& _TileBasedSize)
+	void SetMenuFrame(const float4& _pos, const float4& _TileBasedSize, const int _style = 2); //위치, 크기, 스타일
+	void SetMenuFrameSize(const float4& _Size)
 	{
-		if (_TileBasedSize.x < 2 || _TileBasedSize.y < 2)
+		if (_Size.x <= 32 || _Size.y <= 32)
 		{
-			MsgAssert("메뉴프레임의 최소 크기는 2*2입니다")
+			MsgAssert("메뉴프레임의 최소 크기는 32*32입니다")
 		}
-		MenuFramePixelSize = _TileBasedSize *16;
-		MenuFrameSize = _TileBasedSize;
+		MenuFrameSize = _Size;
 	}
 
 	void SetMenuFrameStyle(const int _style)
@@ -47,7 +35,6 @@ public:
 		MenuFrameStyle = _style;
 	}
 
-
 	void MenuFrameRender(const int _Order);
 	void MenuFrameRender(PM2RenderOrder _Order);
 	
@@ -56,14 +43,14 @@ public:
 	void Update(float _Deltatime);
 	void Render(float _Time);
 
-	std::vector<std::vector<GameEngineRender*>>* GetFrameRender()
+	GameEngineRender** GetFrameRender()
 	{
-		return &FrameRender;
+		return FrameRender;
 	}
 
-	float4 GetMenuFramePixelSize()
+	float4 GetMenuFrameSize()
 	{
-		return MenuFramePixelSize;
+		return MenuFrameSize;
 	}
 
 protected:
@@ -72,10 +59,7 @@ protected:
 
 
 private:
-	std::vector<std::vector<GameEngineRender*>> FrameRender = std::vector<std::vector<GameEngineRender*>>();
-	float4 MenuFrameSize = {}; // 타일기준 사이즈 16*16픽셀
-	float4 MenuFramePixelSize = {}; // 픽셀기준 사이즈
+	float4 MenuFrameSize = {}; // 픽셀기준 사이즈
 	int MenuFrameStyle = -1;
-//	std::vector<MenuTile> Frame;
+	GameEngineRender* FrameRender[9] = {};
 };
-

@@ -108,7 +108,7 @@ void Dialog::SetDialog(int _MugShotLoc, const float4& _Pos, const std::string_vi
 		break;
 	}
 
-	CreateMenuFrame(_Pos, { 20,10 }); // 크기는 고정하자
+	SetMenuFrame(_Pos, { 310,150 }); // 크기는 고정하자
 	
 	if (_ImageFileName == "\0")
 	{
@@ -130,7 +130,7 @@ void Dialog::SetDialog(MugShotLR _MugShotLoc, const float4& _Pos, std::string_vi
 
 void Dialog::Start()
 {
-	CreateMenuFrame(GameEngineWindow::GetScreenSize().half(), { 20,10 }); // 이건 디폴트값
+	SetMenuFrame(GameEngineWindow::GetScreenSize().half(), { 310,150 }); // 이건 디폴트값
 	MugShot = CreateRender(PM2RenderOrder::MugShot);
 	MugShot->Off();
 	MugShotFrame = CreateRender(PM2RenderOrder::MugShotFrame);

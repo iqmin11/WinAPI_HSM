@@ -13,118 +13,35 @@ MenuFrame::~MenuFrame()
 
 }
 
-void MenuFrame::CreateMenuFrame(const float4& _centerpos, const float4& _TileBasedSize, const int _style)
+void MenuFrame::SetMenuFrame(const float4& _pos, const float4& _Size, const int _style)
 {
-	SetPos(_centerpos);
-	SetMenuFrameSize(_TileBasedSize);
+	SetPos(_pos);
+	SetMenuFrameSize(_Size);
 	SetMenuFrameStyle(_style);
-}
-
-void MenuFrame::MenuFrameRender(PM2RenderOrder _Order)
-{
-	MenuFrame::MenuFrameRender(static_cast<int>(_Order));
-}
-
-void MenuFrame::SetMoveFrameRender(const float4& _Pos)
-{
-	for (auto y : FrameRender)
-	{
-		for (auto x : y)
-		{
-			x->SetMove(_Pos);
-		}
-	}
-}
-
-void MenuFrame::SetPosFrameRender(const float4& _Pos)
-{
-	for (size_t y = 0; y < MenuFrameSize.y; y++)
-	{
-		float fy = static_cast<float>(y);
-		if (0 == y)
-		{
-			FrameRender[y][0]->SetFrame(0);
-			FrameRender[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }) + _Pos);
-			for (size_t x = 1; x < (MenuFrameSize.x - 1); x++)
-			{
-				float fx = static_cast<float>(x);
-				FrameRender[y][x]->SetFrame(1);
-				FrameRender[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy } + _Pos));
-			}
-			FrameRender[y][MenuFrameSize.ix() - 1]->SetFrame(2);
-			FrameRender[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }) + _Pos);
-		}
-		else if ((MenuFrameSize.y - 1) == y)
-		{
-			FrameRender[y][0]->SetFrame(6);
-			FrameRender[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }) + _Pos);
-			for (size_t x = 1; x < (MenuFrameSize.x - 1); x++)
-			{
-				float fx = static_cast<float>(x);
-				FrameRender[y][x]->SetFrame(7);
-				FrameRender[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy }) + _Pos);
-			}
-			FrameRender[y][MenuFrameSize.ix() - 1]->SetFrame(8);
-			FrameRender[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }) + _Pos);
-		}
-		else
-		{
-			FrameRender[y][0]->SetFrame(3);
-			FrameRender[y][0]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 0, 16 * fy }) + _Pos);
-			for (size_t x = 1; x < (MenuFrameSize.x - 1); x++)
-			{
-				float fx = static_cast<float>(x);
-				FrameRender[y][x]->SetFrame(4);
-				FrameRender[y][x]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * fx,16 * fy }) + _Pos);
-			}
-			FrameRender[y][MenuFrameSize.ix() - 1]->SetFrame(5);
-			FrameRender[y][MenuFrameSize.ix() - 1]->SetPosition((-MenuFramePixelSize.half()) + (float4{ 16 * (MenuFrameSize.x - 1),16 * fy }) + _Pos);
-		}
-	}
-
-	SetMoveFrameRender({ 8,8 }); // 미세조정(중심맞추기)
 }
 
 void MenuFrame::MenuFrameRender(const int _Order)
 {
-	FrameRender.resize(MenuFrameSize.iy());
-	for (int y = 0; y < MenuFrameSize.iy(); y++)
-	{
-		FrameRender[y].resize(MenuFrameSize.ix());
-	}
-
 	switch (MenuFrameStyle)
 	{
 	case 0:
-		for (size_t y = 0; y < FrameRender.size(); ++y)
+		for (int i = 0; i < 9; i++)
 		{
-			for (size_t x = 0; x < FrameRender[y].size(); ++x)
-			{
-				FrameRender[y][x] = CreateRender("FrameSample1.bmp", _Order);
-				FrameRender[y][x]->SetScale({ 16,16 });
-			}
+			FrameRender[i] = CreateRender("FrameSample1.bmp", _Order);
 		}
 		break;
 
 	case 1:
-		for (size_t y = 0; y < FrameRender.size(); ++y)
+		for (int i = 0; i < 9; i++)
 		{
-			for (size_t x = 0; x < FrameRender[y].size(); ++x)
-			{
-				FrameRender[y][x] = CreateRender("FrameSample2.bmp", _Order);
-				FrameRender[y][x]->SetScale({ 16,16 });
-			}
+			FrameRender[i] = CreateRender("FrameSample2.bmp", _Order);
 		}
 		break;
 
 	case 2:
-		for (size_t y = 0; y < FrameRender.size(); ++y)
+		for (int i = 0; i < 9; i++)
 		{
-			for (size_t x = 0; x < FrameRender[y].size(); ++x)
-			{
-				FrameRender[y][x] = CreateRender("FrameSample3.bmp", _Order);
-				FrameRender[y][x]->SetScale({ 16,16 });
-			}
+			FrameRender[i] = CreateRender("FrameSample3.bmp", _Order);
 		}
 		break;
 
@@ -132,7 +49,70 @@ void MenuFrame::MenuFrameRender(const int _Order)
 		break;
 	}
 
-	SetPosFrameRender({ 0,0 });
+	for (int i = 0; i < 9; i++)
+	{
+		FrameRender[i]->SetFrame(i);
+		if (i == 0 ||
+			i == 2 ||
+			i == 6 ||
+			i == 8)
+		{
+			FrameRender[i]->SetScale({ 16,16 });
+		}
+		else if (i == 1 ||
+			i == 7)
+		{
+			FrameRender[i]->SetScale({ MenuFrameSize.x - 32 ,16 });
+		}
+		else if (i == 3 ||
+			i == 5)
+		{
+			FrameRender[i]->SetScale({ 16, MenuFrameSize.y - 32 });
+		}
+		else if (i == 4)
+		{
+			FrameRender[i]->SetScale(MenuFrameSize - float4{ 32,32 });
+			FrameRender[i]->SetPosition({ 0,0 });
+		}
+
+		switch (i)
+		{
+		case 0:
+			FrameRender[i]->SetPosition({ -MenuFrameSize.hx() + 8, -MenuFrameSize.hy() + 8 });
+			break;
+		case 1:
+			FrameRender[i]->SetPosition({ 0, -MenuFrameSize.hy() + 8 });
+			break;
+		case 2:
+			FrameRender[i]->SetPosition({ MenuFrameSize.hx() - 8, -MenuFrameSize.hy() + 8 });
+			break;
+		case 3:
+			FrameRender[i]->SetPosition({ -MenuFrameSize.hx() + 8, 0 });
+			break;
+		case 4:
+			FrameRender[i]->SetPosition({ 0,0 });
+			break;
+		case 5:
+			FrameRender[i]->SetPosition({ MenuFrameSize.hx() - 8, 0 });
+			break;
+		case 6:
+			FrameRender[i]->SetPosition({ -MenuFrameSize.hx() + 8, MenuFrameSize.hy() - 8 });
+			break;
+		case 7:
+			FrameRender[i]->SetPosition({ 0, MenuFrameSize.hy() - 8 });
+			break;
+		case 8:
+			FrameRender[i]->SetPosition({ MenuFrameSize.hx() - 8, MenuFrameSize.hy() - 8 });
+			break;
+		default:
+			break;
+		}
+	}
+}
+
+void MenuFrame::MenuFrameRender(PM2RenderOrder _Order)
+{
+	MenuFrame::MenuFrameRender(static_cast<int>(_Order));
 }
 
 void MenuFrame::Start()
@@ -149,10 +129,50 @@ void MenuFrame::Render(float _Time)
 
 }
 
-//이상적 5*4 메뉴
-//abbc  a : 0 // b : 1 // c : 2
-//deef	d : 3 // e : 4 // f : 5
-//deef
-//deef
-//hiij	h : 6 // i : 7 // j : 8
+void MenuFrame::SetMoveFrameRender(const float4& _Pos)
+{
+	for (auto i : FrameRender)
+	{
+		i->SetMove(_Pos);
+	}
+}
 
+void MenuFrame::SetPosFrameRender(const float4& _Pos)
+{
+	for (int i = 0; i < 9; i++)
+	{
+		switch (i)
+		{
+		case 0:
+			FrameRender[i]->SetPosition(_Pos + float4{ -MenuFrameSize.x + 8, -MenuFrameSize.hy() + 8 });
+			break;
+		case 1:
+			FrameRender[i]->SetPosition(_Pos + float4{ 0, -MenuFrameSize.hy() + 8 });
+			break;
+		case 2:
+			FrameRender[i]->SetPosition(_Pos + float4{ MenuFrameSize.x - 8, -MenuFrameSize.hy() + 8 });
+			break;
+		case 3:
+			FrameRender[i]->SetPosition(_Pos + float4{ -MenuFrameSize.x + 8, 0 });
+			break;
+		case 4:
+			FrameRender[i]->SetPosition(_Pos + float4{ 0,0 });
+			break;
+		case 5:
+			FrameRender[i]->SetPosition(_Pos + float4{ MenuFrameSize.x - 8, 0 });
+			break;
+		case 6:
+			FrameRender[i]->SetPosition(_Pos + float4{ -MenuFrameSize.x + 8, MenuFrameSize.hy() - 8 });
+			break;
+		case 7:
+			FrameRender[i]->SetPosition(_Pos + float4{ 0, MenuFrameSize.hy() - 8 });
+			break;
+		case 8:
+			FrameRender[i]->SetPosition(_Pos + float4{ MenuFrameSize.x - 8, MenuFrameSize.hy() - 8 });
+			break;
+		default:
+			break;
+		}
+	}
+	
+}
