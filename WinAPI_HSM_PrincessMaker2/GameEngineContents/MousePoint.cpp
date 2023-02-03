@@ -5,6 +5,8 @@
 #include <GameEngineCore/GameEngineCollision.h>
 #include "ContentsEnums.h"
 
+MousePoint* MousePoint::MainMouse;
+
 MousePoint::MousePoint()
 {
 
@@ -17,8 +19,9 @@ MousePoint::~MousePoint()
 
 void MousePoint::Start()
 {
+	MainMouse = this;
 	MousePointCollision = CreateCollision(PM2CollisionOrder::MousePoint);
-	MousePointCollision->SetScale({1,1});
+	MousePointCollision->SetScale({ 1,1 });
 }
 
 void MousePoint::Update(float _DeltaTime)

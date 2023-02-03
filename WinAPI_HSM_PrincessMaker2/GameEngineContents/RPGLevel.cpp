@@ -5,6 +5,9 @@
 #include <GameEnginePlatform/GameEngineImage.h>
 #include <GameEngineCore/GameEngineResources.h>
 
+#include "MousePoint.h"
+#include "ContentsEnums.h"
+
 RPGLevel::RPGLevel()
 {
 
@@ -24,6 +27,7 @@ void RPGLevel::Loading()
 
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Olive.BMP"))->Cut(8,1);
 
+	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	CreateActor<RPGOlive>();
 }
 

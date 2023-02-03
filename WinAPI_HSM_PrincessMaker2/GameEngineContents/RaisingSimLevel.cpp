@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 
+#include "MousePoint.h"
 #include "Olive.h"
 #include "Background.h"
 #include "Animation.h"
@@ -42,9 +43,10 @@ void RaisingSimLevel::Loading()
 	
 
 	AcBackground = CreateActor<Background>(static_cast<int>(PM2ActorOrder::BackGround));
-	CreateActor<Olive>(static_cast<int>(PM2ActorOrder::Player));
-	CreateActor<Flower>(static_cast<int>(PM2ActorOrder::BackGround));
-	CreateActor<Paint>(static_cast<int>(PM2ActorOrder::BackGround));
+	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
+	CreateActor<Olive>(PM2ActorOrder::Player);
+	CreateActor<Flower>(PM2ActorOrder::BackGround);
+	CreateActor<Paint>(PM2ActorOrder::BackGround);
 
 	//CreateActor<Animation>(2);
 

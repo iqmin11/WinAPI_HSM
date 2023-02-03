@@ -5,9 +5,11 @@
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 
+#include "MousePoint.h"
 #include "Dialog.h"
 #include "Cutscene.h"
 #include "OpeningCredit.h"
+#include "ContentsEnums.h"
 
 OpeningLevel::OpeningLevel()
 {
@@ -59,6 +61,7 @@ void OpeningLevel::Loading()
 	//BottomDialog = CreateActor<Dialog>();
 	//BottomDialog->SetDialog(MugShotLR::Right, GameEngineWindow::GetScreenSize().half() + float4{0, 176}, "Mug_Devil.BMP");
 	//BottomDialog->Off();
+	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	AcCutScene = CreateActor<Cutscene>();
 	AcOpeningCredit = CreateActor<OpeningCredit>();
 	
@@ -106,16 +109,16 @@ void OpeningLevel::Update(float _DeltaTime)
 	{
 		AcCutScene->ChangeRenderScene(3);
 	}
-	else if (20 <= Time && 25> Time)//(115 <= Time && 119> Time)
+	else if (20 <= Time && 22> Time)//(115 <= Time && 119> Time)
 	{
 		AcCutScene->OnBlackBackground();
 		AcCutScene->ChangeRenderScene(0);
 	}
-	else if (25 <= Time && 30> Time)//(119 <= Time && 122 > Time)
+	else if (22 <= Time && 27> Time)//(119 <= Time && 122 > Time)
 	{
 		AcCutScene->ChangeRenderScene(0);
 	}
-	else if (30 <= Time && 35> Time)//(122 <= Time && 143 > Time)
+	else if (37 <= Time && 35> Time)//(122 <= Time && 143 > Time)
 	{
 		AcCutScene->ChangeRenderScene(4);
 	}

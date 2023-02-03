@@ -36,9 +36,6 @@
     <ClInclude Include="TitleBackground.h">
       <Filter>ContentsLevel\1. TitleLevel\TitleActor</Filter>
     </ClInclude>
-    <ClInclude Include="SelectionMenu.h">
-      <Filter>ContentsLevel\1. TitleLevel\TitleActor</Filter>
-    </ClInclude>
     <ClInclude Include="SetPlayerName.h">
       <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
     </ClInclude>
@@ -81,6 +78,9 @@
     <ClInclude Include="MousePoint.h">
       <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClInclude>
+    <ClInclude Include="SelectionMenu.h">
+      <Filter>ContentsLevel\0. PM2Base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -115,9 +115,6 @@
       <Filter>ContentsLevel\6. EndingLevel</Filter>
     </ClCompile>
     <ClCompile Include="TitleBackground.cpp">
-      <Filter>ContentsLevel\1. TitleLevel\TitleActor</Filter>
-    </ClCompile>
-    <ClCompile Include="SelectionMenu.cpp">
       <Filter>ContentsLevel\1. TitleLevel\TitleActor</Filter>
     </ClCompile>
     <ClCompile Include="SetPlayerName.cpp">
@@ -160,6 +157,9 @@
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClCompile>
     <ClCompile Include="MousePoint.cpp">
+      <Filter>ContentsLevel\0. PM2Base</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectionMenu.cpp">
       <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClCompile>
   </ItemGroup>

@@ -4,6 +4,8 @@ class GameEngineCollision;
 class MousePoint : public GameEngineActor
 {
 public:
+	static MousePoint* MainMouse;
+
 	// construtor destructor
 	MousePoint();
 	~MousePoint();
@@ -14,6 +16,7 @@ public:
 	MousePoint& operator=(const MousePoint& _Other) = delete;
 	MousePoint& operator=(MousePoint&& _Other) noexcept = delete;
 
+	
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -21,5 +24,7 @@ protected:
 
 private:
 	GameEngineCollision* MousePointCollision = nullptr;
+
+
 };
 

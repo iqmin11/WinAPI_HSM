@@ -20,17 +20,26 @@ public:
 	void CreateSelectionMenu(int _Order);
 	void CreateSelectionMenu(PM2RenderOrder _Order);
 
+	const std::vector<bool> GetIsMouseCollisions()
+	{
+		return IsMouseCollisions;
+	}
+
+
+
 protected:
 	void Start();
 	void Update(float _Deltatime);
 	void Render(float _Time);
 
 private:
-	std::vector<GameEngineRender*> HilightSelection = std::vector<GameEngineRender*>();
-	std::vector<GameEngineCollision*> SelectionCollision = std::vector<GameEngineCollision*>();
+	std::vector<GameEngineRender*> HilightSelections = std::vector<GameEngineRender*>();
+	std::vector<GameEngineCollision*> SelectionCollisions = std::vector<GameEngineCollision*>();
+	std::vector<bool> IsMouseCollisions = std::vector<bool>(false);
 	int CountSelection = 0;
 
 	void CreateSelectionRender(int _Order); // 선택지 글자와 충돌시 하이라이트 셀렉션 렌더
 	void CreateSelectionCollision();
+	void CreateIsMouseCollisions();
 };
 

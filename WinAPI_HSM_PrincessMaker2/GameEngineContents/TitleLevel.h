@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
 class SelectionMenu;
+class MousePoint;
 class TitleLevel : public GameEngineLevel
 {
 public:
@@ -18,6 +19,7 @@ public:
 	void Update(float _DeltaTime) override;
 	void LevelChangeEnd(GameEngineLevel* _NextLevel) override {};
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override {};
+
 protected:
 
 

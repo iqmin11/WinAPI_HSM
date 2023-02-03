@@ -4,12 +4,14 @@
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 
+#include "MousePoint.h"
 #include "SetPlayerName.h"
 #include "SetOliveName.h"
 #include "OliveCalendar.h"
 #include "PlayerCalendar.h"
 #include "SetPlayerAge.h"
 #include "SetOliveBooldType.h"
+#include "ContentsEnums.h"
 
 FirstSetLevel::FirstSetLevel()
 {
@@ -53,7 +55,6 @@ void FirstSetLevel::Loading()
 		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PlayerCalendarNum.BMP"));
 		Image->Cut(32, 3);
 	}
-
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OliveWeek.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PlayerWeek.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SetOliveBackground.BMP"));
@@ -65,7 +66,8 @@ void FirstSetLevel::Loading()
 	{
 		GameEngineInput::CreateKey("ActorChange", 'R');
 	}
-
+	
+	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	AcSetPlayerName = CreateActor<SetPlayerName>(static_cast<int>(ActorState::SetPlayerName));
 	AcSetOliveName = CreateActor<SetOliveName>(static_cast<int>(ActorState::SetOliveName));
 	AcOliveCalendar = CreateActor<OliveCalendar>(static_cast<int>(ActorState::OliveCalendar));
