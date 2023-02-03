@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
+class SelectionMenu;
 class TitleLevel : public GameEngineLevel
 {
 public:
@@ -21,6 +22,6 @@ protected:
 
 
 private:
-
+	SelectionMenu* TitleSelectionMenu = nullptr;
 };
 

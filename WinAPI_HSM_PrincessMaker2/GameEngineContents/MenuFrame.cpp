@@ -72,7 +72,6 @@ void MenuFrame::MenuFrameRender(const int _Order)
 		else if (i == 4)
 		{
 			FrameRender[i]->SetScale(MenuFrameSize - float4{ 32,32 });
-			FrameRender[i]->SetPosition({ 0,0 });
 		}
 
 		switch (i)

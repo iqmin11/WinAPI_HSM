@@ -7,9 +7,11 @@ enum class PM2RenderOrder
 	Map,
 	Contents,
 	Player,
-	Menu,
+	Menu0,
+	Menu1,
 	MugShotFrame,
-	MugShot
+	MugShot,
+	MousePoint
 };
 
 
@@ -19,5 +21,19 @@ enum class PM2ActorOrder
 	Map,
 	Contents,
 	Player,
-	Menu,
+	Menu0,
+	Menu1,
+	MousePoint
+};
+
+enum class PM2CollisionOrder
+{
+	BackGround,
+	Map,
+	Contents,
+	Player,
+	Menu0,
+	Menu1,
+	Selection,
+	MousePoint
 };

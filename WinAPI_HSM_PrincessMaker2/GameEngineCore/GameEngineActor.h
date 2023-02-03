@@ -102,6 +102,7 @@ private:
 	float4 Pos = { 0.0f, 0.0f };
 	std::list<GameEngineRender*> RenderList; // 렌더를 관리하는 식별자
 	std::list<GameEngineCollision*> CollisionList; 
-	
+
+	void Release();
 };
 

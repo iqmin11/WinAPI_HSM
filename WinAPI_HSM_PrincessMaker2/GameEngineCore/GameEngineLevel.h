@@ -28,6 +28,14 @@ public:
 	GameEngineLevel& operator=(const GameEngineLevel& _Other) = delete;
 	GameEngineLevel& operator=(GameEngineLevel&& _Other) noexcept = delete;
 
+	static void DebugRenderSwitch()
+	{
+		IsDebugRender = !IsDebugRender;
+	}
+
+	float4 GetMousePos();
+	float4 GetMousePosToCamera();
+
 	/// <summary>
 	/// 액터를 만드는 함수
 	/// </summary>
@@ -118,6 +126,10 @@ public:
 		return Result;
 	}
 		
+	static void DebugTextPush(const std::string& _DebugText)
+	{
+		DebugTexts.push_back(_DebugText);
+	}
 
 protected:
 	virtual void Loading() = 0;
@@ -127,7 +139,12 @@ protected:
 
 
 private:
+	static bool IsDebugRender;
+	
 	float4 CameraPos = float4::Zero;
+	
+	static float4 TextOutStart;
+	static std::vector<std::string> DebugTexts;
 	// 컨텐츠를 알아서도 안되지만
 	//std::list<Player*> Actors;
 	//std::list<Monster*> Actors;

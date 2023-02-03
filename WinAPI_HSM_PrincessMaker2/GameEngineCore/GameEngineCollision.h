@@ -23,6 +23,26 @@ class CollisionData
 public:
 	float4 Position;
 	float4 Scale;
+
+	float Left() const
+	{
+		return Position.x - Scale.hx();
+	}
+
+	float Right() const
+	{
+		return Position.x + Scale.hx();
+	}
+
+	float Top() const
+	{
+		return Position.y - Scale.hy();
+	}
+
+	float Bot() const
+	{
+		return Position.y + Scale.hy();
+	}
 };
 
 class CollisionFunctionInit;
@@ -32,7 +52,10 @@ class GameEngineCollision : public GameEngineComponent
 
 public:
 	static bool CollisionCirCleToCirCle(const CollisionData& _Left, const CollisionData& _Right);
+	static bool CollisionCirCleToPoint(const CollisionData& _Left, const CollisionData& _Right);
 	
+	static bool CollisionRectToRect(const CollisionData& _Left, const CollisionData& _Right);
+	static bool CollisionRectToPoint(const CollisionData& _Left, const CollisionData& _Right);
 	
 	// construtor destructor
 	GameEngineCollision();
@@ -52,10 +75,17 @@ public:
 
 	CollisionData GetCollisionData();
 
+	void SetDebugRenderType(CollisionType _DebugRenderType)
+	{
+		DebugRenderType = _DebugRenderType;
+	}
+
+	void DebugRender();
+
 protected:
 
 
 private:
-
+	CollisionType DebugRenderType = CollisionType::CT_CirCle;
 };
 

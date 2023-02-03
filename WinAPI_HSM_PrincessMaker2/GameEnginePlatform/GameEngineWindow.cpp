@@ -223,6 +223,8 @@ int GameEngineWindow::WindowLoop(void(*_Start)(), void(*_Loop)(), void(*_End)())
     return (int)msg.wParam;
 }
 
+
+
 void GameEngineWindow::SettingWindowSize(float4 _Size)
 {
 
@@ -257,4 +259,14 @@ void GameEngineWindow::SettingWindowPos(float4 _Pos)
 {
     WindowPos = _Pos;
     SetWindowPos(HWnd, nullptr, WindowPos.ix(), WindowPos.iy(), WindowSize.ix(), WindowSize.iy(), SWP_NOZORDER);
+}
+
+float4 GameEngineWindow::GetMousePosition()
+{
+    POINT MoniterPoint = POINT();
+    LPPOINT PointPtr = &MoniterPoint;
+    GetCursorPos(PointPtr);
+    ScreenToClient(HWnd, PointPtr);
+
+    return { static_cast<float>(MoniterPoint.x), static_cast<float>(MoniterPoint.y) };
 }
