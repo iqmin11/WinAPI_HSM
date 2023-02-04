@@ -5,9 +5,6 @@
     <ClInclude Include="Olive.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClInclude>
-    <ClInclude Include="Background.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
-    </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClInclude>
@@ -69,25 +66,34 @@
     <ClInclude Include="OpeningCredit.h">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClInclude>
-    <ClInclude Include="Flower.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
-    </ClInclude>
-    <ClInclude Include="Paint.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
-    </ClInclude>
     <ClInclude Include="MousePoint.h">
       <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClInclude>
     <ClInclude Include="SelectionMenu.h">
       <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClInclude>
+    <ClInclude Include="PM2Num.h">
+      <Filter>ContentsLevel\0. PM2Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="Flower.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="Paint.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicInfo.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenus</Filter>
+    </ClInclude>
+    <ClInclude Include="DateViewer.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenus</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
     <ClCompile Include="Olive.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
-    </ClCompile>
-    <ClCompile Include="Background.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
@@ -150,17 +156,29 @@
     <ClCompile Include="OpeningCredit.cpp">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClCompile>
-    <ClCompile Include="Flower.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
-    </ClCompile>
-    <ClCompile Include="Paint.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
-    </ClCompile>
     <ClCompile Include="MousePoint.cpp">
       <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClCompile>
     <ClCompile Include="SelectionMenu.cpp">
       <Filter>ContentsLevel\0. PM2Base</Filter>
+    </ClCompile>
+    <ClCompile Include="PM2Num.cpp">
+      <Filter>ContentsLevel\0. PM2Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="Flower.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="Paint.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicInfo.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenus</Filter>
+    </ClCompile>
+    <ClCompile Include="DateViewer.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenus</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +220,12 @@
     </Filter>
     <Filter Include="ContentsLevel\3. OpeningLevel\OpeningActor">
       <UniqueIdentifier>{b4e51cc0-6218-4453-b2f6-709ec5204ca0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Background">
+      <UniqueIdentifier>{4bf2dc17-6c2a-4b69-999f-1bfafa7bdf6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenus">
+      <UniqueIdentifier>{883bbca8-4cd7-4073-809f-cad424f45eed}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

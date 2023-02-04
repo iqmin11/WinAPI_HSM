@@ -26,7 +26,9 @@ protected:
 
 private:
 	Background* AcBackground = nullptr;
-	Flower* AcFlower = nullptr;
-	Paint* AcPaint= nullptr;
+	Flower* AcFlower = nullptr; 
+	Paint* AcPaint= nullptr; 
+
+	
 };
 

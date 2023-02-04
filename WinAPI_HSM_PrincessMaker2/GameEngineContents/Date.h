@@ -1,4 +1,17 @@
 #pragma once
+#include <vector>
+
+enum class Week
+{
+	SUN,
+	MON,
+	TUE,
+	WED,
+	THU,
+	FRI,
+	SAT
+};
+
 class Date
 {
 public:
@@ -13,6 +26,7 @@ public:
 	Date& operator=(Date&& _Other) noexcept = delete;
 	
 	bool IsOverMonth();
+	bool IsOverMonth(int _MM);
 	bool IsOverDay();
 	bool IsOverDay(int _YYYY, int _MM, int _DD);
 	bool IsOverWeekDay();
@@ -21,6 +35,8 @@ public:
 
 	void SetDate(int _YYYY, int _MM, int _DD)
 	{
+		IsOverMonth(_MM);
+		IsOverDay(_YYYY, _MM, _DD);
 		SetYear(_YYYY);
 		SetMonth(_MM);
 		SetDay(_DD);
@@ -59,7 +75,7 @@ public:
 		return Day;
 	}
 
-	int GetWeekDay() const
+	Week GetWeekDay() const
 	{
 		return WeekDay;
 	}
@@ -71,10 +87,10 @@ protected:
 
 private:
 
-	int Year = 0; // 제한 없음
-	int Month = 0; // 1~12
-	int Day = 0; // 1~31
-	int WeekDay = 0; // 0~6
+	unsigned int Year = 0; // 제한 없음
+	unsigned int Month = 0; // 1~12
+	unsigned int Day = 0; // 1~31
+	Week WeekDay = Week::SUN; // 0~6
 	int FindFirstWeekday(int _YYYY);
 
 };

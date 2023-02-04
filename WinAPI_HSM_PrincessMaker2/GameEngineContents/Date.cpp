@@ -19,6 +19,15 @@ bool Date::IsOverMonth()
     return true;
 }
 
+bool Date::IsOverMonth(int _MM)
+{
+    if (0 < _MM && 13 > _MM)
+    {
+        return false;
+    }
+    return true;
+}
+
 bool Date::IsOverDay()
 {
     if (1 == Month ||
@@ -159,7 +168,7 @@ void Date::SetWeekDay(int _YYYY, int _MM, int _DD)
             {
                 WholeDay++;
             }
-            WeekDay = ((WholeDay + FindFirstWeekday(_YYYY)) % 7);
+            WeekDay = static_cast<Week>((WholeDay + FindFirstWeekday(_YYYY)) % 7);
             return;
         }
         else
@@ -183,3 +192,4 @@ int Date::FindFirstWeekday()
     int PrevYear = Year - 1;
     return (PrevYear + ((PrevYear / 4) - (PrevYear / 100) + (PrevYear / 400)) + 1) % 7;
 }
+

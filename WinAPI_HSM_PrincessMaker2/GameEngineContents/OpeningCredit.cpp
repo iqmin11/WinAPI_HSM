@@ -1,4 +1,6 @@
 #include "OpeningCredit.h"
+#include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEngineCore/GameEngineRender.h>
 #include "ContentsEnums.h"
 
 OpeningCredit::OpeningCredit()
@@ -13,16 +15,22 @@ OpeningCredit::~OpeningCredit()
 
 void OpeningCredit::Start()
 {
+	SetPos(GameEngineWindow::GetScreenSize().half());
 	CreditRender = CreateRender("Credit.BMP", PM2RenderOrder::BackGround);
-	StartPos = { 400, 900 };
-	EndPos = { 400, -300 };
+	StartPos = { 0, 900 };
+	EndPos = { 0, -300 };
+	GameEngineRender* TopBox = CreateRender("BlackBox.BMP", PM2RenderOrder::BackGroundObj);
+	TopBox->SetPosition({0, -200});
+	GameEngineRender* BotBox = CreateRender("BlackBox.BMP", PM2RenderOrder::BackGroundObj);
+	BotBox->SetPosition({ 0, 200 });
+
 }
 
 void OpeningCredit::Update(float _DeltaTime)
 {
 	Time += _DeltaTime / ScrollTime; 
-	SetPos(float4::LerpClamp(StartPos, EndPos, Time));
-	if (EndPos.y >= GetPos().y)
+	CreditRender->SetPosition(float4::LerpClamp(StartPos, EndPos, Time));
+	if (EndPos.y >= CreditRender->GetPosition().y)
 	{
 		Off();
 	}

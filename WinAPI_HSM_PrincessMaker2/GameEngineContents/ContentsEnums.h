@@ -8,6 +8,7 @@ enum class PM2RenderOrder
 	Contents,
 	Player,
 	Menu0,
+	Menu0_1,
 	Menu1,
 	MugShotFrame,
 	MugShot,
@@ -22,6 +23,7 @@ enum class PM2ActorOrder
 	Contents,
 	Player,
 	Menu0,
+	Menu0_1,
 	Menu1,
 	MousePoint
 };
@@ -33,6 +35,7 @@ enum class PM2CollisionOrder
 	Contents,
 	Player,
 	Menu0,
+	Menu0_1,
 	Menu1,
 	Selection,
 	MousePoint
