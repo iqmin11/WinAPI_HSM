@@ -12,6 +12,7 @@
 #include "Paint.h"
 #include "DateViewer.h"
 #include "BasicInfo.h"
+#include "MainMenu.h"
 #include "ContentsEnums.h"
 
 RaisingSimLevel::RaisingSimLevel()
@@ -52,10 +53,13 @@ void RaisingSimLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Num.BMP"))->Cut(10, 1);
 	
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BasicInfo.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MainMenu.bmp"));
 
 	AcBackground = CreateActor<Background>(static_cast<int>(PM2ActorOrder::BackGround));
 	CreateActor<DateViewer>(PM2ActorOrder::Menu0);
 	CreateActor<BasicInfo>(PM2ActorOrder::Menu0);
+	CreateActor<MainMenu>(PM2ActorOrder::Menu0);
+
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	CreateActor<Olive>(PM2ActorOrder::Player);
 	CreateActor<Flower>(PM2ActorOrder::BackGround);
@@ -72,6 +76,4 @@ void RaisingSimLevel::Update(float _DeltaTime)
 		GameEngineCore::GetInst()->ChangeLevel("RPG");
 		// Player::MainPlayer->Death()p;
 	}
-
-
 }

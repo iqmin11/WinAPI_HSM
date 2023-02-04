@@ -16,7 +16,7 @@ public:
 	MenuFrame& operator=(const MenuFrame& _Other) = delete;
 	MenuFrame& operator=(MenuFrame&& _Other) noexcept = delete;
 
-	void SetMenuFrame(const float4& _pos, const float4& _TileBasedSize, const int _style = 2); //위치, 크기, 스타일
+	void SetMenuFrame(const float4& _pos, const float4& _Size, const int _style = 2); //위치, 크기, 스타일
 	void SetMenuFrameSize(const float4& _Size)
 	{
 		if (_Size.x < 34 || _Size.y < 34)
@@ -35,14 +35,6 @@ public:
 		MenuFrameStyle = _style;
 	}
 
-	void MenuFrameRender(const int _Order);
-	void MenuFrameRender(PM2RenderOrder _Order);
-	
-
-	void Start();
-	void Update(float _Deltatime);
-	void Render(float _Time);
-
 	GameEngineRender** GetFrameRender()
 	{
 		return FrameRender;
@@ -52,6 +44,16 @@ public:
 	{
 		return MenuFrameSize;
 	}
+
+	void MenuFrameRender(const int _Order);
+	void MenuFrameRender(PM2RenderOrder _Order);
+	
+
+	void Start();
+	void Update(float _Deltatime);
+	void Render(float _Time);
+
+	
 
 protected:
 	void SetMoveFrameRender(const float4& _Pos);

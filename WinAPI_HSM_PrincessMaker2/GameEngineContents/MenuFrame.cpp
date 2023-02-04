@@ -121,6 +121,7 @@ void MenuFrame::Start()
 
 void MenuFrame::Update(float _Deltatime)
 {
+
 }
 
 void MenuFrame::Render(float _Time)

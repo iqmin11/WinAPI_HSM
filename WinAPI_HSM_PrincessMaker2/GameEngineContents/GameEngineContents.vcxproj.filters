@@ -90,6 +90,9 @@
     <ClInclude Include="DateViewer.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenus</Filter>
     </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenus</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -180,6 +183,9 @@
     <ClCompile Include="DateViewer.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenus</Filter>
     </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsLevel">
@@ -226,6 +232,9 @@
     </Filter>
     <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenus">
       <UniqueIdentifier>{883bbca8-4cd7-4073-809f-cad424f45eed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenus\MainMenu">
+      <UniqueIdentifier>{8906baf2-f931-4055-a674-718fd5a84503}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
