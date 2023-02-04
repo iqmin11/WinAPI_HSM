@@ -25,6 +25,7 @@ void GameEngineCore::GlobalUpdate()
 		if (nullptr != PrevLevel)
 		{
 			PrevLevel->LevelChangeEnd(NextLevel);
+			PrevLevel->ActorLevelChangeEnd(NextLevel);
 		}
 
 		Core->MainLevel = NextLevel;
@@ -33,6 +34,7 @@ void GameEngineCore::GlobalUpdate()
 		if (nullptr != NextLevel)
 		{
 			NextLevel->LevelChangeStart(PrevLevel);
+			NextLevel->ActorLevelChangeStart(PrevLevel);
 		}
 	}
 	
@@ -89,6 +91,12 @@ GameEngineCore::~GameEngineCore()
 
 void GameEngineCore::CoreStart(HINSTANCE _instance)
 {
+	if (false == GameEngineInput::IsKey("EngineMouseLeft"))
+	{
+		GameEngineInput::CreateKey("EngineMouseLeft", VK_LBUTTON);
+		GameEngineInput::CreateKey("EngineMouseRight", VK_RBUTTON);
+	}
+
 	GameEngineWindow::WindowCreate(_instance, "PrincessMaker2", { 800, 600 }, { 0, 0 });
 	GameEngineWindow::WindowLoop(GameEngineCore::GlobalStart, GameEngineCore::GlobalUpdate, GameEngineCore::GlobalEnd);
 }

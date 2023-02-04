@@ -45,6 +45,7 @@ void TitleLevel::Loading()
 	}
 
 	Dir.Move("TitleLevel");
+
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TitleBackground.BMP"));
 
 	if (false == GameEngineInput::IsKey("LevelChange"))
