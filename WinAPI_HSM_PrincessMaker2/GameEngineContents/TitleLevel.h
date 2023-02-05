@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
 class SelectionMenu;
+class MenuFrame;
 class MousePoint;
 class TitleLevel : public GameEngineLevel
 {
@@ -24,6 +25,7 @@ protected:
 
 
 private:
-	SelectionMenu* TitleSelectionMenu = nullptr;
+	//SelectionMenu* TitleSelectionMenu = nullptr;
+	MenuFrame* TestMenuFrame = nullptr;
 };
 

@@ -72,7 +72,7 @@ protected:
 
 
 private:
-	int Order;
+	int Order =-123123;
 
 	GameEngineObject* Parent = nullptr; // 오브젝트가 오브젝트를 가지고 있는 경우인거지 ex) 주인공과 주인공의 무기
 

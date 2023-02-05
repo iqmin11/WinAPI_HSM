@@ -59,9 +59,16 @@ void TitleLevel::Loading()
 	}
 	CreateActor<TitleBackground>(PM2ActorOrder::BackGround);
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
-	TitleSelectionMenu = CreateActor<SelectionMenu>(PM2ActorOrder::Menu0);
-	TitleSelectionMenu->SetSelectionMenu(GameEngineWindow::GetScreenSize().half(), { 230,112 }, 0, 3);
-	TitleSelectionMenu->CreateSelectionMenu(PM2RenderOrder::Menu0);
+	TestMenuFrame = CreateActor<MenuFrame>(PM2ActorOrder::Menu0);
+	
+	//TitleSelectionMenu = CreateActor<SelectionMenu>(PM2ActorOrder::Menu0);
+	//TitleSelectionMenu->SetMenuFrameStyle(0, static_cast<int>(PM2RenderOrder::Menu0));
+	//TitleSelectionMenu->SetScale({ 230,112 });
+	//TitleSelectionMenu->SetSelection(3, static_cast<int>(PM2ActorOrder::Menu0_Button));
+	//TitleSelectionMenu->SetPos(GameEngineWindow::GetScreenSize().half());
+
+	//TitleSelectionMenu->SetSelectionMenu(GameEngineWindow::GetScreenSize().half(), { 230,112 }, 0, 3);
+	//TitleSelectionMenu->CreateSelectionMenu(PM2RenderOrder::Menu0);
 }
 
 void TitleLevel::Update(float _DeltaTime)
@@ -71,18 +78,18 @@ void TitleLevel::Update(float _DeltaTime)
 		GameEngineCore::GetInst()->ChangeLevel("FirstSet");
 	}
 
-	if (true == GameEngineInput::IsDown("MouseLeftClick") && TitleSelectionMenu->GetIsMouseCollisions()[0])
-	{
-		GameEngineCore::GetInst()->ChangeLevel("FirstSet");
-	}
+	//if (true == GameEngineInput::IsDown("MouseLeftClick") && TitleSelectionMenu->GetIsMouseCollisions()[0])
+	//{
+	//	GameEngineCore::GetInst()->ChangeLevel("FirstSet");
+	//}
 
-	if (true == GameEngineInput::IsDown("MouseLeftClick") && TitleSelectionMenu->GetIsMouseCollisions()[1])
-	{
-		GameEngineCore::GetInst()->ChangeLevel("Opening");
-	}
+	//if (true == GameEngineInput::IsDown("MouseLeftClick") && TitleSelectionMenu->GetIsMouseCollisions()[1])
+	//{
+	//	GameEngineCore::GetInst()->ChangeLevel("Opening");
+	//}
 
-	if (true == GameEngineInput::IsDown("MouseLeftClick") && TitleSelectionMenu->GetIsMouseCollisions()[2])
-	{
-		GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
-	}
+	//if (true == GameEngineInput::IsDown("MouseLeftClick") && TitleSelectionMenu->GetIsMouseCollisions()[2])
+	//{
+	//	GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
+	//}
 }

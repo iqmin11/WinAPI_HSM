@@ -34,9 +34,9 @@ std::vector<unsigned int> GameEngineMath::GetDigits(unsigned int _Value)
 	int HighestDigitValue = 0;
 	for (size_t i = 0; i < Lenth; i++)
 	{
-		HighestDigitValue = Value / pow(10, Lenth - (1 + i));
+		HighestDigitValue = Value / static_cast<int>(pow(10, Lenth - (1 + i)));
 		ResultValue[i] = HighestDigitValue;
-		Value -= HighestDigitValue * pow(10, Lenth - (1 + i));
+		Value -= HighestDigitValue * static_cast<int>(pow(10, Lenth - (1 + i)));
 	}
 
     return ResultValue;

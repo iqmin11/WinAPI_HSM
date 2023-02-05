@@ -1,5 +1,6 @@
 #include "BasicInfo.h"
 
+#include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineRender.h>
 
 #include "ContentsEnums.h"
@@ -16,6 +17,7 @@ BasicInfo::~BasicInfo()
 
 void BasicInfo::Start()
 {
+	SetName("HwangSeungMin");
 	SetPos({700, 109});
 	SetAge(10);
 	SetStar(Zodiac::Leo); // 이건 아이콘 액터를 만들고 렌더하자
@@ -28,7 +30,7 @@ void BasicInfo::Start()
 	
 	BasicInfoFrame = CreateRender("BasicInfo.bmp",PM2RenderOrder::Menu0); // 베이직 인포 프레임 렌더
 
-	AgeRender.resize(GameEngineMath::GetLenth(Age)); // 나이 렌더
+	AgeRender.resize(GameEngineMath::GetLenth(Age)); // 나이 렌더 위치가 가운데 기준으로 랜더됨
 	for (size_t i = 0; i < AgeRender.size(); i++) 
 	{
 		AgeRender[i] = CreateRender("Num_Age.bmp", PM2RenderOrder::Menu0_Display);
@@ -37,7 +39,7 @@ void BasicInfo::Start()
 		AgeRender[i]->SetPosition(float4{-70, -20} + (float4::Left * AgeRender[i]->GetScale().half()) * (static_cast<float>(AgeRender.size()) - 1.0f) + (float4::Right * AgeRender[i]->GetScale()) * static_cast<float>(i));
 	}
 
-	GoldRender.resize(GameEngineMath::GetLenth(Gold)); // 돈 렌더
+	GoldRender.resize(GameEngineMath::GetLenth(Gold)); // 돈 렌더 위치가 가장 끝자리를 기준으로 랜더됨
 	for (size_t i = 0; i < GoldRender.size(); i++)
 	{
 		GoldRender[i] = CreateRender("Num.bmp", PM2RenderOrder::Menu0_Display);
@@ -106,4 +108,6 @@ void BasicInfo::Update(float _DeltaTime)
 
 void BasicInfo::Render(float _Time)
 {
+	//HDC TestDC = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
+	//TextOutA(TestDC, GetPos().ix(), GetPos().iy(), OliveName.c_str(), OliveName.size());
 }

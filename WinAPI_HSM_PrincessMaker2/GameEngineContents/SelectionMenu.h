@@ -16,9 +16,10 @@ public:
 	SelectionMenu& operator=(const SelectionMenu& _Other) = delete;
 	SelectionMenu& operator=(SelectionMenu&& _Other) noexcept = delete;
 
-	void SetSelectionMenu(const float4& _pos, const float4& _Size, const int _style, int _Count);
-	void CreateSelectionMenu(int _Order);
-	void CreateSelectionMenu(PM2RenderOrder _Order);
+	//void SetSelectionMenu(const float4& _pos, const float4& _Size, const int _style, int _Count);
+	void SetSelection(int _Count, int _Order);
+	//void CreateSelectionMenu(int _Order);
+	//void CreateSelectionMenu(PM2RenderOrder _Order);
 
 	const std::vector<bool> GetIsMouseCollisions()
 	{

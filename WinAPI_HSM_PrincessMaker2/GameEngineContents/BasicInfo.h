@@ -1,6 +1,8 @@
 #pragma once
-#include <GameEngineCore/GameEngineActor.h>
 #include <vector>
+#include <string>
+
+#include <GameEngineCore/GameEngineActor.h>
 
 enum class Zodiac //이것도 나중에 올리브에 옮기기
 {
@@ -33,6 +35,11 @@ public:
 	BasicInfo(BasicInfo&& _Other) noexcept = delete;
 	BasicInfo& operator=(const BasicInfo& _Other) = delete;
 	BasicInfo& operator=(BasicInfo&& _Other) noexcept = delete;
+
+	void SetName(const std::string_view& _Name)
+	{
+		OliveName = _Name;
+	}
 
 	void SetAge(int _age)
 	{
@@ -81,6 +88,7 @@ protected:
 
 private:
 	
+	std::string OliveName = "\0";
 	int Age = 0; // 이건 올리브
 	Zodiac Star = Zodiac::Null; // 이건 올리브
 	int Gold = 0; // 이건 올리브

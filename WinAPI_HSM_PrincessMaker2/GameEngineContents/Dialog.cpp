@@ -142,7 +142,7 @@ void Dialog::Start()
 
 void Dialog::Update(float _DeltaTime)
 {
-	MenuFrameRender(PM2RenderOrder::Menu0); // 먼가...먼가잘못댐
+	InitMenuFrame(PM2RenderOrder::Menu0); // 먼가...먼가잘못댐
 	MugShotRender();
 	if (IsMugShot)
 	{

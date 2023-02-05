@@ -155,3 +155,27 @@ firstset에서 달력 액터에는 마우스와 충돌할 충돌체들의 배열과, 해당 충돌체마다 반
 특히 셀렉션메뉴 등 메뉴프레임을 이용한 액터의 생성에서 정리가 필요함 꼭 확인할것
 나이 등 수치와 관련한 능력치등은 모두 한계치를 생각하면서 만들어야함
 나중에 예외처리할수있도록
+
+윈도우에서 지원해주는 HDC를 이용해서 그림을 그리는데,,, 그 그림을 렌더러로 바꾸는 방법이 필요해
+마치 GameEngineImage를 Render로 관리하는것처럼...
+
+랜더를 구성하는 순서
+AgeRender[i] = CreateRender ->랜더를 만들고
+AgeRender[i]->SetScale -> 크기를 정하고
+AgeRender[i]->SetFrame -> 프레임을 정하고(잘려있다면)
+AgeRender[i]->SetPosition -> 위치를 정한다
+
+셀렉션 액터를 구성하는 순서를 정하자
+AcTitleSelectionMenu = CreateActor<SelectionMenu> -> 액터를 만들고
+AcTitleSelectionMenu->SetScale -> 크기를 정하고
+
+AcTitleSelectionMenu->SetSelection -> 선택지 개수를 정하고
+AcTitleSelectionMenu->SetSelection -> 선택지에 들어갈 TextOut렌더를... 근데 얘네 둘은 합쳐져야댐
+
+AcTitleSelectionMenu->SetPos -> 위치를 정하면 완성
+
+
+
+
+
+
