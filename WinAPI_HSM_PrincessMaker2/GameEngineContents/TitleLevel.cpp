@@ -57,11 +57,11 @@ void TitleLevel::Loading()
 	{
 		GameEngineInput::CreateKey("MouseLeftClick", VK_LBUTTON);
 	}
-	CreateActor<TitleBackground>(0);
+	CreateActor<TitleBackground>(PM2ActorOrder::BackGround);
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
-	TitleSelectionMenu = CreateActor<SelectionMenu>(1);
+	TitleSelectionMenu = CreateActor<SelectionMenu>(PM2ActorOrder::Menu0);
 	TitleSelectionMenu->SetSelectionMenu(GameEngineWindow::GetScreenSize().half(), { 230,112 }, 0, 3);
-	TitleSelectionMenu->CreateSelectionMenu(10);
+	TitleSelectionMenu->CreateSelectionMenu(PM2RenderOrder::Menu0);
 }
 
 void TitleLevel::Update(float _DeltaTime)

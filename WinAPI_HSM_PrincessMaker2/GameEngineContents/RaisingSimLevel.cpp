@@ -53,6 +53,7 @@ void RaisingSimLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Num.BMP"))->Cut(10, 1);
 	
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BasicInfo.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Num_Age.BMP"))->Cut(10,1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MainMenu.bmp"));
 
 	AcBackground = CreateActor<Background>(static_cast<int>(PM2ActorOrder::BackGround));

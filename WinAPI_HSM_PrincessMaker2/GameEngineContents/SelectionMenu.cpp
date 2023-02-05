@@ -94,7 +94,7 @@ void SelectionMenu::CreateSelectionCollision()
 
 	for (int i = 0; i < SelectionCollisions.size(); i++)
 	{
-		SelectionCollisions[i] = CreateCollision(PM2CollisionOrder::Selection);
+		SelectionCollisions[i] = CreateCollision(PM2CollisionOrder::Menu0_Button);
 		SelectionCollisions[i]->SetScale(float4{ GetMenuFrameSize().x - 10, 25.0f });
 		SelectionCollisions[i]->SetMove((float4::Up * GetMenuFrameSize().half() + float4{ 0, 30.0f }));
 		SelectionCollisions[i]->SetMove(float4{ 0, 25.0f * static_cast<float>(i) });

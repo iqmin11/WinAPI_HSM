@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 
+#include <GameEngineBase/GameEngineDebug.h>
+
 enum class Week
 {
 	SUN,
@@ -35,8 +37,11 @@ public:
 
 	void SetDate(int _YYYY, int _MM, int _DD)
 	{
-		IsOverMonth(_MM);
-		IsOverDay(_YYYY, _MM, _DD);
+		if (IsOverMonth(_MM) ||
+			IsOverDay(_YYYY, _MM, _DD))
+		{
+			MsgAssert("입력가능한 날짜를 벗어났습니다")
+		}
 		SetYear(_YYYY);
 		SetMonth(_MM);
 		SetDay(_DD);
