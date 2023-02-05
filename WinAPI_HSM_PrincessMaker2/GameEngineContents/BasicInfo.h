@@ -83,7 +83,7 @@ private:
 	
 	int Age = 0; // 이건 올리브
 	Zodiac Star = Zodiac::Null; // 이건 올리브
-	int Gold = 0; // 이건 레벨에 옮겨서 받아쓰기만하기 누가가질지 고민해볼필요가 있네요 이건
+	int Gold = 0; // 이건 올리브
 	float Height = 0.0f; // 이건 올리브
 	float Weight = 0.0f; // 이건 올리브
 	float Bust = 0.0f; // 이건 올리브
@@ -91,8 +91,14 @@ private:
 	float Hip = 0.0f; // 이건 올리브
 
 	GameEngineRender* BasicInfoFrame = nullptr;
-	GameEngineRender* AgeRender[2] = {};
+	std::vector<GameEngineRender*> AgeRender = std::vector<GameEngineRender*>();
 	GameEngineRender* StarRender = nullptr;
 	std::vector<GameEngineRender*> GoldRender = std::vector<GameEngineRender*>();
+	std::vector<GameEngineRender*> HeightRender = std::vector<GameEngineRender*>();
+	std::vector<GameEngineRender*> WeightRender = std::vector<GameEngineRender*>();
+	std::vector<GameEngineRender*> BustRender = std::vector<GameEngineRender*>();
+	std::vector<GameEngineRender*> WaistRender = std::vector<GameEngineRender*>();
+	std::vector<GameEngineRender*> HipRender = std::vector<GameEngineRender*>();
+
 };
 
