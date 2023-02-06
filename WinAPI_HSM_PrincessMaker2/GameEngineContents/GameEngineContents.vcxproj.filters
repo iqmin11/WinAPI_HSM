@@ -90,6 +90,9 @@
     <ClInclude Include="MainMenu.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenus</Filter>
     </ClInclude>
+    <ClInclude Include="TitleMenu.h">
+      <Filter>ContentsLevel\1. TitleLevel\TitleActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -179,6 +182,9 @@
     </ClCompile>
     <ClCompile Include="MainMenu.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenus</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleMenu.cpp">
+      <Filter>ContentsLevel\1. TitleLevel\TitleActor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

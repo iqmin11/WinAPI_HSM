@@ -13,121 +13,66 @@ SelectionMenu::~SelectionMenu()
 
 }
 
-//void SelectionMenu::SetSelectionMenu(const float4& _pos, const float4& _Size, const int _style, int _Count)
-//{
-//	SetMenuFrame(_pos, _Size, _style);
-//	CountSelection = _Count;
-//}
-
-void SelectionMenu::SetSelection(int _Count, int _Order)
+void SelectionMenu::SetButton(int _Count, int _Order)
 {
-	HilightSelections.resize(_Count);
+	CountButton = _Count;
+	HilightButton.resize(_Count);
 
-	for (int i = 0; i < HilightSelections.size(); i++)
+	for (int i = 0; i < HilightButton.size(); i++)
 	{
-		HilightSelections[i] = CreateRender("SelectionHilight.bmp", _Order);
-		HilightSelections[i]->SetScale(float4{ GetMenuFrameSize().x - 10, 25.0f });
-		HilightSelections[i]->SetMove((float4::Up * GetMenuFrameSize().half() + float4{ 0, 30.0f }));
-		HilightSelections[i]->SetMove(float4{ 0, 25.0f * static_cast<float>(i) });
-		HilightSelections[i]->Off();
+		HilightButton[i] = CreateRender("SelectionHilight.bmp", _Order);
+		HilightButton[i]->SetScale(float4{ GetMenuFrameSize().x - 10, 25.0f });
+		HilightButton[i]->SetMove((float4::Up * GetMenuFrameSize().half() + float4{ 0, 30.0f }));
+		HilightButton[i]->SetMove(float4{ 0, 25.0f * static_cast<float>(i) });
+		HilightButton[i]->Off();
 	}
 
-	SelectionCollisions.resize(CountSelection);
+	ButtonCollisions.resize(_Count);
 
-	for (int i = 0; i < SelectionCollisions.size(); i++)
+	for (int i = 0; i < ButtonCollisions.size(); i++)
 	{
-		SelectionCollisions[i] = CreateCollision(_Order + 1);
-		SelectionCollisions[i]->SetScale(float4{ GetMenuFrameSize().x - 10, 25.0f });
-		SelectionCollisions[i]->SetMove((float4::Up * GetMenuFrameSize().half() + float4{ 0, 30.0f }));
-		SelectionCollisions[i]->SetMove(float4{ 0, 25.0f * static_cast<float>(i) });
+		ButtonCollisions[i] = CreateCollision(_Order + 1);
+		ButtonCollisions[i]->SetScale(float4{ GetMenuFrameSize().x - 10, 25.0f });
+		ButtonCollisions[i]->SetMove((float4::Up * GetMenuFrameSize().half() + float4{ 0, 30.0f }));
+		ButtonCollisions[i]->SetMove(float4{ 0, 25.0f * static_cast<float>(i) });
 	}
+
+	IsMouseCollisions.resize(_Count);
 }
 
-//void SelectionMenu::CreateSelectionMenu(int _Order)
-//{
-//	InitMenuFrame(_Order);
-//	CreateSelectionRender(_Order + 1);
-//	CreateSelectionCollision();
-//	CreateIsMouseCollisions();
-//}
-
-//void SelectionMenu::CreateSelectionMenu(PM2RenderOrder _Order)
-//{
-//	CreateSelectionMenu(static_cast<int>(_Order));
-//}
-
-
+void SelectionMenu::SetButton(int _Count, PM2RenderOrder _Order)
+{
+	SetButton(_Count, static_cast<int>(_Order));
+}
 
 void SelectionMenu::Start()
 {
-	
+	//사용법 예시
+	//InitMenuFrameRender(0, PM2RenderOrder::Menu0);
+	//SetMenuFrameScale({ 230,112 });
+	//SetPos({ GameEngineWindow::GetScreenSize().half() });
+	//SetButton(3,PM2RenderOrder::Menu0_Button);
 }
 
 void SelectionMenu::Update(float _Deltatime)
 {
-	std::vector<GameEngineCollision*> Collision;
-	for (size_t i = 0; i < CountSelection; i++)
+	for (size_t i = 0; i < ButtonCollisions.size(); i++)
 	{
-		if (nullptr != SelectionCollisions[i])
+		if (true == ButtonCollisions[i]->Collision({ .TargetGroup = static_cast<int>(PM2CollisionOrder::MousePoint), .TargetColType = CT_Point, .ThisColType = CT_Rect }))
 		{
-			if (true == SelectionCollisions[i]->Collision({ .TargetGroup = static_cast<int>(PM2CollisionOrder::MousePoint), .TargetColType = CT_Point, .ThisColType = CT_Rect }, Collision))
-			{
-				HilightSelections[i]->On();
-				IsMouseCollisions[i] = true;
-			}
-			else
-			{
-				HilightSelections[i]->Off();
-				IsMouseCollisions[i] = false;
-			}
+			HilightButton[i]->On();
+			IsMouseCollisions[i] = true;
+		}
+		else
+		{
+			HilightButton[i]->Off();
+			IsMouseCollisions[i] = false;
 		}
 	}
-	
 }
 
 void SelectionMenu::Render(float _Time)
 {
-	//HDC DoubleDC = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
-	//float4 ActorPos = GetPos();
 
-	//Rectangle(DoubleDC,
-	//	ActorPos.ix() - 8,
-	//	ActorPos.iy() - 8,
-	//	ActorPos.ix() + 8,
-	//	ActorPos.iy() + 8
-	//); // 디버깅용
 }
-
-//void SelectionMenu::CreateSelectionRender(int _Order)
-//{
-//	HilightSelections.resize(CountSelection);
-//
-//	for (int i = 0; i < HilightSelections.size(); i++)
-//	{
-//		HilightSelections[i] = CreateRender("SelectionHilight.bmp", _Order);
-//		HilightSelections[i]->SetScale(float4{ GetMenuFrameSize().x - 10, 25.0f});
-//		HilightSelections[i]->SetMove((float4::Up * GetMenuFrameSize().half() + float4{0, 30.0f}));
-//		HilightSelections[i]->SetMove(float4{ 0, 25.0f * static_cast<float>(i) });
-//		HilightSelections[i]->Off();
-//	}
-//}
-
-//void SelectionMenu::CreateSelectionCollision()
-//{
-//	SelectionCollisions.resize(CountSelection);
-//
-//	for (int i = 0; i < SelectionCollisions.size(); i++)
-//	{
-//		SelectionCollisions[i] = CreateCollision(PM2CollisionOrder::Menu0_Button);
-//		SelectionCollisions[i]->SetScale(float4{ GetMenuFrameSize().x - 10, 25.0f });
-//		SelectionCollisions[i]->SetMove((float4::Up * GetMenuFrameSize().half() + float4{ 0, 30.0f }));
-//		SelectionCollisions[i]->SetMove(float4{ 0, 25.0f * static_cast<float>(i) });
-//	}
-//}
-
-void SelectionMenu::CreateIsMouseCollisions()
-{
-	IsMouseCollisions.resize(CountSelection);
-}
-
 

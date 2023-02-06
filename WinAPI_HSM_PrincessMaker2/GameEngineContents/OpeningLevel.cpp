@@ -53,9 +53,10 @@ void OpeningLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OpeningDate.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TitleLogo.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Mug_Devil.BMP"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Mug_Uranos_God.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BlackBox.BMP"));
 	
-	//UpperDialog = CreateActor<Dialog>();
+	UpperDialog = CreateActor<Dialog>();
 	//UpperDialog->SetDialog(MugShotLR::Left, GameEngineWindow::GetScreenSize().half(), "Mug_Devil.BMP");
 	//UpperDialog->Off();
 	

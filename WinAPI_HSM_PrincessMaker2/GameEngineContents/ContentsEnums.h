@@ -11,6 +11,7 @@ enum class PM2RenderOrder
 	Menu0_Button,
 	Menu0_Display,
 	Menu1,
+	Dialog,
 	MugShotFrame,
 	MugShot,
 	MousePoint
@@ -28,6 +29,7 @@ enum class PM2ActorOrder
 	Menu0_Button,
 	Menu0_Display,
 	Menu1,
+	Dialog,
 	MugShotFrame,
 	MugShot,
 	MousePoint
@@ -44,6 +46,7 @@ enum class PM2CollisionOrder
 	Menu0_Button,
 	Menu0_Display,
 	Menu1,
+	Dialog,
 	MugShotFrame,
 	MugShot,
 	MousePoint

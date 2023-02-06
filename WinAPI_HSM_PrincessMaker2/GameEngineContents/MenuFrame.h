@@ -16,13 +16,12 @@ public:
 	MenuFrame& operator=(const MenuFrame& _Other) = delete;
 	MenuFrame& operator=(MenuFrame&& _Other) noexcept = delete;
 
-	//void SetMenuFrame(const float4& _pos, const float4& _Scale, const int _style = 2); //위치, 크기, 스타일
-	void InitMenuFrameRender(const int _style, int _Order);
-	void InitMenuFrameRender(const int _style, PM2RenderOrder _Order);
+	void InitMenuFrameRender(int _Order, const int _style = 2);
+	void InitMenuFrameRender(PM2RenderOrder _Order, const int _style = 2);
 	void SetMenuFrameScale(const float4& _Scale);
 	
 
-	GameEngineRender** GetFrameRender()
+	GameEngineRender** GetFrameRender() 
 	{
 		return FrameRender;
 	}
@@ -34,10 +33,6 @@ public:
 
 	//void InitMenuFrame(const int _Order);
 	//void MenuFrameRender(PM2RenderOrder _Order);
-	
-
-
-	
 
 protected:
 	void SetMoveFrameRender(const float4& _Pos);
