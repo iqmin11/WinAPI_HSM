@@ -6,7 +6,7 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 
 #include "MousePoint.h"
-#include "Dialog.h"
+#include "UpperDialog.h"
 #include "Cutscene.h"
 #include "OpeningCredit.h"
 #include "ContentsEnums.h"
@@ -56,7 +56,8 @@ void OpeningLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Mug_Uranos_God.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BlackBox.BMP"));
 	
-	UpperDialog = CreateActor<Dialog>();
+	AcUpperDialog = CreateActor<UpperDialog>();
+	AcUpperDialog->Off();
 	//UpperDialog->SetDialog(MugShotLR::Left, GameEngineWindow::GetScreenSize().half(), "Mug_Devil.BMP");
 	//UpperDialog->Off();
 	
@@ -92,29 +93,32 @@ void OpeningLevel::Update(float _DeltaTime)
 		//InputMug, InputScript ¸¸µé±â
 		AcCutScene->OnBlackBackground();
 		AcCutScene->ChangeRenderScene(0);
-		//UpperDialog->On();
-
 	}
 	else if (5 <= Time && 10 > Time)//(20 <= Time && 35 > Time)
 	{
 		AcCutScene->OffBlackBackground();
 		AcCutScene->ChangeRenderScene(1);
-		//BottomDialog->On();
-		//UpperDialog->Off();
 
+		AcUpperDialog->On();
+		AcUpperDialog->SetMugPic("Mug_Devil.bmp");
+		AcUpperDialog->SetMugLoc(MugShotLR::Left);
 	}
 	else if (10 <= Time && 15 > Time)//(35 <= Time && 75 > Time)
 	{
 		AcCutScene->ChangeRenderScene(2);
+		AcUpperDialog->SetMugPic("Mug_Uranos_God.bmp");
+		AcUpperDialog->SetMugLoc(MugShotLR::Right);
 	}
 	else if (15 <= Time && 20 > Time)//(75 <= Time && 115 > Time)
 	{
 		AcCutScene->ChangeRenderScene(3);
+		AcUpperDialog->SetMugLoc(MugShotLR::Non);
 	}
 	else if (20 <= Time && 22> Time)//(115 <= Time && 119> Time)
 	{
 		AcCutScene->OnBlackBackground();
 		AcCutScene->ChangeRenderScene(0);
+		AcUpperDialog->Off();
 	}
 	else if (22 <= Time && 27> Time)//(119 <= Time && 122 > Time)
 	{

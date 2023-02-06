@@ -93,6 +93,12 @@
     <ClInclude Include="TitleMenu.h">
       <Filter>ContentsLevel\1. TitleLevel\TitleActor</Filter>
     </ClInclude>
+    <ClInclude Include="UpperDialog.h">
+      <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
+    </ClInclude>
+    <ClInclude Include="BottomDialog.h">
+      <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -185,6 +191,12 @@
     </ClCompile>
     <ClCompile Include="TitleMenu.cpp">
       <Filter>ContentsLevel\1. TitleLevel\TitleActor</Filter>
+    </ClCompile>
+    <ClCompile Include="UpperDialog.cpp">
+      <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
+    </ClCompile>
+    <ClCompile Include="BottomDialog.cpp">
+      <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

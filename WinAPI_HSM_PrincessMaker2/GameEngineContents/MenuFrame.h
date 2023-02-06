@@ -31,6 +31,10 @@ public:
 		return MenuFrameScale;
 	}
 
+	void FrameRenderOn();
+	
+	void FrameRenderOff();
+	
 	//void InitMenuFrame(const int _Order);
 	//void MenuFrameRender(PM2RenderOrder _Order);
 

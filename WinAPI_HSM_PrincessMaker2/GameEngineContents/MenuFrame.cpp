@@ -149,6 +149,22 @@ void MenuFrame::Render(float _Time)
 
 }
 
+void MenuFrame::FrameRenderOn()
+{
+	for (auto i : FrameRender)
+	{
+		i->On();
+	}
+}
+
+void MenuFrame::FrameRenderOff()
+{
+	for (auto i : FrameRender)
+	{
+		i->Off();
+	}
+}
+
 void MenuFrame::SetMoveFrameRender(const float4& _Pos)
 {
 	for (auto i : FrameRender)
