@@ -140,7 +140,7 @@ void Dialog::Start()
 {
 	InitMenuFrameRender(PM2RenderOrder::Dialog); // 고정
 	SetMenuFrameScale({ 310,150 }); // 고정
-	
+	Off();
 	//사용법 예시
 	//SetPos({ GameEngineWindow::GetScreenSize().half()});
 	//SetMugPic("Mug_Uranos_God.bmp");

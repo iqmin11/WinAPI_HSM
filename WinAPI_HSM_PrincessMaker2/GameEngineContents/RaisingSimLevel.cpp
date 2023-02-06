@@ -13,6 +13,10 @@
 #include "DateViewer.h"
 #include "BasicInfo.h"
 #include "MainMenu.h"
+#include "StatusWindow.h"
+#include "Calendar.h"
+#include "ConverstionSelectionMenu.h"
+#include "DietSelectionMenu.h"
 #include "ContentsEnums.h"
 
 RaisingSimLevel::RaisingSimLevel()
@@ -55,6 +59,11 @@ void RaisingSimLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BasicInfo.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Num_Age.BMP"))->Cut(10,1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MainMenu.bmp"));
+	
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("StatusGaugeFrame.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("StatusGauge.bmp"));
+	
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Calendar.bmp"));
 
 	AcBackground = CreateActor<Background>(static_cast<int>(PM2ActorOrder::BackGround));
 	CreateActor<DateViewer>(PM2ActorOrder::Menu0);
@@ -65,7 +74,10 @@ void RaisingSimLevel::Loading()
 	CreateActor<Olive>(PM2ActorOrder::Player);
 	CreateActor<Flower>(PM2ActorOrder::BackGround);
 	CreateActor<Paint>(PM2ActorOrder::BackGround);
-
+	//CreateActor<Calendar>(PM2ActorOrder::Menu1);
+	CreateActor<StatusWindow>(PM2ActorOrder::Menu1);
+	//CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
+	CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
 	//CreateActor<Animation>(2);
 
 }
