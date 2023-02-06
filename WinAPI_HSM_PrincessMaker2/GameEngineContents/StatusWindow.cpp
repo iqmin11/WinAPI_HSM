@@ -19,19 +19,36 @@ void StatusWindow::SetStatusCount(int _Count)
 
 void StatusWindow::SetStatusFrameRender(int _Order)
 {
-	StatusGaugeFrameRender.resize(StatusCount);
 	SetMenuFrameScale({220.0f + 20.0f,(static_cast<float>(StatusCount)*20.0f)+20.0f});
-	for (size_t i = 0; i < StatusGaugeFrameRender.size(); i++)
+	StatusGaugeFrameRender_Layer1.resize(StatusCount);
+	for (int i = 0; i < StatusGaugeFrameRender_Layer1.size(); i++)
 	{
-		StatusGaugeFrameRender[i] = CreateRender("StatusGaugeFrame.bmp", _Order);
-		StatusGaugeFrameRender[i]->SetPosition(float4::Up * (StatusGaugeFrameRender[i]->GetScale().half())*static_cast<float>(StatusGaugeFrameRender.size() - 1) + float4::Down * (StatusGaugeFrameRender[i]->GetScale()) * static_cast<float>(i));
+		StatusGaugeFrameRender_Layer1[i] = CreateRender("StatusGaugeFrame_Layer1.bmp", _Order);
+		StatusGaugeFrameRender_Layer1[i]->SetPosition(float4::Up * (StatusGaugeFrameRender_Layer1[i]->GetScale().half()) * static_cast<float>(StatusGaugeFrameRender_Layer1.size() - 1) + float4::Down * (StatusGaugeFrameRender_Layer1[i]->GetScale()) * static_cast<float>(i));
 	}
 
 	StatusGaugeRender.resize(StatusCount);
-	for (size_t i = 0; i < StatusGaugeRender.size(); i++)
+	for (int i = 0; i < StatusGaugeRender.size(); i++)
 	{
-		StatusGaugeRender[i] = CreateRender("StatusGauge.bmp", _Order);
-		StatusGaugeRender[i]->SetPosition(StatusGaugeFrameRender[i]->GetPosition() + float4{-1.0, -1.0});
+		StatusGaugeRender[i].resize(2);
+	}
+	
+	for (int i = 0; i < StatusGaugeRender.size(); i++)
+	{
+		for (int j = 0; j < StatusGaugeRender[i].size(); j++)
+		{
+			StatusGaugeRender[i][j] = CreateRender("StatusGauge.bmp", _Order + 2 - j);
+			StatusGaugeRender[i][j]->SetScale({110, 14});
+			StatusGaugeRender[i][j]->SetFrame(j);
+			StatusGaugeRender[i][j]->SetPosition(StatusGaugeFrameRender_Layer1[i]->GetPosition() + float4{-55.0f + 110.0f*static_cast<float>(j), -1.0});
+		}
+	}
+
+	StatusGaugeFrameRender_Layer2.resize(StatusCount);
+	for (int i = 0; i < StatusGaugeFrameRender_Layer2.size(); i++)
+	{
+		StatusGaugeFrameRender_Layer2[i] = CreateRender("StatusGaugeFrame_Layer2.bmp", _Order + 3);
+		StatusGaugeFrameRender_Layer2[i]->SetPosition(float4::Up * (StatusGaugeFrameRender_Layer2[i]->GetScale().half()) * static_cast<float>(StatusGaugeFrameRender_Layer2.size() - 1) + float4::Down * (StatusGaugeFrameRender_Layer2[i]->GetScale()) * static_cast<float>(i));
 	}
 }
 
@@ -47,5 +64,9 @@ void StatusWindow::Start()
 	InitMenuFrameRender(PM2RenderOrder::Menu1);
 	SetStatusCount(3);
 	SetStatusFrameRender(PM2RenderOrder::Menu1_StatusGauge); // 이단계에서 이미지 편집이 필요
-	StatusGaugeRender[1]->Off();
+}
+
+void StatusWindow::Update(float _DeltaTime)
+{
+	StatusGaugeRender[0][0]->SetMove(float4::Right * 10 * _DeltaTime);
 }

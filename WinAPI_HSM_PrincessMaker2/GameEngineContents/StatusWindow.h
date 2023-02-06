@@ -22,12 +22,13 @@ public:
 
 protected:
 	void Start() override;
-	//void Update(float _DeltaTime) override;
+	void Update(float _DeltaTime) override;
 	//void Render(float _DeltaTime) override;
 
 private:
 	int StatusCount = 0;
-	std::vector<GameEngineRender*> StatusGaugeFrameRender = {};
-	std::vector<GameEngineRender*> StatusGaugeRender = {};
+	std::vector<GameEngineRender*> StatusGaugeFrameRender_Layer1 = {};
+	std::vector<GameEngineRender*> StatusGaugeFrameRender_Layer2 = {};
+	std::vector<std::vector<GameEngineRender*>> StatusGaugeRender = {};
 };
 
