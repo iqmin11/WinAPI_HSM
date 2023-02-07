@@ -36,6 +36,11 @@ void GameEngineRender::SetOrder(int _Order)
 	GetActor()->GetLevel()->PushRender(this);
 }
 
+void GameEngineRender::SetText(const std::string_view& _Text)
+{
+	RenderText = _Text;
+}
+
 void GameEngineRender::SetFrame(int _Frame)
 {
 	if (nullptr == Image)
@@ -87,7 +92,35 @@ void GameEngineRender::FrameAnimation::Render(float _DeltaTime)
 
 void GameEngineRender::Render(float _DeltaTime)
 {
+	if (RenderText != "")
+	{
+		TextRender(_DeltaTime);
+	}
+	else
+	{
+		ImageRender(_DeltaTime);
+	}
+}
 
+void GameEngineRender::TextRender(float _DeltaTime)
+{
+
+	float4 CameraPos = float4::Zero;
+
+	if (true == IsEffectCamera)
+	{
+		CameraPos = GetActor()->GetLevel()->GetCameraPos();
+	}
+
+	float4 RenderPos = GetActorPlusPos() - CameraPos;
+
+	TextOutA(GameEngineWindow::GetDoubleBufferImage()->GetImageDC(), RenderPos.ix(), RenderPos.iy(), RenderText.c_str(), RenderText.size());
+
+	return;
+}
+
+void GameEngineRender::ImageRender(float _DeltaTime)
+{
 	if (nullptr != CurrentAnimation)
 	{
 		CurrentAnimation->Render(_DeltaTime);
