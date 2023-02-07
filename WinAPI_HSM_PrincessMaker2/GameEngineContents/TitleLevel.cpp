@@ -27,7 +27,8 @@ void TitleLevel::Loading()
 	Dir.MoveParentToDirectory("ContentsResources");
 	Dir.Move("ContentsResources");
 
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SelectionHilight.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SelectionButton_Idle.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SelectionButton_Collision.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample1.BMP"))->Cut(3, 3);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample2.BMP"))->Cut(3, 3);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample3.BMP"))->Cut(3, 3);

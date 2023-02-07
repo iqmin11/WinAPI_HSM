@@ -20,7 +20,7 @@ void SelectionMenu::SetButton(int _Count, int _Order)
 
 	for (int i = 0; i < HilightButton.size(); i++)
 	{
-		HilightButton[i] = CreateRender("SelectionHilight.bmp", _Order);
+		HilightButton[i] = CreateRender("SelectionButton_Collision.bmp", _Order);
 		HilightButton[i]->SetScale(float4{ GetMenuFrameSize().x - 10, 25.0f });
 		HilightButton[i]->SetMove((float4::Up * GetMenuFrameSize().half() + float4{ 0, 30.0f }));
 		HilightButton[i]->SetMove(float4{ 0, 25.0f * static_cast<float>(i) });

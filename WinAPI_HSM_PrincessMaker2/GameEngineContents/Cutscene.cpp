@@ -57,7 +57,7 @@ void Cutscene::Start()
 {
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	CutScenes.resize(8);
-	CutScenes[0] = CreateRender("TitleBackground.bmp", PM2RenderOrder::BackGround);
+	CutScenes[0] = CreateRender("BlackBackground.bmp", PM2RenderOrder::BackGround);
 	CutScenes[1] = CreateRender("CutScene1.BMP", PM2RenderOrder::BackGroundObj);
 	CutScenes[2] = CreateRender("CutScene2.BMP", PM2RenderOrder::BackGroundObj);
 	CutScenes[3] = CreateRender("CutScene3.BMP", PM2RenderOrder::BackGroundObj);
