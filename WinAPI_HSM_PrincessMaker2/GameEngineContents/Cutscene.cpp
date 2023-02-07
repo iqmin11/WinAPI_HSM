@@ -65,7 +65,7 @@ void Cutscene::Start()
 	CutScenes[5] = CreateRender("CutScene5.BMP", PM2RenderOrder::BackGroundObj);
 	CutScenes[6] = CreateRender("CutScene6.BMP", PM2RenderOrder::BackGroundObj);
 	CutScenes[7] = CreateRender("CutScene7.BMP", PM2RenderOrder::BackGroundObj);
-	BlackBackground = CreateRender("TitleBackground.bmp", PM2RenderOrder::BackGround);
+	BlackBackground = CreateRender("blackBackground.bmp", PM2RenderOrder::BackGround);
 
 	for (auto i : CutScenes)
 	{
