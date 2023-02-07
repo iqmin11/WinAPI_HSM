@@ -1,6 +1,7 @@
 #pragma once
 #include <math.h>
 #include <cmath>
+#include <string>
 #include <vector>
 
 // final 더이상 상속내릴지 못한다.
@@ -9,8 +10,8 @@
 class GameEngineMath final
 {
 public:
-	static std::vector<unsigned int> GetDigits(unsigned int _Value);
-	static unsigned int GetLenth(unsigned int _Value);
+	static std::vector<unsigned int> GetDigits(int _Value);
+	static unsigned int GetLenth(int _Value);
 	static const float PIE;
 	static const float PIE2;
 

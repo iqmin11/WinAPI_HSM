@@ -12,6 +12,11 @@ std::string GameEngineString::ToUpper(const std::string_view& _Str)
 	return Text;
 }
 
+std::string GameEngineString::ToString(int _Value)
+{
+	return std::to_string(_Value);
+}
+
 GameEngineString::GameEngineString()
 {
 }
