@@ -28,25 +28,13 @@ void TitleLevel::Loading()
 	Dir.Move("ContentsResources");
 
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SelectionHilight.bmp"));
-
-	{
-		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample1.BMP"));
-		Image->Cut(3, 3);
-	}
-	
-	{
-		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample2.BMP"));
-		Image->Cut(3, 3);
-	}
-	
-	{
-		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample3.BMP"));
-		Image->Cut(3, 3);
-	}
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample1.BMP"))->Cut(3, 3);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample2.BMP"))->Cut(3, 3);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample3.BMP"))->Cut(3, 3);
 
 	Dir.Move("TitleLevel");
 
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TitleBackground.BMP"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BlackBackground.BMP"));
 
 	if (false == GameEngineInput::IsKey("LevelChange"))
 	{

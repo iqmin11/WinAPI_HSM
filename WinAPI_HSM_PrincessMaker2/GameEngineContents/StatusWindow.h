@@ -29,6 +29,6 @@ private:
 	int StatusCount = 0;
 	std::vector<GameEngineRender*> StatusGaugeFrameRender_Layer1 = {};
 	std::vector<GameEngineRender*> StatusGaugeFrameRender_Layer2 = {};
-	std::vector<std::vector<GameEngineRender*>> StatusGaugeRender = {};
+	std::vector<std::vector<GameEngineRender*>> StatusGaugeRender = {}; // 이거지금 빨간부분이랑 빈칸부분이랑 같이관리하는데, 그렇게하지말고 따로따로나누는게 나을것같아
 };
 
