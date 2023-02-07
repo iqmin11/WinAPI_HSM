@@ -108,6 +108,18 @@
     <ClInclude Include="DietSelectionMenu.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu</Filter>
     </ClInclude>
+    <ClInclude Include="BasicStatusWindow.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+    </ClInclude>
+    <ClInclude Include="FightStatusWindow.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+    </ClInclude>
+    <ClInclude Include="EstimateStatusWindow.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+    </ClInclude>
+    <ClInclude Include="FemininityStatusWindow.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -216,6 +228,18 @@
     <ClCompile Include="DietSelectionMenu.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu</Filter>
     </ClCompile>
+    <ClCompile Include="BasicStatusWindow.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+    </ClCompile>
+    <ClCompile Include="FightStatusWindow.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+    </ClCompile>
+    <ClCompile Include="EstimateStatusWindow.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+    </ClCompile>
+    <ClCompile Include="FemininityStatusWindow.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsLevel">
@@ -268,6 +292,9 @@
     </Filter>
     <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule">
       <UniqueIdentifier>{c760122e-3b06-4461-9a7c-33ca9aa6b726}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor">
+      <UniqueIdentifier>{c9881939-9412-485f-b69e-76467e46f6e5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

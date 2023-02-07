@@ -17,6 +17,9 @@
 #include "Calendar.h"
 #include "ConverstionSelectionMenu.h"
 #include "DietSelectionMenu.h"
+#include "BasicStatusWindow.h"
+#include "FightStatusWindow.h"
+#include "EstimateStatusWindow.h"
 #include "ContentsEnums.h"
 
 RaisingSimLevel::RaisingSimLevel()
@@ -79,7 +82,11 @@ void RaisingSimLevel::Loading()
 	CreateActor<StatusWindow>(PM2ActorOrder::Menu1);
 	//CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
 	CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
+	CreateActor<BasicStatusWindow>(PM2ActorOrder::Menu1);
+	CreateActor<FightStatusWindow>(PM2ActorOrder::Menu1);
+	CreateActor<EstimateStatusWindow>(PM2ActorOrder::Menu1);
 	//CreateActor<Animation>(2);
+
 
 }
 //800,0 ~ 800,320

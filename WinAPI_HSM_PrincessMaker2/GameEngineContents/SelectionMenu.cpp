@@ -21,8 +21,8 @@ void SelectionMenu::SetButton(int _Count, int _Order)
 	for (int i = 0; i < HilightButton.size(); i++)
 	{
 		HilightButton[i] = CreateRender("SelectionButton_Collision.bmp", _Order);
-		HilightButton[i]->SetScale(float4{ GetMenuFrameSize().x - 10, 25.0f });
-		HilightButton[i]->SetMove((float4::Up * GetMenuFrameSize().half() + float4{ 0, 30.0f }));
+		HilightButton[i]->SetScale(float4{ GetMenuFrameScale().x - 10, 25.0f });
+		HilightButton[i]->SetMove((float4::Up * GetMenuFrameScale().half() + float4{ 0, 30.0f }));
 		HilightButton[i]->SetMove(float4{ 0, 25.0f * static_cast<float>(i) });
 		HilightButton[i]->Off();
 	}
@@ -32,8 +32,8 @@ void SelectionMenu::SetButton(int _Count, int _Order)
 	for (int i = 0; i < ButtonCollisions.size(); i++)
 	{
 		ButtonCollisions[i] = CreateCollision(_Order + 1);
-		ButtonCollisions[i]->SetScale(float4{ GetMenuFrameSize().x - 10, 25.0f });
-		ButtonCollisions[i]->SetMove((float4::Up * GetMenuFrameSize().half() + float4{ 0, 30.0f }));
+		ButtonCollisions[i]->SetScale(float4{ GetMenuFrameScale().x - 10, 25.0f });
+		ButtonCollisions[i]->SetMove((float4::Up * GetMenuFrameScale().half() + float4{ 0, 30.0f }));
 		ButtonCollisions[i]->SetMove(float4{ 0, 25.0f * static_cast<float>(i) });
 	}
 

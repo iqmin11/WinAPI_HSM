@@ -26,7 +26,7 @@ public:
 		return FrameRender;
 	}
 
-	float4 GetMenuFrameSize()
+	float4 GetMenuFrameScale()
 	{
 		return MenuFrameScale;
 	}

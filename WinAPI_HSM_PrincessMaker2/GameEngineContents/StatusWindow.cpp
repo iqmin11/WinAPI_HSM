@@ -28,20 +28,21 @@ void StatusWindow::SetStatusFrameRender(int _Order)
 	}
 
 	StatusGaugeRender.resize(StatusCount);
-	for (int i = 0; i < StatusGaugeRender.size(); i++)
+	for (size_t i = 0; i < StatusGaugeRender.size(); i++)
 	{
-		StatusGaugeRender[i].resize(2);
+		StatusGaugeRender[i] = CreateRender("StatusGauge.bmp", _Order + 2);
+		StatusGaugeRender[i]->SetScale({ 110, 14 });
+		StatusGaugeRender[i]->SetFrame(0);
+		StatusGaugeRender[i]->SetPosition(StatusGaugeFrameRender_Layer1[i]->GetPosition() + float4{ -55.0f, -1.0 });
 	}
-	
-	for (int i = 0; i < StatusGaugeRender.size(); i++)
+
+	StatusGaugeEmptyRender.resize(StatusCount);
+	for (size_t i = 0; i < StatusGaugeEmptyRender.size(); i++)
 	{
-		for (int j = 0; j < StatusGaugeRender[i].size(); j++)
-		{
-			StatusGaugeRender[i][j] = CreateRender("StatusGauge.bmp", _Order + 2 - j);
-			StatusGaugeRender[i][j]->SetScale({110, 14});
-			StatusGaugeRender[i][j]->SetFrame(j);
-			StatusGaugeRender[i][j]->SetPosition(StatusGaugeFrameRender_Layer1[i]->GetPosition() + float4{-55.0f + 110.0f*static_cast<float>(j), -1.0});
-		}
+		StatusGaugeEmptyRender[i] = CreateRender("StatusGauge.bmp", _Order + 1);
+		StatusGaugeEmptyRender[i]->SetScale({ 110, 14 });
+		StatusGaugeEmptyRender[i]->SetFrame(1);
+		StatusGaugeEmptyRender[i]->SetPosition(StatusGaugeFrameRender_Layer1[i]->GetPosition() + float4{ 55.0f, -1.0 });
 	}
 
 	StatusGaugeFrameRender_Layer2.resize(StatusCount);
@@ -60,13 +61,13 @@ void StatusWindow::SetStatusFrameRender(PM2RenderOrder _Order)
 void StatusWindow::Start()
 {
 	//사용법 예시
-	SetPos(GameEngineWindow::GetScreenSize().half());
-	InitMenuFrameRender(PM2RenderOrder::Menu1);
-	SetStatusCount(3);
-	SetStatusFrameRender(PM2RenderOrder::Menu1_StatusGauge); // 이단계에서 이미지 편집이 필요
+	//SetPos(GameEngineWindow::GetScreenSize().half());
+	//InitMenuFrameRender(PM2RenderOrder::Menu1);
+	//SetStatusCount(3);
+	//SetStatusFrameRender(PM2RenderOrder::Menu1_StatusGauge); 
 }
 
 void StatusWindow::Update(float _DeltaTime)
 {
-	StatusGaugeRender[0][0]->SetMove(float4::Right * 10 * _DeltaTime);
+
 }
