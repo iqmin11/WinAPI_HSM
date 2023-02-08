@@ -32,6 +32,6 @@ protected:
 
 private:
 	int StatusCount = 0;
-	std::vector<GaugeRenderObject*> Gauges = std::vector<GaugeRenderObject*>();
+	std::vector<GaugeRenderObject*> Gauges = std::vector<GaugeRenderObject*>(); 
 };
 

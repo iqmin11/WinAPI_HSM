@@ -23,6 +23,11 @@ public:
 	void SetMove(float4 _Move);
 	void SetPosition(float4 _Pos);
 
+	StatusName GetStatusName() const
+	{
+		return Name;
+	}
+
 protected:
 
 
