@@ -1,8 +1,13 @@
 #pragma once
+#include <map>
+#include <list>
 #include <vector>
 #include "MenuFrame.h"
+#include "ContentsEnums.h"
+
 
 class GameEngineRender;
+class GaugeRenderObject;
 class StatusWindow : public MenuFrame
 {
 public:
@@ -16,9 +21,9 @@ public:
 	StatusWindow& operator=(const StatusWindow& _Other) = delete;
 	StatusWindow& operator=(StatusWindow&& _Other) noexcept = delete;
 
-	void SetStatusCount(int _Count);
-	void SetStatusFrameRender(int _Order);
-	void SetStatusFrameRender(PM2RenderOrder _Order);
+	void InsertStatus(const StatusName _StatusName, int _Max);
+	//void SetStatusFrameRender(int _Order);
+	//void SetStatusFrameRender(PM2RenderOrder _Order);
 
 protected:
 	void Start() override;
@@ -27,11 +32,6 @@ protected:
 
 private:
 	int StatusCount = 0;
-	std::vector<GameEngineRender*> StatusGaugeFrameRender_Layer1 = {};
-	std::vector<GameEngineRender*> StatusGaugeEmptyRender = {};
-	std::vector<GameEngineRender*> StatusGaugeRender = {};
-	std::vector<GameEngineRender*> StatusGaugeFrameRender_Layer2 = {};
-	
-	//std::vector<std::vector<GameEngineRender*>> StatusGaugeRender = {}; // 이거지금 빨간부분이랑 빈칸부분이랑 같이관리하는데, 그렇게하지말고 따로따로나누는게 나을것같아
+	std::vector<GaugeRenderObject*> Gauges = std::vector<GaugeRenderObject*>();
 };
 

@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineObject.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/NumberRenderObject.h>
+#include "ContentsEnums.h"
 
 class GameEngineActor;
 class GaugeRenderObject : public GameEngineObject
@@ -17,14 +18,16 @@ public:
 	GaugeRenderObject& operator=(const GaugeRenderObject& _Other) = delete;
 	GaugeRenderObject& operator=(GaugeRenderObject&& _Other) noexcept = delete;
 
-	void SetGaugeRender(int _Order, std::string_view& _Name, int _MaxValue);
+	void SetGaugeRender(int _Order, StatusName _Name, int _MaxValue);
 	void SetValue(float _Value);
+	void SetMove(float4 _Move);
+	void SetPosition(float4 _Pos);
 
 protected:
 
 
 private:
-	std::string StatusName = std::string();
+	StatusName Name = StatusName::Null;
 	const int Min = 0;
 	int Max = 0;
 	float StatusValue = 0;

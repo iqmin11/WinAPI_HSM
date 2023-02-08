@@ -81,7 +81,7 @@ void RaisingSimLevel::Loading()
 	//CreateActor<Calendar>(PM2ActorOrder::Menu1);
 	//CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
 	//CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
-	//CreateActor<BasicStatusWindow>(PM2ActorOrder::Menu1);
+	CreateActor<BasicStatusWindow>(PM2ActorOrder::Menu1);
 	//CreateActor<FightStatusWindow>(PM2ActorOrder::Menu1);
 	//CreateActor<EstimateStatusWindow>(PM2ActorOrder::Menu1);
 	//CreateActor<FemininityStatusWindow>(PM2ActorOrder::Menu1);

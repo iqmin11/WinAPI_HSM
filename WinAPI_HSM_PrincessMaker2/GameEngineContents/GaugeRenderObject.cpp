@@ -12,9 +12,9 @@ GaugeRenderObject::~GaugeRenderObject()
 
 }
 
-void GaugeRenderObject::SetGaugeRender(int _Order, std::string_view& _Name,int _MaxValue)
+void GaugeRenderObject::SetGaugeRender(int _Order, StatusName _Name,int _MaxValue)
 {
-	StatusName = _Name;
+	Name = _Name;
 
 	GameEngineActor* Actor = GetOwner<GameEngineActor>();
 	StatusGaugeFrameRender_Layer1 = Actor->CreateRender("StatusGaugeFrame_Layer1.bmp",_Order);
@@ -29,11 +29,11 @@ void GaugeRenderObject::SetGaugeRender(int _Order, std::string_view& _Name,int _
 	StatusGaugeFrameRender_Layer2= Actor->CreateRender("StatusGaugeFrame_Layer2.bmp", _Order + 3);
 	Max = _MaxValue;
 
-	StatusValueRender.SetOwner(Actor);
-	StatusValueRender.SetImage("Num_Status.bmp", { 10, 20 }, _Order + 4, RGB(0, 0, 0)); // 숫자 리소스 나중에 편집
-	StatusValueRender.SetAlign(Align::Right);
-	StatusValueRender.SetValue(static_cast<int>(StatusValue));
-	StatusValueRender.SetMove({ 0,0 });
+	//StatusValueRender.SetOwner(Actor);
+	//StatusValueRender.SetImage("Num_Status.bmp", { 10, 20 }, _Order + 4, RGB(0, 0, 0)); // 숫자 리소스 나중에 편집
+	//StatusValueRender.SetAlign(Align::Right);
+	//StatusValueRender.SetValue(static_cast<int>(StatusValue));
+	//StatusValueRender.SetMove({ 0,0 });
 }
 
 void GaugeRenderObject::SetValue(float _Value)
@@ -53,8 +53,26 @@ void GaugeRenderObject::SetValue(float _Value)
 	}
 
 	StatusValue = _Value;
-	StatusValueRender.SetValue(static_cast<int>(StatusValue));
+	//StatusValueRender.SetValue(static_cast<int>(StatusValue));
 	StatusGaugeRender->SetPosition(float4::LerpClamp(StatusGaugeRender->GetPosition(), StatusGaugeEmptyRender->GetPosition(), _Value / (Max - Min)));
+}
+
+void GaugeRenderObject::SetMove(float4 _Move)
+{
+	StatusGaugeFrameRender_Layer1->SetMove(_Move);
+	StatusGaugeEmptyRender->SetMove(_Move);
+	StatusGaugeRender->SetMove(_Move);
+	StatusGaugeFrameRender_Layer2->SetMove(_Move);
+	//StatusValueRender.SetMove(_Move);
+}
+
+void GaugeRenderObject::SetPosition(float4 _Position)
+{
+	StatusGaugeFrameRender_Layer1->SetPosition(_Position);
+	StatusGaugeEmptyRender->SetPosition(_Position + (float4::Right * 55.0f));
+	StatusGaugeRender->SetPosition(_Position + (float4::Left * 55.0f));
+	StatusGaugeFrameRender_Layer2->SetPosition(_Position);
+	//StatusValueRender.SetPosition(_Position);
 }
 
 

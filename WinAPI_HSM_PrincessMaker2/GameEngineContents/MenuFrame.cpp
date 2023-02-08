@@ -83,6 +83,8 @@ void MenuFrame::SetMenuFrameScale(const float4& _Scale)
 
 void MenuFrame::InitMenuFrameRender(int _Order, const int _style)
 {
+	FrameRenderOrder = _Order;
+
 	for (auto i : FrameRender)
 	{
 		if (nullptr != i)

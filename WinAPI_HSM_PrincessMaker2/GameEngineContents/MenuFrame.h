@@ -31,6 +31,11 @@ public:
 		return MenuFrameScale;
 	}
 
+	int GetFrameRenderOrder() const
+	{
+		return FrameRenderOrder;
+	}
+
 	void FrameRenderOn();
 	
 	void FrameRenderOff();
@@ -50,4 +55,5 @@ private:
 	float4 MenuFrameScale = {}; // 픽셀기준 사이즈
 	int MenuFrameStyle = -1;
 	GameEngineRender* FrameRender[9] = {};
+	int FrameRenderOrder = 0;
 };
