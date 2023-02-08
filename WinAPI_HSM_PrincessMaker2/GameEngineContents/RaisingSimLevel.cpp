@@ -13,13 +13,13 @@
 #include "DateViewer.h"
 #include "BasicInfo.h"
 #include "MainMenu.h"
-#include "StatusWindow.h"
 #include "Calendar.h"
 #include "ConverstionSelectionMenu.h"
 #include "DietSelectionMenu.h"
 #include "BasicStatusWindow.h"
 #include "FightStatusWindow.h"
 #include "EstimateStatusWindow.h"
+#include "FemininityStatusWindow.h"
 #include "ContentsEnums.h"
 
 RaisingSimLevel::RaisingSimLevel()
@@ -51,22 +51,22 @@ void RaisingSimLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("background.BMP"));
 
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("parttimejobbackground.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("parttimejobanimation.BMP"))->Cut(13,2);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("parttimejobanimation.BMP"))->Cut(13, 2);
 
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("DateViewer.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Num_WeekDay.BMP"))->Cut(7, 1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Num_Month.BMP"))->Cut(12, 1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Num_Day.BMP"))->Cut(10, 1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Num.BMP"))->Cut(10, 1);
-	
+
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BasicInfo.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Num_Age.BMP"))->Cut(10,1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Num_Age.BMP"))->Cut(10, 1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MainMenu.bmp"));
-	
+
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("StatusGaugeFrame_Layer1.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("StatusGaugeFrame_Layer2.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("StatusGauge.bmp"))->Cut(2,1);
-	
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("StatusGauge.bmp"))->Cut(2, 1);
+
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Calendar.bmp"));
 
 	AcBackground = CreateActor<Background>(static_cast<int>(PM2ActorOrder::BackGround));
@@ -79,12 +79,12 @@ void RaisingSimLevel::Loading()
 	CreateActor<Flower>(PM2ActorOrder::BackGround);
 	CreateActor<Paint>(PM2ActorOrder::BackGround);
 	//CreateActor<Calendar>(PM2ActorOrder::Menu1);
-	CreateActor<StatusWindow>(PM2ActorOrder::Menu1);
 	//CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
-	CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
-	CreateActor<BasicStatusWindow>(PM2ActorOrder::Menu1);
-	CreateActor<FightStatusWindow>(PM2ActorOrder::Menu1);
-	CreateActor<EstimateStatusWindow>(PM2ActorOrder::Menu1);
+	//CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
+	//CreateActor<BasicStatusWindow>(PM2ActorOrder::Menu1);
+	//CreateActor<FightStatusWindow>(PM2ActorOrder::Menu1);
+	//CreateActor<EstimateStatusWindow>(PM2ActorOrder::Menu1);
+	//CreateActor<FemininityStatusWindow>(PM2ActorOrder::Menu1);
 	//CreateActor<Animation>(2);
 
 

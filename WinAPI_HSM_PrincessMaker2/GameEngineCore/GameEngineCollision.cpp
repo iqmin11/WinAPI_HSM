@@ -111,6 +111,11 @@ bool GameEngineCollision::Collision(const CollisionCheckParameter& _Parameter)
 
 	for (GameEngineCollision* OtherCollision : _TargetGroup)
 	{
+		if (OtherCollision == this)
+		{
+			continue;
+		}
+
 		if (false == OtherCollision->IsUpdate())
 		{
 			continue;
@@ -195,7 +200,7 @@ void GameEngineCollision::DebugRender()
 			DebugRenderPos.ix() + Radius,
 			DebugRenderPos.iy() + Radius);
 	}
-		break;
+	break;
 	case CT_Rect:
 	{
 		Rectangle(BackBufferDc,
@@ -204,7 +209,7 @@ void GameEngineCollision::DebugRender()
 			DebugRenderPos.ix() + GetScale().hix(),
 			DebugRenderPos.iy() + GetScale().hiy());
 	}
-		break;
+	break;
 	case CT_Max:
 		break;
 	default:

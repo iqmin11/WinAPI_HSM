@@ -33,6 +33,21 @@ public:
 
 	static GameEngineCore* GetInst();
 
+	void DebugSwitch()
+	{
+		IsDebugValue = !IsDebugValue;
+	}
+
+	void SetDebugMode(bool _IsDebug)
+	{
+		IsDebugValue = _IsDebug;
+	}
+
+	bool IsDebug()
+	{
+		return IsDebugValue;
+	}
+
 protected:
 	template<typename LevelType>
 	void CreateLevel(const std::string_view& _Name)
@@ -54,17 +69,6 @@ protected:
 		Levels.insert(std::make_pair(_Name.data(), Level));
 	}
 
-	void DebugSwitch()
-	{
-		IsDebugValue = !IsDebugValue;
-	}
-
-	bool IsDebug()
-	{
-		return IsDebugValue;
-	}
-
-
 	virtual void Start() = 0;
 	virtual void Update() = 0;
 	virtual void End() = 0;
@@ -80,7 +84,7 @@ private:
 	GameEngineLevel* NextLevel = nullptr;
 
 	void LevelLoading(GameEngineLevel* _Level);
-	
+
 	bool IsDebugValue = false;
 };
 

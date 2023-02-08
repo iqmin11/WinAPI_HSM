@@ -1,5 +1,7 @@
 #pragma once
-class FemininityStatusWindow
+#include "StatusWindow.h"
+
+class FemininityStatusWindow : public StatusWindow
 {
 public:
 	// construtor destructor
@@ -13,7 +15,7 @@ public:
 	FemininityStatusWindow& operator=(FemininityStatusWindow&& _Other) noexcept = delete;
 
 protected:
-
+	void Start() override;
 
 private:
 
