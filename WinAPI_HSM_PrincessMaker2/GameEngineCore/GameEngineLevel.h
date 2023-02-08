@@ -163,7 +163,7 @@ private:
 
 	std::map<int, std::list<GameEngineRender*>> Renders; // 랜더링 이미지들
 	
-	void PushRender(GameEngineRender* _Render);
+	void PushRender(GameEngineRender* _Render, int _ChangeOrder);
 	std::map<int, std::list<GameEngineCollision*>> Collisions;
 	void PushCollision(GameEngineCollision* _Collision);
 

@@ -3,26 +3,21 @@
 
 Button::Button()
 {
+	State = ButtonState::Release;
 }
 
 Button::~Button()
 {
 }
 
-void Button::SetImage(const std::string_view& _IdleImage, const std::string_view& _CollisionImage, int _RenderOrder)
+void Button::SetRenderOrder(int _Value)
 {
-	Render_State_Idle->SetImage(_IdleImage);
-	Render_State_Idle->SetOrder(_RenderOrder);
-	Render_State_Collision->SetImage(_IdleImage);
-	Render_State_Collision->SetOrder(_RenderOrder);
-	Render_State_Collision->Off();
+	Render->SetOrder(_Value);
 }
 
-void Button::SetScale(const float4& _Scale)
+void Button::SetScale(float4 _Scale)
 {
-	Render_State_Idle->SetScale(_Scale);
-	Render_State_Collision->SetScale(_Scale);
-	ButtonCollision->SetScale(_Scale);
+	Render->SetScale(_Scale);
 }
 
 void Button::SetTargetCollisionGroup(int _PointTargetGroup)
@@ -37,21 +32,33 @@ void Button::SetTargetCollisionGroup(int _PointTargetGroup)
 
 void Button::Start()
 {
-	Render_State_Idle = CreateRender();
-	Render_State_Collision = CreateRender();
+	Render = CreateRender();
 }
 
-//void Button::SetFunction()
-//{
-//	//int TargetGroup = -342367842;
-//	//CollisionType TargetColType = CollisionType::CT_CirCle;
-//	//CollisionType ThisColType = CollisionType::CT_CirCle;
-//
-//	if (true == ButtonCollision->Collision({ .TargetGroup = PointTargetGroup, .TargetColType = CollisionType::CT_Point, .ThisColType = ButtonCollisionType }))
-//	{
-//		if (true == GameEngineInput::IsDown("EngineMouseLeft") && nullptr != ClickPtr)
-//		{
-//			ClickPtr();
-//		}
-//	}
-//}
+void Button::Update(float _DeltaTime)
+{
+	if (true == ButtonCollision->Collision({ .TargetGroup = PointTargetGroup, .TargetColType = CollisionType::CT_Point, .ThisColType = ButtonCollisionType }))
+	{
+		if (true == GameEngineInput::IsDown("EngineMouseLeft") && nullptr != ClickPtr)
+		{
+			ClickPtr();
+		}
+	}
+
+	switch (State)
+	{
+	case ButtonState::Release:
+		CurImageName = ReleaseImageName;
+		Render->SetImage(ReleaseImageName);
+		break;
+	case ButtonState::Press:
+		CurImageName = PressImageName;
+		Render->SetImage(PressImageName);
+		break;
+	case ButtonState::Hover:
+		CurImageName = HoverImageName;
+		Render->SetImage(HoverImageName);
+		break;
+	default:
+		break;
+}

@@ -3,6 +3,13 @@
 #include "GameEngineCollision.h"
 #include "GameEngineRender.h"
 
+enum class ButtonState
+{
+	Release,
+	Press,
+	Hover,
+};
+
 // 설명 :
 class GameEngineRender;
 class Button : public GameEngineActor
@@ -18,9 +25,8 @@ public:
 	Button& operator=(const Button& _Other) = delete;
 	Button& operator=(Button&& _Other) noexcept = delete;
 
-	void SetImage(const std::string_view& _IdleImage, const std::string_view& _CollisionImage, int _RenderOrder);
-	void SetScale(const float4& _Scale);
-	//void SetFunction();
+	void SetRenderOrder(int _Value);
+	void SetScale(float4 _Scale);
 
 	void SetClickCallBack(void(*_ClickPtr)())
 	{
@@ -34,16 +40,37 @@ public:
 		ButtonCollisionType = _ButtonCollisionType;
 	}
 
+	std::string SetHoverImage(const std::string_view& _Name)
+	{
+		HoverImageName = _Name;
+	}
+
+	std::string SetReleaseImage(const std::string_view& _Name)
+	{
+		ReleaseImageName = _Name;
+	}
+
+	std::string SetPressImage(const std::string_view& _Name)
+	{
+		PressImageName = _Name;
+	}
+
 protected:
 	void Start() override;
+	void Update(float _DeltaTime) override;
 
 private:
-	GameEngineRender* Render_State_Idle = nullptr; //중립상태 버튼 렌더
-	GameEngineRender* Render_State_Collision = nullptr; //충돌상태 버튼 렌더
-
+	GameEngineRender* Render = nullptr; 
 	GameEngineCollision* ButtonCollision = nullptr;
 	int PointTargetGroup = 0;
 	CollisionType ButtonCollisionType = CollisionType::CT_Rect;
 	void(*ClickPtr)() = nullptr;
+
+	ButtonState State = ButtonState::Release;
+	std::string CurImageName = std::string();
+	std::string HoverImageName = std::string();
+	std::string ReleaseImageName = std::string();
+	std::string PressImageName = std::string();
+
 };
 
