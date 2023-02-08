@@ -120,6 +120,9 @@
     <ClInclude Include="FemininityStatusWindow.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
     </ClInclude>
+    <ClInclude Include="GaugeRenderObject.h">
+      <Filter>ContentsLevel\0. PM2Base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -239,6 +242,9 @@
     </ClCompile>
     <ClCompile Include="FemininityStatusWindow.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+    </ClCompile>
+    <ClCompile Include="GaugeRenderObject.cpp">
+      <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

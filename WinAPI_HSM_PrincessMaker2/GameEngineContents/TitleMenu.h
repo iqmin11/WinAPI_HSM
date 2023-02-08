@@ -1,5 +1,6 @@
 #pragma once
 #include "SelectionMenu.h"
+#include "GaugeRenderObject.h"
 
 class TitleMenu : public SelectionMenu
 {
@@ -19,6 +20,5 @@ protected:
 
 
 private:
-
 };
 

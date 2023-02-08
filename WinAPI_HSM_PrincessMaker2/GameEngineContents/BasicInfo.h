@@ -109,14 +109,6 @@ private:
 	NumberRenderObject WaistRender = NumberRenderObject();
 	NumberRenderObject HipRender = NumberRenderObject();
 
-	//std::vector<GameEngineRender*> AgeRender = std::vector<GameEngineRender*>();
 	GameEngineRender* StarRender = nullptr;
-	//std::vector<GameEngineRender*> GoldRender = std::vector<GameEngineRender*>();
-	//std::vector<GameEngineRender*> HeightRender = std::vector<GameEngineRender*>();
-	//std::vector<GameEngineRender*> WeightRender = std::vector<GameEngineRender*>();
-	//std::vector<GameEngineRender*> BustRender = std::vector<GameEngineRender*>();
-	//std::vector<GameEngineRender*> WaistRender = std::vector<GameEngineRender*>();
-	//std::vector<GameEngineRender*> HipRender = std::vector<GameEngineRender*>();
-
 };
 
