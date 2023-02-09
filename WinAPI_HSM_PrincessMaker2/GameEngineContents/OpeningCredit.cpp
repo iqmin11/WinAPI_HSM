@@ -21,9 +21,11 @@ void OpeningCredit::Start()
 	StartPos = { 0, 900 };
 	EndPos = { 0, -300 };
 	GameEngineRender* TopBox = CreateRender("BlackBox.BMP", PM2RenderOrder::BackGroundObj);
-	TopBox->SetPosition({0, -200});
+	TopBox->SetScale({800, 100});
+	TopBox->SetPosition({0, -300});
 	GameEngineRender* BotBox = CreateRender("BlackBox.BMP", PM2RenderOrder::BackGroundObj);
-	BotBox->SetPosition({ 0, 200 });
+	BotBox->SetScale({ 800, 100 });
+	BotBox->SetPosition({ 0, 300 });
 
 }
 

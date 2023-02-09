@@ -13,7 +13,5 @@ DietSelectionMenu::~DietSelectionMenu()
 void DietSelectionMenu::Start()
 {
 	InitMenuFrameRender(PM2RenderOrder::Menu0, 0);
-	SetMenuFrameScale({ 170,138 });
-	SetButton(4, PM2RenderOrder::Menu0_Button);
-	SetPos({ 685, 366 });
+	SetSelectionMenu(4, { 685,366 }, 170.0f, PM2ActorOrder::Menu0_Button, PM2RenderOrder::Menu0_Button);
 }

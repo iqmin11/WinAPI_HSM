@@ -44,10 +44,6 @@ void TitleLevel::Loading()
 		GameEngineInput::CreateKey("LevelChange", 'P');
 	}
 	
-	//if (false == GameEngineInput::IsKey("MouseLeftClick"))
-	//{
-	//	GameEngineInput::CreateKey("MouseLeftClick", VK_LBUTTON);
-	//}
 	CreateActor<TitleBackground>(PM2ActorOrder::BackGround);
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	TitleSelectionMenu = CreateActor<TitleMenu>(PM2ActorOrder::Menu0);
@@ -59,19 +55,4 @@ void TitleLevel::Update(float _DeltaTime)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("FirstSet");
 	}
-	//
-	//if (true == GameEngineInput::IsDown("MouseLeftClick") && TitleSelectionMenu->GetIsMouseCollisions()[0])
-	//{
-	//	GameEngineCore::GetInst()->ChangeLevel("FirstSet");
-	//}
-	//
-	//if (true == GameEngineInput::IsDown("MouseLeftClick") && TitleSelectionMenu->GetIsMouseCollisions()[1])
-	//{
-	//	GameEngineCore::GetInst()->ChangeLevel("Opening");
-	//}
-	//
-	//if (true == GameEngineInput::IsDown("MouseLeftClick") && TitleSelectionMenu->GetIsMouseCollisions()[2])
-	//{
-	//	GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
-	//}
 }
