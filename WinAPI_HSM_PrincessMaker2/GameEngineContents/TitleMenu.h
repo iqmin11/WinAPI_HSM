@@ -20,5 +20,8 @@ protected:
 
 
 private:
+	static void LevelChangeToFirstSet();
+	static void LevelChangeToOpening();
+	static void LevelChangeToRaisingSim();
 };
 

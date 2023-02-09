@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
+#include <GameEngineCore/Button.h>
 #include "MenuFrame.h"
-class GameEngineRender;
-class GameEngineCollision;
+
 class SelectionMenu : public MenuFrame
 {
 public:
@@ -16,23 +16,21 @@ public:
 	SelectionMenu& operator=(const SelectionMenu& _Other) = delete;
 	SelectionMenu& operator=(SelectionMenu&& _Other) noexcept = delete;
 
-	const std::vector<bool> GetIsMouseCollisions()
-	{
-		return IsMouseCollisions;
-	}
-
 protected:
 	void Start();
 	void Update(float _Deltatime);
 	void Render(float _Time);
 	
-	void SetButton(int _Count, int _Order);
-	void SetButton(int _Count, PM2RenderOrder _Order);
+	void SetSelectionMenu(int _Count, float4 _Pos, float _xScale, int _ActorOrder, int _RenderOrder);
+	void SetSelectionMenu(int _Count, float4 _Pos, float _xScale, PM2ActorOrder _ButtonActorOrder, PM2RenderOrder _ButtonRenderOrder);
+
+	std::vector<Button*>& GetSelectButtons()
+	{
+		return SelectButtons;
+	}
 
 private:
-	std::vector<GameEngineRender*> HilightButton = std::vector<GameEngineRender*>();
-	std::vector<GameEngineCollision*> ButtonCollisions = std::vector<GameEngineCollision*>();
-	std::vector<bool> IsMouseCollisions = std::vector<bool>(false);
+	std::vector<Button*> SelectButtons = std::vector<Button*>();
 	int CountButton = 0;
 };
 

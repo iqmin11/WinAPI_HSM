@@ -101,11 +101,17 @@ void NumberRenderObject::SetValue(int _Value)
 		break;
 	case Align::Right:
 		SetMove(float4::Left * static_cast<const float>(GameEngineMath::GetLenth(Value) - 1) * NumberScale.x);
-		NegativeRender->SetPosition(float4::Left * static_cast<const float>(GameEngineMath::GetLenth(Value) - 1) * NumberScale.x);
+		if (nullptr != NegativeRender)
+		{
+			NegativeRender->SetPosition(float4::Left * static_cast<const float>(GameEngineMath::GetLenth(Value) - 1) * NumberScale.x);
+		}
 		break;
 	case Align::Center:
 		SetMove((float4::Left * static_cast<const float>(GameEngineMath::GetLenth(Value) - 1) * NumberScale.x).half());
-		NegativeRender->SetPosition((float4::Left * static_cast<const float>(GameEngineMath::GetLenth(Value) - 1) * NumberScale.x).half());
+		if (nullptr != NegativeRender)
+		{
+			NegativeRender->SetPosition((float4::Left * static_cast<const float>(GameEngineMath::GetLenth(Value) - 1) * NumberScale.x).half());
+		}
 		break;
 	default:
 		break;
@@ -116,8 +122,8 @@ void NumberRenderObject::SetValue(int _Value)
 		//CameraEffect
 		NumberRenders[i]->SetEffectCamera(CameraEffect);
 	}
-}
 
+}
 
 void NumberRenderObject::SetMove(float4 _RenderPos)
 {

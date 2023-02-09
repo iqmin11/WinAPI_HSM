@@ -35,11 +35,11 @@ public:
 	void SetMove(float4 _RenderPos);
 	void SetAlign(Align _Align);
 
-	void SetCameraEffectOff(bool _EffectSetting)
+	void SetCameraEffect(bool _EffectSetting)
 	{
 		CameraEffect = _EffectSetting;
 	}
-	
+
 	inline void SetRenderPos(float4 _Pos)
 	{
 		Pos = _Pos;
@@ -70,7 +70,6 @@ private:
 	std::string_view NegativeName = std::string_view();
 
 	std::vector<GameEngineRender*> NumberRenders = std::vector<GameEngineRender*>();
-
-	GameEngineRender* NegativeRender = nullptr;
+	GameEngineRender* NegativeRender;
 };
 

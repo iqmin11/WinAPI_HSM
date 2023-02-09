@@ -174,7 +174,7 @@ AcTitleSelectionMenu->SetSelection -> 선택지에 들어갈 TextOut렌더를... 근데 얘네
 
 AcTitleSelectionMenu->SetPos -> 위치를 정하면 완성
 
-
+NumberRenderObj -> 정렬에 Negative 이미지 없으면 Negative 로직 건너뛰기 추가
 
 
 

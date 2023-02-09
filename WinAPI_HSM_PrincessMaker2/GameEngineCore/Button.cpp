@@ -10,15 +10,6 @@ Button::~Button()
 {
 }
 
-void Button::SetRenderOrder(int _Value)
-{
-	ButtonRender->SetOrder(_Value);
-}
-
-void Button::SetScale(float4 _Scale)
-{
-	ButtonRender->SetScale(_Scale);
-}
 
 void Button::SetTargetCollisionGroup(int _PointTargetGroup)
 {
@@ -34,6 +25,18 @@ void Button::Start()
 {
 	ButtonRender = CreateRender();
 	ButtonCollision = CreateCollision();
+}
+
+void Button::SetRenderOrder(int _Value)
+{
+	ButtonRender->SetOrder(_Value);
+}
+
+void Button::SetScale(float4 _Scale)
+{
+	Scale = _Scale;
+	ButtonCollision->SetScale(Scale);
+	// Render->SetScale(_Scale);
 }
 
 void Button::Update(float _DeltaTime)
