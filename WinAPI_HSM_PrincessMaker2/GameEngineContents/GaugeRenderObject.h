@@ -7,8 +7,9 @@
 enum class GaugeFrameStyle
 {
 	Nomal,
-	Estemate_Synthesize,
-	Estemate_Detail,
+	Estemate,
+	Detail,
+	Physical
 };
 
 class GameEngineActor;
