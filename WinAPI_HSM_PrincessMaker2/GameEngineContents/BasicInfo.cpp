@@ -29,6 +29,7 @@ void BasicInfo::Start()
 	SetHip(20.0f);
 	
 	BasicInfoFrame = CreateRender("BasicInfo.bmp",PM2RenderOrder::Menu0); // 베이직 인포 프레임 렌더
+	BasicInfoFrame->SetScaleToImage();
 
 	AgeRender.SetOwner(this);
 	AgeRender.SetImage("Num_Age.bmp", { 20, 20 }, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));

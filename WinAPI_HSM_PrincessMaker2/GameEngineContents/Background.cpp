@@ -16,8 +16,8 @@ Background::~Background()
 void Background::Start()
 {
 	SetPos(GameEngineWindow::GetScreenSize().half());
-	GameEngineRender* Render = CreateRender("background.BMP", 0);
-
+	BackgroundRender = CreateRender("background.BMP", 0);
+	BackgroundRender->SetScaleToImage();
 }
 
 void Background::Update(float _DeltaTime)

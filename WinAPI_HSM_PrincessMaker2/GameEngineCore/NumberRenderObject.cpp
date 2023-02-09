@@ -91,17 +91,20 @@ void NumberRenderObject::SetValue(int _Value)
 	}
 }
 
+void NumberRenderObject::SetCameraEffectOff()
+{
+	for (size_t i = 0; i < NumberRenders.size(); i++)
+	{
+		NumberRenders[i]->EffectCameraOff();
+	}
+}
+
 void NumberRenderObject::SetMove(float4 _RenderPos) // 밸류를 먼저셋해줘야 무브가되네! 경고 넣기 size가 0이면 안댐
 {
 	for (size_t i = 0; i < NumberRenders.size(); i++)
 	{
 		NumberRenders[i]->SetMove(_RenderPos);
 	}
-}
-
-void NumberRenderObject::SetAlign(int _Align)
-{
-	AlignState = static_cast<Align>(_Align);
 }
 
 void NumberRenderObject::SetAlign(Align _Align)

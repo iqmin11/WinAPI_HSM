@@ -18,6 +18,7 @@ void GaugeRenderObject::SetGaugeRender(int _Order, StatusName _Name,int _MaxValu
 
 	GameEngineActor* Actor = GetOwner<GameEngineActor>();
 	StatusGaugeFrameRender_Layer1 = Actor->CreateRender("StatusGaugeFrame_Layer1.bmp",_Order);
+	StatusGaugeFrameRender_Layer1->SetScaleToImage();
 	StatusGaugeEmptyRender = Actor->CreateRender("StatusGauge.bmp", _Order + 1);
 	StatusGaugeEmptyRender->SetFrame(1);
 	StatusGaugeEmptyRender->SetScale({ 110, 14 });
@@ -27,6 +28,7 @@ void GaugeRenderObject::SetGaugeRender(int _Order, StatusName _Name,int _MaxValu
 	StatusGaugeRender->SetScale({ 110, 14 });
 	StatusGaugeRender->SetPosition({ -55.0f, -1.0 });
 	StatusGaugeFrameRender_Layer2= Actor->CreateRender("StatusGaugeFrame_Layer2.bmp", _Order + 3);
+	StatusGaugeFrameRender_Layer2->SetScaleToImage();
 	Max = _MaxValue;
 
 	//StatusValueRender.SetOwner(Actor);

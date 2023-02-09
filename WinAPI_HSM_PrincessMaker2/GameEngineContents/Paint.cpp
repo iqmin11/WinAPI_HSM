@@ -16,6 +16,7 @@ Paint::~Paint()
 void Paint::Start()
 {
 	PaintRender = CreateRender("paint_default.bmp", PM2RenderOrder::BackGroundObj);
+	PaintRender->SetScaleToImage();
 	SetPos({519,157});
 }
 

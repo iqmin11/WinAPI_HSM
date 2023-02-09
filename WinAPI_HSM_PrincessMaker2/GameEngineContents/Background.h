@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 
+class GameEngineRender;
 class Background : public GameEngineActor
 {
 public:
@@ -22,6 +23,6 @@ protected:
 
 
 private:
-
+	GameEngineRender* BackgroundRender = nullptr;
 };
 

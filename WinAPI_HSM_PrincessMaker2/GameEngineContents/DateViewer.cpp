@@ -19,6 +19,7 @@ void DateViewer::Start()
 
 	SetPos({ 90,50 }); // 액터 위치
 	DateViewerFrameRender = CreateRender("DateViewer.bmp", PM2RenderOrder::Menu0); // 프레임 렌더
+	DateViewerFrameRender->SetScaleToImage();
 
 	Year.SetOwner(this);
 	Year.SetImage("Num.bmp", { 10, 20 }, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));

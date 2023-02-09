@@ -22,6 +22,7 @@ TitleLevel::~TitleLevel()
 
 void TitleLevel::Loading()
 {
+	
 	GameEngineDirectory Dir;
 
 	Dir.MoveParentToDirectory("ContentsResources");
@@ -32,6 +33,7 @@ void TitleLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample1.BMP"))->Cut(3, 3);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample2.BMP"))->Cut(3, 3);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample3.BMP"))->Cut(3, 3);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Cursor.bmp"));
 
 	Dir.Move("TitleLevel");
 

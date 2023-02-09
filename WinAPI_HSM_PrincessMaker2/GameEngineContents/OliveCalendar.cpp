@@ -21,6 +21,7 @@ void OliveCalendar::Start()
 	//GameEngineRender* WeekRender = CreateRender("OliveWeek.BMP");
 
 	BackgroundRender = CreateRender("SetOliveBirth.BMP", PM2RenderOrder::BackGround);
+	BackgroundRender ->SetScaleToImage();
 	DateNumRender();
 	MonthNumRender();
 	YearNumRender();

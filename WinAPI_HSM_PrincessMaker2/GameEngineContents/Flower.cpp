@@ -17,14 +17,19 @@ void Flower::Start()
 {
 	SetPos({85,285}); // 위치 고정
 	SpringFlower = CreateRender("flower_spring.bmp", PM2RenderOrder::BackGroundObj);
+	SpringFlower->SetScaleToImage();
 	SpringFlower->Off();
 	SummerFlower = CreateRender("flower_summer.bmp", PM2RenderOrder::BackGroundObj);
+	SummerFlower->SetScaleToImage();
 	SummerFlower->Off();
 	FallFlower = CreateRender("flower_fall.bmp", PM2RenderOrder::BackGroundObj);
+	FallFlower->SetScaleToImage();
 	FallFlower->Off();
 	WinterFlower = CreateRender("flower_winter.bmp", PM2RenderOrder::BackGroundObj);
+	WinterFlower->SetScaleToImage();
 	WinterFlower->Off();
 	DiseaseFlower = CreateRender("flower_disease.bmp", PM2RenderOrder::BackGroundObj);
+	DiseaseFlower->SetScaleToImage();
 	DiseaseFlower->Off();
 	FlowerRender = SpringFlower;
 

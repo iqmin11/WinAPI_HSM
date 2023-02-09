@@ -17,6 +17,7 @@ void OpeningCredit::Start()
 {
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	CreditRender = CreateRender("Credit.BMP", PM2RenderOrder::BackGround);
+	CreditRender->SetScaleToImage();
 	StartPos = { 0, 900 };
 	EndPos = { 0, -300 };
 	GameEngineRender* TopBox = CreateRender("BlackBox.BMP", PM2RenderOrder::BackGroundObj);

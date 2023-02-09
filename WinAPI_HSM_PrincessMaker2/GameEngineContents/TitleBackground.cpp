@@ -17,5 +17,6 @@ void TitleBackground::Start()
 {
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	Render = CreateRender("blackbackground.BMP", 0);
+	Render->SetScaleToImage();
 }
 

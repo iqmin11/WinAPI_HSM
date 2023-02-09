@@ -24,7 +24,7 @@ protected:
 
 private:
 	GameEngineCollision* MousePointCollision = nullptr;
-
+	GameEngineRender* MousePointRender = nullptr;
 
 };
 

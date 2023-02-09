@@ -1,5 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+
+class GameEngineRender;
 class Olive : public GameEngineActor
 {
 public:
@@ -21,6 +23,8 @@ protected:
 	void Render(float _Time) override;
 
 private:
+	GameEngineRender* HeadRender = nullptr;
+	GameEngineRender* BodyRender = nullptr;
 
 };
 

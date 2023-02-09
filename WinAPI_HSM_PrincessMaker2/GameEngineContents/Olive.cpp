@@ -32,9 +32,11 @@ void Olive::Start()
 	}*/
 
 	SetPos(GameEngineWindow::GetScreenSize().half());
-	GameEngineRender* BodyRender = CreateRender("body_10_nomal.BMP", PM2RenderOrder::Player); 
+	BodyRender = CreateRender("body_10_nomal.BMP", PM2RenderOrder::Player); 
+	BodyRender->SetScaleToImage();
 	SetMove(float4::Down * ((GameEngineWindow::GetScreenSize().half()) - (BodyRender->GetImage()->GetImageScale().half())));
-	GameEngineRender* HeadRender = CreateRender("head_10_nomal.BMP", PM2RenderOrder::Player);
+	HeadRender = CreateRender("head_10_nomal.BMP", PM2RenderOrder::Player);
+	HeadRender->SetScaleToImage();
 	HeadRender->SetPosition(float4::Up * ((BodyRender->GetImage()->GetImageScale().half()) + (HeadRender->GetImage()->GetImageScale().half())));
 	
 }

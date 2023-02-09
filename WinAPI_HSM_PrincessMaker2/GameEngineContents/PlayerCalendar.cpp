@@ -23,6 +23,7 @@ void PlayerCalendar::Start()
 
 
 	BackgroundRender = CreateRender("SetPlayerBirth.BMP", PM2RenderOrder::BackGround);
+	BackgroundRender->SetScaleToImage();
 	DateNumRender();
 	MonthNumRender();
 	YearNumRender();
@@ -55,9 +56,15 @@ int PlayerCalendar::FindFirstWeekday(int _YYYY)
 
 int PlayerCalendar::FindMonthFirstWeekday(int _YYYY, int _MM)
 {
+	if (true == Date::IsOverMonth(_MM))
+	{
+		MsgAssert("입력가능한 Month의 범위를 벗어났습니다");
+		return 0;
+	}
+
 	int Year = _YYYY;
 	int Month = 1;
-	int MonthLen[12];
+	int MonthLen[12] = {};
 	for (size_t i = 0; i < 12; i++)
 	{
 		if (13 == Month)

@@ -31,10 +31,15 @@ public:
 	// 
 	void SetImage(const std::string_view& _ImageName, float4 _Scale, int _Order, int _TransColor);
 	void SetValue(int _Value);
+	void SetCameraEffectOff();
 
 	void SetMove(float4 _RenderPos);
-	void SetAlign(int _Align);
 	void SetAlign(Align _Align);
+
+	inline void SetRenderPos(float4 _Pos)
+	{
+		Pos = _Pos;
+	}
 
 	inline int GetValue()
 	{
