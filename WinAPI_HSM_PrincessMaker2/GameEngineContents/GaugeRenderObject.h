@@ -4,6 +4,13 @@
 #include <GameEngineCore/NumberRenderObject.h>
 #include "ContentsEnums.h"
 
+enum class GaugeFrameStyle
+{
+	Nomal,
+	Estemate_Synthesize,
+	Estemate_Detail,
+};
+
 class GameEngineActor;
 class GaugeRenderObject : public GameEngineObject
 {
