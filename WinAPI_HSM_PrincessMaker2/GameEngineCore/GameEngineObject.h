@@ -1,4 +1,7 @@
 #pragma once
+#include <string>
+#include <string_view>
+
 class GameEngineObject
 {
 public:
@@ -68,6 +71,21 @@ public:
 		return Order;
 	}
 
+	void SetName(const std::string_view& _View)
+	{
+		Name = _View;
+	}
+
+	const std::string& GetName() const
+	{
+		return Name;
+	}
+
+	std::string GetNameCopy()
+	{
+		return Name;
+	}
+
 protected:
 
 
@@ -79,6 +97,6 @@ private:
 	bool ObjectDeath = false;
 	bool ObjectUpdate = true;
 
-
+	std::string Name = std::string();
 };
 
