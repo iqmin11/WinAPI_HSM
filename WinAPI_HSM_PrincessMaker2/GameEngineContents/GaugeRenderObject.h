@@ -44,7 +44,7 @@ private:
 	StatusName Name = StatusName::Null;
 	const int Min = 0;
 	int Max = 0;
-	float StatusValue = 12;
+	float StatusValue = 0;
 
 	GaugeFrameStyle Style = GaugeFrameStyle::Null;
 	

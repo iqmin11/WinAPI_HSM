@@ -62,9 +62,12 @@ void GaugeRenderObject::SetGaugeRender(int _Order, StatusName _Name, int _MaxVal
 
 	StatusValueRender.SetOwner(Actor);
 	StatusValueRender.SetImage("Num_Status.bmp", { 10, 20 }, _Order + 4, RGB(0, 0, 0)); // 숫자 리소스 나중에 편집
-	StatusValueRender.SetAlign(Align::Center);
+	StatusValueRender.SetAlign(Align::Right);
+	StatusValueRender.SetRenderPos({5,0});
 	StatusValueRender.SetValue(static_cast<int>(StatusValue));
 	StatusValueRender.SetMove({ 0,0 });
+	
+	SetValue(StatusValue);
 }
 
 void GaugeRenderObject::SetValue(float _Value)
@@ -77,10 +80,12 @@ void GaugeRenderObject::SetValue(float _Value)
 	if (0 >= _Value)
 	{
 		StatusGaugeEmptyRender->Off();
+		StatusGaugeRender->Off();
 	}
 	else
 	{
 		StatusGaugeEmptyRender->On();
+		StatusGaugeRender->On();
 	}
 
 	StatusValue = _Value;
@@ -103,7 +108,8 @@ void GaugeRenderObject::SetPosition(float4 _Position)
 	StatusGaugeEmptyRender->SetPosition(_Position + (float4::Right * 55.0f));
 	StatusGaugeRender->SetPosition(_Position + (float4::Left * 55.0f));
 	StatusGaugeFrameRender_Layer2->SetPosition(_Position);
-	StatusValueRender.SetRenderPos(_Position);
+	StatusValueRender.SetRenderPos(_Position + (float4::Left * 5.0f));
+	SetValue(StatusValue);
 }
 
 
