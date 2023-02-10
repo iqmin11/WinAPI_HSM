@@ -143,6 +143,16 @@ void GameEngineSoundPlayer::LoopCount(int _Count)
 	ControlChannel->setLoopCount(_Count - 1);
 }
 
+void GameEngineSoundPlayer::Volume(float _Volume)
+{
+	if (nullptr == ControlChannel)
+	{
+		MsgAssert("재생하지도 않은 사운드를 컨트롤하겠다고 했습니다.");
+	}
+
+	ControlChannel->setVolume(_Volume);
+}
+
 void GameEngineSoundPlayer::Stop()
 {
 	if (nullptr == ControlChannel)

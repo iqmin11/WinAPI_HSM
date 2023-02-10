@@ -29,7 +29,7 @@ void TitleMenu::LevelChangeToRaisingSim()
 
 void TitleMenu::Start()
 {
-	InitMenuFrameRender(PM2RenderOrder::Menu0, 0);
+	InitMenuFrameRender(PM2RenderOrder::Menu0, MenuFrameStyleEnum::Gold);
 	SetSelectionMenu(3, GameEngineWindow::GetScreenSize().half(), 230.0f, PM2ActorOrder::Menu0_Button, PM2RenderOrder::Menu0_Button);
 	GetSelectButtons()[0]->SetClickCallBack(LevelChangeToFirstSet);
 	GetSelectButtons()[1]->SetClickCallBack(LevelChangeToOpening);

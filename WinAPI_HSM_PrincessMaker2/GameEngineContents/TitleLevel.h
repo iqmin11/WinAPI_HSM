@@ -1,5 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineResources.h>
+
 class TitleMenu;
 class MenuFrame;
 class MousePoint;
@@ -26,7 +28,7 @@ protected:
 
 private:
 	TitleMenu* TitleSelectionMenu = nullptr;
-
+	GameEngineSoundPlayer BGMPlayer;
 	void SoundLoad();
 	void ImageLoad();
 };

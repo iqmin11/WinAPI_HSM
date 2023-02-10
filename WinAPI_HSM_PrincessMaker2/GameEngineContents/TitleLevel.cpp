@@ -35,6 +35,10 @@ void TitleLevel::Loading()
 	CreateActor<TitleBackground>(PM2ActorOrder::BackGround);
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	TitleSelectionMenu = CreateActor<TitleMenu>(PM2ActorOrder::Menu0);
+
+	//SoundTestCode
+	//BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Test.wav");
+	//BGMPlayer.LoopCount(3);
 }
 
 void TitleLevel::Update(float _DeltaTime)
@@ -43,11 +47,18 @@ void TitleLevel::Update(float _DeltaTime)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("FirstSet");
 	}
+
 }
 
 void TitleLevel::SoundLoad()
 {
+	GameEngineDirectory Dir;
+	Dir.MoveParentToDirectory("ContentsResources");
+	Dir.Move("ContentsResources");
+	Dir.Move("Sound");
 
+	//SoundTestCode
+	//GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Test.wav"));
 }
 
 void TitleLevel::ImageLoad()

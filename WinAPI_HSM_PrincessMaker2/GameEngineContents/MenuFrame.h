@@ -2,6 +2,13 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineBase/GameEngineDebug.h>
 #include "ContentsEnums.h"
+enum class MenuFrameStyleEnum
+{
+	Null = -1,
+	Gold,
+	Silver,
+	Nomal
+};
 
 class MenuFrame : public GameEngineActor
 {
@@ -16,8 +23,8 @@ public:
 	MenuFrame& operator=(const MenuFrame& _Other) = delete;
 	MenuFrame& operator=(MenuFrame&& _Other) noexcept = delete;
 
-	void InitMenuFrameRender(int _Order, const int _style = 2);
-	void InitMenuFrameRender(PM2RenderOrder _Order, const int _style = 2);
+	void InitMenuFrameRender(int _Order, MenuFrameStyleEnum _style = MenuFrameStyleEnum::Nomal);
+	void InitMenuFrameRender(PM2RenderOrder _Order, MenuFrameStyleEnum _style = MenuFrameStyleEnum::Nomal);
 	void SetMenuFrameScale(const float4& _Scale);
 	
 
@@ -53,7 +60,7 @@ protected:
 
 private:
 	float4 MenuFrameScale = {}; // 픽셀기준 사이즈
-	int MenuFrameStyle = -1;
+	MenuFrameStyleEnum MenuFrameStyle = MenuFrameStyleEnum::Null;
 	GameEngineRender* FrameRender[9] = {};
 	int FrameRenderOrder = 0;
 };

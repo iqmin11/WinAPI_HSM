@@ -81,7 +81,7 @@ void MenuFrame::SetMenuFrameScale(const float4& _Scale)
 	}
 }
 
-void MenuFrame::InitMenuFrameRender(int _Order, const int _style)
+void MenuFrame::InitMenuFrameRender(int _Order, MenuFrameStyleEnum _style)
 {
 	FrameRenderOrder = _Order;
 
@@ -93,16 +93,11 @@ void MenuFrame::InitMenuFrameRender(int _Order, const int _style)
 		}
 	}
 	
-	if (0 > _style || 2 < _style)
-	{
-		MsgAssert("프레임 스타일 인덱스 범위는 0~2 입니다. 해당하지 않는 값을 입력하였습니다")
-	}
-	
 	MenuFrameStyle = _style;
 
 	switch (MenuFrameStyle)
 	{
-	case 0:
+	case MenuFrameStyleEnum::Gold:
 		for (int i = 0; i < 9; i++)
 		{
 			FrameRender[i] = CreateRender("FrameSample1.bmp", _Order);
@@ -110,7 +105,7 @@ void MenuFrame::InitMenuFrameRender(int _Order, const int _style)
 		}
 		break;
 
-	case 1:
+	case MenuFrameStyleEnum::Silver:
 		for (int i = 0; i < 9; i++)
 		{
 			FrameRender[i] = CreateRender("FrameSample2.bmp", _Order);
@@ -118,7 +113,7 @@ void MenuFrame::InitMenuFrameRender(int _Order, const int _style)
 		}
 		break;
 
-	case 2:
+	case MenuFrameStyleEnum::Nomal:
 		for (int i = 0; i < 9; i++)
 		{
 			FrameRender[i] = CreateRender("FrameSample3.bmp", _Order);
@@ -131,7 +126,7 @@ void MenuFrame::InitMenuFrameRender(int _Order, const int _style)
 	}
 }
 
-void MenuFrame::InitMenuFrameRender(PM2RenderOrder _Order, const int _style)
+void MenuFrame::InitMenuFrameRender(PM2RenderOrder _Order, MenuFrameStyleEnum _style)
 {
 	InitMenuFrameRender(static_cast<int>(_Order), _style);
 }
