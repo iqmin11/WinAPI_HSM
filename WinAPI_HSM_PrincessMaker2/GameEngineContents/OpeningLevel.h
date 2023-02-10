@@ -30,5 +30,8 @@ private:
 	//Dialog* AcBottomDialog = nullptr;
 	OpeningCredit* AcOpeningCredit = nullptr;
 	float Time = 0.0f;
+
+	void SoundLoad();
+	void ImageLoad();
 };
 

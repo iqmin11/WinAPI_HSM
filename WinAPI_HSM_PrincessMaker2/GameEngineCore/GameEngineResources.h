@@ -2,11 +2,26 @@
 #include <map>
 #include <string>
 #include <GameEnginePlatform/GameEngineImage.h>	
+#include <GameEnginePlatform/GameEngineSound.h>
 
 //모든 리소스 관리(사운드, 이미지 등)
 
+class GameEngineSoundPlayer
+{
+public:
+	GameEngineSoundPlayer() {};
+	GameEngineSoundPlayer(FMOD::Channel* _Channel);
+
+	void LoopCount(int _Count);
+	void Stop();
+
+private:
+	FMOD::Channel* ControlChannel = nullptr;
+};
+
 class GameEnginePath;
 class GameEngineImage;
+class GameEngineSound;
 class GameEngineResources
 {
 public:
@@ -28,6 +43,16 @@ public:
 
 	GameEngineImage* ImageFind(const std::string_view& _Name);
 
+	GameEngineSound* SoundLoad(const GameEnginePath& _Path);
+
+	GameEngineSound* SoundLoad(const std::string_view& _Path, const std::string_view& _Name);
+
+	GameEngineSound* SoundFind(const std::string_view& _Name);
+
+	void SoundPlay(const std::string_view& _Name);
+
+	GameEngineSoundPlayer SoundPlayToControl(const std::string_view& _Name);
+
 	void Relase();
 
 
@@ -37,7 +62,8 @@ protected:
 private:
 	static GameEngineResources Inst;
 	std::map<std::string, GameEngineImage*> AllImage;
-	
+	std::map<std::string, GameEngineSound*> AllSound;
+
 	// construtor destructor
 	GameEngineResources();
 	~GameEngineResources();

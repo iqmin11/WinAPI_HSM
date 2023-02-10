@@ -53,6 +53,9 @@ private:
 	PlayerCalendar* AcPlayerCalendar = nullptr;
 	SetOliveBooldType* AcSetOliveBloodType = nullptr;
 
+	void SoundLoad();
+	void ImageLoad();
+
 	void ChangeState(ActorState _State);
 	void ChangeActor(int _Order);
 	void ChangeActor(ActorState _State);

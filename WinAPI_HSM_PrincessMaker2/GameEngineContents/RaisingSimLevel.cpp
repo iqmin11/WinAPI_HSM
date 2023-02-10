@@ -34,10 +34,50 @@ RaisingSimLevel::~RaisingSimLevel()
 
 void RaisingSimLevel::Loading()
 {
+	SoundLoad();
+	ImageLoad();
+
+	AcBackground = CreateActor<Background>(static_cast<int>(PM2ActorOrder::BackGround));
+	CreateActor<DateViewer>(PM2ActorOrder::Menu0);
+	CreateActor<BasicInfo>(PM2ActorOrder::Menu0);
+	CreateActor<MainMenu>(PM2ActorOrder::Menu0);
+
+	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
+	CreateActor<Olive>(PM2ActorOrder::Player);
+	CreateActor<Flower>(PM2ActorOrder::BackGround);
+	CreateActor<Paint>(PM2ActorOrder::BackGround);
+	//CreateActor<Calendar>(PM2ActorOrder::Menu1);
+	//CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
+	CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
+	CreateActor<BasicStatusWindow>(PM2ActorOrder::Menu1);
+	//CreateActor<FightStatusWindow>(PM2ActorOrder::Menu1);
+	//CreateActor<EstimateStatusWindow>(PM2ActorOrder::Menu1);
+	//CreateActor<FemininityStatusWindow>(PM2ActorOrder::Menu1);
+	//CreateActor<Animation>(2);
+
+
+}
+//800,0 ~ 800,320
+void RaisingSimLevel::Update(float _DeltaTime)
+{
+	if (GameEngineInput::IsDown("LevelChange"))
+	{
+		GameEngineCore::GetInst()->ChangeLevel("RPG");
+		// Player::MainPlayer->Death()p;
+	}
+}
+
+void RaisingSimLevel::SoundLoad()
+{
+}
+
+void RaisingSimLevel::ImageLoad()
+{
 	GameEngineDirectory Dir;
 
 	Dir.MoveParentToDirectory("ContentsResources");
 	Dir.Move("ContentsResources");
+	Dir.Move("Image");
 	Dir.Move("RaisingLevel");
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("body_10_nomal.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("head_10_nomal.BMP"));
@@ -68,33 +108,4 @@ void RaisingSimLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("StatusGauge.bmp"))->Cut(2, 1);
 
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Calendar.bmp"));
-
-	AcBackground = CreateActor<Background>(static_cast<int>(PM2ActorOrder::BackGround));
-	CreateActor<DateViewer>(PM2ActorOrder::Menu0);
-	CreateActor<BasicInfo>(PM2ActorOrder::Menu0);
-	CreateActor<MainMenu>(PM2ActorOrder::Menu0);
-
-	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
-	CreateActor<Olive>(PM2ActorOrder::Player);
-	CreateActor<Flower>(PM2ActorOrder::BackGround);
-	CreateActor<Paint>(PM2ActorOrder::BackGround);
-	//CreateActor<Calendar>(PM2ActorOrder::Menu1);
-	//CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
-	CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
-	CreateActor<BasicStatusWindow>(PM2ActorOrder::Menu1);
-	//CreateActor<FightStatusWindow>(PM2ActorOrder::Menu1);
-	//CreateActor<EstimateStatusWindow>(PM2ActorOrder::Menu1);
-	//CreateActor<FemininityStatusWindow>(PM2ActorOrder::Menu1);
-	//CreateActor<Animation>(2);
-
-
-}
-//800,0 ~ 800,320
-void RaisingSimLevel::Update(float _DeltaTime)
-{
-	if (GameEngineInput::IsDown("LevelChange"))
-	{
-		GameEngineCore::GetInst()->ChangeLevel("RPG");
-		// Player::MainPlayer->Death()p;
-	}
 }

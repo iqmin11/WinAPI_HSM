@@ -22,22 +22,10 @@ TitleLevel::~TitleLevel()
 
 void TitleLevel::Loading()
 {
+	SoundLoad();
+	ImageLoad();
+
 	
-	GameEngineDirectory Dir;
-
-	Dir.MoveParentToDirectory("ContentsResources");
-	Dir.Move("ContentsResources");
-
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SelectButton_Release.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SelectButton_Hover.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample1.BMP"))->Cut(3, 3);
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample2.BMP"))->Cut(3, 3);
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample3.BMP"))->Cut(3, 3);
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Cursor.bmp"));
-
-	Dir.Move("TitleLevel");
-
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BlackBackground.BMP"));
 
 	if (false == GameEngineInput::IsKey("LevelChange"))
 	{
@@ -55,4 +43,29 @@ void TitleLevel::Update(float _DeltaTime)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("FirstSet");
 	}
+}
+
+void TitleLevel::SoundLoad()
+{
+
+}
+
+void TitleLevel::ImageLoad()
+{
+	GameEngineDirectory Dir;
+
+	Dir.MoveParentToDirectory("ContentsResources");
+	Dir.Move("ContentsResources");
+	Dir.Move("Image");
+
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SelectButton_Release.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SelectButton_Hover.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample1.BMP"))->Cut(3, 3);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample2.BMP"))->Cut(3, 3);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FrameSample3.BMP"))->Cut(3, 3);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Cursor.bmp"));
+
+	Dir.Move("TitleLevel");
+
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BlackBackground.BMP"));
 }

@@ -20,17 +20,28 @@ RPGLevel::~RPGLevel()
 
 void RPGLevel::Loading()
 {
-	GameEngineDirectory Dir;
-	Dir.MoveParentToDirectory("ContentsResources");
-	Dir.Move("ContentsResources");
-	Dir.Move("RPGLevel");
-
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Olive.BMP"))->Cut(8,1);
-
-	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
-	CreateActor<RPGOlive>();
+	SoundLoad();
+	ImageLoad();
 }
 
 void RPGLevel::Update(float _DeltaTime)
 {
+}
+
+void RPGLevel::SoundLoad()
+{
+}
+
+void RPGLevel::ImageLoad()
+{
+	GameEngineDirectory Dir;
+	Dir.MoveParentToDirectory("ContentsResources");
+	Dir.Move("ContentsResources");
+	Dir.Move("Image");
+	Dir.Move("RPGLevel");
+
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Olive.BMP"))->Cut(8, 1);
+
+	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
+	CreateActor<RPGOlive>();
 }

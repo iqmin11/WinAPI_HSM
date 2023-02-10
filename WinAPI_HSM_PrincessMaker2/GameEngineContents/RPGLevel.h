@@ -22,6 +22,8 @@ protected:
 
 
 private:
+	void SoundLoad();
+	void ImageLoad();
 
 };
 

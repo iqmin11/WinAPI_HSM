@@ -40,6 +40,7 @@ void GameEngineCore::GlobalUpdate()
 	}
 	
 	//프레임 시작할 때 한번 델타타임을 정하고
+	GameEngineSound::SoundUpdate();
 	float TimeDeltaTime = GameEngineTime::GlobalTime.TimeCheck();
 	GameEngineInput::Update(TimeDeltaTime);
 

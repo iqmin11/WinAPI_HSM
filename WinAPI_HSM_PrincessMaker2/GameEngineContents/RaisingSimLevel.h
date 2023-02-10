@@ -29,6 +29,7 @@ private:
 	Flower* AcFlower = nullptr; 
 	Paint* AcPaint= nullptr; 
 
-	
+	void SoundLoad();
+	void ImageLoad();
 };
 

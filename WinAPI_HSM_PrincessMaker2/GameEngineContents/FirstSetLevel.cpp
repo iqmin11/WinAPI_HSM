@@ -25,42 +25,9 @@ FirstSetLevel::~FirstSetLevel()
 
 void FirstSetLevel::Loading()
 {
-	GameEngineDirectory Dir;
-
-	Dir.MoveParentToDirectory("ContentsResources");
-	Dir.Move("ContentsResources");
-	Dir.Move("FirstSetLevel");
-
-	{
-		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BirthNum.BMP"));
-		Image->Cut(10, 1);
-	}
-
-	{
-		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OliveCalendarNum.BMP"));
-		Image->Cut(32, 3);
-	}
-
-	{
-		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OliveYearNum.BMP"));
-		Image->Cut(10, 3);
-	}
-
-	{
-		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PlayerYearNum.BMP"));
-		Image->Cut(10, 3);
-	}
-
-	{
-		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PlayerCalendarNum.BMP"));
-		Image->Cut(32, 3);
-	}
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OliveWeek.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PlayerWeek.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SetOliveBackground.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SetOliveBirth.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SetPlayerBackground.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SetPlayerBirth.BMP"));
+	SoundLoad();
+	ImageLoad();
+	
 
 	if (false == GameEngineInput::IsKey("ActorChange"))
 	{
@@ -154,6 +121,7 @@ void FirstSetLevel::OffUpdateActor()
 
 	UpdateActor->Off();
 }
+
 
 void FirstSetLevel::ChangeState(ActorState _State)
 {
@@ -317,4 +285,32 @@ void FirstSetLevel::SetOliveBloodTypeUpdate()
 
 void FirstSetLevel::SetOliveBloodTypeEnd()
 {
+}
+
+void FirstSetLevel::SoundLoad()
+{
+
+}
+
+void FirstSetLevel::ImageLoad()
+{
+	GameEngineDirectory Dir;
+
+	Dir.MoveParentToDirectory("ContentsResources");
+	Dir.Move("ContentsResources");
+	Dir.Move("Image");
+	Dir.Move("FirstSetLevel");
+
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BirthNum.BMP"))->Cut(10, 1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OliveCalendarNum.BMP"))->Cut(32, 3);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OliveYearNum.BMP"))->Cut(10, 3);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PlayerYearNum.BMP"))->Cut(10, 3);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PlayerCalendarNum.BMP"))->Cut(32, 3);
+	
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OliveWeek.BMP"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PlayerWeek.BMP"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SetOliveBackground.BMP"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SetOliveBirth.BMP"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SetPlayerBackground.BMP"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SetPlayerBirth.BMP"));
 }

@@ -26,5 +26,8 @@ protected:
 
 private:
 	TitleMenu* TitleSelectionMenu = nullptr;
+
+	void SoundLoad();
+	void ImageLoad();
 };
 
