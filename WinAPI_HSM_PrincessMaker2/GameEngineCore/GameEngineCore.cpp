@@ -4,6 +4,7 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 #include "GameEngineLevel.h"
 #include "GameEngineResources.h"
+#include <GameEnginePlatform/GameEngineSound.h>
 #include <GameEngineBase/GameEngineTime.h>
 
 GameEngineCore* Core;
@@ -120,7 +121,7 @@ GameEngineCore* GameEngineCore::GetInst()
 	return Core;
 }
 
-void GameEngineCore::LevelLoading(GameEngineLevel* _Level)
+void GameEngineCore::LevelLoading(GameEngineLevel* _Level, const std::string_view& _Name)
 {
 	if (nullptr == _Level)
 	{
@@ -128,5 +129,6 @@ void GameEngineCore::LevelLoading(GameEngineLevel* _Level)
 		return;
 	}
 
+	_Level->SetName(_Name);
 	_Level->Loading();
 }
