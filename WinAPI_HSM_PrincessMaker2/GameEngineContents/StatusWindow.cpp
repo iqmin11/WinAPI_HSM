@@ -2,9 +2,6 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineRender.h>
 
-#include "GaugeRenderObject.h"
-
-
 StatusWindow::StatusWindow()
 {
 
@@ -18,13 +15,13 @@ StatusWindow::~StatusWindow()
 	}
 }
 
-void StatusWindow::InsertStatus(StatusName _StatusName, int _Max)
+void StatusWindow::InsertStatus(StatusName _StatusName, int _Max, GaugeFrameStyle _Style)
 {
 	++StatusCount;
 	SetMenuFrameScale({ 220.0f + 20.0f,(static_cast<float>(StatusCount) * 20.0f) + 20.0f });
 	GaugeRenderObject* InsertGaugePtr = new GaugeRenderObject; 
 	InsertGaugePtr->SetOwner(this);
-	InsertGaugePtr->SetGaugeRender(GetFrameRenderOrder() + 1, _StatusName, _Max);
+	InsertGaugePtr->SetGaugeRender(GetFrameRenderOrder() + 1, _StatusName, _Max, _Style);
 	Gauges.push_back(InsertGaugePtr);
 	for (int i = 0; i < Gauges.size(); ++i)
 	{

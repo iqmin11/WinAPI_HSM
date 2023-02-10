@@ -3,11 +3,11 @@
 #include <list>
 #include <vector>
 #include "MenuFrame.h"
+#include "GaugeRenderObject.h"
 #include "ContentsEnums.h"
 
 
 class GameEngineRender;
-class GaugeRenderObject;
 class StatusWindow : public MenuFrame
 {
 public:
@@ -21,7 +21,7 @@ public:
 	StatusWindow& operator=(const StatusWindow& _Other) = delete;
 	StatusWindow& operator=(StatusWindow&& _Other) noexcept = delete;
 
-	void InsertStatus(const StatusName _StatusName, int _Max);
+	void InsertStatus(const StatusName _StatusName, int _Max, GaugeFrameStyle _Style);
 	//void SetStatusFrameRender(int _Order);
 	//void SetStatusFrameRender(PM2RenderOrder _Order);
 
