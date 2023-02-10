@@ -18,6 +18,6 @@ protected:
 	void Start();
 
 private:
-
+	GaugeFrameStyle St = GaugeFrameStyle::Null;
 };
 

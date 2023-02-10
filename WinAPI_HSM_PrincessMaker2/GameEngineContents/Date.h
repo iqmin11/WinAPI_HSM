@@ -26,6 +26,7 @@ public:
 	static int FindFirstWeekday(int _YYYY);
 	static int GetMonthLenth(int _YYYY, int _MM);
 	static std::vector<int> GetMonthLenths(int _YYYY);
+	static int FindMonthFirstWeekday(int _YYYY, int _MM);
 
 	// construtor destructor
 	Date();

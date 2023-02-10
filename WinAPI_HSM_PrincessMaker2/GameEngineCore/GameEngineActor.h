@@ -98,6 +98,9 @@ protected:
 	virtual void LevelChangeEnd(GameEngineLevel* _PrevLevel);
 	virtual void LevelChangeStart(GameEngineLevel* _PrevLevel);
 
+	//void On() override {};
+	//void Off() override {};
+
 private:
 	GameEngineLevel* Level = nullptr;
 

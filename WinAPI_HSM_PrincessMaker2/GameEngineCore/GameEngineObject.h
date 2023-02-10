@@ -30,12 +30,12 @@ public:
 		ObjectDeath = true;
 	}
 
-	void On()
+	virtual void On()
 	{
 		ObjectUpdate = true;
 	}
 	
-	void Off()
+	virtual void Off()
 	{
 		ObjectUpdate = false;
 	}

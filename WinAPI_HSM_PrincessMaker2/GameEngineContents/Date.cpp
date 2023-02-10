@@ -288,3 +288,54 @@ int Date::FindFirstWeekday()
     return (PrevYear + ((PrevYear / 4) - (PrevYear / 100) + (PrevYear / 400)) + 1) % 7;
 }
 
+
+int Date::FindMonthFirstWeekday(int _YYYY, int _MM)
+{
+    if (true == IsOverMonth(_MM))
+    {
+        MsgAssert("입력가능한 Month의 범위를 벗어났습니다");
+        return 0;
+    }
+
+    int Year = _YYYY;
+    int Month = 1;
+    int MonthLen[12] = {};
+    for (size_t i = 0; i < 12; i++)
+    {
+        if (13 == Month)
+        {
+            Month = 1;
+            Year++;
+        }
+
+        if (2 == Month)
+        {
+            if (IsLeapYear(Year))
+            {
+                MonthLen[i] = 29;
+            }
+            else
+            {
+                MonthLen[i] = 28;
+            }
+        }
+        else if (4 == Month ||
+            6 == Month ||
+            9 == Month ||
+            11 == Month)
+        {
+            MonthLen[i] = 30;
+        }
+        else
+        {
+            MonthLen[i] = 31;
+        }
+        Month++;
+    }
+    int WholeDay = 0;
+    for (size_t i = 0; i < _MM - 1; i++)
+    {
+        WholeDay += MonthLen[i];
+    }
+    return (FindFirstWeekday(_YYYY) + WholeDay) % 7;
+}

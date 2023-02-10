@@ -1,6 +1,9 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/Button.h>
 #include "Date.h"
+
+
 class PlayerCalendar : public GameEngineActor
 {
 public:
@@ -15,19 +18,18 @@ public:
 	PlayerCalendar& operator=(PlayerCalendar&& _Other) noexcept = delete;
 
 
-	//void CreateCalendar(int _year);
-
-	void DateNumRender();
+	void DateNumButtonSet();
 	void YearNumRender();
 	void WeekdayRender();
 	void MonthNumRender();
 
 
-	bool IsLeapYear();
-	bool IsLeapYear(int _YYYY);
 
 	void SetOliveBirth(int _YYYY, int _MM, int _DD); // 임시
 	void SetCalendarYear(int _YYYY);// 임시
+
+	void On() override;
+	void Off() override;
 
 protected:
 	void Start() override;
@@ -39,15 +41,11 @@ private:
 	Date OliveBirth = Date();
 	Date PlayerBirth = Date();
 	int CalendarYear = 2023;
-	int FindFirstWeekday();
-	int FindFirstWeekday(int _YYYY);
-	int FindMonthFirstWeekday(int _YYYY, int _MM);
 
-	GameEngineRender* DateRender[4][3][6][7] = {}; //달력 열, 행, 날짜 열, 행
+	Button* DateButton[4][3][6][7] = {}; //달력 열, 행, 날짜 열, 행
 	GameEngineRender* WeekRender[4][3] = {}; //달력 열, 행, 날짜 열, 행
 	GameEngineRender* YearRender[4][3][4] = {}; // 달력 열, 행, 년도 네글자
 	GameEngineRender* MonthRender[4][3] = {}; // 달력 열, 행 
 	GameEngineRender* BackgroundRender = nullptr;
-
 };
 
