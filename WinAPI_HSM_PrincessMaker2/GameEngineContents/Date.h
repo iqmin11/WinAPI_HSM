@@ -5,6 +5,7 @@
 
 enum class Week
 {
+	Null = -1,
 	SUN,
 	MON,
 	TUE,
@@ -17,19 +18,20 @@ enum class Week
 class Date
 {
 public:
-	static std::vector<Date> GetOneMonthCalendar(int _YYYY, int _MM);
-	static bool IsOverMonth(int _MM);
-	static bool IsOverDay(int _YYYY, int _MM, int _DD);
-	static bool IsLeapYear(int _YYYY);
-	static bool IsBigMonth(int _MM);
-	void SetWeekDay(int _YYYY, int _MM, int _DD);
-	static int FindFirstWeekday(int _YYYY);
-	static int GetMonthLenth(int _YYYY, int _MM);
-	static std::vector<int> GetMonthLenths(int _YYYY);
-	static int FindMonthFirstWeekday(int _YYYY, int _MM);
+	static std::vector<Date> GetOneMonthCalendar(unsigned int _YYYY, unsigned  int _MM);
+	static bool IsOverMonth(unsigned int _MM);
+	static bool IsOverDay(unsigned int _YYYY, unsigned  int _MM, unsigned  int _DD);
+	static bool IsLeapYear(unsigned int _YYYY);
+	static bool IsBigMonth(unsigned int _MM);
+	void SetWeekDay(unsigned int _YYYY, unsigned  int _MM, unsigned  int _DD);
+	static unsigned int FindFirstWeekday(unsigned int _YYYY);
+	static unsigned int GetMonthLenth(unsigned int _YYYY, unsigned  int _MM);
+	static std::vector<unsigned int> GetMonthLenths(unsigned int _YYYY);
+	static unsigned int FindMonthFirstWeekday(unsigned int _YYYY, unsigned  int _MM);
 
 	// construtor destructor
 	Date();
+	Date(int _YYYY, int _MM, int _DD);
 	~Date();
 
 	// delete Function
@@ -42,7 +44,19 @@ public:
 	bool IsOverDay();
 	bool IsOverWeekDay();
 	bool IsLeapYear();
-	void SetDate(int _YYYY, int _MM, int _DD)
+	bool IsNullDate()
+	{
+		if (Year  == 0||
+			Month == 0||
+			Day	  == 0)
+		{
+			return true;
+		}
+		return false;
+
+	}
+
+	void SetDate(unsigned int _YYYY, unsigned int _MM, unsigned int _DD)
 	{
 		if (IsOverMonth(_MM) ||
 			IsOverDay(_YYYY, _MM, _DD))
@@ -54,18 +68,26 @@ public:
 		SetDay(_DD);
 		SetWeekDay(_YYYY, _MM, _DD);
 	}
+
+	void SetNullDate()
+	{
+		Year = 0;
+		Month = 0;
+		Day = 0;
+		WeekDay = Week::Null;
+	}
 	
-	int GetYear() const
+	unsigned int GetYear() const
 	{
 		return Year;
 	}
 	
-	int GetMonth() const
+	unsigned int GetMonth() const
 	{
 		return Month;
 	}
 	
-	int GetDay() const
+	unsigned int GetDay() const
 	{
 		return Day;
 	}
@@ -75,7 +97,9 @@ public:
 		return WeekDay;
 	}
 
-	int FindFirstWeekday();
+	unsigned int FindFirstWeekday();
+
+	
 
 protected:
 
@@ -85,19 +109,19 @@ private:
 	unsigned int Year = 0; // 제한 없음
 	unsigned int Month = 0; // 1~12
 	unsigned int Day = 0; // 1~31
-	Week WeekDay = Week::SUN; // 0~6
+	Week WeekDay = Week::Null; // 0~6
 	
-	void SetYear(int _YYYY)
+	void SetYear(unsigned int _YYYY)
 	{
 		Year = _YYYY;
 	}
 
-	void SetMonth(int _MM)
+	void SetMonth(unsigned int _MM)
 	{
 		Month = _MM;
 	}
 
-	void SetDay(int _DD)
+	void SetDay(unsigned int _DD)
 	{
 		Day = _DD;
 	}

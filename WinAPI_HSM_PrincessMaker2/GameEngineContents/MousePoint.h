@@ -16,6 +16,10 @@ public:
 	MousePoint& operator=(const MousePoint& _Other) = delete;
 	MousePoint& operator=(MousePoint&& _Other) noexcept = delete;
 
+	GameEngineCollision* GetMousePointCollision() const
+	{
+		return MousePointCollision;
+	}
 	
 protected:
 	void Start() override;
@@ -25,6 +29,5 @@ protected:
 private:
 	GameEngineCollision* MousePointCollision = nullptr;
 	GameEngineRender* MousePointRender = nullptr;
-
 };
 

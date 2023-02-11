@@ -26,6 +26,7 @@ public:
 	Button& operator=(Button&& _Other) noexcept = delete;
 
 	void SetRenderOrder(int _Value);
+	void SetCollisionOrder(int _Order);
 	void SetScale(float4 _Scale);
 
 	void SetClickCallBack(void(*_ClickPtr)())
@@ -56,6 +57,8 @@ public:
 		PressIndex = _PressIndex;
 	}
 
+	
+
 	GameEngineRender* GetButtonRender()
 	{
 		return ButtonRender;
@@ -64,6 +67,26 @@ public:
 	GameEngineCollision* GetButtonCollsion()
 	{
 		return ButtonCollision;
+	}
+
+	ButtonState GetState() const
+	{
+		return State;
+	}
+
+	int GetHoverIndex() const
+	{
+		return HoverIndex;
+	}
+
+	int GetReleaseIndex() const
+	{
+		return ReleaseIndex;
+	}
+
+	int GetPressIndex() const
+	{
+		return PressIndex;
 	}
 
 protected:

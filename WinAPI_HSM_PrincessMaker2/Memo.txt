@@ -178,7 +178,54 @@ NumberRenderObj -> 정렬에 Negative 이미지 없으면 Negative 로직 건너뛰기 추가
 
 GetButtonState 기능 추가
 
-GameEngineObject On Off, OnOffSwitch virtual로 액터마다 키고 끈다는 개념이 달라질때가 있어서
+GameEngineObject On Off, OnOffSwitch virtual로... On Off업캐스트 하고싶어서
 구체적으로 안에서 다른 액터들도 끄고 키는 기능을 만들고싶어서
 구체적으로 버튼을 가지고있는 액터들 떄문에
 
+Button 클래스 수정
+ButtonState GetState() const
+	{
+		return State;
+	}
+
+	int GetHoverIndex() const
+	{
+		return HoverIndex;
+	}
+
+	int GetReleaseIndex() const
+	{
+		return ReleaseIndex;
+	}
+
+	int GetPressIndex() const
+	{
+		return PressIndex;
+	}
+
+    void SetCollisionOrder(int _Order)
+	{
+		ButtonCollision->SetOrder(_Order);
+	}
+
+	void SetCollisionOrder(PM2CollisionOrder _Order)
+	{
+		SetCollisionOrder(static_cast<int>(_Order));
+	}
+
+    void Button::SetTargetCollisionGroup(int _PointTargetGroup)
+    {
+    	PointTargetGroup = _PointTargetGroup;
+    	if (nullptr == ButtonCollision)
+    	{
+    		ButtonCollision = CreateCollision(PointTargetGroup);
+    	}
+    }
+
+
+    
+NumberRenderObject수정    
+    void On() override;
+	void Off() override;
+
+    

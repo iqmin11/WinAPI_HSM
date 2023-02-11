@@ -182,4 +182,24 @@ void NumberRenderObject::SetRenderPos(float4 _Pos)
 	}
 }
 
+void NumberRenderObject::On()
+{
+	GameEngineObject::On();
+	for (auto i : NumberRenders)
+	{
+		i->On();
+	}
+	//음수 생각 안한상태
+}
+
+void NumberRenderObject::Off()
+{
+	GameEngineObject::Off();
+	for (auto i : NumberRenders)
+	{
+		i->Off();
+	}
+	//음수 생각 안한상태
+}
+
 

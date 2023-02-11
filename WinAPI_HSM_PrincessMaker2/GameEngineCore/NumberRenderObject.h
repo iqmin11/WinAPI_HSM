@@ -48,6 +48,9 @@ public:
 		return Value;
 	}
 
+	void On() override;
+	void Off() override;
+
 protected:
 
 private:
