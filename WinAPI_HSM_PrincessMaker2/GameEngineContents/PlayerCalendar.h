@@ -18,13 +18,10 @@ public:
 	PlayerCalendar& operator=(const PlayerCalendar& _Other) = delete;
 	PlayerCalendar& operator=(PlayerCalendar&& _Other) noexcept = delete;
 
-
 	void SetDateNumButton();
 	void SetYearRender();
 	void SetWeekdayRender();
 	void SetMonthRender();
-
-
 
 	void SetOliveBirth(int _YYYY, int _MM, int _DD); // 임시
 	void SetCalendarYear(int _YYYY);// 임시

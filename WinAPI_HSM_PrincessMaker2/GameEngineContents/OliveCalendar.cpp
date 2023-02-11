@@ -69,12 +69,14 @@ void OliveCalendar::Start()
 	HoverButtonDateRender_Month.SetImage("BirthNum.bmp", { 10, 9 }, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
 	HoverButtonDateRender_Month.SetAlign(Align::Right);
 	HoverButtonDateRender_Month.SetRenderPos(Pos_HoverButtonDateRender_Month);
+	HoverButtonDateRender_Month.SetNumOfDigits(2);
 
 	HoverButtonDateRender_Day.SetOwner(this);
 	HoverButtonDateRender_Day.SetImage("BirthNum.bmp", { 10, 9 }, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
 	HoverButtonDateRender_Day.SetAlign(Align::Right);
 	HoverButtonDateRender_Day.SetRenderPos(Pos_HoverButtonDateRender_Day);
-	
+	HoverButtonDateRender_Day.SetNumOfDigits(2);
+
 	BackgroundRender = CreateRender("SetOliveBirth.BMP", PM2RenderOrder::BackGround);
 	BackgroundRender ->SetScaleToImage();
 	SetDateNumButton();
@@ -104,13 +106,13 @@ void OliveCalendar::Update(float _DeltaTime)
 		HoverButtonDateRender_Month.On();
 		HoverButtonDateRender_Day.On();
 
-		HoverButtonDateRender_Year.SetValue(1000);
-		HoverButtonDateRender_Month.SetValue(10);
-		HoverButtonDateRender_Day.SetValue(10);
+		//HoverButtonDateRender_Year.SetValue(1000);
+		//HoverButtonDateRender_Month.SetValue(10);
+		//HoverButtonDateRender_Day.SetValue(10);
 
-		//HoverButtonDateRender_Year.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetYear());
-		//HoverButtonDateRender_Month.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetMonth());
-		//HoverButtonDateRender_Day.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetDay());
+		HoverButtonDateRender_Year.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetYear());
+		HoverButtonDateRender_Month.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetMonth());
+		HoverButtonDateRender_Day.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetDay());
 	}
 }
 

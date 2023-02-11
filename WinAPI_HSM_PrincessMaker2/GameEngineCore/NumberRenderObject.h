@@ -41,11 +41,19 @@ public:
 	}
 
 	void SetRenderPos(float4 _Pos);
-	
+
 
 	inline int GetValue()
 	{
 		return Value;
+	}
+
+	inline void SetNumOfDigits(int _Num) { // 랜더 할 숫자 길이 설정
+		NumOfDigits = _Num;
+	}
+
+	inline void ResetDigits() { // 숫자길이 리셋 (Value만큼 랜더)
+		SetNumOfDigits(-1);
 	}
 
 	void On() override;
@@ -62,6 +70,7 @@ private:
 	Align AlignState = Align::Left;
 	bool Negative = false;
 
+	int NumOfDigits = -1; // 렌더할 숫자 길이
 	// GameEngineImage* NumberImage;
 
 	bool CameraEffect = false;
@@ -72,5 +81,7 @@ private:
 
 	std::vector<GameEngineRender*> NumberRenders = std::vector<GameEngineRender*>();
 	GameEngineRender* NegativeRender = nullptr;
+
+	void SetNumberRenders(int _Index, int _TransColor, float4 _Pos, const std::string_view& _ImageName, float4 _Scale, bool _CameraEffect, int _Frame = -1);
 };
 

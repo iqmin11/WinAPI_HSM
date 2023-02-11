@@ -40,7 +40,6 @@ protected:
 
 private:
 	Date StartDate = Date();
-	//Date OliveBirth = Date();
 
 	Button* DateButton[4][3][6][7] = {}; //달력 열, 행, 날짜 열, 행
 	Date EachButtonDate[4][3][6][7] = {}; //달력 열, 행, 날짜 열, 행

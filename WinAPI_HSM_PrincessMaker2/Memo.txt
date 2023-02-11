@@ -208,19 +208,7 @@ ButtonState GetState() const
 		ButtonCollision->SetOrder(_Order);
 	}
 
-	void SetCollisionOrder(PM2CollisionOrder _Order)
-	{
-		SetCollisionOrder(static_cast<int>(_Order));
-	}
-
-    void Button::SetTargetCollisionGroup(int _PointTargetGroup)
-    {
-    	PointTargetGroup = _PointTargetGroup;
-    	if (nullptr == ButtonCollision)
-    	{
-    		ButtonCollision = CreateCollision(PointTargetGroup);
-    	}
-    }
+	
 
 
     

@@ -31,11 +31,13 @@ void PlayerCalendar::Start()
 	HoverButtonDateRender_Month.SetImage("BirthNum.bmp", { 10, 9 }, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
 	HoverButtonDateRender_Month.SetAlign(Align::Right);
 	HoverButtonDateRender_Month.SetRenderPos(Pos_HoverButtonDateRender_Month);
+	HoverButtonDateRender_Month.SetNumOfDigits(2);
 
 	HoverButtonDateRender_Day.SetOwner(this);
 	HoverButtonDateRender_Day.SetImage("BirthNum.bmp", { 10, 9 }, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
 	HoverButtonDateRender_Day.SetAlign(Align::Right);
 	HoverButtonDateRender_Day.SetRenderPos(Pos_HoverButtonDateRender_Day);
+	HoverButtonDateRender_Day.SetNumOfDigits(2);
 	
 	BackgroundRender = CreateRender("SetPlayerBirth.BMP", PM2RenderOrder::BackGround);
 	BackgroundRender->SetScaleToImage();
@@ -66,13 +68,9 @@ void PlayerCalendar::Update(float _DeltaTime)
 		HoverButtonDateRender_Month.On();
 		HoverButtonDateRender_Day.On();
 		
-		HoverButtonDateRender_Year.SetValue(1000);
-		HoverButtonDateRender_Month.SetValue(10);
-		HoverButtonDateRender_Day.SetValue(10);
-		
-		//HoverButtonDateRender_Year.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetYear());
-		//HoverButtonDateRender_Month.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetMonth());
-		//HoverButtonDateRender_Day.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetDay());
+		HoverButtonDateRender_Year.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetYear());
+		HoverButtonDateRender_Month.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetMonth());
+		HoverButtonDateRender_Day.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetDay());
 	}
 }
 
@@ -258,16 +256,6 @@ void PlayerCalendar::SetMonthRender()
 		}
 	}
 }
-
-//void PlayerCalendar::SetHoverButtonDateRender()
-//{
-//	Date Test = Date();
-//	Test.SetDate(1200,3,6);
-//	std::vector<unsigned int> YYYY = GameEngineMath::GetDigits(Test.GetYear());
-//	std::vector<unsigned int> MM = GameEngineMath::GetDigits(Test.GetMonth());
-//	std::vector<unsigned int> DD = GameEngineMath::GetDigits(Test.GetDay());
-//
-//}
 
 void PlayerCalendar::SetOliveBirth(int _YYYY, int _MM, int _DD)
 {
