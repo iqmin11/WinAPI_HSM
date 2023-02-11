@@ -407,11 +407,19 @@ void PlayerCalendar::SetEachButtonDate() //각 버튼 인덱스마다의 날짜
 
 	int FirstWeekday = Date::FindMonthFirstWeekday(CalendarYear, FirstMonth); // 1월 1일 요일 찾기 공식
 	int MonthFirstWeekday = FirstWeekday;
+	int SetMonth = OliveBirth.GetMonth() - 1;
+	int SetYear = CalendarYear;
 
 	for (int w = 0; w < 4; w++)
 	{
 		for (int z = 0; z < 3; z++)
 		{
+			SetMonth++;
+			if (SetMonth == 13)
+			{
+				SetMonth = 1;
+				SetYear++;
+			}
 			int SetDay = 1;
 			int FirstMonth = (z + 1) + (w * 3); // 순서상 첫번쨰 달을 말하는거 8월이 맨 앞에오면 8월이 first
 			for (int y = 0; y < 6; y++) // 한달
@@ -428,7 +436,7 @@ void PlayerCalendar::SetEachButtonDate() //각 버튼 인덱스마다의 날짜
 					}
 					else if (x + (y * 7) < MonthFirstWeekday + MonthLen[FirstMonth - 1])
 					{
-						EachButtonDate[w][z][y][x].SetDate(Year, Month, SetDay++);
+						EachButtonDate[w][z][y][x].SetDate(SetYear, SetMonth, SetDay++);
 					}
 					else
 					{
