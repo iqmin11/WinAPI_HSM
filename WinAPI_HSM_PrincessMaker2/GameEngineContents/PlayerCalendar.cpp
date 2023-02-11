@@ -21,8 +21,6 @@ void PlayerCalendar::Start()
 	SetOliveBirth(1200, 8, 15);
 	SetCalendarYear(2023);
 	SetPos(GameEngineWindow::GetScreenSize().half());
-	CollisionsMounsAndButton.reserve(100);
-	//GameEngineRender* WeekRender = CreateRender("OliveWeek.BMP");
 	
 	HoverButtonDateRender_Year.SetOwner(this);
 	HoverButtonDateRender_Year.SetImage("BirthNum.bmp", { 10, 9 }, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
@@ -50,14 +48,6 @@ void PlayerCalendar::Start()
 
 void PlayerCalendar::Update(float _DeltaTime)
 {
-	
-	
-	if (MousePoint::MainMouse->GetMousePointCollision()->Collision({ .TargetGroup = static_cast<int>(PM2CollisionOrder::Menu0_Button), .TargetColType = CT_Rect, .ThisColType = CT_Point }))
-	{
-		int a= 0;
-		return;
-	}
-
 	float4 Index = WichButtonNotRelease();
 	if (
 		0 > Index.x &&
@@ -76,25 +66,15 @@ void PlayerCalendar::Update(float _DeltaTime)
 		HoverButtonDateRender_Month.On();
 		HoverButtonDateRender_Day.On();
 		
-		//HoverButtonDateRender_Year.SetValue(1000);
-		//HoverButtonDateRender_Month.SetValue(10);
-		//HoverButtonDateRender_Day.SetValue(10);
+		HoverButtonDateRender_Year.SetValue(1000);
+		HoverButtonDateRender_Month.SetValue(10);
+		HoverButtonDateRender_Day.SetValue(10);
 		
-		HoverButtonDateRender_Year.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetYear());
-		HoverButtonDateRender_Month.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetMonth());
-		HoverButtonDateRender_Day.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetDay());
+		//HoverButtonDateRender_Year.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetYear());
+		//HoverButtonDateRender_Month.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetMonth());
+		//HoverButtonDateRender_Day.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetDay());
 	}
 }
-
-//if (MousePoint::MainMouse->GetMousePointCollision()->Collision({ .TargetGroup = static_cast<int>(PM2CollisionOrder::Menu0_Button), .TargetColType = CT_Rect, .ThisColType = CT_Point }, CollisionsMounsAndButton))
-	//{
-	//	int a = 0;
-	//}
-	//if (2 <= CollisionsMounsAndButton.size())
-	//{
-	//	MsgAssert("한프레임에 두개 이상의 버튼을 Hover했습니다")
-	//	return;
-	//}
 
 void PlayerCalendar::Render(float _DeltaTime)
 {
@@ -121,50 +101,6 @@ float4 PlayerCalendar::WichButtonNotRelease()
 	}
 	return float4{-1, -1, -1, -1};
 }
-
-
-
-//bool PlayerCalendar::IsAnyButtonHover()
-//{
-//	for (size_t w = 0; w < 4; w++)
-//	{
-//		for (size_t z = 0; z < 3; z++)
-//		{
-//			for (size_t y = 0; y < 6; y++)
-//			{
-//				for (size_t x = 0; x < 7; x++)
-//				{
-//					if (ButtonState::Hover == DateButton[w][z][y][x]->GetState())
-//					{
-//						return true;
-//					}
-//				}
-//			}
-//		}
-//	}
-//	return false;
-//}
-
-//bool PlayerCalendar::IsAnyButtonPress()
-//{
-//	for (size_t w = 0; w < 4; w++)
-//	{
-//		for (size_t z = 0; z < 3; z++)
-//		{
-//			for (size_t y = 0; y < 6; y++)
-//			{
-//				for (size_t x = 0; x < 7; x++)
-//				{
-//					if (ButtonState::Press == DateButton[w][z][y][x]->GetState())
-//					{
-//						return true;
-//					}
-//				}
-//			}
-//		}
-//	}
-//	return false;
-//}
 
 void PlayerCalendar::SetDateNumButton()
 {
@@ -407,14 +343,14 @@ void PlayerCalendar::SetEachButtonDate() //각 버튼 인덱스마다의 날짜
 
 	int FirstWeekday = Date::FindMonthFirstWeekday(CalendarYear, FirstMonth); // 1월 1일 요일 찾기 공식
 	int MonthFirstWeekday = FirstWeekday;
-	int SetMonth = OliveBirth.GetMonth() - 1;
+	int SetMonth = OliveBirth.GetMonth();
 	int SetYear = CalendarYear;
 
 	for (int w = 0; w < 4; w++)
 	{
 		for (int z = 0; z < 3; z++)
 		{
-			SetMonth++;
+			
 			if (SetMonth == 13)
 			{
 				SetMonth = 1;
@@ -444,6 +380,7 @@ void PlayerCalendar::SetEachButtonDate() //각 버튼 인덱스마다의 날짜
 					}
 				}
 			}
+			SetMonth++;
 			MonthFirstWeekday = (MonthFirstWeekday + MonthLen[FirstMonth - 1]) % 7;
 		}
 	}

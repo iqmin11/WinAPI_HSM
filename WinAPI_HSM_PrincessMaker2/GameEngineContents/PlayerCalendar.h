@@ -23,7 +23,6 @@ public:
 	void SetYearRender();
 	void SetWeekdayRender();
 	void SetMonthRender();
-	//void SetHoverButtonDateObject();
 
 
 
@@ -63,7 +62,5 @@ private:
 	//bool IsAnyButtonPress();
 
 	void SetEachButtonDate();
-
-	std::vector<GameEngineCollision*> CollisionsMounsAndButton = std::vector<GameEngineCollision*>();
 };
 

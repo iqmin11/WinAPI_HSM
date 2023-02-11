@@ -42,7 +42,7 @@ void FirstSetLevel::Loading()
 	AcSetOliveBloodType = CreateActor<SetOliveBooldType>(static_cast<int>(ActorState::SetOliveBloodType));
 	AcSetPlayerAge = CreateActor<SetPlayerAge>(static_cast<int>(ActorState::SetPlayerAge));
 
-	ChangeState(ActorState::PlayerCalendar);
+	ChangeState(ActorState::OliveCalendar);
 }
 
 void FirstSetLevel::Update(float _DeltaTime)
@@ -232,7 +232,7 @@ void FirstSetLevel::OliveCalendarStart()
 
 void FirstSetLevel::OliveCalendarUpdate()
 {
-	int a = 0;
+	
 }
 
 void FirstSetLevel::OliveCalendarEnd()
