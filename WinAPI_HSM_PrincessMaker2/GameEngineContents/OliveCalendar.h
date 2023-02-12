@@ -17,8 +17,6 @@ public:
 	OliveCalendar& operator=(const OliveCalendar& _Other) = delete;
 	OliveCalendar& operator=(OliveCalendar&& _Other) noexcept = delete;
 
-
-
 	void SetDateNumButton();
 	void SetYearRender();
 	void SetWeekdayRender();
@@ -41,11 +39,27 @@ protected:
 private:
 	Date StartDate = Date();
 
+	float4 EcahMonthCalendarInterval = { 250 , 105 };
+
 	Button* DateButton[4][3][6][7] = {}; //달력 열, 행, 날짜 열, 행
-	Date EachButtonDate[4][3][6][7] = {}; //달력 열, 행, 날짜 열, 행
+	Date EachButtonDate[4][3][6][7] = {};
+	float4 DateButtonScale = { 20,14 };
+	float4 FirstDaySetPos = { -330, -177 };
+	float4 EachDayNumInterval = { 30,15 };
+
 	GameEngineRender* WeekRender[4][3] = {}; //달력 열, 행, 날짜 열, 행
+	float4 WeekRenderScale = { 210,10 };
+	float4 FirstWeekSetPos = { -235, -192 };
+
 	GameEngineRender* YearRender[4][3][4] = {}; // 달력 열, 행, 년도 네글자
+	float4 YearRenderScale = { 8,12 };
+	float4 FirstYearSetPos = { -370, -182 };
+
 	GameEngineRender* MonthRender[4][3] = {}; // 달력 열, 행 
+	float4 MonthRenderScale = { 20,16 };
+	float4 FirstMonthSetPos = { -360, -165 };
+
+
 	GameEngineRender* BackgroundRender = nullptr;
 
 	NumberRenderObject HoverButtonDateRender_Year = NumberRenderObject();
@@ -56,6 +70,7 @@ private:
 	float4 Pos_HoverButtonDateRender_Day = { -275, -221 };
 
 	float4 WichButtonNotRelease();
+
 	void SetEachButtonDate();
 
 };

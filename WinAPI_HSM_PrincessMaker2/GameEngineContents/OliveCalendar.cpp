@@ -16,45 +16,6 @@ OliveCalendar::~OliveCalendar()
 
 }
 
-void OliveCalendar::On()
-{
-	GameEngineObject::On();
-	for (size_t w = 0; w < 4; w++)
-	{
-		for (size_t z = 0; z < 3; z++)
-		{
-			for (size_t y = 0; y < 6; y++)
-			{
-				for (size_t x = 0; x < 7; x++)
-				{
-					if (0 != DateButton[w][z][y][x]->GetReleaseIndex())
-					{
-						DateButton[w][z][y][x]->On();
-					}
-				}
-			}
-		}
-	}
-}
-
-void OliveCalendar::Off()
-{
-	GameEngineObject::Off();
-	for (size_t w = 0; w < 4; w++)
-	{
-		for (size_t z = 0; z < 3; z++)
-		{
-			for (size_t y = 0; y < 6; y++)
-			{
-				for (size_t x = 0; x < 7; x++)
-				{
-					DateButton[w][z][y][x]->Off();
-				}
-			}
-		}
-	}
-}
-
 void OliveCalendar::Start()
 {
 	SetPos(GameEngineWindow::GetScreenSize().half());
@@ -165,12 +126,12 @@ void OliveCalendar::SetDateNumButton()
 					float fy = static_cast<float>(y);
 					float fz = static_cast<float>(z);
 					float fw = static_cast<float>(w);
-					DateButton[w][z][y][x] = Level->CreateActor<Button>(PM2ActorOrder::Menu0);
+					DateButton[w][z][y][x] = Level->CreateActor<Button>(PM2ActorOrder::Menu0_Button);
 					DateButton[w][z][y][x]->SetTargetCollisionGroup(static_cast<int>(PM2CollisionOrder::MousePoint));
-					DateButton[w][z][y][x]->SetScale({ 20,14 });
+					DateButton[w][z][y][x]->SetScale(DateButtonScale);
 					DateButton[w][z][y][x]->SetRenderOrder(static_cast<int>(PM2RenderOrder::Menu0_Button));
 					DateButton[w][z][y][x]->SetCollisionOrder(static_cast<int>(PM2ActorOrder::Menu0_Button));
-					DateButton[w][z][y][x]->SetPos(GetPos() + (-float4{ 315 + 15, 192 - (15 * 1) } + float4{ (30 * fx) + ((210 + (10 * 4)) * fz), (15 * fy) + ((15 * 6 + 15) * fw) }));
+					DateButton[w][z][y][x]->SetPos(GetPos() + (FirstDaySetPos + (EachDayNumInterval * float4{ fx,fy }) + (EcahMonthCalendarInterval * float4{ fz,fw })));
 					if (x + (y * 7) < MonthFirstWeekday)
 					{
 						DateButton[w][z][y][x]->SetReleaseImage("OliveCalendarNum.bmp", 0);//
@@ -229,8 +190,8 @@ void OliveCalendar::SetYearRender()
 				float fy = static_cast<float>(y);
 				float fz = static_cast<float>(z);
 				YearRender[z][y][x] = CreateRender("OliveYearNum.BMP", PM2RenderOrder::Contents); // 인덱스상 3이 1,  5가 2 (인덱스 -1 / 2가 원래 숫자임)
-				YearRender[z][y][x]->SetScale({ 8,12 }); //default {10,15} -> 8*6짜리 숫자가 년도로 들어가야함
-				YearRender[z][y][x]->SetPosition(-float4{ 315 + 40 + 15, 192 - (15 * 1) + 5 } + float4{ (8 * fx) + ((210 + (10 * 4)) * fy), (15 * 6 + 15) * fz });
+				YearRender[z][y][x]->SetScale(YearRenderScale); //default {10,15} -> 8*6짜리 숫자가 년도로 들어가야함
+				YearRender[z][y][x]->SetPosition(FirstYearSetPos + (EcahMonthCalendarInterval * float4{ fy, fz }) + (float4::Right * fx * YearRenderScale.x));
 			}
 
 
@@ -253,10 +214,8 @@ void OliveCalendar::SetWeekdayRender()
 			float fx = static_cast<float>(x);
 			float fy = static_cast<float>(y);
 			WeekRender[y][x] = CreateRender("OliveWeek.BMP", PM2RenderOrder::Contents);
-			WeekRender[y][x]->SetScale({ 210,10 }); //default {10,15} -> 8*6짜리 숫자가 년도로 들어가야함
-			WeekRender[y][x]->SetPosition(-float4{ 315-95 + 15, 192 + 15 - (15 * 1) } + float4{ ((210 + (10 * 4)) * fx), (15 * 6 + 15) * fy });
-			//CalendarNum[w][z][y][x]->SetPosition(-float4{ 315, 192 - (15 * 1) } + float4{ (30 * fx) + (242 * fz), (15 * fy) + ((15 * 6 + 15) * fw) });
-
+			WeekRender[y][x]->SetScale(WeekRenderScale); //default {10,15} -> 8*6짜리 숫자가 년도로 들어가야함
+			WeekRender[y][x]->SetPosition(FirstWeekSetPos + (EcahMonthCalendarInterval * float4{ fx, fy }));
 		}
 	}
 }
@@ -270,13 +229,14 @@ void OliveCalendar::SetMonthRender()
 			float fx = static_cast<float>(x);
 			float fy = static_cast<float>(y);
 			MonthRender[y][x] = CreateRender("OliveCalendarNum.BMP", PM2RenderOrder::Contents);
-			MonthRender[y][x]->SetFrame(x + 1 + (y*3)); 
+			MonthRender[y][x]->SetFrame(x + 1 + (y * 3));
 			MonthRender[y][x]->SetScale({ 20,16 });
-			MonthRender[y][x]->SetPosition(-float4{ 315 + 30 + 15, 192 - (15 * 1) - 12 } + float4{ ((210 + (10*4)) * fx), (15 * 6 + 15) * fy });
-			//CalendarNum[w][z][y][x]->SetPosition(-float4{ 315, 192 - (15 * 1) } + float4{ (30 * fx) + (242 * fz), (15 * fy) + ((15 * 6 + 15) * fw) });
+			MonthRender[y][x]->SetPosition(FirstMonthSetPos + (EcahMonthCalendarInterval * float4{ fx, fy }));
 		}
 	}
 }
+
+
 
 float4 OliveCalendar::WichButtonNotRelease()
 {
@@ -297,6 +257,45 @@ float4 OliveCalendar::WichButtonNotRelease()
 		}
 	}
 	return float4{ -1, -1, -1, -1 };
+}
+
+void OliveCalendar::On()
+{
+	GameEngineObject::On();
+	for (size_t w = 0; w < 4; w++)
+	{
+		for (size_t z = 0; z < 3; z++)
+		{
+			for (size_t y = 0; y < 6; y++)
+			{
+				for (size_t x = 0; x < 7; x++)
+				{
+					if (0 != DateButton[w][z][y][x]->GetReleaseIndex())
+					{
+						DateButton[w][z][y][x]->On();
+					}
+				}
+			}
+		}
+	}
+}
+
+void OliveCalendar::Off()
+{
+	GameEngineObject::Off();
+	for (size_t w = 0; w < 4; w++)
+	{
+		for (size_t z = 0; z < 3; z++)
+		{
+			for (size_t y = 0; y < 6; y++)
+			{
+				for (size_t x = 0; x < 7; x++)
+				{
+					DateButton[w][z][y][x]->Off();
+				}
+			}
+		}
+	}
 }
 
 void OliveCalendar::SetEachButtonDate()
