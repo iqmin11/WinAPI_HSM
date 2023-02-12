@@ -41,7 +41,10 @@ private:
 	int CalendarYear = 2023;
 
 	Button* DateButton[4][3][6][7] = {}; //달력 열, 행, 날짜 열, 행
+	
 	Date EachButtonDate[4][3][6][7] = {}; //달력 열, 행, 날짜 열, 행
+	
+	
 	GameEngineRender* WeekRender[4][3] = {}; //달력 열, 행, 날짜 열, 행
 	GameEngineRender* YearRender[4][3][4] = {}; // 달력 열, 행, 년도 네글자
 	GameEngineRender* MonthRender[4][3] = {}; // 달력 열, 행 

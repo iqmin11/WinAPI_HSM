@@ -11,8 +11,6 @@ NumberRenderObject::~NumberRenderObject()
 {
 }
 
-
-
 void NumberRenderObject::SetImage(const std::string_view& _ImageName, float4 _Scale, int _Order, int _TransColor, const std::string_view& _NegativeName)
 {
 	GameEngineImage* FindNumberImage = GameEngineResources::GetInst().ImageFind(_ImageName);

@@ -64,27 +64,21 @@ private:
 	void NULLStateEnd();
 
 	void SetPlayerNameStart();
-	void SetPlayerNameUpdate();
 	void SetPlayerNameEnd();
 
 	void SetOliveNameStart();
-	void SetOliveNameUpdate();
 	void SetOliveNameEnd();
 
 	void OliveCalendarStart();
-	void OliveCalendarUpdate();
 	void OliveCalendarEnd();
 
 	void SetPlayerAgeStart();
-	void SetPlayerAgeUpdate();
 	void SetPlayerAgeEnd();
 
 	void PlayerCalendarStart();
-	void PlayerCalendarUpdate();
 	void PlayerCalendarEnd();
 
 	void SetOliveBloodTypeStart();
-	void SetOliveBloodTypeUpdate();
 	void SetOliveBloodTypeEnd();
 
 	void SoundLoad();

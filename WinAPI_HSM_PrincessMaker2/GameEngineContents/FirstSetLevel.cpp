@@ -42,7 +42,7 @@ void FirstSetLevel::Loading()
 	AcSetOliveBloodType = CreateActor<SetOliveBooldType>(static_cast<int>(ActorState::SetOliveBloodType));
 	AcSetPlayerAge = CreateActor<SetPlayerAge>(static_cast<int>(ActorState::SetPlayerAge));
 
-	ChangeState(ActorState::OliveCalendar);
+	ChangeState(ActorState::SetPlayerName);
 }
 
 void FirstSetLevel::Update(float _DeltaTime)
@@ -66,8 +66,6 @@ void FirstSetLevel::ChangeActor(int _State)
 		return;
 	}
 
-	//해당 오더안에있는 액터 리스트를 순회하면서 업데이트하는게 내 목적
-	//이전에 실행되던 액터는 끄고..
 	switch (_State)
 	{
 	case 0:
@@ -198,10 +196,6 @@ void FirstSetLevel::SetPlayerNameStart()
 	NextStateValue = ActorState::SetOliveName;
 }
 
-void FirstSetLevel::SetPlayerNameUpdate()
-{
-}
-
 void FirstSetLevel::SetPlayerNameEnd()
 {
 	OffUpdateActor();
@@ -212,10 +206,6 @@ void FirstSetLevel::SetOliveNameStart()
 	ChangeActor(ActorState::SetOliveName);
 	OnUpdateActor();
 	NextStateValue = ActorState::OliveCalendar;
-}
-
-void FirstSetLevel::SetOliveNameUpdate()
-{
 }
 
 void FirstSetLevel::SetOliveNameEnd()
@@ -230,11 +220,6 @@ void FirstSetLevel::OliveCalendarStart()
 	NextStateValue = ActorState::SetPlayerAge;
 }
 
-void FirstSetLevel::OliveCalendarUpdate()
-{
-	
-}
-
 void FirstSetLevel::OliveCalendarEnd()
 {
 	OffUpdateActor();
@@ -245,10 +230,6 @@ void FirstSetLevel::SetPlayerAgeStart()
 	ChangeActor(ActorState::SetPlayerAge);
 	OnUpdateActor();
 	NextStateValue = ActorState::PlayerCalendar;
-}
-
-void FirstSetLevel::SetPlayerAgeUpdate()
-{
 }
 
 void FirstSetLevel::SetPlayerAgeEnd()
@@ -263,10 +244,6 @@ void FirstSetLevel::PlayerCalendarStart()
 	NextStateValue = ActorState::SetOliveBloodType;
 }
 
-void FirstSetLevel::PlayerCalendarUpdate()
-{
-}
-
 void FirstSetLevel::PlayerCalendarEnd()
 {
 	OffUpdateActor();
@@ -277,10 +254,6 @@ void FirstSetLevel::SetOliveBloodTypeStart()
 {
 	ChangeActor(ActorState::SetOliveBloodType);
 	OnUpdateActor();
-}
-
-void FirstSetLevel::SetOliveBloodTypeUpdate()
-{
 }
 
 void FirstSetLevel::SetOliveBloodTypeEnd()
