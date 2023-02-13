@@ -89,6 +89,11 @@ public:
 		return PressIndex;
 	}
 
+	float4 GetButtonScale() const
+	{
+		return Scale;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -109,6 +114,5 @@ private:
 	int ReleaseIndex = -1;
 	std::string PressImageName = std::string();
 	int PressIndex = -1;
-
 };
 

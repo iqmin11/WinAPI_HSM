@@ -118,9 +118,9 @@ void GameEngineRender::TextRender(float _DeltaTime)
 	}
 
 	float4 RenderPos = GetActorPlusPos() - CameraPos;
-
+	SetBkColor(GameEngineWindow::GetDoubleBufferImage()->GetImageDC(), TRANSPARENT);
 	TextOutA(GameEngineWindow::GetDoubleBufferImage()->GetImageDC(), RenderPos.ix(), RenderPos.iy(), RenderText.c_str(), static_cast<int>(RenderText.size()));
-
+	
 	return;
 }
 

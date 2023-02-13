@@ -31,6 +31,12 @@ protected:
 
 private:
 	std::vector<Button*> SelectButtons = std::vector<Button*>();
+
 	int CountButton = 0;
+
+	std::vector<GameEngineRender*> StringRenders = std::vector<GameEngineRender*>();
+	std::vector<std::string> ButtonStrings = std::vector<std::string>();
+	
+	void SetButtonStrings(int _RenderOrder);
 };
 
