@@ -23,14 +23,13 @@ void SetPlayerName::Start()
 	BackgroundRender->SetScaleToImage();
 	SetUpperCaseButton();
 	SetUpperCaseRender();
+
+	SetLowerCaseButton();
+	SetLowerCaseRender();
 	Off();
 }
 
 void SetPlayerName::Update(float _DeltaTime)
-{
-}
-
-void SetPlayerName::Render(float _DeltaTime)
 {
 	for (size_t y = 0; y < 5; y++)
 	{
@@ -42,8 +41,8 @@ void SetPlayerName::Render(float _DeltaTime)
 				UpperCaseLetterEffect2Render[y][x]->Off();
 				UpperCaseLetterEffect3Render[y][x]->Off();
 
-				UpperCaseLetter1Render	   [y][x]->On();
-				UpperCaseLetter2Render	   [y][x]->On();
+				UpperCaseLetter1Render[y][x]->On();
+				UpperCaseLetter2Render[y][x]->On();
 				UpperCaseLetterShadowRender[y][x]->On();
 			}
 			else
@@ -58,6 +57,37 @@ void SetPlayerName::Render(float _DeltaTime)
 			}
 		}
 	}
+
+	for (size_t y = 0; y < 5; y++)
+	{
+		for (size_t x = 0; x < 6; x++)
+		{
+			if (ButtonState::Release == LowerCaseButton[y][x]->GetState())
+			{
+				LowerCaseLetterEffect1Render[y][x]->Off();
+				LowerCaseLetterEffect2Render[y][x]->Off();
+				LowerCaseLetterEffect3Render[y][x]->Off();
+
+				LowerCaseLetter1Render[y][x]->On();
+				LowerCaseLetter2Render[y][x]->On();
+				LowerCaseLetterShadowRender[y][x]->On();
+			}
+			else
+			{
+				LowerCaseLetterEffect1Render[y][x]->On();
+				LowerCaseLetterEffect2Render[y][x]->On();
+				LowerCaseLetterEffect3Render[y][x]->On();
+
+				LowerCaseLetter2Render[y][x]->Off();
+				LowerCaseLetter2Render[y][x]->Off();
+				LowerCaseLetterShadowRender[y][x]->Off();
+			}
+		}
+	}
+}
+
+void SetPlayerName::Render(float _DeltaTime)
+{
 }
 
 void SetPlayerName::On()
@@ -143,7 +173,63 @@ void SetPlayerName::SetUpperCaseRender()
 	}
 }
 
-//void SetPlayerName::SetLowerCaseButton()
-//{
-//
-//}
+void SetPlayerName::SetLowerCaseButton()
+{
+	GameEngineLevel* Level = GetLevel();
+	float4 ButtonStartPosition = { 422, 312 };
+
+	for (size_t x = 0; x < 5; x++)
+	{
+		for (size_t y = 0; y < 6; y++)
+		{
+			LowerCaseButton[x][y] = Level->CreateActor<Button>(PM2ActorOrder::Menu0_Button);
+			LowerCaseButton[x][y]->SetTargetCollisionGroup(static_cast<int>(PM2CollisionOrder::MousePoint));
+			LowerCaseButton[x][y]->SetScale(ButtonScale);
+			LowerCaseButton[x][y]->SetRenderOrder(static_cast<int>(PM2RenderOrder::Menu0_Button));
+			LowerCaseButton[x][y]->SetCollisionOrder(static_cast<int>(PM2ActorOrder::Menu0_Button));
+			LowerCaseButton[x][y]->SetPos(ButtonStartPosition + (ButtonScale + ButtonInterval) * float4 { static_cast<float>(y), static_cast<float>(x) });
+			LowerCaseButton[x][y]->SetReleaseImage("SelectButton_Release.Bmp");
+			LowerCaseButton[x][y]->SetHoverImage("SelectButton_Release.Bmp");
+			LowerCaseButton[x][y]->SetPressImage("SelectButton_Release.Bmp");
+		}
+	}
+}
+
+
+void SetPlayerName::SetLowerCaseRender()
+{
+	for (size_t x = 0; x < 5; x++) //¼¼·ÎÁ¤·Ä
+	{
+		for (size_t y = 0; y < 6; y++)
+		{
+			LowerCaseLetter1Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display);
+			LowerCaseLetter1Render[x][y]->SetText("a", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(0, 0, 0));
+			float4 LetterRenderPos = LowerCaseButton[x][y]->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
+			LowerCaseLetter1Render[x][y]->SetPosition(LetterRenderPos);
+
+			LowerCaseLetter2Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display);
+			LowerCaseLetter2Render[x][y]->SetText("a", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(0, 0, 0));
+			LowerCaseLetter2Render[x][y]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
+
+			LowerCaseLetterEffect1Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display);
+			LowerCaseLetterEffect1Render[x][y]->SetText("a", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(202, 184, 84));
+			LowerCaseLetterEffect1Render[x][y]->SetPosition(LetterRenderPos);
+			LowerCaseLetterEffect1Render[x][y]->Off();
+
+			LowerCaseLetterEffect2Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
+			LowerCaseLetterEffect2Render[x][y]->SetText("a", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(255, 255, 255));
+			LowerCaseLetterEffect2Render[x][y]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
+			LowerCaseLetterEffect2Render[x][y]->Off();
+
+			LowerCaseLetterEffect3Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
+			LowerCaseLetterEffect3Render[x][y]->SetText("a", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(236, 212, 98));
+			LowerCaseLetterEffect3Render[x][y]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
+			LowerCaseLetterEffect3Render[x][y]->Off();
+
+			LowerCaseLetterShadowRender[x][y] = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
+			LowerCaseLetterShadowRender[x][y]->SetText("a", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(106, 170, 126));
+			LowerCaseLetterShadowRender[x][y]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
+		}
+	}
+}
+

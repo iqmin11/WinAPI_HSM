@@ -35,11 +35,15 @@ private:
 	GameEngineRender* UpperCaseLetterEffect2Render[5][6] = {};
 	GameEngineRender* UpperCaseLetterEffect3Render[5][6] = {};
 	GameEngineRender* UpperCaseLetterShadowRender[5][6] = {};
-
-	char UpperCase[5][6] = {};
 	
+	Button* LowerCaseButton[5][6] = {};
+	GameEngineRender* LowerCaseLetter1Render[5][6] = {};
+	GameEngineRender* LowerCaseLetter2Render[5][6] = {};
+	GameEngineRender* LowerCaseLetterEffect1Render[5][6] = {};
+	GameEngineRender* LowerCaseLetterEffect2Render[5][6] = {};
+	GameEngineRender* LowerCaseLetterEffect3Render[5][6] = {};
+	GameEngineRender* LowerCaseLetterShadowRender[5][6] = {};
 	
-	//Button* LowerCaseButton[5][6] = {};
 	//char LowerCase[5][6] = {};
 
 	float4 ButtonScale = { 24,24 };
@@ -49,6 +53,7 @@ private:
 	void SetUpperCaseButton();
 	void SetUpperCaseRender();
 
-	//void SetLowerCaseButton();
+	void SetLowerCaseButton();
+	void SetLowerCaseRender();
 };
 
