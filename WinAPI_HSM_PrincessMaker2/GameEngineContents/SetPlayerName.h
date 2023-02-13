@@ -49,6 +49,8 @@ private:
 	float4 ButtonScale = { 24,24 };
 	float4 ButtonInterval = { 16,0 };
 	int LetterRenderHeight = 18;
+	std::string TextType = "±¼¸²";
+
 
 	void SetUpperCaseButton();
 	void SetUpperCaseRender();

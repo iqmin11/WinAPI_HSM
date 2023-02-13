@@ -143,31 +143,31 @@ void SetPlayerName::SetUpperCaseRender()
 		for (size_t y = 0; y < 6; y++)
 		{
 			UpperCaseLetter1Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display);
-			UpperCaseLetter1Render[x][y]->SetText("A", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(0, 0, 0));
+			UpperCaseLetter1Render[x][y]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, RGB(0, 0, 0));
 			float4 LetterRenderPos = UpperCaseButton[x][y]->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
 			UpperCaseLetter1Render[x][y]->SetPosition(LetterRenderPos);
 
 			UpperCaseLetter2Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display);
-			UpperCaseLetter2Render[x][y]->SetText("A", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(0, 0, 0));
+			UpperCaseLetter2Render[x][y]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, RGB(0, 0, 0));
 			UpperCaseLetter2Render[x][y]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 		
 			UpperCaseLetterEffect1Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display);
-			UpperCaseLetterEffect1Render[x][y]->SetText("A", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(202, 184, 84));
+			UpperCaseLetterEffect1Render[x][y]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, RGB(202, 184, 84));
 			UpperCaseLetterEffect1Render[x][y]->SetPosition(LetterRenderPos);
 			UpperCaseLetterEffect1Render[x][y]->Off();
 			
 			UpperCaseLetterEffect2Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-			UpperCaseLetterEffect2Render[x][y]->SetText("A", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(255, 255, 255));
+			UpperCaseLetterEffect2Render[x][y]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, RGB(255, 255, 255));
 			UpperCaseLetterEffect2Render[x][y]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 			UpperCaseLetterEffect2Render[x][y]->Off();
 			
 			UpperCaseLetterEffect3Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-			UpperCaseLetterEffect3Render[x][y]->SetText("A", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(236, 212, 98));
+			UpperCaseLetterEffect3Render[x][y]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, RGB(236, 212, 98));
 			UpperCaseLetterEffect3Render[x][y]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 			UpperCaseLetterEffect3Render[x][y]->Off();
 
 			UpperCaseLetterShadowRender[x][y] = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-			UpperCaseLetterShadowRender[x][y]->SetText("A", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(106, 170, 126));
+			UpperCaseLetterShadowRender[x][y]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, RGB(106, 170, 126));
 			UpperCaseLetterShadowRender[x][y]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 		}
 	}
@@ -203,31 +203,31 @@ void SetPlayerName::SetLowerCaseRender()
 		for (size_t y = 0; y < 6; y++)
 		{
 			LowerCaseLetter1Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display);
-			LowerCaseLetter1Render[x][y]->SetText("a", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(0, 0, 0));
+			LowerCaseLetter1Render[x][y]->SetText("a", LetterRenderHeight, TextType, TextAlign::Center, RGB(0, 0, 0));
 			float4 LetterRenderPos = LowerCaseButton[x][y]->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
 			LowerCaseLetter1Render[x][y]->SetPosition(LetterRenderPos);
 
 			LowerCaseLetter2Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display);
-			LowerCaseLetter2Render[x][y]->SetText("a", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(0, 0, 0));
+			LowerCaseLetter2Render[x][y]->SetText("a", LetterRenderHeight, TextType, TextAlign::Center, RGB(0, 0, 0));
 			LowerCaseLetter2Render[x][y]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 
 			LowerCaseLetterEffect1Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display);
-			LowerCaseLetterEffect1Render[x][y]->SetText("a", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(202, 184, 84));
+			LowerCaseLetterEffect1Render[x][y]->SetText("a", LetterRenderHeight, TextType, TextAlign::Center, RGB(202, 184, 84));
 			LowerCaseLetterEffect1Render[x][y]->SetPosition(LetterRenderPos);
 			LowerCaseLetterEffect1Render[x][y]->Off();
 
 			LowerCaseLetterEffect2Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-			LowerCaseLetterEffect2Render[x][y]->SetText("a", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(255, 255, 255));
+			LowerCaseLetterEffect2Render[x][y]->SetText("a", LetterRenderHeight, TextType, TextAlign::Center, RGB(255, 255, 255));
 			LowerCaseLetterEffect2Render[x][y]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 			LowerCaseLetterEffect2Render[x][y]->Off();
 
 			LowerCaseLetterEffect3Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-			LowerCaseLetterEffect3Render[x][y]->SetText("a", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(236, 212, 98));
+			LowerCaseLetterEffect3Render[x][y]->SetText("a", LetterRenderHeight, TextType, TextAlign::Center, RGB(236, 212, 98));
 			LowerCaseLetterEffect3Render[x][y]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 			LowerCaseLetterEffect3Render[x][y]->Off();
 
 			LowerCaseLetterShadowRender[x][y] = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-			LowerCaseLetterShadowRender[x][y]->SetText("a", LetterRenderHeight, "±¼¸²", TextAlign::Center, RGB(106, 170, 126));
+			LowerCaseLetterShadowRender[x][y]->SetText("a", LetterRenderHeight, TextType, TextAlign::Center, RGB(106, 170, 126));
 			LowerCaseLetterShadowRender[x][y]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 		}
 	}
