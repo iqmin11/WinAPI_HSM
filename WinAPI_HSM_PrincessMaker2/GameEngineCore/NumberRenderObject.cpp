@@ -11,6 +11,8 @@ NumberRenderObject::~NumberRenderObject()
 {
 }
 
+
+
 void NumberRenderObject::SetImage(const std::string_view& _ImageName, float4 _Scale, int _Order, int _TransColor, const std::string_view& _NegativeName)
 {
 	GameEngineImage* FindNumberImage = GameEngineResources::GetInst().ImageFind(_ImageName);
@@ -33,7 +35,7 @@ void NumberRenderObject::SetImage(const std::string_view& _ImageName, float4 _Sc
 	NegativeName = _NegativeName;
 }
 
-void NumberRenderObject::SetNumberRenders(int _Index, int _TransColor, float4 _Pos, const std::string_view& _ImageName, float4 _Scale, bool _CameraEffect, int _Frame)
+void NumberRenderObject::SetNumberRenders(size_t _Index, int _TransColor, float4 _Pos, const std::string_view& _ImageName, float4 _Scale, bool _CameraEffect, int _Frame)
 {
 	GameEngineRender* Render = NumberRenders[_Index];
 	if (nullptr == Render)
@@ -51,6 +53,23 @@ void NumberRenderObject::SetNumberRenders(int _Index, int _TransColor, float4 _P
 	}
 }
 
+void NumberRenderObject::On()
+{
+	GameEngineObject::On();
+	for (size_t i = 0; i < NumberRenders.size(); i++)
+	{
+		NumberRenders[i]->On();
+	}
+}
+
+void NumberRenderObject::Off()
+{
+	GameEngineObject::Off();
+	for (size_t i = 0; i < NumberRenders.size(); i++)
+	{
+		NumberRenders[i]->Off();
+	}
+}
 
 void NumberRenderObject::SetValue(int _Value)
 {
@@ -82,7 +101,7 @@ void NumberRenderObject::SetValue(int _Value)
 	Negative = _Value >= 0 ? false : true;
 
 	// 최종 랜더 길이 설정x - Numbers.size(), 설정o - NumOfDigits
-	int Digits = (NumOfDigits == -1 ? static_cast<int>(Numbers.size()) : NumOfDigits) + (Negative ? 1 : 0);
+	size_t Digits = (NumOfDigits == -1 ? Numbers.size() : NumOfDigits) + (Negative ? 1 : 0);
 
 	// -- [수정 전] : NumOfDigits 추가 이전
 	////            자리수가 바뀌었고                  3자리 랜더하고 있었는데 5자리가 됐다면
@@ -159,17 +178,17 @@ void NumberRenderObject::SetValue(int _Value)
 	//--
 	if (true == Negative && nullptr == NegativeRender)
 	{
-		SetNumberRenders(static_cast<int>(NumRenderIndex++), TransColor, RenderPos, NegativeName, NumberScale, CameraEffect);
+		SetNumberRenders(NumRenderIndex++, TransColor, RenderPos, NegativeName, NumberScale, CameraEffect);
 		RenderPos.x += NumberScale.x;
 	}
 	for (; NumRenderIndex < Digits - Numbers.size(); ++NumRenderIndex)
 	{
-		SetNumberRenders(static_cast<int>(NumRenderIndex), TransColor, RenderPos, ImageName, NumberScale, CameraEffect, 0);
+		SetNumberRenders(NumRenderIndex, TransColor, RenderPos, ImageName, NumberScale, CameraEffect, 0);
 		RenderPos.x += NumberScale.x;
 	}
 	for (int i = 0; NumRenderIndex < NumberRenders.size(); ++NumRenderIndex)
 	{
-		SetNumberRenders(static_cast<int>(NumRenderIndex), TransColor, RenderPos, ImageName, NumberScale, CameraEffect, Numbers[i++]);
+		SetNumberRenders(NumRenderIndex, TransColor, RenderPos, ImageName, NumberScale, CameraEffect, Numbers[i++]);
 		RenderPos.x += NumberScale.x;
 	}
 
@@ -279,24 +298,6 @@ void NumberRenderObject::SetRenderPos(float4 _Pos)
 	default:
 		break;
 	}*/
-}
-
-void NumberRenderObject::On()
-{
-	GameEngineObject::On();
-	for (auto i : NumberRenders)
-	{
-		i->On();
-	}
-}
-
-void NumberRenderObject::Off()
-{
-	GameEngineObject::Off();
-	for (auto i : NumberRenders)
-	{
-		i->Off();
-	}
 }
 
 

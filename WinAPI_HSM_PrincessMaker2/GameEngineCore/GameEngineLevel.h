@@ -2,8 +2,9 @@
 #include <list>
 #include <map>
 #include <vector>
-#include <GameEngineBase/GameEngineDebug.h>
+
 #include <GameEngineBase/GameEngineMath.h>
+#include <GameEngineBase/GameEngineDebug.h>
 #include <GameEngineCore/GameEngineObject.h>
 
 // 설명 :
@@ -41,7 +42,6 @@ public:
 	/// </summary>
 	/// <typeparam name="ActorType"> GameEngineActor를 상속받은 클래스 타입 </typeparam>
 	/// <param name="_Order"> Actor의 업데이트 순서 숫자가 작을수록 먼저 업데이트 됩니다. </param>
-	
 	template<typename ActorType, typename EnumType>
 	ActorType* CreateActor(EnumType _Order)
 	{
@@ -62,6 +62,7 @@ public:
 
 		// 맵의 새로운 문법
 		Actors[_Order].push_back(Actor);
+
 		return dynamic_cast<ActorType*>(Actor);
 	}
 
@@ -125,7 +126,7 @@ public:
 
 		return Result;
 	}
-		
+
 	static void DebugTextPush(const std::string& _DebugText)
 	{
 		DebugTexts.push_back(_DebugText);
@@ -134,17 +135,20 @@ public:
 protected:
 	virtual void Loading() = 0;
 	virtual void Update(float _DeltaTime) = 0;
-	virtual void LevelChangeEnd(GameEngineLevel* _NextLevel) = 0;
-	virtual void LevelChangeStart(GameEngineLevel* _PrevLevel) = 0;
 
+	// 내가 이제 다른 레벨로 교체된다.
+	virtual void LevelChangeEnd(GameEngineLevel* _NextLevel) = 0;
+	// 내가 이제 새로운 눈에 보이는 레벨이 될거다.
+	virtual void LevelChangeStart(GameEngineLevel* _PrevLevel) = 0;
 
 private:
 	static bool IsDebugRender;
-	
+
 	float4 CameraPos = float4::Zero;
-	
+
 	static float4 TextOutStart;
 	static std::vector<std::string> DebugTexts;
+
 	// 컨텐츠를 알아서도 안되지만
 	//std::list<Player*> Actors;
 	//std::list<Monster*> Actors;
@@ -158,14 +162,15 @@ private:
 	void ActorsRender(float _DeltaTime);
 	void ActorLevelChangeEnd(GameEngineLevel* _NextLevel);
 	void ActorLevelChangeStart(GameEngineLevel* _PrevLevel);
-	
+
+
 	void ActorStart(GameEngineActor* _Actor, int _Order);
 
-	std::map<int, std::list<GameEngineRender*>> Renders; // 랜더링 이미지들
-	
+	std::map<int, std::list<GameEngineRender*>> Renders;
 	void PushRender(GameEngineRender* _Render, int _ChangeOrder);
+
 	std::map<int, std::list<GameEngineCollision*>> Collisions;
-	void PushCollision(GameEngineCollision* _Collision);
+	void PushCollision(GameEngineCollision* _Collision, int _ChangeOrder);
 
 	// 엔진수준의 기능이기 때문에 private으로 둔다.
 	void Release();

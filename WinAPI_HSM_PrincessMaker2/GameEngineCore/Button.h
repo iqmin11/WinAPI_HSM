@@ -5,9 +5,9 @@
 
 enum class ButtonState
 {
-	Release,
-	Press,
-	Hover,
+	Release, // 안눌렸다.
+	Press, // 눌렸다.
+	Hover, // 나를 누를수 있는 녀석이 위에서 맴돌고 있다.
 };
 
 // 설명 :
@@ -26,7 +26,7 @@ public:
 	Button& operator=(Button&& _Other) noexcept = delete;
 
 	void SetRenderOrder(int _Value);
-	void SetCollisionOrder(int _Order);
+
 	void SetScale(float4 _Scale);
 
 	void SetClickCallBack(void(*_ClickPtr)())
@@ -57,39 +57,39 @@ public:
 		PressIndex = _PressIndex;
 	}
 
-	
-
 	GameEngineRender* GetButtonRender()
 	{
 		return ButtonRender;
 	}
 
-	GameEngineCollision* GetButtonCollsion()
+	GameEngineCollision* GetButtonCollision()
 	{
 		return ButtonCollision;
 	}
 
-	ButtonState GetState() const
+	ButtonState GetState()
 	{
 		return State;
 	}
 
-	int GetHoverIndex() const
+	int GetHoverIndex()
 	{
 		return HoverIndex;
 	}
 
-	int GetReleaseIndex() const
+	int GetReleaseIndex()
 	{
 		return ReleaseIndex;
 	}
 
-	int GetPressIndex() const
+	int GetPressIndex()
 	{
 		return PressIndex;
 	}
 
-	float4 GetButtonScale() const
+	void SetCollisionOrder(int _Order);
+
+	float4 GetScale()
 	{
 		return Scale;
 	}
@@ -99,20 +99,21 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
-	GameEngineRender* ButtonRender = nullptr; 
+	GameEngineRender* ButtonRender = nullptr;
 	GameEngineCollision* ButtonCollision = nullptr;
 	int PointTargetGroup = 0;
 	CollisionType ButtonCollisionType = CollisionType::CT_Rect;
 	void(*ClickPtr)() = nullptr;
 
-	float4 Scale = {};
-	ButtonState State = ButtonState::Release;
-	std::string CurImageName = std::string();
-	std::string HoverImageName = std::string();
+	float4 Scale;
+	ButtonState State;
+	std::string CurImageName;
+	std::string HoverImageName;
 	int HoverIndex = -1;
-	std::string ReleaseImageName = std::string();
+	std::string ReleaseImageName;
 	int ReleaseIndex = -1;
-	std::string PressImageName = std::string();
+	std::string PressImageName;
 	int PressIndex = -1;
+
 };
 

@@ -40,6 +40,9 @@ public:
 		CameraEffect = _EffectSetting;
 	}
 
+	void On() override;
+	void Off() override;
+
 	void SetRenderPos(float4 _Pos);
 
 
@@ -55,9 +58,6 @@ public:
 	inline void ResetDigits() { // 숫자길이 리셋 (Value만큼 랜더)
 		SetNumOfDigits(-1);
 	}
-
-	void On() override;
-	void Off() override;
 
 protected:
 
@@ -82,6 +82,6 @@ private:
 	std::vector<GameEngineRender*> NumberRenders = std::vector<GameEngineRender*>();
 	GameEngineRender* NegativeRender = nullptr;
 
-	void SetNumberRenders(int _Index, int _TransColor, float4 _Pos, const std::string_view& _ImageName, float4 _Scale, bool _CameraEffect, int _Frame = -1);
+	void SetNumberRenders(size_t _Index, int _TransColor, float4 _Pos, const std::string_view& _ImageName, float4 _Scale, bool _CameraEffect, int _Frame = -1);
 };
 

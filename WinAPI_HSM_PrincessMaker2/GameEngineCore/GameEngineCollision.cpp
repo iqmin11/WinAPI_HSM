@@ -6,6 +6,7 @@
 
 static bool(*ColFunctionPtr[CT_Max][CT_Max])(const CollisionData& _Left, const CollisionData& _Right);
 
+
 class CollisionFunctionInit
 {
 public:
@@ -24,12 +25,12 @@ public:
 
 CollisionFunctionInit Init = CollisionFunctionInit();
 
-bool GameEngineCollision::CollisionCirCleToCirCle(const CollisionData& _Left, const CollisionData& _Right)
+GameEngineCollision::GameEngineCollision()
 {
-	float4 Len = _Left.Position - _Right.Position;
-	float Size = Len.Size();
-	float RadiusSum = _Left.Scale.hx() + _Right.Scale.hx();
-	return RadiusSum > Size;
+}
+
+GameEngineCollision::~GameEngineCollision()
+{
 }
 
 bool GameEngineCollision::CollisionCirCleToPoint(const CollisionData& _Left, const CollisionData& _Right)
@@ -37,6 +38,14 @@ bool GameEngineCollision::CollisionCirCleToPoint(const CollisionData& _Left, con
 	float4 Len = _Left.Position - _Right.Position;
 	float Size = Len.Size();
 	float RadiusSum = _Left.Scale.hx();
+	return RadiusSum > Size;
+}
+
+bool GameEngineCollision::CollisionCirCleToCirCle(const CollisionData& _Left, const CollisionData& _Right)
+{
+	float4 Len = _Left.Position - _Right.Position;
+	float Size = Len.Size();
+	float RadiusSum = _Left.Scale.hx() + _Right.Scale.hx();
 	return RadiusSum > Size;
 }
 
@@ -90,14 +99,9 @@ bool GameEngineCollision::CollisionRectToPoint(const CollisionData& _Left, const
 	return true;
 }
 
-GameEngineCollision::GameEngineCollision()
+void GameEngineCollision::SetOrder(int _Order)
 {
-
-}
-
-GameEngineCollision::~GameEngineCollision()
-{
-
+	GetActor()->GetLevel()->PushCollision(this, _Order);
 }
 
 bool GameEngineCollision::Collision(const CollisionCheckParameter& _Parameter)
@@ -148,6 +152,8 @@ bool GameEngineCollision::Collision(const CollisionCheckParameter& _Parameter, s
 
 	std::list<GameEngineCollision*>& _TargetGroup = GetActor()->GetLevel()->Collisions[_Parameter.TargetGroup];
 
+	SetDebugRenderType(_Parameter.ThisColType);
+
 	for (GameEngineCollision* OtherCollision : _TargetGroup)
 	{
 		if (false == OtherCollision->IsUpdate())
@@ -157,6 +163,8 @@ bool GameEngineCollision::Collision(const CollisionCheckParameter& _Parameter, s
 
 		CollisionType Type = _Parameter.ThisColType;
 		CollisionType OtherType = _Parameter.TargetColType;
+
+		OtherCollision->SetDebugRenderType(OtherType);
 
 		if (nullptr == ColFunctionPtr[Type][OtherType])
 		{
@@ -170,12 +178,6 @@ bool GameEngineCollision::Collision(const CollisionCheckParameter& _Parameter, s
 	}
 
 	return _Collision.size() != 0;
-}
-
-void GameEngineCollision::SetOrder(int _Order)
-{
-	GameEngineComponent::SetOrder(_Order);
-	GetActor()->GetLevel()->PushCollision(this);
 }
 
 CollisionData GameEngineCollision::GetCollisionData()
@@ -199,8 +201,8 @@ void GameEngineCollision::DebugRender()
 			DebugRenderPos.iy() - Radius,
 			DebugRenderPos.ix() + Radius,
 			DebugRenderPos.iy() + Radius);
+		break;
 	}
-	break;
 	case CT_Rect:
 	{
 		Rectangle(BackBufferDc,
@@ -208,13 +210,11 @@ void GameEngineCollision::DebugRender()
 			DebugRenderPos.iy() - GetScale().hiy(),
 			DebugRenderPos.ix() + GetScale().hix(),
 			DebugRenderPos.iy() + GetScale().hiy());
+		break;
 	}
-	break;
 	case CT_Max:
 		break;
 	default:
 		break;
 	}
-
-
 }

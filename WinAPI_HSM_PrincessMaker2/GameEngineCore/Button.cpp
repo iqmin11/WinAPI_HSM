@@ -32,16 +32,15 @@ void Button::SetRenderOrder(int _Value)
 	ButtonRender->SetOrder(_Value);
 }
 
-void Button::SetCollisionOrder(int _Value)
-{
-	ButtonCollision->SetOrder(_Value);
-}
-
 void Button::SetScale(float4 _Scale)
 {
 	Scale = _Scale;
 	ButtonCollision->SetScale(Scale);
-	// Render->SetScale(_Scale);
+}
+
+void Button::SetCollisionOrder(int _Order)
+{
+	ButtonCollision->SetOrder(_Order);
 }
 
 void Button::Update(float _DeltaTime)
