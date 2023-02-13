@@ -29,14 +29,17 @@ protected:
 		return SelectButtons;
 	}
 
+	void SetButtonString(int _RenderOrder, int _ButtonIndex, const std::string_view& _Text);
+
 private:
 	std::vector<Button*> SelectButtons = std::vector<Button*>();
 
 	int CountButton = 0;
 
 	std::vector<GameEngineRender*> StringRenders = std::vector<GameEngineRender*>();
+	std::vector<GameEngineRender*> StringShadowRenders = std::vector<GameEngineRender*>();
+	std::vector<GameEngineRender*> StringHoverRenders = std::vector<GameEngineRender*>();
 	std::vector<std::string> ButtonStrings = std::vector<std::string>();
 	
-	void SetButtonStrings(int _RenderOrder);
 };
 

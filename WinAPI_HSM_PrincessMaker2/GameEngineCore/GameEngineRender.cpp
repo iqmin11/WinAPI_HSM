@@ -41,9 +41,13 @@ void GameEngineRender::SetOrder(int _Order)
 	GetActor()->GetLevel()->PushRender(this, _Order);
 }
 
-void GameEngineRender::SetText(const std::string_view& _Text)
+void GameEngineRender::SetText(const std::string_view& _Text, const int _TextScale, const std::string_view& _TextType, const TextAlign _TextAlign, const COLORREF _TextColor)
 {
 	RenderText = _Text;
+	TextHeight = _TextScale;
+	TextType   = _TextType;
+	Align      = _TextAlign;
+	TextColor  = _TextColor;
 }
 
 void GameEngineRender::SetFrame(int _Frame)
@@ -117,10 +121,34 @@ void GameEngineRender::TextRender(float _DeltaTime)
 		CameraPos = GetActor()->GetLevel()->GetCameraPos();
 	}
 
+	HDC hdc = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
+	HFONT hFont, OldFont;
+	LOGFONTA lf;
+	lf.lfHeight = TextHeight;
+	lf.lfWidth = 0;
+	lf.lfEscapement = 0;
+	lf.lfOrientation = 0;
+	lf.lfWeight = 0;
+	lf.lfItalic = 0;
+	lf.lfUnderline = 0;
+	lf.lfStrikeOut = 0;
+	lf.lfCharSet = HANGEUL_CHARSET;
+	lf.lfOutPrecision = 0;
+	lf.lfClipPrecision = 0;
+	lf.lfQuality = 0;
+	lf.lfPitchAndFamily = VARIABLE_PITCH | FF_ROMAN;
+	lstrcpy(lf.lfFaceName, TEXT(TextType.c_str()));
+	hFont = CreateFontIndirect(&lf);
+	OldFont = static_cast<HFONT>(SelectObject(hdc, hFont));
+
 	float4 RenderPos = GetActorPlusPos() - CameraPos;
-	SetBkColor(GameEngineWindow::GetDoubleBufferImage()->GetImageDC(), TRANSPARENT);
-	TextOutA(GameEngineWindow::GetDoubleBufferImage()->GetImageDC(), RenderPos.ix(), RenderPos.iy(), RenderText.c_str(), static_cast<int>(RenderText.size()));
-	
+	SetTextAlign(hdc, static_cast<UINT>(Align));
+	SetTextColor(hdc, TextColor);
+	SetBkMode(hdc, TRANSPARENT);
+	TextOutA(hdc, RenderPos.ix(), RenderPos.iy(), RenderText.c_str(), static_cast<int>(RenderText.size()));
+	SelectObject(hdc, OldFont);
+	DeleteObject(hFont);
+
 	return;
 }
 

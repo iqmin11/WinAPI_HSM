@@ -12,27 +12,11 @@ PM2Core PM2Core::Core; //PM2Core.cpp파일안에서 존재하는 전역변수 PM2Core
 
 void PM2Core::Start()
 {
-	HDC hdc = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
-	//HFONT hFont, OldFont;
-	//LOGFONTA lf;
-	//lf.lfHeight = 17;
-	//lf.lfWidth = 0;
-	//lf.lfEscapement = 0;
-	//lf.lfOrientation = 0;
-	//lf.lfWeight = 0;
-	//lf.lfItalic = 0;
-	//lf.lfUnderline = 0;
-	//lf.lfStrikeOut = 0;
-	//lf.lfCharSet = HANGEUL_CHARSET;
-	//lf.lfOutPrecision = 0;
-	//lf.lfClipPrecision = 0;
-	//lf.lfQuality = 0;
-	//lf.lfPitchAndFamily = VARIABLE_PITCH | FF_ROMAN;
-	//lstrcpy(lf.lfFaceName, TEXT("굴림"));
-	//hFont = CreateFontIndirect(&lf);
-	//OldFont = static_cast<HFONT>(SelectObject(GameEngineWindow::GetDoubleBufferImage()->GetImageDC(), hFont));
-	SetTextAlign(hdc, TA_RIGHT);
-	SetTextColor(hdc, RGB( 255,255,255 ));
+	//HDC hdc = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
+	
+	
+
+	//SetTextColor(hdc, RGB( 255,255,255 ));
 
 	CreateLevel<TitleLevel>("Title");
 	CreateLevel<FirstSetLevel>("FirstSet");

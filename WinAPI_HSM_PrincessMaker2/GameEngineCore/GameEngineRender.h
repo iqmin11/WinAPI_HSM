@@ -4,6 +4,14 @@
 #include "GameEngineComponent.h"
 // 랜더링에 관련된 기능을 모두 집약한다.
 
+enum class TextAlign
+{
+	Null = 0,
+	Left = TA_LEFT,
+	Right = TA_RIGHT,
+	Center = TA_CENTER
+};
+
 class FrameAnimationParameter
 {
 public:
@@ -82,7 +90,12 @@ public:
 
 	void SetOrder(int _Order) override;
 
-	void SetText(const std::string_view& _Text);
+	void SetText(const std::string_view& _Text, const int _TextScale, const std::string_view& _TextType, const TextAlign _TextAlign, const COLORREF _TextColor);
+
+	inline int GetTextHeight()
+	{
+		return TextHeight;
+	}
 
 protected:
 
@@ -127,5 +140,9 @@ private:
 	FrameAnimation* CurrentAnimation = nullptr;
 
 	std::string RenderText;
+	int TextHeight = 0;
+	std::string TextType = std::string();
+	TextAlign Align = TextAlign::Null;
+	COLORREF TextColor = RGB(0, 0, 0);
 };
 
