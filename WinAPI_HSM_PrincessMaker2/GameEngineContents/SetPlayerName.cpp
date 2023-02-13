@@ -2,9 +2,12 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 
+#include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include "ContentsEnums.h"
+
+std::string SetPlayerName::PrintLetter = "\0";
 
 SetPlayerName::SetPlayerName()
 {
@@ -23,6 +26,8 @@ void SetPlayerName::Start()
 	
 	SetExplainRender();
 	
+	SetPrintLetterRender();
+	
 	SetUpperCaseButton();
 	SetUpperCaseRender();
 
@@ -34,6 +39,8 @@ void SetPlayerName::Start()
 
 	SetLetterEraseButton();
 	SetLetterEraseButtonRender();
+
+	UpperCaseButton[0][0]->SetClickCallBack(PushBack_A);
 
 	Off();
 }
@@ -145,6 +152,11 @@ void SetPlayerName::Update(float _DeltaTime)
 		LetterEraseButton2Render->Off();
 		LetterEraseButtonShadowRender->Off();
 	}
+	
+	
+	PrintLetterRender1->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextColor);
+	PrintLetterRender2->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextColor);
+	PrintLetterShadow->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextShadowColor);
 }
 
 void SetPlayerName::Render(float _DeltaTime)
@@ -182,6 +194,22 @@ void SetPlayerName::Off()
 		}
 	}
 	CompleteButton->Off();
+}
+
+void SetPlayerName::SetPrintLetterRender()
+{
+	PrintLetterRender1 = CreateRender(PM2RenderOrder::Menu0_Display);
+	PrintLetterRender1->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextColor);
+	float4 SetPrintLetterRenderPos = { -60,-60 };
+	PrintLetterRender1->SetPosition(SetPrintLetterRenderPos);
+
+	PrintLetterRender2 = CreateRender(PM2RenderOrder::Menu0_Display);
+	PrintLetterRender2->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextColor);
+	PrintLetterRender2->SetPosition(SetPrintLetterRenderPos + float4::Up * float4{ 0,1 });
+
+	PrintLetterShadow = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
+	PrintLetterShadow->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextShadowColor);
+	PrintLetterShadow->SetPosition(SetPrintLetterRenderPos + float4::Down * float4{ 0,1 });
 }
 
 void SetPlayerName::SetExplainRender()
@@ -427,5 +455,14 @@ void SetPlayerName::SetLetterEraseButtonRender()
 	LetterEraseButtonShadowRender = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
 	LetterEraseButtonShadowRender->SetText("µÚ·Î", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
 	LetterEraseButtonShadowRender->SetPosition(ButtonStartPosition + float4::Down * float4{ 0,1 });
+}
+
+void SetPlayerName::PushBack_A()
+{
+	if (4 < PrintLetter.size())
+	{
+		return;
+	}
+	PrintLetter.push_back('A');
 }
 

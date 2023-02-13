@@ -28,6 +28,11 @@ protected:
 private:
 	GameEngineRender* BackgroundRender = nullptr;
 	
+	static std::string PrintLetter;
+	GameEngineRender* PrintLetterRender1 = nullptr;
+	GameEngineRender* PrintLetterRender2 = nullptr;
+	GameEngineRender* PrintLetterShadow = nullptr;
+
 	GameEngineRender* ExplainRender1 = nullptr;
 	GameEngineRender* ExplainRender2 = nullptr;
 	GameEngineRender* ExplainRenderShadow = nullptr;
@@ -64,8 +69,6 @@ private:
 	GameEngineRender* LetterEraseButtonEffect3Render = nullptr;
 	GameEngineRender* LetterEraseButtonShadowRender = nullptr;
 
-	//char LowerCase[5][6] = {};
-
 	float4 ButtonScale = { 24,24 };
 	float4 ButtonScale2 = { 48,24 };
 	float4 ButtonInterval = { 16,0 };
@@ -77,6 +80,8 @@ private:
 	COLORREF TextEffect3Color = RGB(236, 212, 98);
 	std::string TextType = "±¼¸²";
 
+	void SetPrintLetterRender();
+	
 	void SetExplainRender();
 
 	void SetUpperCaseButton();
@@ -90,5 +95,7 @@ private:
 	
 	void SetLetterEraseButton();
 	void SetLetterEraseButtonRender();
+
+	static void PushBack_A();
 };
 
