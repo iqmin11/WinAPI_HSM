@@ -41,10 +41,10 @@ void GameEngineRender::SetOrder(int _Order)
 	GetActor()->GetLevel()->PushRender(this, _Order);
 }
 
-void GameEngineRender::SetText(const std::string_view& _Text, const int _TextScale, const std::string_view& _TextType, const TextAlign _TextAlign, const COLORREF _TextColor)
+void GameEngineRender::SetText(const std::string_view& _Text, const int _TextHeight, const std::string_view& _TextType, const TextAlign _TextAlign, const COLORREF _TextColor)
 {
 	RenderText = _Text;
-	TextHeight = _TextScale;
+	TextHeight = _TextHeight;
 	TextType   = _TextType;
 	Align      = _TextAlign;
 	TextColor  = _TextColor;

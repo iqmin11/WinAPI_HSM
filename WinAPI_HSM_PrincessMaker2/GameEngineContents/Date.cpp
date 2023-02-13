@@ -221,11 +221,11 @@ bool Date::IsBigMonth(unsigned int _MM)
 void Date::SetWeekDay(unsigned int _YYYY, unsigned int _MM, unsigned int _DD)
 {
     int WholeDay = 0;
-    for (int MM = 1; MM <= _MM; MM++)
+    for (unsigned int MM = 1; MM <= _MM; MM++)
     {
         if (MM == _MM)
         {
-            for (int DD = 1; DD < _DD; DD++)
+            for (unsigned int DD = 1; DD < _DD; DD++)
             {
                 WholeDay++;
             }
@@ -234,7 +234,7 @@ void Date::SetWeekDay(unsigned int _YYYY, unsigned int _MM, unsigned int _DD)
         }
         else
         {
-            for (int DD = 1; !IsOverDay(_YYYY, MM, DD); DD++)
+            for (unsigned int DD = 1; !IsOverDay(_YYYY, MM, DD); DD++)
             {
                 WholeDay++;
             }

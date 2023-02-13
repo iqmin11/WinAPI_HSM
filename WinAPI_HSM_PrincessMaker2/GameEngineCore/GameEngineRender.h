@@ -90,7 +90,7 @@ public:
 
 	void SetOrder(int _Order) override;
 
-	void SetText(const std::string_view& _Text, const int _TextScale, const std::string_view& _TextType, const TextAlign _TextAlign, const COLORREF _TextColor);
+	void SetText(const std::string_view& _Text, const int _TextHeight, const std::string_view& _TextType, const TextAlign _TextAlign, const COLORREF _TextColor);
 
 	inline int GetTextHeight()
 	{

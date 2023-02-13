@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/Button.h>
 
+class GameEngineRender;
 class SetPlayerName : public GameEngineActor
 {
 public:
@@ -26,15 +27,28 @@ protected:
 	void Off() override;
 private:
 	GameEngineRender* BackgroundRender = nullptr;
+	//start {175, 305}
 	Button* UpperCaseButton[5][6] = {};
-	char UpperCase[5][6] = {};
-	Button* LowerCaseButton[5][6] = {};
-	char LowerCase[5][6] = {};
+	GameEngineRender* UpperCaseLetter1Render[5][6] = {};
+	GameEngineRender* UpperCaseLetter2Render[5][6] = {};
+	GameEngineRender* UpperCaseLetterEffect1Render[5][6] = {};
+	GameEngineRender* UpperCaseLetterEffect2Render[5][6] = {};
+	GameEngineRender* UpperCaseLetterEffect3Render[5][6] = {};
+	GameEngineRender* UpperCaseLetterShadowRender[5][6] = {};
 
-	float4 ButtonScale = { 30,30 };
-	float4 ButtonInterval = { 40,0 };
+	char UpperCase[5][6] = {};
+	
+	
+	//Button* LowerCaseButton[5][6] = {};
+	//char LowerCase[5][6] = {};
+
+	float4 ButtonScale = { 24,24 };
+	float4 ButtonInterval = { 16,0 };
+	int LetterRenderHeight = 18;
 
 	void SetUpperCaseButton();
-	void SetLowerCaseButton();
+	void SetUpperCaseRender();
+
+	//void SetLowerCaseButton();
 };
 
