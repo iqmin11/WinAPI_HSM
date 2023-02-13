@@ -13,7 +13,6 @@ SetPlayerName::SetPlayerName()
 
 SetPlayerName::~SetPlayerName()
 {
-
 }
 
 void SetPlayerName::Start()
@@ -21,20 +20,35 @@ void SetPlayerName::Start()
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	BackgroundRender = CreateRender("SetPlayerBackground.BMP", PM2RenderOrder::BackGround);
 	BackgroundRender->SetScaleToImage();
+	
+	SetExplainRender();
+	
 	SetUpperCaseButton();
 	SetUpperCaseRender();
 
 	SetLowerCaseButton();
 	SetLowerCaseRender();
+
+	SetCompleteButton();
+	SetCompleteButtonRender();
+
+	SetLetterEraseButton();
+	SetLetterEraseButtonRender();
+
 	Off();
 }
 
 void SetPlayerName::Update(float _DeltaTime)
 {
-	for (size_t y = 0; y < 5; y++)
+	for (size_t y = 0; y < 6; y++)
 	{
-		for (size_t x = 0; x < 6; x++)
+		for (size_t x = 0; x < 5; x++)
 		{
+			if (y == 5 && x == 1)
+			{
+				break;
+			}
+
 			if (ButtonState::Release == UpperCaseButton[y][x]->GetState())
 			{
 				UpperCaseLetterEffect1Render[y][x]->Off();
@@ -51,17 +65,22 @@ void SetPlayerName::Update(float _DeltaTime)
 				UpperCaseLetterEffect2Render[y][x]->On();
 				UpperCaseLetterEffect3Render[y][x]->On();
 
-				UpperCaseLetter2Render[y][x]->Off();
+				UpperCaseLetter1Render[y][x]->Off();
 				UpperCaseLetter2Render[y][x]->Off();
 				UpperCaseLetterShadowRender[y][x]->Off();
 			}
 		}
 	}
 
-	for (size_t y = 0; y < 5; y++)
+	for (size_t y = 0; y < 6; y++)
 	{
-		for (size_t x = 0; x < 6; x++)
+		for (size_t x = 0; x < 5; x++)
 		{
+			if (y == 5 && x == 1)
+			{
+				break;
+			}
+
 			if (ButtonState::Release == LowerCaseButton[y][x]->GetState())
 			{
 				LowerCaseLetterEffect1Render[y][x]->Off();
@@ -78,11 +97,53 @@ void SetPlayerName::Update(float _DeltaTime)
 				LowerCaseLetterEffect2Render[y][x]->On();
 				LowerCaseLetterEffect3Render[y][x]->On();
 
-				LowerCaseLetter2Render[y][x]->Off();
+				LowerCaseLetter1Render[y][x]->Off();
 				LowerCaseLetter2Render[y][x]->Off();
 				LowerCaseLetterShadowRender[y][x]->Off();
 			}
 		}
+	}
+
+	if (ButtonState::Release == CompleteButton->GetState())
+	{
+		CompleteButtonEffect1Render->Off();
+		CompleteButtonEffect2Render->Off();
+		CompleteButtonEffect3Render->Off();
+
+		CompleteButton1Render->On();
+		CompleteButton2Render->On();
+		CompleteButtonShadowRender->On();
+	}
+	else
+	{
+		CompleteButtonEffect1Render->On();
+		CompleteButtonEffect2Render->On();
+		CompleteButtonEffect3Render->On();
+
+		CompleteButton1Render->Off();
+		CompleteButton2Render->Off();
+		CompleteButtonShadowRender->Off();
+	}
+
+	if (ButtonState::Release == LetterEraseButton->GetState())
+	{
+		LetterEraseButtonEffect1Render->Off();
+		LetterEraseButtonEffect2Render->Off();
+		LetterEraseButtonEffect3Render->Off();
+
+		LetterEraseButton1Render->On();
+		LetterEraseButton2Render->On();
+		LetterEraseButtonShadowRender->On();
+	}
+	else
+	{
+		LetterEraseButtonEffect1Render->On();
+		LetterEraseButtonEffect2Render->On();
+		LetterEraseButtonEffect3Render->On();
+
+		LetterEraseButton1Render->Off();
+		LetterEraseButton2Render->Off();
+		LetterEraseButtonShadowRender->Off();
 	}
 }
 
@@ -93,82 +154,116 @@ void SetPlayerName::Render(float _DeltaTime)
 void SetPlayerName::On()
 {
 	GameEngineObject::On();
-	for (size_t y = 0; y < 5; y++)
+	for (size_t y = 0; y < 6; y++)
 	{
-		for (size_t x = 0; x < 6; x++)
+		for (size_t x = 0; x < 5; x++)
 		{
+			if (y == 5 && x == 1)
+			{
+				break;
+			}
 			UpperCaseButton[y][x]->On();
+			LowerCaseButton[y][x]->On();
+			
 		}
 	}
+	CompleteButton->On();
 }
 
 void SetPlayerName::Off()
 {
 	GameEngineObject::Off();
-	for (size_t y = 0; y < 5; y++)
+	for (size_t y = 0; y < 6; y++)
 	{
-		for (size_t x = 0; x < 6; x++)
+		for (size_t x = 0; x < 5; x++)
 		{
 			UpperCaseButton[y][x]->Off();
+			LowerCaseButton[y][x]->Off();
 		}
 	}
+	CompleteButton->Off();
+}
+
+void SetPlayerName::SetExplainRender()
+{
+	ExplainRender1 = CreateRender(PM2RenderOrder::Menu0_Display);
+	ExplainRender1->SetText("당신의 성은 무엇입니까? (4자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	float4 SetExplainRenderPos = { -36,-36 };
+	ExplainRender1->SetPosition(SetExplainRenderPos);
+
+	ExplainRender2 = CreateRender(PM2RenderOrder::Menu0_Display);
+	ExplainRender2->SetText("당신의 성은 무엇입니까? (4자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	ExplainRender2->SetPosition(SetExplainRenderPos + float4::Up * float4{ 0,1 });
+
+	ExplainRenderShadow = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
+	ExplainRenderShadow->SetText("당신의 성은 무엇입니까? (4자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	ExplainRenderShadow->SetPosition(SetExplainRenderPos + float4::Down * float4{ 0,1 });
 }
 
 void SetPlayerName::SetUpperCaseButton()
 {
 	GameEngineLevel* Level = GetLevel();
 	float4 ButtonStartPosition = { 182, 312 };
-	
-	for (size_t x = 0; x < 5; x++)
+
+	for (size_t y = 0; y < 6; y++)
 	{
-		for (size_t y = 0; y < 6; y++)
+		for (size_t x = 0; x < 5; x++)
 		{
-			UpperCaseButton[x][y] = Level->CreateActor<Button>(PM2ActorOrder::Menu0_Button);
-			UpperCaseButton[x][y]->SetTargetCollisionGroup(static_cast<int>(PM2CollisionOrder::MousePoint));
-			UpperCaseButton[x][y]->SetScale(ButtonScale);
-			UpperCaseButton[x][y]->SetRenderOrder(static_cast<int>(PM2RenderOrder::Menu0_Button));
-			UpperCaseButton[x][y]->SetCollisionOrder(static_cast<int>(PM2ActorOrder::Menu0_Button));
-			UpperCaseButton[x][y]->SetPos(ButtonStartPosition + (ButtonScale + ButtonInterval)*float4 { static_cast<float>(y), static_cast<float>(x) });
-			UpperCaseButton[x][y]->SetReleaseImage("SelectButton_Release.Bmp");
-			UpperCaseButton[x][y]->SetHoverImage("SelectButton_Release.Bmp");
-			UpperCaseButton[x][y]->SetPressImage("SelectButton_Release.Bmp");
+			UpperCaseButton[y][x] = Level->CreateActor<Button>(PM2ActorOrder::Menu0_Button);
+			UpperCaseButton[y][x]->SetTargetCollisionGroup(static_cast<int>(PM2CollisionOrder::MousePoint));
+			UpperCaseButton[y][x]->SetScale(ButtonScale);
+			UpperCaseButton[y][x]->SetRenderOrder(static_cast<int>(PM2RenderOrder::Menu0_Button));
+			UpperCaseButton[y][x]->SetCollisionOrder(static_cast<int>(PM2ActorOrder::Menu0_Button));
+			UpperCaseButton[y][x]->SetPos(ButtonStartPosition + (ButtonScale + ButtonInterval) * float4 { static_cast<float>(y), static_cast<float>(x) });
+			UpperCaseButton[y][x]->SetReleaseImage("SelectButton_Release.Bmp");
+			UpperCaseButton[y][x]->SetHoverImage("SelectButton_Release.Bmp");
+			UpperCaseButton[y][x]->SetPressImage("SelectButton_Release.Bmp");
 		}
 	}
 }
 
 void SetPlayerName::SetUpperCaseRender()
 {
-	for (size_t x = 0; x < 5; x++) //세로정렬
+	int Count = 0;
+	for (size_t y = 0; y < 6; y++) //세로정렬
 	{
-		for (size_t y = 0; y < 6; y++)
+		for (size_t x = 0; x < 5; x++)
 		{
-			UpperCaseLetter1Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display);
-			UpperCaseLetter1Render[x][y]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, RGB(0, 0, 0));
-			float4 LetterRenderPos = UpperCaseButton[x][y]->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
-			UpperCaseLetter1Render[x][y]->SetPosition(LetterRenderPos);
+			std::string Start = "A";
+			Start[0] += Count++;
 
-			UpperCaseLetter2Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display);
-			UpperCaseLetter2Render[x][y]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, RGB(0, 0, 0));
-			UpperCaseLetter2Render[x][y]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
-		
-			UpperCaseLetterEffect1Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display);
-			UpperCaseLetterEffect1Render[x][y]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, RGB(202, 184, 84));
-			UpperCaseLetterEffect1Render[x][y]->SetPosition(LetterRenderPos);
-			UpperCaseLetterEffect1Render[x][y]->Off();
-			
-			UpperCaseLetterEffect2Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-			UpperCaseLetterEffect2Render[x][y]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, RGB(255, 255, 255));
-			UpperCaseLetterEffect2Render[x][y]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
-			UpperCaseLetterEffect2Render[x][y]->Off();
-			
-			UpperCaseLetterEffect3Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-			UpperCaseLetterEffect3Render[x][y]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, RGB(236, 212, 98));
-			UpperCaseLetterEffect3Render[x][y]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
-			UpperCaseLetterEffect3Render[x][y]->Off();
+			UpperCaseLetter1Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display);
+			UpperCaseLetter1Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+			float4 LetterRenderPos = UpperCaseButton[y][x]->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
+			UpperCaseLetter1Render[y][x]->SetPosition(LetterRenderPos);
 
-			UpperCaseLetterShadowRender[x][y] = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-			UpperCaseLetterShadowRender[x][y]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, RGB(106, 170, 126));
-			UpperCaseLetterShadowRender[x][y]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
+			UpperCaseLetter2Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display);
+			UpperCaseLetter2Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+			UpperCaseLetter2Render[y][x]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
+
+			UpperCaseLetterEffect1Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display);
+			UpperCaseLetterEffect1Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color);
+			UpperCaseLetterEffect1Render[y][x]->SetPosition(LetterRenderPos);
+			UpperCaseLetterEffect1Render[y][x]->Off();
+
+			UpperCaseLetterEffect2Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
+			UpperCaseLetterEffect2Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+			UpperCaseLetterEffect2Render[y][x]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
+			UpperCaseLetterEffect2Render[y][x]->Off();
+
+			UpperCaseLetterEffect3Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
+			UpperCaseLetterEffect3Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect3Color);
+			UpperCaseLetterEffect3Render[y][x]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
+			UpperCaseLetterEffect3Render[y][x]->Off();
+
+			UpperCaseLetterShadowRender[y][x] = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
+			UpperCaseLetterShadowRender[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+			UpperCaseLetterShadowRender[y][x]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
+
+			if ("Z" == Start)
+			{
+				break;
+			}
 		}
 	}
 }
@@ -178,19 +273,19 @@ void SetPlayerName::SetLowerCaseButton()
 	GameEngineLevel* Level = GetLevel();
 	float4 ButtonStartPosition = { 422, 312 };
 
-	for (size_t x = 0; x < 5; x++)
+	for (size_t y = 0; y < 6; y++)
 	{
-		for (size_t y = 0; y < 6; y++)
+		for (size_t x = 0; x < 5; x++)
 		{
-			LowerCaseButton[x][y] = Level->CreateActor<Button>(PM2ActorOrder::Menu0_Button);
-			LowerCaseButton[x][y]->SetTargetCollisionGroup(static_cast<int>(PM2CollisionOrder::MousePoint));
-			LowerCaseButton[x][y]->SetScale(ButtonScale);
-			LowerCaseButton[x][y]->SetRenderOrder(static_cast<int>(PM2RenderOrder::Menu0_Button));
-			LowerCaseButton[x][y]->SetCollisionOrder(static_cast<int>(PM2ActorOrder::Menu0_Button));
-			LowerCaseButton[x][y]->SetPos(ButtonStartPosition + (ButtonScale + ButtonInterval) * float4 { static_cast<float>(y), static_cast<float>(x) });
-			LowerCaseButton[x][y]->SetReleaseImage("SelectButton_Release.Bmp");
-			LowerCaseButton[x][y]->SetHoverImage("SelectButton_Release.Bmp");
-			LowerCaseButton[x][y]->SetPressImage("SelectButton_Release.Bmp");
+			LowerCaseButton[y][x] = Level->CreateActor<Button>(PM2ActorOrder::Menu0_Button);
+			LowerCaseButton[y][x]->SetTargetCollisionGroup(static_cast<int>(PM2CollisionOrder::MousePoint));
+			LowerCaseButton[y][x]->SetScale(ButtonScale);
+			LowerCaseButton[y][x]->SetRenderOrder(static_cast<int>(PM2RenderOrder::Menu0_Button));
+			LowerCaseButton[y][x]->SetCollisionOrder(static_cast<int>(PM2ActorOrder::Menu0_Button));
+			LowerCaseButton[y][x]->SetPos(ButtonStartPosition + (ButtonScale + ButtonInterval) * float4 { static_cast<float>(y), static_cast<float>(x) });
+			LowerCaseButton[y][x]->SetReleaseImage("SelectButton_Release.Bmp");
+			LowerCaseButton[y][x]->SetHoverImage("SelectButton_Release.Bmp");
+			LowerCaseButton[y][x]->SetPressImage("SelectButton_Release.Bmp");
 		}
 	}
 }
@@ -198,38 +293,139 @@ void SetPlayerName::SetLowerCaseButton()
 
 void SetPlayerName::SetLowerCaseRender()
 {
-	for (size_t x = 0; x < 5; x++) //세로정렬
+	int Count = 0;
+	for (size_t y = 0; y < 6; y++) //세로정렬
 	{
-		for (size_t y = 0; y < 6; y++)
+		for (size_t x = 0; x < 5; x++)
 		{
-			LowerCaseLetter1Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display);
-			LowerCaseLetter1Render[x][y]->SetText("a", LetterRenderHeight, TextType, TextAlign::Center, RGB(0, 0, 0));
-			float4 LetterRenderPos = LowerCaseButton[x][y]->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
-			LowerCaseLetter1Render[x][y]->SetPosition(LetterRenderPos);
+			std::string Start = "a";
+			Start[0] += Count++;
+			LowerCaseLetter1Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display);
+			LowerCaseLetter1Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+			float4 LetterRenderPos = LowerCaseButton[y][x]->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
+			LowerCaseLetter1Render[y][x]->SetPosition(LetterRenderPos);
 
-			LowerCaseLetter2Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display);
-			LowerCaseLetter2Render[x][y]->SetText("a", LetterRenderHeight, TextType, TextAlign::Center, RGB(0, 0, 0));
-			LowerCaseLetter2Render[x][y]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
+			LowerCaseLetter2Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display);
+			LowerCaseLetter2Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+			LowerCaseLetter2Render[y][x]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 
-			LowerCaseLetterEffect1Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display);
-			LowerCaseLetterEffect1Render[x][y]->SetText("a", LetterRenderHeight, TextType, TextAlign::Center, RGB(202, 184, 84));
-			LowerCaseLetterEffect1Render[x][y]->SetPosition(LetterRenderPos);
-			LowerCaseLetterEffect1Render[x][y]->Off();
+			LowerCaseLetterEffect1Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display);
+			LowerCaseLetterEffect1Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color);
+			LowerCaseLetterEffect1Render[y][x]->SetPosition(LetterRenderPos);
+			LowerCaseLetterEffect1Render[y][x]->Off();
 
-			LowerCaseLetterEffect2Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-			LowerCaseLetterEffect2Render[x][y]->SetText("a", LetterRenderHeight, TextType, TextAlign::Center, RGB(255, 255, 255));
-			LowerCaseLetterEffect2Render[x][y]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
-			LowerCaseLetterEffect2Render[x][y]->Off();
+			LowerCaseLetterEffect2Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
+			LowerCaseLetterEffect2Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+			LowerCaseLetterEffect2Render[y][x]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
+			LowerCaseLetterEffect2Render[y][x]->Off();
 
-			LowerCaseLetterEffect3Render[x][y] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-			LowerCaseLetterEffect3Render[x][y]->SetText("a", LetterRenderHeight, TextType, TextAlign::Center, RGB(236, 212, 98));
-			LowerCaseLetterEffect3Render[x][y]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
-			LowerCaseLetterEffect3Render[x][y]->Off();
+			LowerCaseLetterEffect3Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
+			LowerCaseLetterEffect3Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect3Color);
+			LowerCaseLetterEffect3Render[y][x]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
+			LowerCaseLetterEffect3Render[y][x]->Off();
 
-			LowerCaseLetterShadowRender[x][y] = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-			LowerCaseLetterShadowRender[x][y]->SetText("a", LetterRenderHeight, TextType, TextAlign::Center, RGB(106, 170, 126));
-			LowerCaseLetterShadowRender[x][y]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
+			LowerCaseLetterShadowRender[y][x] = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
+			LowerCaseLetterShadowRender[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+			LowerCaseLetterShadowRender[y][x]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
+			if ("z" == Start)
+			{
+				break;
+			}
 		}
 	}
+}
+
+void SetPlayerName::SetCompleteButton()
+{
+	GameEngineLevel* Level = GetLevel();
+	float4 ButtonStartPosition = { 194, 448 };
+
+	CompleteButton = Level->CreateActor<Button>(PM2ActorOrder::Menu0_Button);
+	CompleteButton->SetTargetCollisionGroup(static_cast<int>(PM2CollisionOrder::MousePoint));
+	CompleteButton->SetScale(ButtonScale2);
+	CompleteButton->SetRenderOrder(static_cast<int>(PM2RenderOrder::Menu0_Button));
+	CompleteButton->SetCollisionOrder(static_cast<int>(PM2ActorOrder::Menu0_Button));
+	CompleteButton->SetPos(ButtonStartPosition);
+	CompleteButton->SetReleaseImage("SelectButton_Release.Bmp");
+	CompleteButton->SetHoverImage("SelectButton_Release.Bmp");
+	CompleteButton->SetPressImage("SelectButton_Release.Bmp");
+}
+
+void SetPlayerName::SetCompleteButtonRender()
+{
+	CompleteButton1Render = CreateRender(PM2RenderOrder::Menu0_Display);
+	CompleteButton1Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	float4 ButtonStartPosition = CompleteButton->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
+	CompleteButton1Render->SetPosition(ButtonStartPosition);
+
+	CompleteButton2Render = CreateRender(PM2RenderOrder::Menu0_Display);
+	CompleteButton2Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	CompleteButton2Render->SetPosition(ButtonStartPosition + float4::Up * float4{ 0,1 });
+
+	CompleteButtonEffect1Render = CreateRender(PM2RenderOrder::Menu0_Display);
+	CompleteButtonEffect1Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color);
+	CompleteButtonEffect1Render->SetPosition(ButtonStartPosition);
+	CompleteButtonEffect1Render->Off();
+	
+	CompleteButtonEffect2Render = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
+	CompleteButtonEffect2Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+	CompleteButtonEffect2Render->SetPosition(ButtonStartPosition + float4::Up * float4{ 0,1 });
+	CompleteButtonEffect2Render->Off();
+	
+	CompleteButtonEffect3Render = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
+	CompleteButtonEffect3Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+	CompleteButtonEffect3Render->SetPosition(ButtonStartPosition + float4::Down * float4{ 0,1 });
+	CompleteButtonEffect3Render->Off();
+
+	CompleteButtonShadowRender = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
+	CompleteButtonShadowRender->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	CompleteButtonShadowRender->SetPosition(ButtonStartPosition + float4::Down * float4{ 0,1 });
+}
+
+void SetPlayerName::SetLetterEraseButton()
+{
+	GameEngineLevel* Level = GetLevel();
+	float4 ButtonStartPosition = { 266, 448 };
+
+	LetterEraseButton = Level->CreateActor<Button>(PM2ActorOrder::Menu0_Button);
+	LetterEraseButton->SetTargetCollisionGroup(static_cast<int>(PM2CollisionOrder::MousePoint));
+	LetterEraseButton->SetScale(ButtonScale2);
+	LetterEraseButton->SetRenderOrder(static_cast<int>(PM2RenderOrder::Menu0_Button));
+	LetterEraseButton->SetCollisionOrder(static_cast<int>(PM2ActorOrder::Menu0_Button));
+	LetterEraseButton->SetPos(ButtonStartPosition);
+	LetterEraseButton->SetReleaseImage("SelectButton_Release.Bmp");
+	LetterEraseButton->SetHoverImage("SelectButton_Release.Bmp");
+	LetterEraseButton->SetPressImage("SelectButton_Release.Bmp");
+}
+
+void SetPlayerName::SetLetterEraseButtonRender()
+{
+	LetterEraseButton1Render = CreateRender(PM2RenderOrder::Menu0_Display);
+	LetterEraseButton1Render->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	float4 ButtonStartPosition = LetterEraseButton->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
+	LetterEraseButton1Render->SetPosition(ButtonStartPosition);
+
+	LetterEraseButton2Render = CreateRender(PM2RenderOrder::Menu0_Display);
+	LetterEraseButton2Render->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	LetterEraseButton2Render->SetPosition(ButtonStartPosition + float4::Up * float4{ 0,1 });
+
+	LetterEraseButtonEffect1Render = CreateRender(PM2RenderOrder::Menu0_Display);
+	LetterEraseButtonEffect1Render->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color);
+	LetterEraseButtonEffect1Render->SetPosition(ButtonStartPosition);
+	LetterEraseButtonEffect1Render->Off();
+
+	LetterEraseButtonEffect2Render = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
+	LetterEraseButtonEffect2Render->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+	LetterEraseButtonEffect2Render->SetPosition(ButtonStartPosition + float4::Up * float4{ 0,1 });
+	LetterEraseButtonEffect2Render->Off();
+
+	LetterEraseButtonEffect3Render = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
+	LetterEraseButtonEffect3Render->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+	LetterEraseButtonEffect3Render->SetPosition(ButtonStartPosition + float4::Down * float4{ 0,1 });
+	LetterEraseButtonEffect3Render->Off();
+
+	LetterEraseButtonShadowRender = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
+	LetterEraseButtonShadowRender->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	LetterEraseButtonShadowRender->SetPosition(ButtonStartPosition + float4::Down * float4{ 0,1 });
 }
 
