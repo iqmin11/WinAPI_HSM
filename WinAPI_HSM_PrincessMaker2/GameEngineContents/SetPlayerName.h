@@ -20,14 +20,15 @@ public:
 	{
 		return CompleteButton;
 	}
+	
+	void On() override;
+	void Off() override;
 
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
 
-	void On() override;
-	void Off() override;
 private:
 	GameEngineRender* BackgroundRender = nullptr;
 	

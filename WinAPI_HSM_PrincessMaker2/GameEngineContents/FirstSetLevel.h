@@ -44,7 +44,6 @@ private:
 	GameEngineActor* UpdateActor = nullptr;
 
 	static ActorState StateValue;
-	ActorState NextStateValue = ActorState::NULLSTATE;
 
 	SetPlayerName* AcSetPlayerName = nullptr;
 	SetOliveName* AcSetOliveName = nullptr; 
@@ -54,33 +53,7 @@ private:
 	SetOliveBooldType* AcSetOliveBloodType = nullptr;
 
 	void ChangeState(ActorState _State);
-	void ChangeActor(int _Order);
-	void ChangeActor(ActorState _State);
-
-	void OnUpdateActor();
-	void OffUpdateActor();
-
-	void NULLStateStart();
-	void NULLStateEnd();
-
-	void SetPlayerNameStart();
-	void SetPlayerNameEnd();
-
-	void SetOliveNameStart();
-	void SetOliveNameEnd();
-
-	void OliveCalendarStart();
-	void OliveCalendarEnd();
-
-	void SetPlayerAgeStart();
-	void SetPlayerAgeEnd();
-
-	void PlayerCalendarStart();
-	void PlayerCalendarEnd();
-
-	void SetOliveBloodTypeStart();
-	void SetOliveBloodTypeEnd();
-
+	
 	void SoundLoad();
 	void ImageLoad();
 
