@@ -41,7 +41,62 @@ void SetPlayerName::Start()
 	SetLetterEraseButtonRender();
 
 	UpperCaseButton[0][0]->SetClickCallBack(PushBack_A);
+	UpperCaseButton[0][1]->SetClickCallBack(PushBack_B);
+	UpperCaseButton[0][2]->SetClickCallBack(PushBack_C);
+	UpperCaseButton[0][3]->SetClickCallBack(PushBack_D);
+	UpperCaseButton[0][4]->SetClickCallBack(PushBack_E);
+	UpperCaseButton[1][0]->SetClickCallBack(PushBack_F);
+	UpperCaseButton[1][1]->SetClickCallBack(PushBack_G);
+	UpperCaseButton[1][2]->SetClickCallBack(PushBack_H);
+	UpperCaseButton[1][3]->SetClickCallBack(PushBack_I);
+	UpperCaseButton[1][4]->SetClickCallBack(PushBack_J);
+	UpperCaseButton[2][0]->SetClickCallBack(PushBack_K);
+	UpperCaseButton[2][1]->SetClickCallBack(PushBack_L);
+	UpperCaseButton[2][2]->SetClickCallBack(PushBack_M);
+	UpperCaseButton[2][3]->SetClickCallBack(PushBack_N);
+	UpperCaseButton[2][4]->SetClickCallBack(PushBack_O);
+	UpperCaseButton[3][0]->SetClickCallBack(PushBack_P);
+	UpperCaseButton[3][1]->SetClickCallBack(PushBack_Q);
+	UpperCaseButton[3][2]->SetClickCallBack(PushBack_R);
+	UpperCaseButton[3][3]->SetClickCallBack(PushBack_S);
+	UpperCaseButton[3][4]->SetClickCallBack(PushBack_T);
+	UpperCaseButton[4][0]->SetClickCallBack(PushBack_U);
+	UpperCaseButton[4][1]->SetClickCallBack(PushBack_V);
+	UpperCaseButton[4][2]->SetClickCallBack(PushBack_W);
+	UpperCaseButton[4][3]->SetClickCallBack(PushBack_X);
+	UpperCaseButton[4][4]->SetClickCallBack(PushBack_Y);
+	UpperCaseButton[5][0]->SetClickCallBack(PushBack_Z);
+	
+	LowerCaseButton[0][0]->SetClickCallBack(PushBack_a);
+	LowerCaseButton[0][1]->SetClickCallBack(PushBack_b);
+	LowerCaseButton[0][2]->SetClickCallBack(PushBack_c);
+	LowerCaseButton[0][3]->SetClickCallBack(PushBack_d);
+	LowerCaseButton[0][4]->SetClickCallBack(PushBack_e);
+	LowerCaseButton[1][0]->SetClickCallBack(PushBack_f);
+	LowerCaseButton[1][1]->SetClickCallBack(PushBack_g);
+	LowerCaseButton[1][2]->SetClickCallBack(PushBack_h);
+	LowerCaseButton[1][3]->SetClickCallBack(PushBack_i);
+	LowerCaseButton[1][4]->SetClickCallBack(PushBack_j);
+	LowerCaseButton[2][0]->SetClickCallBack(PushBack_k);
+	LowerCaseButton[2][1]->SetClickCallBack(PushBack_l);
+	LowerCaseButton[2][2]->SetClickCallBack(PushBack_m);
+	LowerCaseButton[2][3]->SetClickCallBack(PushBack_n);
+	LowerCaseButton[2][4]->SetClickCallBack(PushBack_o);
+	LowerCaseButton[3][0]->SetClickCallBack(PushBack_p);
+	LowerCaseButton[3][1]->SetClickCallBack(PushBack_q);
+	LowerCaseButton[3][2]->SetClickCallBack(PushBack_r);
+	LowerCaseButton[3][3]->SetClickCallBack(PushBack_s);
+	LowerCaseButton[3][4]->SetClickCallBack(PushBack_t);
+	LowerCaseButton[4][0]->SetClickCallBack(PushBack_u);
+	LowerCaseButton[4][1]->SetClickCallBack(PushBack_v);
+	LowerCaseButton[4][2]->SetClickCallBack(PushBack_w);
+	LowerCaseButton[4][3]->SetClickCallBack(PushBack_x);
+	LowerCaseButton[4][4]->SetClickCallBack(PushBack_y);
+	LowerCaseButton[5][0]->SetClickCallBack(PushBack_z);
 
+	LetterEraseButton->SetClickCallBack(PopBack_PrintLetter);
+
+	//CompleteButton->SetClickCallBack(NextActor);
 	Off();
 }
 
@@ -459,10 +514,274 @@ void SetPlayerName::SetLetterEraseButtonRender()
 
 void SetPlayerName::PushBack_A()
 {
-	if (4 < PrintLetter.size())
+	//if (4 < PrintLetter.size())
+	//{
+	//	return;
+	//}
+	PrintLetter.push_back('A');
+}
+
+void SetPlayerName::PushBack_B()
+{
+	PrintLetter.push_back('B');
+}
+
+void SetPlayerName::PushBack_C()
+{
+	PrintLetter.push_back('C');
+}
+
+void SetPlayerName::PushBack_D()
+{
+	PrintLetter.push_back('D');
+}
+
+void SetPlayerName::PushBack_E()
+{
+	PrintLetter.push_back('E');
+}
+
+void SetPlayerName::PushBack_F()
+{
+	PrintLetter.push_back('F');
+}
+
+void SetPlayerName::PushBack_G()
+{
+	PrintLetter.push_back('G');
+}
+
+void SetPlayerName::PushBack_H()
+{
+	PrintLetter.push_back('H');
+}
+
+void SetPlayerName::PushBack_I()
+{
+	PrintLetter.push_back('I');
+}
+
+void SetPlayerName::PushBack_J()
+{
+	PrintLetter.push_back('J');
+}
+
+void SetPlayerName::PushBack_K()
+{
+	PrintLetter.push_back('K');
+}
+
+void SetPlayerName::PushBack_L()
+{
+	PrintLetter.push_back('L');
+}
+
+void SetPlayerName::PushBack_M()
+{
+	PrintLetter.push_back('M');
+}
+
+void SetPlayerName::PushBack_N()
+{
+	PrintLetter.push_back('N');
+}
+
+void SetPlayerName::PushBack_O()
+{
+	PrintLetter.push_back('O');
+}
+
+void SetPlayerName::PushBack_P()
+{
+	PrintLetter.push_back('P');
+}
+
+void SetPlayerName::PushBack_Q()
+{
+	PrintLetter.push_back('Q');
+}
+
+void SetPlayerName::PushBack_R()
+{
+	PrintLetter.push_back('R');
+}
+
+void SetPlayerName::PushBack_S()
+{
+	PrintLetter.push_back('S');
+}
+
+void SetPlayerName::PushBack_T()
+{
+	PrintLetter.push_back('T');
+}
+
+void SetPlayerName::PushBack_U()
+{
+	PrintLetter.push_back('U');
+}
+
+void SetPlayerName::PushBack_V()
+{
+	PrintLetter.push_back('V');
+}
+
+void SetPlayerName::PushBack_W()
+{
+	PrintLetter.push_back('W');
+}
+
+void SetPlayerName::PushBack_X()
+{
+	PrintLetter.push_back('X');
+}
+
+void SetPlayerName::PushBack_Y()
+{
+	PrintLetter.push_back('Y');
+}
+
+void SetPlayerName::PushBack_Z()
+{
+	PrintLetter.push_back('Z');
+}
+
+void SetPlayerName::PushBack_a()
+{
+	PrintLetter.push_back('a');
+}
+
+void SetPlayerName::PushBack_b()
+{
+	PrintLetter.push_back('b');
+}
+
+void SetPlayerName::PushBack_c()
+{
+	PrintLetter.push_back('c');
+}
+
+void SetPlayerName::PushBack_d()
+{
+	PrintLetter.push_back('d');
+}
+
+void SetPlayerName::PushBack_e()
+{
+	PrintLetter.push_back('e');
+}
+
+void SetPlayerName::PushBack_f()
+{
+	PrintLetter.push_back('f');
+}
+
+void SetPlayerName::PushBack_g()
+{
+	PrintLetter.push_back('g');
+}
+
+void SetPlayerName::PushBack_h()
+{
+	PrintLetter.push_back('h');
+}
+
+void SetPlayerName::PushBack_i()
+{
+	PrintLetter.push_back('i');
+}
+
+void SetPlayerName::PushBack_j()
+{
+	PrintLetter.push_back('j');
+}
+
+void SetPlayerName::PushBack_k()
+{
+	PrintLetter.push_back('k');
+}
+
+void SetPlayerName::PushBack_l()
+{
+	PrintLetter.push_back('l');
+}
+
+void SetPlayerName::PushBack_m()
+{
+	PrintLetter.push_back('m');
+}
+
+void SetPlayerName::PushBack_n()
+{
+	PrintLetter.push_back('n');
+}
+
+void SetPlayerName::PushBack_o()
+{
+	PrintLetter.push_back('o');
+}
+
+void SetPlayerName::PushBack_p()
+{
+	PrintLetter.push_back('p');
+}
+
+void SetPlayerName::PushBack_q()
+{
+	PrintLetter.push_back('q');
+}
+
+void SetPlayerName::PushBack_r()
+{
+	PrintLetter.push_back('r');
+}
+
+void SetPlayerName::PushBack_s()
+{
+	PrintLetter.push_back('s');
+}
+
+void SetPlayerName::PushBack_t()
+{
+	PrintLetter.push_back('t');
+}
+
+void SetPlayerName::PushBack_u()
+{
+	PrintLetter.push_back('u');
+}
+
+void SetPlayerName::PushBack_v()
+{
+	PrintLetter.push_back('v');
+}
+
+void SetPlayerName::PushBack_w()
+{
+	PrintLetter.push_back('w');
+}
+
+void SetPlayerName::PushBack_x()
+{
+	PrintLetter.push_back('x');
+}
+
+void SetPlayerName::PushBack_y()
+{
+	PrintLetter.push_back('y');
+}
+
+void SetPlayerName::PushBack_z()
+{
+	PrintLetter.push_back('z');
+}
+
+void SetPlayerName::PopBack_PrintLetter()
+{
+	if (0 >= PrintLetter.size())
 	{
 		return;
 	}
-	PrintLetter.push_back('A');
+	PrintLetter.pop_back();
 }
 

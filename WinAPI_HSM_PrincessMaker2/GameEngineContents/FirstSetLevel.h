@@ -43,7 +43,7 @@ protected:
 private:
 	GameEngineActor* UpdateActor = nullptr;
 
-	ActorState StateValue = ActorState::NULLSTATE;
+	static ActorState StateValue;
 	ActorState NextStateValue = ActorState::NULLSTATE;
 
 	SetPlayerName* AcSetPlayerName = nullptr;
@@ -83,5 +83,10 @@ private:
 
 	void SoundLoad();
 	void ImageLoad();
+
+	static void ChangeStateToSetOliveName()
+	{
+		StateValue = ActorState::SetOliveName;
+	}
 };
 

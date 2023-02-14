@@ -16,7 +16,10 @@ public:
 	SetPlayerName& operator=(const SetPlayerName& _Other) = delete;
 	SetPlayerName& operator=(SetPlayerName&& _Other) noexcept = delete;
 
-
+	Button* GetCompleteButton()
+	{
+		return CompleteButton;
+	}
 
 protected:
 	void Start() override;
@@ -97,5 +100,60 @@ private:
 	void SetLetterEraseButtonRender();
 
 	static void PushBack_A();
+	static void PushBack_B();
+	static void PushBack_C();
+	static void PushBack_D();
+	static void PushBack_E();
+	static void PushBack_F();
+	static void PushBack_G();
+	static void PushBack_H();
+	static void PushBack_I();
+	static void PushBack_J();
+	static void PushBack_K();
+	static void PushBack_L();
+	static void PushBack_M();
+	static void PushBack_N();
+	static void PushBack_O();
+	static void PushBack_P();
+	static void PushBack_Q();
+	static void PushBack_R();
+	static void PushBack_S();
+	static void PushBack_T();
+	static void PushBack_U();
+	static void PushBack_V();
+	static void PushBack_W();
+	static void PushBack_X();
+	static void PushBack_Y();
+	static void PushBack_Z();
+
+	static void PushBack_a();
+	static void PushBack_b();
+	static void PushBack_c();
+	static void PushBack_d();
+	static void PushBack_e();
+	static void PushBack_f();
+	static void PushBack_g();
+	static void PushBack_h();
+	static void PushBack_i();
+	static void PushBack_j();
+	static void PushBack_k();
+	static void PushBack_l();
+	static void PushBack_m();
+	static void PushBack_n();
+	static void PushBack_o();
+	static void PushBack_p();
+	static void PushBack_q();
+	static void PushBack_r();
+	static void PushBack_s();
+	static void PushBack_t();
+	static void PushBack_u();
+	static void PushBack_v();
+	static void PushBack_w();
+	static void PushBack_x();
+	static void PushBack_y();
+	static void PushBack_z();
+
+	static void PopBack_PrintLetter();
+
 };
 

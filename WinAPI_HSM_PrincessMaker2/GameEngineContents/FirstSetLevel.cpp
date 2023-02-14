@@ -13,6 +13,8 @@
 #include "SetOliveBooldType.h"
 #include "ContentsEnums.h"
 
+ActorState FirstSetLevel::StateValue = ActorState::NULLSTATE;
+
 FirstSetLevel::FirstSetLevel()
 {
 
@@ -41,6 +43,8 @@ void FirstSetLevel::Loading()
 	AcPlayerCalendar = CreateActor<PlayerCalendar>(static_cast<int>(ActorState::PlayerCalendar));
 	AcSetOliveBloodType = CreateActor<SetOliveBooldType>(static_cast<int>(ActorState::SetOliveBloodType));
 	AcSetPlayerAge = CreateActor<SetPlayerAge>(static_cast<int>(ActorState::SetPlayerAge));
+
+	AcSetPlayerName->GetCompleteButton()->SetClickCallBack(ChangeStateToSetOliveName);
 
 	ChangeState(ActorState::SetPlayerName);
 }
