@@ -23,14 +23,6 @@ void Olive::Start()
 {
 	OlivePlayer = this;
 
-	/*if (false == GameEngineInput::IsKey("LeftMove"))
-	{
-		GameEngineInput::CreateKey("LeftMove", 'A');
-		GameEngineInput::CreateKey("RightMove", 'D');
-		GameEngineInput::CreateKey("DownMove", 'S');
-		GameEngineInput::CreateKey("UpMove", 'W');
-	}*/
-
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	BodyRender = CreateRender("body_10_nomal.BMP", PM2RenderOrder::Player); 
 	BodyRender->SetScaleToImage();
@@ -38,7 +30,8 @@ void Olive::Start()
 	HeadRender = CreateRender("head_10_nomal.BMP", PM2RenderOrder::Player);
 	HeadRender->SetScaleToImage();
 	HeadRender->SetPosition(float4::Up * ((BodyRender->GetImage()->GetImageScale().half()) + (HeadRender->GetImage()->GetImageScale().half())));
-	
+
+	Off();
 }
 
 void Olive::Update(float _DeltaTime)

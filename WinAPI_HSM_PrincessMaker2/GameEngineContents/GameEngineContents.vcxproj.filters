@@ -2,14 +2,8 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="PM2Core.h" />
-    <ClInclude Include="Olive.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
-    </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuFrame.h">
-      <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClInclude>
     <ClInclude Include="ContentsEnums.h" />
     <ClInclude Include="TitleLevel.h">
@@ -60,17 +54,8 @@
     <ClInclude Include="Cutscene.h">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClInclude>
-    <ClInclude Include="Dialog.h">
-      <Filter>ContentsLevel\0. PM2Base</Filter>
-    </ClInclude>
     <ClInclude Include="OpeningCredit.h">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
-    </ClInclude>
-    <ClInclude Include="MousePoint.h">
-      <Filter>ContentsLevel\0. PM2Base</Filter>
-    </ClInclude>
-    <ClInclude Include="SelectionMenu.h">
-      <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClInclude>
     <ClInclude Include="Background.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Background</Filter>
@@ -96,9 +81,6 @@
     <ClInclude Include="BasicInfo.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClInclude>
-    <ClInclude Include="StatusWindow.h">
-      <Filter>ContentsLevel\0. PM2Base</Filter>
-    </ClInclude>
     <ClInclude Include="Calendar.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule</Filter>
     </ClInclude>
@@ -120,20 +102,32 @@
     <ClInclude Include="FemininityStatusWindow.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
     </ClInclude>
-    <ClInclude Include="GaugeRenderObject.h">
+    <ClInclude Include="Olive.h">
       <Filter>ContentsLevel\0. PM2Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Dialog.h">
+      <Filter>ContentsLevel\0. PM2Base\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="GaugeRenderObject.h">
+      <Filter>ContentsLevel\0. PM2Base\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuFrame.h">
+      <Filter>ContentsLevel\0. PM2Base\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="MousePoint.h">
+      <Filter>ContentsLevel\0. PM2Base\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectionMenu.h">
+      <Filter>ContentsLevel\0. PM2Base\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="StatusWindow.h">
+      <Filter>ContentsLevel\0. PM2Base\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
-    <ClCompile Include="Olive.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuFrame.cpp">
-      <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClCompile>
     <ClCompile Include="TitleLevel.cpp">
       <Filter>ContentsLevel\1. TitleLevel</Filter>
@@ -183,17 +177,8 @@
     <ClCompile Include="Cutscene.cpp">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClCompile>
-    <ClCompile Include="Dialog.cpp">
-      <Filter>ContentsLevel\0. PM2Base</Filter>
-    </ClCompile>
     <ClCompile Include="OpeningCredit.cpp">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
-    </ClCompile>
-    <ClCompile Include="MousePoint.cpp">
-      <Filter>ContentsLevel\0. PM2Base</Filter>
-    </ClCompile>
-    <ClCompile Include="SelectionMenu.cpp">
-      <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClCompile>
     <ClCompile Include="Background.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Background</Filter>
@@ -219,9 +204,6 @@
     <ClCompile Include="BasicInfo.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClCompile>
-    <ClCompile Include="StatusWindow.cpp">
-      <Filter>ContentsLevel\0. PM2Base</Filter>
-    </ClCompile>
     <ClCompile Include="Calendar.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule</Filter>
     </ClCompile>
@@ -243,8 +225,26 @@
     <ClCompile Include="FemininityStatusWindow.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
     </ClCompile>
-    <ClCompile Include="GaugeRenderObject.cpp">
+    <ClCompile Include="Olive.cpp">
       <Filter>ContentsLevel\0. PM2Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialog.cpp">
+      <Filter>ContentsLevel\0. PM2Base\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="GaugeRenderObject.cpp">
+      <Filter>ContentsLevel\0. PM2Base\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuFrame.cpp">
+      <Filter>ContentsLevel\0. PM2Base\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="MousePoint.cpp">
+      <Filter>ContentsLevel\0. PM2Base\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectionMenu.cpp">
+      <Filter>ContentsLevel\0. PM2Base\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="StatusWindow.cpp">
+      <Filter>ContentsLevel\0. PM2Base\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -301,6 +301,9 @@
     </Filter>
     <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor">
       <UniqueIdentifier>{c9881939-9412-485f-b69e-76467e46f6e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\0. PM2Base\UI">
+      <UniqueIdentifier>{aa8edf5c-631c-4ac4-b747-3856c12ae167}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

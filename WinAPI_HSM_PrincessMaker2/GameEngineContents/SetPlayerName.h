@@ -21,6 +21,11 @@ public:
 		return CompleteButton;
 	}
 	
+	static std::string GetPrintLetter()
+	{
+		return PrintLetter;
+	}
+	
 	void On() override;
 	void Off() override;
 

@@ -59,7 +59,6 @@ private:
 	float4 MonthRenderScale = { 20,16 };
 	float4 FirstMonthSetPos = { -360, -165 };
 
-
 	GameEngineRender* BackgroundRender = nullptr;
 
 	NumberRenderObject HoverButtonDateRender_Year = NumberRenderObject();

@@ -14,6 +14,7 @@ enum class ActorState
 };
 
 class GameEngineActor;
+class Olive;
 class SetPlayerName;
 class SetOliveName;
 class OliveCalendar;
@@ -57,9 +58,12 @@ private:
 	void SoundLoad();
 	void ImageLoad();
 
-	static void ChangeStateToSetOliveName()
+	static void ClickPlayerNameEndButton();
+	
+
+	static void ChangeStateToOliveCalendar()
 	{
-		StateValue = ActorState::SetOliveName;
+		StateValue = ActorState::OliveCalendar;
 	}
 };
 

@@ -5,6 +5,7 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 
 #include "MousePoint.h"
+#include "Olive.h"
 #include "SetPlayerName.h"
 #include "SetOliveName.h"
 #include "OliveCalendar.h"
@@ -36,12 +37,15 @@ void FirstSetLevel::Loading()
 	}*/
 	
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
-	
+
+	CreateActor<Olive>(PM2ActorOrder::Player);
+
 	AcSetPlayerName = CreateActor<SetPlayerName>(static_cast<int>(ActorState::SetPlayerName));
-	AcSetPlayerName->GetCompleteButton()->SetClickCallBack(ChangeStateToSetOliveName);
+	AcSetPlayerName->GetCompleteButton()->SetClickCallBack(ClickPlayerNameEndButton);
 	
 	AcSetOliveName = CreateActor<SetOliveName>(static_cast<int>(ActorState::SetOliveName));
-	
+	AcSetOliveName->GetCompleteButton()->SetClickCallBack(ChangeStateToOliveCalendar);
+
 	AcOliveCalendar = CreateActor<OliveCalendar>(static_cast<int>(ActorState::OliveCalendar));
 	
 	AcPlayerCalendar = CreateActor<PlayerCalendar>(static_cast<int>(ActorState::PlayerCalendar));
@@ -121,6 +125,12 @@ void FirstSetLevel::Update(float _DeltaTime)
 void FirstSetLevel::ChangeState(ActorState _State)
 {
 	StateValue = _State;
+}
+
+void FirstSetLevel::ClickPlayerNameEndButton()
+{
+	StateValue = ActorState::SetOliveName;
+	Olive::OlivePlayer->SetOliveLastName(SetPlayerName::GetPrintLetter());
 }
 
 //void FirstSetLevel::ChangeActor(int _State)
@@ -342,6 +352,14 @@ void FirstSetLevel::ImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("HoverButton.BMP"));//Test
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PressButton.BMP"));//Test`
 	
+	Dir.Move("Olive");
+
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("body_10_nomal.BMP"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("head_10_nomal.BMP"));
+	
+	Dir.MoveParentToDirectory("ContentsResources");
+	Dir.Move("ContentsResources");
+	Dir.Move("Image");
 	Dir.Move("FirstSetLevel");
 
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BirthNum.BMP"))->Cut(10, 1);

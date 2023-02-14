@@ -17,6 +17,16 @@ public:
 	Olive& operator=(const Olive& _Other) = delete;
 	Olive& operator=(Olive&& _Other) noexcept = delete;
 
+	void SetOliveFirstName(const std::string_view& _FirstName)
+	{
+		OliveFirstName = _FirstName;
+	}
+
+	void SetOliveLastName(const std::string_view& _LastName)
+	{
+		OliveLastName = _LastName;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Deltatime) override;
@@ -25,6 +35,9 @@ protected:
 private:
 	GameEngineRender* HeadRender = nullptr;
 	GameEngineRender* BodyRender = nullptr;
+
+	std::string OliveFirstName = std::string();
+	std::string OliveLastName = std::string();
 
 };
 

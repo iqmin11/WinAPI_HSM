@@ -79,8 +79,7 @@ void RaisingSimLevel::ImageLoad()
 	Dir.Move("ContentsResources");
 	Dir.Move("Image");
 	Dir.Move("RaisingLevel");
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("body_10_nomal.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("head_10_nomal.BMP"));
+	
 
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("paint_default.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("flower_spring.bmp"));
