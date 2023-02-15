@@ -121,6 +121,8 @@ void GameEngineRender::TextRender(float _DeltaTime)
 		CameraPos = GetActor()->GetLevel()->GetCameraPos();
 	}
 
+	float4 RenderPos = GetActorPlusPos() - CameraPos;
+	
 	HDC hdc = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
 	HFONT hFont, OldFont;
 	LOGFONTA lf;
@@ -141,7 +143,6 @@ void GameEngineRender::TextRender(float _DeltaTime)
 	hFont = CreateFontIndirect(&lf);
 	OldFont = static_cast<HFONT>(SelectObject(hdc, hFont));
 
-	float4 RenderPos = GetActorPlusPos() - CameraPos;
 	SetTextAlign(hdc, static_cast<UINT>(Align));
 	SetTextColor(hdc, TextColor);
 	SetBkMode(hdc, TRANSPARENT);

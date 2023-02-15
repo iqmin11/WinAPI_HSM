@@ -6,7 +6,6 @@
 
 enum class TextAlign
 {
-	Null = 0,
 	Left = TA_LEFT,
 	Right = TA_RIGHT,
 	Center = TA_CENTER
@@ -139,10 +138,10 @@ private:
 	std::map<std::string, FrameAnimation> Animation;
 	FrameAnimation* CurrentAnimation = nullptr;
 
-	std::string RenderText;
+	std::string RenderText = std::string();
 	int TextHeight = 0;
 	std::string TextType = std::string();
-	TextAlign Align = TextAlign::Null;
+	TextAlign Align = TextAlign::Left;
 	COLORREF TextColor = RGB(0, 0, 0);
 };
 
