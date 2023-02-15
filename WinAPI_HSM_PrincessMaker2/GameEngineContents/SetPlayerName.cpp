@@ -46,9 +46,7 @@ void SetPlayerName::Start()
 
 	SetLetterEraseButton();
 	SetLetterEraseButtonRender();
-
-	LetterEraseButton->SetClickCallBack(PopBack_PrintLetter);
-
+		
 	Off();
 }
 
@@ -438,6 +436,7 @@ void SetPlayerName::SetLetterEraseButton()
 	LetterEraseButton->SetReleaseImage("SelectButton_Release.Bmp");
 	LetterEraseButton->SetHoverImage("SelectButton_Release.Bmp");
 	LetterEraseButton->SetPressImage("SelectButton_Release.Bmp");
+	LetterEraseButton->SetClickCallBack(PopBack_PrintLetter);
 }
 
 void SetPlayerName::SetLetterEraseButtonRender()
