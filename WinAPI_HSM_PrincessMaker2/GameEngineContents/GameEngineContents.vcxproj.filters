@@ -123,7 +123,12 @@
     <ClInclude Include="StatusWindow.h">
       <Filter>ContentsLevel\0. PM2Base\UI</Filter>
     </ClInclude>
-    <ClInclude Include="NameButton.h" />
+    <ClInclude Include="NameButton.h">
+      <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor\ButtonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Button_Date.h">
+      <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor\ButtonUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -247,7 +252,12 @@
     <ClCompile Include="StatusWindow.cpp">
       <Filter>ContentsLevel\0. PM2Base\UI</Filter>
     </ClCompile>
-    <ClCompile Include="NameButton.cpp" />
+    <ClCompile Include="NameButton.cpp">
+      <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor\ButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Button_Date.cpp">
+      <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor\ButtonUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsLevel">
@@ -306,6 +316,9 @@
     </Filter>
     <Filter Include="ContentsLevel\0. PM2Base\UI">
       <UniqueIdentifier>{aa8edf5c-631c-4ac4-b747-3856c12ae167}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\2. FirstSetLevel\FirstSetActor\ButtonUI">
+      <UniqueIdentifier>{c0bec0b2-d425-46f9-bec2-d61c1f882d07}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

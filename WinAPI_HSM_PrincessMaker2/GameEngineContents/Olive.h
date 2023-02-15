@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include "Date.h"
 
 class GameEngineRender;
 class Olive : public GameEngineActor
@@ -27,6 +28,11 @@ public:
 		OliveLastName = _LastName;
 	}
 
+	void SetOliveBirthDay(const Date& _BirthDay)
+	{
+		OliveBirthDay = _BirthDay;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Deltatime) override;
@@ -38,6 +44,7 @@ private:
 
 	std::string OliveFirstName = std::string();
 	std::string OliveLastName = std::string();
+	Date OliveBirthDay = Date();
 
 };
 

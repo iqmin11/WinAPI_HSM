@@ -71,9 +71,9 @@ void OliveCalendar::Update(float _DeltaTime)
 		//HoverButtonDateRender_Month.SetValue(10);
 		//HoverButtonDateRender_Day.SetValue(10);
 
-		HoverButtonDateRender_Year.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetYear());
-		HoverButtonDateRender_Month.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetMonth());
-		HoverButtonDateRender_Day.SetValue(EachButtonDate[Index.iw()][Index.iz()][Index.iy()][Index.ix()].GetDay());
+		HoverButtonDateRender_Year.SetValue(DateButton[Index.iw()][Index.iz()][Index.iy()][Index.ix()]->Value.GetYear());
+		HoverButtonDateRender_Month.SetValue(DateButton[Index.iw()][Index.iz()][Index.iy()][Index.ix()]->Value.GetMonth());
+		HoverButtonDateRender_Day.SetValue(DateButton[Index.iw()][Index.iz()][Index.iy()][Index.ix()]->Value.GetDay());
 	}
 }
 
@@ -87,7 +87,7 @@ void OliveCalendar::Render(float _DeltaTime)
 
 void OliveCalendar::SetDateNumButton()
 {
-	SetEachButtonDate();
+	//SetEachButtonDate();
 	int FirstMonth = StartDate.GetMonth();
 	int Month = FirstMonth;
 	int Year = StartDate.GetYear();
@@ -110,13 +110,20 @@ void OliveCalendar::SetDateNumButton()
 
 	int FirstWeekday = Date::FindMonthFirstWeekday(StartDate.GetYear(), FirstMonth); // 1월 1일 요일 찾기 공식
 	int MonthFirstWeekday = FirstWeekday;
+	Month = FirstMonth;
+	Year = StartDate.GetYear();
 	GameEngineLevel* Level = GetLevel();
 
 	for (int w = 0; w < 4; w++)
 	{
 		for (int z = 0; z < 3; z++)
 		{
-			int i = 1;
+			if (Month == 13)
+			{
+				Month = 1;
+				Year++;
+			}
+			int Day = 1;
 			int FirstMonth = (z + 1) + (w * 3); // 순서상 첫번쨰 달을 말하는거 8월이 맨 앞에오면 8월이 first
 			for (int y = 0; y < 6; y++) // 한달
 			{
@@ -126,7 +133,7 @@ void OliveCalendar::SetDateNumButton()
 					float fy = static_cast<float>(y);
 					float fz = static_cast<float>(z);
 					float fw = static_cast<float>(w);
-					DateButton[w][z][y][x] = Level->CreateActor<Button>(PM2ActorOrder::Menu0_Button);
+					DateButton[w][z][y][x] = Level->CreateActor<Button_Date>(PM2ActorOrder::Menu0_Button);
 					DateButton[w][z][y][x]->SetTargetCollisionGroup(static_cast<int>(PM2CollisionOrder::MousePoint));
 					DateButton[w][z][y][x]->SetScale(DateButtonScale);
 					DateButton[w][z][y][x]->SetRenderOrder(static_cast<int>(PM2RenderOrder::Menu0_Button));
@@ -134,6 +141,7 @@ void OliveCalendar::SetDateNumButton()
 					DateButton[w][z][y][x]->SetPos(GetPos() + (FirstDaySetPos + (EachDayNumInterval * float4{ fx,fy }) + (EcahMonthCalendarInterval * float4{ fz,fw })));
 					if (x + (y * 7) < MonthFirstWeekday)
 					{
+						DateButton[w][z][y][x]->Value.SetNullDate();
 						DateButton[w][z][y][x]->SetReleaseImage("OliveCalendarNum.bmp", 0);//
 						DateButton[w][z][y][x]->SetHoverImage("OliveCalendarNum.bmp", 0);	//
 						DateButton[w][z][y][x]->SetPressImage("OliveCalendarNum.bmp", 0);	//끌건데 해줄수밖에없음 나중에 최적화할라면 여기부터 고쳐야할듯
@@ -142,25 +150,31 @@ void OliveCalendar::SetDateNumButton()
 					{
 						if (0 == x)
 						{
-							DateButton[w][z][y][x]->SetReleaseImage("OliveCalendarNum.bmp", 32 + (i++));
-							DateButton[w][z][y][x]->SetHoverImage("OliveCalendarNum.bmp", 63 + i);
-							DateButton[w][z][y][x]->SetPressImage("OliveCalendarNum.bmp", 63 + i);
+							DateButton[w][z][y][x]->Value.SetDate(Year, Month, Day);
+							DateButton[w][z][y][x]->SetReleaseImage("OliveCalendarNum.bmp", 32 + Day);
+							DateButton[w][z][y][x]->SetHoverImage("OliveCalendarNum.bmp", 64 + Day);
+							DateButton[w][z][y][x]->SetPressImage("OliveCalendarNum.bmp", 64 + Day++);
+							DateButton[w][z][y][x]->SetClickCallBack(SetOliveBirthDay);
 						}
 						else
 						{
-							DateButton[w][z][y][x]->SetReleaseImage("OliveCalendarNum.bmp", i++);
-							DateButton[w][z][y][x]->SetHoverImage("OliveCalendarNum.bmp", 63 + i);
-							DateButton[w][z][y][x]->SetPressImage("OliveCalendarNum.bmp", 63 + i);
+							DateButton[w][z][y][x]->Value.SetDate(Year, Month, Day);
+							DateButton[w][z][y][x]->SetReleaseImage("OliveCalendarNum.bmp", Day);
+							DateButton[w][z][y][x]->SetHoverImage("OliveCalendarNum.bmp", 64 + Day);
+							DateButton[w][z][y][x]->SetPressImage("OliveCalendarNum.bmp", 64 + Day++);
+							DateButton[w][z][y][x]->SetClickCallBack(SetOliveBirthDay);
 						}
 					}
 					else
 					{
+						DateButton[w][z][y][x]->Value.SetNullDate();
 						DateButton[w][z][y][x]->SetReleaseImage("OliveCalendarNum.bmp", 0);
 						DateButton[w][z][y][x]->SetHoverImage("OliveCalendarNum.bmp", 0);
 						DateButton[w][z][y][x]->SetPressImage("OliveCalendarNum.bmp", 0);
 					}
 				}
 			}
+			Month++;
 			MonthFirstWeekday = (MonthFirstWeekday + MonthLen[FirstMonth - 1]) % 7;
 		}
 	}
@@ -236,6 +250,12 @@ void OliveCalendar::SetMonthRender()
 	}
 }
 
+void OliveCalendar::SetOliveBirthDay(Button* _Btn)
+{
+	Button_Date* Ptr = dynamic_cast<Button_Date*>(_Btn);
+	Olive::OlivePlayer->SetOliveBirthDay(Ptr->Value);
+}
+
 
 
 float4 OliveCalendar::WichButtonNotRelease()
@@ -298,69 +318,69 @@ void OliveCalendar::Off()
 	}
 }
 
-void OliveCalendar::SetEachButtonDate()
-{
-	int FirstMonth = StartDate.GetMonth();
-	int Month = FirstMonth;
-	int Year = StartDate.GetYear();
-	//        1200                1201
-	//        8   9   10  11  12  1   2    3   4  5   6   7
-	//        31, 30, 31, 30, 31, 31, 29, 31, 30, 31, 30, 31    
-	int MonthLen[12] = {}; // 2월이 윤년이면이란 뜻으로 될듯->윤년 각 달의 날짜수
-
-	for (size_t i = 0; i < 12; i++)
-	{
-		if (13 == Month)
-		{
-			Month = 1;
-			Year++;
-		}
-
-		MonthLen[i] = Date::GetMonthLenth(Year, Month);
-		Month++;
-	}
-
-	int FirstWeekday = Date::FindMonthFirstWeekday(StartDate.GetYear(), FirstMonth); // 1월 1일 요일 찾기 공식
-	int MonthFirstWeekday = FirstWeekday;
-	int SetMonth = FirstMonth;
-	int SetYear = StartDate.GetYear();
-
-	for (int w = 0; w < 4; w++)
-	{
-		for (int z = 0; z < 3; z++)
-		{
-
-			if (SetMonth == 13)
-			{
-				SetMonth = 1;
-				SetYear++;
-			}
-			int SetDay = 1;
-			int FirstMonth = (z + 1) + (w * 3); // 순서상 첫번쨰 달을 말하는거 8월이 맨 앞에오면 8월이 first
-			for (int y = 0; y < 6; y++) // 한달
-			{
-				for (int x = 0; x < 7; x++) // 일주일
-				{
-					float fx = static_cast<float>(x);
-					float fy = static_cast<float>(y);
-					float fz = static_cast<float>(z);
-					float fw = static_cast<float>(w);
-					if (x + (y * 7) < MonthFirstWeekday)
-					{
-						EachButtonDate[w][z][y][x].SetNullDate();
-					}
-					else if (x + (y * 7) < MonthFirstWeekday + MonthLen[FirstMonth - 1])
-					{
-						EachButtonDate[w][z][y][x].SetDate(SetYear, SetMonth, SetDay++);
-					}
-					else
-					{
-						EachButtonDate[w][z][y][x].SetNullDate();
-					}
-				}
-			}
-			SetMonth++;
-			MonthFirstWeekday = (MonthFirstWeekday + MonthLen[FirstMonth - 1]) % 7;
-		}
-	}
-}
+//void OliveCalendar::SetEachButtonDate()
+//{
+//	int FirstMonth = StartDate.GetMonth();
+//	int Month = FirstMonth;
+//	int Year = StartDate.GetYear();
+//	//        1200                1201
+//	//        8   9   10  11  12  1   2    3   4  5   6   7
+//	//        31, 30, 31, 30, 31, 31, 29, 31, 30, 31, 30, 31    
+//	int MonthLen[12] = {}; // 2월이 윤년이면이란 뜻으로 될듯->윤년 각 달의 날짜수
+//
+//	for (size_t i = 0; i < 12; i++)
+//	{
+//		if (13 == Month)
+//		{
+//			Month = 1;
+//			Year++;
+//		}
+//
+//		MonthLen[i] = Date::GetMonthLenth(Year, Month);
+//		Month++;
+//	}
+//
+//	int FirstWeekday = Date::FindMonthFirstWeekday(StartDate.GetYear(), FirstMonth); // 1월 1일 요일 찾기 공식
+//	int MonthFirstWeekday = FirstWeekday;
+//	int SetMonth = FirstMonth;
+//	int SetYear = StartDate.GetYear();
+//
+//	for (int w = 0; w < 4; w++)
+//	{
+//		for (int z = 0; z < 3; z++)
+//		{
+//
+//			if (SetMonth == 13)
+//			{
+//				SetMonth = 1;
+//				SetYear++;
+//			}
+//			int SetDay = 1;
+//			int FirstMonth = (z + 1) + (w * 3); // 순서상 첫번쨰 달을 말하는거 8월이 맨 앞에오면 8월이 first
+//			for (int y = 0; y < 6; y++) // 한달
+//			{
+//				for (int x = 0; x < 7; x++) // 일주일
+//				{
+//					float fx = static_cast<float>(x);
+//					float fy = static_cast<float>(y);
+//					float fz = static_cast<float>(z);
+//					float fw = static_cast<float>(w);
+//					if (x + (y * 7) < MonthFirstWeekday)
+//					{
+//						EachButtonDate[w][z][y][x].SetNullDate();
+//					}
+//					else if (x + (y * 7) < MonthFirstWeekday + MonthLen[FirstMonth - 1])
+//					{
+//						EachButtonDate[w][z][y][x].SetDate(SetYear, SetMonth, SetDay++);
+//					}
+//					else
+//					{
+//						EachButtonDate[w][z][y][x].SetNullDate();
+//					}
+//				}
+//			}
+//			SetMonth++;
+//			MonthFirstWeekday = (MonthFirstWeekday + MonthLen[FirstMonth - 1]) % 7;
+//		}
+//	}
+//}

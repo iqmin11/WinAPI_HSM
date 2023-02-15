@@ -2,7 +2,9 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/Button.h>
 #include <GameEngineCore/NumberRenderObject.h>
+#include "Button_Date.h"
 #include "Date.h"
+#include "Olive.h"
 
 class OliveCalendar : public GameEngineActor
 {
@@ -16,11 +18,6 @@ public:
 	OliveCalendar(OliveCalendar&& _Other) noexcept = delete;
 	OliveCalendar& operator=(const OliveCalendar& _Other) = delete;
 	OliveCalendar& operator=(OliveCalendar&& _Other) noexcept = delete;
-
-	void SetDateNumButton();
-	void SetYearRender();
-	void SetWeekdayRender();
-	void SetMonthRender();
 	
 	void SetStartDate(int _YYYY, int _MM, int _DD)
 	{
@@ -41,8 +38,8 @@ private:
 
 	float4 EcahMonthCalendarInterval = { 250 , 105 };
 
-	Button* DateButton[4][3][6][7] = {}; //달력 열, 행, 날짜 열, 행
-	Date EachButtonDate[4][3][6][7] = {};
+	Button_Date* DateButton[4][3][6][7] = {}; //달력 열, 행, 날짜 열, 행
+	//Date EachButtonDate[4][3][6][7] = {};
 	float4 DateButtonScale = { 20,14 };
 	float4 FirstDaySetPos = { -330, -177 };
 	float4 EachDayNumInterval = { 30,15 };
@@ -70,7 +67,13 @@ private:
 
 	float4 WichButtonNotRelease();
 
-	void SetEachButtonDate();
+	void SetDateNumButton();
+	void SetYearRender();
+	void SetWeekdayRender();
+	void SetMonthRender();
+	
+	static void SetOliveBirthDay(Button* _Btn);
+	//void SetEachButtonDate();
 
 };
 

@@ -15,7 +15,7 @@ public:
 	NameButton& operator=(const NameButton& _Other) = delete;
 	NameButton& operator=(NameButton&& _Other) noexcept = delete;
 
-	char Chracter;
+	char Chracter = 0;
 
 protected:
 
