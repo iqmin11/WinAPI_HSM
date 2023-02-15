@@ -1,6 +1,7 @@
 #include "SetPlayerName.h"
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include "NameButton.h"
 
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineLevel.h>
@@ -16,6 +17,13 @@ SetPlayerName::SetPlayerName()
 
 SetPlayerName::~SetPlayerName()
 {
+}
+
+void SetPlayerName::PushBack_Button(Button* _Btn)
+{
+	NameButton* Ptr = dynamic_cast<NameButton*>(_Btn);
+
+	PrintLetter.push_back(Ptr->Chracter);
 }
 
 void SetPlayerName::Start()
@@ -40,59 +48,60 @@ void SetPlayerName::Start()
 	SetLetterEraseButton();
 	SetLetterEraseButtonRender();
 
-	UpperCaseButton[0][0]->SetClickCallBack(PushBack_A);
-	UpperCaseButton[0][1]->SetClickCallBack(PushBack_B);
-	UpperCaseButton[0][2]->SetClickCallBack(PushBack_C);
-	UpperCaseButton[0][3]->SetClickCallBack(PushBack_D);
-	UpperCaseButton[0][4]->SetClickCallBack(PushBack_E);
-	UpperCaseButton[1][0]->SetClickCallBack(PushBack_F);
-	UpperCaseButton[1][1]->SetClickCallBack(PushBack_G);
-	UpperCaseButton[1][2]->SetClickCallBack(PushBack_H);
-	UpperCaseButton[1][3]->SetClickCallBack(PushBack_I);
-	UpperCaseButton[1][4]->SetClickCallBack(PushBack_J);
-	UpperCaseButton[2][0]->SetClickCallBack(PushBack_K);
-	UpperCaseButton[2][1]->SetClickCallBack(PushBack_L);
-	UpperCaseButton[2][2]->SetClickCallBack(PushBack_M);
-	UpperCaseButton[2][3]->SetClickCallBack(PushBack_N);
-	UpperCaseButton[2][4]->SetClickCallBack(PushBack_O);
-	UpperCaseButton[3][0]->SetClickCallBack(PushBack_P);
-	UpperCaseButton[3][1]->SetClickCallBack(PushBack_Q);
-	UpperCaseButton[3][2]->SetClickCallBack(PushBack_R);
-	UpperCaseButton[3][3]->SetClickCallBack(PushBack_S);
-	UpperCaseButton[3][4]->SetClickCallBack(PushBack_T);
-	UpperCaseButton[4][0]->SetClickCallBack(PushBack_U);
-	UpperCaseButton[4][1]->SetClickCallBack(PushBack_V);
-	UpperCaseButton[4][2]->SetClickCallBack(PushBack_W);
-	UpperCaseButton[4][3]->SetClickCallBack(PushBack_X);
-	UpperCaseButton[4][4]->SetClickCallBack(PushBack_Y);
-	UpperCaseButton[5][0]->SetClickCallBack(PushBack_Z);
+	// functional과 람다를 사용하는 방법이 있다.
+	UpperCaseButton[0][0]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[0][1]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[0][2]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[0][3]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[0][4]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[1][0]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[1][1]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[1][2]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[1][3]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[1][4]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[2][0]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[2][1]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[2][2]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[2][3]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[2][4]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[3][0]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[3][1]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[3][2]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[3][3]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[3][4]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[4][0]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[4][1]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[4][2]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[4][3]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[4][4]->SetClickCallBack(PushBack_Button);
+	UpperCaseButton[5][0]->SetClickCallBack(PushBack_Button);
 	
-	LowerCaseButton[0][0]->SetClickCallBack(PushBack_a);
-	LowerCaseButton[0][1]->SetClickCallBack(PushBack_b);
-	LowerCaseButton[0][2]->SetClickCallBack(PushBack_c);
-	LowerCaseButton[0][3]->SetClickCallBack(PushBack_d);
-	LowerCaseButton[0][4]->SetClickCallBack(PushBack_e);
-	LowerCaseButton[1][0]->SetClickCallBack(PushBack_f);
-	LowerCaseButton[1][1]->SetClickCallBack(PushBack_g);
-	LowerCaseButton[1][2]->SetClickCallBack(PushBack_h);
-	LowerCaseButton[1][3]->SetClickCallBack(PushBack_i);
-	LowerCaseButton[1][4]->SetClickCallBack(PushBack_j);
-	LowerCaseButton[2][0]->SetClickCallBack(PushBack_k);
-	LowerCaseButton[2][1]->SetClickCallBack(PushBack_l);
-	LowerCaseButton[2][2]->SetClickCallBack(PushBack_m);
-	LowerCaseButton[2][3]->SetClickCallBack(PushBack_n);
-	LowerCaseButton[2][4]->SetClickCallBack(PushBack_o);
-	LowerCaseButton[3][0]->SetClickCallBack(PushBack_p);
-	LowerCaseButton[3][1]->SetClickCallBack(PushBack_q);
-	LowerCaseButton[3][2]->SetClickCallBack(PushBack_r);
-	LowerCaseButton[3][3]->SetClickCallBack(PushBack_s);
-	LowerCaseButton[3][4]->SetClickCallBack(PushBack_t);
-	LowerCaseButton[4][0]->SetClickCallBack(PushBack_u);
-	LowerCaseButton[4][1]->SetClickCallBack(PushBack_v);
-	LowerCaseButton[4][2]->SetClickCallBack(PushBack_w);
-	LowerCaseButton[4][3]->SetClickCallBack(PushBack_x);
-	LowerCaseButton[4][4]->SetClickCallBack(PushBack_y);
-	LowerCaseButton[5][0]->SetClickCallBack(PushBack_z);
+	LowerCaseButton[0][0]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[0][1]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[0][2]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[0][3]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[0][4]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[1][0]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[1][1]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[1][2]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[1][3]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[1][4]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[2][0]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[2][1]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[2][2]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[2][3]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[2][4]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[3][0]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[3][1]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[3][2]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[3][3]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[3][4]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[4][0]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[4][1]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[4][2]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[4][3]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[4][4]->SetClickCallBack(PushBack_Button);
+	LowerCaseButton[5][0]->SetClickCallBack(PushBack_Button);
 
 	LetterEraseButton->SetClickCallBack(PopBack_PrintLetter);
 
@@ -288,11 +297,13 @@ void SetPlayerName::SetUpperCaseButton()
 	GameEngineLevel* Level = GetLevel();
 	float4 ButtonStartPosition = { 182, 312 };
 
+	char Start = 'A';
+
 	for (size_t y = 0; y < 6; y++)
 	{
 		for (size_t x = 0; x < 5; x++)
 		{
-			UpperCaseButton[y][x] = Level->CreateActor<Button>(PM2ActorOrder::Menu0_Button);
+			UpperCaseButton[y][x] = Level->CreateActor<NameButton>(PM2ActorOrder::Menu0_Button);
 			UpperCaseButton[y][x]->SetTargetCollisionGroup(static_cast<int>(PM2CollisionOrder::MousePoint));
 			UpperCaseButton[y][x]->SetScale(ButtonScale);
 			UpperCaseButton[y][x]->SetRenderOrder(static_cast<int>(PM2RenderOrder::Menu0_Button));
@@ -301,6 +312,7 @@ void SetPlayerName::SetUpperCaseButton()
 			UpperCaseButton[y][x]->SetReleaseImage("SelectButton_Release.Bmp");
 			UpperCaseButton[y][x]->SetHoverImage("SelectButton_Release.Bmp");
 			UpperCaseButton[y][x]->SetPressImage("SelectButton_Release.Bmp");
+			UpperCaseButton[y][x]->Chracter = Start++;
 		}
 	}
 }
@@ -356,11 +368,13 @@ void SetPlayerName::SetLowerCaseButton()
 	GameEngineLevel* Level = GetLevel();
 	float4 ButtonStartPosition = { 422, 312 };
 
+	char Start = 'a';
+
 	for (size_t y = 0; y < 6; y++)
 	{
 		for (size_t x = 0; x < 5; x++)
 		{
-			LowerCaseButton[y][x] = Level->CreateActor<Button>(PM2ActorOrder::Menu0_Button);
+			LowerCaseButton[y][x] = Level->CreateActor<NameButton>(PM2ActorOrder::Menu0_Button);
 			LowerCaseButton[y][x]->SetTargetCollisionGroup(static_cast<int>(PM2CollisionOrder::MousePoint));
 			LowerCaseButton[y][x]->SetScale(ButtonScale);
 			LowerCaseButton[y][x]->SetRenderOrder(static_cast<int>(PM2RenderOrder::Menu0_Button));
@@ -369,6 +383,7 @@ void SetPlayerName::SetLowerCaseButton()
 			LowerCaseButton[y][x]->SetReleaseImage("SelectButton_Release.Bmp");
 			LowerCaseButton[y][x]->SetHoverImage("SelectButton_Release.Bmp");
 			LowerCaseButton[y][x]->SetPressImage("SelectButton_Release.Bmp");
+			LowerCaseButton[y][x]->Chracter = Start++;
 		}
 	}
 }
@@ -776,7 +791,7 @@ void SetPlayerName::PushBack_z()
 	PrintLetter.push_back('z');
 }
 
-void SetPlayerName::PopBack_PrintLetter()
+void SetPlayerName::PopBack_PrintLetter(Button* Button)
 {
 	if (0 >= PrintLetter.size())
 	{

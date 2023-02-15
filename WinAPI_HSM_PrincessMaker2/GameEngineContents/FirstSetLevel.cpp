@@ -127,7 +127,7 @@ void FirstSetLevel::ChangeState(ActorState _State)
 	StateValue = _State;
 }
 
-void FirstSetLevel::ClickPlayerNameEndButton()
+void FirstSetLevel::ClickPlayerNameEndButton(Button* Button)
 {
 	StateValue = ActorState::SetOliveName;
 	Olive::OlivePlayer->SetOliveLastName(SetPlayerName::GetPrintLetter());

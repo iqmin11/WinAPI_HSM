@@ -22,8 +22,8 @@ protected:
 private:
 	GameEngineRender* TextRender = nullptr;
 
-	static void LevelChangeToFirstSet();
-	static void LevelChangeToOpening();
-	static void LevelChangeToRaisingSim();
+	static void LevelChangeToFirstSet(Button* _Btn);
+	static void LevelChangeToOpening(Button* _Btn);
+	static void LevelChangeToRaisingSim(Button* _Btn);
 };
 

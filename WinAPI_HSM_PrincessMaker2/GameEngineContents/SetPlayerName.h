@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/Button.h>
 
+class NameButton;
 class GameEngineRender;
 class SetPlayerName : public GameEngineActor
 {
@@ -46,7 +47,7 @@ private:
 	GameEngineRender* ExplainRender2 = nullptr;
 	GameEngineRender* ExplainRenderShadow = nullptr;
 	
-	Button* UpperCaseButton[6][5] = {};
+	NameButton* UpperCaseButton[6][5] = {};
 	GameEngineRender* UpperCaseLetter1Render[6][5] = {};
 	GameEngineRender* UpperCaseLetter2Render[6][5] = {};
 	GameEngineRender* UpperCaseLetterEffect1Render[6][5] = {};
@@ -54,7 +55,7 @@ private:
 	GameEngineRender* UpperCaseLetterEffect3Render[6][5] = {};
 	GameEngineRender* UpperCaseLetterShadowRender[6][5] = {};
 	
-	Button* LowerCaseButton[6][5] = {};
+	NameButton* LowerCaseButton[6][5] = {};
 	GameEngineRender* LowerCaseLetter1Render[6][5] = {};
 	GameEngineRender* LowerCaseLetter2Render[6][5] = {};
 	GameEngineRender* LowerCaseLetterEffect1Render[6][5] = {};
@@ -104,6 +105,8 @@ private:
 	
 	void SetLetterEraseButton();
 	void SetLetterEraseButtonRender();
+
+	static void PushBack_Button(Button* _Btn);
 
 	static void PushBack_A();
 	static void PushBack_B();
@@ -159,7 +162,7 @@ private:
 	static void PushBack_y();
 	static void PushBack_z();
 
-	static void PopBack_PrintLetter();
+	static void PopBack_PrintLetter(Button* Button);
 
 };
 

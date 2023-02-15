@@ -13,6 +13,7 @@ enum class ActorState
 	SetOliveBloodType
 };
 
+class Button;
 class GameEngineActor;
 class Olive;
 class SetPlayerName;
@@ -58,10 +59,10 @@ private:
 	void SoundLoad();
 	void ImageLoad();
 
-	static void ClickPlayerNameEndButton();
+	static void ClickPlayerNameEndButton(Button* Button);
 	
 
-	static void ChangeStateToOliveCalendar()
+	static void ChangeStateToOliveCalendar(Button* Button)
 	{
 		StateValue = ActorState::OliveCalendar;
 	}

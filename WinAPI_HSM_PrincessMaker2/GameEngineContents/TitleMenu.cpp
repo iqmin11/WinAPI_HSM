@@ -12,17 +12,17 @@ TitleMenu::~TitleMenu()
 
 }
 
-void TitleMenu::LevelChangeToFirstSet()
+void TitleMenu::LevelChangeToFirstSet(Button* _Btn)
 {
 	GameEngineCore::GetInst()->ChangeLevel("FirstSet");
 }
 
-void TitleMenu::LevelChangeToOpening()
+void TitleMenu::LevelChangeToOpening(Button* _Btn)
 {
 	GameEngineCore::GetInst()->ChangeLevel("Opening");
 }
 
-void TitleMenu::LevelChangeToRaisingSim()
+void TitleMenu::LevelChangeToRaisingSim(Button* _Btn)
 {
 	GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
 }

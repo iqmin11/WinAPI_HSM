@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/Button.h>
 
+class Button;
 class GameEngineRender;
 class SetOliveName : public GameEngineActor
 {
@@ -101,6 +102,8 @@ private:
 	void SetLetterEraseButton();
 	void SetLetterEraseButtonRender();
 
+	static void PushBack_Button(Button* _Button);
+
 	static void PushBack_A();
 	static void PushBack_B();
 	static void PushBack_C();
@@ -155,7 +158,7 @@ private:
 	static void PushBack_y();
 	static void PushBack_z();
 
-	static void PopBack_PrintLetter();
+	static void PopBack_PrintLetter(Button* _Button);
 
 };
 

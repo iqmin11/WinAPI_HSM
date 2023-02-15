@@ -255,6 +255,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="NameButton.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="OliveCalendar.h">
       <SubType>
       </SubType>
@@ -451,6 +455,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="MousePoint.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="NameButton.cpp">
       <SubType>
       </SubType>
     </ClCompile>

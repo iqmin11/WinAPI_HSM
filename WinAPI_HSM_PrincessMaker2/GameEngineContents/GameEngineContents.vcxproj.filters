@@ -123,6 +123,7 @@
     <ClInclude Include="StatusWindow.h">
       <Filter>ContentsLevel\0. PM2Base\UI</Filter>
     </ClInclude>
+    <ClInclude Include="NameButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -246,6 +247,7 @@
     <ClCompile Include="StatusWindow.cpp">
       <Filter>ContentsLevel\0. PM2Base\UI</Filter>
     </ClCompile>
+    <ClCompile Include="NameButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsLevel">
