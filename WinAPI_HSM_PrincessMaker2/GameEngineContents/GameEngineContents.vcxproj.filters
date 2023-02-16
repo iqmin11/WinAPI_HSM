@@ -326,5 +326,8 @@
     <Filter Include="ContentsLevel\2. FirstSetLevel\FirstSetActor\ButtonUI">
       <UniqueIdentifier>{c0bec0b2-d425-46f9-bec2-d61c1f882d07}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ContentsLevel\2. FirstSetLevel\FirstSetActor\STActor">
+      <UniqueIdentifier>{a9686a52-8563-4e9c-aabb-6ce875b03358}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

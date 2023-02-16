@@ -18,6 +18,8 @@ public:
 	SetOliveBloodType& operator=(const SetOliveBloodType& _Other) = delete;
 	SetOliveBloodType& operator=(SetOliveBloodType&& _Other) noexcept = delete;
 
+	static bool FirstUpdate;
+
 	void On() override;
 	void Off() override;
 

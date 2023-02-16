@@ -6,15 +6,17 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include "FirstSetLevel.h"
+#include "SetOliveName.h"
 #include "Olive.h"
 
 #include "ContentsEnums.h"
+
+bool SetPlayerName::FirstUpdate = false;
 
 std::string SetPlayerName::PrintLetter = "\0";
 GameEngineRender* SetPlayerName::ExplainRender1 = nullptr;
 GameEngineRender* SetPlayerName::ExplainRender2 = nullptr;
 GameEngineRender* SetPlayerName::ExplainRenderShadow = nullptr;
-bool SetPlayerName::FirstUpdate = false;
 
 SetPlayerName::SetPlayerName()
 {
@@ -512,5 +514,7 @@ void SetPlayerName::ClickCompleteButton(Button* _Btn)
 	FirstSetLevel::SetStateValue(ActorState::SetOliveName);
 	Olive::OlivePlayer->SetOliveLastName(PrintLetter);
 	FirstUpdate = false;
+
+	SetOliveName::FirstUpdate = false;
 }
 

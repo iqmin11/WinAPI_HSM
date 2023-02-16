@@ -24,7 +24,7 @@ class FirstSetLevel : public GameEngineLevel
 public:
 	static void SetStateValue(ActorState _State)
 	{
-		StateValue = _State;
+		CurStateValue = _State;
 	}
 	
 	// construtor destructor
@@ -46,7 +46,8 @@ protected:
 
 
 private:
-	static ActorState StateValue;
+	static ActorState CurStateValue;
+	static ActorState PrevStateValue;
 	
 	GameEngineActor* UpdateActor = nullptr;
 
@@ -57,8 +58,6 @@ private:
 	PlayerCalendar* AcPlayerCalendar = nullptr;
 	SetOliveBloodType* AcSetOliveBloodType = nullptr;
 
-	//void ChangeState(ActorState _State);
-	
 	void SoundLoad();
 	void ImageLoad();
 };

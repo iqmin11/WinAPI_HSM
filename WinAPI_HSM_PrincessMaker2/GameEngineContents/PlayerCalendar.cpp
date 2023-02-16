@@ -4,10 +4,12 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRender.h>
 
-#include "Olive.h"
 #include "FirstSetLevel.h"
+#include "SetOliveBloodType.h"
+#include "Olive.h"
 #include "ContentsEnums.h"
 
+bool PlayerCalendar::FirstUpdate = false;
 PlayerCalendar::PlayerCalendar()
 {
 
@@ -65,7 +67,6 @@ void PlayerCalendar::Update(float _DeltaTime)
 		UpdateMonthRender();
 		UpdateYearRender();		
 	}
-	
 	
 	float4 Index = WichButtonNotRelease();
 	if (
@@ -438,6 +439,8 @@ void PlayerCalendar::SetPlayerBirthDay(Button* _Btn)
 	Button_Date* Ptr = dynamic_cast<Button_Date*>(_Btn);
 	Olive::OlivePlayer->SetFatherBirthDay(Ptr->Value);
 	FirstSetLevel::SetStateValue(ActorState::SetOliveBloodType);
+	FirstUpdate = false;
+	SetOliveBloodType::FirstUpdate = false;
 }
 
 void PlayerCalendar::SetOliveBirth(int _YYYY, int _MM, int _DD)

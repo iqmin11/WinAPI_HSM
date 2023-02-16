@@ -23,6 +23,8 @@ public:
 	void SetOliveBirth(int _YYYY, int _MM, int _DD); // 임시
 	void SetCalendarYear(int _YYYY);// 임시
 
+	static bool FirstUpdate;
+
 	void On() override;
 	void Off() override;
 
@@ -73,8 +75,6 @@ private:
 	float4 Pos_HoverButtonDateRender_Month = {-305, -221};
 	NumberRenderObject HoverButtonDateRender_Day = NumberRenderObject();
 	float4 Pos_HoverButtonDateRender_Day = {-275, -221};
-
-	bool FirstUpdate = false;
 
 	float4 WichButtonNotRelease();
 

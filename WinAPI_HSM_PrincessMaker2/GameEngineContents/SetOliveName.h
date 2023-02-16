@@ -17,6 +17,8 @@ public:
 	SetOliveName& operator=(const SetOliveName& _Other) = delete;
 	SetOliveName& operator=(SetOliveName&& _Other) noexcept = delete;
 
+	static bool FirstUpdate;
+
 	static std::string GetPrintLetter()
 	{
 		return PrintLetter;
@@ -85,8 +87,6 @@ private:
 	COLORREF TextEffect2Color = RGB(202, 184, 84);
 	COLORREF TextEffect3Color = RGB(236, 212, 98);
 	std::string TextType = "±¼¸²";
-
-	static bool FirstUpdate;
 
 	void SetPrintLetterRender();
 

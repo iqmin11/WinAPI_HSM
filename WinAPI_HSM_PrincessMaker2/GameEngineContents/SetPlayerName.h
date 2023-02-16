@@ -21,6 +21,8 @@ public:
 	{
 		return PrintLetter;
 	}
+
+	static bool FirstUpdate;
 	
 	void On() override;
 	void Off() override;
@@ -84,8 +86,6 @@ private:
 	COLORREF TextEffect2Color = RGB(202, 184, 84);
 	COLORREF TextEffect3Color = RGB(236, 212, 98);
 	std::string TextType = "±¼¸²";
-
-	static bool FirstUpdate;
 
 	void SetPrintLetterRender();
 	

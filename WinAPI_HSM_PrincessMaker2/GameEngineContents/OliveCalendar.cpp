@@ -3,12 +3,13 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEnginePlatform/GameEngineInput.h>
 
 #include "Olive.h"
 #include "FirstSetLevel.h"
 #include "ContentsEnums.h"
 
-
+bool OliveCalendar::FirstUpdate = false;
 OliveCalendar::OliveCalendar()
 {
 
@@ -48,6 +49,7 @@ void OliveCalendar::Start()
 	SetMonthRender();
 	SetYearRender();
 	SetWeekdayRender();
+
 	Off();
 }
 
@@ -71,14 +73,11 @@ void OliveCalendar::Update(float _DeltaTime)
 		HoverButtonDateRender_Month.On();
 		HoverButtonDateRender_Day.On();
 
-		//HoverButtonDateRender_Year.SetValue(1000);
-		//HoverButtonDateRender_Month.SetValue(10);
-		//HoverButtonDateRender_Day.SetValue(10);
-
 		HoverButtonDateRender_Year.SetValue(DateButton[Index.iw()][Index.iz()][Index.iy()][Index.ix()]->Value.GetYear());
 		HoverButtonDateRender_Month.SetValue(DateButton[Index.iw()][Index.iz()][Index.iy()][Index.ix()]->Value.GetMonth());
 		HoverButtonDateRender_Day.SetValue(DateButton[Index.iw()][Index.iz()][Index.iy()][Index.ix()]->Value.GetDay());
 	}
+
 }
 
 void OliveCalendar::Render(float _DeltaTime)

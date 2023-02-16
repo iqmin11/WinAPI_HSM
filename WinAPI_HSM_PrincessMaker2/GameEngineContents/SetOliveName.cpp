@@ -6,16 +6,16 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include "FirstSetLevel.h"
+#include "OliveCalendar.h"
 #include "Olive.h"
 
 #include "ContentsEnums.h"
 
+bool SetOliveName::FirstUpdate = false;
 std::string SetOliveName::PrintLetter = "\0";
 GameEngineRender* SetOliveName::ExplainRender1 = nullptr;
 GameEngineRender* SetOliveName::ExplainRender2 = nullptr;
 GameEngineRender* SetOliveName::ExplainRenderShadow = nullptr;
-bool SetOliveName::FirstUpdate = false;
-
 
 SetOliveName::SetOliveName()
 {
@@ -518,5 +518,8 @@ void SetOliveName::ClickCompleteButton(Button* _Button)
 	
 	FirstSetLevel::SetStateValue(ActorState::OliveCalendar);
 	Olive::OlivePlayer->SetOliveFirstName(PrintLetter);
+	FirstUpdate = false;
+
+	OliveCalendar::FirstUpdate = false;
 }
 

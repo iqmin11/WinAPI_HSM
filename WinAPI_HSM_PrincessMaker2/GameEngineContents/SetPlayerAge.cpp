@@ -1,6 +1,7 @@
 #include "SetPlayerAge.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/Button.h>
@@ -11,6 +12,7 @@
 #include "PlayerCalendar.h"
 #include "ContentsEnums.h"
 
+bool SetPlayerAge::FirstUpdate = false;
 std::string SetPlayerAge::PrintLetter = std::string();
 
 SetPlayerAge::SetPlayerAge()
@@ -64,6 +66,12 @@ void SetPlayerAge::Start()
 
 void SetPlayerAge::Update(float _DeltaTime)
 {
+	if (!FirstUpdate) // √ ±‚»≠
+	{
+		FirstUpdate = true;
+		PrintLetter = "\0";
+	}
+
 	for (size_t i = 0; i < 10; i++)
 	{
 		if (ButtonState::Release == AgeNumButton[i]->GetState())
@@ -112,6 +120,7 @@ void SetPlayerAge::Update(float _DeltaTime)
 	PrintLetterRender1->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect1Color);
 	PrintLetterRender2->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect2Color);
 	PrintLetterRender3->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect3Color);
+	
 }
 
 void SetPlayerAge::Render(float _DeltaTime)
@@ -289,6 +298,8 @@ void SetPlayerAge::ClickCompleteButton(Button* _Button)
 	}
 	FirstSetLevel::SetStateValue(ActorState::PlayerCalendar);
 	Olive::OlivePlayer->SetFatherAge(AgeValue);
+	FirstUpdate = false;
+	PlayerCalendar::FirstUpdate = false;
 }
 
 

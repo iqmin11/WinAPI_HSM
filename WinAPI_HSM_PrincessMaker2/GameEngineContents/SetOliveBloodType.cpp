@@ -9,6 +9,7 @@
 #include <GameEngineCore/Button.h>
 #include "ContentsEnums.h"
 
+bool SetOliveBloodType::FirstUpdate = false;
 SetOliveBloodType::SetOliveBloodType()
 {
 

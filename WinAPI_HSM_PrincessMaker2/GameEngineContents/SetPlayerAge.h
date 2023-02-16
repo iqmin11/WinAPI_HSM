@@ -16,6 +16,8 @@ public:
 	SetPlayerAge& operator=(const SetPlayerAge& _Other) = delete;
 	SetPlayerAge& operator=(SetPlayerAge&& _Other) noexcept = delete;
 
+	static bool FirstUpdate;
+
 	void On() override;
 	void Off() override;
 

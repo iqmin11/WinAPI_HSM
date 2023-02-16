@@ -19,6 +19,8 @@ public:
 	OliveCalendar& operator=(const OliveCalendar& _Other) = delete;
 	OliveCalendar& operator=(OliveCalendar&& _Other) noexcept = delete;
 	
+	static bool FirstUpdate;
+
 	void SetStartDate(int _YYYY, int _MM, int _DD)
 	{
 		StartDate.SetDate(_YYYY, _MM, _DD);
