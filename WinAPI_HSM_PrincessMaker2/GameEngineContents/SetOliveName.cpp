@@ -1,12 +1,14 @@
 #include "SetOliveName.h"
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include "NameButton.h"
 
-#include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRender.h>
+#include "FirstSetLevel.h"
+#include "Olive.h"
+
 #include "ContentsEnums.h"
-#include "NameButton.h"
 
 std::string SetOliveName::PrintLetter = "\0";
 
@@ -391,6 +393,7 @@ void SetOliveName::SetCompleteButton()
 	CompleteButton->SetReleaseImage("SelectButton_Release.Bmp");
 	CompleteButton->SetHoverImage("SelectButton_Release.Bmp");
 	CompleteButton->SetPressImage("SelectButton_Release.Bmp");
+	CompleteButton->SetClickCallBack(ClickCompleteButton);
 }
 
 void SetOliveName::SetCompleteButtonRender()
@@ -479,5 +482,11 @@ void SetOliveName::PopBack_PrintLetter(Button* _Button)
 		return;
 	}
 	PrintLetter.pop_back();
+}
+
+void SetOliveName::ClickCompleteButton(Button* _Button)
+{
+	FirstSetLevel::StateValue = ActorState::OliveCalendar;
+	Olive::OlivePlayer->SetOliveFirstName(PrintLetter);
 }
 

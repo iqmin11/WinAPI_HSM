@@ -111,5 +111,6 @@ private:
 
 	static void PopBack_PrintLetter(Button* _Button);
 
+	static void ClickCompleteButton(Button* _Button);
 };
 

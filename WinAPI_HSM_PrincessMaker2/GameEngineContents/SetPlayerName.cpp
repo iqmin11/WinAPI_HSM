@@ -3,9 +3,11 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 #include "NameButton.h"
 
-#include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRender.h>
+#include "FirstSetLevel.h"
+#include "Olive.h"
+
 #include "ContentsEnums.h"
 
 std::string SetPlayerName::PrintLetter = "\0";
@@ -16,13 +18,6 @@ SetPlayerName::SetPlayerName()
 
 SetPlayerName::~SetPlayerName()
 {
-}
-
-void SetPlayerName::PushBack_Button(Button* _Btn)
-{
-	NameButton* Ptr = dynamic_cast<NameButton*>(_Btn);
-
-	PrintLetter.push_back(Ptr->Chracter);
 }
 
 void SetPlayerName::Start()
@@ -389,6 +384,7 @@ void SetPlayerName::SetCompleteButton()
 	CompleteButton->SetReleaseImage("SelectButton_Release.Bmp");
 	CompleteButton->SetHoverImage("SelectButton_Release.Bmp");
 	CompleteButton->SetPressImage("SelectButton_Release.Bmp");
+	CompleteButton->SetClickCallBack(ClickCompleteButton);
 }
 
 void SetPlayerName::SetCompleteButtonRender()
@@ -470,6 +466,14 @@ void SetPlayerName::SetLetterEraseButtonRender()
 	LetterEraseButtonShadowRender->SetPosition(ButtonStartPosition + float4::Down * float4{ 0,1 });
 }
 
+
+void SetPlayerName::PushBack_Button(Button* _Btn)
+{
+	NameButton* Ptr = dynamic_cast<NameButton*>(_Btn);
+
+	PrintLetter.push_back(Ptr->Chracter);
+}
+
 void SetPlayerName::PopBack_PrintLetter(Button* Button)
 {
 	if (0 >= PrintLetter.size())
@@ -477,5 +481,11 @@ void SetPlayerName::PopBack_PrintLetter(Button* Button)
 		return;
 	}
 	PrintLetter.pop_back();
+}
+
+void SetPlayerName::ClickCompleteButton(Button* _Btn)
+{
+	FirstSetLevel::StateValue = ActorState::SetOliveName;
+	Olive::OlivePlayer->SetOliveLastName(PrintLetter);
 }
 

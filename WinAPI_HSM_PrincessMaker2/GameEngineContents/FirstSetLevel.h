@@ -1,6 +1,5 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
-#include <list>
 
 enum class ActorState
 {
@@ -13,9 +12,7 @@ enum class ActorState
 	SetOliveBloodType
 };
 
-class Button;
 class GameEngineActor;
-class Olive;
 class SetPlayerName;
 class SetOliveName;
 class OliveCalendar;
@@ -25,6 +22,8 @@ class SetOliveBooldType;
 class FirstSetLevel : public GameEngineLevel
 {
 public:
+	static ActorState StateValue;
+	
 	// construtor destructor
 	FirstSetLevel();
 	~FirstSetLevel();
@@ -39,13 +38,12 @@ public:
 	void Update(float _DeltaTime) override;
 	void LevelChangeEnd(GameEngineLevel* _NextLevel) override {};
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override {};
+	
 protected:
 
 
 private:
 	GameEngineActor* UpdateActor = nullptr;
-
-	static ActorState StateValue;
 
 	SetPlayerName* AcSetPlayerName = nullptr;
 	SetOliveName* AcSetOliveName = nullptr; 
@@ -58,13 +56,5 @@ private:
 	
 	void SoundLoad();
 	void ImageLoad();
-
-	static void ClickPlayerNameEndButton(Button* Button);
-	
-
-	static void ChangeStateToOliveCalendar(Button* Button)
-	{
-		StateValue = ActorState::OliveCalendar;
-	}
 };
 

@@ -3,6 +3,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include "FirstSetLevel.h"
 #include "ContentsEnums.h"
 
 
@@ -254,6 +255,7 @@ void OliveCalendar::SetOliveBirthDay(Button* _Btn)
 {
 	Button_Date* Ptr = dynamic_cast<Button_Date*>(_Btn);
 	Olive::OlivePlayer->SetOliveBirthDay(Ptr->Value);
+	FirstSetLevel::StateValue = ActorState::SetPlayerAge;
 }
 
 

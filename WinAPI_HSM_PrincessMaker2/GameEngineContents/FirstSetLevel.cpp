@@ -41,19 +41,11 @@ void FirstSetLevel::Loading()
 	CreateActor<Olive>(PM2ActorOrder::Player);
 
 	AcSetPlayerName = CreateActor<SetPlayerName>(static_cast<int>(ActorState::SetPlayerName));
-	AcSetPlayerName->GetCompleteButton()->SetClickCallBack(ClickPlayerNameEndButton);
-	
 	AcSetOliveName = CreateActor<SetOliveName>(static_cast<int>(ActorState::SetOliveName));
-	AcSetOliveName->GetCompleteButton()->SetClickCallBack(ChangeStateToOliveCalendar);
-
 	AcOliveCalendar = CreateActor<OliveCalendar>(static_cast<int>(ActorState::OliveCalendar));
-	
 	AcPlayerCalendar = CreateActor<PlayerCalendar>(static_cast<int>(ActorState::PlayerCalendar));
-	
 	AcSetOliveBloodType = CreateActor<SetOliveBooldType>(static_cast<int>(ActorState::SetOliveBloodType));
-	
 	AcSetPlayerAge = CreateActor<SetPlayerAge>(static_cast<int>(ActorState::SetPlayerAge));
-
 
 	ChangeState(ActorState::SetPlayerName);
 }
@@ -125,12 +117,6 @@ void FirstSetLevel::Update(float _DeltaTime)
 void FirstSetLevel::ChangeState(ActorState _State)
 {
 	StateValue = _State;
-}
-
-void FirstSetLevel::ClickPlayerNameEndButton(Button* Button)
-{
-	StateValue = ActorState::SetOliveName;
-	Olive::OlivePlayer->SetOliveLastName(SetPlayerName::GetPrintLetter());
 }
 
 //void FirstSetLevel::ChangeActor(int _State)
