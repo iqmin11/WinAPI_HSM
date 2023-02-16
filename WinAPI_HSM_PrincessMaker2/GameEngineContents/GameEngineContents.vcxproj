@@ -328,7 +328,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="SetOliveBooldType.h">
+    <ClInclude Include="SetOliveBloodType.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -538,7 +538,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="SetOliveBooldType.cpp">
+    <ClCompile Include="SetOliveBloodType.cpp">
       <SubType>
       </SubType>
     </ClCompile>

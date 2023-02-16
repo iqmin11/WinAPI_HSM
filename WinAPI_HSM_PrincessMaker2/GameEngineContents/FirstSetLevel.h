@@ -18,7 +18,7 @@ class SetOliveName;
 class OliveCalendar;
 class SetPlayerAge;
 class PlayerCalendar;
-class SetOliveBooldType;
+class SetOliveBloodType;
 class FirstSetLevel : public GameEngineLevel
 {
 public:
@@ -55,7 +55,7 @@ private:
 	OliveCalendar* AcOliveCalendar = nullptr; 
 	SetPlayerAge* AcSetPlayerAge = nullptr;
 	PlayerCalendar* AcPlayerCalendar = nullptr;
-	SetOliveBooldType* AcSetOliveBloodType = nullptr;
+	SetOliveBloodType* AcSetOliveBloodType = nullptr;
 
 	void ChangeState(ActorState _State);
 	

@@ -44,9 +44,9 @@ private:
 	GameEngineRender* PrintLetterRender2 = nullptr;
 	GameEngineRender* PrintLetterRender3 = nullptr;
 
-	GameEngineRender* ExplainRender1 = nullptr;
-	GameEngineRender* ExplainRender2 = nullptr;
-	GameEngineRender* ExplainRenderShadow = nullptr;
+	static GameEngineRender* ExplainRender1;
+	static GameEngineRender* ExplainRender2;
+	static GameEngineRender* ExplainRenderShadow;
 
 	CharButton* UpperCaseButton[6][5] = {};
 	GameEngineRender* UpperCaseLetter1Render[6][5] = {};

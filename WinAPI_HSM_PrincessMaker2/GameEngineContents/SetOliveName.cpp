@@ -11,6 +11,9 @@
 #include "ContentsEnums.h"
 
 std::string SetOliveName::PrintLetter = "\0";
+GameEngineRender* SetOliveName::ExplainRender1 = nullptr;
+GameEngineRender* SetOliveName::ExplainRender2 = nullptr;
+GameEngineRender* SetOliveName::ExplainRenderShadow = nullptr;
 
 SetOliveName::SetOliveName()
 {
@@ -21,12 +24,6 @@ SetOliveName::~SetOliveName()
 {
 }
 
-void SetOliveName::PushBack_Button(Button* _Button) 
-{
-	CharButton* Ptr = dynamic_cast<CharButton*>(_Button);
-
-	PrintLetter.push_back(Ptr->Chracter);
-}
 
 void SetOliveName::Start()
 {
@@ -223,16 +220,16 @@ void SetOliveName::SetPrintLetterRender()
 void SetOliveName::SetExplainRender()
 {
 	ExplainRender1 = CreateRender(PM2RenderOrder::Menu0_Display);
-	ExplainRender1->SetText("딸의 이름을 지어주세요 (4자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	ExplainRender1->SetText("딸의 이름을 지어주세요 (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
 	float4 SetExplainRenderPos = { -36,-36 };
 	ExplainRender1->SetPosition(SetExplainRenderPos);
 
 	ExplainRender2 = CreateRender(PM2RenderOrder::Menu0_Display);
-	ExplainRender2->SetText("딸의 이름을 지어주세요 (4자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	ExplainRender2->SetText("딸의 이름을 지어주세요 (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
 	ExplainRender2->SetPosition(SetExplainRenderPos + float4::Up * float4{ 0,1 });
 
 	ExplainRenderShadow = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-	ExplainRenderShadow->SetText("딸의 이름을 지어주세요 (4자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	ExplainRenderShadow->SetText("딸의 이름을 지어주세요 (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
 	ExplainRenderShadow->SetPosition(SetExplainRenderPos + float4::Down * float4{ 0,1 });
 }
 
@@ -475,6 +472,18 @@ void SetOliveName::SetLetterEraseButtonRender()
 	LetterEraseButtonShadowRender->SetPosition(ButtonStartPosition + float4::Down * float4{ 0,1 });
 }
 
+
+void SetOliveName::PushBack_Button(Button* _Button)
+{
+	if (8 <= PrintLetter.size())
+	{
+		return;
+	}
+	CharButton* Ptr = dynamic_cast<CharButton*>(_Button);
+
+	PrintLetter.push_back(Ptr->Chracter);
+}
+
 void SetOliveName::PopBack_PrintLetter(Button* _Button)
 {
 	if (0 >= PrintLetter.size())
@@ -486,6 +495,14 @@ void SetOliveName::PopBack_PrintLetter(Button* _Button)
 
 void SetOliveName::ClickCompleteButton(Button* _Button)
 {
+	if (0 == PrintLetter.size())
+	{
+		ExplainRender1->SetText("이름이 필요해요", 18, "굴림", TextAlign::Center, RGB(0, 0, 0));
+		ExplainRender2->SetText("이름이 필요해요", 18, "굴림", TextAlign::Center, RGB(0, 0, 0));
+		ExplainRenderShadow->SetText("이름이 필요해요", 18, "굴림", TextAlign::Center, RGB(192, 120, 178));
+		return;
+	}
+	
 	FirstSetLevel::SetStateValue(ActorState::OliveCalendar);
 	Olive::OlivePlayer->SetOliveFirstName(PrintLetter);
 }

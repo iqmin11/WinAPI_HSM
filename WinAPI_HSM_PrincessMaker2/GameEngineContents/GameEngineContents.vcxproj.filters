@@ -48,7 +48,7 @@
     <ClInclude Include="SetPlayerAge.h">
       <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
     </ClInclude>
-    <ClInclude Include="SetOliveBooldType.h">
+    <ClInclude Include="SetOliveBloodType.h">
       <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
     </ClInclude>
     <ClInclude Include="Cutscene.h">
@@ -180,7 +180,7 @@
     <ClCompile Include="SetPlayerAge.cpp">
       <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
     </ClCompile>
-    <ClCompile Include="SetOliveBooldType.cpp">
+    <ClCompile Include="SetOliveBloodType.cpp">
       <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor</Filter>
     </ClCompile>
     <ClCompile Include="Cutscene.cpp">

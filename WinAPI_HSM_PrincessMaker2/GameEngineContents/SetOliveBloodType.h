@@ -4,18 +4,18 @@
 #include "ContentsEnums.h"
 
 class Button_BloodType;
-class SetOliveBooldType : public GameEngineActor
+class SetOliveBloodType : public GameEngineActor
 {
 public:
 	// construtor destructor
-	SetOliveBooldType();
-	~SetOliveBooldType();
+	SetOliveBloodType();
+	~SetOliveBloodType();
 
 	// delete Function
-	SetOliveBooldType(const SetOliveBooldType& _Other) = delete;
-	SetOliveBooldType(SetOliveBooldType&& _Other) noexcept = delete;
-	SetOliveBooldType& operator=(const SetOliveBooldType& _Other) = delete;
-	SetOliveBooldType& operator=(SetOliveBooldType&& _Other) noexcept = delete;
+	SetOliveBloodType(const SetOliveBloodType& _Other) = delete;
+	SetOliveBloodType(SetOliveBloodType&& _Other) noexcept = delete;
+	SetOliveBloodType& operator=(const SetOliveBloodType& _Other) = delete;
+	SetOliveBloodType& operator=(SetOliveBloodType&& _Other) noexcept = delete;
 
 	void On() override;
 	void Off() override;

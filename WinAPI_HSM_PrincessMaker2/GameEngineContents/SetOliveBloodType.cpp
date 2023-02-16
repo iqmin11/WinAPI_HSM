@@ -1,4 +1,4 @@
-#include "SetOliveBooldType.h"
+#include "SetOliveBloodType.h"
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRender.h>
@@ -7,17 +7,17 @@
 #include "Button_BloodType.h"
 #include "ContentsEnums.h"
 
-SetOliveBooldType::SetOliveBooldType()
+SetOliveBloodType::SetOliveBloodType()
 {
 
 }
 
-SetOliveBooldType::~SetOliveBooldType()
+SetOliveBloodType::~SetOliveBloodType()
 {
 
 }
 
-void SetOliveBooldType::On()
+void SetOliveBloodType::On()
 {
 	GameEngineObject::On();
 	for (size_t i = 0; i < 4; i++)
@@ -26,7 +26,7 @@ void SetOliveBooldType::On()
 	}
 }
 
-void SetOliveBooldType::Off()
+void SetOliveBloodType::Off()
 {
 	GameEngineObject::Off();
 	for (size_t i = 0; i < 4; i++)
@@ -35,7 +35,7 @@ void SetOliveBooldType::Off()
 	}
 }
 
-void SetOliveBooldType::Start()
+void SetOliveBloodType::Start()
 {
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	BackgroundRender = CreateRender("SetOliveBackground.BMP", PM2RenderOrder::BackGround);
@@ -47,7 +47,7 @@ void SetOliveBooldType::Start()
 	Off();
 }
 
-void SetOliveBooldType::Update(float _DeltaTime)
+void SetOliveBloodType::Update(float _DeltaTime)
 {
 	for (size_t i = 0; i < 4; i++)
 	{
@@ -74,11 +74,11 @@ void SetOliveBooldType::Update(float _DeltaTime)
 	}
 }
 
-void SetOliveBooldType::Render(float _DeltaTime)
+void SetOliveBloodType::Render(float _DeltaTime)
 {
 }
 
-void SetOliveBooldType::SetBloodTypeButton()
+void SetOliveBloodType::SetBloodTypeButton()
 {
 	GameEngineLevel* Level = GetLevel();
 	float4 ButtonStartPosition = { GameEngineWindow::GetScreenSize().half().x + float4::Left.x * 3 * (ButtonScale.hx() + ButtonInterval.hx()), 360 };
@@ -101,7 +101,7 @@ void SetOliveBooldType::SetBloodTypeButton()
 	}
 }
 
-void SetOliveBooldType::SetBloodTypeButtonRender()
+void SetOliveBloodType::SetBloodTypeButtonRender()
 {
 	BloodTypeButtonRender1[0] = CreateRender(PM2RenderOrder::Menu0_Display);
 	BloodTypeButtonRender1[0]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
@@ -217,7 +217,7 @@ void SetOliveBooldType::SetBloodTypeButtonRender()
 
 }
 
-void SetOliveBooldType::SetExplainRender()
+void SetOliveBloodType::SetExplainRender()
 {
 	ExplainRender1 = CreateRender(PM2RenderOrder::Menu0_Display);
 	ExplainRender1->SetText("µþÀÇ Ç÷¾×Çü ¼±ÅÃ", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
