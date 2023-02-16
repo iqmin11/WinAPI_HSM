@@ -1,10 +1,12 @@
 #include "SetOliveBloodType.h"
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRender.h>
 
-
+#include "Olive.h"
 #include "Button_BloodType.h"
+#include <GameEngineCore/Button.h>
 #include "ContentsEnums.h"
 
 SetOliveBloodType::SetOliveBloodType()
@@ -97,7 +99,7 @@ void SetOliveBloodType::SetBloodTypeButton()
 		BloodTypeButton[i]->SetHoverImage("SelectButton_Release.Bmp");
 		BloodTypeButton[i]->SetPressImage("SelectButton_Release.Bmp");
 		BloodTypeButton[i]->BloodTypeValue = static_cast<BloodType>(Start++);
-		//BloodTypeButton[i]->SetClickCallBack(PushBack_Button);
+		BloodTypeButton[i]->SetClickCallBack(ClickBloodType);
 	}
 }
 
@@ -231,4 +233,11 @@ void SetOliveBloodType::SetExplainRender()
 	ExplainRenderShadow = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
 	ExplainRenderShadow->SetText("µþÀÇ Ç÷¾×Çü ¼±ÅÃ", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
 	ExplainRenderShadow->SetPosition(SetExplainRenderPos + float4::Down * float4{ 0,1 });
+}
+
+void SetOliveBloodType::ClickBloodType(Button* _Button)
+{
+	Button_BloodType* Ptr = dynamic_cast<Button_BloodType*>(_Button);
+	Olive::OlivePlayer->SetBloodType(Ptr->BloodTypeValue);
+	GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
 }

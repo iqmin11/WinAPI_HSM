@@ -20,7 +20,7 @@ PlayerCalendar::~PlayerCalendar()
 
 void PlayerCalendar::Start()
 {
-	SetOliveBirth(1200, 8, 15);
+	SetOliveBirth(1000, 1, 1); // ÃÊ±âÈ­
 	SetCalendarYear(1000);
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	
@@ -58,8 +58,8 @@ void PlayerCalendar::Update(float _DeltaTime)
 	if (!FirstUpdate)
 	{
 		FirstUpdate = true;
-		SetOliveBirth(1200, 1, 1);	
-		SetCalendarYear(1120);		
+		OliveBirth = Olive::OlivePlayer->GetOliveBirthDay();
+		CalendarYear = 1209 - Olive::OlivePlayer->GetFatherAge();
 									
 		UpdateDateNumButton();
 		UpdateMonthRender();

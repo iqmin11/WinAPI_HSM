@@ -54,7 +54,7 @@ private:
 
 	float4 ButtonScale = { 24,24 };
 	float4 ButtonScale2 = { 48,24 };
-	float4 ButtonInterval = { 16,0 };
+	float4 ButtonInterval = { 8,0 };
 	int LetterRenderHeight = 18;
 	std::string TextType = "±¼¸²";
 	COLORREF TextColor = RGB(0, 0, 0);

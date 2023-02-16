@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 #include "Date.h"
+#include "ContentsEnums.h"
 
 class GameEngineRender;
 class Olive : public GameEngineActor
@@ -17,6 +18,16 @@ public:
 	Olive(Olive&& _Other) noexcept = delete;
 	Olive& operator=(const Olive& _Other) = delete;
 	Olive& operator=(Olive&& _Other) noexcept = delete;
+
+	Date GetOliveBirthDay() const
+	{
+		return OliveBirthDay;
+	}
+
+	int GetFatherAge() const
+	{
+		return FatherAge;
+	}
 
 	void SetOliveFirstName(const std::string_view& _FirstName)
 	{
@@ -43,6 +54,11 @@ public:
 		FatherBirthDay = _BirthDay;
 	}
 
+	void SetBloodType(BloodType _BloodType)
+	{
+		OliveBloodType = _BloodType;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Deltatime) override;
@@ -55,6 +71,7 @@ private:
 	std::string OliveFirstName = std::string();
 	std::string OliveLastName = std::string();
 	Date OliveBirthDay = Date();
+	BloodType OliveBloodType = BloodType::Null;
 	
 	int FatherAge = -1;
 	Date FatherBirthDay = Date();

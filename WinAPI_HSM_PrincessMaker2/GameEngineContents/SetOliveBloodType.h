@@ -3,6 +3,7 @@
 
 #include "ContentsEnums.h"
 
+class Button;
 class Button_BloodType;
 class SetOliveBloodType : public GameEngineActor
 {
@@ -53,6 +54,6 @@ private:
 	void SetBloodTypeButtonRender();
 
 	void SetExplainRender();
-
+	static void ClickBloodType(Button* _Button);
 };
 
