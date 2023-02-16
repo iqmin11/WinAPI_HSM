@@ -321,7 +321,7 @@ void SetOliveName::SetLowerCaseButton()
 	GameEngineLevel* Level = GetLevel();
 	float4 ButtonStartPosition = { 422, 312 };
 
-	char Start = 'A';
+	char Start = 'a';
 
 	for (size_t y = 0; y < 6; y++)
 	{
