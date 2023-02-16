@@ -33,9 +33,14 @@ public:
 		OliveBirthDay = _BirthDay;
 	}
 
-	void SetFatherAge(int _Age)
+	void SetFatherAge(const int _Age)
 	{
 		FatherAge = _Age;
+	}
+
+	void SetFatherBirthDay(const Date& _BirthDay)
+	{
+		FatherBirthDay = _BirthDay;
 	}
 
 protected:

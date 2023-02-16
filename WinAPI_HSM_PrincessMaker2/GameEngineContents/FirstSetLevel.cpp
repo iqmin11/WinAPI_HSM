@@ -31,11 +31,6 @@ void FirstSetLevel::Loading()
 	SoundLoad();
 	ImageLoad();
 	
-	/*if (false == GameEngineInput::IsKey("ActorChange"))
-	{
-		GameEngineInput::CreateKey("ActorChange", 'R');
-	}*/
-	
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 
 	CreateActor<Olive>(PM2ActorOrder::Player);
@@ -47,7 +42,7 @@ void FirstSetLevel::Loading()
 	AcPlayerCalendar = CreateActor<PlayerCalendar>(static_cast<int>(ActorState::PlayerCalendar));
 	AcSetOliveBloodType = CreateActor<SetOliveBooldType>(static_cast<int>(ActorState::SetOliveBloodType));
 
-	ChangeState(ActorState::SetPlayerAge);
+	ChangeState(ActorState::SetPlayerName);
 }
 
 void FirstSetLevel::Update(float _DeltaTime)

@@ -486,7 +486,7 @@ void SetOliveName::PopBack_PrintLetter(Button* _Button)
 
 void SetOliveName::ClickCompleteButton(Button* _Button)
 {
-	FirstSetLevel::StateValue = ActorState::OliveCalendar;
+	FirstSetLevel::SetStateValue(ActorState::OliveCalendar);
 	Olive::OlivePlayer->SetOliveFirstName(PrintLetter);
 }
 

@@ -22,7 +22,10 @@ class SetOliveBooldType;
 class FirstSetLevel : public GameEngineLevel
 {
 public:
-	static ActorState StateValue;
+	static void SetStateValue(ActorState _State)
+	{
+		StateValue = _State;
+	}
 	
 	// construtor destructor
 	FirstSetLevel();
@@ -43,6 +46,8 @@ protected:
 
 
 private:
+	static ActorState StateValue;
+	
 	GameEngineActor* UpdateActor = nullptr;
 
 	SetPlayerName* AcSetPlayerName = nullptr;

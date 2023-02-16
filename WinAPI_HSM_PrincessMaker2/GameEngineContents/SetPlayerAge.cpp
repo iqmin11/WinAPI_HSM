@@ -30,6 +30,7 @@ void SetPlayerAge::On()
 	{
 		AgeNumButton[i]->On();
 	}
+	CompleteButton->On();
 }
 
 void SetPlayerAge::Off()
@@ -39,6 +40,8 @@ void SetPlayerAge::Off()
 	{
 		AgeNumButton[i]->Off();
 	}
+	CompleteButton->Off();
+
 }
 
 void SetPlayerAge::Start()
@@ -50,9 +53,11 @@ void SetPlayerAge::Start()
 	SetAgeNumRender();
 
 	SetPrintLetterRender();
+	SetExplainRender();
 
 	SetCompleteButton();
 	SetCompleteButtonRender();
+
 
 	Off();
 }
@@ -174,6 +179,7 @@ void SetPlayerAge::PushBack_Button(Button* _Button)
 	CharButton* Ptr = dynamic_cast<CharButton*>(_Button);
 
 	PrintLetter.push_back(Ptr->Chracter);
+	//두자리수 가득 차있는 상태에서 번호를 input하면 뒷자리부터 수정하면서 앞자리 수를 밀어냄
 }
 
 void SetPlayerAge::SetCompleteButton()
@@ -224,8 +230,26 @@ void SetPlayerAge::SetCompleteButtonRender()
 	CompleteButtonShadowRender->SetPosition(ButtonStartPosition + float4::Down * float4{ 0,1 });
 }
 
-void SetPlayerAge::ClickCompleteButton(Button* _Btn)
+void SetPlayerAge::SetExplainRender()
 {
-	FirstSetLevel::StateValue = ActorState::PlayerCalendar;
+	ExplainRender1 = CreateRender(PM2RenderOrder::Menu0_Display);
+	ExplainRender1->SetText("당신의 나이를 가르쳐 주세요", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	float4 SetExplainRenderPos = { 0,-36 };
+	ExplainRender1->SetPosition(SetExplainRenderPos);
+
+	ExplainRender2 = CreateRender(PM2RenderOrder::Menu0_Display);
+	ExplainRender2->SetText("당신의 나이를 가르쳐 주세요", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	ExplainRender2->SetPosition(SetExplainRenderPos + float4::Up * float4{ 0,1 });
+
+	ExplainRenderShadow = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
+	ExplainRenderShadow->SetText("당신의 나이를 가르쳐 주세요", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	ExplainRenderShadow->SetPosition(SetExplainRenderPos + float4::Down * float4{ 0,1 });
+}
+
+void SetPlayerAge::ClickCompleteButton(Button* _Button)
+{
+	FirstSetLevel::SetStateValue(ActorState::PlayerCalendar);
 	Olive::OlivePlayer->SetFatherAge(std::stoi(PrintLetter));
 }
+
+

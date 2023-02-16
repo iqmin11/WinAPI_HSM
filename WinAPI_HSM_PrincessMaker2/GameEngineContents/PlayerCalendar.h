@@ -2,6 +2,8 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/Button.h>
 #include <GameEngineCore/NumberRenderObject.h>
+
+#include "Button_Date.h"
 #include "Date.h"
 
 
@@ -18,11 +20,6 @@ public:
 	PlayerCalendar& operator=(const PlayerCalendar& _Other) = delete;
 	PlayerCalendar& operator=(PlayerCalendar&& _Other) noexcept = delete;
 
-	void SetDateNumButton();
-	void SetYearRender();
-	void SetWeekdayRender();
-	void SetMonthRender();
-
 	void SetOliveBirth(int _YYYY, int _MM, int _DD); // 임시
 	void SetCalendarYear(int _YYYY);// 임시
 
@@ -37,13 +34,12 @@ protected:
 
 private:
 	Date OliveBirth = Date();
+	int CalendarYear = 0;
 	Date PlayerBirth = Date();
-	int CalendarYear = 2023;
 
 	float4 EcahMonthCalendarInterval = { 250 , 105 };
 
-	Button* DateButton[4][3][6][7] = {}; //달력 열, 행, 날짜 열, 행
-	Date EachButtonDate[4][3][6][7] = {};
+	Button_Date* DateButton[4][3][6][7] = {}; //달력 열, 행, 날짜 열, 행
 	float4 DateButtonScale = { 20,14 };
 	float4 FirstDaySetPos = { -330, -177 };
 	float4 EachDayNumInterval = { 30,15 };
@@ -62,6 +58,14 @@ private:
 	
 	
 	GameEngineRender* BackgroundRender = nullptr;
+
+	GameEngineRender* ExplainRender1 = nullptr;
+	GameEngineRender* ExplainRender2 = nullptr;
+	GameEngineRender* ExplainRenderShadow = nullptr;
+	int LetterRenderHeight = 18;
+	std::string TextType = "굴림";
+	COLORREF TextColor = RGB(0, 0, 0);
+	COLORREF TextShadowColor = RGB(106, 170, 126);
 	
 	NumberRenderObject HoverButtonDateRender_Year = NumberRenderObject();
 	float4 Pos_HoverButtonDateRender_Year = {-335, -221};
@@ -70,8 +74,23 @@ private:
 	NumberRenderObject HoverButtonDateRender_Day = NumberRenderObject();
 	float4 Pos_HoverButtonDateRender_Day = {-275, -221};
 
+	bool FirstUpdate = false;
+
 	float4 WichButtonNotRelease();
 
-	void SetEachButtonDate();
+	void SetDateNumButton();
+	void UpdateDateNumButton();
+
+	void SetYearRender();
+	void UpdateYearRender();
+
+	void SetWeekdayRender();
+	
+	void SetMonthRender();
+	void UpdateMonthRender();
+
+	void SetExplainRender();
+
+	static void SetPlayerBirthDay(Button* _Btn);
 };
 

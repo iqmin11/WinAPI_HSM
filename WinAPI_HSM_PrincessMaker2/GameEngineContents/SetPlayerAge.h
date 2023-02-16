@@ -40,6 +40,10 @@ private:
 	GameEngineRender* PrintLetterRender2 = nullptr;
 	GameEngineRender* PrintLetterRender3 = nullptr;
 
+	GameEngineRender* ExplainRender1 = nullptr;
+	GameEngineRender* ExplainRender2 = nullptr;
+	GameEngineRender* ExplainRenderShadow = nullptr;
+
 	Button* CompleteButton = nullptr;
 	GameEngineRender* CompleteButton1Render = nullptr;
 	GameEngineRender* CompleteButton2Render = nullptr;
@@ -64,11 +68,13 @@ private:
 
 	void SetPrintLetterRender();
 
+	void SetExplainRender();
+
 	void SetCompleteButton();
 	void SetCompleteButtonRender();
 
 	static void PushBack_Button(Button* _Button);
 
-	static void ClickCompleteButton(Button* _Btn);
+	static void ClickCompleteButton(Button* _Button);
 };
 
