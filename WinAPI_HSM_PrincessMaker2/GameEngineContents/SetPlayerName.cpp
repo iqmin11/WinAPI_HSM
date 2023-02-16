@@ -11,6 +11,9 @@
 #include "ContentsEnums.h"
 
 std::string SetPlayerName::PrintLetter = "\0";
+GameEngineRender* SetPlayerName::ExplainRender1 = nullptr;
+GameEngineRender* SetPlayerName::ExplainRender2 = nullptr;
+GameEngineRender* SetPlayerName::ExplainRenderShadow = nullptr;
 
 SetPlayerName::SetPlayerName()
 {
@@ -214,16 +217,16 @@ void SetPlayerName::SetPrintLetterRender()
 void SetPlayerName::SetExplainRender()
 {
 	ExplainRender1 = CreateRender(PM2RenderOrder::Menu0_Display);
-	ExplainRender1->SetText("당신의 성은 무엇입니까? (4자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	ExplainRender1->SetText("당신의 성은 무엇입니까? (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
 	float4 SetExplainRenderPos = { -36,-36 };
 	ExplainRender1->SetPosition(SetExplainRenderPos);
 
 	ExplainRender2 = CreateRender(PM2RenderOrder::Menu0_Display);
-	ExplainRender2->SetText("당신의 성은 무엇입니까? (4자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	ExplainRender2->SetText("당신의 성은 무엇입니까? (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
 	ExplainRender2->SetPosition(SetExplainRenderPos + float4::Up * float4{ 0,1 });
 
 	ExplainRenderShadow = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-	ExplainRenderShadow->SetText("당신의 성은 무엇입니까? (4자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	ExplainRenderShadow->SetText("당신의 성은 무엇입니까? (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
 	ExplainRenderShadow->SetPosition(SetExplainRenderPos + float4::Down * float4{ 0,1 });
 }
 
@@ -469,6 +472,10 @@ void SetPlayerName::SetLetterEraseButtonRender()
 
 void SetPlayerName::PushBack_Button(Button* _Btn)
 {
+	if (8 <= PrintLetter.size())
+	{
+		return;
+	}
 	CharButton* Ptr = dynamic_cast<CharButton*>(_Btn);
 
 	PrintLetter.push_back(Ptr->Chracter);
@@ -485,6 +492,13 @@ void SetPlayerName::PopBack_PrintLetter(Button* Button)
 
 void SetPlayerName::ClickCompleteButton(Button* _Btn)
 {
+	if (0 == PrintLetter.size())
+	{
+		ExplainRender1->SetText("이름이 필요해요", 18, "굴림", TextAlign::Center, RGB(0, 0, 0));
+		ExplainRender2->SetText("이름이 필요해요", 18, "굴림", TextAlign::Center, RGB(0, 0, 0));
+		ExplainRenderShadow->SetText("이름이 필요해요", 18, "굴림", TextAlign::Center, RGB(106, 170, 126));
+		return;
+	}
 	FirstSetLevel::SetStateValue(ActorState::SetOliveName);
 	Olive::OlivePlayer->SetOliveLastName(PrintLetter);
 }

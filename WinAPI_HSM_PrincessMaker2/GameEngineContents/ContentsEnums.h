@@ -278,3 +278,13 @@ enum class StatusName
 	±³À°¹×¾Ë¹ÙÈ½¼ö,
 	¸¶¿ÕÀÌº¥Æ®È½¼ö,
 };
+
+enum class BloodType
+{
+	Null = -1,
+	A,
+	B,
+	O,
+	AB
+};
+

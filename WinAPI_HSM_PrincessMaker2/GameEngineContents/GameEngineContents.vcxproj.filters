@@ -129,6 +129,9 @@
     <ClInclude Include="Button_Date.h">
       <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor\ButtonUI</Filter>
     </ClInclude>
+    <ClInclude Include="Button_BloodType.h">
+      <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor\ButtonUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -256,6 +259,9 @@
       <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor\ButtonUI</Filter>
     </ClCompile>
     <ClCompile Include="Button_Date.cpp">
+      <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor\ButtonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Button_BloodType.cpp">
       <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor\ButtonUI</Filter>
     </ClCompile>
   </ItemGroup>
