@@ -239,5 +239,5 @@ void SetOliveBloodType::ClickBloodType(Button* _Button)
 {
 	Button_BloodType* Ptr = dynamic_cast<Button_BloodType*>(_Button);
 	Olive::OlivePlayer->SetBloodType(Ptr->BloodTypeValue);
-	GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
+	GameEngineCore::GetInst()->ChangeLevel("Opening");
 }

@@ -42,7 +42,7 @@ void FirstSetLevel::Loading()
 	AcPlayerCalendar = CreateActor<PlayerCalendar>(static_cast<int>(ActorState::PlayerCalendar));
 	AcSetOliveBloodType = CreateActor<SetOliveBloodType>(static_cast<int>(ActorState::SetOliveBloodType));
 
-	ChangeState(ActorState::SetPlayerName);
+	StateValue = ActorState::SetPlayerName;
 }
 
 void FirstSetLevel::Update(float _DeltaTime)
@@ -109,10 +109,10 @@ void FirstSetLevel::Update(float _DeltaTime)
 	}
 }
 
-void FirstSetLevel::ChangeState(ActorState _State)
-{
-	StateValue = _State;
-}
+//void FirstSetLevel::ChangeState(ActorState _State)
+//{
+//	StateValue = _State;
+//}
 
 //void FirstSetLevel::ChangeActor(int _State)
 //{
