@@ -85,6 +85,8 @@ private:
 	COLORREF TextEffect3Color = RGB(236, 212, 98);
 	std::string TextType = "±¼¸²";
 
+	static bool FirstUpdate;
+
 	void SetPrintLetterRender();
 	
 	void SetExplainRender();

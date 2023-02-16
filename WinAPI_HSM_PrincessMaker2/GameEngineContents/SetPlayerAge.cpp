@@ -88,9 +88,30 @@ void SetPlayerAge::Update(float _DeltaTime)
 		}
 	}
 
-	PrintLetterRender1->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextEffect1Color);
-	PrintLetterRender2->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextEffect2Color);
-	PrintLetterRender3->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextEffect3Color);
+	if (ButtonState::Release == CompleteButton->GetState())
+	{
+		CompleteButtonEffect1Render->Off();
+		CompleteButtonEffect2Render->Off();
+		CompleteButtonEffect3Render->Off();
+
+		CompleteButton1Render->On();
+		CompleteButton2Render->On();
+		CompleteButtonShadowRender->On();
+	}
+	else
+	{
+		CompleteButtonEffect1Render->On();
+		CompleteButtonEffect2Render->On();
+		CompleteButtonEffect3Render->On();
+
+		CompleteButton1Render->Off();
+		CompleteButton2Render->Off();
+		CompleteButtonShadowRender->Off();
+	}
+
+	PrintLetterRender1->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect1Color);
+	PrintLetterRender2->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect2Color);
+	PrintLetterRender3->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect3Color);
 }
 
 void SetPlayerAge::Render(float _DeltaTime)
@@ -161,16 +182,16 @@ void SetPlayerAge::SetAgeNumRender()
 void SetPlayerAge::SetPrintLetterRender()
 {
 	PrintLetterRender1 = CreateRender(PM2RenderOrder::Menu0_Display);
-	PrintLetterRender1->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextEffect1Color);
-	float4 SetPrintLetterRenderPos = { -60,-60 };
+	PrintLetterRender1->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect1Color);
+	float4 SetPrintLetterRenderPos = { 0,-60 };
 	PrintLetterRender1->SetPosition(SetPrintLetterRenderPos);
 
 	PrintLetterRender2 = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	PrintLetterRender2->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextEffect2Color);
+	PrintLetterRender2->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect2Color);
 	PrintLetterRender2->SetPosition(SetPrintLetterRenderPos + float4::Up * float4{ 0,1 });
 
 	PrintLetterRender3 = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	PrintLetterRender3->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextEffect3Color);
+	PrintLetterRender3->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect3Color);
 	PrintLetterRender3->SetPosition(SetPrintLetterRenderPos + float4::Down * float4{ 0,1 });
 }
 
@@ -178,8 +199,21 @@ void SetPlayerAge::PushBack_Button(Button* _Button)
 {
 	CharButton* Ptr = dynamic_cast<CharButton*>(_Button);
 
-	PrintLetter.push_back(Ptr->Chracter);
+	if (2 <= PrintLetter.size())
+	{
+		PrintLetter[0] = PrintLetter[1];
+		PrintLetter[1] = Ptr->Chracter;
+	}
+	else
+	{
+		PrintLetter.push_back(Ptr->Chracter);
+	}
 	//두자리수 가득 차있는 상태에서 번호를 input하면 뒷자리부터 수정하면서 앞자리 수를 밀어냄
+	
+	if ("00" == PrintLetter)
+	{
+		PrintLetter = "0";
+	}
 }
 
 void SetPlayerAge::SetCompleteButton()
@@ -248,8 +282,13 @@ void SetPlayerAge::SetExplainRender()
 
 void SetPlayerAge::ClickCompleteButton(Button* _Button)
 {
+	int AgeValue = std::stoi(PrintLetter);
+	if (10 > AgeValue || 99 < AgeValue)
+	{
+		return;
+	}
 	FirstSetLevel::SetStateValue(ActorState::PlayerCalendar);
-	Olive::OlivePlayer->SetFatherAge(std::stoi(PrintLetter));
+	Olive::OlivePlayer->SetFatherAge(AgeValue);
 }
 
 

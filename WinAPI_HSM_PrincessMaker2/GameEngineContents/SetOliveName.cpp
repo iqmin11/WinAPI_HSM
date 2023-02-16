@@ -14,6 +14,8 @@ std::string SetOliveName::PrintLetter = "\0";
 GameEngineRender* SetOliveName::ExplainRender1 = nullptr;
 GameEngineRender* SetOliveName::ExplainRender2 = nullptr;
 GameEngineRender* SetOliveName::ExplainRenderShadow = nullptr;
+bool SetOliveName::FirstUpdate = false;
+
 
 SetOliveName::SetOliveName()
 {
@@ -52,6 +54,15 @@ void SetOliveName::Start()
 
 void SetOliveName::Update(float _DeltaTime)
 {
+	if (!FirstUpdate) // 초기화
+	{
+		FirstUpdate = true;
+		PrintLetter = "\0";
+		ExplainRender1->SetText("딸의 이름을 지어주세요 (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+		ExplainRender2->SetText("딸의 이름을 지어주세요 (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+		ExplainRenderShadow->SetText("딸의 이름을 지어주세요 (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	}
+	
 	for (size_t y = 0; y < 6; y++)
 	{
 		for (size_t x = 0; x < 5; x++)
@@ -488,8 +499,10 @@ void SetOliveName::PopBack_PrintLetter(Button* _Button)
 {
 	if (0 >= PrintLetter.size())
 	{
+		FirstSetLevel::SetStateValue(ActorState::SetPlayerName);
 		return;
 	}
+
 	PrintLetter.pop_back();
 }
 

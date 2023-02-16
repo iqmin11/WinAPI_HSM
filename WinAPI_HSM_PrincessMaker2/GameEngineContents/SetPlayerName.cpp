@@ -14,6 +14,7 @@ std::string SetPlayerName::PrintLetter = "\0";
 GameEngineRender* SetPlayerName::ExplainRender1 = nullptr;
 GameEngineRender* SetPlayerName::ExplainRender2 = nullptr;
 GameEngineRender* SetPlayerName::ExplainRenderShadow = nullptr;
+bool SetPlayerName::FirstUpdate = false;
 
 SetPlayerName::SetPlayerName()
 {
@@ -50,6 +51,15 @@ void SetPlayerName::Start()
 
 void SetPlayerName::Update(float _DeltaTime)
 {
+	if (!FirstUpdate) // 초기화
+	{
+		FirstUpdate = true;
+		PrintLetter = "\0";
+		ExplainRender1->SetText("당신의 성은 무엇입니까? (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+		ExplainRender2->SetText("당신의 성은 무엇입니까? (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+		ExplainRenderShadow->SetText("당신의 성은 무엇입니까? (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	}
+
 	for (size_t y = 0; y < 6; y++)
 	{
 		for (size_t x = 0; x < 5; x++)
@@ -501,5 +511,6 @@ void SetPlayerName::ClickCompleteButton(Button* _Btn)
 	}
 	FirstSetLevel::SetStateValue(ActorState::SetOliveName);
 	Olive::OlivePlayer->SetOliveLastName(PrintLetter);
+	FirstUpdate = false;
 }
 
