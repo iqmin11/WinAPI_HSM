@@ -1,7 +1,7 @@
 #include "SetOliveName.h"
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
-#include "NameButton.h"
+#include "CharButton.h"
 
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRender.h>
@@ -23,7 +23,7 @@ SetOliveName::~SetOliveName()
 
 void SetOliveName::PushBack_Button(Button* _Button) 
 {
-	NameButton* Ptr = dynamic_cast<NameButton*>(_Button);
+	CharButton* Ptr = dynamic_cast<CharButton*>(_Button);
 
 	PrintLetter.push_back(Ptr->Chracter);
 }
@@ -247,7 +247,7 @@ void SetOliveName::SetUpperCaseButton()
 	{
 		for (size_t x = 0; x < 5; x++)
 		{
-			UpperCaseButton[y][x] = Level->CreateActor<NameButton>(PM2ActorOrder::Menu0_Button);
+			UpperCaseButton[y][x] = Level->CreateActor<CharButton>(PM2ActorOrder::Menu0_Button);
 			UpperCaseButton[y][x]->SetTargetCollisionGroup(static_cast<int>(PM2CollisionOrder::MousePoint));
 			UpperCaseButton[y][x]->SetScale(ButtonScale);
 			UpperCaseButton[y][x]->SetRenderOrder(static_cast<int>(PM2RenderOrder::Menu0_Button));
@@ -319,7 +319,7 @@ void SetOliveName::SetLowerCaseButton()
 	{
 		for (size_t x = 0; x < 5; x++)
 		{
-			LowerCaseButton[y][x] = Level->CreateActor<NameButton>(PM2ActorOrder::Menu0_Button);
+			LowerCaseButton[y][x] = Level->CreateActor<CharButton>(PM2ActorOrder::Menu0_Button);
 			LowerCaseButton[y][x]->SetTargetCollisionGroup(static_cast<int>(PM2CollisionOrder::MousePoint));
 			LowerCaseButton[y][x]->SetScale(ButtonScale);
 			LowerCaseButton[y][x]->SetRenderOrder(static_cast<int>(PM2RenderOrder::Menu0_Button));

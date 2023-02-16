@@ -259,7 +259,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="NameButton.h">
+    <ClInclude Include="CharButton.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -466,7 +466,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="NameButton.cpp">
+    <ClCompile Include="CharButton.cpp">
       <SubType>
       </SubType>
     </ClCompile>

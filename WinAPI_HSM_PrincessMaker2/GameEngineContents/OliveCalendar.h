@@ -39,7 +39,6 @@ private:
 	float4 EcahMonthCalendarInterval = { 250 , 105 };
 
 	Button_Date* DateButton[4][3][6][7] = {}; //달력 열, 행, 날짜 열, 행
-	//Date EachButtonDate[4][3][6][7] = {};
 	float4 DateButtonScale = { 20,14 };
 	float4 FirstDaySetPos = { -330, -177 };
 	float4 EachDayNumInterval = { 30,15 };
@@ -58,6 +57,14 @@ private:
 
 	GameEngineRender* BackgroundRender = nullptr;
 
+	GameEngineRender* ExplainRender1 = nullptr;
+	GameEngineRender* ExplainRender2 = nullptr;
+	GameEngineRender* ExplainRenderShadow = nullptr;
+	int LetterRenderHeight = 18;
+	std::string TextType = "굴림";
+	COLORREF TextColor = RGB(0, 0, 0);
+	COLORREF TextShadowColor = RGB(192, 120, 178);
+
 	NumberRenderObject HoverButtonDateRender_Year = NumberRenderObject();
 	float4 Pos_HoverButtonDateRender_Year = { -335, -221 };
 	NumberRenderObject HoverButtonDateRender_Month = NumberRenderObject();
@@ -71,9 +78,9 @@ private:
 	void SetYearRender();
 	void SetWeekdayRender();
 	void SetMonthRender();
+
+	void SetExplainRender();
 	
 	static void SetOliveBirthDay(Button* _Btn);
-	//void SetEachButtonDate();
-
 };
 

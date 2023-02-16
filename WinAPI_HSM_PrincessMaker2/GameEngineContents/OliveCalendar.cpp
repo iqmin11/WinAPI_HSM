@@ -41,6 +41,7 @@ void OliveCalendar::Start()
 
 	BackgroundRender = CreateRender("SetOliveBirth.BMP", PM2RenderOrder::BackGround);
 	BackgroundRender ->SetScaleToImage();
+	SetExplainRender();
 	SetDateNumButton();
 	SetMonthRender();
 	SetYearRender();
@@ -251,6 +252,22 @@ void OliveCalendar::SetMonthRender()
 	}
 }
 
+void OliveCalendar::SetExplainRender()
+{
+	ExplainRender1 = CreateRender(PM2RenderOrder::Menu0_Display);
+	ExplainRender1->SetText("딸의 생일은 언제 입니까?", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	float4 SetExplainRenderPos = { 0, -223 };
+	ExplainRender1->SetPosition(SetExplainRenderPos);
+
+	ExplainRender2 = CreateRender(PM2RenderOrder::Menu0_Display);
+	ExplainRender2->SetText("딸의 생일은 언제 입니까?", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	ExplainRender2->SetPosition(SetExplainRenderPos + float4::Up * float4{ 0,1 });
+
+	ExplainRenderShadow = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
+	ExplainRenderShadow->SetText("딸의 생일은 언제 입니까?", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	ExplainRenderShadow->SetPosition(SetExplainRenderPos + float4::Down * float4{ 0,1 });
+}
+
 void OliveCalendar::SetOliveBirthDay(Button* _Btn)
 {
 	Button_Date* Ptr = dynamic_cast<Button_Date*>(_Btn);
@@ -319,70 +336,3 @@ void OliveCalendar::Off()
 		}
 	}
 }
-
-//void OliveCalendar::SetEachButtonDate()
-//{
-//	int FirstMonth = StartDate.GetMonth();
-//	int Month = FirstMonth;
-//	int Year = StartDate.GetYear();
-//	//        1200                1201
-//	//        8   9   10  11  12  1   2    3   4  5   6   7
-//	//        31, 30, 31, 30, 31, 31, 29, 31, 30, 31, 30, 31    
-//	int MonthLen[12] = {}; // 2월이 윤년이면이란 뜻으로 될듯->윤년 각 달의 날짜수
-//
-//	for (size_t i = 0; i < 12; i++)
-//	{
-//		if (13 == Month)
-//		{
-//			Month = 1;
-//			Year++;
-//		}
-//
-//		MonthLen[i] = Date::GetMonthLenth(Year, Month);
-//		Month++;
-//	}
-//
-//	int FirstWeekday = Date::FindMonthFirstWeekday(StartDate.GetYear(), FirstMonth); // 1월 1일 요일 찾기 공식
-//	int MonthFirstWeekday = FirstWeekday;
-//	int SetMonth = FirstMonth;
-//	int SetYear = StartDate.GetYear();
-//
-//	for (int w = 0; w < 4; w++)
-//	{
-//		for (int z = 0; z < 3; z++)
-//		{
-//
-//			if (SetMonth == 13)
-//			{
-//				SetMonth = 1;
-//				SetYear++;
-//			}
-//			int SetDay = 1;
-//			int FirstMonth = (z + 1) + (w * 3); // 순서상 첫번쨰 달을 말하는거 8월이 맨 앞에오면 8월이 first
-//			for (int y = 0; y < 6; y++) // 한달
-//			{
-//				for (int x = 0; x < 7; x++) // 일주일
-//				{
-//					float fx = static_cast<float>(x);
-//					float fy = static_cast<float>(y);
-//					float fz = static_cast<float>(z);
-//					float fw = static_cast<float>(w);
-//					if (x + (y * 7) < MonthFirstWeekday)
-//					{
-//						EachButtonDate[w][z][y][x].SetNullDate();
-//					}
-//					else if (x + (y * 7) < MonthFirstWeekday + MonthLen[FirstMonth - 1])
-//					{
-//						EachButtonDate[w][z][y][x].SetDate(SetYear, SetMonth, SetDay++);
-//					}
-//					else
-//					{
-//						EachButtonDate[w][z][y][x].SetNullDate();
-//					}
-//				}
-//			}
-//			SetMonth++;
-//			MonthFirstWeekday = (MonthFirstWeekday + MonthLen[FirstMonth - 1]) % 7;
-//		}
-//	}
-//}

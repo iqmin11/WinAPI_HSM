@@ -2,7 +2,7 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/Button.h>
 
-class NameButton;
+class CharButton;
 class GameEngineRender;
 class SetPlayerName : public GameEngineActor
 {
@@ -47,7 +47,7 @@ private:
 	GameEngineRender* ExplainRender2 = nullptr;
 	GameEngineRender* ExplainRenderShadow = nullptr;
 	
-	NameButton* UpperCaseButton[6][5] = {};
+	CharButton* UpperCaseButton[6][5] = {};
 	GameEngineRender* UpperCaseLetter1Render[6][5] = {};
 	GameEngineRender* UpperCaseLetter2Render[6][5] = {};
 	GameEngineRender* UpperCaseLetterEffect1Render[6][5] = {};
@@ -55,7 +55,7 @@ private:
 	GameEngineRender* UpperCaseLetterEffect3Render[6][5] = {};
 	GameEngineRender* UpperCaseLetterShadowRender[6][5] = {};
 	
-	NameButton* LowerCaseButton[6][5] = {};
+	CharButton* LowerCaseButton[6][5] = {};
 	GameEngineRender* LowerCaseLetter1Render[6][5] = {};
 	GameEngineRender* LowerCaseLetter2Render[6][5] = {};
 	GameEngineRender* LowerCaseLetterEffect1Render[6][5] = {};

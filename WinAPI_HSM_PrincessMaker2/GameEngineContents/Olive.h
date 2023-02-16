@@ -33,6 +33,11 @@ public:
 		OliveBirthDay = _BirthDay;
 	}
 
+	void SetFatherAge(int _Age)
+	{
+		FatherAge = _Age;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Deltatime) override;
@@ -45,6 +50,9 @@ private:
 	std::string OliveFirstName = std::string();
 	std::string OliveLastName = std::string();
 	Date OliveBirthDay = Date();
+	
+	int FatherAge = -1;
+	Date FatherBirthDay = Date();
 
 };
 
