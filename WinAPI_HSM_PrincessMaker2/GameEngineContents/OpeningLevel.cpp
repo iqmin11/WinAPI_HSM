@@ -49,7 +49,7 @@ void OpeningLevel::Update(float _DeltaTime)
 	float LocalDeltaTime = _DeltaTime;
 	if (GameEngineInput::IsPress("1"))
 	{
-		LocalDeltaTime *= 4;
+		LocalDeltaTime *= 16;
 		Time += LocalDeltaTime;
 	}
 	else
@@ -188,7 +188,7 @@ void OpeningLevel::Update(float _DeltaTime)
 	}
 	else
 	{
-		//GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
+		GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
 	}
 }
 
