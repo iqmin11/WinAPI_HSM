@@ -233,7 +233,6 @@ void SetPlayerName::SetPrintLetterRender()
 
 void SetPlayerName::SetExplainRender()
 {
-	int TextWidth = 10;
 	ExplainRender1 = CreateRender(PM2RenderOrder::Menu0_Display);
 	ExplainRender1->SetText(ExplainText, LetterRenderHeight, TextType, TextAlign::Center, TextColor, ExplainTextBoxScale);
 	float4 SetExplainRenderPos = -ExplainTextBoxScale.half() - float4{ 36, 36 };

@@ -12,10 +12,16 @@
 #include "ContentsEnums.h"
 
 bool SetOliveName::FirstUpdate = false;
+
 std::string SetOliveName::PrintLetter = "\0";
 GameEngineRender* SetOliveName::ExplainRender1 = nullptr;
 GameEngineRender* SetOliveName::ExplainRender2 = nullptr;
 GameEngineRender* SetOliveName::ExplainRenderShadow = nullptr;
+
+std::string SetOliveName::ExplainText = "당신의 성은 무엇입니까? (8자이내)";
+std::string SetOliveName::ErrorText = "이름이 필요해요";
+float4 SetOliveName::ExplainTextBoxScale = { 300, 18 };
+float4 SetOliveName::ErrorTextBoxScale = { 200, 18 };
 
 SetOliveName::SetOliveName()
 {
@@ -58,9 +64,9 @@ void SetOliveName::Update(float _DeltaTime)
 	{
 		FirstUpdate = true;
 		PrintLetter = "\0";
-		ExplainRender1->SetText("딸의 이름을 지어주세요 (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
-		ExplainRender2->SetText("딸의 이름을 지어주세요 (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
-		ExplainRenderShadow->SetText("딸의 이름을 지어주세요 (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+		ExplainRender1->SetText(ExplainText, LetterRenderHeight, TextType, TextAlign::Center, TextColor, ExplainTextBoxScale);
+		ExplainRender2->SetText(ExplainText, LetterRenderHeight, TextType, TextAlign::Center, TextColor, ExplainTextBoxScale);
+		ExplainRenderShadow->SetText(ExplainText, LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor, ExplainTextBoxScale);
 	}
 	
 	for (size_t y = 0; y < 6; y++)
@@ -170,9 +176,9 @@ void SetOliveName::Update(float _DeltaTime)
 	}
 
 
-	PrintLetterRender1->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextEffect1Color);
-	PrintLetterRender2->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextEffect2Color);
-	PrintLetterRender3->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextEffect3Color);
+	PrintLetterRender1->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextEffect1Color, PrintLetterBoxScale);
+	PrintLetterRender2->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextEffect2Color, PrintLetterBoxScale);
+	PrintLetterRender3->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextEffect3Color, PrintLetterBoxScale);
 }
 
 void SetOliveName::Render(float _DeltaTime)
@@ -215,32 +221,32 @@ void SetOliveName::Off()
 void SetOliveName::SetPrintLetterRender()
 {
 	PrintLetterRender1 = CreateRender(PM2RenderOrder::Menu0_Display);
-	PrintLetterRender1->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextEffect1Color);
-	float4 SetPrintLetterRenderPos = { -60,-60 };
+	PrintLetterRender1->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextColor, PrintLetterBoxScale);
+	float4 SetPrintLetterRenderPos = -PrintLetterBoxScale.half() - float4{ 60, 60 };
 	PrintLetterRender1->SetPosition(SetPrintLetterRenderPos);
 
-	PrintLetterRender2 = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	PrintLetterRender2->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextEffect2Color);
+	PrintLetterRender2 = CreateRender(PM2RenderOrder::Menu0_Display);
+	PrintLetterRender2->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextColor, PrintLetterBoxScale);
 	PrintLetterRender2->SetPosition(SetPrintLetterRenderPos + float4::Up * float4{ 0,1 });
 
-	PrintLetterRender3 = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	PrintLetterRender3->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextEffect3Color);
+	PrintLetterRender3 = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
+	PrintLetterRender3->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Left, TextShadowColor, PrintLetterBoxScale);
 	PrintLetterRender3->SetPosition(SetPrintLetterRenderPos + float4::Down * float4{ 0,1 });
 }
 
 void SetOliveName::SetExplainRender()
 {
 	ExplainRender1 = CreateRender(PM2RenderOrder::Menu0_Display);
-	ExplainRender1->SetText("딸의 이름을 지어주세요 (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
-	float4 SetExplainRenderPos = { -36,-36 };
+	ExplainRender1->SetText(ExplainText, LetterRenderHeight, TextType, TextAlign::Center, TextColor, ExplainTextBoxScale);
+	float4 SetExplainRenderPos = -ExplainTextBoxScale.half() - float4{ 36, 36 };
 	ExplainRender1->SetPosition(SetExplainRenderPos);
 
 	ExplainRender2 = CreateRender(PM2RenderOrder::Menu0_Display);
-	ExplainRender2->SetText("딸의 이름을 지어주세요 (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	ExplainRender2->SetText(ExplainText, LetterRenderHeight, TextType, TextAlign::Center, TextColor, ExplainTextBoxScale);
 	ExplainRender2->SetPosition(SetExplainRenderPos + float4::Up * float4{ 0,1 });
 
 	ExplainRenderShadow = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-	ExplainRenderShadow->SetText("딸의 이름을 지어주세요 (8자이내)", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	ExplainRenderShadow->SetText(ExplainText, LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor, ExplainTextBoxScale);
 	ExplainRenderShadow->SetPosition(SetExplainRenderPos + float4::Down * float4{ 0,1 });
 }
 
@@ -281,31 +287,31 @@ void SetOliveName::SetUpperCaseRender()
 			Start[0] += Count++;
 
 			UpperCaseLetter1Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display);
-			UpperCaseLetter1Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextColor);
-			float4 LetterRenderPos = UpperCaseButton[y][x]->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
+			UpperCaseLetter1Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale);
+			float4 LetterRenderPos = UpperCaseButton[y][x]->GetPos() - GetPos() - float4{ ButtonScale.hx(), static_cast<float>(LetterRenderHeight / 2) };
 			UpperCaseLetter1Render[y][x]->SetPosition(LetterRenderPos);
 
 			UpperCaseLetter2Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display);
-			UpperCaseLetter2Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+			UpperCaseLetter2Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale);
 			UpperCaseLetter2Render[y][x]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 
 			UpperCaseLetterEffect1Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display);
-			UpperCaseLetterEffect1Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color);
+			UpperCaseLetterEffect1Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color, ButtonScale);
 			UpperCaseLetterEffect1Render[y][x]->SetPosition(LetterRenderPos);
 			UpperCaseLetterEffect1Render[y][x]->Off();
 
 			UpperCaseLetterEffect2Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-			UpperCaseLetterEffect2Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+			UpperCaseLetterEffect2Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color, ButtonScale);
 			UpperCaseLetterEffect2Render[y][x]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 			UpperCaseLetterEffect2Render[y][x]->Off();
 
 			UpperCaseLetterEffect3Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-			UpperCaseLetterEffect3Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect3Color);
+			UpperCaseLetterEffect3Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect3Color, ButtonScale);
 			UpperCaseLetterEffect3Render[y][x]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 			UpperCaseLetterEffect3Render[y][x]->Off();
 
 			UpperCaseLetterShadowRender[y][x] = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-			UpperCaseLetterShadowRender[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+			UpperCaseLetterShadowRender[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor, ButtonScale);
 			UpperCaseLetterShadowRender[y][x]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 
 			if ("Z" == Start)
@@ -353,31 +359,31 @@ void SetOliveName::SetLowerCaseRender()
 			std::string Start = "a";
 			Start[0] += Count++;
 			LowerCaseLetter1Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display);
-			LowerCaseLetter1Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextColor);
-			float4 LetterRenderPos = LowerCaseButton[y][x]->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
+			LowerCaseLetter1Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale);
+			float4 LetterRenderPos = LowerCaseButton[y][x]->GetPos() - GetPos() - float4{ ButtonScale.hx(), static_cast<float>(LetterRenderHeight / 2) };
 			LowerCaseLetter1Render[y][x]->SetPosition(LetterRenderPos);
 
 			LowerCaseLetter2Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display);
-			LowerCaseLetter2Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+			LowerCaseLetter2Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale);
 			LowerCaseLetter2Render[y][x]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 
 			LowerCaseLetterEffect1Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display);
-			LowerCaseLetterEffect1Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color);
+			LowerCaseLetterEffect1Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color, ButtonScale);
 			LowerCaseLetterEffect1Render[y][x]->SetPosition(LetterRenderPos);
 			LowerCaseLetterEffect1Render[y][x]->Off();
 
 			LowerCaseLetterEffect2Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-			LowerCaseLetterEffect2Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+			LowerCaseLetterEffect2Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color, ButtonScale);
 			LowerCaseLetterEffect2Render[y][x]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 			LowerCaseLetterEffect2Render[y][x]->Off();
 
 			LowerCaseLetterEffect3Render[y][x] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-			LowerCaseLetterEffect3Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect3Color);
+			LowerCaseLetterEffect3Render[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect3Color, ButtonScale);
 			LowerCaseLetterEffect3Render[y][x]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 			LowerCaseLetterEffect3Render[y][x]->Off();
 
 			LowerCaseLetterShadowRender[y][x] = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-			LowerCaseLetterShadowRender[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+			LowerCaseLetterShadowRender[y][x]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor, ButtonScale);
 			LowerCaseLetterShadowRender[y][x]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 			if ("z" == Start)
 			{
@@ -407,31 +413,31 @@ void SetOliveName::SetCompleteButton()
 void SetOliveName::SetCompleteButtonRender()
 {
 	CompleteButton1Render = CreateRender(PM2RenderOrder::Menu0_Display);
-	CompleteButton1Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
-	float4 ButtonStartPosition = CompleteButton->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
+	CompleteButton1Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale2);
+	float4 ButtonStartPosition = CompleteButton->GetPos() - GetPos() - float4{ ButtonScale2.hx(), static_cast<float>(LetterRenderHeight / 2) };
 	CompleteButton1Render->SetPosition(ButtonStartPosition);
 
 	CompleteButton2Render = CreateRender(PM2RenderOrder::Menu0_Display);
-	CompleteButton2Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	CompleteButton2Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale2);
 	CompleteButton2Render->SetPosition(ButtonStartPosition + float4::Up * float4{ 0,1 });
 
 	CompleteButtonEffect1Render = CreateRender(PM2RenderOrder::Menu0_Display);
-	CompleteButtonEffect1Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color);
+	CompleteButtonEffect1Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color, ButtonScale2);
 	CompleteButtonEffect1Render->SetPosition(ButtonStartPosition);
 	CompleteButtonEffect1Render->Off();
 
 	CompleteButtonEffect2Render = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	CompleteButtonEffect2Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+	CompleteButtonEffect2Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color, ButtonScale2);
 	CompleteButtonEffect2Render->SetPosition(ButtonStartPosition + float4::Up * float4{ 0,1 });
 	CompleteButtonEffect2Render->Off();
 
 	CompleteButtonEffect3Render = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	CompleteButtonEffect3Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+	CompleteButtonEffect3Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color, ButtonScale2);
 	CompleteButtonEffect3Render->SetPosition(ButtonStartPosition + float4::Down * float4{ 0,1 });
 	CompleteButtonEffect3Render->Off();
 
 	CompleteButtonShadowRender = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-	CompleteButtonShadowRender->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	CompleteButtonShadowRender->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor, ButtonScale2);
 	CompleteButtonShadowRender->SetPosition(ButtonStartPosition + float4::Down * float4{ 0,1 });
 }
 
@@ -455,31 +461,31 @@ void SetOliveName::SetLetterEraseButton()
 void SetOliveName::SetLetterEraseButtonRender()
 {
 	LetterEraseButton1Render = CreateRender(PM2RenderOrder::Menu0_Display);
-	LetterEraseButton1Render->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
-	float4 ButtonStartPosition = LetterEraseButton->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
+	LetterEraseButton1Render->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale2);
+	float4 ButtonStartPosition = LetterEraseButton->GetPos() - GetPos() - float4{ ButtonScale2.hx(), static_cast<float>(LetterRenderHeight / 2) };
 	LetterEraseButton1Render->SetPosition(ButtonStartPosition);
 
 	LetterEraseButton2Render = CreateRender(PM2RenderOrder::Menu0_Display);
-	LetterEraseButton2Render->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	LetterEraseButton2Render->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale2);
 	LetterEraseButton2Render->SetPosition(ButtonStartPosition + float4::Up * float4{ 0,1 });
 
 	LetterEraseButtonEffect1Render = CreateRender(PM2RenderOrder::Menu0_Display);
-	LetterEraseButtonEffect1Render->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color);
+	LetterEraseButtonEffect1Render->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color, ButtonScale2);
 	LetterEraseButtonEffect1Render->SetPosition(ButtonStartPosition);
 	LetterEraseButtonEffect1Render->Off();
 
 	LetterEraseButtonEffect2Render = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	LetterEraseButtonEffect2Render->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+	LetterEraseButtonEffect2Render->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color, ButtonScale2);
 	LetterEraseButtonEffect2Render->SetPosition(ButtonStartPosition + float4::Up * float4{ 0,1 });
 	LetterEraseButtonEffect2Render->Off();
 
 	LetterEraseButtonEffect3Render = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	LetterEraseButtonEffect3Render->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+	LetterEraseButtonEffect3Render->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color, ButtonScale2);
 	LetterEraseButtonEffect3Render->SetPosition(ButtonStartPosition + float4::Down * float4{ 0,1 });
 	LetterEraseButtonEffect3Render->Off();
 
 	LetterEraseButtonShadowRender = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-	LetterEraseButtonShadowRender->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	LetterEraseButtonShadowRender->SetText("뒤로", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor, ButtonScale2);
 	LetterEraseButtonShadowRender->SetPosition(ButtonStartPosition + float4::Down * float4{ 0,1 });
 }
 
@@ -510,9 +516,9 @@ void SetOliveName::ClickCompleteButton(Button* _Button)
 {
 	if (0 == PrintLetter.size())
 	{
-		ExplainRender1->SetText("이름이 필요해요", 18, "굴림", TextAlign::Center, RGB(0, 0, 0));
-		ExplainRender2->SetText("이름이 필요해요", 18, "굴림", TextAlign::Center, RGB(0, 0, 0));
-		ExplainRenderShadow->SetText("이름이 필요해요", 18, "굴림", TextAlign::Center, RGB(192, 120, 178));
+		ExplainRender1->SetText(ErrorText, 18, "굴림", TextAlign::Center, RGB(0, 0, 0), ErrorTextBoxScale);
+		ExplainRender2->SetText(ErrorText, 18, "굴림", TextAlign::Center, RGB(0, 0, 0), ErrorTextBoxScale);
+		ExplainRenderShadow->SetText(ErrorText, 18, "굴림", TextAlign::Center, RGB(106, 170, 126), ErrorTextBoxScale);
 		return;
 	}
 	
