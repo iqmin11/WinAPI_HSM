@@ -1,13 +1,15 @@
 #pragma once
-#include "GameEnginePath.h"
 #include <string_view>
+#include <vector>
+#include "GameEnginePath.h"
 
-// 반면 Directory와 File의 역할은 좀더 정적일것같음, 해당 폴더, 해당 파일에 대한 역할만 수행하지않을까 생각
+
+// 설명 :
 class GameEngineFile;
 class GameEngineDirectory
 {
 public:
-	// construtor destructor
+	// constrcuter destructer
 	GameEngineDirectory();
 	~GameEngineDirectory();
 
@@ -17,19 +19,24 @@ public:
 	GameEngineDirectory& operator=(const GameEngineDirectory& _Other) = delete;
 	GameEngineDirectory& operator=(GameEngineDirectory&& _Other) noexcept = delete;
 
+	// 이 디렉토리에 이 파일이 있어?
 	bool IsFile(const std::string_view& _FileName);
-	bool MoveParent(); 
+
+	bool MoveParent();
+
 	void MoveParentToDirectory(const std::string_view& _String);
+
 	bool Move(const std::string_view& _String);
+
 	GameEnginePath GetPlusFileName(const std::string_view& _String);
 
-
+	// 하위는 돌지 않고 그 디렉토리에 해당하는 모든 파일만 리턴해주는 함수.
+	std::vector<GameEngineFile> GetAllFile(const std::string_view& _Ext = "");
 
 protected:
 
-
 private:
-	GameEnginePath Path; // 내가 느끼기에 여기서 Path라는건 마치 이터레이터처럼 가리키고있는곳!(가리키고있는 디렉토리)를 의미하는것같아
-
+	// "D:\Project\AR45\WINAPI\APIApp\ContentsResources\Iamge\";
+	GameEnginePath Path;
 };
 
