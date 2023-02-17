@@ -2,6 +2,12 @@
 #include <vector>
 #include <GameEngineCore/GameEngineActor.h>
 
+enum class BackgroundColor
+{
+	Black,
+	White
+};
+
 class GameEngineRender;
 class Cutscene : public GameEngineActor
 {
@@ -16,17 +22,10 @@ public:
 	Cutscene& operator=(const Cutscene& _Other) = delete;
 	Cutscene& operator=(Cutscene&& _Other) noexcept = delete;
 	
-	void ChangeRenderScene(int _index);
-	
+	void OnCutScene(int _index);
+	void OffCutScene();
 
-	void OnRenderScene();
-	
-	void OffRenderScene();
-
-	void OnBlackBackground();
-	
-	void OffBlackBackground();
-	
+	void SelectBackgroundColor(BackgroundColor _Color);
 
 protected:
 	void Start() override;
@@ -35,9 +34,7 @@ protected:
 
 private:
 	std::vector<GameEngineRender*> CutScenes = std::vector<GameEngineRender*>();
-	GameEngineRender* BlackBackground = nullptr;
-	GameEngineRender* RenderScene = nullptr;
-	int PrevRenderIndex = -1;
+	std::vector<GameEngineRender*> Background = std::vector<GameEngineRender*>();
 };
 
 // 컷신들은 렌더, 위치와 움직임이 있도록 만들기

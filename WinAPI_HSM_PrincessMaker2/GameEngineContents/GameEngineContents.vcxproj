@@ -187,6 +187,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="Caption.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ConverstionSelectionMenu.h">
       <SubType>
       </SubType>
@@ -397,6 +401,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Caption.cpp">
+      <SubType>
+      </SubType>
     </ClCompile>
     <ClCompile Include="ConverstionSelectionMenu.cpp">
       <SubType>

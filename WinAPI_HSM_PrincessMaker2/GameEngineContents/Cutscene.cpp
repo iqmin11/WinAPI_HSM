@@ -14,68 +14,70 @@ Cutscene::~Cutscene()
 
 }
 
-void Cutscene::ChangeRenderScene(int _index)
+void Cutscene::OnCutScene(int _index)
 {
-	if (_index < 0 || _index >= CutScenes.size())
+	for (size_t i = 0; i < CutScenes.size(); i++)
 	{
-		MsgAssert("컷신 인덱스 범위에 벗어난 인덱스를 입력하였습니다")
+		if (i == _index)
+		{
+			CutScenes[i]->On();
+		}
+		else
+		{
+			CutScenes[i]->Off();
+		}
 	}
-	
+}
 
-	if (_index == PrevRenderIndex)
+void Cutscene::OffCutScene()
+{
+	for (size_t i = 0; i < CutScenes.size(); i++)
 	{
-		return;
+		CutScenes[i]->Off();
 	}
-
-	OffRenderScene();
-	RenderScene = CutScenes[_index];
-	OnRenderScene();
-	PrevRenderIndex = _index;
 }
 
-void Cutscene::OnRenderScene()
+void Cutscene::SelectBackgroundColor(BackgroundColor _Color)
 {
-	RenderScene->On();
-}
-
-void Cutscene::OffRenderScene()
-{
-	RenderScene->Off();
-}
-
-void Cutscene::OnBlackBackground()
-{
-	BlackBackground->On();
-}
-
-void Cutscene::OffBlackBackground()
-{
-	BlackBackground->Off();
+	if (_Color == BackgroundColor::Black)
+	{
+		Background[0]->On();
+		Background[1]->Off();
+	}
+	else
+	{
+		Background[0]->Off();
+		Background[1]->On();
+	}
 }
 
 void Cutscene::Start()
 {
 	SetPos(GameEngineWindow::GetScreenSize().half());
-	CutScenes.resize(8);
-	CutScenes[0] = CreateRender("BlackBackground.bmp", PM2RenderOrder::BackGround);
-	CutScenes[1] = CreateRender("CutScene1.BMP", PM2RenderOrder::BackGroundObj);
-	CutScenes[2] = CreateRender("CutScene2.BMP", PM2RenderOrder::BackGroundObj);
-	CutScenes[3] = CreateRender("CutScene3.BMP", PM2RenderOrder::BackGroundObj);
-	CutScenes[4] = CreateRender("CutScene4.BMP", PM2RenderOrder::BackGroundObj);
-	CutScenes[5] = CreateRender("CutScene5.BMP", PM2RenderOrder::BackGroundObj);
-	CutScenes[6] = CreateRender("CutScene6.BMP", PM2RenderOrder::BackGroundObj);
-	CutScenes[7] = CreateRender("CutScene7.BMP", PM2RenderOrder::BackGroundObj);
+	CutScenes.resize(7);
+	CutScenes[0] = CreateRender("CutScene1.BMP", PM2RenderOrder::BackGroundObj);
+	CutScenes[1] = CreateRender("CutScene2.BMP", PM2RenderOrder::BackGroundObj);
+	CutScenes[2] = CreateRender("CutScene3.BMP", PM2RenderOrder::BackGroundObj);
+	CutScenes[3] = CreateRender("CutScene4.BMP", PM2RenderOrder::BackGroundObj);
+	CutScenes[4] = CreateRender("CutScene5.BMP", PM2RenderOrder::BackGroundObj);
+	CutScenes[5] = CreateRender("CutScene6.BMP", PM2RenderOrder::BackGroundObj);
+	CutScenes[6] = CreateRender("CutScene7.BMP", PM2RenderOrder::BackGroundObj);
+	
+	Background.resize(2);
+	Background[0] = CreateRender("BlackBackground.bmp", PM2RenderOrder::BackGround);
+	Background[1] = CreateRender("WhiteBackground.bmp", PM2RenderOrder::BackGround);
 
 	for (auto i : CutScenes)
 	{
 		i->SetScaleToImage();
-		i->Off();
 	}
 
-	BlackBackground = CreateRender("blackBackground.bmp", PM2RenderOrder::BackGround);
-	BlackBackground->SetScaleToImage();
+	for (auto i : Background)
+	{
+		i->SetScaleToImage();
+	}
 
-	RenderScene = CutScenes[1];
+	Off();
 }
 
 void Cutscene::Update(float _DeltaTime)

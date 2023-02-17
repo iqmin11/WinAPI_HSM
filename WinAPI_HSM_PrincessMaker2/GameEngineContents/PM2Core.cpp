@@ -25,7 +25,7 @@ void PM2Core::Start()
 	CreateLevel<RPGLevel>("RPG");
 	CreateLevel<EndingLevel>("Ending");
 
-	ChangeLevel("Title");
+	ChangeLevel("Opening");
 }
 
 void PM2Core::Update()

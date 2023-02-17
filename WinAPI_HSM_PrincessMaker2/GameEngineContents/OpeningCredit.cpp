@@ -13,30 +13,31 @@ OpeningCredit::~OpeningCredit()
 
 }
 
+void OpeningCredit::UpdateScroll(float _DeltaTime)
+{
+	Time += _DeltaTime / ScrollTime;
+	CreditRender->SetPosition(float4::LerpClamp(StartPos, EndPos, Time));
+}
+
 void OpeningCredit::Start()
 {
 	SetPos(GameEngineWindow::GetScreenSize().half());
-	CreditRender = CreateRender("Credit.BMP", PM2RenderOrder::BackGround);
+	CreditRender = CreateRender("Credit.BMP", PM2RenderOrder::BackGroundObj);
 	CreditRender->SetScaleToImage();
-	StartPos = { 0, 900 };
-	EndPos = { 0, -300 };
-	GameEngineRender* TopBox = CreateRender("BlackBox.BMP", PM2RenderOrder::BackGroundObj);
+	StartPos = { 0, 700 };
+	EndPos = { 0, -700 };
+	GameEngineRender* TopBox = CreateRender("BlackBox.BMP", PM2RenderOrder::CaptionBox);
 	TopBox->SetScale({800, 100});
-	TopBox->SetPosition({0, -300});
-	GameEngineRender* BotBox = CreateRender("BlackBox.BMP", PM2RenderOrder::BackGroundObj);
+	TopBox->SetPosition({0, -250});
+	GameEngineRender* BotBox = CreateRender("BlackBox.BMP", PM2RenderOrder::CaptionBox);
 	BotBox->SetScale({ 800, 100 });
-	BotBox->SetPosition({ 0, 300 });
-
+	BotBox->SetPosition({ 0, 250 });
+	Off();
 }
 
 void OpeningCredit::Update(float _DeltaTime)
 {
-	Time += _DeltaTime / ScrollTime; 
-	CreditRender->SetPosition(float4::LerpClamp(StartPos, EndPos, Time));
-	if (EndPos.y >= CreditRender->GetPosition().y)
-	{
-		Off();
-	}
+	
 }
 
 void OpeningCredit::Render(float _Time)

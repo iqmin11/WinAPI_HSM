@@ -4,6 +4,7 @@
 class OpeningCredit;
 class Cutscene;
 class UpperDialog;
+class Caption;
 class OpeningLevel : public GameEngineLevel
 {
 public:
@@ -25,6 +26,7 @@ protected:
 
 
 private:
+	Caption* AcCaption = nullptr;
 	Cutscene* AcCutScene = nullptr;
 	UpperDialog* AcUpperDialog = nullptr;
 	//Dialog* AcBottomDialog = nullptr;

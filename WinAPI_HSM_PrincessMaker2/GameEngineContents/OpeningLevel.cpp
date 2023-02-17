@@ -6,6 +6,7 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 
 #include "MousePoint.h"
+#include "Caption.h"
 #include "UpperDialog.h"
 #include "Cutscene.h"
 #include "OpeningCredit.h"
@@ -26,101 +27,168 @@ void OpeningLevel::Loading()
 	SoundLoad();
 	ImageLoad();
 	
+	AcCaption = CreateActor<Caption>();
 	AcUpperDialog = CreateActor<UpperDialog>();
-	AcUpperDialog->Off();
 	//UpperDialog->SetDialog(MugShotLR::Left, GameEngineWindow::GetScreenSize().half(), "Mug_Devil.BMP");
-	//UpperDialog->Off();
 	
 	//BottomDialog = CreateActor<Dialog>();
 	//BottomDialog->SetDialog(MugShotLR::Right, GameEngineWindow::GetScreenSize().half() + float4{0, 176}, "Mug_Devil.BMP");
-	//BottomDialog->Off();
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	AcCutScene = CreateActor<Cutscene>();
 	AcOpeningCredit = CreateActor<OpeningCredit>();
-	
+
+	if (!GameEngineInput::IsKey("1"))
+	{
+		GameEngineInput::CreateKey("1", '1');
+	}
 }
 
 void OpeningLevel::Update(float _DeltaTime)
 {
-	Time += _DeltaTime;
+
+	float LocalDeltaTime = _DeltaTime;
+	if (GameEngineInput::IsPress("1"))
+	{
+		LocalDeltaTime *= 4;
+		Time += LocalDeltaTime;
+	}
+	else
+	{
+		Time += LocalDeltaTime;
+	}
 
 	if (true == GameEngineInput::IsDown("LevelChange"))
 	{
 		GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
 	}
 	
-	//if (AcOpeningCredit->IsUpdate() == false)
-	//{
-	//	AcCutScene->OnRenderScene();
-	//}
-	
 	// 오프닝 타임라인
 	// 0~20 오프닝 크레딧, ~35 컷신1,  ~75 컷신2, ~115 컷신3, ~119 검은화면, ~122 왕국력 날짜,
 	// ~143 컷신4, ~148 검은화면, ~ 172 컷신5, ~200 컷신6, ~205 검은화면, ~215 컷신7 
-	if (0 <= Time && 5 > Time)//(0 <= Time && 20 > Time)
+	if (0 <= Time && 20 > Time)//(0 <= Time && 20 > Time)
 	{
-		//어떤 머그샷과 스크립트가 있는 대화창을 출력
-		//InputMug, InputScript 만들기
-		AcCutScene->OnBlackBackground();
-		AcCutScene->ChangeRenderScene(0);
-	}
-	else if (5 <= Time && 10 > Time)//(20 <= Time && 35 > Time)
-	{
-		AcCutScene->OffBlackBackground();
-		AcCutScene->ChangeRenderScene(1);
+		AcCutScene->On();
+		AcCutScene->SelectBackgroundColor(BackgroundColor::Black);
+		AcCutScene->OffCutScene();
 
-		AcUpperDialog->On();
-		AcUpperDialog->SetMugPic("Mug_Devil.bmp");
-		AcUpperDialog->SetMugLoc(MugShotLR::Left);
+		AcOpeningCredit->On();
+		AcOpeningCredit->UpdateScroll(LocalDeltaTime);
 	}
-	else if (10 <= Time && 15 > Time)//(35 <= Time && 75 > Time)
+	else if (20 <= Time && 35 > Time)//(20 <= Time && 35 > Time)
 	{
-		AcCutScene->ChangeRenderScene(2);
-		AcUpperDialog->SetMugPic("Mug_Uranos_God.bmp");
-		AcUpperDialog->SetMugLoc(MugShotLR::Right);
+		AcOpeningCredit->Off();
+		AcCutScene->SelectBackgroundColor(BackgroundColor::White);
+		AcCutScene->OnCutScene(0);
+		if (22 <= Time && 26 > Time)
+		{
+			AcCaption->On();
+			AcCaption->SetUpdateText("그것은 일방적인 싸움이었다…");
+		}
+		else if (26 <= Time && 27 > Time)
+		{
+			AcCaption->Off();
+		}
+		else if (27 <= Time && 31 > Time)
+		{
+			AcCaption->On();
+			AcCaption->SetUpdateText("평화에 길들여진 수도의 군대는\n막강한 마왕군 앞에 추풍낙엽처럼 쓰러져갔다.");
+		}
+		else if (31 <= Time && 32 > Time)
+		{
+			AcCaption->Off();
+		}
+		else if (32 <= Time && 35 > Time)
+		{
+			AcCaption->On();
+			AcCaption->SetUpdateText("성벽은 무너지고 거리는 불길에 휩싸였다.\n수도의 함락은 목전까지 닥친 상황이었다.");
+		}
 	}
-	else if (15 <= Time && 20 > Time)//(75 <= Time && 115 > Time)
+	else if (35 <= Time && 75 > Time)//(35 <= Time && 75 > Time)
 	{
-		AcCutScene->ChangeRenderScene(3);
-		AcUpperDialog->SetMugLoc(MugShotLR::Non);
+		AcCaption->Off();
+		AcCutScene->OnCutScene(1);
+
+		if (37 <= Time && 41 > Time)
+		{
+			AcCaption->On();
+			AcCaption->SetUpdateText(std::string("그때 그 참상을 목격한 방랑검사가 있었다. 그의 이름은 ") + std::string("용사이름.") + std::string("그는 스스로 마왕과의 싸움에 몸을 던졌다"));
+		}
+		else if (41 <= Time && 42 > Time)
+		{
+			AcCaption->Off();
+		}
+		else if (42 <= Time && 46 > Time)
+		{
+			AcCaption->On();
+			AcCaption->SetUpdateText("초승달이 뜬 밤, 마왕의 진영에 잠입한" + std::string("용사이름") + std::string(".") + std::string("그는 1대1의 결투 끝에 마왕에게 승리했다."));
+		}
+		else if (46 <= Time && 47 > Time)
+		{
+			AcCaption->Off();
+		}
+		else if (47 <= Time && 51 > Time)
+		{
+			AcUpperDialog->On();
+			AcUpperDialog->SetMugPic("Mug_Devil.bmp");
+			AcUpperDialog->SetMugLoc(MugShotLR::Left);
+		}
+
+		//AcCutScene->ChangeRenderScene(2);
+		//AcUpperDialog->SetMugPic("Mug_Uranos_God.bmp");
+		//AcUpperDialog->SetMugLoc(MugShotLR::Right);
 	}
-	else if (20 <= Time && 22> Time)//(115 <= Time && 119> Time)
+	else if (75 <= Time && 115 > Time)//(75 <= Time && 115 > Time)
 	{
-		AcCutScene->OnBlackBackground();
-		AcCutScene->ChangeRenderScene(0);
-		AcUpperDialog->Off();
+		AcCutScene->OnCutScene(2);
+		//AcCutScene->ChangeRenderScene(3);
+		//AcUpperDialog->SetMugLoc(MugShotLR::Non);
 	}
-	else if (22 <= Time && 27> Time)//(119 <= Time && 122 > Time)
+	else if (115 <= Time && 119 > Time)//(115 <= Time && 119> Time)
 	{
-		AcCutScene->ChangeRenderScene(0);
+		AcCutScene->SelectBackgroundColor(BackgroundColor::Black);
+		AcCutScene->OffCutScene();
+		//AcCutScene->OnBlackBackground();
+		//AcCutScene->ChangeRenderScene(0);
+		//AcUpperDialog->Off();
 	}
-	else if (37 <= Time && 35> Time)//(122 <= Time && 143 > Time)
+	else if (119 <= Time && 122 > Time)//(119 <= Time && 122 > Time)
 	{
-		AcCutScene->ChangeRenderScene(4);
+		AcCutScene->OffCutScene();
+		//AcCutScene->ChangeRenderScene(0);
 	}
-	else if (35 <= Time && 40> Time)//(143 <= Time && 148 > Time)
+	else if (122 <= Time && 143 > Time)//(122 <= Time && 143 > Time)
 	{
-		AcCutScene->ChangeRenderScene(0);
+		AcCutScene->OnCutScene(3);
+		//AcCutScene->ChangeRenderScene(4);
 	}
-	else if (40 <= Time && 45> Time)//(148 <= Time && 172 > Time)
+	else if (143 <= Time && 148 > Time)//(143 <= Time && 148 > Time)
 	{
-		AcCutScene->ChangeRenderScene(5);
+		AcCutScene->OffCutScene();
+		//AcCutScene->ChangeRenderScene(0);
 	}
-	else if (45 <= Time && 50> Time)//(172 <= Time && 200 > Time)
+	else if (148 <= Time && 172 > Time)//(148 <= Time && 172 > Time)
 	{
-		AcCutScene->ChangeRenderScene(6);
+		AcCutScene->OnCutScene(4);
+		//AcCutScene->ChangeRenderScene(5);
 	}
-	else if (50 <= Time && 55> Time)//(200 <= Time && 205 > Time)
+	else if (172 <= Time && 200 > Time)//(172 <= Time && 200 > Time)
 	{
-		AcCutScene->ChangeRenderScene(0);
+		AcCutScene->OnCutScene(5);
+		//AcCutScene->ChangeRenderScene(6);
 	}
-	else if (55 <= Time && 60> Time)//(205 <= Time && 215> Time)
+	else if (200 <= Time && 205 > Time)//(200 <= Time && 205 > Time)
 	{
-		AcCutScene->ChangeRenderScene(7);
+		AcCutScene->OffCutScene();
+		//AcCutScene->ChangeRenderScene(0);
+	}
+	else if (205 <= Time && 215 > Time)//(205 <= Time && 215> Time)
+	{
+		AcCutScene->OnCutScene(6);
+		//AcCutScene->ChangeRenderScene(7);
 	}
 	else
 	{
-		GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
+		//GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
 	}
 }
 
@@ -163,4 +231,5 @@ void OpeningLevel::ImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Mug_Devil.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Mug_Uranos_God.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BlackBox.BMP"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WhiteBackground.BMP"));
 }

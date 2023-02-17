@@ -132,6 +132,9 @@
     <ClInclude Include="Button_BloodType.h">
       <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor\ButtonUI</Filter>
     </ClInclude>
+    <ClInclude Include="Caption.h">
+      <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -264,6 +267,9 @@
     <ClCompile Include="Button_BloodType.cpp">
       <Filter>ContentsLevel\2. FirstSetLevel\FirstSetActor\ButtonUI</Filter>
     </ClCompile>
+    <ClCompile Include="Caption.cpp">
+      <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsLevel">
@@ -325,9 +331,6 @@
     </Filter>
     <Filter Include="ContentsLevel\2. FirstSetLevel\FirstSetActor\ButtonUI">
       <UniqueIdentifier>{c0bec0b2-d425-46f9-bec2-d61c1f882d07}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ContentsLevel\2. FirstSetLevel\FirstSetActor\STActor">
-      <UniqueIdentifier>{a9686a52-8563-4e9c-aabb-6ce875b03358}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

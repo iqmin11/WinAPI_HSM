@@ -15,6 +15,8 @@ public:
 	OpeningCredit& operator=(const OpeningCredit& _Other) = delete;
 	OpeningCredit& operator=(OpeningCredit&& _Other) noexcept = delete;
 
+	void UpdateScroll(float _DeltaTime);
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -23,7 +25,7 @@ protected:
 private:
 	float MoveSpeed = 100.0f;
 	float Time = 0.0f;
-	float ScrollTime = 5.0f; // 스크롤 완료까지 XX초 디폴트는 20초
+	float ScrollTime = 20.0f; // 스크롤 완료까지 XX초 디폴트는 20초
 	float4 StartPos = float4::Zero;
 	float4 EndPos = float4::Zero;
 	
