@@ -107,115 +107,115 @@ void SetOliveBloodType::SetBloodTypeButton()
 void SetOliveBloodType::SetBloodTypeButtonRender()
 {
 	BloodTypeButtonRender1[0] = CreateRender(PM2RenderOrder::Menu0_Display);
-	BloodTypeButtonRender1[0]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
-	float4 LetterRenderPos = BloodTypeButton[0]->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
+	BloodTypeButtonRender1[0]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale);
+	float4 LetterRenderPos = BloodTypeButton[0]->GetPos() - GetPos() - float4{ ButtonScale.hx(), static_cast<float>(LetterRenderHeight / 2) };
 	BloodTypeButtonRender1[0]->SetPosition(LetterRenderPos);
 
 	BloodTypeButtonRender2[0] = CreateRender(PM2RenderOrder::Menu0_Display);
-	BloodTypeButtonRender2[0]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	BloodTypeButtonRender2[0]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale);
 	BloodTypeButtonRender2[0]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 
 	BloodTypeButtonEffect1Render[0] = CreateRender(PM2RenderOrder::Menu0_Display);
-	BloodTypeButtonEffect1Render[0]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color);
+	BloodTypeButtonEffect1Render[0]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color, ButtonScale);
 	BloodTypeButtonEffect1Render[0]->SetPosition(LetterRenderPos);
 	BloodTypeButtonEffect1Render[0]->Off();
 
 	BloodTypeButtonEffect2Render[0] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	BloodTypeButtonEffect2Render[0]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+	BloodTypeButtonEffect2Render[0]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color, ButtonScale);
 	BloodTypeButtonEffect2Render[0]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 	BloodTypeButtonEffect2Render[0]->Off();
 
 	BloodTypeButtonEffect3Render[0] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	BloodTypeButtonEffect3Render[0]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, TextEffect3Color);
+	BloodTypeButtonEffect3Render[0]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, TextEffect3Color, ButtonScale);
 	BloodTypeButtonEffect3Render[0]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 	BloodTypeButtonEffect3Render[0]->Off();
 
 	BloodTypeButtonShadowRender[0] = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-	BloodTypeButtonShadowRender[0]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	BloodTypeButtonShadowRender[0]->SetText("A", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor, ButtonScale);
 	BloodTypeButtonShadowRender[0]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 
 	BloodTypeButtonRender1[1] = CreateRender(PM2RenderOrder::Menu0_Display);
-	BloodTypeButtonRender1[1]->SetText("B", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
-	LetterRenderPos = BloodTypeButton[1]->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
+	BloodTypeButtonRender1[1]->SetText("B", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale);
+	LetterRenderPos = BloodTypeButton[1]->GetPos() - GetPos() - float4{ ButtonScale.hx(), static_cast<float>(LetterRenderHeight / 2) };
 	BloodTypeButtonRender1[1]->SetPosition(LetterRenderPos);
 
 	BloodTypeButtonRender2[1] = CreateRender(PM2RenderOrder::Menu0_Display);
-	BloodTypeButtonRender2[1]->SetText("B", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	BloodTypeButtonRender2[1]->SetText("B", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale);
 	BloodTypeButtonRender2[1]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 
 	BloodTypeButtonEffect1Render[1] = CreateRender(PM2RenderOrder::Menu0_Display);
-	BloodTypeButtonEffect1Render[1]->SetText("B", LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color);
+	BloodTypeButtonEffect1Render[1]->SetText("B", LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color, ButtonScale);
 	BloodTypeButtonEffect1Render[1]->SetPosition(LetterRenderPos);
 	BloodTypeButtonEffect1Render[1]->Off();
 
 	BloodTypeButtonEffect2Render[1] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	BloodTypeButtonEffect2Render[1]->SetText("B", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+	BloodTypeButtonEffect2Render[1]->SetText("B", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color, ButtonScale);
 	BloodTypeButtonEffect2Render[1]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 	BloodTypeButtonEffect2Render[1]->Off();
 
 	BloodTypeButtonEffect3Render[1] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	BloodTypeButtonEffect3Render[1]->SetText("B", LetterRenderHeight, TextType, TextAlign::Center, TextEffect3Color);
+	BloodTypeButtonEffect3Render[1]->SetText("B", LetterRenderHeight, TextType, TextAlign::Center, TextEffect3Color, ButtonScale);
 	BloodTypeButtonEffect3Render[1]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 	BloodTypeButtonEffect3Render[1]->Off();
 
 	BloodTypeButtonShadowRender[1] = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-	BloodTypeButtonShadowRender[1]->SetText("B", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	BloodTypeButtonShadowRender[1]->SetText("B", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor, ButtonScale);
 	BloodTypeButtonShadowRender[1]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 
 	BloodTypeButtonRender1[2] = CreateRender(PM2RenderOrder::Menu0_Display);
-	BloodTypeButtonRender1[2]->SetText("O", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
-	LetterRenderPos = BloodTypeButton[2]->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
+	BloodTypeButtonRender1[2]->SetText("O", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale);
+	LetterRenderPos = BloodTypeButton[2]->GetPos() - GetPos() - float4{ ButtonScale.hx(), static_cast<float>(LetterRenderHeight / 2) };
 	BloodTypeButtonRender1[2]->SetPosition(LetterRenderPos);
 
 	BloodTypeButtonRender2[2] = CreateRender(PM2RenderOrder::Menu0_Display);
-	BloodTypeButtonRender2[2]->SetText("O", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	BloodTypeButtonRender2[2]->SetText("O", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale);
 	BloodTypeButtonRender2[2]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 
 	BloodTypeButtonEffect1Render[2] = CreateRender(PM2RenderOrder::Menu0_Display);
-	BloodTypeButtonEffect1Render[2]->SetText("O", LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color);
+	BloodTypeButtonEffect1Render[2]->SetText("O", LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color, ButtonScale);
 	BloodTypeButtonEffect1Render[2]->SetPosition(LetterRenderPos);
 	BloodTypeButtonEffect1Render[2]->Off();
 
 	BloodTypeButtonEffect2Render[2] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	BloodTypeButtonEffect2Render[2]->SetText("O", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+	BloodTypeButtonEffect2Render[2]->SetText("O", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color, ButtonScale);
 	BloodTypeButtonEffect2Render[2]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 	BloodTypeButtonEffect2Render[2]->Off();
 
 	BloodTypeButtonEffect3Render[2] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	BloodTypeButtonEffect3Render[2]->SetText("O", LetterRenderHeight, TextType, TextAlign::Center, TextEffect3Color);
+	BloodTypeButtonEffect3Render[2]->SetText("O", LetterRenderHeight, TextType, TextAlign::Center, TextEffect3Color, ButtonScale);
 	BloodTypeButtonEffect3Render[2]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 	BloodTypeButtonEffect3Render[2]->Off();
 
 	BloodTypeButtonShadowRender[2] = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-	BloodTypeButtonShadowRender[2]->SetText("O", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	BloodTypeButtonShadowRender[2]->SetText("O", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor, ButtonScale);
 	BloodTypeButtonShadowRender[2]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 
 	BloodTypeButtonRender1[3] = CreateRender(PM2RenderOrder::Menu0_Display);
-	BloodTypeButtonRender1[3]->SetText("AB", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
-	LetterRenderPos = BloodTypeButton[3]->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
+	BloodTypeButtonRender1[3]->SetText("AB", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale);
+	LetterRenderPos = BloodTypeButton[3]->GetPos() - GetPos() - float4{ ButtonScale.hx(), static_cast<float>(LetterRenderHeight / 2) };
 	BloodTypeButtonRender1[3]->SetPosition(LetterRenderPos);
 
 	BloodTypeButtonRender2[3] = CreateRender(PM2RenderOrder::Menu0_Display);
-	BloodTypeButtonRender2[3]->SetText("AB", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	BloodTypeButtonRender2[3]->SetText("AB", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale);
 	BloodTypeButtonRender2[3]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 
 	BloodTypeButtonEffect1Render[3] = CreateRender(PM2RenderOrder::Menu0_Display);
-	BloodTypeButtonEffect1Render[3]->SetText("AB", LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color);
+	BloodTypeButtonEffect1Render[3]->SetText("AB", LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color, ButtonScale);
 	BloodTypeButtonEffect1Render[3]->SetPosition(LetterRenderPos);
 	BloodTypeButtonEffect1Render[3]->Off();
 
 	BloodTypeButtonEffect2Render[3] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	BloodTypeButtonEffect2Render[3]->SetText("AB", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+	BloodTypeButtonEffect2Render[3]->SetText("AB", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color, ButtonScale);
 	BloodTypeButtonEffect2Render[3]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 	BloodTypeButtonEffect2Render[3]->Off();
 
 	BloodTypeButtonEffect3Render[3] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	BloodTypeButtonEffect3Render[3]->SetText("AB", LetterRenderHeight, TextType, TextAlign::Center, TextEffect3Color);
+	BloodTypeButtonEffect3Render[3]->SetText("AB", LetterRenderHeight, TextType, TextAlign::Center, TextEffect3Color, ButtonScale);
 	BloodTypeButtonEffect3Render[3]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 	BloodTypeButtonEffect3Render[3]->Off();
 
 	BloodTypeButtonShadowRender[3] = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-	BloodTypeButtonShadowRender[3]->SetText("AB", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	BloodTypeButtonShadowRender[3]->SetText("AB", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor, ButtonScale);
 	BloodTypeButtonShadowRender[3]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 
 }
@@ -223,16 +223,16 @@ void SetOliveBloodType::SetBloodTypeButtonRender()
 void SetOliveBloodType::SetExplainRender()
 {
 	ExplainRender1 = CreateRender(PM2RenderOrder::Menu0_Display);
-	ExplainRender1->SetText("µþÀÇ Ç÷¾×Çü ¼±ÅÃ", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
-	float4 SetExplainRenderPos = { 0,-36 };
+	ExplainRender1->SetText("µþÀÇ Ç÷¾×Çü ¼±ÅÃ", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ExplainTextBoxScale);
+	float4 SetExplainRenderPos = -ExplainTextBoxScale.half() - float4{ 0,36 };
 	ExplainRender1->SetPosition(SetExplainRenderPos);
 
 	ExplainRender2 = CreateRender(PM2RenderOrder::Menu0_Display);
-	ExplainRender2->SetText("µþÀÇ Ç÷¾×Çü ¼±ÅÃ", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	ExplainRender2->SetText("µþÀÇ Ç÷¾×Çü ¼±ÅÃ", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ExplainTextBoxScale);
 	ExplainRender2->SetPosition(SetExplainRenderPos + float4::Up * float4{ 0,1 });
 
 	ExplainRenderShadow = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-	ExplainRenderShadow->SetText("µþÀÇ Ç÷¾×Çü ¼±ÅÃ", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	ExplainRenderShadow->SetText("µþÀÇ Ç÷¾×Çü ¼±ÅÃ", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor, ExplainTextBoxScale);
 	ExplainRenderShadow->SetPosition(SetExplainRenderPos + float4::Down * float4{ 0,1 });
 }
 

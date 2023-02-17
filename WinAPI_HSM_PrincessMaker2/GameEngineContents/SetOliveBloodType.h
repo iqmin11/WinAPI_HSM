@@ -41,6 +41,7 @@ private:
 	GameEngineRender* ExplainRender1 = nullptr;
 	GameEngineRender* ExplainRender2 = nullptr;
 	GameEngineRender* ExplainRenderShadow = nullptr;
+	float4 ExplainTextBoxScale = { 300, 18 };
 
 	float4 ButtonScale = { 24,24 };
 	float4 ButtonInterval = { 64,0 };
