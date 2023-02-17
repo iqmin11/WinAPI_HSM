@@ -41,10 +41,12 @@ private:
 	GameEngineRender* PrintLetterRender1 = nullptr;
 	GameEngineRender* PrintLetterRender2 = nullptr;
 	GameEngineRender* PrintLetterRender3 = nullptr;
+	float4 PrintLetterBoxScale = { 100 , 18 };
 
 	GameEngineRender* ExplainRender1 = nullptr;
 	GameEngineRender* ExplainRender2 = nullptr;
 	GameEngineRender* ExplainRenderShadow = nullptr;
+	float4 ExplainTextBoxScale = { 300, 18 };
 
 	Button* CompleteButton = nullptr;
 	GameEngineRender* CompleteButton1Render = nullptr;

@@ -117,9 +117,9 @@ void SetPlayerAge::Update(float _DeltaTime)
 		CompleteButtonShadowRender->Off();
 	}
 
-	PrintLetterRender1->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect1Color);
-	PrintLetterRender2->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect2Color);
-	PrintLetterRender3->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect3Color);
+	PrintLetterRender1->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect1Color, PrintLetterBoxScale);
+	PrintLetterRender2->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect2Color, PrintLetterBoxScale);
+	PrintLetterRender3->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect3Color, PrintLetterBoxScale);
 	
 }
 
@@ -159,31 +159,31 @@ void SetPlayerAge::SetAgeNumRender()
 		Start[0] += Count++;
 
 		AgeNumButtonRender1[i] = CreateRender(PM2RenderOrder::Menu0_Display);
-		AgeNumButtonRender1[i]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextColor);
-		float4 LetterRenderPos = AgeNumButton[i]->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
+		AgeNumButtonRender1[i]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale);
+		float4 LetterRenderPos = AgeNumButton[i]->GetPos() - GetPos() - float4{ ButtonScale.hx(), static_cast<float>(LetterRenderHeight / 2) };
 		AgeNumButtonRender1[i]->SetPosition(LetterRenderPos);
 
 		AgeNumButtonRender2[i] = CreateRender(PM2RenderOrder::Menu0_Display);
-		AgeNumButtonRender2[i]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+		AgeNumButtonRender2[i]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale);
 		AgeNumButtonRender2[i]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 
 		AgeNumButtonEffect1Render[i] = CreateRender(PM2RenderOrder::Menu0_Display);
-		AgeNumButtonEffect1Render[i]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color);
+		AgeNumButtonEffect1Render[i]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color, ButtonScale);
 		AgeNumButtonEffect1Render[i]->SetPosition(LetterRenderPos);
 		AgeNumButtonEffect1Render[i]->Off();
 
 		AgeNumButtonEffect2Render[i] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-		AgeNumButtonEffect2Render[i]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+		AgeNumButtonEffect2Render[i]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color, ButtonScale);
 		AgeNumButtonEffect2Render[i]->SetPosition(LetterRenderPos + float4::Up * float4{ 0,1 });
 		AgeNumButtonEffect2Render[i]->Off();
 
 		AgeNumButtonEffect3Render[i] = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-		AgeNumButtonEffect3Render[i]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect3Color);
+		AgeNumButtonEffect3Render[i]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextEffect3Color, ButtonScale);
 		AgeNumButtonEffect3Render[i]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 		AgeNumButtonEffect3Render[i]->Off();
 
 		AgeNumButtonShadowRender[i] = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-		AgeNumButtonShadowRender[i]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+		AgeNumButtonShadowRender[i]->SetText(Start, LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor, ButtonScale);
 		AgeNumButtonShadowRender[i]->SetPosition(LetterRenderPos + float4::Down * float4{ 0,1 });
 	}
 }
@@ -191,16 +191,16 @@ void SetPlayerAge::SetAgeNumRender()
 void SetPlayerAge::SetPrintLetterRender()
 {
 	PrintLetterRender1 = CreateRender(PM2RenderOrder::Menu0_Display);
-	PrintLetterRender1->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect1Color);
-	float4 SetPrintLetterRenderPos = { 0,-60 };
+	PrintLetterRender1->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect1Color, PrintLetterBoxScale);
+	float4 SetPrintLetterRenderPos = -PrintLetterBoxScale.half() - float4{ 30,60 };
 	PrintLetterRender1->SetPosition(SetPrintLetterRenderPos);
 
 	PrintLetterRender2 = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	PrintLetterRender2->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect2Color);
+	PrintLetterRender2->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect2Color, PrintLetterBoxScale);
 	PrintLetterRender2->SetPosition(SetPrintLetterRenderPos + float4::Up * float4{ 0,1 });
 
 	PrintLetterRender3 = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	PrintLetterRender3->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect3Color);
+	PrintLetterRender3->SetText(" " + PrintLetter, LetterRenderHeight, TextType, TextAlign::Right, TextEffect3Color, PrintLetterBoxScale);
 	PrintLetterRender3->SetPosition(SetPrintLetterRenderPos + float4::Down * float4{ 0,1 });
 }
 
@@ -245,47 +245,47 @@ void SetPlayerAge::SetCompleteButton()
 void SetPlayerAge::SetCompleteButtonRender()
 {
 	CompleteButton1Render = CreateRender(PM2RenderOrder::Menu0_Display);
-	CompleteButton1Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
-	float4 ButtonStartPosition = CompleteButton->GetPos() - GetPos() + (float4::Up.half() * (static_cast<float>(LetterRenderHeight) / 2));
+	CompleteButton1Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale2);
+	float4 ButtonStartPosition = CompleteButton->GetPos() - GetPos() - float4{ ButtonScale2.hx(), static_cast<float>(LetterRenderHeight / 2) };
 	CompleteButton1Render->SetPosition(ButtonStartPosition);
 
 	CompleteButton2Render = CreateRender(PM2RenderOrder::Menu0_Display);
-	CompleteButton2Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	CompleteButton2Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ButtonScale2);
 	CompleteButton2Render->SetPosition(ButtonStartPosition + float4::Up * float4{ 0,1 });
 
 	CompleteButtonEffect1Render = CreateRender(PM2RenderOrder::Menu0_Display);
-	CompleteButtonEffect1Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color);
+	CompleteButtonEffect1Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextEffect1Color, ButtonScale2);
 	CompleteButtonEffect1Render->SetPosition(ButtonStartPosition);
 	CompleteButtonEffect1Render->Off();
 
 	CompleteButtonEffect2Render = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	CompleteButtonEffect2Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+	CompleteButtonEffect2Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color, ButtonScale2);
 	CompleteButtonEffect2Render->SetPosition(ButtonStartPosition + float4::Up * float4{ 0,1 });
 	CompleteButtonEffect2Render->Off();
 
 	CompleteButtonEffect3Render = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-	CompleteButtonEffect3Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color);
+	CompleteButtonEffect3Render->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextEffect2Color, ButtonScale2);
 	CompleteButtonEffect3Render->SetPosition(ButtonStartPosition + float4::Down * float4{ 0,1 });
 	CompleteButtonEffect3Render->Off();
 
 	CompleteButtonShadowRender = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-	CompleteButtonShadowRender->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	CompleteButtonShadowRender->SetText("완료", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor, ButtonScale2);
 	CompleteButtonShadowRender->SetPosition(ButtonStartPosition + float4::Down * float4{ 0,1 });
 }
 
 void SetPlayerAge::SetExplainRender()
 {
 	ExplainRender1 = CreateRender(PM2RenderOrder::Menu0_Display);
-	ExplainRender1->SetText("당신의 나이를 가르쳐 주세요", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
-	float4 SetExplainRenderPos = { 0,-36 };
+	ExplainRender1->SetText("당신의 나이를 가르쳐 주세요", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ExplainTextBoxScale);
+	float4 SetExplainRenderPos = -ExplainTextBoxScale.half() - float4{ 0, 36 };
 	ExplainRender1->SetPosition(SetExplainRenderPos);
 
 	ExplainRender2 = CreateRender(PM2RenderOrder::Menu0_Display);
-	ExplainRender2->SetText("당신의 나이를 가르쳐 주세요", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	ExplainRender2->SetText("당신의 나이를 가르쳐 주세요", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ExplainTextBoxScale);
 	ExplainRender2->SetPosition(SetExplainRenderPos + float4::Up * float4{ 0,1 });
 
 	ExplainRenderShadow = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-	ExplainRenderShadow->SetText("당신의 나이를 가르쳐 주세요", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	ExplainRenderShadow->SetText("당신의 나이를 가르쳐 주세요", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor, ExplainTextBoxScale);
 	ExplainRenderShadow->SetPosition(SetExplainRenderPos + float4::Down * float4{ 0,1 });
 }
 
