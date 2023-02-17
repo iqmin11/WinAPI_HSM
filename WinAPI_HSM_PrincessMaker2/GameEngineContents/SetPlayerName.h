@@ -39,10 +39,15 @@ private:
 	GameEngineRender* PrintLetterRender1 = nullptr;
 	GameEngineRender* PrintLetterRender2 = nullptr;
 	GameEngineRender* PrintLetterRender3 = nullptr;
+	float4 PrintLetterBoxScale = {100 , 18};
 
 	static GameEngineRender* ExplainRender1;
 	static GameEngineRender* ExplainRender2;
 	static GameEngineRender* ExplainRenderShadow;
+	static std::string ExplainText;
+	static std::string ErrorText;
+	static float4 ExplainTextBoxScale;
+	static float4 ErrorTextBoxScale;
 	
 	CharButton* UpperCaseButton[6][5] = {};
 	GameEngineRender* UpperCaseLetter1Render[6][5] = {};

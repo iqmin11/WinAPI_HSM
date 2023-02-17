@@ -216,5 +216,13 @@ NumberRenderObject수정
     void On() override;
 	void Off() override;
 
-  
+  SetTextAlign(hdc, static_cast<UINT>(Align)); 삭제
 
+  enum class TextAlign
+{
+	Left = DT_LEFT,
+	Right = DT_RIGHT,
+	Center = DT_CENTER
+}; 이걸로 수정 (DrawText용)
+
+DrawTextA(GameEngineWindow::GetDoubleBufferImage()->GetImageDC(), RenderText.c_str(), static_cast<int>(RenderText.size()), &Rect, static_cast<UINT>(Align));
