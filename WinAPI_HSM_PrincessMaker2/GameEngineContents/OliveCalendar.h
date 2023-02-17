@@ -62,6 +62,8 @@ private:
 	GameEngineRender* ExplainRender1 = nullptr;
 	GameEngineRender* ExplainRender2 = nullptr;
 	GameEngineRender* ExplainRenderShadow = nullptr;
+	float4 ExplainTextBoxScale = { 300,18 };
+
 	int LetterRenderHeight = 18;
 	std::string TextType = "±¼¸²";
 	COLORREF TextColor = RGB(0, 0, 0);

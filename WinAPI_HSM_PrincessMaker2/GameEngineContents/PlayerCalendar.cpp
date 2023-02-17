@@ -421,16 +421,16 @@ void PlayerCalendar::UpdateMonthRender()
 void PlayerCalendar::SetExplainRender()
 {
 	ExplainRender1 = CreateRender(PM2RenderOrder::Menu0_Display);
-	ExplainRender1->SetText("당신의 생일은 언제 입니까?", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	ExplainRender1->SetText("당신의 생일은 언제 입니까?", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ExplainTextBoxScale);
 	float4 SetExplainRenderPos = { 0, -223 };
 	ExplainRender1->SetPosition(SetExplainRenderPos);
 
 	ExplainRender2 = CreateRender(PM2RenderOrder::Menu0_Display);
-	ExplainRender2->SetText("당신의 생일은 언제 입니까?", LetterRenderHeight, TextType, TextAlign::Center, TextColor);
+	ExplainRender2->SetText("당신의 생일은 언제 입니까?", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ExplainTextBoxScale);
 	ExplainRender2->SetPosition(SetExplainRenderPos + float4::Up * float4{ 0,1 });
 
 	ExplainRenderShadow = CreateRender(PM2RenderOrder::Menu0_Display_Shadow);
-	ExplainRenderShadow->SetText("당신의 생일은 언제 입니까?", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor);
+	ExplainRenderShadow->SetText("당신의 생일은 언제 입니까?", LetterRenderHeight, TextType, TextAlign::Center, TextShadowColor, ExplainTextBoxScale);
 	ExplainRenderShadow->SetPosition(SetExplainRenderPos + float4::Down * float4{ 0,1 });
 }
 
