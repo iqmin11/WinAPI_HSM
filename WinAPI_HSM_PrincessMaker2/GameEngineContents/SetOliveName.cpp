@@ -18,7 +18,7 @@ GameEngineRender* SetOliveName::ExplainRender1 = nullptr;
 GameEngineRender* SetOliveName::ExplainRender2 = nullptr;
 GameEngineRender* SetOliveName::ExplainRenderShadow = nullptr;
 
-std::string SetOliveName::ExplainText = "당신의 성은 무엇입니까? (8자이내)";
+std::string SetOliveName::ExplainText = "딸의 이름을 지어주세요(8자이내)";
 std::string SetOliveName::ErrorText = "이름이 필요해요";
 float4 SetOliveName::ExplainTextBoxScale = { 300, 18 };
 float4 SetOliveName::ErrorTextBoxScale = { 200, 18 };

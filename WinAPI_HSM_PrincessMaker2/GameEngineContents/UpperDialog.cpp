@@ -15,5 +15,4 @@ void UpperDialog::Start()
 {
 	Dialog::Start();
 	SetPos({ GameEngineWindow::GetScreenSize().half()});
-	
 }

@@ -25,6 +25,7 @@ public:
 	void SetMugPic(const std::string_view& _ImageFileName);
 	void SetMugLoc(int _MugLoc);
 	void SetMugLoc(MugShotLR _MugLoc);
+	void SetUpdateText(const std::string_view& _Text);
 
 protected:
 	void Start() override;
@@ -38,6 +39,20 @@ private:
 	GameEngineRender* MugShotFrame = nullptr;
 	GameEngineRender* MugShot = nullptr;
 
+	float4 DialogFrameScale = { 310,150 };
+
+	std::string UpdateText = std::string();
+	GameEngineRender* TextRender = nullptr;
+	
+	int TextHeight = 18;
+	std::string TextType = "굴림";
+	COLORREF TextColor = RGB(255, 255, 255);
+	float4 TextBoxScale = { 290,130 };
+
+	float Time = 0;
+
+	void SetTextRender();
+	void SetTextRenderPos(float4 _Pos);
 	void SetRightMugDialog(); // 머그샷이 오른쪽에 있는 대화창
 	void SetLeftMugDialog(); // 머그샷이 왼쪽에 있는 대화창
 	void SetMoveMugShotRender(const float4& _Move);

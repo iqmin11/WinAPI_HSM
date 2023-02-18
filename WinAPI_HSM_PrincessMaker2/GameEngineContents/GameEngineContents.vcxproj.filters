@@ -138,6 +138,9 @@
     <ClInclude Include="GlobalButton.h">
       <Filter>ContentsLevel\0. PM2Base\Global</Filter>
     </ClInclude>
+    <ClInclude Include="BottomDialog.h">
+      <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -275,6 +278,9 @@
     </ClCompile>
     <ClCompile Include="GlobalButton.cpp">
       <Filter>ContentsLevel\0. PM2Base\Global</Filter>
+    </ClCompile>
+    <ClCompile Include="BottomDialog.cpp">
+      <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

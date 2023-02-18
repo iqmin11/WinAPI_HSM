@@ -35,6 +35,6 @@ private:
 	std::string TextType = "±¼¸²";
 	COLORREF TextColor = RGB(255, 255, 255);
 	COLORREF TextOutlineColor = RGB(0, 0, 0);
-	float4 CaptionTextBoxScale = { 600, 100 };
+	float4 CaptionTextBoxScale = { 800, 100 };
 };
 

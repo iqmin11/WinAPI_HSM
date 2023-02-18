@@ -17,13 +17,28 @@ void Dialog::InitRenderPos()
 {
 	SetPosFrameRender({ 0,0 });
 	SetPosMugShotRender({ 0,0 });
+	SetTextRenderPos({ 0,0 });
 }
 
 void Dialog::SetLeftMugDialog()
 {
 	InitRenderPos();
-	SetMoveMugShotRender({ -165, 0 });
+	SetMoveMugShotRender(float4{ -165, 0 });
 	SetPosFrameRender(float4{ 80,0 });
+	SetTextRenderPos(float4{ 80,0 });
+}
+
+void Dialog::SetTextRender()
+
+{
+	TextRender = CreateRender(PM2RenderOrder::Dialog_Display);
+	TextRender->SetText(" ", TextHeight, TextType, TextAlign::Left, TextColor, TextBoxScale);
+	TextRender->SetPosition(-TextBoxScale.half());
+}
+
+void Dialog::SetTextRenderPos(float4 _Pos)
+{
+	TextRender->SetPosition(-TextBoxScale.half() + _Pos);
 }
 
 void Dialog::SetRightMugDialog()
@@ -31,6 +46,7 @@ void Dialog::SetRightMugDialog()
 	InitRenderPos();
 	SetMoveMugShotRender({ 165,0 });
 	SetPosFrameRender(float4{ -80,0 });
+	SetTextRenderPos(float4{ -80,0 });
 }
 
 void Dialog::SetMoveMugShotRender(const float4& _Move)
@@ -136,10 +152,17 @@ void Dialog::SetMugLoc(MugShotLR _MugLoc)
 	SetMugLoc(static_cast<int>(_MugLoc));
 }
 
+void Dialog::SetUpdateText(const std::string_view& _Text)
+{
+	UpdateText = _Text;
+	TextRender->SetText(UpdateText, TextHeight, TextType, TextAlign::Left, TextColor, TextBoxScale);
+}
+
 void Dialog::Start()
 {
 	InitMenuFrameRender(PM2RenderOrder::Dialog); // 고정
-	SetMenuFrameScale({ 310,150 }); // 고정
+	SetMenuFrameScale(DialogFrameScale); // 고정
+	SetTextRender();
 	Off();
 	//사용법 예시
 	//SetPos({ GameEngineWindow::GetScreenSize().half()});

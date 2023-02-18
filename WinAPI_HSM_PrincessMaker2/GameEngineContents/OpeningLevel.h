@@ -4,6 +4,7 @@
 class OpeningCredit;
 class Cutscene;
 class UpperDialog;
+class BottomDialog;
 class Caption;
 class OpeningLevel : public GameEngineLevel
 {
@@ -29,7 +30,7 @@ private:
 	Caption* AcCaption = nullptr;
 	Cutscene* AcCutScene = nullptr;
 	UpperDialog* AcUpperDialog = nullptr;
-	//Dialog* AcBottomDialog = nullptr;
+	BottomDialog* AcBottomDialog = nullptr;
 	OpeningCredit* AcOpeningCredit = nullptr;
 	float Time = 0.0f;
 
