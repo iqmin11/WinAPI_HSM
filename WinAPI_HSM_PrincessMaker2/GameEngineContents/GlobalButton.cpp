@@ -19,7 +19,7 @@ void GlobalButton::Render(float _DeltaTime)
 	if (GameEngineCore::GetInst()->IsDebug() && GetState() == ButtonState::Release)
 	{
 		HDC DoubleDC = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
-		float4 ActorPos = GetPos() - GetLevel()->GetCameraPos();;
+		float4 ActorPos = GetPos() - GetLevel()->GetCameraPos();
 		HBRUSH myBrush = static_cast<HBRUSH>(GetStockObject(NULL_BRUSH));
 		HBRUSH oldBrush = static_cast<HBRUSH>(SelectObject(DoubleDC, myBrush));
 		HPEN myPen = CreatePen(PS_SOLID, 0, RGB(255, 0, 0));

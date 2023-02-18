@@ -19,7 +19,7 @@ public:
 
 protected:
 	void Start() override;
-
+	void Render(float _DeltaTime) override;
 private:
 	std::string UpdateCaption = std::string();
 
@@ -35,6 +35,7 @@ private:
 	std::string TextType = "±¼¸²";
 	COLORREF TextColor = RGB(255, 255, 255);
 	COLORREF TextOutlineColor = RGB(0, 0, 0);
+	float4 CaptionTextBoxScale = { 400, 400 };
 
 };
 

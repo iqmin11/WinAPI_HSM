@@ -1,4 +1,5 @@
 #include "GameEngineRender.h"
+#include "GameEngineCore.h"
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineBase/GameEngineString.h>
 #include "GameEngineActor.h"

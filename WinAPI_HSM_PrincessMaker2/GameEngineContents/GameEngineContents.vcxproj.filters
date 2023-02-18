@@ -135,9 +135,6 @@
     <ClInclude Include="Caption.h">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClInclude>
-    <ClInclude Include="GlobalActor.h">
-      <Filter>ContentsLevel\0. PM2Base\Global</Filter>
-    </ClInclude>
     <ClInclude Include="GlobalButton.h">
       <Filter>ContentsLevel\0. PM2Base\Global</Filter>
     </ClInclude>
@@ -275,9 +272,6 @@
     </ClCompile>
     <ClCompile Include="Caption.cpp">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
-    </ClCompile>
-    <ClCompile Include="GlobalActor.cpp">
-      <Filter>ContentsLevel\0. PM2Base\Global</Filter>
     </ClCompile>
     <ClCompile Include="GlobalButton.cpp">
       <Filter>ContentsLevel\0. PM2Base\Global</Filter>
