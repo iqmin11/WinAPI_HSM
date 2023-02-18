@@ -154,6 +154,21 @@ void GameEngineRender::TextRender(float _DeltaTime)
 	Rect.top = RenderPos.iy();
 	Rect.right = RenderPos.ix() + TextBoxScale.ix();
 	Rect.bottom = RenderPos.iy() + TextBoxScale.iy();
+	
+	if (GameEngineCore::GetInst()->IsDebug())
+	{
+		HDC DoubleDC = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
+		HBRUSH myBrush = static_cast<HBRUSH>(GetStockObject(NULL_BRUSH));
+		HBRUSH oldBrush = static_cast<HBRUSH>(SelectObject(DoubleDC, myBrush));
+		HPEN myPen = CreatePen(PS_DASH, 0, RGB(0, 0, 0));
+		HPEN oldPen = static_cast<HPEN>(SelectObject(DoubleDC, myPen));
+		Rectangle(GameEngineWindow::GetDoubleBufferImage()->GetImageDC(), Rect.left, Rect.top, Rect.right, Rect.bottom);
+
+		SelectObject(DoubleDC, oldBrush);
+		DeleteObject(myBrush);
+		SelectObject(DoubleDC, oldPen);
+		DeleteObject(myPen);
+	}
 
 	DrawTextA(GameEngineWindow::GetDoubleBufferImage()->GetImageDC(), RenderText.c_str(), static_cast<int>(RenderText.size()), &Rect, static_cast<UINT>(Align)/*DT_LEFT*/);
 

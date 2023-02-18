@@ -23,6 +23,7 @@ void Caption::SetUpdateText(const std::string_view& _Text)
 	CaptionOutline2Render->SetText(UpdateCaption, TextHeight, TextType, TextAlign::Center, TextOutlineColor, CaptionTextBoxScale);
 	CaptionOutline3Render->SetText(UpdateCaption, TextHeight, TextType, TextAlign::Center, TextOutlineColor, CaptionTextBoxScale);
 	CaptionOutline4Render->SetText(UpdateCaption, TextHeight, TextType, TextAlign::Center, TextOutlineColor, CaptionTextBoxScale);
+	//CaptionRender->SetPosition();
 	CaptionOutline1Render->SetPosition(float4::Up * float4 {1,1});
 	CaptionOutline2Render->SetPosition(float4::Down * float4 {1,1});
 	CaptionOutline3Render->SetPosition(float4::Left * float4 {1,1});
@@ -31,38 +32,17 @@ void Caption::SetUpdateText(const std::string_view& _Text)
 
 void Caption::Start()
 {
-	SetPos(CaptionPos);
+	
+	//CaptionTextBoxPos = -CaptionTextBoxScale.half();
+	SetPos(GameEngineWindow::GetScreenSize().half());
 	CaptionRender = CreateRender(PM2RenderOrder::Menu0_Display);
 	CaptionOutline1Render = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
 	CaptionOutline2Render = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
 	CaptionOutline3Render = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
 	CaptionOutline4Render = CreateRender(PM2RenderOrder::Menu0_Display_Effect);
-
 	Off();
 }
 
 void Caption::Render(float _DeltaTime)
 {
-	if (GameEngineCore::GetInst()->IsDebug())
-	{
-		HDC DoubleDC = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
-		float4 ActorPos = CaptionPos - GetLevel()->GetCameraPos();
-		HBRUSH myBrush = static_cast<HBRUSH>(GetStockObject(NULL_BRUSH));
-		HBRUSH oldBrush = static_cast<HBRUSH>(SelectObject(DoubleDC, myBrush));
-		HPEN myPen = CreatePen(PS_SOLID, 0, RGB(0, 0, 0));
-		HPEN oldPen = static_cast<HPEN>(SelectObject(DoubleDC, myPen));
-
-
-		Rectangle(DoubleDC,
-			ActorPos.ix(),
-			ActorPos.iy(),
-			ActorPos.ix() + static_cast<int>(CaptionTextBoxScale.x),
-			ActorPos.iy() + static_cast<int>(CaptionTextBoxScale.y)
-		);
-
-		SelectObject(DoubleDC, oldBrush);
-		DeleteObject(myBrush);
-		SelectObject(DoubleDC, oldPen);
-		DeleteObject(myPen);
-	}
 }

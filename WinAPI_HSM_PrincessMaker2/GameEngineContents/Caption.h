@@ -36,6 +36,7 @@ private:
 	COLORREF TextColor = RGB(255, 255, 255);
 	COLORREF TextOutlineColor = RGB(0, 0, 0);
 	float4 CaptionTextBoxScale = { 400, 400 };
+	float4 CaptionTextBoxPos = float4::Zero;
 
 };
 
