@@ -6,6 +6,7 @@ class Cutscene;
 class UpperDialog;
 class BottomDialog;
 class Caption;
+class Logo;
 class OpeningLevel : public GameEngineLevel
 {
 public:
@@ -32,6 +33,7 @@ private:
 	UpperDialog* AcUpperDialog = nullptr;
 	BottomDialog* AcBottomDialog = nullptr;
 	OpeningCredit* AcOpeningCredit = nullptr;
+	Logo* AcLogo = nullptr;
 	float Time = 0.0f;
 
 	void SoundLoad();

@@ -141,6 +141,9 @@
     <ClInclude Include="BottomDialog.h">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClInclude>
+    <ClInclude Include="Logo.h">
+      <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -280,6 +283,9 @@
       <Filter>ContentsLevel\0. PM2Base\Global</Filter>
     </ClCompile>
     <ClCompile Include="BottomDialog.cpp">
+      <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo.cpp">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClCompile>
   </ItemGroup>

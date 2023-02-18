@@ -11,6 +11,7 @@
 #include "BottomDialog.h"
 #include "Cutscene.h"
 #include "OpeningCredit.h"
+#include "Logo.h"
 #include "ContentsEnums.h"
 
 OpeningLevel::OpeningLevel()
@@ -34,6 +35,7 @@ void OpeningLevel::Loading()
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	AcCutScene = CreateActor<Cutscene>();
 	AcOpeningCredit = CreateActor<OpeningCredit>();
+	AcLogo = CreateActor<Logo>();
 
 	if (!GameEngineInput::IsKey("2"))
 	{
@@ -319,6 +321,10 @@ void OpeningLevel::Update(float _DeltaTime)
 	{
 		AcCaption->Off();
 		AcCutScene->OnCutScene(6);
+		if (208 <= Time && 215 > Time)
+		{
+			AcLogo->On();
+		}
 	}
 	else
 	{
@@ -344,14 +350,10 @@ void OpeningLevel::ImageLoad()
 
 
 	Dir.Move("OpeningLevel");
-	{
-		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("DayNum.BMP"));
-		Image->Cut(20, 1);
-	}
-	{
-		GameEngineImage* Image = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MonthNum.BMP"));
-		Image->Cut(10, 1);
-	}
+
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OpeningDayNum.BMP"))->Cut(20, 1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OpeningMonthNum.BMP"))->Cut(10, 1);
+	
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Credit.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Cutscene1.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Cutscene2.BMP"));

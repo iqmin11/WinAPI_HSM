@@ -4,6 +4,7 @@ enum class PM2RenderOrder
 {
 	BackGround,
 	BackGroundObj,
+	TitleLogo,
 	CaptionBox,
 	Map,
 	Contents,
@@ -38,6 +39,7 @@ enum class PM2ActorOrder
 {
 	BackGround,
 	BackGroundObj,
+	TitleLogo,
 	CaptionBox,
 	Map,
 	Contents,
@@ -71,6 +73,7 @@ enum class PM2CollisionOrder
 {
 	BackGround,
 	BackGroundObj,
+	TitleLogo,
 	CaptionBox,
 	Map,
 	Contents,
