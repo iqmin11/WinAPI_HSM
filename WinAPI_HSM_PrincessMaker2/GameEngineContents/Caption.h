@@ -29,14 +29,12 @@ private:
 	GameEngineRender* CaptionOutline3Render = nullptr;
 	GameEngineRender* CaptionOutline4Render = nullptr;
 
-	float4 CaptionPos = {400, 450};
+	float4 CaptionPos = {400, 500};
 
 	int TextHeight = 18;
 	std::string TextType = "±¼¸²";
 	COLORREF TextColor = RGB(255, 255, 255);
 	COLORREF TextOutlineColor = RGB(0, 0, 0);
-	float4 CaptionTextBoxScale = { 400, 400 };
-	float4 CaptionTextBoxPos = float4::Zero;
-
+	float4 CaptionTextBoxScale = { 600, 100 };
 };
 
