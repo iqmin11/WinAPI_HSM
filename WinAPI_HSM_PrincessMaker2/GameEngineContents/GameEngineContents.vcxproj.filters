@@ -135,6 +135,12 @@
     <ClInclude Include="Caption.h">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClInclude>
+    <ClInclude Include="GlobalActor.h">
+      <Filter>ContentsLevel\0. PM2Base\Global</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalButton.h">
+      <Filter>ContentsLevel\0. PM2Base\Global</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -270,6 +276,12 @@
     <ClCompile Include="Caption.cpp">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClCompile>
+    <ClCompile Include="GlobalActor.cpp">
+      <Filter>ContentsLevel\0. PM2Base\Global</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalButton.cpp">
+      <Filter>ContentsLevel\0. PM2Base\Global</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsLevel">
@@ -331,6 +343,9 @@
     </Filter>
     <Filter Include="ContentsLevel\2. FirstSetLevel\FirstSetActor\ButtonUI">
       <UniqueIdentifier>{c0bec0b2-d425-46f9-bec2-d61c1f882d07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\0. PM2Base\Global">
+      <UniqueIdentifier>{3f67aa7a-8df7-4808-8f58-a3a396595b95}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

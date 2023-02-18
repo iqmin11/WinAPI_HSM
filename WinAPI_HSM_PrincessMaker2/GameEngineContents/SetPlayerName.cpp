@@ -199,6 +199,7 @@ void SetPlayerName::On()
 		}
 	}
 	CompleteButton->On();
+	LetterEraseButton->On();
 }
 
 void SetPlayerName::Off()
@@ -213,6 +214,7 @@ void SetPlayerName::Off()
 		}
 	}
 	CompleteButton->Off();
+	LetterEraseButton->Off();
 }
 
 void SetPlayerName::SetPrintLetterRender()
@@ -395,7 +397,7 @@ void SetPlayerName::SetCompleteButton()
 	GameEngineLevel* Level = GetLevel();
 	float4 ButtonStartPosition = { 194, 448 };
 
-	CompleteButton = Level->CreateActor<Button>(PM2ActorOrder::Menu0_Button);
+	CompleteButton = Level->CreateActor<GlobalButton>(PM2ActorOrder::Menu0_Button);
 	CompleteButton->SetTargetCollisionGroup(static_cast<int>(PM2CollisionOrder::MousePoint));
 	CompleteButton->SetScale(ButtonScale2);
 	CompleteButton->SetRenderOrder(static_cast<int>(PM2RenderOrder::Menu0_Button));
@@ -443,7 +445,7 @@ void SetPlayerName::SetLetterEraseButton()
 	GameEngineLevel* Level = GetLevel();
 	float4 ButtonStartPosition = { 266, 448 };
 
-	LetterEraseButton = Level->CreateActor<Button>(PM2ActorOrder::Menu0_Button);
+	LetterEraseButton = Level->CreateActor<GlobalButton>(PM2ActorOrder::Menu0_Button);
 	LetterEraseButton->SetTargetCollisionGroup(static_cast<int>(PM2CollisionOrder::MousePoint));
 	LetterEraseButton->SetScale(ButtonScale2);
 	LetterEraseButton->SetRenderOrder(static_cast<int>(PM2RenderOrder::Menu0_Button));

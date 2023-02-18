@@ -58,6 +58,11 @@ void FirstSetLevel::Update(float _DeltaTime)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("Opening");
 	}
+	
+	if (true == GameEngineInput::IsDown("1"))
+	{
+		GameEngineCore::GetInst()->DebugSwitch();
+	}
 
 	switch (CurStateValue)
 	{

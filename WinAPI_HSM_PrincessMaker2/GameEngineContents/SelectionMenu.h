@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include <GameEngineCore/Button.h>
+#include "GlobalButton.h"
 #include "MenuFrame.h"
 
 class SelectionMenu : public MenuFrame
@@ -24,7 +24,7 @@ protected:
 	void SetSelectionMenu(int _Count, float4 _Pos, float _xScale, int _ActorOrder, int _RenderOrder);
 	void SetSelectionMenu(int _Count, float4 _Pos, float _xScale, PM2ActorOrder _ButtonActorOrder, PM2RenderOrder _ButtonRenderOrder);
 
-	std::vector<Button*>& GetSelectButtons()
+	std::vector<GlobalButton*>& GetSelectButtons()
 	{
 		return SelectButtons;
 	}
@@ -32,7 +32,7 @@ protected:
 	void SetButtonString(int _RenderOrder, int _ButtonIndex, const std::string_view& _Text);
 
 private:
-	std::vector<Button*> SelectButtons = std::vector<Button*>();
+	std::vector<GlobalButton*> SelectButtons = std::vector<GlobalButton*>();
 
 	int CountButton = 0;
 

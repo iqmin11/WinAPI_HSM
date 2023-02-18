@@ -31,6 +31,11 @@ void TitleLevel::Loading()
 	{
 		GameEngineInput::CreateKey("LevelChange", 'P');
 	}
+
+	if (false == GameEngineInput::IsKey("1"))
+	{
+		GameEngineInput::CreateKey("1", '1');
+	}
 	
 	CreateActor<TitleBackground>(PM2ActorOrder::BackGround);
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
@@ -48,6 +53,10 @@ void TitleLevel::Update(float _DeltaTime)
 		GameEngineCore::GetInst()->ChangeLevel("FirstSet");
 	}
 
+	if (true == GameEngineInput::IsDown("1"))
+	{
+		GameEngineCore::GetInst()->DebugSwitch();
+	}
 }
 
 void TitleLevel::SoundLoad()

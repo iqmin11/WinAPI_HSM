@@ -261,6 +261,7 @@ void PlayerCalendar::UpdateDateNumButton()
 						DateButton[w][z][y][x]->SetReleaseImage("PlayerCalendarNum.bmp", 0);
 						DateButton[w][z][y][x]->SetHoverImage("PlayerCalendarNum.bmp", 0);	
 						DateButton[w][z][y][x]->SetPressImage("PlayerCalendarNum.bmp", 0);
+						DateButton[w][z][y][x]->Off();
 					}
 					else if (x + (y * 7) < MonthFirstWeekday + MonthLen[FirstMonth - 1])
 					{
@@ -271,6 +272,7 @@ void PlayerCalendar::UpdateDateNumButton()
 							DateButton[w][z][y][x]->SetHoverImage("PlayerCalendarNum.bmp", 64 + Day);
 							DateButton[w][z][y][x]->SetPressImage("PlayerCalendarNum.bmp", 64 + Day++);
 							DateButton[w][z][y][x]->SetClickCallBack(SetPlayerBirthDay);
+							DateButton[w][z][y][x]->On();
 						}
 						else
 						{
@@ -279,6 +281,7 @@ void PlayerCalendar::UpdateDateNumButton()
 							DateButton[w][z][y][x]->SetHoverImage("PlayerCalendarNum.bmp", 64 + Day);
 							DateButton[w][z][y][x]->SetPressImage("PlayerCalendarNum.bmp", 64 + Day++);
 							DateButton[w][z][y][x]->SetClickCallBack(SetPlayerBirthDay);
+							DateButton[w][z][y][x]->On();
 						}
 					}
 					else
@@ -287,6 +290,7 @@ void PlayerCalendar::UpdateDateNumButton()
 						DateButton[w][z][y][x]->SetReleaseImage("PlayerCalendarNum.bmp", 0);
 						DateButton[w][z][y][x]->SetHoverImage("PlayerCalendarNum.bmp", 0);
 						DateButton[w][z][y][x]->SetPressImage("PlayerCalendarNum.bmp", 0);
+						DateButton[w][z][y][x]->Off();
 					}
 				}
 			}

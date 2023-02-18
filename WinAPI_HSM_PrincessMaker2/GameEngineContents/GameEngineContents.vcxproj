@@ -263,6 +263,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="GlobalActor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="GlobalButton.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="MainMenu.h">
       <SubType>
       </SubType>
@@ -475,6 +483,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="GaugeRenderObject.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="GlobalActor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="GlobalButton.cpp">
       <SubType>
       </SubType>
     </ClCompile>

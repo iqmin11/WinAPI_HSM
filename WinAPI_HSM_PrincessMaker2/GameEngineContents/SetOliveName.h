@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/Button.h>
+#include "GlobalButton.h"
 
 class CharButton;
 class GameEngineRender;
@@ -40,7 +41,7 @@ private:
 	GameEngineRender* PrintLetterRender1 = nullptr;
 	GameEngineRender* PrintLetterRender2 = nullptr;
 	GameEngineRender* PrintLetterRender3 = nullptr;
-	float4 PrintLetterBoxScale = { 100 , 18 };
+	float4 PrintLetterBoxScale = { 120 , 18 };
 
 	static GameEngineRender* ExplainRender1;
 	static GameEngineRender* ExplainRender2;
@@ -66,7 +67,7 @@ private:
 	GameEngineRender* LowerCaseLetterEffect3Render[6][5] = {};
 	GameEngineRender* LowerCaseLetterShadowRender[6][5] = {};
 
-	Button* CompleteButton = nullptr;
+	GlobalButton* CompleteButton = nullptr;
 	GameEngineRender* CompleteButton1Render = nullptr;
 	GameEngineRender* CompleteButton2Render = nullptr;
 	GameEngineRender* CompleteButtonEffect1Render = nullptr;
@@ -74,7 +75,7 @@ private:
 	GameEngineRender* CompleteButtonEffect3Render = nullptr;
 	GameEngineRender* CompleteButtonShadowRender = nullptr;
 
-	Button* LetterEraseButton = nullptr;
+	GlobalButton* LetterEraseButton = nullptr;
 	GameEngineRender* LetterEraseButton1Render = nullptr;
 	GameEngineRender* LetterEraseButton2Render = nullptr;
 	GameEngineRender* LetterEraseButtonEffect1Render = nullptr;

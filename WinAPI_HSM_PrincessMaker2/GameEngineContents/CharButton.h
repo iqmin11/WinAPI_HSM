@@ -1,8 +1,8 @@
 #pragma once
-#include <GameEngineCore/Button.h>
+#include "GlobalButton.h"
 
 // Ό³Έν :
-class CharButton : public Button
+class CharButton : public GlobalButton
 {
 public:
 	// constrcuter destructer

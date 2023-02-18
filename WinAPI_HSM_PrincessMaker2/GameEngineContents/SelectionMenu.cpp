@@ -22,7 +22,7 @@ void SelectionMenu::SetSelectionMenu(int _Count, float4 _Pos, float _xScale, int
 	GameEngineLevel* Level = GetLevel();
 	for (size_t i = 0; i < SelectButtons.size(); i++)
 	{
-		SelectButtons[i] = Level->CreateActor<Button>(_ActorOrder);
+		SelectButtons[i] = Level->CreateActor<GlobalButton>(_ActorOrder);
 		SelectButtons[i]->SetReleaseImage("SelectButton_Release.bmp");
 		SelectButtons[i]->SetHoverImage("SelectButton_Hover.bmp");
 		SelectButtons[i]->SetPressImage("SelectButton_Hover.bmp");

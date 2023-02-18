@@ -1,8 +1,7 @@
 #pragma once
-#include <GameEngineCore/Button.h>
-
+#include "GlobalButton.h"
 #include "ContentsEnums.h"
-class Button_BloodType : public Button
+class Button_BloodType : public GlobalButton
 {
 public:
 	// construtor destructor

@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include "GlobalButton.h"
 
 class Button;
 class CharButton;
@@ -48,7 +49,7 @@ private:
 	GameEngineRender* ExplainRenderShadow = nullptr;
 	float4 ExplainTextBoxScale = { 300, 18 };
 
-	Button* CompleteButton = nullptr;
+	GlobalButton* CompleteButton = nullptr;
 	GameEngineRender* CompleteButton1Render = nullptr;
 	GameEngineRender* CompleteButton2Render = nullptr;
 	GameEngineRender* CompleteButtonEffect1Render = nullptr;

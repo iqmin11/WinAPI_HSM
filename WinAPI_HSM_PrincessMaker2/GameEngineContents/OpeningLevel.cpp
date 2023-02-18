@@ -37,17 +37,23 @@ void OpeningLevel::Loading()
 	AcCutScene = CreateActor<Cutscene>();
 	AcOpeningCredit = CreateActor<OpeningCredit>();
 
-	if (!GameEngineInput::IsKey("1"))
+	if (!GameEngineInput::IsKey("2"))
 	{
-		GameEngineInput::CreateKey("1", '1');
+		GameEngineInput::CreateKey("2", '2');
 	}
 }
 
 void OpeningLevel::Update(float _DeltaTime)
 {
 
+	if (true == GameEngineInput::IsDown("1"))
+	{
+		GameEngineCore::GetInst()->DebugSwitch();
+	}
+	
 	float LocalDeltaTime = _DeltaTime;
-	if (GameEngineInput::IsPress("1"))
+	
+	if (GameEngineInput::IsPress("2"))
 	{
 		LocalDeltaTime *= 16;
 		Time += LocalDeltaTime;

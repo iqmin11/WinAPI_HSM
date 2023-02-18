@@ -230,7 +230,7 @@ void SetPlayerAge::SetCompleteButton()
 	GameEngineLevel* Level = GetLevel();
 	float4 ButtonStartPosition = { 194, 448 };
 
-	CompleteButton = Level->CreateActor<Button>(PM2ActorOrder::Menu0_Button);
+	CompleteButton = Level->CreateActor<GlobalButton>(PM2ActorOrder::Menu0_Button);
 	CompleteButton->SetTargetCollisionGroup(static_cast<int>(PM2CollisionOrder::MousePoint));
 	CompleteButton->SetScale(ButtonScale2);
 	CompleteButton->SetRenderOrder(static_cast<int>(PM2RenderOrder::Menu0_Button));

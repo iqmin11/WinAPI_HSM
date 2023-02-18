@@ -1,8 +1,8 @@
 #pragma once
-#include <GameEngineCore/Button.h>
+#include "GlobalButton.h"
 #include "Date.h"
 
-class Button_Date : public Button
+class Button_Date : public GlobalButton
 {
 public:
 	// construtor destructor
