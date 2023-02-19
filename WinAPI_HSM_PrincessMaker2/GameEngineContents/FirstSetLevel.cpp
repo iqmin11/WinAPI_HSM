@@ -34,7 +34,7 @@ void FirstSetLevel::Loading()
 	
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 
-	CreateActor<Olive>(PM2ActorOrder::Player);
+	AcOlive = CreateActor<Olive>(PM2ActorOrder::Olive);
 
 	AcSetPlayerName = CreateActor<SetPlayerName>(static_cast<int>(ActorState::SetPlayerName));
 	AcSetOliveName = CreateActor<SetOliveName>(static_cast<int>(ActorState::SetOliveName));

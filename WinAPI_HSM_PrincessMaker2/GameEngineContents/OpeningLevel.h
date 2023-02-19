@@ -7,6 +7,8 @@ class UpperDialog;
 class BottomDialog;
 class Caption;
 class Logo;
+class OpeningDate;
+class Olive;
 class OpeningLevel : public GameEngineLevel
 {
 public:
@@ -23,16 +25,20 @@ public:
 	void Loading() override;
 	void Update(float _DeltaTime) override;
 	void LevelChangeEnd(GameEngineLevel* _NextLevel) override {};
-	void LevelChangeStart(GameEngineLevel* _PrevLevel) override {};
+	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 protected:
 
 
 private:
+	Olive* AcOlive = nullptr;
+	std::string FatherName = std::string();
+
 	Caption* AcCaption = nullptr;
 	Cutscene* AcCutScene = nullptr;
 	UpperDialog* AcUpperDialog = nullptr;
 	BottomDialog* AcBottomDialog = nullptr;
 	OpeningCredit* AcOpeningCredit = nullptr;
+	OpeningDate* AcOpeningDate = nullptr;
 	Logo* AcLogo = nullptr;
 	float Time = 0.0f;
 

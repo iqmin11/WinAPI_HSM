@@ -43,7 +43,7 @@ void RaisingSimLevel::Loading()
 	CreateActor<MainMenu>(PM2ActorOrder::Menu0);
 
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
-	CreateActor<Olive>(PM2ActorOrder::Player);
+	CreateActor<Olive>(PM2ActorOrder::Olive);
 	CreateActor<Flower>(PM2ActorOrder::BackGround);
 	CreateActor<Paint>(PM2ActorOrder::BackGround);
 	//CreateActor<Calendar>(PM2ActorOrder::Menu1);

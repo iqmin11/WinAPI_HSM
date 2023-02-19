@@ -29,6 +29,16 @@ public:
 		return FatherAge;
 	}
 
+	std::string GetOliveFirstName() const
+	{
+		return OliveFirstName;
+	}
+
+	std::string GetOliveLastName()
+	{
+		return OliveLastName;
+	}
+
 	void SetOliveFirstName(const std::string_view& _FirstName)
 	{
 		OliveFirstName = _FirstName;
@@ -58,6 +68,8 @@ public:
 	{
 		OliveBloodType = _BloodType;
 	}
+
+
 
 protected:
 	void Start() override;

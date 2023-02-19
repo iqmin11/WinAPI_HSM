@@ -6,11 +6,13 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 
 #include "MousePoint.h"
+#include "Olive.h"
 #include "Caption.h"
 #include "UpperDialog.h"
 #include "BottomDialog.h"
 #include "Cutscene.h"
 #include "OpeningCredit.h"
+#include "OpeningDate.h"
 #include "Logo.h"
 #include "ContentsEnums.h"
 
@@ -29,12 +31,13 @@ void OpeningLevel::Loading()
 	SoundLoad();
 	ImageLoad();
 	
+	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	AcCaption = CreateActor<Caption>();
 	AcUpperDialog = CreateActor<UpperDialog>();
 	AcBottomDialog = CreateActor<BottomDialog>();
-	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	AcCutScene = CreateActor<Cutscene>();
 	AcOpeningCredit = CreateActor<OpeningCredit>();
+	AcOpeningDate = CreateActor<OpeningDate>();
 	AcLogo = CreateActor<Logo>();
 
 	if (!GameEngineInput::IsKey("2"))
@@ -45,7 +48,6 @@ void OpeningLevel::Loading()
 
 void OpeningLevel::Update(float _DeltaTime)
 {
-
 	if (true == GameEngineInput::IsDown("1"))
 	{
 		GameEngineCore::GetInst()->DebugSwitch();
@@ -117,7 +119,7 @@ void OpeningLevel::Update(float _DeltaTime)
 		if (37 <= Time && 41 > Time)
 		{
 			AcCaption->On();
-			AcCaption->SetUpdateText(std::string("그때 그 참상을 목격한 방랑검사가 있었다. 그의 이름은 ") + std::string("용사이름") + std::string(".") + std::string("\n그는 스스로 마왕과의 싸움에 몸을 던졌다"));
+			AcCaption->SetUpdateText(std::string("그때 그 참상을 목격한 방랑검사가 있었다. 그의 이름은 ") + FatherName + std::string(".") + std::string("\n그는 스스로 마왕과의 싸움에 몸을 던졌다"));
 		}
 		else if (41 <= Time && 42 > Time)
 		{
@@ -126,7 +128,7 @@ void OpeningLevel::Update(float _DeltaTime)
 		else if (42 <= Time && 46 > Time)
 		{
 			AcCaption->On();
-			AcCaption->SetUpdateText("초승달이 뜬 밤, 마왕의 진영에 잠입한 " + std::string("용사이름") + std::string(".") + std::string("\n그는 1대1의 결투 끝에 마왕에게 승리했다."));
+			AcCaption->SetUpdateText("초승달이 뜬 밤, 마왕의 진영에 잠입한 " + FatherName + std::string(".") + std::string("\n그는 1대1의 결투 끝에 마왕에게 승리했다."));
 		}
 		else if (46 <= Time && 47 > Time)
 		{
@@ -154,7 +156,7 @@ void OpeningLevel::Update(float _DeltaTime)
 		else if (65 <= Time && 69 > Time)
 		{
 			AcCaption->On();
-			AcCaption->SetUpdateText("그 질문에 대한 " + std::string("용사이름") + std::string("의 대답은 전해지지 않는다."));
+			AcCaption->SetUpdateText("그 질문에 대한 " + FatherName + std::string("의 대답은 전해지지 않는다."));
 		}
 		else if (69 <= Time && 70 > Time)
 		{
@@ -208,20 +210,22 @@ void OpeningLevel::Update(float _DeltaTime)
 		if (116 <= Time && 119 > Time)
 		{
 			AcCaption->On();
-			AcCaption->SetUpdateText("이리하여 도시에 정착해 왕의 녹봉을 받게 된 용사 " + std::string("용사이름") + std::string("."));
+			AcCaption->SetUpdateText("이리하여 도시에 정착해 왕의 녹봉을 받게 된 용사 " + FatherName + std::string("."));
 		}
 	}
 	else if (119 <= Time && 122 > Time)//(119 <= Time && 122 > Time)
 	{
 		AcCaption->Off();
+		AcOpeningDate->On();
 	}
 	else if (122 <= Time && 144 > Time)//(122 <= Time && 143 > Time)
 	{
 		AcCutScene->OnCutScene(3);
+		AcOpeningDate->Off();
 		if (125 <= Time && 130 > Time)
 		{
 			AcCaption->On();
-			AcCaption->SetUpdateText("그러던 어느 아름다운 밤, " + std::string("용사이름") + std::string("의 이름을 부르는 듯한 느낌이 들었다…"));
+			AcCaption->SetUpdateText("그러던 어느 아름다운 밤, " + FatherName + std::string("의 이름을 부르는 듯한 느낌이 들었다…"));
 		}
 		else if (130 <= Time && 134 > Time)
 		{
@@ -235,7 +239,7 @@ void OpeningLevel::Update(float _DeltaTime)
 		else if (135 <= Time && 140 > Time)
 		{
 			AcCaption->On();
-			AcCaption->SetUpdateText("하늘에서 " + std::string("용사이름") + std::string("의 이름을 부르는 목소리가 들린다…"));
+			AcCaption->SetUpdateText("하늘에서 " + FatherName + std::string("의 이름을 부르는 목소리가 들린다…"));
 		}
 		else if (140 <= Time && 141 > Time)
 		{
@@ -249,7 +253,7 @@ void OpeningLevel::Update(float _DeltaTime)
 	}
 	else if (144 <= Time && 149 > Time)//(143 <= Time && 148 > Time)
 	{
-		AcCaption->SetUpdateText("언덕으로 달려간 " + std::string("용사이름") + std::string(". 그곳에는 커다란 빛덩어리가 떠 있었다."));
+		AcCaption->SetUpdateText("언덕으로 달려간 " + FatherName + std::string(". 그곳에는 커다란 빛덩어리가 떠 있었다."));
 		AcCutScene->OffCutScene();
 	}
 	else if (149 <= Time && 172 > Time)//(148 <= Time && 172 > Time)
@@ -332,6 +336,13 @@ void OpeningLevel::Update(float _DeltaTime)
 	}
 }
 
+void OpeningLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	AcOlive = Olive::OlivePlayer;
+	AcOpeningDate->UpdateOliveBirthDay();
+	FatherName = AcOlive->GetOliveLastName();
+}
+
 void OpeningLevel::SoundLoad()
 {
 }
@@ -351,8 +362,8 @@ void OpeningLevel::ImageLoad()
 
 	Dir.Move("OpeningLevel");
 
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OpeningDayNum.BMP"))->Cut(20, 1);
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OpeningMonthNum.BMP"))->Cut(10, 1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OpeningDayNum.BMP"))->Cut(10, 1);
+	//GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OpeningMonthNum.BMP"))->Cut(10, 1);
 	
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Credit.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Cutscene1.BMP"));
