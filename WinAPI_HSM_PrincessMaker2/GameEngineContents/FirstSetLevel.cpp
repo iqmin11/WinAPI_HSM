@@ -153,11 +153,10 @@ void FirstSetLevel::Update(float _DeltaTime)
 
 }
 
-void FirstSetLevel::SetFirstStatus()
+void FirstSetLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
-	AcOlive->UpdateZodiac();
-	AcOlive->SetFirstStatus();
 }
+
 
 void FirstSetLevel::SoundLoad()
 {

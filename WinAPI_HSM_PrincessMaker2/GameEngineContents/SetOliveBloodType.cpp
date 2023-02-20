@@ -240,5 +240,7 @@ void SetOliveBloodType::ClickBloodType(Button* _Button)
 {
 	Button_BloodType* Ptr = dynamic_cast<Button_BloodType*>(_Button);
 	Olive::OlivePlayer->SetBloodType(Ptr->BloodTypeValue);
+	Olive::OlivePlayer->UpdateZodiac();
+	Olive::OlivePlayer->SetFirstStatus();
 	GameEngineCore::GetInst()->ChangeLevel("Opening");
 }

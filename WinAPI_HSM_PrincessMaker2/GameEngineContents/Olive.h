@@ -75,6 +75,16 @@ public:
 		return OliveLastName;
 	}
 
+	PatronGod GetPatronGod()
+	{
+		return OlivePatronGod;
+	}
+
+	bool GetPatronGodSex()
+	{
+		return PatronGodSex;
+	}
+
 	void SetOliveFirstName(const std::string_view& _FirstName)
 	{
 		OliveFirstName = _FirstName;

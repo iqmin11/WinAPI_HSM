@@ -275,13 +275,27 @@ void OpeningLevel::Update(float _DeltaTime)
 		else if (156 <= Time && 161 > Time)
 		{
 			AcBottomDialog->On();
-			AcBottomDialog->SetMugPic("Mug_Uranus_God.bmp");
+			AcBottomDialog->SetMugPic(GodPicImageString);
 			AcBottomDialog->SetMugLoc(MugShotLR::Right);
-			AcBottomDialog->SetUpdateText("「용사여…나는 이 소녀의 수호\n자 " + std::string("수호신 이름") + std::string("...」"));
+			if (0 == PatronGodSex)
+			{
+				AcBottomDialog->SetUpdateText("「용사여…나는 이 소녀의 수호\n자 " + GodName + std::string("」"));
+			}
+			else if (1 == PatronGodSex)
+			{
+				AcBottomDialog->SetUpdateText("「용사여…나는 이 소녀의 수호\n자 " + GodName + std::string("...」"));
+			}
 		}
 		else if (161 <= Time && 171 > Time)
 		{
-			AcBottomDialog->SetUpdateText("「그 아이는 태어나서 오늘에 \n이르기까지 성스러운 빛의 안에\n서 자라 현세의 더러움을 일절 \n알지 못하는 순수한 영혼을 지\n닌 자…」");
+			if (0 == PatronGodSex)
+			{
+				AcBottomDialog->SetUpdateText("「그 아이는 태어나서 오늘에 \n이르기까지 성스러운 빛의 안에\n서 자라 현세의 더러움을 일절 \n알지 못하는 순수한 영혼을 지\n닌 자다」");
+			}
+			else if (1 == PatronGodSex)
+			{
+				AcBottomDialog->SetUpdateText("「그 아이는 태어나서 오늘에 \n이르기까지 성스러운 빛의 안에\n서 자라 현세의 더러움을 일절 \n알지 못하는 순수한 영혼을 지\n닌 자…」");
+			}
 		}
 		else if (171 <= Time && 172 > Time)
 		{
@@ -294,19 +308,47 @@ void OpeningLevel::Update(float _DeltaTime)
 		if (174 <= Time && 178 > Time)
 		{
 			AcBottomDialog->On();
-			AcBottomDialog->SetUpdateText("「바로 지금 당신에게 이 아이\n를 맡기겠습니다」");
+			if (0 == PatronGodSex)
+			{
+				AcBottomDialog->SetUpdateText("「바로 지금 그대에게 이 아이\n를 맡기겠다」");
+			}
+			else if (1 == PatronGodSex)
+			{
+				AcBottomDialog->SetUpdateText("「바로 지금 당신에게 이 아이\n를 맡기겠습니다」");
+			}
 		}
 		else if (178 <= Time && 185 > Time)
 		{
-			AcBottomDialog->SetUpdateText("「그 아이가 사는 것도 죽는 것\n도 또한 어떠한 인생을 보내게\n 되는 지도, 전부 당신 하기 나\n름」");
+			if (0 == PatronGodSex)
+			{
+				AcBottomDialog->SetUpdateText("「그 아이의 생과 사, 또한 어\n떠한 인생을 보내게 될 것인지\n도, 모두 그대에게 달렸다」");
+			}
+			else if (1 == PatronGodSex)
+			{
+				AcBottomDialog->SetUpdateText("「그 아이가 사는 것도 죽는 것\n도 또한 어떠한 인생을 보내게\n 되는 지도, 전부 당신 하기 나\n름」");
+			}
 		}
 		else if (185 <= Time && 191 > Time)
 		{
-			AcBottomDialog->SetUpdateText("「모든 것이 당신에게 달려있는 \n겁니다. 그래요, 모든 것이…」");
+			if (0 == PatronGodSex)
+			{
+				AcBottomDialog->SetUpdateText("「모든것이 그대에게 달려있는 \n것이다. 그래, 모든 것이 말이지\n…」");
+			}
+			else if (1 == PatronGodSex)
+			{
+				AcBottomDialog->SetUpdateText("「모든 것이 당신에게 달려있는 \n겁니다. 그래요, 모든 것이…」");
+			}
 		}
 		else if (191 <= Time && 198 > Time)
 		{
-			AcBottomDialog->SetUpdateText("「그럼 부탁드립니다. \n저는 항상 하늘에서 당신들 부\n녀를 지켜보겠습니다……」");
+			if (0 == PatronGodSex)
+			{
+				AcBottomDialog->SetUpdateText("「그럼 부탁하네. \n나는 항상 하늘에서 그대들 부\n녀를 지켜보고 있겠다……」");
+			}
+			else if (1 == PatronGodSex)
+			{
+				AcBottomDialog->SetUpdateText("「그럼 부탁드립니다. \n저는 항상 하늘에서 당신들 부\n녀를 지켜보겠습니다……」");
+			}
 		}
 		else if (198 <= Time && 199 > Time)
 		{
@@ -342,6 +384,66 @@ void OpeningLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	AcOlive = Olive::OlivePlayer;
 	AcOpeningDate->UpdateOliveBirthDay();
 	FatherName = AcOlive->GetOliveLastName();
+	if (PatronGod::태양신_솔 == AcOlive->GetPatronGod())
+	{
+		GodPicImageString = "Mug_Sol_God.bmp";
+		GodName = "태양신 솔";
+		PatronGodSex = AcOlive->GetPatronGodSex();
+	}
+	else if (PatronGod::달신_더문 == AcOlive->GetPatronGod())
+	{
+		GodPicImageString = "Mug_TheMoon_God.bmp";
+		GodName = "달의신 더 문";
+		PatronGodSex = AcOlive->GetPatronGodSex();
+	}
+	else if (PatronGod::화성신_마르스 == AcOlive->GetPatronGod())
+	{
+		GodPicImageString = "Mug_Mars_God.bmp";
+		GodName = "화성신 마르스";
+		PatronGodSex = AcOlive->GetPatronGodSex();
+	}
+	else if (PatronGod::수성신_머큐리 == AcOlive->GetPatronGod())
+	{
+		GodPicImageString = "Mug_Mercury_God.bmp";
+		GodName = "수성신 머큐리";
+		PatronGodSex = AcOlive->GetPatronGodSex();
+	}
+	else if (PatronGod::목성신_주피터 == AcOlive->GetPatronGod())
+	{
+		GodPicImageString = "Mug_Jupiter_God.bmp";
+		GodName = "목성신 주피터";
+		PatronGodSex = AcOlive->GetPatronGodSex();
+	}
+	else if (PatronGod::금성신_비너스 == AcOlive->GetPatronGod())
+	{
+		GodPicImageString = "Mug_Venus_God.bmp";
+		GodName = "금성신 비너스";
+		PatronGodSex = AcOlive->GetPatronGodSex();
+	}
+	else if (PatronGod::토성신_새턴 == AcOlive->GetPatronGod())
+	{
+		GodPicImageString = "Mug_Saturn_God.bmp";
+		GodName = "토성신 새턴";
+		PatronGodSex = AcOlive->GetPatronGodSex();
+	}
+	else if (PatronGod::천왕성신_우라누스 == AcOlive->GetPatronGod())
+	{
+		GodPicImageString = "Mug_Uranus_God.bmp";
+		GodName = "천왕성신 우라누스";
+		PatronGodSex = AcOlive->GetPatronGodSex();
+	}
+	else if (PatronGod::해왕성신_넵튠 == AcOlive->GetPatronGod())
+	{
+		GodPicImageString = "Mug_Neptune_God.bmp";
+		GodName = "해왕성신 넵튠";
+		PatronGodSex = AcOlive->GetPatronGodSex();
+	}
+	else if (PatronGod::명왕성신_하데스 == AcOlive->GetPatronGod())
+	{
+		GodPicImageString = "Mug_Hades_God.bmp";
+		GodName = "명왕성신 하데스";
+		PatronGodSex = AcOlive->GetPatronGodSex();
+	}
 }
 
 void OpeningLevel::SoundLoad()

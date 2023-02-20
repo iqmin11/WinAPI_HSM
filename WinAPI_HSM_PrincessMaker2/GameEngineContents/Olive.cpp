@@ -151,7 +151,7 @@ void Olive::UpdateZodiac()
 		OliveBirthDay <= Date{ 1200, 4, 19 })
 	{
 		OliveZodiac = Zodiac::양자리;
-		OlivePatronGod = PatronGod::화성신_마스;
+		OlivePatronGod = PatronGod::화성신_마르스;
 		PatronGodSex = 0;
 	}
 	else if (OliveBirthDay >= Date{ 1200, 4, 20 } ||

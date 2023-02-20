@@ -32,6 +32,10 @@ protected:
 private:
 	Olive* AcOlive = nullptr;
 	std::string FatherName = std::string();
+	
+	std::string GodPicImageString = std::string();
+	std::string GodName = std::string();
+	bool PatronGodSex = 0;
 
 	Caption* AcCaption = nullptr;
 	Cutscene* AcCutScene = nullptr;
