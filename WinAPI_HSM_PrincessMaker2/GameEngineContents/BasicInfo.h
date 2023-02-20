@@ -4,6 +4,7 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/NumberRenderObject.h>
+#include "ContentsEnums.h"
 
 class GameEngineRender;
 class BasicInfo : public GameEngineActor
@@ -19,61 +20,19 @@ public:
 	BasicInfo& operator=(const BasicInfo& _Other) = delete;
 	BasicInfo& operator=(BasicInfo&& _Other) noexcept = delete;
 
-	void SetName(const std::string_view& _Name)
-	{
-		OliveName = _Name;
-	}
-
-	void SetAge(int _age)
-	{
-		Age = _age;
-	}
 	
-	//void SetStar(Zodiac _star)
-	//{
-	//	Star = _star;
-	//}
-	
-	void SetGold(int _gold)
-	{
-		Gold = _gold;
-	}
-
-	void SetHeight(float _Height)
-	{
-		Height = _Height;
-	}
-
-	void SetWeight(float _Weight)
-	{
-		Weight = _Weight;
-	}
-
-	void SetBust(float _Bust)
-	{
-		Bust = _Bust;
-	}
-
-	void SetWaist(float _Waist)
-	{
-		Waist = _Waist;
-	}
-
-	void SetHip(float _Hip)
-	{
-		Hip = _Hip;
-	}
-
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void Render(float _Time) override;
 
 private:
-	
-	std::string OliveName = "\0";
+	float4 ActorPos = { 700, 109 };
+
+	std::string OliveFirstName = "SeungMin";
+	std::string OliveLastName = "Hwang";
 	int Age = 0; // 이건 올리브
-	//Zodiac Star = Zodiac::Null; // 이건 올리브
+	Zodiac Star = Zodiac::Null; // 이건 올리브
 	int Gold = 0; // 이건 올리브
 	float Height = 0.0f; // 이건 올리브
 	float Weight = 0.0f; // 이건 올리브
@@ -82,6 +41,16 @@ private:
 	float Hip = 0.0f; // 이건 올리브
 
 	GameEngineRender* BasicInfoFrame = nullptr;
+	
+	GameEngineRender* FirstNameRender = nullptr;
+	float4 FirstNameRenderPos = { -90, -98 };
+	GameEngineRender* LastNameRender = nullptr;
+	float4 LastNameRenderPos = { -90, -75 };
+
+	int TextHeight = 20;
+	std::string TextType = "굴림";
+	COLORREF TextColor = RGB(255, 255, 255);
+	float4 TextBoxScale = { 180,20 };
 
 	NumberRenderObject AgeRender = NumberRenderObject();
 	NumberRenderObject GoldRender = NumberRenderObject();

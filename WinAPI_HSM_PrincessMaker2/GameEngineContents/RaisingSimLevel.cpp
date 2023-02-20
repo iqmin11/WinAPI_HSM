@@ -65,6 +65,11 @@ void RaisingSimLevel::Update(float _DeltaTime)
 		GameEngineCore::GetInst()->ChangeLevel("RPG");
 		// Player::MainPlayer->Death()p;
 	}
+
+	if (GameEngineInput::IsDown("1"))
+	{
+		GameEngineCore::GetInst()->DebugSwitch();
+	}
 }
 
 void RaisingSimLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)

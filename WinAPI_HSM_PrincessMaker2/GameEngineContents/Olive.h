@@ -70,19 +70,34 @@ public:
 		return OliveFirstName;
 	}
 
-	std::string GetOliveLastName()
+	std::string GetOliveLastName() const
 	{
 		return OliveLastName;
 	}
 
-	PatronGod GetPatronGod()
+	int GetOliveAge() const
+	{
+		return OliveAge;
+	}
+
+	Zodiac GetOliveZodiac() const
+	{
+		return OliveZodiac;
+	}
+
+	PatronGod GetPatronGod() const
 	{
 		return OlivePatronGod;
 	}
 
-	bool GetPatronGodSex()
+	bool GetPatronGodSex() const
 	{
 		return PatronGodSex;
+	}
+
+	int GetGold() const
+	{
+		return Gold;
 	}
 
 	void SetOliveFirstName(const std::string_view& _FirstName)

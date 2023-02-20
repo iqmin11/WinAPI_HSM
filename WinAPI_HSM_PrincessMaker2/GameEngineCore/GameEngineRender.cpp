@@ -160,7 +160,7 @@ void GameEngineRender::TextRender(float _DeltaTime)
 		HDC DoubleDC = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
 		HBRUSH myBrush = static_cast<HBRUSH>(GetStockObject(NULL_BRUSH));
 		HBRUSH oldBrush = static_cast<HBRUSH>(SelectObject(DoubleDC, myBrush));
-		HPEN myPen = CreatePen(PS_DASH, 0, RGB(0, 0, 0));
+		HPEN myPen = CreatePen(PS_DASH, 0, RGB(255, 0, 255));
 		HPEN oldPen = static_cast<HPEN>(SelectObject(DoubleDC, myPen));
 		Rectangle(GameEngineWindow::GetDoubleBufferImage()->GetImageDC(), Rect.left, Rect.top, Rect.right, Rect.bottom);
 
