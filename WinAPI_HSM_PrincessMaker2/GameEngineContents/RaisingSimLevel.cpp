@@ -67,6 +67,11 @@ void RaisingSimLevel::Update(float _DeltaTime)
 	}
 }
 
+void RaisingSimLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	AcOlive = Olive::OlivePlayer;
+}
+
 void RaisingSimLevel::SoundLoad()
 {
 }

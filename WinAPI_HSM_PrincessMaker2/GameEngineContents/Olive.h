@@ -238,16 +238,21 @@ private:
 
 	std::string OliveFirstName = std::string();
 	std::string OliveLastName = std::string();
+	
 	int OliveAge = 10;
+	
 	Date OliveBirthDay = Date();
+	
 	BloodType OliveBloodType = BloodType::Null;
+	
 	Zodiac OliveZodiac = Zodiac::Null;
+	
 	PatronGod OlivePatronGod = PatronGod::Null;
-	bool PatronGodSex = 0; // true Male, false Female
+	bool PatronGodSex = false; // false Male, true Female
 
 	Status OliveStatus = Status();
 
-	
+	int Gold = 500;
 
 	Date FatherBirthDay = Date();
 	int FatherAge = -1;

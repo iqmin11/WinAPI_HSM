@@ -2,7 +2,7 @@
 #include <GameEngineBase/GameEngineDebug.h>
 
 
-std::vector<Date> Date::GetOneMonthCalendar(unsigned int _YYYY, unsigned int _MM)
+std::vector<Date> Date::GetOneMonthCalendar(int _YYYY, int _MM)
 {
     std::vector<Date> Result = std::vector<Date>();
 
@@ -46,9 +46,7 @@ Date::Date()
 
 Date::Date(int _YYYY, int _MM, int _DD)
 {
-    Year = _YYYY;
-    Month = _MM;
-    Day = _DD;
+    SetDate(_YYYY, _MM, _DD);
 }
 
 Date::~Date()
@@ -65,7 +63,7 @@ bool Date::IsOverMonth()
     return true;
 }
 
-bool Date::IsOverMonth(unsigned int _MM)
+bool Date::IsOverMonth(int _MM)
 {
     if (0 < _MM && 13 > _MM)
     {
@@ -124,7 +122,7 @@ bool Date::IsOverDay()
     return false;
 }
 
-bool Date::IsOverDay(unsigned int _YYYY, unsigned int _MM, unsigned int _DD)
+bool Date::IsOverDay(int _YYYY, int _MM, int _DD)
 {
     if (1 == _MM ||
         3 == _MM ||
@@ -194,7 +192,7 @@ bool Date::IsLeapYear() // ¿±≥‚¿Ã¥œ?
     return false;
 }
 
-bool Date::IsLeapYear(unsigned int _YYYY)
+bool Date::IsLeapYear(int _YYYY)
 {
     if ((0 == (_YYYY % 4) && 0 != (_YYYY % 100)) || 0 == (_YYYY % 400))
     {
@@ -203,7 +201,7 @@ bool Date::IsLeapYear(unsigned int _YYYY)
     return false;
 }
 
-bool Date::IsBigMonth(unsigned int _MM)
+bool Date::IsBigMonth(int _MM)
 {
     if (1 == _MM ||
     3  == _MM ||
@@ -218,14 +216,14 @@ bool Date::IsBigMonth(unsigned int _MM)
     return false;
 }
 
-void Date::SetWeekDay(unsigned int _YYYY, unsigned int _MM, unsigned int _DD)
+void Date::SetWeekDay(int _YYYY, int _MM, int _DD)
 {
     int WholeDay = 0;
-    for (unsigned int MM = 1; MM <= _MM; MM++)
+    for (int MM = 1; MM <= _MM; MM++)
     {
         if (MM == _MM)
         {
-            for (unsigned int DD = 1; DD < _DD; DD++)
+            for (int DD = 1; DD < _DD; DD++)
             {
                 WholeDay++;
             }
@@ -234,7 +232,7 @@ void Date::SetWeekDay(unsigned int _YYYY, unsigned int _MM, unsigned int _DD)
         }
         else
         {
-            for (unsigned int DD = 1; !IsOverDay(_YYYY, MM, DD); DD++)
+            for (int DD = 1; !IsOverDay(_YYYY, MM, DD); DD++)
             {
                 WholeDay++;
             }
@@ -242,13 +240,13 @@ void Date::SetWeekDay(unsigned int _YYYY, unsigned int _MM, unsigned int _DD)
     }
 }
 
-unsigned int Date::FindFirstWeekday(unsigned int _YYYY)
+int Date::FindFirstWeekday(int _YYYY)
 {
     int PrevYear = _YYYY - 1;
     return (PrevYear + ((PrevYear / 4) - (PrevYear / 100) + (PrevYear / 400)) + 1) % 7;
 }
 
-unsigned int Date::GetMonthLenth(unsigned int _YYYY, unsigned int _MM)
+int Date::GetMonthLenth(int _YYYY, int _MM)
 {
     if (IsOverMonth(_MM))
     {
@@ -276,9 +274,9 @@ unsigned int Date::GetMonthLenth(unsigned int _YYYY, unsigned int _MM)
     }
 }
 
-std::vector<unsigned int> Date::GetMonthLenths(unsigned int _YYYY)
+std::vector<int> Date::GetMonthLenths(int _YYYY)
 {
-    std::vector<unsigned int> Result = std::vector<unsigned int>();
+    std::vector<int> Result = std::vector<int>();
     Result.resize(12);
     for (int i = 0; i < Result.size(); i++)
     {
@@ -289,14 +287,14 @@ std::vector<unsigned int> Date::GetMonthLenths(unsigned int _YYYY)
 
 
 
-unsigned int Date::FindFirstWeekday()
+int Date::FindFirstWeekday()
 {
     int PrevYear = Year - 1;
     return (PrevYear + ((PrevYear / 4) - (PrevYear / 100) + (PrevYear / 400)) + 1) % 7;
 }
 
 
-unsigned int Date::FindMonthFirstWeekday(unsigned int _YYYY, unsigned int _MM)
+int Date::FindMonthFirstWeekday(int _YYYY, int _MM)
 {
     if (true == IsOverMonth(_MM))
     {

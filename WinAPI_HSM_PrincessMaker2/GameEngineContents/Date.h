@@ -18,16 +18,16 @@ enum class Week
 class Date
 {
 public:
-	static std::vector<Date> GetOneMonthCalendar(unsigned int _YYYY, unsigned  int _MM);
-	static bool IsOverMonth(unsigned int _MM);
-	static bool IsOverDay(unsigned int _YYYY, unsigned  int _MM, unsigned  int _DD);
-	static bool IsLeapYear(unsigned int _YYYY);
-	static bool IsBigMonth(unsigned int _MM);
-	void SetWeekDay(unsigned int _YYYY, unsigned  int _MM, unsigned  int _DD);
-	static unsigned int FindFirstWeekday(unsigned int _YYYY);
-	static unsigned int GetMonthLenth(unsigned int _YYYY, unsigned  int _MM);
-	static std::vector<unsigned int> GetMonthLenths(unsigned int _YYYY);
-	static unsigned int FindMonthFirstWeekday(unsigned int _YYYY, unsigned  int _MM);
+	static std::vector<Date> GetOneMonthCalendar(int _YYYY, int _MM);
+	static bool IsOverMonth(int _MM);
+	static bool IsOverDay(int _YYYY,  int _MM,  int _DD);
+	static bool IsLeapYear(int _YYYY);
+	static bool IsBigMonth(int _MM);
+	void SetWeekDay(int _YYYY,  int _MM,  int _DD);
+	static int FindFirstWeekday(int _YYYY);
+	static int GetMonthLenth(int _YYYY,  int _MM);
+	static std::vector<int> GetMonthLenths(int _YYYY);
+	static int FindMonthFirstWeekday(int _YYYY,  int _MM);
 
 
 	// construtor destructor
@@ -57,7 +57,7 @@ public:
 
 	}
 
-	void SetDate(unsigned int _YYYY, unsigned int _MM, unsigned int _DD)
+	void SetDate(int _YYYY, int _MM, int _DD)
 	{
 		if (IsOverMonth(_MM) ||
 			IsOverDay(_YYYY, _MM, _DD))
@@ -78,17 +78,17 @@ public:
 		WeekDay = Week::Null;
 	}
 	
-	unsigned int GetYear() const
+	int GetYear() const
 	{
 		return Year;
 	}
 	
-	unsigned int GetMonth() const
+	int GetMonth() const
 	{
 		return Month;
 	}
 	
-	unsigned int GetDay() const
+	int GetDay() const
 	{
 		return Day;
 	}
@@ -98,7 +98,7 @@ public:
 		return WeekDay;
 	}
 
-	unsigned int FindFirstWeekday();
+	int FindFirstWeekday();
 
 	bool operator== (const Date& _date)
 	{
@@ -193,23 +193,23 @@ protected:
 
 private:
 
-	unsigned int Year = 0; // 제한 없음
-	unsigned int Month = 0; // 1~12
-	unsigned int Day = 0; // 1~31
+	int Year = 0; // 제한 없음
+	int Month = 0; // 1~12
+	int Day = 0; // 1~31
 	
 	Week WeekDay = Week::Null; // 0~6
 	
-	void SetYear(unsigned int _YYYY)
+	void SetYear(int _YYYY)
 	{
 		Year = _YYYY;
 	}
 
-	void SetMonth(unsigned int _MM)
+	void SetMonth(int _MM)
 	{
 		Month = _MM;
 	}
 
-	void SetDay(unsigned int _DD)
+	void SetDay(int _DD)
 	{
 		Day = _DD;
 	}

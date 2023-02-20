@@ -6,6 +6,7 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineBase/GameEngineFile.h>
 
+#include "RaisingSimLevel.h"
 #include "MousePoint.h"
 #include "Olive.h"
 #include "Caption.h"
@@ -377,6 +378,11 @@ void OpeningLevel::Update(float _DeltaTime)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
 	}
+}
+
+void OpeningLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
+{
+	dynamic_cast<RaisingSimLevel*>(_NextLevel)->SetToday({ 1210, Olive::OlivePlayer->GetOliveBirthDay().GetMonth(), Olive::OlivePlayer->GetOliveBirthDay().GetDay() });
 }
 
 void OpeningLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
