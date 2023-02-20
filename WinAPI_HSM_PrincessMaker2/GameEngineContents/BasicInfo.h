@@ -29,10 +29,10 @@ protected:
 private:
 	float4 ActorPos = { 700, 109 };
 
-	std::string OliveFirstName = "SeungMin";
-	std::string OliveLastName = "Hwang";
+	std::string OliveFirstName = "Null";
+	std::string OliveLastName = "Null";
 	int Age = 0; // 이건 올리브
-	Zodiac Star = Zodiac::Null; // 이건 올리브
+	Zodiac Star = Zodiac::사자자리; // 이건 올리브
 	int Gold = 0; // 이건 올리브
 	float Height = 0.0f; // 이건 올리브
 	float Weight = 0.0f; // 이건 올리브
@@ -46,11 +46,12 @@ private:
 	float4 FirstNameRenderPos = { -90, -98 };
 	GameEngineRender* LastNameRender = nullptr;
 	float4 LastNameRenderPos = { -90, -75 };
-
 	int TextHeight = 20;
 	std::string TextType = "굴림";
 	COLORREF TextColor = RGB(255, 255, 255);
 	float4 TextBoxScale = { 180,20 };
+
+	GameEngineRender* StarIconRender = nullptr;
 
 	NumberRenderObject AgeRender = NumberRenderObject();
 	NumberRenderObject GoldRender = NumberRenderObject();
@@ -59,7 +60,5 @@ private:
 	NumberRenderObject BustRender = NumberRenderObject();
 	NumberRenderObject WaistRender = NumberRenderObject();
 	NumberRenderObject HipRender = NumberRenderObject();
-
-	GameEngineRender* StarRender = nullptr;
 };
 

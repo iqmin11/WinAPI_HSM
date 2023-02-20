@@ -124,10 +124,10 @@ void Olive::SetStatus(Status _Value)
 void Olive::UpdateZodiac()
 {
 
-	if (OliveBirthDay >= Date{1200, 12, 22} ||
-		OliveBirthDay <= Date{ 1200, 12, 31 } ||
-		OliveBirthDay >= Date{ 1200, 1, 1 } ||
-		OliveBirthDay <= Date{ 1200, 1, 19 })
+	if ((OliveBirthDay >= Date{1200, 12, 22} &&
+		OliveBirthDay <= Date{ 1200, 12, 31 }) ||
+		(OliveBirthDay >= Date{ 1200, 1, 1 } &&
+		OliveBirthDay <= Date{ 1200, 1, 19 }))
 	{
 		OliveZodiac = Zodiac::염소자리;
 		OlivePatronGod = PatronGod::토성신_새턴;

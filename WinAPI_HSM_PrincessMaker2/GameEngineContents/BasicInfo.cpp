@@ -74,7 +74,7 @@ void BasicInfo::Start()
 	HipRender.SetValue(static_cast<int>(Hip));
 	HipRender.SetRenderPos({ 79, 89 });
 
-	//StarRender = CreateRender("", PM2RenderOrder::Menu0_Display);
+	//StarIconRender = CreateRender("", PM2RenderOrder::Menu0_Display);
 }
 
 void BasicInfo::Update(float _DeltaTime)
