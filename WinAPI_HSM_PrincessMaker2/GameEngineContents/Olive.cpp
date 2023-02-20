@@ -1,4 +1,6 @@
 #include "Olive.h"
+#include <conio.h>
+
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineBase/GameEnginePath.h>
@@ -87,7 +89,24 @@ void Olive::SetFirstStatus()
 	}
 }
 
-void Olive::SetStatus(Status _Value)
+void Olive::SetFirstPhysicalCondition()
+{
+	srand(static_cast<unsigned int>(time(0)));
+	int RandomNum = rand() % 17;
+	float fHeight = 136.0f + 1.0f * static_cast<float>(RandomNum);
+	float fWeight = 29.2f + 0.95f * static_cast<float>(RandomNum);
+	float fBust = 68.0f + 0.5f * static_cast<float>(RandomNum);
+	float fWaist = 47.5f + 0.625f * static_cast<float>(RandomNum);
+	float fHip = 70.72f + 0.52f * static_cast<float>(RandomNum);
+
+	SetHeight(fHeight);
+	SetWeight(fWeight);
+	SetBust(fBust);
+	SetWaist(fWaist);
+	SetHip(fHip);
+}
+
+void Olive::SetStatus(const Status& _Value)
 {
 	SetConstitution(_Value.Constitution);
 	SetStrength(_Value.Strength);

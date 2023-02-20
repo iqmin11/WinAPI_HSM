@@ -42,6 +42,16 @@ private:
 		int Temperament = -1;
 	};
 
+	class PhysicalCondition
+	{
+	public:
+		float Height = -1;
+		float Weight = -1;
+		float Bust = -1;
+		float Waist = -1;
+		float Hip = -1;
+	};
+
 public:
 	static Olive* OlivePlayer;
 
@@ -138,7 +148,7 @@ public:
 	/// ////////////////////////////////////////////////////////
 
 	void SetFirstStatus();
-	void SetStatus(Status _Status);
+	void SetStatus(const Status& _Status);
 
 	void SetConstitution(int _Value)
 	{
@@ -247,6 +257,58 @@ public:
 
 	void UpdateZodiac();
 
+	void SetFirstPhysicalCondition();
+
+	void SetHeight(float _Value)
+	{
+		OlivePhysical.Height = _Value;
+	}
+
+	void SetWeight(float _Value)
+	{
+		OlivePhysical.Weight = _Value;
+	}
+
+	void SetBust(float _Value)
+	{
+		OlivePhysical.Bust = _Value;
+	}
+
+	void SetWaist(float _Value)
+	{
+		OlivePhysical.Waist = _Value;
+	}
+
+	void SetHip(float _Value)
+	{
+		OlivePhysical.Hip = _Value;
+	}
+
+	float GetHeight() const
+	{
+		return OlivePhysical.Height;
+	}
+
+	float GetWeight() const
+	{
+		return OlivePhysical.Weight;
+	}
+
+	float GetBust() const
+	{
+		return OlivePhysical.Bust;
+	}
+
+	float GetWaist() const
+	{
+		return OlivePhysical.Waist;
+	}
+
+	float GetHip() const
+	{
+		return OlivePhysical.Hip;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Deltatime) override;
@@ -271,6 +333,7 @@ private:
 	bool PatronGodSex = false; // false Male, true Female
 
 	Status OliveStatus = Status();
+	PhysicalCondition OlivePhysical = PhysicalCondition();
 
 	int Gold = 500;
 

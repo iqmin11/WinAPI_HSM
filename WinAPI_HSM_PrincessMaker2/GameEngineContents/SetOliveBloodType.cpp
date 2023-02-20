@@ -242,5 +242,6 @@ void SetOliveBloodType::ClickBloodType(Button* _Button)
 	Olive::OlivePlayer->SetBloodType(Ptr->BloodTypeValue);
 	Olive::OlivePlayer->UpdateZodiac();
 	Olive::OlivePlayer->SetFirstStatus();
+	Olive::OlivePlayer->SetFirstPhysicalCondition();
 	GameEngineCore::GetInst()->ChangeLevel("Opening");
 }

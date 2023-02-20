@@ -29,23 +29,12 @@ protected:
 private:
 	float4 ActorPos = { 700, 109 };
 
-	std::string OliveFirstName = "Null";
-	std::string OliveLastName = "Null";
-	int Age = 0; // 이건 올리브
-	PatronGod OlivePatronGod = PatronGod::Null; // 이건 올리브
-	BloodType OliveBloodType = BloodType::Null;
-
-	int Gold = 0; // 이건 올리브
-	float Height = 0.0f; // 이건 올리브
-	float Weight = 0.0f; // 이건 올리브
-	float Bust = 0.0f; // 이건 올리브
-	float Waist = 0.0f; // 이건 올리브
-	float Hip = 0.0f; // 이건 올리브
-
 	GameEngineRender* BasicInfoFrame = nullptr;
 	
+	std::string OliveFirstName = "Null";
 	GameEngineRender* FirstNameRender = nullptr;
 	float4 FirstNameRenderPos = { -90, -98 };
+	std::string OliveLastName = "Null";
 	GameEngineRender* LastNameRender = nullptr;
 	float4 LastNameRenderPos = { -90, -75 };
 	int TextHeight = 20;
@@ -53,20 +42,50 @@ private:
 	COLORREF TextColor = RGB(255, 255, 255);
 	float4 TextBoxScale = { 180,20 };
 
+	PatronGod OlivePatronGod = PatronGod::Null; 
 	GameEngineRender* PatronGodIconRender = nullptr;
 	float4 PatronGodIconPos = { -30,-22 };
 	float4 IconScale = { 39, 39 };
 
+	BloodType OliveBloodType = BloodType::Null;
 	GameEngineRender* BloodTypeRender = nullptr;
 	float4 BloodTypeRenderPos = { -30,-22 };
 	float4 BloodTypeRenderScale = { 39,39 };
 
+	int Age = 0; 
 	NumberRenderObject AgeRender = NumberRenderObject();
+	float4 AgeRenderPos = { -70,-20 };
+	float4 AgeRenderScale = { 20, 20 };
+
+	int Gold = 0; 
 	NumberRenderObject GoldRender = NumberRenderObject();
+	float4 GoldRenderPos = { 65,-12 };
+	float4 GoldRenderScale = { 10, 19 };
+
+	float Height = 0.0f; 
 	NumberRenderObject HeightRender = NumberRenderObject();
+	float4 HeightRenderPos = { -75, 89 };
+	float4 HeightRenderScale = { 10, 20 };
+
+	float Weight = 0.0f; 
 	NumberRenderObject WeightRender = NumberRenderObject();
+	float4 WeightRenderPos = { -35, 89 };
+	float4 WeightRenderScale = { 10, 20 };
+
+	float Bust = 0.0f; 
 	NumberRenderObject BustRender = NumberRenderObject();
+	float4 BustRenderPos = { -5, 89 };
+	float4 BustRenderScale = { 10, 20 };
+
+	float Waist = 0.0f; 
 	NumberRenderObject WaistRender = NumberRenderObject();
+	float4 WaistRenderPos = { 37, 89 };
+	float4 WaistRenderScale = { 10, 20 };
+
+	float Hip = 0.0f; 
 	NumberRenderObject HipRender = NumberRenderObject();
+	float4 HipRenderPos = { 79, 89 };
+	float4 HipRenderScale = { 10, 20 };
 };
+
 

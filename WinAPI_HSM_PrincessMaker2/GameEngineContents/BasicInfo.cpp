@@ -33,46 +33,46 @@ void BasicInfo::Start()
 	LastNameRender->SetPosition(LastNameRenderPos);
 
 	AgeRender.SetOwner(this);
-	AgeRender.SetImage("Num_Age.bmp", { 20, 20 }, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
+	AgeRender.SetImage("Num_Age.bmp", AgeRenderScale, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
 	AgeRender.SetAlign(Align::Center);
 	AgeRender.SetValue(Age);
-	AgeRender.SetRenderPos({ -70,-20 });
+	AgeRender.SetRenderPos(AgeRenderPos);
 	
 	GoldRender.SetOwner(this);
-	GoldRender.SetImage("Num.bmp", { 10, 19 }, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
+	GoldRender.SetImage("Num.bmp", GoldRenderScale, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
 	GoldRender.SetAlign(Align::Right);
 	GoldRender.SetValue(Gold);
-	GoldRender.SetRenderPos({ 65,-12 });
+	GoldRender.SetRenderPos(GoldRenderPos);
 
 	HeightRender.SetOwner(this);
-	HeightRender.SetImage("Num.bmp", { 10, 20 }, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
+	HeightRender.SetImage("Num.bmp", HeightRenderScale, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
 	HeightRender.SetAlign(Align::Center);
 	HeightRender.SetValue(static_cast<int>(Height));
-	HeightRender.SetRenderPos({ -75, 89 });
+	HeightRender.SetRenderPos(HeightRenderPos);
 
 	WeightRender.SetOwner(this);
-	WeightRender.SetImage("Num.bmp", { 10, 20 }, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
+	WeightRender.SetImage("Num.bmp", WeightRenderScale, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
 	WeightRender.SetAlign(Align::Center);
 	WeightRender.SetValue(static_cast<int>(Weight));
-	WeightRender.SetRenderPos({ -35, 89 });
+	WeightRender.SetRenderPos(WeightRenderPos);
 
 	BustRender.SetOwner(this);
-	BustRender.SetImage("Num.bmp", { 10, 20 }, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
+	BustRender.SetImage("Num.bmp", BustRenderScale, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
 	BustRender.SetAlign(Align::Center);
 	BustRender.SetValue(static_cast<int>(Bust));
-	BustRender.SetRenderPos({ -5, 89 });
+	BustRender.SetRenderPos(BustRenderPos);
 
 	WaistRender.SetOwner(this);
-	WaistRender.SetImage("Num.bmp", { 10, 20 }, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
+	WaistRender.SetImage("Num.bmp", WaistRenderScale, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
 	WaistRender.SetAlign(Align::Center);
 	WaistRender.SetValue(static_cast<int>(Waist));
-	WaistRender.SetRenderPos({ 37, 89 });
+	WaistRender.SetRenderPos(WaistRenderPos);
 
 	HipRender.SetOwner(this);
-	HipRender.SetImage("Num.bmp", { 10, 20 }, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
+	HipRender.SetImage("Num.bmp", HipRenderScale, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
 	HipRender.SetAlign(Align::Center);
 	HipRender.SetValue(static_cast<int>(Hip));
-	HipRender.SetRenderPos({ 79, 89 });
+	HipRender.SetRenderPos(HipRenderPos);
 
 	PatronGodIconRender = CreateRender("Icon.bmp", PM2RenderOrder::Menu0_Display);
 	PatronGodIconRender->SetScale(IconScale);
@@ -121,6 +121,36 @@ void BasicInfo::Update(float _DeltaTime)
 	{
 		Gold = Olive::OlivePlayer->GetGold();
 		GoldRender.SetValue(Gold);
+	}
+
+	if (Height != Olive::OlivePlayer->GetHeight())
+	{
+		Height = Olive::OlivePlayer->GetHeight();
+		HeightRender.SetValue(static_cast<int>(Height));
+	}
+
+	if (Weight != Olive::OlivePlayer->GetWeight())
+	{
+		Weight = Olive::OlivePlayer->GetWeight();
+		WeightRender.SetValue(static_cast<int>(Weight));
+	}
+
+	if (Bust != Olive::OlivePlayer->GetBust())
+	{
+		Bust = Olive::OlivePlayer->GetBust();
+		BustRender.SetValue(static_cast<int>(Bust));
+	}
+
+	if (Waist != Olive::OlivePlayer->GetWaist())
+	{
+		Waist = Olive::OlivePlayer->GetWaist();
+		WaistRender.SetValue(static_cast<int>(Waist));
+	}
+
+	if (Hip != Olive::OlivePlayer->GetHip())
+	{
+		Hip = Olive::OlivePlayer->GetHip();
+		HipRender.SetValue(static_cast<int>(Hip));
 	}
 }
 
