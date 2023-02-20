@@ -20,7 +20,7 @@ void BasicInfo::Start()
 	SetName("HwangSeungMin");
 	SetPos({700, 109});
 	SetAge(10);
-	SetStar(Zodiac::Leo); // 이건 아이콘 액터를 만들고 렌더하자
+	//SetStar(Zodiac::사자자리); // 이건 아이콘 액터를 만들고 렌더하자
 	SetGold(1000);
 	SetHeight(130.0f);
 	SetWeight(27.0f);

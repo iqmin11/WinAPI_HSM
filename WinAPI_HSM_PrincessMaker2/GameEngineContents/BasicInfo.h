@@ -5,24 +5,6 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/NumberRenderObject.h>
 
-enum class Zodiac //이것도 나중에 올리브에 옮기기
-{
-	Null = -1,
-	Capricorn,   // 염소자리
-	Aquarius,	 // 물병자리
-	Pisces,		 // 물고기자리
-	Aries,		 // 양자리
-	Taurus,		 // 황소자리
-	Gemini,		 // 쌍둥이자리
-	Cancer,		 // 게자리
-	Leo,		 // 사자자리
-	Virgo,		 // 처녀자리
-	Libra,		 // 천칭자리
-	Scorpio,	 // 전갈자리
-	Sagittarius	 // 사수자리
-};
-
-
 class GameEngineRender;
 class BasicInfo : public GameEngineActor
 {
@@ -47,10 +29,10 @@ public:
 		Age = _age;
 	}
 	
-	void SetStar(Zodiac _star)
-	{
-		Star = _star;
-	}
+	//void SetStar(Zodiac _star)
+	//{
+	//	Star = _star;
+	//}
 	
 	void SetGold(int _gold)
 	{
@@ -91,7 +73,7 @@ private:
 	
 	std::string OliveName = "\0";
 	int Age = 0; // 이건 올리브
-	Zodiac Star = Zodiac::Null; // 이건 올리브
+	//Zodiac Star = Zodiac::Null; // 이건 올리브
 	int Gold = 0; // 이건 올리브
 	float Height = 0.0f; // 이건 올리브
 	float Weight = 0.0f; // 이건 올리브

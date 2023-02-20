@@ -29,6 +29,7 @@ public:
 	static std::vector<unsigned int> GetMonthLenths(unsigned int _YYYY);
 	static unsigned int FindMonthFirstWeekday(unsigned int _YYYY, unsigned  int _MM);
 
+
 	// construtor destructor
 	Date();
 	Date(int _YYYY, int _MM, int _DD);
@@ -99,7 +100,93 @@ public:
 
 	unsigned int FindFirstWeekday();
 
-	
+	bool operator== (const Date& _date)
+	{
+		return Year == _date.Year && Month == _date.Month && Day == _date.Day;
+	}
+
+	bool operator!= (const Date& _date)
+	{
+		return Year != _date.Year || Month != _date.Month || Day != _date.Day;
+	}
+
+	bool operator> (const Date& _date)
+	{
+		if (Year > _date.Year)
+		{
+			return true;
+		}
+		else if (Year < _date.Year)
+		{
+			return false;
+		}
+		else
+		{
+			if (Month > _date.Month)
+			{
+				return true;
+			}
+			else if (Month < _date.Month)
+			{
+				return false;
+			}
+			else
+			{
+				if (Day > _date.Day)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
+	}
+
+	bool operator< (const Date& _date)
+	{
+		if (Year < _date.Year)
+		{
+			return true;
+		}
+		else if (Year > _date.Year)
+		{
+			return false;
+		}
+		else
+		{
+			if (Month < _date.Month)
+			{
+				return true;
+			}
+			else if (Month > _date.Month)
+			{
+				return false;
+			}
+			else
+			{
+				if (Day < _date.Day)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+		}
+	}
+
+	bool operator>= (const Date& _date)
+	{
+		return *this == _date || *this > _date;
+	}
+
+	bool operator<= (const Date& _date)
+	{
+		return *this == _date || *this < _date;
+	}
 
 protected:
 
@@ -109,6 +196,7 @@ private:
 	unsigned int Year = 0; // 제한 없음
 	unsigned int Month = 0; // 1~12
 	unsigned int Day = 0; // 1~31
+	
 	Week WeekDay = Week::Null; // 0~6
 	
 	void SetYear(unsigned int _YYYY)

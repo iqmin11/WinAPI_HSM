@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineBase/GameEngineFile.h>
 
 #include "MousePoint.h"
 #include "Olive.h"
@@ -274,7 +275,7 @@ void OpeningLevel::Update(float _DeltaTime)
 		else if (156 <= Time && 161 > Time)
 		{
 			AcBottomDialog->On();
-			AcBottomDialog->SetMugPic("Mug_Uranos_God.bmp");
+			AcBottomDialog->SetMugPic("Mug_Uranus_God.bmp");
 			AcBottomDialog->SetMugLoc(MugShotLR::Right);
 			AcBottomDialog->SetUpdateText("「용사여…나는 이 소녀의 수호\n자 " + std::string("수호신 이름") + std::string("...」"));
 		}
@@ -355,30 +356,25 @@ void OpeningLevel::ImageLoad()
 	Dir.Move("ContentsResources");
 	Dir.Move("Image");
 
-
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MugShotFrame_God.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MugShotFrame_Nomal.BMP"));
-
-
-	Dir.Move("OpeningLevel");
-
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OpeningDayNum.BMP"))->Cut(10, 1);
-	//GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OpeningMonthNum.BMP"))->Cut(10, 1);
 	
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Credit.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Cutscene1.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Cutscene2.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Cutscene3.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Cutscene4.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Cutscene5.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Cutscene6.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Cutscene7.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OpeningDate.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TitleLogo.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Mug_Devil.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Mug_King.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Mug_Queen.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Mug_Uranos_God.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BlackBox.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WhiteBackground.BMP"));
+	Dir.Move("OpeningLevel");
+	
+	std::vector<GameEngineFile> AllFile = Dir.GetAllFile();
+	for (size_t i = 0; i < AllFile.size() ; i++)
+	{
+		GameEngineResources::GetInst().ImageLoad(AllFile[i].GetFullPath());
+	}
+	
+	Dir.Move("MugShot");
+	AllFile = Dir.GetAllFile();
+	for (size_t i = 0; i < AllFile.size(); i++)
+	{
+		GameEngineResources::GetInst().ImageLoad(AllFile[i].GetFullPath());
+	}
+
+	Dir.MoveParentToDirectory("Num");
+	Dir.Move("Num");
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("OpeningDayNum.BMP"))->Cut(10, 1);
 }

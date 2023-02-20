@@ -60,7 +60,9 @@ private:
 	PlayerCalendar* AcPlayerCalendar = nullptr;
 	SetOliveBloodType* AcSetOliveBloodType = nullptr;
 
+	void SetFirstStatus();
 	void SoundLoad();
 	void ImageLoad();
+
 };
 
