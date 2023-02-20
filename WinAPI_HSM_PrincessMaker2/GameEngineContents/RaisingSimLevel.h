@@ -6,6 +6,9 @@ class Olive;
 class Background;
 class Flower;
 class Paint;
+class BasicStatusWindow;
+class MainMenu;
+class Button;
 class RaisingSimLevel : public GameEngineLevel
 {
 public:
@@ -41,9 +44,14 @@ private:
 	Olive* AcOlive = nullptr;
 	Date Today = Date();
 
+	MainMenu* AcMainMenu = nullptr;
+	static BasicStatusWindow* AcBasicStatusWindow;
+
 	Background* AcBackground = nullptr;
 	Flower* AcFlower = nullptr; 
 	Paint* AcPaint= nullptr; 
+
+	static void ClickStatusWindowButton(Button* _Button);
 
 	void SoundLoad();
 	void ImageLoad();

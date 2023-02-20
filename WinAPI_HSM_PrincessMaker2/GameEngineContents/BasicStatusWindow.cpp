@@ -26,4 +26,6 @@ void BasicStatusWindow::Start()
 	InsertStatus(StatusName::감수성, 100, St);
 	InsertStatus(StatusName::스트레스, 100, St);
 	SetPos((float4::Down * GameEngineWindow::GetScreenSize().half()) + float4{0,-40} + (float4::Right * GetMenuFrameScale().half()) + float4{ 10, 0 });
+
+	Off();
 }

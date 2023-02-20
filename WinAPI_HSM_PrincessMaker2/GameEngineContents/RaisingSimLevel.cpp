@@ -1,8 +1,9 @@
 #include "RaisingSimLevel.h"
 #include <GameEngineBase/GameEngineDirectory.h>
-#include <GameEngineCore/GameEngineResources.h>
-#include <GameEngineCore/GameEngineCore.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineCore/GameEngineCore.h>
+#include <GameEngineCore/GameEngineResources.h>
+#include <GameEngineCore/Button.h>
 
 #include "MousePoint.h"
 #include "Olive.h"
@@ -22,6 +23,8 @@
 #include "FemininityStatusWindow.h"
 #include "ContentsEnums.h"
 
+BasicStatusWindow* RaisingSimLevel::AcBasicStatusWindow = nullptr;
+
 RaisingSimLevel::RaisingSimLevel()
 {
 
@@ -40,7 +43,10 @@ void RaisingSimLevel::Loading()
 	AcBackground = CreateActor<Background>(static_cast<int>(PM2ActorOrder::BackGround));
 	CreateActor<DateViewer>(PM2ActorOrder::Menu0);
 	CreateActor<BasicInfo>(PM2ActorOrder::Menu0);
-	CreateActor<MainMenu>(PM2ActorOrder::Menu0);
+	AcMainMenu = CreateActor<MainMenu>(PM2ActorOrder::Menu0);
+	AcBasicStatusWindow = CreateActor<BasicStatusWindow>(PM2ActorOrder::Menu1);
+
+	AcMainMenu->GetMainMenuButton()[0][0]->SetClickCallBack(ClickStatusWindowButton);
 
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	CreateActor<Olive>(PM2ActorOrder::Olive);
@@ -49,7 +55,6 @@ void RaisingSimLevel::Loading()
 	//CreateActor<Calendar>(PM2ActorOrder::Menu1);
 	//CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
 	//CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
-	CreateActor<BasicStatusWindow>(PM2ActorOrder::Menu1);
 	//CreateActor<FightStatusWindow>(PM2ActorOrder::Menu1);
 	//CreateActor<EstimateStatusWindow>(PM2ActorOrder::Menu1);
 	//CreateActor<FemininityStatusWindow>(PM2ActorOrder::Menu1);
@@ -75,6 +80,13 @@ void RaisingSimLevel::Update(float _DeltaTime)
 void RaisingSimLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	AcOlive = Olive::OlivePlayer;
+}
+
+
+
+void RaisingSimLevel::ClickStatusWindowButton(Button* _Button)
+{
+	AcBasicStatusWindow->OnOffSwtich();
 }
 
 void RaisingSimLevel::SoundLoad()
@@ -111,6 +123,8 @@ void RaisingSimLevel::ImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BasicInfo.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Num_Age.BMP"))->Cut(10, 1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MainMenu.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MainMenu_Buttons.bmp"))->Cut(4,2);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MainMenu_Schedule.bmp"));
 
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("StatusGaugeFrame_Layer1.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("StatusGaugeFrame_Layer1_Detail.bmp"));
