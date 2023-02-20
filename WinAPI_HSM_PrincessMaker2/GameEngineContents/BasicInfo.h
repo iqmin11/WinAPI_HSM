@@ -32,7 +32,9 @@ private:
 	std::string OliveFirstName = "Null";
 	std::string OliveLastName = "Null";
 	int Age = 0; // 이건 올리브
-	Zodiac Star = Zodiac::사자자리; // 이건 올리브
+	PatronGod OlivePatronGod = PatronGod::Null; // 이건 올리브
+	BloodType OliveBloodType = BloodType::Null;
+
 	int Gold = 0; // 이건 올리브
 	float Height = 0.0f; // 이건 올리브
 	float Weight = 0.0f; // 이건 올리브
@@ -51,7 +53,13 @@ private:
 	COLORREF TextColor = RGB(255, 255, 255);
 	float4 TextBoxScale = { 180,20 };
 
-	GameEngineRender* StarIconRender = nullptr;
+	GameEngineRender* PatronGodIconRender = nullptr;
+	float4 PatronGodIconPos = { -30,-22 };
+	float4 IconScale = { 39, 39 };
+
+	GameEngineRender* BloodTypeRender = nullptr;
+	float4 BloodTypeRenderPos = { -30,-22 };
+	float4 BloodTypeRenderScale = { 39,39 };
 
 	NumberRenderObject AgeRender = NumberRenderObject();
 	NumberRenderObject GoldRender = NumberRenderObject();

@@ -133,77 +133,77 @@ void Olive::UpdateZodiac()
 		OlivePatronGod = PatronGod::토성신_새턴;
 		PatronGodSex = 1;
 	}
-	else if (OliveBirthDay >= Date{ 1200, 1, 20 } ||
+	else if (OliveBirthDay >= Date{ 1200, 1, 20 } &&
 		OliveBirthDay <= Date{ 1200, 2, 18 })
 	{
 		OliveZodiac = Zodiac::물병자리;
 		OlivePatronGod = PatronGod::천왕성신_우라누스;
 		PatronGodSex = 1;
 	}
-	else if (OliveBirthDay >= Date{ 1200, 2, 19 } ||
+	else if (OliveBirthDay >= Date{ 1200, 2, 19 } &&
 		OliveBirthDay <= Date{ 1200, 3, 20 })
 	{
 		OliveZodiac = Zodiac::물고기자리;
 		OlivePatronGod = PatronGod::해왕성신_넵튠;
 		PatronGodSex = 1;
 	}
-	else if (OliveBirthDay >= Date{ 1200, 3, 21 } ||
+	else if (OliveBirthDay >= Date{ 1200, 3, 21 } &&
 		OliveBirthDay <= Date{ 1200, 4, 19 })
 	{
 		OliveZodiac = Zodiac::양자리;
 		OlivePatronGod = PatronGod::화성신_마르스;
 		PatronGodSex = 0;
 	}
-	else if (OliveBirthDay >= Date{ 1200, 4, 20 } ||
+	else if (OliveBirthDay >= Date{ 1200, 4, 20 } &&
 		OliveBirthDay <= Date{ 1200, 5, 20 })
 	{
 		OliveZodiac = Zodiac::황소자리;
 		OlivePatronGod = PatronGod::금성신_비너스;
 		PatronGodSex = 1;
 	}
-	else if (OliveBirthDay >= Date{ 1200, 5, 21 } ||
+	else if (OliveBirthDay >= Date{ 1200, 5, 21 } &&
 		OliveBirthDay <= Date{ 1200, 6, 21 })
 	{
 		OliveZodiac = Zodiac::쌍둥이자리;
 		OlivePatronGod = PatronGod::수성신_머큐리;
 		PatronGodSex = 1;
 	}
-	else if (OliveBirthDay >= Date{ 1200, 6, 22 } ||
+	else if (OliveBirthDay >= Date{ 1200, 6, 22 } &&
 		OliveBirthDay <= Date{ 1200, 7, 22 })
 	{
 		OliveZodiac = Zodiac::게자리;
 		OlivePatronGod = PatronGod::달신_더문;
 		PatronGodSex = 1;
 	}
-	else if (OliveBirthDay >= Date{ 1200, 7, 23 } ||
+	else if (OliveBirthDay >= Date{ 1200, 7, 23 } &&
 		OliveBirthDay <= Date{ 1200, 8, 22 })
 	{
 		OliveZodiac = Zodiac::사자자리;
 		OlivePatronGod = PatronGod::태양신_솔;
 		PatronGodSex = 0;
 	}
-	else if (OliveBirthDay >= Date{ 1200, 8, 23 } ||
+	else if (OliveBirthDay >= Date{ 1200, 8, 23 } &&
 		OliveBirthDay <= Date{ 1200, 9, 22 })
 	{
 		OliveZodiac = Zodiac::처녀자리;
 		OlivePatronGod = PatronGod::수성신_머큐리;
 		PatronGodSex = 1;
 	}
-	else if (OliveBirthDay >= Date{ 1200, 9, 23 } ||
+	else if (OliveBirthDay >= Date{ 1200, 9, 23 } &&
 		OliveBirthDay <= Date{ 1200, 10, 23 })
 	{
 		OliveZodiac = Zodiac::천칭자리;
 		OlivePatronGod = PatronGod::금성신_비너스;
 		PatronGodSex = 1;
 	}
-	else if (OliveBirthDay >= Date{ 1200, 10, 24 } ||
+	else if (OliveBirthDay >= Date{ 1200, 10, 24 } &&
 		OliveBirthDay <= Date{ 1200, 11, 22 })
 	{
 		OliveZodiac = Zodiac::전갈자리;
 		OlivePatronGod = PatronGod::명왕성신_하데스;
 		PatronGodSex = 0;
 	}
-	else if (OliveBirthDay >= Date{ 1200, 11, 23 } ||
+	else if (OliveBirthDay >= Date{ 1200, 11, 23 } &&
 		OliveBirthDay <= Date{ 1200, 12, 21 })
 	{
 		OliveZodiac = Zodiac::사수자리;

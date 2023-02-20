@@ -74,7 +74,15 @@ void BasicInfo::Start()
 	HipRender.SetValue(static_cast<int>(Hip));
 	HipRender.SetRenderPos({ 79, 89 });
 
-	//StarIconRender = CreateRender("", PM2RenderOrder::Menu0_Display);
+	PatronGodIconRender = CreateRender("Icon.bmp", PM2RenderOrder::Menu0_Display);
+	PatronGodIconRender->SetScale(IconScale);
+	PatronGodIconRender->SetPosition(PatronGodIconPos);
+	//PatronGodIconRender->SetFrame(static_cast<int>(OlivePatronGod));
+
+	BloodTypeRender = CreateRender("BloodTypeRender.bmp", PM2RenderOrder::Menu0_Display);
+	BloodTypeRender ->SetScale(BloodTypeRenderScale);
+	BloodTypeRender ->SetPosition(BloodTypeRenderPos);
+	//BloodTypeRender ->SetFrame(static_cast<int>(OliveBloodType));
 }
 
 void BasicInfo::Update(float _DeltaTime)
@@ -97,10 +105,17 @@ void BasicInfo::Update(float _DeltaTime)
 		AgeRender.SetValue(Age);
 	}
 	
-	//if (Star != Olive::OlivePlayer->GetOliveZodiac())
-	//{
-	//	Star = Olive::OlivePlayer->GetOliveZodiac();
-	//}
+	if (OlivePatronGod != Olive::OlivePlayer->GetPatronGod())
+	{
+		OlivePatronGod = Olive::OlivePlayer->GetPatronGod();
+		PatronGodIconRender->SetFrame(static_cast<int>(OlivePatronGod));
+	}
+
+	if (OliveBloodType != Olive::OlivePlayer->GetBloodType())
+	{
+		OliveBloodType = Olive::OlivePlayer->GetBloodType();
+		BloodTypeRender->SetFrame(static_cast<int>(OliveBloodType));
+	}
 	
 	if (Gold != Olive::OlivePlayer->GetGold())
 	{

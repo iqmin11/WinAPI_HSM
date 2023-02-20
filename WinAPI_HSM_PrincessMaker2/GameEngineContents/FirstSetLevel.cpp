@@ -153,11 +153,6 @@ void FirstSetLevel::Update(float _DeltaTime)
 
 }
 
-void FirstSetLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
-{
-}
-
-
 void FirstSetLevel::SoundLoad()
 {
 

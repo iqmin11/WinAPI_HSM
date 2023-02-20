@@ -100,6 +100,11 @@ public:
 		return Gold;
 	}
 
+	BloodType GetBloodType() const
+	{
+		return OliveBloodType;
+	}
+
 	void SetOliveFirstName(const std::string_view& _FirstName)
 	{
 		OliveFirstName = _FirstName;

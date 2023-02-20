@@ -520,7 +520,7 @@ void SetOliveName::ClickCompleteButton(Button* _Button)
 	{
 		ExplainRender1->SetText(ErrorText, 18, "±¼¸²", TextAlign::Center, RGB(0, 0, 0), ErrorTextBoxScale);
 		ExplainRender2->SetText(ErrorText, 18, "±¼¸²", TextAlign::Center, RGB(0, 0, 0), ErrorTextBoxScale);
-		ExplainRenderShadow->SetText(ErrorText, 18, "±¼¸²", TextAlign::Center, RGB(106, 170, 126), ErrorTextBoxScale);
+		ExplainRenderShadow->SetText(ErrorText, 18, "±¼¸²", TextAlign::Center, RGB(192, 120, 178), ErrorTextBoxScale);
 		return;
 	}
 	
