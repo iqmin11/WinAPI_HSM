@@ -22,6 +22,8 @@ class Button;
 class RaisingSimLevel : public GameEngineLevel
 {
 public:
+	static CubeDialog* AcCubeDialog;
+
 	// construtor destructor
 	RaisingSimLevel();
 	~RaisingSimLevel();
@@ -63,7 +65,6 @@ private:
 	static ConverstionSelectionMenu* AcConverstionSelectionMenu;
 	static DietSelectionMenu* AcDietSelectionMenu;
 
-	static CubeDialog* AcCubeDialog;
 	Background* AcBackground = nullptr;
 	Flower* AcFlower = nullptr; 
 	Paint* AcPaint= nullptr; 

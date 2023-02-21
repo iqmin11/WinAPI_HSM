@@ -55,13 +55,13 @@ void RaisingSimLevel::Loading()
 	CreateActor<DateViewer>(PM2ActorOrder::Menu0);
 	CreateActor<BasicInfo>(PM2ActorOrder::Menu0);
 	AcMainMenu = CreateActor<MainMenu>(PM2ActorOrder::Menu0);
+	AcCubeDialog = CreateActor<CubeDialog>(PM2ActorOrder::Dialog);
 	AcBasicStatusWindow = CreateActor<BasicStatusWindow>(PM2ActorOrder::Menu1);
 	AcEstimateStatusWindow = CreateActor<EstimateStatusWindow>(PM2ActorOrder::Menu1);
 	AcFighterAndMagicalStatusWindow = CreateActor<FighterAndMagicalStatusWindow>(PM2ActorOrder::Menu1);
 	AcSocialAndHouseworkStatusWindow = CreateActor<SocialAndHouseworkStatusWindow>(PM2ActorOrder::Menu1);
 	AcConverstionSelectionMenu = CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
 	AcDietSelectionMenu = CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
-	AcCubeDialog = CreateActor<CubeDialog>(PM2ActorOrder::Dialog);
 
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	CreateActor<Olive>(PM2ActorOrder::Olive);

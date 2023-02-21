@@ -19,12 +19,12 @@ void TitleMenu::LevelChangeToFirstSet(Button* _Btn)
 
 void TitleMenu::LevelChangeToOpening(Button* _Btn)
 {
-	GameEngineCore::GetInst()->ChangeLevel("Opening");
+	//GameEngineCore::GetInst()->ChangeLevel("Opening");
 }
 
 void TitleMenu::LevelChangeToRaisingSim(Button* _Btn)
 {
-	GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
+	//GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
 }
 
 void TitleMenu::Start()
@@ -35,8 +35,8 @@ void TitleMenu::Start()
 	GetSelectButtons()[1]->SetClickCallBack(LevelChangeToOpening);
 	GetSelectButtons()[2]->SetClickCallBack(LevelChangeToRaisingSim);
 	SetButtonString(static_cast<int>(PM2RenderOrder::Menu0_Display), 0, "세팅 레벨로");		     //Test
-	SetButtonString(static_cast<int>(PM2RenderOrder::Menu0_Display), 1, "오프닝 레벨로 ");			//Test
-	SetButtonString(static_cast<int>(PM2RenderOrder::Menu0_Display), 2, "키우기 레벨로");	     //Test
+	SetButtonString(static_cast<int>(PM2RenderOrder::Menu0_Display), 1, "오프닝 레벨로(사용 불가능)");			//Test
+	SetButtonString(static_cast<int>(PM2RenderOrder::Menu0_Display), 2, "키우기 레벨로(사용 불가능)");	     //Test
 	//SetButtonString(static_cast<int>(PM2RenderOrder::Menu0_Display), 0, "처음부터 시작");
 	//SetButtonString(static_cast<int>(PM2RenderOrder::Menu0_Display), 1, "처음부터 (오프닝 스킵)");
 	//SetButtonString(static_cast<int>(PM2RenderOrder::Menu0_Display), 2, "시간을 되돌린다");

@@ -87,9 +87,6 @@
     <ClInclude Include="ConverstionSelectionMenu.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu</Filter>
     </ClInclude>
-    <ClInclude Include="DietSelectionMenu.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu</Filter>
-    </ClInclude>
     <ClInclude Include="BasicStatusWindow.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
     </ClInclude>
@@ -149,6 +146,12 @@
     </ClInclude>
     <ClInclude Include="CubeDialog.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
+    </ClInclude>
+    <ClInclude Include="DietSelectionMenu.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\DietMenuActor</Filter>
+    </ClInclude>
+    <ClInclude Include="DietFinalConfirmSelectionMenu.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\DietMenuActor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -237,9 +240,6 @@
     <ClCompile Include="ConverstionSelectionMenu.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu</Filter>
     </ClCompile>
-    <ClCompile Include="DietSelectionMenu.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu</Filter>
-    </ClCompile>
     <ClCompile Include="BasicStatusWindow.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
     </ClCompile>
@@ -299,6 +299,12 @@
     </ClCompile>
     <ClCompile Include="CubeDialog.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
+    </ClCompile>
+    <ClCompile Include="DietSelectionMenu.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\DietMenuActor</Filter>
+    </ClCompile>
+    <ClCompile Include="DietFinalConfirmSelectionMenu.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\DietMenuActor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -364,6 +370,9 @@
     </Filter>
     <Filter Include="ContentsLevel\0. PM2Base\Global">
       <UniqueIdentifier>{3f67aa7a-8df7-4808-8f58-a3a396595b95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\DietMenuActor">
+      <UniqueIdentifier>{9f4b2b56-18e2-425c-b04d-75d0d47c1572}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
