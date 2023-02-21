@@ -19,6 +19,8 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
+	float4 ActorPos = { 130, 260 };
+
 	float Constitution = 0;
 	GaugeRenderObject* ConstitutionRender = nullptr;
 

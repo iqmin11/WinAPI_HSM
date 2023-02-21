@@ -10,46 +10,36 @@ private:
 	class Status
 	{
 	public:
-		float Constitution = -1;
-		float ConstitutionMax = 999;
-		float Strength = -1;
-		float StrengthMax = 999;
-		float Intelligence = -1;
-		float IntelligenceMax = 999;
-		float Refinement = -1;
-		float RefinementMax = 999;
-		float Charisma = -1;
-		float CharismaMax = 999;
-		float Morality = -1;
-		float MoralityMax = 999;
-		float Faith = -1;
-		float FaithMax = 999;
-		float Sin = -1;
-		float SinMax = 999;
-		float Sensitivity = -1;
-		float SensitivityMax = 999;
-		float Stress = -1;
-		float StressMax = 999;
+		float Constitution = 0;
+		float Strength = 0;
+		float Intelligence = 0;
+		float Refinement = 0;
+		float Charisma = 0;
+		float Morality = 0;
+		float Faith = 0;
+		float Sin = 0;
+		float Sensitivity = 0;
+		float Stress = 0;
 
-		float Fighter = -1;
-		float CombatSkill = -1;
-		float CombatAttack = -1;
-		float CombatDefense = -1;
+		float Fighter = 0;
+		float CombatSkill = 0;
+		float CombatAttack = 0;
+		float CombatDefense = 0;
 
-		float Magical = -1;
-		float MagicSkill = -1;
-		float MagicAttack = -1;
-		float MagicDefense = -1;
+		float Magical = 0;
+		float MagicSkill = 0;
+		float MagicAttack = 0;
+		float MagicDefense = 0;
 
-		float Social = -1;
-		float Decorum = -1;
-		float Art = -1;
-		float Conversation = -1;
+		float Social = 0;
+		float Decorum = 0;
+		float Art = 0;
+		float Conversation = 0;
 
-		float HouseWork = -1;
-		float Cooking = -1;
-		float Cleaning = -1;
-		float Temperament = -1;
+		float HouseWork = 0;
+		float Cooking = 0;
+		float Cleaning = 0;
+		float Temperament = 0;
 	};
 
 	class PhysicalCondition

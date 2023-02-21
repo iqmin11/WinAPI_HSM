@@ -7,6 +7,9 @@ class Background;
 class Flower;
 class Paint;
 class BasicStatusWindow;
+class EstimateStatusWindow;
+class FighterAndMagicalStatusWindow;
+class SocialAndHouseworkStatusWindow;
 class MainMenu;
 class Button;
 class RaisingSimLevel : public GameEngineLevel
@@ -46,6 +49,9 @@ private:
 
 	MainMenu* AcMainMenu = nullptr;
 	static BasicStatusWindow* AcBasicStatusWindow;
+	static EstimateStatusWindow* AcEstimateStatusWindow;
+	static FighterAndMagicalStatusWindow* AcFighterAndMagicalStatusWindow;
+	static SocialAndHouseworkStatusWindow* AcSocialAndHouseworkStatusWindow;
 
 	Background* AcBackground = nullptr;
 	Flower* AcFlower = nullptr; 

@@ -18,12 +18,15 @@
 #include "ConverstionSelectionMenu.h"
 #include "DietSelectionMenu.h"
 #include "BasicStatusWindow.h"
-#include "FightStatusWindow.h"
 #include "EstimateStatusWindow.h"
-#include "FemininityStatusWindow.h"
+#include "FighterAndMagicalStatusWindow.h"
+#include "SocialAndHouseworkStatusWindow.h"
 #include "ContentsEnums.h"
 
 BasicStatusWindow* RaisingSimLevel::AcBasicStatusWindow = nullptr;
+EstimateStatusWindow* RaisingSimLevel::AcEstimateStatusWindow = nullptr;
+FighterAndMagicalStatusWindow* RaisingSimLevel::AcFighterAndMagicalStatusWindow = nullptr;
+SocialAndHouseworkStatusWindow* RaisingSimLevel::AcSocialAndHouseworkStatusWindow = nullptr;
 
 RaisingSimLevel::RaisingSimLevel()
 {
@@ -45,8 +48,9 @@ void RaisingSimLevel::Loading()
 	CreateActor<BasicInfo>(PM2ActorOrder::Menu0);
 	AcMainMenu = CreateActor<MainMenu>(PM2ActorOrder::Menu0);
 	AcBasicStatusWindow = CreateActor<BasicStatusWindow>(PM2ActorOrder::Menu1);
-
-	AcMainMenu->GetMainMenuButton()[0][0]->SetClickCallBack(ClickStatusWindowButton);
+	AcEstimateStatusWindow = CreateActor<EstimateStatusWindow>(PM2ActorOrder::Menu1);
+	AcFighterAndMagicalStatusWindow = CreateActor<FighterAndMagicalStatusWindow>(PM2ActorOrder::Menu1);
+	AcSocialAndHouseworkStatusWindow = CreateActor<SocialAndHouseworkStatusWindow>(PM2ActorOrder::Menu1);
 
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	CreateActor<Olive>(PM2ActorOrder::Olive);
@@ -55,12 +59,12 @@ void RaisingSimLevel::Loading()
 	//CreateActor<Calendar>(PM2ActorOrder::Menu1);
 	//CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
 	//CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
-	//CreateActor<FightStatusWindow>(PM2ActorOrder::Menu1);
 	//CreateActor<EstimateStatusWindow>(PM2ActorOrder::Menu1);
 	//CreateActor<FemininityStatusWindow>(PM2ActorOrder::Menu1);
 	//CreateActor<Animation>(2);
 
 
+	AcMainMenu->GetMainMenuButton()[0][0]->SetClickCallBack(ClickStatusWindowButton);
 }
 //800,0 ~ 800,320
 void RaisingSimLevel::Update(float _DeltaTime)
@@ -87,6 +91,9 @@ void RaisingSimLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void RaisingSimLevel::ClickStatusWindowButton(Button* _Button)
 {
 	AcBasicStatusWindow->OnOffSwtich();
+	AcEstimateStatusWindow->OnOffSwtich();
+	AcFighterAndMagicalStatusWindow->OnOffSwtich();
+	AcSocialAndHouseworkStatusWindow->OnOffSwtich();
 }
 
 void RaisingSimLevel::SoundLoad()

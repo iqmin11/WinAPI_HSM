@@ -20,6 +20,30 @@ std::vector<std::vector<GlobalButton*>> MainMenu::GetMainMenuButton()
 	return MainMenuButtons;
 }
 
+void MainMenu::On()
+{
+	GameEngineObject::On();
+	for (size_t y = 0; y < MainMenuButtons.size(); y++)
+	{
+		for (size_t x = 0; x < MainMenuButtons[y].size(); x++)
+		{
+			On();
+		}
+	}
+}
+
+void MainMenu::Off()
+{
+	GameEngineObject::Off();
+	for (size_t y = 0; y < MainMenuButtons.size(); y++)
+	{
+		for (size_t x = 0; x < MainMenuButtons[y].size(); x++)
+		{
+			Off();
+		}
+	}
+}
+
 void MainMenu::Start()
 {
 	SetPos(ActorPos);

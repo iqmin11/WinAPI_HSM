@@ -17,6 +17,9 @@ public:
 
 	std::vector<std::vector<GlobalButton*>> GetMainMenuButton();
 
+	void On() override;
+	void Off() override;
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;

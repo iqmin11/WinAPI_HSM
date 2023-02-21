@@ -93,13 +93,7 @@
     <ClInclude Include="BasicStatusWindow.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
     </ClInclude>
-    <ClInclude Include="FightStatusWindow.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
-    </ClInclude>
     <ClInclude Include="EstimateStatusWindow.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
-    </ClInclude>
-    <ClInclude Include="FemininityStatusWindow.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
     </ClInclude>
     <ClInclude Include="Olive.h">
@@ -146,6 +140,12 @@
     </ClInclude>
     <ClInclude Include="OpeningDate.h">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
+    </ClInclude>
+    <ClInclude Include="FighterAndMagicalStatusWindow.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+    </ClInclude>
+    <ClInclude Include="SocialAndHouseworkStatusWindow.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -240,13 +240,7 @@
     <ClCompile Include="BasicStatusWindow.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
     </ClCompile>
-    <ClCompile Include="FightStatusWindow.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
-    </ClCompile>
     <ClCompile Include="EstimateStatusWindow.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
-    </ClCompile>
-    <ClCompile Include="FemininityStatusWindow.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
     </ClCompile>
     <ClCompile Include="Olive.cpp">
@@ -293,6 +287,12 @@
     </ClCompile>
     <ClCompile Include="OpeningDate.cpp">
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
+    </ClCompile>
+    <ClCompile Include="FighterAndMagicalStatusWindow.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+    </ClCompile>
+    <ClCompile Include="SocialAndHouseworkStatusWindow.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

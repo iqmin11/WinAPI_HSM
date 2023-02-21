@@ -1,5 +1,4 @@
 #include "BasicStatusWindow.h"
-#include <GameEnginePlatform/GameEngineWindow.h>
 #include "Olive.h"
 
 BasicStatusWindow::BasicStatusWindow()
@@ -15,7 +14,6 @@ BasicStatusWindow::~BasicStatusWindow()
 void BasicStatusWindow::Start()
 {
 	InitMenuFrameRender(PM2RenderOrder::Menu1);
-	Style = GaugeFrameStyle::Nomal;
 	ConstitutionRender = InsertStatus("체력", Max, Style);
 	StrengthRender = InsertStatus("근력", Max, Style);
 	IntelligenceRender = InsertStatus("지능", Max, Style);
@@ -26,8 +24,7 @@ void BasicStatusWindow::Start()
 	SinRender = InsertStatus("업보", Max, Style);
 	SensitivityRender = InsertStatus("감수성", Max, Style);
 	StressRender = InsertStatus("스트레스", Max, Style);
-	SetPos((float4::Down * GameEngineWindow::GetScreenSize().half()) + float4{0,-40} + (float4::Right * GetMenuFrameScale().half()) + float4{ 10, 0 });
-
+	SetPos(ActorPos);
 	Off();
 }
 
