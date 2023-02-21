@@ -10,36 +10,46 @@ private:
 	class Status
 	{
 	public:
-		int Constitution = -1;
-		int Strength = -1;
-		int Intelligence = -1;
-		int Refinement = -1;
-		int Charisma = -1;
-		int Morality = -1;
-		int Faith = -1;
-		int Sin = -1;
-		int Sensitivity = -1;
-		int Stress = -1;
+		float Constitution = -1;
+		float ConstitutionMax = 999;
+		float Strength = -1;
+		float StrengthMax = 999;
+		float Intelligence = -1;
+		float IntelligenceMax = 999;
+		float Refinement = -1;
+		float RefinementMax = 999;
+		float Charisma = -1;
+		float CharismaMax = 999;
+		float Morality = -1;
+		float MoralityMax = 999;
+		float Faith = -1;
+		float FaithMax = 999;
+		float Sin = -1;
+		float SinMax = 999;
+		float Sensitivity = -1;
+		float SensitivityMax = 999;
+		float Stress = -1;
+		float StressMax = 999;
 
-		int Fighter = -1;
-		int CombatSkill = -1;
-		int CombatAttack = -1;
-		int CombatDefense = -1;
+		float Fighter = -1;
+		float CombatSkill = -1;
+		float CombatAttack = -1;
+		float CombatDefense = -1;
 
-		int Magical = -1;
-		int MagicSkill = -1;
-		int MagicAttack = -1;
-		int MagicDefense = -1;
+		float Magical = -1;
+		float MagicSkill = -1;
+		float MagicAttack = -1;
+		float MagicDefense = -1;
 
-		int Social = -1;
-		int Decorum = -1;
-		int Art = -1;
-		int Conversation = -1;
+		float Social = -1;
+		float Decorum = -1;
+		float Art = -1;
+		float Conversation = -1;
 
-		int HouseWork = -1;
-		int Cooking = -1;
-		int Cleaning = -1;
-		int Temperament = -1;
+		float HouseWork = -1;
+		float Cooking = -1;
+		float Cleaning = -1;
+		float Temperament = -1;
 	};
 
 	class PhysicalCondition
@@ -146,59 +156,63 @@ public:
 	}
 
 	/// ////////////////////////////////////////////////////////
+	Status GetStatue() const
+	{
+		return OliveStatus;
+	}
 
 	void SetFirstStatus();
 	void SetStatus(const Status& _Status);
 
-	void SetConstitution(int _Value)
+	void SetConstitution(float _Value)
 	{
 		OliveStatus.Constitution = _Value;
 	}
-	void SetStrength(int _Value)
+	void SetStrength(float _Value)
 	{
 		OliveStatus.Strength = _Value;
 	}
-	void SetIntelligence(int _Value)
+	void SetIntelligence(float _Value)
 	{
 		OliveStatus.Intelligence = _Value;
 	}
-	void SetRefinement(int _Value)
+	void SetRefinement(float _Value)
 	{
 		OliveStatus.Refinement = _Value;
 	}
-	void SetCharisma(int _Value)
+	void SetCharisma(float _Value)
 	{
 		OliveStatus.Charisma = _Value;
 	}
-	void SetMorality(int _Value)
+	void SetMorality(float _Value)
 	{
 		OliveStatus.Morality = _Value;
 	}
-	void SetFaith(int _Value)
+	void SetFaith(float _Value)
 	{
 		OliveStatus.Faith = _Value;
 	}
-	void SetSin(int _Value)
+	void SetSin(float _Value)
 	{
 		OliveStatus.Sin = _Value;
 	}
-	void SetSensitivity(int _Value)
+	void SetSensitivity(float _Value)
 	{
 		OliveStatus.Sensitivity = _Value;
 	}
-	void SetStress(int _Value)
+	void SetStress(float _Value)
 	{
 		OliveStatus.Stress = _Value;
 	}
-	void SetCombatSkill(int _Value)
+	void SetCombatSkill(float _Value)
 	{
 		OliveStatus.CombatSkill = _Value;
 	}
-	void SetCombatAttack(int _Value)
+	void SetCombatAttack(float _Value)
 	{
 		OliveStatus.CombatAttack = _Value;
 	}
-	void SetCombatDefense(int _Value)
+	void SetCombatDefense(float _Value)
 	{
 		OliveStatus.CombatDefense = _Value;
 	}
@@ -206,15 +220,15 @@ public:
 	{
 		OliveStatus.Fighter = OliveStatus.CombatSkill + OliveStatus.CombatAttack + OliveStatus.CombatDefense;
 	}
-	void SetMagicSkill(int _Value)
+	void SetMagicSkill(float _Value)
 	{
 		OliveStatus.MagicSkill = _Value;
 	}
-	void SetMagicAttack(int _Value)
+	void SetMagicAttack(float _Value)
 	{
 		OliveStatus.MagicAttack = _Value;
 	}
-	void SetMagicDefense(int _Value)
+	void SetMagicDefense(float _Value)
 	{
 		OliveStatus.MagicDefense = _Value;
 	}
@@ -222,15 +236,15 @@ public:
 	{
 		OliveStatus.Magical = OliveStatus.MagicSkill + OliveStatus.MagicAttack + OliveStatus.MagicDefense;
 	}
-	void SetDecorum(int _Value)
+	void SetDecorum(float _Value)
 	{
 		OliveStatus.Decorum = _Value;
 	}
-	void SetArt(int _Value)
+	void SetArt(float _Value)
 	{
 		OliveStatus.Art = _Value;
 	}
-	void SetConversation(int _Value)
+	void SetConversation(float _Value)
 	{
 		OliveStatus.Conversation = _Value;
 	}
@@ -238,15 +252,15 @@ public:
 	{
 		OliveStatus.Social = OliveStatus.Decorum + OliveStatus.Art + OliveStatus.Conversation;
 	}
-	void SetCooking(int _Value)
+	void SetCooking(float _Value)
 	{
 		OliveStatus.Cooking = _Value;
 	}
-	void SetCleaning(int _Value)
+	void SetCleaning(float _Value)
 	{
 		OliveStatus.Cleaning = _Value;
 	}
-	void SetTemperament(int _Value)
+	void SetTemperament(float _Value)
 	{
 		OliveStatus.Temperament = _Value;
 	}

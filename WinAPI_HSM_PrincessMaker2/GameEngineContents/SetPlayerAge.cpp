@@ -291,6 +291,10 @@ void SetPlayerAge::SetExplainRender()
 
 void SetPlayerAge::ClickCompleteButton(Button* _Button)
 {
+	if (PrintLetter.size() == 0)
+	{
+		return;
+	}
 	int AgeValue = std::stoi(PrintLetter);
 	if (10 > AgeValue || 99 < AgeValue)
 	{

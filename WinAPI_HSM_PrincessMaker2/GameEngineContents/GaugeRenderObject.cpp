@@ -12,10 +12,11 @@ GaugeRenderObject::~GaugeRenderObject()
 
 }
 
-void GaugeRenderObject::SetGaugeRender(int _Order, StatusName _Name, int _MaxValue, GaugeFrameStyle _Style)
+void GaugeRenderObject::SetGaugeRender(int _Order, const std::string_view& _Name, float _MaxValue, GaugeFrameStyle _Style)
 {
 	Name = _Name;
 	Style = _Style;
+	Max = _MaxValue;
 
 	GameEngineActor* Actor = GetOwner<GameEngineActor>();
 	switch (Style)
@@ -58,19 +59,21 @@ void GaugeRenderObject::SetGaugeRender(int _Order, StatusName _Name, int _MaxVal
 	StatusGaugeRender->SetScale({ 110, 14 });
 	StatusGaugeRender->SetPosition({ -55.0f, -1.0 });
 
-	Max = _MaxValue;
-
 	StatusValueRender.SetOwner(Actor);
 	StatusValueRender.SetImage("Num_Status.bmp", { 10, 20 }, _Order + 4, RGB(0, 0, 0)); // 숫자 리소스 나중에 편집
 	StatusValueRender.SetAlign(Align::Right);
 	StatusValueRender.SetRenderPos({5,0});
 	StatusValueRender.SetValue(static_cast<int>(StatusValue));
 	StatusValueRender.SetMove({ 0,0 });
+
+	NameRender = Actor->CreateRender(_Order + 4);
+	NameRender->SetText(Name, TextHeight, TextType, TextAlign::Left, TextColor, TextBoxScale);
+	NameRender->SetPosition(TextRenderPos - TextBoxScale.half());
 	
-	SetValue(StatusValue);
+	UpdateValue(StatusValue);
 }
 
-void GaugeRenderObject::SetValue(float _Value)
+void GaugeRenderObject::UpdateValue(float _Value)
 {
 	if (Min > _Value || Max < _Value)
 	{
@@ -109,7 +112,8 @@ void GaugeRenderObject::SetPosition(float4 _Position)
 	StatusGaugeRender->SetPosition(_Position + (float4::Left * 55.0f));
 	StatusGaugeFrameRender_Layer2->SetPosition(_Position);
 	StatusValueRender.SetRenderPos(_Position + (float4::Left * 5.0f));
-	SetValue(StatusValue);
+	NameRender->SetPosition(_Position + TextRenderPos - TextBoxScale.half());
+	UpdateValue(StatusValue);
 }
 
 

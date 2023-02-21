@@ -21,7 +21,7 @@ public:
 	StatusWindow& operator=(const StatusWindow& _Other) = delete;
 	StatusWindow& operator=(StatusWindow&& _Other) noexcept = delete;
 
-	void InsertStatus(const StatusName _StatusName, int _Max, GaugeFrameStyle _Style);
+	GaugeRenderObject* InsertStatus(const std::string_view& _StatusName, float _Max, GaugeFrameStyle _Style);
 	//void SetStatusFrameRender(int _Order);
 	//void SetStatusFrameRender(PM2RenderOrder _Order);
 

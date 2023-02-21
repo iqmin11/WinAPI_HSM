@@ -15,9 +15,42 @@ public:
 	BasicStatusWindow& operator=(BasicStatusWindow&& _Other) noexcept = delete;
 
 protected:
-	void Start();
+	void Start() override;
+	void Update(float _DeltaTime) override;
 
 private:
-	GaugeFrameStyle St = GaugeFrameStyle::Null;
+	float Constitution = 0;
+	GaugeRenderObject* ConstitutionRender = nullptr;
+
+	float Strength = 0;
+	GaugeRenderObject* StrengthRender = nullptr;
+	
+	float Intelligence = 0;
+	GaugeRenderObject* IntelligenceRender = nullptr;
+	
+	float Refinement = 0;
+	GaugeRenderObject* RefinementRender = nullptr;
+	
+	float Charisma = 0;
+	GaugeRenderObject* CharismaRender = nullptr;
+	
+	float Morality = 0;
+	GaugeRenderObject* MoralityRender = nullptr;
+	
+	float Faith = 0;
+	GaugeRenderObject* FaithRender = nullptr;
+	
+	float Sin = 0;
+	GaugeRenderObject* SinRender = nullptr;
+	
+	float Sensitivity = 0;
+	GaugeRenderObject* SensitivityRender = nullptr;
+	
+	float Stress = 0;
+	GaugeRenderObject* StressRender = nullptr;
+	
+	float Max = 999;
+	
+	GaugeFrameStyle Style = GaugeFrameStyle::Nomal;
 };
 

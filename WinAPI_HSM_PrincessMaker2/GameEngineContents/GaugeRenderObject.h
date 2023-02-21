@@ -27,27 +27,34 @@ public:
 	GaugeRenderObject& operator=(const GaugeRenderObject& _Other) = delete;
 	GaugeRenderObject& operator=(GaugeRenderObject&& _Other) noexcept = delete;
 
-	void SetGaugeRender(int _Order, StatusName _Name, int _MaxValue, GaugeFrameStyle _Style);
-	void SetValue(float _Value);
+	void SetGaugeRender(int _Order, const std::string_view& _Name, float _MaxValue, GaugeFrameStyle _Style);
+	void UpdateValue(float _Value);
 	void SetMove(float4 _Move);
 	void SetPosition(float4 _Pos);
 
-	StatusName GetStatusName() const
-	{
-		return Name;
-	}
+	//StatusName GetStatusName() const
+	//{
+	//	return Name;
+	//}
 
 protected:
 
 
 private:
-	StatusName Name = StatusName::Null;
-	const int Min = 0;
-	int Max = 0;
+	const float Min = 0;
+	float Max = 0;
 	float StatusValue = 0;
 
 	GaugeFrameStyle Style = GaugeFrameStyle::Null;
 	
+	std::string Name = std::string();
+	GameEngineRender* NameRender = nullptr;
+	int TextHeight = 19;
+	std::string TextType = "±¼¸²";
+	COLORREF TextColor = RGB(255, 255, 255);
+	float4 TextBoxScale = { 80,20 };
+	float4 TextRenderPos = { -70,0 };
+
 	GameEngineRender* StatusGaugeFrameRender_Layer1 = nullptr;
 	GameEngineRender* StatusGaugeEmptyRender = nullptr;
 	GameEngineRender* StatusGaugeRender = nullptr;
