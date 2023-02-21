@@ -6,11 +6,18 @@ class Olive;
 class Background;
 class Flower;
 class Paint;
+
+class MainMenu;
+
 class BasicStatusWindow;
 class EstimateStatusWindow;
 class FighterAndMagicalStatusWindow;
 class SocialAndHouseworkStatusWindow;
-class MainMenu;
+
+class ConverstionSelectionMenu;
+class DietSelectionMenu;
+
+class CubeDialog;
 class Button;
 class RaisingSimLevel : public GameEngineLevel
 {
@@ -47,19 +54,26 @@ private:
 	Olive* AcOlive = nullptr;
 	Date Today = Date();
 
-	MainMenu* AcMainMenu = nullptr;
+	static MainMenu* AcMainMenu;
 	static BasicStatusWindow* AcBasicStatusWindow;
 	static EstimateStatusWindow* AcEstimateStatusWindow;
 	static FighterAndMagicalStatusWindow* AcFighterAndMagicalStatusWindow;
 	static SocialAndHouseworkStatusWindow* AcSocialAndHouseworkStatusWindow;
+	
+	static ConverstionSelectionMenu* AcConverstionSelectionMenu;
+	static DietSelectionMenu* AcDietSelectionMenu;
 
+	static CubeDialog* AcCubeDialog;
 	Background* AcBackground = nullptr;
 	Flower* AcFlower = nullptr; 
 	Paint* AcPaint= nullptr; 
 
 	static void ClickStatusWindowButton(Button* _Button);
-
+	static void ClickConversationButton(Button* _Button);
+	static void ClickDietButton(Button* _Button);
+	
 	void SoundLoad();
 	void ImageLoad();
+	void ButtonAndKeyLoad();
 };
 

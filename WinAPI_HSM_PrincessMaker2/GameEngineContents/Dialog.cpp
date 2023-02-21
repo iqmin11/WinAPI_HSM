@@ -115,8 +115,6 @@ void Dialog::SetMugPic(const std::string_view& _ImageFileName)
 
 void Dialog::SetMugLoc(int _MugLoc)
 {
-
-
 	switch (_MugLoc)
 	{
 	case 0:

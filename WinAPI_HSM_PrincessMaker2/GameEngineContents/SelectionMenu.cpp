@@ -61,6 +61,24 @@ void SelectionMenu::SetButtonString(int _RenderOrder, int _ButtonIndex, const st
 	StringHoverRenders[_ButtonIndex]->Off();
 }
 
+void SelectionMenu::On()
+{
+	GameEngineObject::On();
+	for (size_t i = 0; i < SelectButtons.size(); i++)
+	{
+		SelectButtons[i]->On();
+	}
+}
+
+void SelectionMenu::Off()
+{
+	GameEngineObject::Off();
+	for (size_t i = 0; i < SelectButtons.size(); i++)
+	{
+		SelectButtons[i]->Off();
+	}
+}
+
 void SelectionMenu::Start()
 {
 	//사용법 예시

@@ -32,6 +32,11 @@ void BasicInfo::Start()
 	LastNameRender->SetText(OliveLastName, TextHeight, TextType, TextAlign::Center, TextColor, TextBoxScale);
 	LastNameRender->SetPosition(LastNameRenderPos);
 
+	OliveDietRender = CreateRender(PM2RenderOrder::Menu0_Display);
+	SetDietRenderText();
+	OliveDietRender->SetText(DietRenderText, TextHeight, TextType, TextAlign::Center, TextColor, TextBoxScale);
+	OliveDietRender->SetPosition(OliveDietRenderPos);
+
 	AgeRender.SetOwner(this);
 	AgeRender.SetImage("Num_Age.bmp", AgeRenderScale, static_cast<int>(PM2RenderOrder::Menu0_Display), RGB(255, 0, 255));
 	AgeRender.SetAlign(Align::Center);
@@ -97,6 +102,13 @@ void BasicInfo::Update(float _DeltaTime)
 	{
 		OliveLastName = Olive::OlivePlayer->GetOliveLastName();
 		LastNameRender->SetText(OliveLastName, TextHeight, TextType, TextAlign::Center, TextColor, TextBoxScale);
+	}
+
+	if (OliveDiet != Olive::OlivePlayer->GetOliveDiet())
+	{
+		OliveDiet = Olive::OlivePlayer->GetOliveDiet();
+		SetDietRenderText();
+		OliveDietRender->SetText(DietRenderText, TextHeight, TextType, TextAlign::Center, TextColor, TextBoxScale);
 	}
 
 	if (Age != Olive::OlivePlayer->GetOliveAge())

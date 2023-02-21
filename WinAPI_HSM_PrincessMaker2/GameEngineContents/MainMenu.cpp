@@ -27,9 +27,10 @@ void MainMenu::On()
 	{
 		for (size_t x = 0; x < MainMenuButtons[y].size(); x++)
 		{
-			On();
+			MainMenuButtons[y][x]->On();
 		}
 	}
+	ScheduleButton->On();
 }
 
 void MainMenu::Off()
@@ -39,9 +40,10 @@ void MainMenu::Off()
 	{
 		for (size_t x = 0; x < MainMenuButtons[y].size(); x++)
 		{
-			Off();
+			MainMenuButtons[y][x]->Off();
 		}
 	}
+	ScheduleButton->Off();
 }
 
 void MainMenu::Start()

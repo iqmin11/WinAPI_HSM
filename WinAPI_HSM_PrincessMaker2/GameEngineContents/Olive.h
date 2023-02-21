@@ -313,6 +313,16 @@ public:
 		return OlivePhysical.Hip;
 	}
 
+	Diet GetOliveDiet() const
+	{
+		return OliveDiet;
+	}
+
+	void SetOliveDiet(Diet _Diet)
+	{
+		OliveDiet = _Diet;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Deltatime) override;
@@ -338,6 +348,7 @@ private:
 
 	Status OliveStatus = Status();
 	PhysicalCondition OlivePhysical = PhysicalCondition();
+	Diet OliveDiet = Diet::무리하지_않는다;
 
 	int Gold = 500;
 

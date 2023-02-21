@@ -62,6 +62,31 @@ private:
 	float4 GoldRenderPos = { 65,-12 };
 	float4 GoldRenderScale = { 10, 19 };
 
+	Diet OliveDiet = Diet::무리하지_않는다;
+	GameEngineRender* OliveDietRender = nullptr;
+	std::string DietRenderText = std::string();
+	void SetDietRenderText()
+	{
+		switch (OliveDiet)
+		{
+		case Diet::무리하지_않는다:
+			DietRenderText = "무리하지 않는다";
+			break;
+		case Diet::어쨌든_튼튼하게:
+			DietRenderText = "어쨌든 튼튼하게";
+			break;
+		case Diet::얌전한_아이로:
+			DietRenderText = "얌전한 아이로";
+			break;
+		case Diet::다이어트_시킨다:
+			DietRenderText = "다이어트 시킨다";
+			break;
+		default:
+			break;
+		}
+	}
+	float4 OliveDietRenderPos = {-90, 56 };
+
 	float Height = 0.0f; 
 	NumberRenderObject HeightRender = NumberRenderObject();
 	float4 HeightRenderPos = { -75, 89 };

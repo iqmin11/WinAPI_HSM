@@ -147,6 +147,9 @@
     <ClInclude Include="SocialAndHouseworkStatusWindow.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
     </ClInclude>
+    <ClInclude Include="CubeDialog.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -293,6 +296,9 @@
     </ClCompile>
     <ClCompile Include="SocialAndHouseworkStatusWindow.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeDialog.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

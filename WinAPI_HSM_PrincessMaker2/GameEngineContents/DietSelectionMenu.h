@@ -1,6 +1,7 @@
 #pragma once
 #include "SelectionMenu.h"
 
+class Button;
 class DietSelectionMenu : public SelectionMenu
 {
 public:
@@ -19,6 +20,12 @@ protected:
 
 
 private:
+	float4 ActorPos = { 685,366 };
+	float Xscale = 170.0f;
 
+	static void Click0(Button* _Button);
+	static void Click1(Button* _Button);
+	static void Click2(Button* _Button);
+	static void Click3(Button* _Button);
 };
 

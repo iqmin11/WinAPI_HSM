@@ -1,5 +1,6 @@
 #include "RaisingSimLevel.h"
 #include <GameEngineBase/GameEngineDirectory.h>
+#include <GameEngineBase/GameEngineFile.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineResources.h>
@@ -15,18 +16,25 @@
 #include "BasicInfo.h"
 #include "MainMenu.h"
 #include "Calendar.h"
-#include "ConverstionSelectionMenu.h"
 #include "DietSelectionMenu.h"
 #include "BasicStatusWindow.h"
 #include "EstimateStatusWindow.h"
 #include "FighterAndMagicalStatusWindow.h"
 #include "SocialAndHouseworkStatusWindow.h"
+#include "ConverstionSelectionMenu.h"
+#include "CubeDialog.h"
 #include "ContentsEnums.h"
 
+MainMenu* RaisingSimLevel::AcMainMenu = nullptr;
 BasicStatusWindow* RaisingSimLevel::AcBasicStatusWindow = nullptr;
 EstimateStatusWindow* RaisingSimLevel::AcEstimateStatusWindow = nullptr;
 FighterAndMagicalStatusWindow* RaisingSimLevel::AcFighterAndMagicalStatusWindow = nullptr;
 SocialAndHouseworkStatusWindow* RaisingSimLevel::AcSocialAndHouseworkStatusWindow = nullptr;
+
+ConverstionSelectionMenu* RaisingSimLevel::AcConverstionSelectionMenu = nullptr;
+DietSelectionMenu* RaisingSimLevel::AcDietSelectionMenu = nullptr;
+
+CubeDialog* RaisingSimLevel::AcCubeDialog = nullptr;
 
 RaisingSimLevel::RaisingSimLevel()
 {
@@ -51,24 +59,26 @@ void RaisingSimLevel::Loading()
 	AcEstimateStatusWindow = CreateActor<EstimateStatusWindow>(PM2ActorOrder::Menu1);
 	AcFighterAndMagicalStatusWindow = CreateActor<FighterAndMagicalStatusWindow>(PM2ActorOrder::Menu1);
 	AcSocialAndHouseworkStatusWindow = CreateActor<SocialAndHouseworkStatusWindow>(PM2ActorOrder::Menu1);
+	AcConverstionSelectionMenu = CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
+	AcDietSelectionMenu = CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
+	AcCubeDialog = CreateActor<CubeDialog>(PM2ActorOrder::Dialog);
 
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	CreateActor<Olive>(PM2ActorOrder::Olive);
 	CreateActor<Flower>(PM2ActorOrder::BackGround);
 	CreateActor<Paint>(PM2ActorOrder::BackGround);
 	//CreateActor<Calendar>(PM2ActorOrder::Menu1);
-	//CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
-	//CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
 	//CreateActor<EstimateStatusWindow>(PM2ActorOrder::Menu1);
 	//CreateActor<FemininityStatusWindow>(PM2ActorOrder::Menu1);
 	//CreateActor<Animation>(2);
 
-
-	AcMainMenu->GetMainMenuButton()[0][0]->SetClickCallBack(ClickStatusWindowButton);
+	ButtonAndKeyLoad();
 }
 //800,0 ~ 800,320
 void RaisingSimLevel::Update(float _DeltaTime)
 {
+	//AcCubeDialog->UpdateCubeDialog(CubeFace::Anger, "우아아아앙");
+
 	if (GameEngineInput::IsDown("LevelChange"))
 	{
 		GameEngineCore::GetInst()->ChangeLevel("RPG");
@@ -79,21 +89,72 @@ void RaisingSimLevel::Update(float _DeltaTime)
 	{
 		GameEngineCore::GetInst()->DebugSwitch();
 	}
+
+	if (GameEngineInput::IsDown("ESC"))
+	{
+		if (AcBasicStatusWindow->IsUpdate())
+		{
+			AcMainMenu->On();
+			AcBasicStatusWindow->Off();
+			AcEstimateStatusWindow->Off();
+			AcFighterAndMagicalStatusWindow->Off();
+			AcSocialAndHouseworkStatusWindow->Off();
+		}
+		else if (AcConverstionSelectionMenu->IsUpdate())
+		{
+			AcMainMenu->On();
+			AcConverstionSelectionMenu->Off();
+		}
+		else if (AcDietSelectionMenu->IsUpdate())
+		{
+			AcMainMenu->On();
+			AcDietSelectionMenu->Off();
+			AcCubeDialog->Off();
+		}
+	}
+
+	/*if (GameEngineInput::IsUp("EngineMouseLeft") && AcBasicStatusWindow->IsUpdate())
+	{
+		AcMainMenu->On();
+		AcBasicStatusWindow->Off();
+		AcEstimateStatusWindow->Off();
+		AcFighterAndMagicalStatusWindow->Off();
+		AcSocialAndHouseworkStatusWindow->Off();
+	}
+	else if (GameEngineInput::IsUp("EngineMouseLeft") && AcConverstionSelectionMenu->IsUpdate())
+	{
+		AcMainMenu->On();
+		AcConverstionSelectionMenu->Off();
+	}*/
 }
 
 void RaisingSimLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	AcOlive = Olive::OlivePlayer;
+	Olive::OlivePlayer->On();
 }
-
 
 
 void RaisingSimLevel::ClickStatusWindowButton(Button* _Button)
 {
-	AcBasicStatusWindow->OnOffSwtich();
-	AcEstimateStatusWindow->OnOffSwtich();
-	AcFighterAndMagicalStatusWindow->OnOffSwtich();
-	AcSocialAndHouseworkStatusWindow->OnOffSwtich();
+	AcMainMenu->Off();
+	AcBasicStatusWindow->On();
+	AcEstimateStatusWindow->On();
+	AcFighterAndMagicalStatusWindow->On();
+	AcSocialAndHouseworkStatusWindow->On();
+}
+
+void RaisingSimLevel::ClickConversationButton(Button* _Button)
+{
+	AcMainMenu->Off();
+	AcConverstionSelectionMenu->On();
+}
+
+void RaisingSimLevel::ClickDietButton(Button* _Button)
+{
+	AcMainMenu->Off();
+	AcDietSelectionMenu->On();
+	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "「주인님, 아가씨의 건강관리는\n어떤 방침으로 하시겠습니까?」");
 }
 
 void RaisingSimLevel::SoundLoad()
@@ -109,7 +170,6 @@ void RaisingSimLevel::ImageLoad()
 	Dir.Move("Image");
 	Dir.Move("RaisingLevel");
 	
-
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("paint_default.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("flower_spring.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("flower_summer.bmp"));
@@ -149,4 +209,21 @@ void RaisingSimLevel::ImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BloodTypeRender.bmp"))->Cut(4, 1);
 
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Calendar.bmp"));
+
+	Dir.Move("Cube");
+	
+	std::vector<GameEngineFile> AllFile = Dir.GetAllFile();
+	for (size_t i = 0; i < AllFile.size(); i++)
+	{
+		GameEngineResources::GetInst().ImageLoad(AllFile[i].GetFullPath());
+	}
 }
+
+void RaisingSimLevel::ButtonAndKeyLoad()
+{
+	AcMainMenu->GetMainMenuButton()[0][0]->SetClickCallBack(ClickStatusWindowButton);
+	AcMainMenu->GetMainMenuButton()[0][1]->SetClickCallBack(ClickConversationButton);
+	AcMainMenu->GetMainMenuButton()[0][2]->SetClickCallBack(ClickDietButton);
+}
+
+

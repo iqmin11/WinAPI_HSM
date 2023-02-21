@@ -16,6 +16,9 @@ public:
 	SelectionMenu& operator=(const SelectionMenu& _Other) = delete;
 	SelectionMenu& operator=(SelectionMenu&& _Other) noexcept = delete;
 
+	void On() override;
+	void Off() override;
+
 protected:
 	void Start();
 	void Update(float _Deltatime);

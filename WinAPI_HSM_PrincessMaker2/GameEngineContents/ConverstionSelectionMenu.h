@@ -19,6 +19,7 @@ protected:
 	void Start() override;
 
 private:
-
+	float4 ActorPos = { 685,354 };
+	float Xscale = 170.0f;
 };
 
