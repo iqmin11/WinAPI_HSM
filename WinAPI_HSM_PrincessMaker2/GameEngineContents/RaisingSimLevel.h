@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
 #include "Date.h"
+#include "ContentsEnums.h"
 
 class Olive;
 class Background;
@@ -16,13 +17,14 @@ class SocialAndHouseworkStatusWindow;
 
 class ConverstionSelectionMenu;
 class DietSelectionMenu;
+class DietFinalConfirmSelectionMenu;
 
 class CubeDialog;
 class Button;
 class RaisingSimLevel : public GameEngineLevel
 {
 public:
-	static CubeDialog* AcCubeDialog;
+	
 
 	// construtor destructor
 	RaisingSimLevel();
@@ -49,12 +51,22 @@ public:
 		return Today;
 	}
 
+	static CubeDialog* GetAcCubeDialog()
+	{
+		return AcCubeDialog;
+	}
+
+	static DietFinalConfirmSelectionMenu* GetAcDietFinalConfirmSelectionMenu()
+	{
+		return AcDietFinalConfirmSelectionMenu;
+	}
+
 protected:
 
 
 private:
 	Olive* AcOlive = nullptr;
-	Date Today = Date();
+	Date Today = {1000,10,10};
 
 	static MainMenu* AcMainMenu;
 	static BasicStatusWindow* AcBasicStatusWindow;
@@ -63,8 +75,11 @@ private:
 	static SocialAndHouseworkStatusWindow* AcSocialAndHouseworkStatusWindow;
 	
 	static ConverstionSelectionMenu* AcConverstionSelectionMenu;
+	
 	static DietSelectionMenu* AcDietSelectionMenu;
+	static DietFinalConfirmSelectionMenu* AcDietFinalConfirmSelectionMenu;
 
+	static CubeDialog* AcCubeDialog;
 	Background* AcBackground = nullptr;
 	Flower* AcFlower = nullptr; 
 	Paint* AcPaint= nullptr; 
@@ -73,6 +88,14 @@ private:
 	static void ClickConversationButton(Button* _Button);
 	static void ClickDietButton(Button* _Button);
 	
+	static void ClickDiet_0(Button* _Button);
+	static void ClickDiet_1(Button* _Button);
+	static void ClickDiet_2(Button* _Button);
+	static void ClickDiet_3(Button* _Button);
+	static void ClickDietFinalConfirm_0(Button* _Button);
+	static void ClickDietFinalConfirm_1(Button* _Button);
+	static Diet DietSetConfirm;
+
 	void SoundLoad();
 	void ImageLoad();
 	void ButtonAndKeyLoad();

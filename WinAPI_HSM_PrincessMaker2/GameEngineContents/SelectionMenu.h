@@ -19,6 +19,11 @@ public:
 	void On() override;
 	void Off() override;
 
+	std::vector<GlobalButton*>& GetSelectButtons()
+	{
+		return SelectButtons;
+	}
+
 protected:
 	void Start();
 	void Update(float _Deltatime);
@@ -26,11 +31,6 @@ protected:
 	
 	void SetSelectionMenu(int _Count, float4 _Pos, float _xScale, int _ActorOrder, int _RenderOrder);
 	void SetSelectionMenu(int _Count, float4 _Pos, float _xScale, PM2ActorOrder _ButtonActorOrder, PM2RenderOrder _ButtonRenderOrder);
-
-	std::vector<GlobalButton*>& GetSelectButtons()
-	{
-		return SelectButtons;
-	}
 
 	void SetButtonString(int _RenderOrder, int _ButtonIndex, const std::string_view& _Text);
 

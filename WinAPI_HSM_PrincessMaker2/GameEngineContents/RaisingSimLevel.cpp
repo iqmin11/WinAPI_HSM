@@ -17,6 +17,7 @@
 #include "MainMenu.h"
 #include "Calendar.h"
 #include "DietSelectionMenu.h"
+#include "DietFinalConfirmSelectionMenu.h"
 #include "BasicStatusWindow.h"
 #include "EstimateStatusWindow.h"
 #include "FighterAndMagicalStatusWindow.h"
@@ -33,6 +34,8 @@ SocialAndHouseworkStatusWindow* RaisingSimLevel::AcSocialAndHouseworkStatusWindo
 
 ConverstionSelectionMenu* RaisingSimLevel::AcConverstionSelectionMenu = nullptr;
 DietSelectionMenu* RaisingSimLevel::AcDietSelectionMenu = nullptr;
+DietFinalConfirmSelectionMenu* RaisingSimLevel::AcDietFinalConfirmSelectionMenu = nullptr;
+Diet RaisingSimLevel::DietSetConfirm = Diet::Null;
 
 CubeDialog* RaisingSimLevel::AcCubeDialog = nullptr;
 
@@ -61,6 +64,7 @@ void RaisingSimLevel::Loading()
 	AcFighterAndMagicalStatusWindow = CreateActor<FighterAndMagicalStatusWindow>(PM2ActorOrder::Menu1);
 	AcSocialAndHouseworkStatusWindow = CreateActor<SocialAndHouseworkStatusWindow>(PM2ActorOrder::Menu1);
 	AcConverstionSelectionMenu = CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
+	AcDietFinalConfirmSelectionMenu = CreateActor<DietFinalConfirmSelectionMenu>(PM2ActorOrder::Menu2);
 	AcDietSelectionMenu = CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
 
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
@@ -111,6 +115,12 @@ void RaisingSimLevel::Update(float _DeltaTime)
 			AcDietSelectionMenu->Off();
 			AcCubeDialog->Off();
 		}
+		else if (AcDietFinalConfirmSelectionMenu->IsUpdate())
+		{
+			AcMainMenu->On();
+			AcDietFinalConfirmSelectionMenu->Off();
+			AcCubeDialog->Off();
+		}
 	}
 
 	/*if (GameEngineInput::IsUp("EngineMouseLeft") && AcBasicStatusWindow->IsUpdate())
@@ -156,6 +166,71 @@ void RaisingSimLevel::ClickDietButton(Button* _Button)
 	AcDietSelectionMenu->On();
 	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "「주인님, 아가씨의 건강관리는\n어떤 방침으로 하시겠습니까?」");
 }
+
+void RaisingSimLevel::ClickDiet_0(Button* _Button)
+{
+	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "「그 방침이라면 매달 식비가\n30G 들어갑니다. 무리 없는 식\n생활을 보낼 수 있습니다」");
+	AcDietFinalConfirmSelectionMenu->On();
+	AcDietSelectionMenu->Off();
+	DietSetConfirm = Diet::무리하지_않는다;
+}
+
+void RaisingSimLevel::ClickDiet_1(Button* _Button)
+{
+	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "「그 방침이라면 매달 식비가\n80G 들어갑니다. 체력이 올라가\n겠죠」");
+	AcDietFinalConfirmSelectionMenu->On();
+	AcDietSelectionMenu->Off();
+	DietSetConfirm = Diet::어쨌든_튼튼하게;
+}
+
+void RaisingSimLevel::ClickDiet_2(Button* _Button)
+{
+	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "「그 방침이라면 매달 식비가\n10G 들어갑니다. 약간 건강에 부\n담이 갈지도 모릅니다」");
+	AcDietFinalConfirmSelectionMenu->On();
+	AcDietSelectionMenu->Off();
+	DietSetConfirm = Diet::얌전한_아이로;
+}
+
+void RaisingSimLevel::ClickDiet_3(Button* _Button)
+{
+	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "「그 방침이라면 매달 식비가\n5G 밖에 들지 않습니다. 아가씨의\n몸무게를 줄이고 싶다면, 이 방\n침으로 가시죠. 단, 체력을 상\n당히 소모하므로 주의하시기 바\n랍니다」");
+	AcDietFinalConfirmSelectionMenu->On();
+	AcDietSelectionMenu->Off();
+	DietSetConfirm = Diet::다이어트_시킨다;
+}
+
+void RaisingSimLevel::ClickDietFinalConfirm_0(Button* _Button)
+{
+	switch (DietSetConfirm)
+	{
+	case Diet::무리하지_않는다:
+		Olive::OlivePlayer->SetOliveDiet(Diet::무리하지_않는다);
+		break;
+	case Diet::어쨌든_튼튼하게:
+		Olive::OlivePlayer->SetOliveDiet(Diet::어쨌든_튼튼하게);
+		break;
+	case Diet::얌전한_아이로:
+		Olive::OlivePlayer->SetOliveDiet(Diet::얌전한_아이로);
+		break;
+	case Diet::다이어트_시킨다:
+		Olive::OlivePlayer->SetOliveDiet(Diet::다이어트_시킨다);
+		break;
+	default:
+		break;
+	}
+	AcMainMenu->On();
+	AcDietFinalConfirmSelectionMenu->Off();
+	AcCubeDialog->Off();
+}
+
+void RaisingSimLevel::ClickDietFinalConfirm_1(Button* _Button)
+{
+	AcMainMenu->On();
+	AcDietFinalConfirmSelectionMenu->Off();
+	AcCubeDialog->Off();
+}
+
+
 
 void RaisingSimLevel::SoundLoad()
 {
@@ -224,6 +299,14 @@ void RaisingSimLevel::ButtonAndKeyLoad()
 	AcMainMenu->GetMainMenuButton()[0][0]->SetClickCallBack(ClickStatusWindowButton);
 	AcMainMenu->GetMainMenuButton()[0][1]->SetClickCallBack(ClickConversationButton);
 	AcMainMenu->GetMainMenuButton()[0][2]->SetClickCallBack(ClickDietButton);
+
+	AcDietSelectionMenu->GetSelectButtons()[0]->SetClickCallBack(ClickDiet_0);
+	AcDietSelectionMenu->GetSelectButtons()[1]->SetClickCallBack(ClickDiet_1);
+	AcDietSelectionMenu->GetSelectButtons()[2]->SetClickCallBack(ClickDiet_2);
+	AcDietSelectionMenu->GetSelectButtons()[3]->SetClickCallBack(ClickDiet_3);
+
+	AcDietFinalConfirmSelectionMenu->GetSelectButtons()[0]->SetClickCallBack(ClickDietFinalConfirm_0);
+	AcDietFinalConfirmSelectionMenu->GetSelectButtons()[1]->SetClickCallBack(ClickDietFinalConfirm_1);
 }
 
 

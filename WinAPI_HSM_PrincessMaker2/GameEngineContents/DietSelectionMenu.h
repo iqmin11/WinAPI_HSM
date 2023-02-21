@@ -1,8 +1,7 @@
 #pragma once
 #include "SelectionMenu.h"
 
-class Button;
-class CubeDialog;
+//class Button;
 class DietSelectionMenu : public SelectionMenu
 {
 public:
@@ -21,14 +20,12 @@ protected:
 
 
 private:
-	float4 ActorPos = { 685,366 };
+	float4 ActorPos = { 685,346 };
 	float Xscale = 170.0f;
 
-	static CubeDialog* AcCubeDialog;
-
-	static void Click0(Button* _Button);
-	static void Click1(Button* _Button);
-	static void Click2(Button* _Button);
-	static void Click3(Button* _Button);
+	//static void Click0(Button* _Button);
+	//static void Click1(Button* _Button);
+	//static void Click2(Button* _Button);
+	//static void Click3(Button* _Button);
 };
 

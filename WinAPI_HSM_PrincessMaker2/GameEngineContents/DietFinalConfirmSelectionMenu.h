@@ -14,10 +14,10 @@ public:
 	DietFinalConfirmSelectionMenu& operator=(DietFinalConfirmSelectionMenu&& _Other) noexcept = delete;
 
 protected:
-
+	void Start() override;
 
 private:
-	float4 ActorPos = {};
-
+	float4 ActorPos = { 685,320 };
+	float Xscale = 140;
 };
 
