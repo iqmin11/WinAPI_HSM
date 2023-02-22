@@ -48,7 +48,6 @@ float DelayTime = 0.0f;
 
 void Button::Update(float _DeltaTime)
 {
-
 	if (0.0f < DelayTime)
 	{
 		TestCollision = nullptr;
@@ -112,5 +111,13 @@ void Button::Update(float _DeltaTime)
 		break;
 	default:
 		break;
+	}
+}
+
+void Button::LevelChangeEnd(GameEngineLevel* _Level)
+{
+	if (nullptr == TestCollision)
+	{
+		TestCollision = nullptr;
 	}
 }
