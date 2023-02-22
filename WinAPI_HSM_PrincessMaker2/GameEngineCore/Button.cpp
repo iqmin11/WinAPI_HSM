@@ -43,14 +43,31 @@ void Button::SetCollisionOrder(int _Order)
 	ButtonCollision->SetOrder(_Order);
 }
 
+GameEngineCollision* TestCollision = nullptr;
+float DelayTime = 0.0f;
+
 void Button::Update(float _DeltaTime)
 {
+
+	if (0.0f < DelayTime)
+	{
+		TestCollision = nullptr;
+		DelayTime -= _DeltaTime;
+		return;
+	}
+
+	if (nullptr != TestCollision && ButtonCollision != TestCollision)
+	{
+		return;
+	}
+
 	State = ButtonState::Release;
 
 	if (true == ButtonCollision->Collision({ .TargetGroup = PointTargetGroup, .TargetColType = CollisionType::CT_Point, .ThisColType = ButtonCollisionType }))
 	{
 		if (true == GameEngineInput::IsUp("EngineMouseLeft") && nullptr != ClickPtr)
 		{
+			DelayTime = 0.1f;
 			ClickPtr(this);
 		}
 		else if (true == GameEngineInput::IsFree("EngineMouseLeft"))
@@ -59,6 +76,7 @@ void Button::Update(float _DeltaTime)
 		}
 		else if (true == GameEngineInput::IsPress("EngineMouseLeft"))
 		{
+			TestCollision = ButtonCollision;
 			State = ButtonState::Press;
 		}
 	}

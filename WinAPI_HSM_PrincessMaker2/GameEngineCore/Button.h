@@ -45,16 +45,120 @@ public:
 	{
 		HoverImageName = _Name;
 		HoverIndex = _HoverIndex;
+
+
+		switch (State)
+		{
+		case ButtonState::Release:
+			CurImageName = ReleaseImageName;
+			ButtonRender->SetImage(ReleaseImageName);
+			if (-1 != ReleaseIndex)
+			{
+				ButtonRender->SetFrame(ReleaseIndex);
+			}
+			ButtonRender->SetScale(Scale);
+			break;
+		case ButtonState::Press:
+			CurImageName = PressImageName;
+			ButtonRender->SetImage(PressImageName);
+			if (-1 != PressIndex)
+			{
+				ButtonRender->SetFrame(PressIndex);
+			}
+			ButtonRender->SetScale(Scale);
+			break;
+		case ButtonState::Hover:
+			CurImageName = HoverImageName;
+			ButtonRender->SetImage(HoverImageName);
+			if (-1 != HoverIndex)
+			{
+				ButtonRender->SetFrame(HoverIndex);
+			}
+			ButtonRender->SetScale(Scale);
+			break;
+		default:
+			break;
+		}
 	}
 	void SetReleaseImage(const std::string_view& _Name, int _ReleaseIndex = -1)
 	{
 		ReleaseImageName = _Name;
 		ReleaseIndex = _ReleaseIndex;
+
+
+
+		switch (State)
+		{
+		case ButtonState::Release:
+			CurImageName = ReleaseImageName;
+			ButtonRender->SetImage(ReleaseImageName);
+			if (-1 != ReleaseIndex)
+			{
+				ButtonRender->SetFrame(ReleaseIndex);
+			}
+			ButtonRender->SetScale(Scale);
+			break;
+		case ButtonState::Press:
+			CurImageName = PressImageName;
+			ButtonRender->SetImage(PressImageName);
+			if (-1 != PressIndex)
+			{
+				ButtonRender->SetFrame(PressIndex);
+			}
+			ButtonRender->SetScale(Scale);
+			break;
+		case ButtonState::Hover:
+			CurImageName = HoverImageName;
+			ButtonRender->SetImage(HoverImageName);
+			if (-1 != HoverIndex)
+			{
+				ButtonRender->SetFrame(HoverIndex);
+			}
+			ButtonRender->SetScale(Scale);
+			break;
+		default:
+			break;
+		}
 	}
 	void SetPressImage(const std::string_view& _Name, int _PressIndex = -1)
 	{
 		PressImageName = _Name;
 		PressIndex = _PressIndex;
+
+
+
+		switch (State)
+		{
+		case ButtonState::Release:
+			CurImageName = ReleaseImageName;
+			ButtonRender->SetImage(ReleaseImageName);
+			if (-1 != ReleaseIndex)
+			{
+				ButtonRender->SetFrame(ReleaseIndex);
+			}
+			ButtonRender->SetScale(Scale);
+			break;
+		case ButtonState::Press:
+			CurImageName = PressImageName;
+			ButtonRender->SetImage(PressImageName);
+			if (-1 != PressIndex)
+			{
+				ButtonRender->SetFrame(PressIndex);
+			}
+			ButtonRender->SetScale(Scale);
+			break;
+		case ButtonState::Hover:
+			CurImageName = HoverImageName;
+			ButtonRender->SetImage(HoverImageName);
+			if (-1 != HoverIndex)
+			{
+				ButtonRender->SetFrame(HoverIndex);
+			}
+			ButtonRender->SetScale(Scale);
+			break;
+		default:
+			break;
+		}
 	}
 
 	GameEngineRender* GetButtonRender()
