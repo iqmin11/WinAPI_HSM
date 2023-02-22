@@ -15,7 +15,6 @@
 #include "DateViewer.h"
 #include "BasicInfo.h"
 #include "MainMenu.h"
-#include "Calendar.h"
 #include "DietSelectionMenu.h"
 #include "DietFinalConfirmSelectionMenu.h"
 #include "BasicStatusWindow.h"
@@ -23,6 +22,8 @@
 #include "FighterAndMagicalStatusWindow.h"
 #include "SocialAndHouseworkStatusWindow.h"
 #include "ConverstionSelectionMenu.h"
+#include "ScheduleCalendar.h"
+
 #include "CubeDialog.h"
 #include "ContentsEnums.h"
 
@@ -35,6 +36,9 @@ SocialAndHouseworkStatusWindow* RaisingSimLevel::AcSocialAndHouseworkStatusWindo
 ConverstionSelectionMenu* RaisingSimLevel::AcConverstionSelectionMenu = nullptr;
 DietSelectionMenu* RaisingSimLevel::AcDietSelectionMenu = nullptr;
 DietFinalConfirmSelectionMenu* RaisingSimLevel::AcDietFinalConfirmSelectionMenu = nullptr;
+
+ScheduleCalendar* RaisingSimLevel::AcScheduleCalendar = nullptr;
+
 Diet RaisingSimLevel::DietSetConfirm = Diet::Null;
 
 CubeDialog* RaisingSimLevel::AcCubeDialog = nullptr;
@@ -66,6 +70,7 @@ void RaisingSimLevel::Loading()
 	AcConverstionSelectionMenu = CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
 	AcDietFinalConfirmSelectionMenu = CreateActor<DietFinalConfirmSelectionMenu>(PM2ActorOrder::Menu2);
 	AcDietSelectionMenu = CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
+	AcScheduleCalendar = CreateActor<ScheduleCalendar>(PM2ActorOrder::Menu1);
 
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	CreateActor<Olive>(PM2ActorOrder::Olive);

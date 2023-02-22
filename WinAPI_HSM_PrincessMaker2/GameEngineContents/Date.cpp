@@ -4,39 +4,45 @@
 
 std::vector<Date> Date::GetOneMonthCalendar(int _YYYY, int _MM)
 {
-    std::vector<Date> Result = std::vector<Date>();
 
     if (IsOverMonth(_MM))
     {
         MsgAssert("입력 가능한 Month의 범위를 벗어났습니다")
     }
+    
+    std::vector<Date> Value = std::vector<Date>();
+    
     if (IsBigMonth(_MM))
     {
-        Result.resize(31);
+        Value.resize(31);
     }
     else if (2 == _MM)
     {
         if (IsLeapYear(_YYYY))
         {
-            Result.resize(29);
+            Value.resize(29);
         }
         else
         {
-            Result.resize(28);
+            Value.resize(28);
         }
     }
     else
     {
-        Result.resize(30);
+        Value.resize(30);
     }
-
-
-    for (int i = 0; i < Result.size(); i++)
+    
+    
+    for (int Day = 1; Day <= Value.size(); Day++)
     {
-        Result[i].SetDate(_YYYY, _MM, i + 1);
+        Value[Day-1].SetDate(_YYYY, _MM, Day);
     }
 
-    return Result;
+    //std::vector<Date> Result = Value;
+    
+    //return Result;
+
+    return Value;
 }
 
 Date::Date()
@@ -338,7 +344,7 @@ int Date::FindMonthFirstWeekday(int _YYYY, int _MM)
         Month++;
     }
     int WholeDay = 0;
-    for (size_t i = 0; i < _MM - 1; i++)
+    for (int i = 0; i < (_MM - 1); i++)
     {
         WholeDay += MonthLen[i];
     }

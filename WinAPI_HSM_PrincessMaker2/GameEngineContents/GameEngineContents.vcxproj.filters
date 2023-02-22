@@ -2,9 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="PM2Core.h" />
-    <ClInclude Include="Animation.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
-    </ClInclude>
     <ClInclude Include="ContentsEnums.h" />
     <ClInclude Include="TitleLevel.h">
       <Filter>ContentsLevel\1. TitleLevel</Filter>
@@ -81,9 +78,6 @@
     <ClInclude Include="BasicInfo.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClInclude>
-    <ClInclude Include="Calendar.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule</Filter>
-    </ClInclude>
     <ClInclude Include="ConverstionSelectionMenu.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu</Filter>
     </ClInclude>
@@ -153,12 +147,15 @@
     <ClInclude Include="DietFinalConfirmSelectionMenu.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\DietMenuActor</Filter>
     </ClInclude>
+    <ClInclude Include="ScheduleCalendar.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>ContentsLevel\0. PM2Base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
-    <ClCompile Include="Animation.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
-    </ClCompile>
     <ClCompile Include="TitleLevel.cpp">
       <Filter>ContentsLevel\1. TitleLevel</Filter>
     </ClCompile>
@@ -234,9 +231,6 @@
     <ClCompile Include="BasicInfo.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClCompile>
-    <ClCompile Include="Calendar.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule</Filter>
-    </ClCompile>
     <ClCompile Include="ConverstionSelectionMenu.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu</Filter>
     </ClCompile>
@@ -305,6 +299,12 @@
     </ClCompile>
     <ClCompile Include="DietFinalConfirmSelectionMenu.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\DietMenuActor</Filter>
+    </ClCompile>
+    <ClCompile Include="ScheduleCalendar.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

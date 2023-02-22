@@ -19,6 +19,8 @@ class ConverstionSelectionMenu;
 class DietSelectionMenu;
 class DietFinalConfirmSelectionMenu;
 
+class ScheduleCalendar;
+
 class CubeDialog;
 class Button;
 class RaisingSimLevel : public GameEngineLevel
@@ -78,6 +80,8 @@ private:
 	
 	static DietSelectionMenu* AcDietSelectionMenu;
 	static DietFinalConfirmSelectionMenu* AcDietFinalConfirmSelectionMenu;
+
+	static ScheduleCalendar* AcScheduleCalendar;
 
 	static CubeDialog* AcCubeDialog;
 	Background* AcBackground = nullptr;
