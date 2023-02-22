@@ -20,9 +20,11 @@ class DietSelectionMenu;
 class DietFinalConfirmSelectionMenu;
 
 class ScheduleCalendar;
+class ScheduleSelectionMenu;
 
 class CubeDialog;
 class Button;
+class IconButton;
 class RaisingSimLevel : public GameEngineLevel
 {
 public:
@@ -82,15 +84,23 @@ private:
 	static DietFinalConfirmSelectionMenu* AcDietFinalConfirmSelectionMenu;
 
 	static ScheduleCalendar* AcScheduleCalendar;
+	static ScheduleSelectionMenu* AcScheduleSelectionMenu;
 
 	static CubeDialog* AcCubeDialog;
 	Background* AcBackground = nullptr;
 	Flower* AcFlower = nullptr; 
 	Paint* AcPaint= nullptr; 
+	IconButton* TestIconButton = nullptr;
+
+	void ESCdown();
 
 	static void ClickStatusWindowButton(Button* _Button);
+	
 	static void ClickConversationButton(Button* _Button);
+	
 	static void ClickDietButton(Button* _Button);
+	
+	static void ClickScheduleButton(Button* _Button);
 	
 	static void ClickDiet_0(Button* _Button);
 	static void ClickDiet_1(Button* _Button);
@@ -104,4 +114,3 @@ private:
 	void ImageLoad();
 	void ButtonAndKeyLoad();
 };
-

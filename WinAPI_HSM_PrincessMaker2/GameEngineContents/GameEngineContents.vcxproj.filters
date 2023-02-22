@@ -153,6 +153,12 @@
     <ClInclude Include="Animation.h">
       <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClInclude>
+    <ClInclude Include="ScheduleSelectionMenu.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule</Filter>
+    </ClInclude>
+    <ClInclude Include="IconButton.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -306,6 +312,12 @@
     <ClCompile Include="Animation.cpp">
       <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClCompile>
+    <ClCompile Include="ScheduleSelectionMenu.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule</Filter>
+    </ClCompile>
+    <ClCompile Include="IconButton.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsLevel">
@@ -373,6 +385,9 @@
     </Filter>
     <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\DietMenuActor">
       <UniqueIdentifier>{9f4b2b56-18e2-425c-b04d-75d0d47c1572}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\UI">
+      <UniqueIdentifier>{0bb81371-05d0-4983-8414-3aa9e0391b5a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

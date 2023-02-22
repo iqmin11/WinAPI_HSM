@@ -132,6 +132,8 @@ enum class PM2CollisionOrder
 
 enum class IconCode
 {
+	Null = -1,
+
 	//¹«±â
 	°ïºÀ,
 	±¸¸®°Ë,

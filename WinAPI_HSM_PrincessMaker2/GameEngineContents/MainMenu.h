@@ -16,6 +16,10 @@ public:
 	MainMenu& operator=(MainMenu&& _Other) noexcept = delete;
 
 	std::vector<std::vector<GlobalButton*>> GetMainMenuButton();
+	GlobalButton* GetScheduleButton() const
+	{
+		return ScheduleButton;
+	}
 
 	void On() override;
 	void Off() override;

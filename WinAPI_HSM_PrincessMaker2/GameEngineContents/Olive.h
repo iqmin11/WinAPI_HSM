@@ -337,7 +337,7 @@ private:
 	
 	int OliveAge = 10;
 	
-	Date OliveBirthDay = Date();
+	Date OliveBirthDay = {1000, 10, 10};
 	
 	BloodType OliveBloodType = BloodType::Null;
 	

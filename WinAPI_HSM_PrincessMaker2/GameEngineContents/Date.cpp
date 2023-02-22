@@ -38,11 +38,11 @@ std::vector<Date> Date::GetOneMonthCalendar(int _YYYY, int _MM)
         Value[Day-1].SetDate(_YYYY, _MM, Day);
     }
 
-    //std::vector<Date> Result = Value;
+    std::vector<Date> Result = Value;
     
-    //return Result;
+    return Result;
 
-    return Value;
+    //return Value;
 }
 
 Date::Date()

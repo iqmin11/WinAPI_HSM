@@ -23,9 +23,12 @@
 #include "SocialAndHouseworkStatusWindow.h"
 #include "ConverstionSelectionMenu.h"
 #include "ScheduleCalendar.h"
+#include "ScheduleSelectionMenu.h"
 
 #include "CubeDialog.h"
 #include "ContentsEnums.h"
+
+#include "IconButton.h"
 
 MainMenu* RaisingSimLevel::AcMainMenu = nullptr;
 BasicStatusWindow* RaisingSimLevel::AcBasicStatusWindow = nullptr;
@@ -38,6 +41,7 @@ DietSelectionMenu* RaisingSimLevel::AcDietSelectionMenu = nullptr;
 DietFinalConfirmSelectionMenu* RaisingSimLevel::AcDietFinalConfirmSelectionMenu = nullptr;
 
 ScheduleCalendar* RaisingSimLevel::AcScheduleCalendar = nullptr;
+ScheduleSelectionMenu* RaisingSimLevel::AcScheduleSelectionMenu = nullptr;
 
 Diet RaisingSimLevel::DietSetConfirm = Diet::Null;
 
@@ -59,8 +63,8 @@ void RaisingSimLevel::Loading()
 	ImageLoad();
 
 	AcBackground = CreateActor<Background>(static_cast<int>(PM2ActorOrder::BackGround));
-	CreateActor<DateViewer>(PM2ActorOrder::Menu0);
-	CreateActor<BasicInfo>(PM2ActorOrder::Menu0);
+	//CreateActor<DateViewer>(PM2ActorOrder::Menu0);
+	//CreateActor<BasicInfo>(PM2ActorOrder::Menu0);
 	AcMainMenu = CreateActor<MainMenu>(PM2ActorOrder::Menu0);
 	AcCubeDialog = CreateActor<CubeDialog>(PM2ActorOrder::Dialog);
 	AcBasicStatusWindow = CreateActor<BasicStatusWindow>(PM2ActorOrder::Menu1);
@@ -71,6 +75,10 @@ void RaisingSimLevel::Loading()
 	AcDietFinalConfirmSelectionMenu = CreateActor<DietFinalConfirmSelectionMenu>(PM2ActorOrder::Menu2);
 	AcDietSelectionMenu = CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
 	AcScheduleCalendar = CreateActor<ScheduleCalendar>(PM2ActorOrder::Menu1);
+	AcScheduleSelectionMenu = CreateActor<ScheduleSelectionMenu>(PM2ActorOrder::Menu1);
+
+	TestIconButton = CreateActor<IconButton>();
+	TestIconButton->SetIconButton(IconCode::격투술, "격투술", "초급", 30, {400,300});
 
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	CreateActor<Olive>(PM2ActorOrder::Olive);
@@ -99,6 +107,33 @@ void RaisingSimLevel::Update(float _DeltaTime)
 		GameEngineCore::GetInst()->DebugSwitch();
 	}
 
+	ESCdown();
+
+	
+
+	/*if (GameEngineInput::IsUp("EngineMouseLeft") && AcBasicStatusWindow->IsUpdate())
+	{
+		AcMainMenu->On();
+		AcBasicStatusWindow->Off();
+		AcEstimateStatusWindow->Off();
+		AcFighterAndMagicalStatusWindow->Off();
+		AcSocialAndHouseworkStatusWindow->Off();
+	}
+	else if (GameEngineInput::IsUp("EngineMouseLeft") && AcConverstionSelectionMenu->IsUpdate())
+	{
+		AcMainMenu->On();
+		AcConverstionSelectionMenu->Off();
+	}*/
+}
+
+void RaisingSimLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	AcOlive = Olive::OlivePlayer;
+	Olive::OlivePlayer->On();
+}
+
+void RaisingSimLevel::ESCdown()
+{
 	if (GameEngineInput::IsDown("ESC"))
 	{
 		if (AcBasicStatusWindow->IsUpdate())
@@ -126,29 +161,15 @@ void RaisingSimLevel::Update(float _DeltaTime)
 			AcDietFinalConfirmSelectionMenu->Off();
 			AcCubeDialog->Off();
 		}
+		else if (AcScheduleCalendar->IsUpdate())
+		{
+			AcMainMenu->On();
+			AcScheduleCalendar->Off();
+			AcScheduleSelectionMenu->Off();
+			AcCubeDialog->Off();
+		}
 	}
-
-	/*if (GameEngineInput::IsUp("EngineMouseLeft") && AcBasicStatusWindow->IsUpdate())
-	{
-		AcMainMenu->On();
-		AcBasicStatusWindow->Off();
-		AcEstimateStatusWindow->Off();
-		AcFighterAndMagicalStatusWindow->Off();
-		AcSocialAndHouseworkStatusWindow->Off();
-	}
-	else if (GameEngineInput::IsUp("EngineMouseLeft") && AcConverstionSelectionMenu->IsUpdate())
-	{
-		AcMainMenu->On();
-		AcConverstionSelectionMenu->Off();
-	}*/
 }
-
-void RaisingSimLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
-{
-	AcOlive = Olive::OlivePlayer;
-	Olive::OlivePlayer->On();
-}
-
 
 void RaisingSimLevel::ClickStatusWindowButton(Button* _Button)
 {
@@ -172,6 +193,14 @@ void RaisingSimLevel::ClickDietButton(Button* _Button)
 	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "「주인님, 아가씨의 건강관리는\n어떤 방침으로 하시겠습니까?」");
 }
 
+void RaisingSimLevel::ClickScheduleButton(Button* _Button)
+{
+	AcMainMenu->Off();
+	AcScheduleCalendar->On();
+	AcScheduleSelectionMenu->On();
+	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
+}
+
 void RaisingSimLevel::ClickDiet_0(Button* _Button)
 {
 	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "「그 방침이라면 매달 식비가\n30G 들어갑니다. 무리 없는 식\n생활을 보낼 수 있습니다」");
@@ -179,6 +208,7 @@ void RaisingSimLevel::ClickDiet_0(Button* _Button)
 	AcDietSelectionMenu->Off();
 	DietSetConfirm = Diet::무리하지_않는다;
 }
+
 
 void RaisingSimLevel::ClickDiet_1(Button* _Button)
 {
@@ -283,12 +313,13 @@ void RaisingSimLevel::ImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("StatusGaugeFrame_Layer2_Physical.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("StatusGauge.bmp"))->Cut(2, 1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Num_Status.bmp"))->Cut(10, 1);
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Num_Status_etc.bmp"))->Cut(2, 1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Num_Status_etc.bmp"))->Cut(3, 1);
 	
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Icon.bmp"))->Cut(15, 7);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BloodTypeRender.bmp"))->Cut(4, 1);
 
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Calendar.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("IconButton_Hover.bmp"));
 
 	Dir.Move("Cube");
 	
@@ -304,6 +335,7 @@ void RaisingSimLevel::ButtonAndKeyLoad()
 	AcMainMenu->GetMainMenuButton()[0][0]->SetClickCallBack(ClickStatusWindowButton);
 	AcMainMenu->GetMainMenuButton()[0][1]->SetClickCallBack(ClickConversationButton);
 	AcMainMenu->GetMainMenuButton()[0][2]->SetClickCallBack(ClickDietButton);
+	AcMainMenu->GetScheduleButton()->SetClickCallBack(ClickScheduleButton);
 
 	AcDietSelectionMenu->GetSelectButtons()[0]->SetClickCallBack(ClickDiet_0);
 	AcDietSelectionMenu->GetSelectButtons()[1]->SetClickCallBack(ClickDiet_1);

@@ -19,21 +19,37 @@ public:
 
 protected:
 	void Start() override;
+	void Update(float _DeltaTime) override;
 
 private:
 	float4 ActorPos = {160,263};
-	Date Today = Date(1200,9,10);
+	Date Today = Date(1000,10,10);
 	std::vector<Date> ThisMonthCalendar = std::vector<Date>();
 
 	GameEngineRender* CalendarFrame = nullptr;
 	
 	NumberRenderObject DayNumRender[6][7] = {};
-	float4 DayNumRenderScale = { 10,20 };
-	float4 FirstDayNumRenderPos = { -105,-70 };
+	float4 DayNumRenderScale_1 = { 20,20 };
+	float4 DayNumRenderScale_2 = { 10,20 };
+	float4 FirstDayNumRenderPos_1 = { -110,-70 };
+	float4 FirstDayNumRenderPos_2 = { -105,-70 };
 	float4 DayNumRenderInterval = { 40,40 };
 
+	NumberRenderObject YearNumRender = {};
+	float4 YearNumRenderScale = { 10,20 };
+	float4 YearNumRenderPos = { -25,-130 };
 
-	void SetDayNumRender();
+	GameEngineRender* MonthRender = nullptr;
+	float4 MonthRenderScale = { 60,20 };
+	float4 MonthRenderPos = { 30,-130 };
+
 	void SetThisMonthCalendar();
+	void SetDayNumRender();
+	void SetYearNumRender();
+	void SetMonthRender();
+
+	void UpdateDayNumRender();
+	void UpdateYearNumRender();
+	void UpdateMonthRender();
 };
 
