@@ -112,6 +112,8 @@ private:
 	static void ClickDietFinalConfirm_1(Button* _Button);
 	static Diet DietSetConfirm;
 
+	static void ClickClass(Button* _Button);
+
 	void SoundLoad();
 	void ImageLoad();
 	void ButtonAndKeyLoad();

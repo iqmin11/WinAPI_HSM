@@ -65,8 +65,8 @@ void RaisingSimLevel::Loading()
 	ImageLoad();
 
 	AcBackground = CreateActor<Background>(static_cast<int>(PM2ActorOrder::BackGround));
-	//CreateActor<DateViewer>(PM2ActorOrder::Menu0);
-	//CreateActor<BasicInfo>(PM2ActorOrder::Menu0);
+	CreateActor<DateViewer>(PM2ActorOrder::Menu0);
+	CreateActor<BasicInfo>(PM2ActorOrder::Menu0);
 	AcMainMenu = CreateActor<MainMenu>(PM2ActorOrder::Menu0);
 	AcCubeDialog = CreateActor<CubeDialog>(PM2ActorOrder::Dialog);
 	AcBasicStatusWindow = CreateActor<BasicStatusWindow>(PM2ActorOrder::Menu1);
@@ -79,9 +79,6 @@ void RaisingSimLevel::Loading()
 	AcScheduleCalendar = CreateActor<ScheduleCalendar>(PM2ActorOrder::Menu1);
 	AcScheduleSelectionMenu = CreateActor<ScheduleSelectionMenu>(PM2ActorOrder::Menu1);
 	AcClassSelectWindow = CreateActor<ClassSelectWindow>(PM2ActorOrder::Menu2);
-
-	//TestIconButton = CreateActor<IconButton>();
-	//TestIconButton->SetIconButton(IconCode::격투술, "격투술", "초급", 30, {400,300});
 
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	CreateActor<Olive>(PM2ActorOrder::Olive);
@@ -97,12 +94,10 @@ void RaisingSimLevel::Loading()
 //800,0 ~ 800,320
 void RaisingSimLevel::Update(float _DeltaTime)
 {
-	//AcCubeDialog->UpdateCubeDialog(CubeFace::Anger, "우아아아앙");
 
 	if (GameEngineInput::IsDown("LevelChange"))
 	{
 		GameEngineCore::GetInst()->ChangeLevel("RPG");
-		// Player::MainPlayer->Death()p;
 	}
 
 	if (GameEngineInput::IsDown("1"))
@@ -164,12 +159,19 @@ void RaisingSimLevel::ESCdown()
 			AcDietFinalConfirmSelectionMenu->Off();
 			AcCubeDialog->Off();
 		}
-		else if (AcScheduleCalendar->IsUpdate())
+		else if (AcScheduleSelectionMenu->IsUpdate())
 		{
 			AcMainMenu->On();
 			AcScheduleCalendar->Off();
 			AcScheduleSelectionMenu->Off();
 			AcCubeDialog->Off();
+		}
+		else if (AcClassSelectWindow->IsUpdate())
+		{
+			AcClassSelectWindow->Off();
+			AcScheduleCalendar->On();
+			AcScheduleSelectionMenu->On();
+			AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
 		}
 	}
 }
@@ -268,6 +270,12 @@ void RaisingSimLevel::ClickDietFinalConfirm_1(Button* _Button)
 	AcCubeDialog->Off();
 }
 
+void RaisingSimLevel::ClickClass(Button* _Button)
+{
+	AcScheduleSelectionMenu->Off();
+	AcClassSelectWindow->On();
+	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "딸에게 무엇을 가르치시겠습니까?");
+}
 
 
 void RaisingSimLevel::SoundLoad()
@@ -347,6 +355,8 @@ void RaisingSimLevel::ButtonAndKeyLoad()
 
 	AcDietFinalConfirmSelectionMenu->GetSelectButtons()[0]->SetClickCallBack(ClickDietFinalConfirm_0);
 	AcDietFinalConfirmSelectionMenu->GetSelectButtons()[1]->SetClickCallBack(ClickDietFinalConfirm_1);
+
+	AcScheduleSelectionMenu->GetSelectButtons()[0]->SetClickCallBack(ClickClass);
 }
 
 
