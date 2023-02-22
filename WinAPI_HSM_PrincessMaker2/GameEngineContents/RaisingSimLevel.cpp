@@ -24,6 +24,7 @@
 #include "ConverstionSelectionMenu.h"
 #include "ScheduleCalendar.h"
 #include "ScheduleSelectionMenu.h"
+#include "ClassSelectWindow.h"
 
 #include "CubeDialog.h"
 #include "ContentsEnums.h"
@@ -42,6 +43,7 @@ DietFinalConfirmSelectionMenu* RaisingSimLevel::AcDietFinalConfirmSelectionMenu 
 
 ScheduleCalendar* RaisingSimLevel::AcScheduleCalendar = nullptr;
 ScheduleSelectionMenu* RaisingSimLevel::AcScheduleSelectionMenu = nullptr;
+ClassSelectWindow* RaisingSimLevel::AcClassSelectWindow = nullptr;
 
 Diet RaisingSimLevel::DietSetConfirm = Diet::Null;
 
@@ -76,9 +78,10 @@ void RaisingSimLevel::Loading()
 	AcDietSelectionMenu = CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
 	AcScheduleCalendar = CreateActor<ScheduleCalendar>(PM2ActorOrder::Menu1);
 	AcScheduleSelectionMenu = CreateActor<ScheduleSelectionMenu>(PM2ActorOrder::Menu1);
+	AcClassSelectWindow = CreateActor<ClassSelectWindow>(PM2ActorOrder::Menu2);
 
-	TestIconButton = CreateActor<IconButton>();
-	TestIconButton->SetIconButton(IconCode::격투술, "격투술", "초급", 30, {400,300});
+	//TestIconButton = CreateActor<IconButton>();
+	//TestIconButton->SetIconButton(IconCode::격투술, "격투술", "초급", 30, {400,300});
 
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	CreateActor<Olive>(PM2ActorOrder::Olive);

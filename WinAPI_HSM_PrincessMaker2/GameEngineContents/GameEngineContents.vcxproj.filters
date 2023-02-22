@@ -159,6 +159,9 @@
     <ClInclude Include="IconButton.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\UI</Filter>
     </ClInclude>
+    <ClInclude Include="ClassSelectWindow.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -317,6 +320,9 @@
     </ClCompile>
     <ClCompile Include="IconButton.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="ClassSelectWindow.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

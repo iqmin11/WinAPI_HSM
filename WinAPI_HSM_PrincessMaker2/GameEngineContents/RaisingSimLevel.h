@@ -21,10 +21,11 @@ class DietFinalConfirmSelectionMenu;
 
 class ScheduleCalendar;
 class ScheduleSelectionMenu;
+class ClassSelectWindow;
 
 class CubeDialog;
 class Button;
-class IconButton;
+//class IconButton;
 class RaisingSimLevel : public GameEngineLevel
 {
 public:
@@ -85,12 +86,13 @@ private:
 
 	static ScheduleCalendar* AcScheduleCalendar;
 	static ScheduleSelectionMenu* AcScheduleSelectionMenu;
+	static ClassSelectWindow* AcClassSelectWindow;
 
 	static CubeDialog* AcCubeDialog;
 	Background* AcBackground = nullptr;
 	Flower* AcFlower = nullptr; 
 	Paint* AcPaint= nullptr; 
-	IconButton* TestIconButton = nullptr;
+	//IconButton* TestIconButton = nullptr;
 
 	void ESCdown();
 
