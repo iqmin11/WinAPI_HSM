@@ -79,6 +79,11 @@ void Button::Update(float _DeltaTime)
 			State = ButtonState::Press;
 		}
 	}
+	else 
+	{
+		TestCollision = nullptr;
+		DelayTime = 0.1f;
+	}
 
 	switch (State)
 	{
