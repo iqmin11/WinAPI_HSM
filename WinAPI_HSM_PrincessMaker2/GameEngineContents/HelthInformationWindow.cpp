@@ -88,6 +88,8 @@ void HelthInformationWindow::Start()
 		break;
 	}
 	DietStateRender->SetPosition(DietStateRenderPos);
+
+	Off();
 }
 
 void HelthInformationWindow::Update(float _DeltaTime)

@@ -60,6 +60,7 @@ void PersonalInformationWindow::Start()
 	ZodiacRender->SetPosition(ZodiacPos);
 	PatronGodRender = CreateRender(PM2RenderOrder::Menu1_Display);
 	PatronGodRender->SetPosition(PatronGodPos);
+	Off();
 }
 
 void PersonalInformationWindow::Update(float _DeltaTime)

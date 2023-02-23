@@ -52,8 +52,7 @@ void RaisingSimLevel::Loading()
 	CreateActor<Flower>(PM2ActorOrder::BackGround);
 	CreateActor<Paint>(PM2ActorOrder::BackGround);
 
-	CreateActor<PersonalInformationWindow>();
-	CreateActor<HelthInformationWindow>();
+	
 }
 
 void RaisingSimLevel::Update(float _DeltaTime)

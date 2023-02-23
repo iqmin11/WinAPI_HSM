@@ -9,6 +9,9 @@ class StatusWindowManager;
 class ConverstionSelectionMenu;
 class DietSelectionMenu;
 class DietFinalConfirmSelectionMenu;
+class PersonalInformationWindow;
+class HelthInformationWindow;
+
 class ScheduleCalendar;
 class ScheduleSelectionMenu;
 class ClassSelectWindow;
@@ -48,7 +51,7 @@ private:
 	static void ClickMainMenu_02_3(Button* _Button); // 식단 : 다이어트
 	static void ClickMainMenu_02_0_0(Button* _Button); // 식단 : 이방침으로
 	static void ClickMainMenu_02_0_1(Button* _Button); // 식단 : ㄴㄴ
-	//static void ClickMainMenu_03();
+	static void ClickMainMenu_03(Button* _Button);
 	//static void ClickMainMenu_10();
 	//static void ClickMainMenu_11();
 	//static void ClickMainMenu_12();
@@ -63,6 +66,9 @@ private:
 
 	static DietSelectionMenu* AcDietSelectionMenu;
 	static DietFinalConfirmSelectionMenu* AcDietFinalConfirmSelectionMenu;
+
+	static PersonalInformationWindow* AcPersonalInformationWindow;
+	static HelthInformationWindow* AcHelthInformationWindow;
 
 	static ScheduleCalendar* AcScheduleCalendar;
 	static ScheduleSelectionMenu* AcScheduleSelectionMenu;
