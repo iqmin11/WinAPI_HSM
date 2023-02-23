@@ -31,6 +31,10 @@ public:
 	void UpdateValue(float _Value);
 	void SetMove(float4 _Move);
 	void SetPosition(float4 _Pos);
+	void SetMin(float _Min)
+	{
+		Min = _Min;
+	}
 
 	//StatusName GetStatusName() const
 	//{
@@ -41,9 +45,12 @@ protected:
 
 
 private:
-	const float Min = 0;
+	float Min = 0;
 	float Max = 0;
 	float StatusValue = 0;
+
+	float4 StartPos = float4::Zero;
+	float4 EndPos = float4::Zero;
 
 	GaugeFrameStyle Style = GaugeFrameStyle::Null;
 	
@@ -60,5 +67,8 @@ private:
 	GameEngineRender* StatusGaugeRender = nullptr;
 	GameEngineRender* StatusGaugeFrameRender_Layer2 = nullptr;
 	NumberRenderObject StatusValueRender = NumberRenderObject();
+	GameEngineRender* DemicalPoint = nullptr;
+	NumberRenderObject StatusValueDemicalRender = NumberRenderObject();
+
 };
 

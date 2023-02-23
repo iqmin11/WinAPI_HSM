@@ -11,6 +11,7 @@ class DietSelectionMenu;
 class DietFinalConfirmSelectionMenu;
 class PersonalInformationWindow;
 class HelthInformationWindow;
+class PhysicalStatusWindow;
 
 class ScheduleCalendar;
 class ScheduleSelectionMenu;
@@ -69,6 +70,7 @@ private:
 
 	static PersonalInformationWindow* AcPersonalInformationWindow;
 	static HelthInformationWindow* AcHelthInformationWindow;
+	static PhysicalStatusWindow* AcPhysicalStatusWindow;
 
 	static ScheduleCalendar* AcScheduleCalendar;
 	static ScheduleSelectionMenu* AcScheduleSelectionMenu;

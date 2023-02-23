@@ -14,6 +14,7 @@
 
 #include "PersonalInformationWindow.h"
 #include "HelthInformationWindow.h"
+#include "PhysicalStatusWindow.h"
 
 #include "ScheduleCalendar.h"
 #include "ScheduleSelectionMenu.h"
@@ -32,6 +33,7 @@ DietFinalConfirmSelectionMenu* MenuManager::AcDietFinalConfirmSelectionMenu = nu
 
 PersonalInformationWindow* MenuManager::AcPersonalInformationWindow = nullptr;
 HelthInformationWindow* MenuManager::AcHelthInformationWindow = nullptr;
+PhysicalStatusWindow* MenuManager::AcPhysicalStatusWindow = nullptr;
 
 ScheduleCalendar* MenuManager::AcScheduleCalendar = nullptr;
 ScheduleSelectionMenu* MenuManager::AcScheduleSelectionMenu = nullptr;
@@ -63,6 +65,7 @@ void MenuManager::Start()
 
 	AcPersonalInformationWindow = Level->CreateActor<PersonalInformationWindow>(PM2ActorOrder::Menu1);
 	AcHelthInformationWindow = Level->CreateActor<HelthInformationWindow>(PM2ActorOrder::Menu1);
+	AcPhysicalStatusWindow = Level->CreateActor<PhysicalStatusWindow>(PM2ActorOrder::Menu1);
 	
 	AcScheduleCalendar = Level->CreateActor<ScheduleCalendar>(PM2ActorOrder::Menu1);
 	AcScheduleSelectionMenu = Level->CreateActor<ScheduleSelectionMenu>(PM2ActorOrder::Menu1);
@@ -147,6 +150,7 @@ void MenuManager::SetEngineRightClick()
 			AcMainMenu->On();
 			AcPersonalInformationWindow->Off();
 			AcHelthInformationWindow->Off();
+			AcPhysicalStatusWindow->Off();
 		}
 	}
 }
@@ -238,6 +242,7 @@ void MenuManager::ClickMainMenu_03(Button* _Button)
 	AcMainMenu->Off();
 	AcPersonalInformationWindow->On();
 	AcHelthInformationWindow->On();
+	AcPhysicalStatusWindow->On();
 }
 
 void MenuManager::ClickMainMenu_S(Button* _Button)
