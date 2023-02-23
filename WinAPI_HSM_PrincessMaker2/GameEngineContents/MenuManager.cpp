@@ -11,6 +11,10 @@
 #include "ConverstionSelectionMenu.h"
 #include "DietSelectionMenu.h"
 #include "DietFinalConfirmSelectionMenu.h"
+
+#include "PersonalInformationWindow.h"
+#include "HelthInformationWindow.h"
+
 #include "ScheduleCalendar.h"
 #include "ScheduleSelectionMenu.h"
 #include "ClassSelectWindow.h"
@@ -25,6 +29,9 @@ ConverstionSelectionMenu* MenuManager::AcConverstionSelectionMenu = nullptr;
 Diet MenuManager::DietSetConfirm = Diet::Null;
 DietSelectionMenu* MenuManager::AcDietSelectionMenu = nullptr;
 DietFinalConfirmSelectionMenu* MenuManager::AcDietFinalConfirmSelectionMenu = nullptr;
+
+PersonalInformationWindow* MenuManager::AcPersonalInformationWindow = nullptr;
+HelthInformationWindow* MenuManager::AcHelthInformationWindow = nullptr;
 
 ScheduleCalendar* MenuManager::AcScheduleCalendar = nullptr;
 ScheduleSelectionMenu* MenuManager::AcScheduleSelectionMenu = nullptr;
@@ -53,6 +60,9 @@ void MenuManager::Start()
 	
 	AcDietSelectionMenu = Level->CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
 	AcDietFinalConfirmSelectionMenu = Level->CreateActor<DietFinalConfirmSelectionMenu>(PM2ActorOrder::Menu2);
+
+	AcPersonalInformationWindow = Level->CreateActor<PersonalInformationWindow>(PM2ActorOrder::Menu1);
+	AcHelthInformationWindow = Level->CreateActor<HelthInformationWindow>(PM2ActorOrder::Menu1);
 	
 	AcScheduleCalendar = Level->CreateActor<ScheduleCalendar>(PM2ActorOrder::Menu1);
 	AcScheduleSelectionMenu = Level->CreateActor<ScheduleSelectionMenu>(PM2ActorOrder::Menu1);
@@ -73,7 +83,7 @@ void MenuManager::SetButtonAndKey()
 	AcMainMenu->GetMainMenuButton()[0][0]->SetClickCallBack(ClickMainMenu_00);
 	AcMainMenu->GetMainMenuButton()[0][1]->SetClickCallBack(ClickMainMenu_01);
 	AcMainMenu->GetMainMenuButton()[0][2]->SetClickCallBack(ClickMainMenu_02);
-	//AcMainMenu->GetMainMenuButton()[0][3]->SetClickCallBack(ClickMainMenu_03);
+	AcMainMenu->GetMainMenuButton()[0][3]->SetClickCallBack(ClickMainMenu_03);
 	//AcMainMenu->GetMainMenuButton()[1][0]->SetClickCallBack(ClickMainMenu_10);
 	//AcMainMenu->GetMainMenuButton()[1][1]->SetClickCallBack(ClickMainMenu_11);
 	//AcMainMenu->GetMainMenuButton()[1][2]->SetClickCallBack(ClickMainMenu_12);
@@ -131,6 +141,12 @@ void MenuManager::SetEngineRightClick()
 			AcScheduleCalendar->On();
 			AcScheduleSelectionMenu->On();
 			AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
+		}
+		else if (AcPersonalInformationWindow->IsUpdate())
+		{
+			AcMainMenu->On();
+			AcPersonalInformationWindow->Off();
+			AcHelthInformationWindow->Off();
 		}
 	}
 }
@@ -215,6 +231,13 @@ void MenuManager::ClickMainMenu_02_0_1(Button* _Button)
 	AcMainMenu->On();
 	AcDietFinalConfirmSelectionMenu->Off();
 	AcCubeDialog->Off();
+}
+
+void MenuManager::ClickMainMenu_03(Button* _Button)
+{
+	AcMainMenu->Off();
+	AcPersonalInformationWindow->On();
+	AcHelthInformationWindow->On();
 }
 
 void MenuManager::ClickMainMenu_S(Button* _Button)
