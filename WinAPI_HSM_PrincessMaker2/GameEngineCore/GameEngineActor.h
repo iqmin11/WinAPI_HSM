@@ -1,9 +1,12 @@
 #pragma once
+// std
 #include <list>
 #include <string_view>
+// 플랫폼
 #include <Windows.h>
+// User
 #include <GameEngineBase/GameEngineMath.h>
-#include <GameEngineCore/GameEngineObject.h>
+#include "GameEngineObject.h"
 
 // 화면에 존재하고 위치가 있어야하는 모든것들의 기본기능을 지원해줄 겁니다.
 // 그려져야 한다.
@@ -27,17 +30,17 @@ public:
 	GameEngineActor& operator=(const GameEngineActor& _Other) = delete;
 	GameEngineActor& operator=(GameEngineActor&& _Other) noexcept = delete;
 
-	float4 GetPos()
+	inline float4 GetPos()
 	{
 		return Pos;
 	}
 
-	void SetPos(const float4& _MovePos)
+	inline void SetPos(const float4& _MovePos)
 	{
 		Pos = _MovePos;
 	}
 
-	void SetMove(const float4& _MovePos)
+	inline void SetMove(const float4& _MovePos)
 	{
 		Pos += _MovePos;
 	}
@@ -59,9 +62,10 @@ public:
 	}
 
 #pragma endregion
+
 	GameEngineRender* CreateRender(const std::string_view& _Image, int _Order = 0);
 	GameEngineRender* CreateRender(int _Order = 0);
-	
+
 	template<typename EnumType>
 	GameEngineCollision* CreateCollision(EnumType _GroupIndex)
 	{
@@ -69,10 +73,6 @@ public:
 	}
 
 	GameEngineCollision* CreateCollision(int _GroupIndex = 0);
-
-	
-
-
 
 protected:
 	// 안구현할수도 있다.
@@ -90,6 +90,7 @@ protected:
 	// 화면에 그려지는 기능들을 여기서 처리
 	virtual void Render(float _DeltaTime) {}
 
+	// 
 	inline float GetLiveTime()
 	{
 		return LiveTime;
@@ -98,16 +99,12 @@ protected:
 	virtual void LevelChangeEnd(GameEngineLevel* _PrevLevel);
 	virtual void LevelChangeStart(GameEngineLevel* _PrevLevel);
 
-	//void On() override {};
-	//void Off() override {};
-
 private:
-	GameEngineLevel* Level = nullptr;
-
+	float TimeScale = 0.0;
 	float LiveTime = 0.0;
 	float4 Pos = { 0.0f, 0.0f };
-	std::list<GameEngineRender*> RenderList; // 렌더를 관리하는 식별자
-	std::list<GameEngineCollision*> CollisionList; 
+	std::list<GameEngineRender*> RenderList;
+	std::list<GameEngineCollision*> CollisionList;
 
 	void Release();
 };

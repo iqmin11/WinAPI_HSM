@@ -148,19 +148,19 @@
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\DietMenuActor</Filter>
     </ClInclude>
     <ClInclude Include="ScheduleCalendar.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\Schedule</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClInclude>
     <ClInclude Include="ScheduleSelectionMenu.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\Schedule</Filter>
     </ClInclude>
     <ClInclude Include="IconButton.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\UI</Filter>
     </ClInclude>
     <ClInclude Include="ClassSelectWindow.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\Schedule</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -310,19 +310,19 @@
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\DietMenuActor</Filter>
     </ClCompile>
     <ClCompile Include="ScheduleCalendar.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\Schedule</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClCompile>
     <ClCompile Include="ScheduleSelectionMenu.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\Schedule</Filter>
     </ClCompile>
     <ClCompile Include="IconButton.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\UI</Filter>
     </ClCompile>
     <ClCompile Include="ClassSelectWindow.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\Schedule</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -374,9 +374,6 @@
     <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu">
       <UniqueIdentifier>{8906baf2-f931-4055-a674-718fd5a84503}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\Schedule">
-      <UniqueIdentifier>{c760122e-3b06-4461-9a7c-33ca9aa6b726}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor">
       <UniqueIdentifier>{c9881939-9412-485f-b69e-76467e46f6e5}</UniqueIdentifier>
     </Filter>
@@ -394,6 +391,9 @@
     </Filter>
     <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\UI">
       <UniqueIdentifier>{0bb81371-05d0-4983-8414-3aa9e0391b5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\Schedule">
+      <UniqueIdentifier>{c760122e-3b06-4461-9a7c-33ca9aa6b726}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

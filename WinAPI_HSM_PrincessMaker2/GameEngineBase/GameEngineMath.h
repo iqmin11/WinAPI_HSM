@@ -1,8 +1,10 @@
 #pragma once
+
 #include <math.h>
 #include <cmath>
 #include <string>
 #include <vector>
+
 
 // final 더이상 상속내릴지 못한다.
 // 상속도 못하고 만들지도 못하게 만든 상태로
@@ -90,6 +92,7 @@ public:
 		return static_cast<int>(w * 0.5f);
 	}
 
+
 	float hx() const
 	{
 		return x * 0.5f;
@@ -110,17 +113,28 @@ public:
 		return w * 0.5f;
 	}
 
-	float Size() const
+	float GetAnagleDeg()
 	{
-		return sqrtf(x * x + y * y);
+		return GetAnagleRad() * GameEngineMath::RadToDeg;
 	}
 
-	void Nomalize()
+	float GetAnagleRad()
 	{
-		float SizeValue = Size();
-		x /= SizeValue;
-		y /= SizeValue;
-		z /= SizeValue;
+		float4 AngleCheck = (*this);
+		AngleCheck.Normalize();
+		// functon(1) == 50; 1을 50으로 바꾸는 함수
+		// afuncton(50) == 1; 50이 1로 바꿔주는 함수라고도 할수 있지만 functon에 들어갔던 인자값을 알아내는 함수라고도 할수 있죠? <= 역함수
+
+		// cosf(각도);
+
+		float Result = acosf(AngleCheck.x);
+
+		if (AngleCheck.y > 0)
+		{
+			Result = GameEngineMath::PIE2 - Result;
+		}
+		return Result;
+
 	}
 
 	float4 half() const
@@ -131,6 +145,22 @@ public:
 	bool IsZero() const
 	{
 		return x == 0.0f && y == 0.0f && z == 0.0f;
+	}
+
+	float Size() const
+	{
+		return sqrtf(x * x + y * y);
+	}
+
+	// 2, 0
+	// 0, 2
+	void Normalize()
+	{
+		float SizeValue = Size();
+		x /= SizeValue;
+		y /= SizeValue;
+		z /= SizeValue;
+
 	}
 
 	static float4 Lerp(const float4& Start, const float4& End, float Ratio)
@@ -163,12 +193,14 @@ public:
 		return Return;
 	}
 
-	float4 operator *(const float4 _Value) const
+
+
+	float4 operator +(const float4 _Value) const
 	{
 		float4 Return;
-		Return.x = x * _Value.x;
-		Return.y = y * _Value.y;
-		Return.z = z * _Value.z;
+		Return.x = x + _Value.x;
+		Return.y = y + _Value.y;
+		Return.z = z + _Value.z;
 		return Return;
 	}
 
@@ -181,6 +213,15 @@ public:
 		return Return;
 	}
 
+	float4 operator *(const float4 _Value) const
+	{
+		float4 Return;
+		Return.x = x * _Value.x;
+		Return.y = y * _Value.y;
+		Return.z = z * _Value.z;
+		return Return;
+	}
+
 	float4 operator /(const float4 _Value) const
 	{
 		float4 Return;
@@ -190,13 +231,9 @@ public:
 		return Return;
 	}
 
-	float4 operator +(const float4 _Value) const
+	float4 operator -() const
 	{
-		float4 Return;
-		Return.x = x + _Value.x;
-		Return.y = y + _Value.y;
-		Return.z = z + _Value.z;
-		return Return;
+		return { -x, -y, -z, 1.0f };
 	}
 
 	float4& operator +=(const float4& _Other)
@@ -206,12 +243,6 @@ public:
 		z += _Other.z;
 		return *this;
 	}
-
-	float4 operator -() const
-	{
-		return { -x, -y, -z, 1.0f };
-	}
-
 
 	float4& operator *=(const float& _Value)
 	{
@@ -245,4 +276,14 @@ public:
 		z /= _Other.z;
 		return *this;
 	}
+
+	std::string ToString()
+	{
+		char ArrReturn[256];
+
+		sprintf_s(ArrReturn, "x: %f, y: %f, z: %f, w: %f", x, y, z, w);
+
+		return std::string(ArrReturn);
+	}
+
 };
