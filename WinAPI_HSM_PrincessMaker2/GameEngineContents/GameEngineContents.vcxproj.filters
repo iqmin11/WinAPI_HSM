@@ -171,6 +171,9 @@
     <ClInclude Include="PersonalInformationWindow.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information</Filter>
     </ClInclude>
+    <ClInclude Include="HelthInformationWindow.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -340,6 +343,9 @@
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu</Filter>
     </ClCompile>
     <ClCompile Include="PersonalInformationWindow.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information</Filter>
+    </ClCompile>
+    <ClCompile Include="HelthInformationWindow.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information</Filter>
     </ClCompile>
   </ItemGroup>

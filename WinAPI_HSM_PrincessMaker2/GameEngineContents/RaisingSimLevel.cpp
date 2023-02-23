@@ -22,6 +22,7 @@
 #include "IconButton.h"
 
 #include "PersonalInformationWindow.h"
+#include "HelthInformationWindow.h"
 
 CubeDialog* RaisingSimLevel::AcCubeDialog = nullptr;
 
@@ -52,6 +53,7 @@ void RaisingSimLevel::Loading()
 	CreateActor<Paint>(PM2ActorOrder::BackGround);
 
 	CreateActor<PersonalInformationWindow>();
+	CreateActor<HelthInformationWindow>();
 }
 
 void RaisingSimLevel::Update(float _DeltaTime)

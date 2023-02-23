@@ -323,6 +323,43 @@ public:
 		OliveDiet = _Diet;
 	}
 
+	float GetDiseaseIndex()
+	{
+		float DiseaseIndex = OliveStatus.Stress - OliveStatus.Constitution;
+		if (DiseaseIndex < 0)
+		{
+			DiseaseIndex = 0;
+		}
+		return DiseaseIndex;
+	}
+
+	float GetDelinquency()
+	{
+		float Higher = 0.0f;
+		OliveStatus.Morality > OliveStatus.Faith ? Higher = OliveStatus.Morality : Higher = OliveStatus.Faith;
+		float Delinquency = OliveStatus.Stress - Higher;
+		if (Delinquency < 0)
+		{
+			Delinquency = 0;
+		}
+		return Delinquency;
+	}
+
+	bool IsDiseaseState() const
+	{
+		return DiseaseState;
+	}
+
+	bool IsDelinquentState() const
+	{
+		return DelinquentState;
+	}
+
+	float GetPopularity() const
+	{
+		return Popularity;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Deltatime) override;
@@ -351,6 +388,11 @@ private:
 	Diet OliveDiet = Diet::무리하지_않는다;
 
 	int Gold = 500;
+
+	bool DiseaseState = 0;
+	bool DelinquentState = 0;
+
+	float Popularity = 0;
 
 	Date FatherBirthDay = Date();
 	int FatherAge = -1;
