@@ -45,11 +45,11 @@ private:
 	class PhysicalCondition
 	{
 	public:
-		float Height = -1;
-		float Weight = -1;
-		float Bust = -1;
-		float Waist = -1;
-		float Hip = -1;
+		float Height = 0;
+		float Weight = 0;
+		float Bust = 0;
+		float Waist = 0;
+		float Hip = 0;
 	};
 
 public:
@@ -369,18 +369,18 @@ private:
 	GameEngineRender* HeadRender = nullptr;
 	GameEngineRender* BodyRender = nullptr;
 
-	std::string OliveFirstName = std::string();
-	std::string OliveLastName = std::string();
+	std::string OliveFirstName = "DefaultFirst";
+	std::string OliveLastName = "DefaultLast";
 	
-	int OliveAge = 10;
+	int OliveAge = 20;
 	
-	Date OliveBirthDay = {1000, 10, 10};
+	Date OliveBirthDay = {1200, 10, 10};
 	
-	BloodType OliveBloodType = BloodType::Null;
+	BloodType OliveBloodType = BloodType::AB;
 	
-	Zodiac OliveZodiac = Zodiac::Null;
+	Zodiac OliveZodiac = Zodiac::황소자리;
 	
-	PatronGod OlivePatronGod = PatronGod::Null;
+	PatronGod OlivePatronGod = PatronGod::화성신_마르스;
 	bool PatronGodSex = false; // false Male, true Female
 
 	Status OliveStatus = Status();
@@ -395,7 +395,7 @@ private:
 	float Popularity = 0;
 
 	Date FatherBirthDay = Date();
-	int FatherAge = -1;
+	int FatherAge = 10;
 
 };
 

@@ -8,7 +8,7 @@ class Background;
 class Flower;
 class Paint;
 
-class MenuManager;
+class UIManager;
 
 class CubeDialog;
 class Button;
@@ -59,7 +59,7 @@ private:
 	Background* AcBackground = nullptr;
 	Flower* AcFlower = nullptr; 
 	Paint* AcPaint= nullptr; 
-	MenuManager* AcMenuManager = nullptr;
+	UIManager* AcMenuManager = nullptr;
 
 	void SoundLoad();
 	void ImageLoad();

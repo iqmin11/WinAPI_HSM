@@ -226,3 +226,5 @@ NumberRenderObject수정
 }; 이걸로 수정 (DrawText용)
 
 DrawTextA(GameEngineWindow::GetDoubleBufferImage()->GetImageDC(), RenderText.c_str(), static_cast<int>(RenderText.size()), &Rect, static_cast<UINT>(Align));
+
+디폴트 세팅 만들기

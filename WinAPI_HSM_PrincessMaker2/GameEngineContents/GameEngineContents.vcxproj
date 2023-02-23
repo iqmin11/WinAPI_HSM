@@ -279,7 +279,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="MenuManager.h">
+    <ClInclude Include="UIManager.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -538,7 +538,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="MenuManager.cpp">
+    <ClCompile Include="UIManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>

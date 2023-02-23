@@ -18,18 +18,18 @@ class ScheduleSelectionMenu;
 class ClassSelectWindow;
 class CubeDialog;
 
-class MenuManager : public GameEngineActor
+class UIManager : public GameEngineActor
 {
 public:
 	// construtor destructor
-	MenuManager();
-	~MenuManager();
+	UIManager();
+	~UIManager();
 
 	// delete Function
-	MenuManager(const MenuManager& _Other) = delete;
-	MenuManager(MenuManager&& _Other) noexcept = delete;
-	MenuManager& operator=(const MenuManager& _Other) = delete;
-	MenuManager& operator=(MenuManager&& _Other) noexcept = delete;
+	UIManager(const UIManager& _Other) = delete;
+	UIManager(UIManager&& _Other) noexcept = delete;
+	UIManager& operator=(const UIManager& _Other) = delete;
+	UIManager& operator=(UIManager&& _Other) noexcept = delete;
 
 protected:
 	void Start() override;

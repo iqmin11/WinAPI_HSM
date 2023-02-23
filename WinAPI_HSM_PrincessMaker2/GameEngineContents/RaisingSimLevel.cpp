@@ -9,7 +9,7 @@
 #include "MousePoint.h"
 #include "Olive.h"
 #include "Background.h"
-#include "MenuManager.h"
+#include "UIManager.h"
 
 #include "Flower.h"
 #include "Paint.h"
@@ -45,7 +45,7 @@ void RaisingSimLevel::Loading()
 	AcBackground = CreateActor<Background>(static_cast<int>(PM2ActorOrder::BackGround));
 	CreateActor<DateViewer>(PM2ActorOrder::Menu0);
 	CreateActor<BasicInfo>(PM2ActorOrder::Menu0);
-	AcMenuManager = CreateActor<MenuManager>();
+	AcMenuManager = CreateActor<UIManager>();
 
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	CreateActor<Olive>(PM2ActorOrder::Olive);

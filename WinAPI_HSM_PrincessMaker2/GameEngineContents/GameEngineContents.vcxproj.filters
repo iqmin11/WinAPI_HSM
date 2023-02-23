@@ -159,7 +159,7 @@
     <ClInclude Include="ClassSelectWindow.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\1. Schedule</Filter>
     </ClInclude>
-    <ClInclude Include="MenuManager.h">
+    <ClInclude Include="UIManager.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClInclude>
     <ClInclude Include="StatusWindowManager.h">
@@ -336,7 +336,7 @@
     <ClCompile Include="ClassSelectWindow.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\1. Schedule</Filter>
     </ClCompile>
-    <ClCompile Include="MenuManager.cpp">
+    <ClCompile Include="UIManager.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClCompile>
     <ClCompile Include="StatusWindowManager.cpp">
