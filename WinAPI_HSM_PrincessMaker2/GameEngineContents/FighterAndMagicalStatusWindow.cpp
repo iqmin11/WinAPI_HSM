@@ -23,7 +23,6 @@ void FighterAndMagicalStatusWindow::Start()
 	MagicDefenseRender = InsertStatus("Ç×¸¶·Â", Max, Style);
 
 	SetPos(ActorPos);
-	Off();
 }
 
 void FighterAndMagicalStatusWindow::Update(float _DeltaTime)

@@ -275,6 +275,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="MenuManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="MousePoint.h">
       <SubType>
       </SubType>
@@ -321,6 +325,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Paint.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PersonalInformationWindow.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -377,6 +385,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="StatusWindow.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="StatusWindowManager.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -514,6 +526,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="MenuManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="MousePoint.cpp">
       <SubType>
       </SubType>
@@ -559,6 +575,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Paint.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PersonalInformationWindow.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -615,6 +635,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="StatusWindow.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="StatusWindowManager.cpp">
       <SubType>
       </SubType>
     </ClCompile>

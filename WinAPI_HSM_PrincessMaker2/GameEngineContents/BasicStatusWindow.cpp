@@ -25,7 +25,6 @@ void BasicStatusWindow::Start()
 	SensitivityRender = InsertStatus("감수성", Max, Style);
 	StressRender = InsertStatus("스트레스", Max, Style);
 	SetPos(ActorPos);
-	Off();
 }
 
 void BasicStatusWindow::Update(float _DeltaTime)

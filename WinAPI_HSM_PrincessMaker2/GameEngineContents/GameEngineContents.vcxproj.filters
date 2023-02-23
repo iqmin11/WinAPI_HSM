@@ -78,14 +78,11 @@
     <ClInclude Include="BasicInfo.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClInclude>
-    <ClInclude Include="ConverstionSelectionMenu.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu</Filter>
-    </ClInclude>
     <ClInclude Include="BasicStatusWindow.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\0. StatusMenuActor</Filter>
     </ClInclude>
     <ClInclude Include="EstimateStatusWindow.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\0. StatusMenuActor</Filter>
     </ClInclude>
     <ClInclude Include="Olive.h">
       <Filter>ContentsLevel\0. PM2Base</Filter>
@@ -133,34 +130,46 @@
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClInclude>
     <ClInclude Include="FighterAndMagicalStatusWindow.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\0. StatusMenuActor</Filter>
     </ClInclude>
     <ClInclude Include="SocialAndHouseworkStatusWindow.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\0. StatusMenuActor</Filter>
     </ClInclude>
     <ClInclude Include="CubeDialog.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClInclude>
     <ClInclude Include="DietSelectionMenu.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\DietMenuActor</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\2. DietMenuActor</Filter>
     </ClInclude>
     <ClInclude Include="DietFinalConfirmSelectionMenu.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\DietMenuActor</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\2. DietMenuActor</Filter>
     </ClInclude>
     <ClInclude Include="ScheduleCalendar.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\Schedule</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\1. Schedule</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClInclude>
     <ClInclude Include="ScheduleSelectionMenu.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\Schedule</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\1. Schedule</Filter>
     </ClInclude>
     <ClInclude Include="IconButton.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\UI</Filter>
     </ClInclude>
     <ClInclude Include="ClassSelectWindow.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\Schedule</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\1. Schedule</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuManager.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
+    </ClInclude>
+    <ClInclude Include="StatusWindowManager.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\0. StatusMenuActor</Filter>
+    </ClInclude>
+    <ClInclude Include="ConverstionSelectionMenu.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="PersonalInformationWindow.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -240,14 +249,11 @@
     <ClCompile Include="BasicInfo.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClCompile>
-    <ClCompile Include="ConverstionSelectionMenu.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu</Filter>
-    </ClCompile>
     <ClCompile Include="BasicStatusWindow.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\0. StatusMenuActor</Filter>
     </ClCompile>
     <ClCompile Include="EstimateStatusWindow.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\0. StatusMenuActor</Filter>
     </ClCompile>
     <ClCompile Include="Olive.cpp">
       <Filter>ContentsLevel\0. PM2Base</Filter>
@@ -295,34 +301,46 @@
       <Filter>ContentsLevel\3. OpeningLevel\OpeningActor</Filter>
     </ClCompile>
     <ClCompile Include="FighterAndMagicalStatusWindow.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\0. StatusMenuActor</Filter>
     </ClCompile>
     <ClCompile Include="SocialAndHouseworkStatusWindow.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\0. StatusMenuActor</Filter>
     </ClCompile>
     <ClCompile Include="CubeDialog.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClCompile>
     <ClCompile Include="DietSelectionMenu.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\DietMenuActor</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\2. DietMenuActor</Filter>
     </ClCompile>
     <ClCompile Include="DietFinalConfirmSelectionMenu.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\DietMenuActor</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\2. DietMenuActor</Filter>
     </ClCompile>
     <ClCompile Include="ScheduleCalendar.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\Schedule</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\1. Schedule</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClCompile>
     <ClCompile Include="ScheduleSelectionMenu.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\Schedule</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\1. Schedule</Filter>
     </ClCompile>
     <ClCompile Include="IconButton.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\UI</Filter>
     </ClCompile>
     <ClCompile Include="ClassSelectWindow.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\Schedule</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\1. Schedule</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuManager.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
+    </ClCompile>
+    <ClCompile Include="StatusWindowManager.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\0. StatusMenuActor</Filter>
+    </ClCompile>
+    <ClCompile Include="ConverstionSelectionMenu.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="PersonalInformationWindow.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -371,12 +389,6 @@
     <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu">
       <UniqueIdentifier>{883bbca8-4cd7-4073-809f-cad424f45eed}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu">
-      <UniqueIdentifier>{8906baf2-f931-4055-a674-718fd5a84503}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\StatusMenuActor">
-      <UniqueIdentifier>{c9881939-9412-485f-b69e-76467e46f6e5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ContentsLevel\0. PM2Base\UI">
       <UniqueIdentifier>{aa8edf5c-631c-4ac4-b747-3856c12ae167}</UniqueIdentifier>
     </Filter>
@@ -386,14 +398,20 @@
     <Filter Include="ContentsLevel\0. PM2Base\Global">
       <UniqueIdentifier>{3f67aa7a-8df7-4808-8f58-a3a396595b95}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\InnerMenu\DietMenuActor">
-      <UniqueIdentifier>{9f4b2b56-18e2-425c-b04d-75d0d47c1572}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\UI">
       <UniqueIdentifier>{0bb81371-05d0-4983-8414-3aa9e0391b5a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\Schedule">
+    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\0. StatusMenuActor">
+      <UniqueIdentifier>{c9881939-9412-485f-b69e-76467e46f6e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\1. Schedule">
       <UniqueIdentifier>{c760122e-3b06-4461-9a7c-33ca9aa6b726}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\2. DietMenuActor">
+      <UniqueIdentifier>{9f4b2b56-18e2-425c-b04d-75d0d47c1572}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information">
+      <UniqueIdentifier>{917329dc-93c9-4900-92f8-e8f81a759af7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

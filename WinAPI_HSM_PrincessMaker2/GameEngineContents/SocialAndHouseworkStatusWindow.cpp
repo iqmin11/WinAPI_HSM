@@ -23,7 +23,6 @@ void SocialAndHouseworkStatusWindow::Start()
 	TemperamentRender = InsertStatus("¼ºÇ°", Max, Style);
 
 	SetPos(ActorPos);
-	Off();
 }
 
 void SocialAndHouseworkStatusWindow::Update(float _DeltaTime)

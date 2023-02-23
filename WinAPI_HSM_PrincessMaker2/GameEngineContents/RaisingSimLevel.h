@@ -8,24 +8,11 @@ class Background;
 class Flower;
 class Paint;
 
-class MainMenu;
-
-class BasicStatusWindow;
-class EstimateStatusWindow;
-class FighterAndMagicalStatusWindow;
-class SocialAndHouseworkStatusWindow;
-
-class ConverstionSelectionMenu;
-class DietSelectionMenu;
-class DietFinalConfirmSelectionMenu;
-
-class ScheduleCalendar;
-class ScheduleSelectionMenu;
-class ClassSelectWindow;
+class MenuManager;
 
 class CubeDialog;
 class Button;
-//class IconButton;
+
 class RaisingSimLevel : public GameEngineLevel
 {
 public:
@@ -61,11 +48,6 @@ public:
 		return AcCubeDialog;
 	}
 
-	static DietFinalConfirmSelectionMenu* GetAcDietFinalConfirmSelectionMenu()
-	{
-		return AcDietFinalConfirmSelectionMenu;
-	}
-
 protected:
 
 
@@ -73,48 +55,12 @@ private:
 	Olive* AcOlive = nullptr;
 	Date Today = {1000,10,10};
 
-	static MainMenu* AcMainMenu;
-	static BasicStatusWindow* AcBasicStatusWindow;
-	static EstimateStatusWindow* AcEstimateStatusWindow;
-	static FighterAndMagicalStatusWindow* AcFighterAndMagicalStatusWindow;
-	static SocialAndHouseworkStatusWindow* AcSocialAndHouseworkStatusWindow;
-	
-	static ConverstionSelectionMenu* AcConverstionSelectionMenu;
-	
-	static DietSelectionMenu* AcDietSelectionMenu;
-	static DietFinalConfirmSelectionMenu* AcDietFinalConfirmSelectionMenu;
-
-	static ScheduleCalendar* AcScheduleCalendar;
-	static ScheduleSelectionMenu* AcScheduleSelectionMenu;
-	static ClassSelectWindow* AcClassSelectWindow;
-
 	static CubeDialog* AcCubeDialog;
 	Background* AcBackground = nullptr;
 	Flower* AcFlower = nullptr; 
 	Paint* AcPaint= nullptr; 
-	//IconButton* TestIconButton = nullptr;
-
-	void ESCdown();
-
-	static void ClickStatusWindowButton(Button* _Button);
-	
-	static void ClickConversationButton(Button* _Button);
-	
-	static void ClickDietButton(Button* _Button);
-	
-	static void ClickScheduleButton(Button* _Button);
-	
-	static void ClickDiet_0(Button* _Button);
-	static void ClickDiet_1(Button* _Button);
-	static void ClickDiet_2(Button* _Button);
-	static void ClickDiet_3(Button* _Button);
-	static void ClickDietFinalConfirm_0(Button* _Button);
-	static void ClickDietFinalConfirm_1(Button* _Button);
-	static Diet DietSetConfirm;
-
-	static void ClickClass(Button* _Button);
+	MenuManager* AcMenuManager = nullptr;
 
 	void SoundLoad();
 	void ImageLoad();
-	void ButtonAndKeyLoad();
 };
