@@ -15,6 +15,7 @@ class PhysicalStatusWindow;
 
 class ScheduleCalendar;
 class ScheduleSelectionMenu;
+class ScheduleAnimationPlayer;
 class ClassSelectWindow;
 class CubeDialog;
 
@@ -53,10 +54,10 @@ private:
 	static void ClickMainMenu_02_0_0(Button* _Button); // 식단 : 이방침으로
 	static void ClickMainMenu_02_0_1(Button* _Button); // 식단 : ㄴㄴ
 	static void ClickMainMenu_03(Button* _Button);
-	//static void ClickMainMenu_10();
-	//static void ClickMainMenu_11();
-	//static void ClickMainMenu_12();
-	//static void ClickMainMenu_13();
+	//static void ClickMainMenu_10(Button* _Button);
+	//static void ClickMainMenu_11(Button* _Button);
+	//static void ClickMainMenu_12(Button* _Button);
+	//static void ClickMainMenu_13(Button* _Button);
 	static void ClickMainMenu_S(Button* _Button); // 스케줄 창
 	static void ClickMainMenu_S_0(Button* _Button); // 딸을 단련한다
 
@@ -75,6 +76,7 @@ private:
 	static ScheduleCalendar* AcScheduleCalendar;
 	static ScheduleSelectionMenu* AcScheduleSelectionMenu;
 	static ClassSelectWindow* AcClassSelectWindow;
+	static ScheduleAnimationPlayer* AcScheduleAnimationPlayer;
 
 	static CubeDialog* AcCubeDialog;
 

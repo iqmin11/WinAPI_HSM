@@ -191,6 +191,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Classes.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ConverstionSelectionMenu.h">
       <SubType>
       </SubType>
@@ -276,6 +280,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="MainMenu.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ScheduleAnimationPlayer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ScienceClass.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -450,6 +462,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Classes.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ConverstionSelectionMenu.cpp">
       <SubType>
       </SubType>
@@ -535,6 +551,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="MainMenu.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ScheduleAnimationPlayer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ScienceClass.cpp">
       <SubType>
       </SubType>
     </ClCompile>

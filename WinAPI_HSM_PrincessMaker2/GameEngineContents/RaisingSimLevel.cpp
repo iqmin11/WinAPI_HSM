@@ -95,9 +95,6 @@ void RaisingSimLevel::ImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("flower_disease.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("background.BMP"));
 
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("parttimejobbackground.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("parttimejobanimation.BMP"))->Cut(13, 2);
-
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("DateViewer.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Num_WeekDay.BMP"))->Cut(7, 1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Num_Month.BMP"))->Cut(12, 1);
@@ -127,6 +124,9 @@ void RaisingSimLevel::ImageLoad()
 
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Calendar.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("IconButton_Hover.bmp"));
+	
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Animation_Background_Science.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Animation_Object_Science.bmp"))->Cut(13,1);
 
 	Dir.Move("Cube");
 	

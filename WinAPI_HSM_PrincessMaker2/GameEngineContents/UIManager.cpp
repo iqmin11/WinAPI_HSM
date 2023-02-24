@@ -19,6 +19,7 @@
 #include "ScheduleCalendar.h"
 #include "ScheduleSelectionMenu.h"
 #include "ClassSelectWindow.h"
+#include "ScheduleAnimationPlayer.h"
 
 #include "CubeDialog.h"
 
@@ -38,6 +39,7 @@ PhysicalStatusWindow* UIManager::AcPhysicalStatusWindow = nullptr;
 ScheduleCalendar* UIManager::AcScheduleCalendar = nullptr;
 ScheduleSelectionMenu* UIManager::AcScheduleSelectionMenu = nullptr;
 ClassSelectWindow* UIManager::AcClassSelectWindow = nullptr;
+ScheduleAnimationPlayer* UIManager::AcScheduleAnimationPlayer = nullptr;
 
 CubeDialog* UIManager::AcCubeDialog = nullptr;
 
@@ -70,6 +72,7 @@ void UIManager::Start()
 	AcScheduleCalendar = Level->CreateActor<ScheduleCalendar>(PM2ActorOrder::Menu1);
 	AcScheduleSelectionMenu = Level->CreateActor<ScheduleSelectionMenu>(PM2ActorOrder::Menu1);
 	AcClassSelectWindow = Level->CreateActor<ClassSelectWindow>(PM2ActorOrder::Menu2);
+	AcScheduleAnimationPlayer = Level->CreateActor<ScheduleAnimationPlayer>(PM2ActorOrder::Menu2);
 
 	AcCubeDialog = dynamic_cast<RaisingSimLevel*>(Level)->GetAcCubeDialog();
 
