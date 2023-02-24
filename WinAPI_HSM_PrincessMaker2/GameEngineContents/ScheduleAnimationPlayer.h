@@ -11,6 +11,22 @@ class ProtocolClass;
 class ScienceClass;
 class StrategyClass;
 class TheologyClass;
+
+enum class AnimationState
+{
+	Null = -1,
+	Dance,
+	Fencing,
+	Fighting,
+	Magic,
+	Painting,
+	Poetry,
+	Protocol,
+	Science,
+	Strategy,
+	Theology,
+};
+
 class ScheduleAnimationPlayer : public MenuFrame
 {
 public:
@@ -31,6 +47,8 @@ protected:
 private:
 	float4 ActorPos = {240, 380};
 	float4 BoxScale = {420, 180};
+
+	AnimationState StateValue = AnimationState::Null;
 
 	DanceClass* AcDanceClass = nullptr;
 	FencingClass* AcFencingClass = nullptr;

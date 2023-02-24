@@ -29,10 +29,6 @@ void ScheduleAnimationPlayer::Start()
 	SetPos(ActorPos);
 	InitMenuFrameRender(PM2RenderOrder::Menu2, MenuFrameStyleEnum::Nomal);
 	SetMenuFrameScale(BoxScale);
-	
-	AcScienceClass = Level->CreateActor<ScienceClass>(PM2ActorOrder::Menu2);
-	AcScienceClass->SetPos(GetPos());
-	AcScienceClass->Off();
 
 	AcDanceClass = Level->CreateActor<DanceClass>(PM2ActorOrder::Menu2);
 	AcDanceClass->SetPos(GetPos());
@@ -44,11 +40,35 @@ void ScheduleAnimationPlayer::Start()
 
 	AcFightingClass = Level->CreateActor<FightingClass>(PM2ActorOrder::Menu2);
 	AcFightingClass->SetPos(GetPos());
-	//AcFightingClass->Off();
+	AcFightingClass->Off();
 
 	AcMagicClass = Level->CreateActor<MagicClass>(PM2ActorOrder::Menu2);
 	AcMagicClass->SetPos(GetPos());
 	AcMagicClass->Off();
+
+	AcPaintingClass = Level->CreateActor<PaintingClass>(PM2ActorOrder::Menu2);
+	AcPaintingClass->SetPos(GetPos());
+	AcPaintingClass->Off();
+
+	AcPoetryClass = Level->CreateActor<PoetryClass>(PM2ActorOrder::Menu2);
+	AcPoetryClass->SetPos(GetPos());
+	AcPoetryClass->Off();
+
+	AcProtocolClass = Level->CreateActor<ProtocolClass>(PM2ActorOrder::Menu2);
+	AcProtocolClass->SetPos(GetPos());
+	AcProtocolClass->Off();
+
+	AcScienceClass = Level->CreateActor<ScienceClass>(PM2ActorOrder::Menu2);
+	AcScienceClass->SetPos(GetPos());
+	AcScienceClass->Off();
+	
+	AcStrategyClass = Level->CreateActor<StrategyClass>(PM2ActorOrder::Menu2);
+	AcStrategyClass->SetPos(GetPos());
+	AcStrategyClass->Off();
+
+	AcTheologyClass = Level->CreateActor<TheologyClass>(PM2ActorOrder::Menu2);
+	AcTheologyClass->SetPos(GetPos());
+	AcTheologyClass->Off();
 }
 
 void ScheduleAnimationPlayer::Update(float _DeltaTime)

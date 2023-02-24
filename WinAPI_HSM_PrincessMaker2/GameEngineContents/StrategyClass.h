@@ -1,5 +1,7 @@
 #pragma once
-class StrategyClass
+#include "ClassesAndJobs.h"
+#include "ContentsEnums.h"
+class StrategyClass : public ClassesAndJobs
 {
 public:
 	// construtor destructor
@@ -13,6 +15,7 @@ public:
 	StrategyClass& operator=(StrategyClass&& _Other) noexcept = delete;
 
 protected:
+	void Start() override;
 
 
 private:
