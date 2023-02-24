@@ -191,7 +191,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Classes.h">
+    <ClInclude Include="ClassesAndJobs.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -208,6 +208,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Cutscene.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="DanceClass.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -251,7 +255,15 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="FencingClass.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="FighterAndMagicalStatusWindow.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="FightingClass.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -279,7 +291,23 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="MagicClass.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="MainMenu.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PaintingClass.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PoetryClass.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ProtocolClass.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -288,6 +316,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="ScienceClass.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="StrategyClass.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TheologyClass.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -462,7 +498,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Classes.cpp">
+    <ClCompile Include="ClassesAndJobs.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -479,6 +515,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Cutscene.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="DanceClass.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -522,7 +562,15 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="FencingClass.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FighterAndMagicalStatusWindow.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="FightingClass.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -550,7 +598,23 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="MagicClass.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="MainMenu.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PaintingClass.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PoetryClass.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ProtocolClass.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -559,6 +623,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="ScienceClass.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="StrategyClass.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TheologyClass.cpp">
       <SubType>
       </SubType>
     </ClCompile>

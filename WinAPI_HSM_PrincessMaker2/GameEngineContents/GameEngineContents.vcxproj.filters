@@ -183,7 +183,34 @@
     <ClInclude Include="ScienceClass.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Classes.h">
+    <ClInclude Include="DanceClass.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="FencingClass.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="MagicClass.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="PaintingClass.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="PoetryClass.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolClass.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="TheologyClass.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="ClassesAndJobs.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule</Filter>
+    </ClInclude>
+    <ClInclude Include="StrategyClass.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="FightingClass.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
     </ClInclude>
   </ItemGroup>
@@ -369,7 +396,34 @@
     <ClCompile Include="ScienceClass.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Classes.cpp">
+    <ClCompile Include="DanceClass.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="FencingClass.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="MagicClass.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="PaintingClass.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="PoetryClass.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolClass.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="TheologyClass.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="ClassesAndJobs.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule</Filter>
+    </ClCompile>
+    <ClCompile Include="StrategyClass.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="FightingClass.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
     </ClCompile>
   </ItemGroup>

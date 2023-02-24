@@ -1,8 +1,8 @@
 #pragma once
-#include "Classes.h"
+#include "ClassesAndJobs.h"
 #include "ContentsEnums.h"
 
-class ScienceClass : public Classes
+class ScienceClass : public ClassesAndJobs
 {
 public:
 	// construtor destructor

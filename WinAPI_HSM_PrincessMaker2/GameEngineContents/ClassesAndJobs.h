@@ -2,18 +2,18 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include "ContentsEnums.h"
 
-class Classes : public GameEngineActor
+class ClassesAndJobs : public GameEngineActor
 {
 public:
 	// construtor destructor
-	Classes();
-	~Classes();
+	ClassesAndJobs();
+	~ClassesAndJobs();
 
 	// delete Function
-	Classes(const Classes& _Other) = delete;
-	Classes(Classes&& _Other) noexcept = delete;
-	Classes& operator=(const Classes& _Other) = delete;
-	Classes& operator=(Classes&& _Other) noexcept = delete;
+	ClassesAndJobs(const ClassesAndJobs& _Other) = delete;
+	ClassesAndJobs(ClassesAndJobs&& _Other) noexcept = delete;
+	ClassesAndJobs& operator=(const ClassesAndJobs& _Other) = delete;
+	ClassesAndJobs& operator=(ClassesAndJobs&& _Other) noexcept = delete;
 
 protected:
 	void Start() override;
@@ -25,11 +25,11 @@ protected:
 		ObjScale = _Scale;
 	}
 	void SetOliveObj(int _SuccessStart, int _SuccessEnd, int _FailStart, int _FailEnd, int _DontStart, int _DontEnd, const float4& _Pos);
-	void SetObj1(int _Start, int _End, const float4& _Pos);
-	void SetObj2(int _Start, int _End, const float4& _Pos);
-	void SetObj3(int _Start, int _End, const float4& _Pos);
-	void SetObj4(int _Start, int _End, const float4& _Pos);
-	void SetObj5(int _Start, int _End, const float4& _Pos);
+	void SetObj1(PM2RenderOrder _Order, int _Start, int _End, const float4& _Pos);
+	void SetObj2(PM2RenderOrder _Order, int _Start, int _End, const float4& _Pos);
+	void SetObj3(PM2RenderOrder _Order, int _Start, int _End, const float4& _Pos);
+	void SetObj4(PM2RenderOrder _Order, int _Start, int _End, const float4& _Pos);
+	void SetObj5(PM2RenderOrder _Order, int _Start, int _End, const float4& _Pos);
 
 private:
 	GameEngineRender* BackgroundLayer1 = nullptr;

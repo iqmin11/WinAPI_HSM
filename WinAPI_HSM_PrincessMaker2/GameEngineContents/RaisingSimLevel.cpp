@@ -125,8 +125,6 @@ void RaisingSimLevel::ImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Calendar.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("IconButton_Hover.bmp"));
 	
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Animation_Background_Science.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Animation_Object_Science.bmp"))->Cut(13,1);
 
 	Dir.Move("Cube");
 	
@@ -135,6 +133,29 @@ void RaisingSimLevel::ImageLoad()
 	{
 		GameEngineResources::GetInst().ImageLoad(AllFile[i].GetFullPath());
 	}
+
+	Dir.MoveParentToDirectory("Cube");
+	Dir.Move("Classes");
+
+	AllFile.clear();
+	AllFile = Dir.GetAllFile();
+	for (size_t i = 0; i < AllFile.size(); i++)
+	{
+		GameEngineResources::GetInst().ImageLoad(AllFile[i].GetFullPath());
+	}
+
+	Dir.Move("Object");
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Animation_Object_Dance.bmp"))->Cut(13,2);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Animation_Object_Fencing.bmp"))->Cut(13, 2);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Animation_Object_Fighting.bmp"))->Cut(13, 2);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Animation_Object_Magic.bmp"))->Cut(13, 3);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Animation_Object_Painting.bmp"))->Cut(13, 2);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Animation_Object_Poetry.bmp"))->Cut(13, 2);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Animation_Object_Protocol.bmp"))->Cut(13, 2);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Animation_Object_Science.bmp"))->Cut(13, 1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Animation_Object_Strategy.bmp"))->Cut(13, 2);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Animation_Object_Theology.bmp"))->Cut(13, 2);
+
 }
 
 

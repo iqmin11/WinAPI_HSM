@@ -1,0 +1,23 @@
+#include "DanceClass.h"
+
+DanceClass::DanceClass()
+{
+
+}
+
+DanceClass::~DanceClass()
+{
+
+}
+
+void DanceClass::Start()
+{
+	SetImageName("Animation_Object_Dance.bmp", "Animation_Background_Dance.bmp");
+	SetBackground();
+	SetObjScale({ 50, 100 });
+	SetOliveObj(0, 3, 4, 5, 6, 7, { 145, 14 });
+	SetObj1(PM2RenderOrder::Menu2_Obj_2, 8, 11, { 55, 14 });
+	SetObj2(PM2RenderOrder::Menu2_Obj_2, 12, 15, { -55, 14 });
+	SetObj3(PM2RenderOrder::Menu2_Obj_2, 16, 17, { -155, 14 });
+	ClassesAndJobs::Start();
+}
