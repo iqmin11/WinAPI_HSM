@@ -203,6 +203,8 @@ protected:
 	void Update(float _DeltaTime) override;
 	void LevelChangeEnd(GameEngineLevel* _Level) override;
 
+	void Off() override;
+
 private:
 	GameEngineRender* ButtonRender = nullptr;
 	GameEngineCollision* ButtonCollision = nullptr;

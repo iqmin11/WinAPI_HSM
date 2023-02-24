@@ -43,7 +43,19 @@ void Button::SetCollisionOrder(int _Order)
 	ButtonCollision->SetOrder(_Order);
 }
 
+
 GameEngineCollision* CurCollision;
+
+
+void Button::Off()
+{
+	GameEngineActor::Off();
+
+	if (CurCollision == ButtonCollision)
+	{
+		CurCollision = nullptr;
+	}
+}
 
 void Button::Update(float _DeltaTime)
 {
