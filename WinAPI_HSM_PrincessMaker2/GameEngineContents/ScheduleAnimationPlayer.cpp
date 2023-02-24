@@ -32,7 +32,7 @@ void ScheduleAnimationPlayer::Start()
 
 	AcDanceClass = Level->CreateActor<DanceClass>(PM2ActorOrder::Menu2);
 	AcDanceClass->SetPos(GetPos());
-	AcDanceClass->Off();
+	AcDanceClass->On();
 
 	AcFencingClass = Level->CreateActor<FencingClass>(PM2ActorOrder::Menu2);
 	AcFencingClass->SetPos(GetPos());
