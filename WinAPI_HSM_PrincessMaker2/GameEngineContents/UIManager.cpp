@@ -146,7 +146,7 @@ void UIManager::SetEngineRightClick()
 			AcClassSelectWindow->Off();
 			AcScheduleCalendar->On();
 			AcScheduleSelectionMenu->On();
-			AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
+			//AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
 		}
 		else if (AcPersonalInformationWindow->IsUpdate())
 		{

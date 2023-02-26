@@ -242,3 +242,10 @@ GetNextDate 만들기
 버튼도 추가하는데 사실 말만 버튼 그냥 밙짝반짝 애니메이션 랜더임
 
 다하면 인터페이스 나머지 다 만들자
+
+
+대화창의 인터페이스를..
+
+SetText를 하고
+함수하나 더 넣으면 Set되어있는 Text를 DeltaTime에 따라서 Update
+RenderText라는걸 따로 두고. RenderText가 SetText한 Text랑 다르면 처음부터 업데이트하도록 만들어보자

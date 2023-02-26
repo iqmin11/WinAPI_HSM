@@ -27,6 +27,8 @@ public:
 	void SetMugLoc(MugShotLR _MugLoc);
 	void SetUpdateText(const std::string_view& _Text);
 
+	void Off();
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -41,7 +43,10 @@ private:
 
 	float4 DialogFrameScale = { 310,150 };
 
+	//std::string PrevText = std::string();
 	std::string UpdateText = std::string();
+	std::string RenderText = std::string();
+
 	GameEngineRender* TextRender = nullptr;
 	
 	int TextHeight = 18;
@@ -50,6 +55,7 @@ private:
 	float4 TextBoxScale = { 290,130 };
 
 	float Time = 0;
+	size_t RenderLen = 1;
 
 	void SetTextRender();
 	void SetTextRenderPos(float4 _Pos);

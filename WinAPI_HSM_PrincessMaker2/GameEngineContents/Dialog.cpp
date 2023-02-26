@@ -153,7 +153,19 @@ void Dialog::SetMugLoc(MugShotLR _MugLoc)
 void Dialog::SetUpdateText(const std::string_view& _Text)
 {
 	UpdateText = _Text;
-	TextRender->SetText(UpdateText, TextHeight, TextType, TextAlign::Left, TextColor, TextBoxScale);
+	if (RenderText != UpdateText)
+	{
+		RenderLen = 1;
+	}
+	RenderText = UpdateText;
+	
+	//TextRender->SetText(UpdateText.substr(0, 0), TextHeight, TextType, TextAlign::Left, TextColor, TextBoxScale);
+}
+
+void Dialog::Off()
+{
+	GameEngineObject::Off();
+	RenderLen = 1;
 }
 
 void Dialog::Start()
@@ -170,7 +182,19 @@ void Dialog::Start()
 
 void Dialog::Update(float _DeltaTime)
 {
+	Time += _DeltaTime;
+	if (Time >= 0.05)
+	{
+		Time = 0;
+		++RenderLen;
+		if (UpdateText.size() == RenderLen)
+		{
+			RenderLen = UpdateText.size();
+			return;
+		}
+	}
 
+	TextRender->SetText(RenderText.substr(0, RenderLen), TextHeight, TextType, TextAlign::Left, TextColor, TextBoxScale);
 }
 
 void Dialog::Render(float _Time)
