@@ -44,10 +44,16 @@ private:
 	float4 MonthRenderScale = { 60,20 };
 	float4 MonthRenderPos = { 30,-130 };
 
+	GameEngineRender* IconRender[6][7] = {};
+	float4 IconScale = { 34,34 };
+	float4 FirstIconPos = { -120,-80 };
+
+
 	void SetThisMonthCalendar();
 	void SetDayNumRender();
 	void SetYearNumRender();
 	void SetMonthRender();
+	void SetIconRender();
 
 	void UpdateDayNumRender();
 	void UpdateYearNumRender();

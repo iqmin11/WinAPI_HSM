@@ -22,28 +22,37 @@
 #include "ScheduleSelectionMenu.h"
 #include "ClassSelectWindow.h"
 #include "ScheduleAnimationPlayer.h"
+#include "IconButton.h"
 
 #include "CubeDialog.h"
 
+//메인메뉴
 MainMenu* UIManager::AcMainMenu = nullptr;
+
+//스탯창
 StatusWindowManager* UIManager::AcStatusWindowManager = nullptr;
 
+//딸과의 대화
 ConverstionSelectionMenu* UIManager::AcConverstionSelectionMenu = nullptr;
 
+//식단
 Diet UIManager::DietSetConfirm = Diet::Null;
 DietSelectionMenu* UIManager::AcDietSelectionMenu = nullptr;
 SelectDialog* UIManager::AcSelectDialog = nullptr;
 DietFinalConfirmSelectionMenu* UIManager::AcDietFinalConfirmSelectionMenu = nullptr;
 
+//개인정보 및 신체정보
 PersonalInformationWindow* UIManager::AcPersonalInformationWindow = nullptr;
 HelthInformationWindow* UIManager::AcHelthInformationWindow = nullptr;
 PhysicalStatusWindow* UIManager::AcPhysicalStatusWindow = nullptr;
 
+//스케줄창
 ScheduleCalendar* UIManager::AcScheduleCalendar = nullptr;
 ScheduleSelectionMenu* UIManager::AcScheduleSelectionMenu = nullptr;
 ClassSelectWindow* UIManager::AcClassSelectWindow = nullptr;
 ScheduleAnimationPlayer* UIManager::AcScheduleAnimationPlayer = nullptr;
 
+//큐브의 대화창
 CubeDialog* UIManager::AcCubeDialog = nullptr;
 
 UIManager::UIManager()
@@ -131,6 +140,8 @@ void UIManager::SetButtonAndKey()
 	//AcScheduleSelectionMenu->GetSelectButtons()[1]->SetClickCallBack(ClickMainMenu_S_1);
 	//AcScheduleSelectionMenu->GetSelectButtons()[2]->SetClickCallBack(ClickMainMenu_S_2);
 	//AcScheduleSelectionMenu->GetSelectButtons()[3]->SetClickCallBack(ClickMainMenu_S_3);
+
+	AcClassSelectWindow->GetPaintingButton()->GetButton()->SetClickCallBack(ClickMainMenu_S_0_0);
 }
 
 void UIManager::SetEngineRightClick()
@@ -281,6 +292,7 @@ void UIManager::ClickMainMenu_02_0_1(Button* _Button)
 {
 	AcMainMenu->On();
 	AcDietFinalConfirmSelectionMenu->Off();
+	AcSelectDialog->Off();
 	AcCubeDialog->Off();
 }
 
@@ -305,6 +317,11 @@ void UIManager::ClickMainMenu_S_0(Button* _Button)
 	AcScheduleSelectionMenu->Off();
 	AcClassSelectWindow->On();
 	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "딸에게 무엇을 가르치시겠습니까?");
+}
+
+void UIManager::ClickMainMenu_S_0_0(Button* _Button)
+{
+	int a = 0;
 }
 
 bool UIManager::IsAnyMenuUpdate()

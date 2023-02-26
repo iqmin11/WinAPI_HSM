@@ -66,6 +66,16 @@ private:
 	//static void ClickMainMenu_13(Button* _Button);
 	static void ClickMainMenu_S(Button* _Button); // 스케줄 창
 	static void ClickMainMenu_S_0(Button* _Button); // 딸을 단련한다
+	static void ClickMainMenu_S_0_0(Button* _Button); // 미술
+	//static void ClickMainMenu_S_0_1(Button* _Button); // 무용
+	//static void ClickMainMenu_S_0_2(Button* _Button); // 마법
+	//static void ClickMainMenu_S_0_3(Button* _Button); // 예법
+	//static void ClickMainMenu_S_0_4(Button* _Button); // 검술
+	//static void ClickMainMenu_S_0_5(Button* _Button); // 격투술
+	//static void ClickMainMenu_S_0_6(Button* _Button); // 신학
+	//static void ClickMainMenu_S_0_7(Button* _Button); // 군사학
+	//static void ClickMainMenu_S_0_8(Button* _Button); // 자연과학
+	//static void ClickMainMenu_S_0_9(Button* _Button); // 시문
 
 	std::list<GameEngineActor*> AllMenu = std::list<GameEngineActor*>();
 	bool IsAnyMenuUpdate();

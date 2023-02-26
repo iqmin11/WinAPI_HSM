@@ -22,6 +22,7 @@ void ScheduleCalendar::Start()
 	SetYearNumRender();
 	SetMonthRender();
 	SetDayNumRender();
+	SetIconRender();
 	Off();
 }
 
@@ -65,6 +66,20 @@ void ScheduleCalendar::SetMonthRender()
 	MonthRender = CreateRender("Num_Month.bmp", PM2RenderOrder::Menu1_Display);
 	MonthRender->SetScale(MonthRenderScale);
 	MonthRender->SetPosition(MonthRenderPos);
+}
+
+void ScheduleCalendar::SetIconRender()
+{
+	for (size_t y = 0; y < 6; y++)
+	{
+		for (size_t x = 0; x < 7; x++)
+		{
+			IconRender[y][x] = CreateRender("Icon.bmp", PM2RenderOrder::Menu1_Display_Shadow);
+			IconRender[y][x]->SetScale(IconScale);
+			IconRender[y][x]->SetPosition(FirstIconPos + DayNumRenderInterval * float4{ static_cast<float>(x), static_cast<float>(y) });
+			IconRender[y][x]->Off();
+		}
+	}
 }
 
 void ScheduleCalendar::UpdateDayNumRender()

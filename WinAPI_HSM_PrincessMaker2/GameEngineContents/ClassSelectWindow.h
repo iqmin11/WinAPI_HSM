@@ -16,6 +16,11 @@ public:
 	ClassSelectWindow& operator=(const ClassSelectWindow& _Other) = delete;
 	ClassSelectWindow& operator=(ClassSelectWindow&& _Other) noexcept = delete;
 
+	IconButton* GetPaintingButton() const
+	{
+		return Painting;
+	}
+
 	void On() override;
 	void Off() override;
 
