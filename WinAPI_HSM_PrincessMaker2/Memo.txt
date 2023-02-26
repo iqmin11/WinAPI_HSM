@@ -228,3 +228,17 @@ NumberRenderObject수정
 DrawTextA(GameEngineWindow::GetDoubleBufferImage()->GetImageDC(), RenderText.c_str(), static_cast<int>(RenderText.size()), &Rect, static_cast<UINT>(Align));
 
 디폴트 세팅 만들기
+
+해야할일
+
+static SetWeekDay 만들기(현재 위크데이 수정) -> GetWeekDay가 있나??? 있으면 그냥 지우고 인자없는버전 만들기
+SetWeekDay() 만들기(인자없는버전)
+GetNextDate 만들기
+그걸위해 operater++ 만들기
+그걸로 ScheduleCalendar 수정하기 (다음날짜부터 나오게)
+
+다하면
+대화창 따라라라라나오게 만들기
+버튼도 추가하는데 사실 말만 버튼 그냥 밙짝반짝 애니메이션 랜더임
+
+다하면 인터페이스 나머지 다 만들자

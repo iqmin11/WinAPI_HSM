@@ -24,6 +24,7 @@ protected:
 private:
 	float4 ActorPos = {160,263};
 	Date Today = Date(1000,10,10);
+	Date NextDate = Date(1000, 10, 11);
 	std::vector<Date> ThisMonthCalendar = std::vector<Date>();
 
 	GameEngineRender* CalendarFrame = nullptr;

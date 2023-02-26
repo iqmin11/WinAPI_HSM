@@ -372,7 +372,7 @@ private:
 	std::string OliveFirstName = "DefaultFirst";
 	std::string OliveLastName = "DefaultLast";
 	
-	int OliveAge = 20;
+	int OliveAge = 10;
 	
 	Date OliveBirthDay = {1200, 10, 10};
 	

@@ -23,12 +23,12 @@ public:
 	static bool IsOverDay(int _YYYY,  int _MM,  int _DD);
 	static bool IsLeapYear(int _YYYY);
 	static bool IsBigMonth(int _MM);
-	void SetWeekDay(int _YYYY,  int _MM,  int _DD);
 	static int FindFirstWeekday(int _YYYY);
 	static int GetMonthLenth(int _YYYY,  int _MM);
 	static std::vector<int> GetMonthLenths(int _YYYY);
 	static int FindMonthFirstWeekday(int _YYYY,  int _MM);
-
+	static Week GetWeekDay(int _YYYY, int _MM, int _DD);
+	
 
 	// construtor destructor
 	Date();
@@ -54,8 +54,9 @@ public:
 			return true;
 		}
 		return false;
-
 	}
+
+	void SetWeekDay();
 
 	void SetDate(int _YYYY, int _MM, int _DD)
 	{
@@ -67,7 +68,7 @@ public:
 		SetYear(_YYYY);
 		SetMonth(_MM);
 		SetDay(_DD);
-		SetWeekDay(_YYYY, _MM, _DD);
+		SetWeekDay();
 	}
 
 	void SetNullDate()
@@ -96,6 +97,12 @@ public:
 	Week GetWeekDay() const
 	{
 		return WeekDay;
+	}
+
+	Date GetNextDate() const
+	{
+		Date CopyValue = *this;
+		return ++CopyValue;
 	}
 
 	int FindFirstWeekday();
@@ -186,6 +193,28 @@ public:
 	bool operator<= (const Date& _date)
 	{
 		return *this == _date || *this < _date;
+	}
+
+	Date& operator ++ ()
+	{
+		++Day;
+		if (IsOverDay())
+		{
+			++Month;
+			Day = 1;
+			if (IsOverMonth())
+			{
+				++Year;
+				Month = 1;
+			}
+		}
+		SetWeekDay();
+
+		if (IsOverDay() || IsOverMonth())
+		{
+			MsgAssert("입력가능한 날짜를 벗어났습니다")
+		}
+		return *this;
 	}
 
 protected:

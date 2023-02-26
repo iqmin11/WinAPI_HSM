@@ -426,7 +426,7 @@ void PlayerCalendar::SetExplainRender()
 {
 	ExplainRender1 = CreateRender(PM2RenderOrder::Menu0_Display);
 	ExplainRender1->SetText("당신의 생일은 언제 입니까?", LetterRenderHeight, TextType, TextAlign::Center, TextColor, ExplainTextBoxScale);
-	float4 SetExplainRenderPos = { 0, -223 };
+	float4 SetExplainRenderPos = -float4{ ExplainTextBoxScale.hx(), 0 } - float4{ 0, 223 };
 	ExplainRender1->SetPosition(SetExplainRenderPos);
 
 	ExplainRender2 = CreateRender(PM2RenderOrder::Menu0_Display);

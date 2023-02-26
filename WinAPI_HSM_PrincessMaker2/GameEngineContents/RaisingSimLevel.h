@@ -35,7 +35,7 @@ public:
 
 	void SetToday(Date _Today)
 	{
-		Today = _Today;
+		Today.SetDate(_Today.GetYear(), _Today.GetMonth(), _Today.GetDay());
 	}
 
 	Date& GetToday()

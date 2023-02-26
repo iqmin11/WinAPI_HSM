@@ -198,12 +198,13 @@ public:
 		return Scale;
 	}
 
+	void Off() override;
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void LevelChangeEnd(GameEngineLevel* _Level) override;
 
-	void Off() override;
 
 private:
 	GameEngineRender* ButtonRender = nullptr;

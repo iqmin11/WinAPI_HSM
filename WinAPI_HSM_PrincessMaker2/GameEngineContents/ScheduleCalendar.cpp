@@ -30,6 +30,7 @@ void ScheduleCalendar::Update(float _DeltaTime)
 	if (Today != dynamic_cast<RaisingSimLevel*>(GetLevel())->GetToday())
 	{
 		Today = dynamic_cast<RaisingSimLevel*>(GetLevel())->GetToday();
+		NextDate = Today.GetNextDate();
 		UpdateDayNumRender();
 		UpdateYearNumRender();
 		UpdateMonthRender();
@@ -69,7 +70,7 @@ void ScheduleCalendar::SetMonthRender()
 void ScheduleCalendar::UpdateDayNumRender()
 {
 	SetThisMonthCalendar();
-	int MonthFirstWeekday = Date::FindMonthFirstWeekday(Today.GetYear(), Today.GetMonth());
+	int MonthFirstWeekday = Date::FindMonthFirstWeekday(NextDate.GetYear(), NextDate.GetMonth());
 	int DayIndex = 0;
 	for (size_t y = 0; y < 6; y++)
 	{
@@ -100,7 +101,7 @@ void ScheduleCalendar::UpdateDayNumRender()
 				}
 
 				DayNumRender[y][x].SetValue(SetDay);
-				if (Today > ThisMonthCalendar[DayIndex])
+				if (NextDate > ThisMonthCalendar[DayIndex])
 				{
 					DayNumRender[y][x].Off();
 				}
@@ -119,15 +120,15 @@ void ScheduleCalendar::UpdateDayNumRender()
 
 void ScheduleCalendar::UpdateYearNumRender()
 {
-	YearNumRender.SetValue(Today.GetYear());
+	YearNumRender.SetValue(NextDate.GetYear());
 }
 
 void ScheduleCalendar::UpdateMonthRender()
 {
-	MonthRender->SetFrame(Today.GetMonth() - 1);
+	MonthRender->SetFrame(NextDate.GetMonth() - 1);
 }
 
 void ScheduleCalendar::SetThisMonthCalendar()
 {
-	ThisMonthCalendar = Date::GetOneMonthCalendar(Today.GetYear(), Today.GetMonth());
+	ThisMonthCalendar = Date::GetOneMonthCalendar(NextDate.GetYear(), NextDate.GetMonth());
 }

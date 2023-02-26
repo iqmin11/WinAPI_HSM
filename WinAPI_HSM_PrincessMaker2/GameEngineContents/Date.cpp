@@ -222,28 +222,10 @@ bool Date::IsBigMonth(int _MM)
     return false;
 }
 
-void Date::SetWeekDay(int _YYYY, int _MM, int _DD)
+void Date::SetWeekDay()
 {
-    int WholeDay = 0;
-    for (int MM = 1; MM <= _MM; MM++)
-    {
-        if (MM == _MM)
-        {
-            for (int DD = 1; DD < _DD; DD++)
-            {
-                WholeDay++;
-            }
-            WeekDay = static_cast<Week>((WholeDay + FindFirstWeekday(_YYYY)) % 7);
-            return;
-        }
-        else
-        {
-            for (int DD = 1; !IsOverDay(_YYYY, MM, DD); DD++)
-            {
-                WholeDay++;
-            }
-        }
-    }
+    int ThisMonthFirstWeekDay = FindMonthFirstWeekday(Year, Month);
+    WeekDay = static_cast<Week>((ThisMonthFirstWeekDay + Day - 1) % 7);
 }
 
 int Date::FindFirstWeekday(int _YYYY)
@@ -349,4 +331,27 @@ int Date::FindMonthFirstWeekday(int _YYYY, int _MM)
         WholeDay += MonthLen[i];
     }
     return (FindFirstWeekday(_YYYY) + WholeDay) % 7;
+}
+
+Week Date::GetWeekDay(int _YYYY, int _MM, int _DD)
+{
+    int WholeDay = 0;
+    for (int MM = 1; MM <= _MM; MM++)
+    {
+        if (MM == _MM)
+        {
+            for (int DD = 1; DD < _DD; DD++)
+            {
+                WholeDay++;
+            }
+            return static_cast<Week>((WholeDay + FindFirstWeekday(_DD)) % 7);
+        }
+        else
+        {
+            for (int DD = 1; !IsOverDay(_YYYY, MM, DD); DD++)
+            {
+                WholeDay++;
+            }
+        }
+    }
 }

@@ -32,7 +32,7 @@ void ScheduleAnimationPlayer::Start()
 
 	AcDanceClass = Level->CreateActor<DanceClass>(PM2ActorOrder::Menu2);
 	AcDanceClass->SetPos(GetPos());
-	AcDanceClass->On();
+	AcDanceClass->Off();
 
 	AcFencingClass = Level->CreateActor<FencingClass>(PM2ActorOrder::Menu2);
 	AcFencingClass->SetPos(GetPos());
@@ -69,6 +69,8 @@ void ScheduleAnimationPlayer::Start()
 	AcTheologyClass = Level->CreateActor<TheologyClass>(PM2ActorOrder::Menu2);
 	AcTheologyClass->SetPos(GetPos());
 	AcTheologyClass->Off();
+
+	Off();
 }
 
 void ScheduleAnimationPlayer::Update(float _DeltaTime)
