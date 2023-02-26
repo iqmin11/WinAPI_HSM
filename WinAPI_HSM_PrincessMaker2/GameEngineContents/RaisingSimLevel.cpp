@@ -9,7 +9,9 @@
 #include "MousePoint.h"
 #include "Olive.h"
 #include "Background.h"
+
 #include "UIManager.h"
+#include "MainMenu.h"
 
 #include "Flower.h"
 #include "Paint.h"
@@ -45,7 +47,7 @@ void RaisingSimLevel::Loading()
 	AcBackground = CreateActor<Background>(static_cast<int>(PM2ActorOrder::BackGround));
 	CreateActor<DateViewer>(PM2ActorOrder::Menu0);
 	CreateActor<BasicInfo>(PM2ActorOrder::Menu0);
-	AcMenuManager = CreateActor<UIManager>();
+	AcUIManager = CreateActor<UIManager>();
 
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	CreateActor<Olive>(PM2ActorOrder::Olive);
@@ -72,6 +74,9 @@ void RaisingSimLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	AcOlive = Olive::OlivePlayer;
 	Olive::OlivePlayer->On();
+	AcUIManager->GetMainmenu()->Off();
+	AcCubeDialog->On();
+	//AcCubeDialog->SetUpdateText("「주인님, 안녕하십니까. 집사 \n큐브 입니다」");
 }
 
 void RaisingSimLevel::SoundLoad()

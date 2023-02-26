@@ -8,6 +8,7 @@ class StatusWindowManager;
 
 class ConverstionSelectionMenu;
 class DietSelectionMenu;
+class SelectDialog;
 class DietFinalConfirmSelectionMenu;
 class PersonalInformationWindow;
 class HelthInformationWindow;
@@ -31,6 +32,11 @@ public:
 	UIManager(UIManager&& _Other) noexcept = delete;
 	UIManager& operator=(const UIManager& _Other) = delete;
 	UIManager& operator=(UIManager&& _Other) noexcept = delete;
+	
+	MainMenu* GetMainmenu() const
+	{
+		return AcMainMenu;
+	}
 
 protected:
 	void Start() override;
@@ -61,12 +67,15 @@ private:
 	static void ClickMainMenu_S(Button* _Button); // 스케줄 창
 	static void ClickMainMenu_S_0(Button* _Button); // 딸을 단련한다
 
+	std::list<GameEngineActor*> AllMenu = std::list<GameEngineActor*>();
+	bool IsAnyMenuUpdate();
 
 	static StatusWindowManager* AcStatusWindowManager;
 
 	static ConverstionSelectionMenu* AcConverstionSelectionMenu;
 
 	static DietSelectionMenu* AcDietSelectionMenu;
+	static SelectDialog* AcSelectDialog;
 	static DietFinalConfirmSelectionMenu* AcDietFinalConfirmSelectionMenu;
 
 	static PersonalInformationWindow* AcPersonalInformationWindow;

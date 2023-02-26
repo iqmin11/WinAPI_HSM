@@ -26,6 +26,23 @@ public:
 	void SetMugLoc(int _MugLoc);
 	void SetMugLoc(MugShotLR _MugLoc);
 	void SetUpdateText(const std::string_view& _Text);
+	void SetDialogScale(const float4& _Scale)
+	{
+		DialogFrameScale = _Scale;
+		SetMenuFrameScale(DialogFrameScale);
+		TextBoxScale = _Scale - float4{20, 20};
+		SetTextRender();
+	}
+
+	bool IsRenderEnd()
+	{
+		return RenderEnd;
+	}
+
+	std::string_view GetUpdateText() const
+	{
+		return UpdateText;
+	}
 
 	void Off();
 
@@ -56,6 +73,7 @@ private:
 
 	float Time = 0;
 	size_t RenderLen = 1;
+	bool RenderEnd = false;
 
 	void SetTextRender();
 	void SetTextRenderPos(float4 _Pos);

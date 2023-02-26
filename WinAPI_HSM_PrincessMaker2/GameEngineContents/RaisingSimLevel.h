@@ -59,7 +59,7 @@ private:
 	Background* AcBackground = nullptr;
 	Flower* AcFlower = nullptr; 
 	Paint* AcPaint= nullptr; 
-	UIManager* AcMenuManager = nullptr;
+	UIManager* AcUIManager = nullptr;
 
 	void SoundLoad();
 	void ImageLoad();

@@ -9,7 +9,9 @@
 #include "StatusWindowManager.h"
 
 #include "ConverstionSelectionMenu.h"
+
 #include "DietSelectionMenu.h"
+#include "SelectDialog.h"
 #include "DietFinalConfirmSelectionMenu.h"
 
 #include "PersonalInformationWindow.h"
@@ -30,6 +32,7 @@ ConverstionSelectionMenu* UIManager::AcConverstionSelectionMenu = nullptr;
 
 Diet UIManager::DietSetConfirm = Diet::Null;
 DietSelectionMenu* UIManager::AcDietSelectionMenu = nullptr;
+SelectDialog* UIManager::AcSelectDialog = nullptr;
 DietFinalConfirmSelectionMenu* UIManager::AcDietFinalConfirmSelectionMenu = nullptr;
 
 PersonalInformationWindow* UIManager::AcPersonalInformationWindow = nullptr;
@@ -57,24 +60,40 @@ void UIManager::Start()
 {
 	GameEngineLevel* Level = GetLevel();
 	AcMainMenu = Level->CreateActor<MainMenu>(PM2ActorOrder::Menu0);
+	AllMenu.push_back(AcMainMenu);
 
 	AcStatusWindowManager = Level->CreateActor<StatusWindowManager>(PM2ActorOrder::Menu1);
-	
+	AllMenu.push_back(AcStatusWindowManager);
+
 	AcConverstionSelectionMenu = Level->CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
-	
+	AllMenu.push_back(AcConverstionSelectionMenu);
+
 	AcDietSelectionMenu = Level->CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
+	AllMenu.push_back(AcDietSelectionMenu);
+	AcSelectDialog = Level->CreateActor<SelectDialog>(PM2ActorOrder::Menu1);
+	AllMenu.push_back(AcSelectDialog);
 	AcDietFinalConfirmSelectionMenu = Level->CreateActor<DietFinalConfirmSelectionMenu>(PM2ActorOrder::Menu2);
+	AllMenu.push_back(AcDietFinalConfirmSelectionMenu);
 
 	AcPersonalInformationWindow = Level->CreateActor<PersonalInformationWindow>(PM2ActorOrder::Menu1);
+	AllMenu.push_back(AcPersonalInformationWindow);
 	AcHelthInformationWindow = Level->CreateActor<HelthInformationWindow>(PM2ActorOrder::Menu1);
+	AllMenu.push_back(AcHelthInformationWindow);
 	AcPhysicalStatusWindow = Level->CreateActor<PhysicalStatusWindow>(PM2ActorOrder::Menu1);
-	
+	AllMenu.push_back(AcPhysicalStatusWindow);
+
 	AcScheduleCalendar = Level->CreateActor<ScheduleCalendar>(PM2ActorOrder::Menu1);
+	AllMenu.push_back(AcScheduleCalendar);
 	AcScheduleSelectionMenu = Level->CreateActor<ScheduleSelectionMenu>(PM2ActorOrder::Menu1);
+	AllMenu.push_back(AcScheduleSelectionMenu);
 	AcClassSelectWindow = Level->CreateActor<ClassSelectWindow>(PM2ActorOrder::Menu2);
+	AllMenu.push_back(AcClassSelectWindow);
 	AcScheduleAnimationPlayer = Level->CreateActor<ScheduleAnimationPlayer>(PM2ActorOrder::Menu2);
+	AllMenu.push_back(AcScheduleAnimationPlayer);
 
 	AcCubeDialog = dynamic_cast<RaisingSimLevel*>(Level)->GetAcCubeDialog();
+
+	AcCubeDialog->SetUpdateText("「주인님, 안녕하십니까. 집사 \n큐브 입니다.」");
 
 	SetButtonAndKey();
 }
@@ -146,7 +165,7 @@ void UIManager::SetEngineRightClick()
 			AcClassSelectWindow->Off();
 			AcScheduleCalendar->On();
 			AcScheduleSelectionMenu->On();
-			//AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
+			AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
 		}
 		else if (AcPersonalInformationWindow->IsUpdate())
 		{
@@ -154,6 +173,21 @@ void UIManager::SetEngineRightClick()
 			AcPersonalInformationWindow->Off();
 			AcHelthInformationWindow->Off();
 			AcPhysicalStatusWindow->Off();
+		}
+		else if (AcCubeDialog->GetUpdateText() == "「주인님, 안녕하십니까. 집사 \n큐브 입니다.」")
+		{
+			AcCubeDialog->SetUpdateText("「아가씨는 오늘도 건강하십니\n다. 그럼 속히 아가씨의 이번 \n달 스케줄을 결정해 주십시오」");
+		}
+		else if (AcCubeDialog->GetUpdateText() == "「아가씨는 오늘도 건강하십니\n다. 그럼 속히 아가씨의 이번 \n달 스케줄을 결정해 주십시오」")
+		{
+			AcMainMenu->On();
+			AcCubeDialog->Off();
+		}
+		else if (AcCubeDialog->GetUpdateText() == "예, 알겠습니다. 다음달부터 그\n렇게 하겠습니다")
+		{
+			AcMainMenu->On();	
+			AcSelectDialog->Off();
+			AcCubeDialog->Off();
 		}
 	}
 }
@@ -181,6 +215,8 @@ void UIManager::ClickMainMenu_02_0(Button* _Button)
 {
 	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "「그 방침이라면 매달 식비가\n30G 들어갑니다. 무리 없는 식\n생활을 보낼 수 있습니다」");
 	AcDietFinalConfirmSelectionMenu->On();
+	AcSelectDialog->On();
+	AcSelectDialog->SetUpdateText("무리하지 않는다");
 	AcDietSelectionMenu->Off();
 	DietSetConfirm = Diet::무리하지_않는다;
 }
@@ -189,6 +225,8 @@ void UIManager::ClickMainMenu_02_1(Button* _Button)
 {
 	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "「그 방침이라면 매달 식비가\n80G 들어갑니다. 체력이 올라가\n겠죠」");
 	AcDietFinalConfirmSelectionMenu->On();
+	AcSelectDialog->On();
+	AcSelectDialog->SetUpdateText("어쨌든 튼튼하게");
 	AcDietSelectionMenu->Off();
 	DietSetConfirm = Diet::어쨌든_튼튼하게;
 }
@@ -197,6 +235,8 @@ void UIManager::ClickMainMenu_02_2(Button* _Button)
 {
 	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "「그 방침이라면 매달 식비가\n10G 들어갑니다. 약간 건강에 부\n담이 갈지도 모릅니다」");
 	AcDietFinalConfirmSelectionMenu->On();
+	AcSelectDialog->On();
+	AcSelectDialog->SetUpdateText("얌전한 아이로");
 	AcDietSelectionMenu->Off();
 	DietSetConfirm = Diet::얌전한_아이로;
 }
@@ -205,6 +245,8 @@ void UIManager::ClickMainMenu_02_3(Button* _Button)
 {
 	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "「그 방침이라면 매달 식비가\n5G 밖에 들지 않습니다. 아가씨의\n몸무게를 줄이고 싶다면, 이 방\n침으로 가시죠. 단, 체력을 상\n당히 소모하므로 주의하시기 바\n랍니다」");
 	AcDietFinalConfirmSelectionMenu->On();
+	AcSelectDialog->On();
+	AcSelectDialog->SetUpdateText("다이어트 시킨다");
 	AcDietSelectionMenu->Off();
 	DietSetConfirm = Diet::다이어트_시킨다;
 }
@@ -228,9 +270,11 @@ void UIManager::ClickMainMenu_02_0_0(Button* _Button)
 	default:
 		break;
 	}
-	AcMainMenu->On();
 	AcDietFinalConfirmSelectionMenu->Off();
-	AcCubeDialog->Off();
+	AcCubeDialog->UpdateCubeDialog(CubeFace::Proud, "예, 알겠습니다. 다음달부터 그\n렇게 하겠습니다");
+	
+	//AcMainMenu->On();
+	//AcCubeDialog->Off();
 }
 
 void UIManager::ClickMainMenu_02_0_1(Button* _Button)
@@ -261,4 +305,16 @@ void UIManager::ClickMainMenu_S_0(Button* _Button)
 	AcScheduleSelectionMenu->Off();
 	AcClassSelectWindow->On();
 	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "딸에게 무엇을 가르치시겠습니까?");
+}
+
+bool UIManager::IsAnyMenuUpdate()
+{
+	for (auto i : AllMenu)
+	{
+		if (i->IsUpdate())
+		{
+			return true;
+		}
+	}
+	return false;
 }

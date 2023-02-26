@@ -156,6 +156,7 @@ void Dialog::SetUpdateText(const std::string_view& _Text)
 	if (RenderText != UpdateText)
 	{
 		RenderLen = 1;
+		RenderEnd = false;
 	}
 	RenderText = UpdateText;
 	
@@ -166,6 +167,7 @@ void Dialog::Off()
 {
 	GameEngineObject::Off();
 	RenderLen = 1;
+	RenderEnd = false;
 }
 
 void Dialog::Start()
@@ -183,13 +185,14 @@ void Dialog::Start()
 void Dialog::Update(float _DeltaTime)
 {
 	Time += _DeltaTime;
-	if (Time >= 0.05)
+	if (Time >= 0.03)
 	{
 		Time = 0;
 		++RenderLen;
 		if (UpdateText.size() == RenderLen)
 		{
 			RenderLen = UpdateText.size();
+			RenderEnd = true;
 			return;
 		}
 	}

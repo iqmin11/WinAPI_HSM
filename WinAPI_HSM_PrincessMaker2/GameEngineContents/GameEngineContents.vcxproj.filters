@@ -213,6 +213,9 @@
     <ClInclude Include="FightingClass.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
     </ClInclude>
+    <ClInclude Include="SelectDialog.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\2. DietMenuActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -425,6 +428,9 @@
     </ClCompile>
     <ClCompile Include="FightingClass.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectDialog.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\2. DietMenuActor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
