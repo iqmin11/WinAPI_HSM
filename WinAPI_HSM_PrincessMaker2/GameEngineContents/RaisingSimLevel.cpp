@@ -81,6 +81,14 @@ void RaisingSimLevel::Loading()
 
 void RaisingSimLevel::Update(float _DeltaTime)
 {
+	//Time += _DeltaTime;
+	//if (1.0 <= Time)
+	//{
+	//	Time = 0;
+	//	AcPaintingClass->DoClassAndJob();
+	//} //°í¹ÎÁß ....
+
+
 	if (GameEngineInput::IsDown("LevelChange"))
 	{
 		GameEngineCore::GetInst()->ChangeLevel("RPG");

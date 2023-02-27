@@ -164,106 +164,22 @@ public:
 	void SetFirstStatus();
 	void SetStatus(const Status& _Status);
 
-	void SetConstitution(float _Value)
-	{
-		OliveStatus.Constitution = _Value;
-	}
-	void SetStrength(float _Value)
-	{
-		OliveStatus.Strength = _Value;
-	}
-	void SetIntelligence(float _Value)
-	{
-		OliveStatus.Intelligence = _Value;
-	}
-	void SetRefinement(float _Value)
-	{
-		OliveStatus.Refinement = _Value;
-	}
-	void SetCharisma(float _Value)
-	{
-		OliveStatus.Charisma = _Value;
-	}
-	void SetMorality(float _Value)
-	{
-		OliveStatus.Morality = _Value;
-	}
-	void SetFaith(float _Value)
-	{
-		OliveStatus.Faith = _Value;
-	}
-	void SetSin(float _Value)
-	{
-		OliveStatus.Sin = _Value;
-	}
-	void SetSensitivity(float _Value)
-	{
-		OliveStatus.Sensitivity = _Value;
-	}
-	void SetStress(float _Value)
-	{
-		OliveStatus.Stress = _Value;
-	}
-	void SetCombatSkill(float _Value)
-	{
-		OliveStatus.CombatSkill = _Value;
-	}
-	void SetCombatAttack(float _Value)
-	{
-		OliveStatus.CombatAttack = _Value;
-	}
-	void SetCombatDefense(float _Value)
-	{
-		OliveStatus.CombatDefense = _Value;
-	}
+	
 	void UpdateFighter()
 	{
 		OliveStatus.Fighter = OliveStatus.CombatSkill + OliveStatus.CombatAttack + OliveStatus.CombatDefense;
 	}
-	void SetMagicSkill(float _Value)
-	{
-		OliveStatus.MagicSkill = _Value;
-	}
-	void SetMagicAttack(float _Value)
-	{
-		OliveStatus.MagicAttack = _Value;
-	}
-	void SetMagicDefense(float _Value)
-	{
-		OliveStatus.MagicDefense = _Value;
-	}
+	
 	void UpdateMagical()
 	{
 		OliveStatus.Magical = OliveStatus.MagicSkill + OliveStatus.MagicAttack + OliveStatus.MagicDefense;
 	}
-	void SetDecorum(float _Value)
-	{
-		OliveStatus.Decorum = _Value;
-	}
-	void SetArt(float _Value)
-	{
-		OliveStatus.Art = _Value;
-	}
-	void SetConversation(float _Value)
-	{
-		OliveStatus.Conversation = _Value;
-	}
+	
 	void UpdateSocial()
 	{
 		OliveStatus.Social = OliveStatus.Decorum + OliveStatus.Art + OliveStatus.Conversation;
 	}
-	void SetCooking(float _Value)
-	{
-		OliveStatus.Cooking = _Value;
-	}
-	void SetCleaning(float _Value)
-	{
-		OliveStatus.Cleaning = _Value;
-	}
-	void SetTemperament(float _Value)
-	{
-		OliveStatus.Temperament = _Value;
-	}
+	
 	void UpdateHouseWork()
 	{
 		OliveStatus.HouseWork = OliveStatus.Cooking + OliveStatus.Cleaning + OliveStatus.Temperament;

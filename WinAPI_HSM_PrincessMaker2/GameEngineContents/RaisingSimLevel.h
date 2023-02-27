@@ -87,6 +87,8 @@ private:
 	UIManager* AcUIManager = nullptr;
 
 	
+	float Time = 0;
+
 
 	void SoundLoad();
 	void ImageLoad();

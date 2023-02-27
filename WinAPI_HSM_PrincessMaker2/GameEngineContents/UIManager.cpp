@@ -23,6 +23,7 @@
 #include "ClassSelectWindow.h"
 #include "ScheduleAnimationPlayer.h"
 #include "IconButton.h"
+#include "SchedulingConfirmSelectionMenu.h"
 
 #include "CubeDialog.h"
 
@@ -53,6 +54,7 @@ ScheduleCalendar* UIManager::AcScheduleCalendar = nullptr;
 ScheduleSelectionMenu* UIManager::AcScheduleSelectionMenu = nullptr;
 ClassSelectWindow* UIManager::AcClassSelectWindow = nullptr;
 ScheduleAnimationPlayer* UIManager::AcScheduleAnimationPlayer = nullptr;
+SchedulingConfirmSelectionMenu* UIManager::AcSchedulingConfirmSelectionMenu = nullptr;
 
 //큐브의 대화창
 CubeDialog* UIManager::AcCubeDialog = nullptr;
@@ -101,6 +103,8 @@ void UIManager::Start()
 	AllMenu.push_back(AcClassSelectWindow);
 	AcScheduleAnimationPlayer = ParentLevel->CreateActor<ScheduleAnimationPlayer>(PM2ActorOrder::Menu2);
 	AllMenu.push_back(AcScheduleAnimationPlayer);
+	AcSchedulingConfirmSelectionMenu = ParentLevel->CreateActor<SchedulingConfirmSelectionMenu>(PM2ActorOrder::Menu2);
+	AllMenu.push_back(AcSchedulingConfirmSelectionMenu);
 
 	AcCubeDialog = ParentLevel->GetAcCubeDialog();
 
@@ -143,7 +147,10 @@ void UIManager::SetButtonAndKey()
 	//AcScheduleSelectionMenu->GetSelectButtons()[2]->SetClickCallBack(ClickMainMenu_S_2);
 	//AcScheduleSelectionMenu->GetSelectButtons()[3]->SetClickCallBack(ClickMainMenu_S_3);
 
-	//AcClassSelectWindow->GetPaintingButton()->GetButton()->SetClickCallBack(ClickMainMenu_S_0_0);
+	AcSchedulingConfirmSelectionMenu->GetSelectButtons()[0]->SetClickCallBack(ClickMainMenu_S_0_0_0);
+	AcSchedulingConfirmSelectionMenu->GetSelectButtons()[1]->SetClickCallBack(ClickMainMenu_S_0_0_1);
+
+	AcClassSelectWindow->GetPaintingButton()->SetClickCallBack(ClickMainMenu_S_0_0);
 }
 
 void UIManager::SetEngineRightClick()
@@ -177,6 +184,12 @@ void UIManager::SetEngineRightClick()
 		{
 			AcClassSelectWindow->Off();
 			AcScheduleCalendar->On();
+			AcScheduleSelectionMenu->On();
+			AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
+		}
+		else if (AcSchedulingConfirmSelectionMenu->IsUpdate())
+		{
+			AcSchedulingConfirmSelectionMenu->Off();
 			AcScheduleSelectionMenu->On();
 			AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
 		}
@@ -321,9 +334,26 @@ void UIManager::ClickMainMenu_S_0(Button* _Button)
 	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "딸에게 무엇을 가르치시겠습니까?");
 }
 
-//void UIManager::ClickMainMenu_S_0_0(Button* _Button)
-//{
-//}
+void UIManager::ClickMainMenu_S_0_0(Button* _Button)
+{
+	AcClassSelectWindow->Off();
+	AcSchedulingConfirmSelectionMenu->On();
+	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "미술. \n그림을 그려 예술적인 센스를\n갈고 닦는다");
+}
+
+void UIManager::ClickMainMenu_S_0_0_0(Button* _Button)
+{
+	AcSchedulingConfirmSelectionMenu->Off();
+	AcScheduleSelectionMenu->On();
+	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 2 번째 )");
+}
+
+void UIManager::ClickMainMenu_S_0_0_1(Button* _Button)
+{
+	AcSchedulingConfirmSelectionMenu->Off();
+	AcScheduleSelectionMenu->On();
+	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
+}
 
 bool UIManager::IsAnyMenuUpdate()
 {

@@ -108,35 +108,35 @@ void Olive::SetFirstPhysicalCondition()
 
 void Olive::SetStatus(const Status& _Value)
 {
-	SetConstitution(_Value.Constitution);
-	SetStrength(_Value.Strength);
-	SetIntelligence(_Value.Intelligence);
-	SetRefinement(_Value.Refinement);
-	SetCharisma(_Value.Charisma);
-	SetMorality(_Value.Morality);
-	SetFaith(_Value.Faith);
-	SetSin(_Value.Sin);
-	SetSensitivity(_Value.Sensitivity);
-	SetStress(_Value.Stress);
+	OliveStatus.Constitution = _Value.Constitution;
+	OliveStatus.Strength = _Value.Strength;
+	OliveStatus.Intelligence = _Value.Intelligence;
+	OliveStatus.Refinement = _Value.Refinement;
+	OliveStatus.Charisma = _Value.Charisma;
+	OliveStatus.Morality = _Value.Morality;
+	OliveStatus.Faith = _Value.Faith;
+	OliveStatus.Sin = _Value.Sin;
+	OliveStatus.Sensitivity = _Value.Sensitivity;
+	OliveStatus.Stress = _Value.Stress;
 	
-	SetCombatSkill(_Value.CombatSkill);
-	SetCombatAttack(_Value.CombatAttack);
-	SetCombatDefense(_Value.CombatDefense);
+	OliveStatus.CombatSkill = _Value.CombatSkill;
+	OliveStatus.CombatAttack = _Value.CombatAttack;
+	OliveStatus.CombatDefense = _Value.CombatDefense;
 	UpdateFighter();
 
-	SetMagicSkill(_Value.MagicSkill);
-	SetMagicAttack(_Value.MagicAttack);
-	SetMagicDefense(_Value.MagicDefense);
+	OliveStatus.MagicSkill = _Value.MagicSkill;
+	OliveStatus.MagicAttack = _Value.MagicAttack;
+	OliveStatus.MagicDefense = _Value.MagicDefense;
 	UpdateMagical();
 	
-	SetDecorum(_Value.Decorum);
-	SetArt(_Value.Art);
-	SetConversation(_Value.Conversation);
+	OliveStatus.Decorum = _Value.Decorum;
+	OliveStatus.Art = _Value.Art;
+	OliveStatus.Conversation = _Value.Conversation;
 	UpdateSocial();
 	
-	SetCooking(_Value.Cooking);
-	SetCleaning(_Value.Cleaning);
-	SetTemperament(_Value.Temperament);
+	OliveStatus.Cooking = _Value.Cooking;
+	OliveStatus.Cleaning = _Value.Cleaning;
+	OliveStatus.Temperament = _Value.Temperament;
 	UpdateHouseWork();
 }
 

@@ -65,9 +65,9 @@ public:
 		{
 			MsgAssert("입력가능한 날짜를 벗어났습니다")
 		}
-		SetYear(_YYYY);
-		SetMonth(_MM);
-		SetDay(_DD);
+		Year = _YYYY;
+		Month = _MM;
+		Day = _DD;
 		SetWeekDay();
 	}
 
@@ -217,6 +217,33 @@ public:
 		return *this;
 	}
 
+	Date& operator + (int _Value)
+	{
+		if (31 < _Value)
+		{
+			MsgAssert("31보다 큰숫자 넣기 금지")
+		}
+
+		Day += _Value;
+		if (IsOverDay())
+		{
+			++Month;
+			Day = 1;
+			if (IsOverMonth())
+			{
+				++Year;
+				Month = 1;
+			}
+		}
+		SetWeekDay();
+
+		if (IsOverDay() || IsOverMonth())
+		{
+			MsgAssert("입력가능한 날짜를 벗어났습니다")
+		}
+		return *this;
+	}
+
 protected:
 
 
@@ -228,19 +255,6 @@ private:
 	
 	Week WeekDay = Week::Null; // 0~6
 	
-	void SetYear(int _YYYY)
-	{
-		Year = _YYYY;
-	}
-
-	void SetMonth(int _MM)
-	{
-		Month = _MM;
-	}
-
-	void SetDay(int _DD)
-	{
-		Day = _DD;
-	}
+	
 };
 

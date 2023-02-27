@@ -1,10 +1,10 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include "IconButton.h"
 #include "ContentsEnums.h"
 #include "Olive.h"
 
 class RaisingSimLevel;
-class IconButton;
 class Button;
 
 class DanceClass;
@@ -31,9 +31,9 @@ public:
 	ClassSelectWindow& operator=(const ClassSelectWindow& _Other) = delete;
 	ClassSelectWindow& operator=(ClassSelectWindow&& _Other) noexcept = delete;
 
-	IconButton* GetPaintingButton() const
+	GlobalButton* GetPaintingButton() const
 	{
-		return Painting;
+		return Painting->GetButton();
 	}
 
 	void On() override;
@@ -87,15 +87,15 @@ private:
 	IconButton* Poetry = nullptr;
 	float4 Button10Pos = { 710 , 160 };
 
-	static void ClickPainting(Button* _Button);
-	static void ClickDance(Button* _Button);
-	static void ClickMagic(Button* _Button);
-	static void ClickProtocol(Button* _Button);
-	static void ClickFencing(Button* _Button);
-	static void ClickFighting(Button* _Button);
-	static void ClickTheology(Button* _Button);
-	static void ClickStrategy(Button* _Button);
-	static void ClickScience(Button* _Button);
-	static void ClickPoetry(Button* _Button);
+	//static void ClickPainting(Button* _Button);
+	//static void ClickDance(Button* _Button);
+	//static void ClickMagic(Button* _Button);
+	//static void ClickProtocol(Button* _Button);
+	//static void ClickFencing(Button* _Button);
+	//static void ClickFighting(Button* _Button);
+	//static void ClickTheology(Button* _Button);
+	//static void ClickStrategy(Button* _Button);
+	//static void ClickScience(Button* _Button);
+	//static void ClickPoetry(Button* _Button);
 };
 

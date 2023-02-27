@@ -216,6 +216,9 @@
     <ClInclude Include="SelectDialog.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\2. DietMenuActor</Filter>
     </ClInclude>
+    <ClInclude Include="SchedulingConfirmSelectionMenu.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -431,6 +434,9 @@
     </ClCompile>
     <ClCompile Include="SelectDialog.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\2. DietMenuActor</Filter>
+    </ClCompile>
+    <ClCompile Include="SchedulingConfirmSelectionMenu.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

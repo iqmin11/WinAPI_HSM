@@ -25,7 +25,7 @@ public:
 	}
 
 protected:
-	void Start();
+	void Start() override;
 	void Update(float _Deltatime);
 	void Render(float _Time);
 	

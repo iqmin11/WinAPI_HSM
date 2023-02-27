@@ -4,6 +4,7 @@
 #include "ContentsEnums.h"
 #include "Olive.h"
 
+class RaisingSimLevel;
 class ClassesAndJobs : public GameEngineActor
 {
 public:
@@ -29,6 +30,8 @@ public:
 
 	Olive::Status& GetStatusVariance();
 	
+	void DoClassAndJob();
+	
 
 protected:
 	void Start() override;
@@ -47,6 +50,8 @@ protected:
 	void SetObj5(PM2RenderOrder _Order, int _Start, int _End, const float4& _Pos);
 
 private:
+	RaisingSimLevel* ParentLevel = nullptr;
+	
 	Olive::Status Beginner_StatusVarianceMin = {};
 	Olive::Status Beginner_StatusVarianceMax = {};
 	Olive::Status Beginner_StatusVariance = {};
@@ -95,5 +100,9 @@ private:
 	std::string BackgroundLayer2_Name = std::string();
 	std::string Object_Name = std::string();
 	
+	/////////////////////////////////////////////
+
+	float Time = 0;
+	int Count = 0;
 };
 

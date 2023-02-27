@@ -1,5 +1,6 @@
 #include "ClassesAndJobs.h"
 #include <GameEngineCore/GameEngineRender.h>
+#include "RaisingSimLevel.h"
 
 ClassesAndJobs::ClassesAndJobs()
 {
@@ -44,8 +45,16 @@ Olive::Status& ClassesAndJobs::GetStatusVariance()
 	return Beginner_StatusVariance;
 }
 
+void ClassesAndJobs::DoClassAndJob()
+{
+	Olive::OlivePlayer->OliveStatus += GetStatusVariance();
+	ParentLevel->GoToNextDay();
+}
+
 void ClassesAndJobs::Start()
 {
+	ParentLevel = dynamic_cast<RaisingSimLevel*>(GetLevel());
+
 	if (nullptr != OliveObject)
 	{
 		OliveObject->ChangeAnimation(SuccessState);
