@@ -98,7 +98,6 @@ void RaisingSimLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	Olive::OlivePlayer->On();
 	AcUIManager->GetMainmenu()->Off();
 	AcCubeDialog->On();
-	//AcCubeDialog->SetUpdateText("「주인님, 안녕하십니까. 집사 \n큐브 입니다」");
 }
 
 void RaisingSimLevel::SoundLoad()

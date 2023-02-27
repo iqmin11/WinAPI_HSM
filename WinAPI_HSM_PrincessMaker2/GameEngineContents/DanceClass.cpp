@@ -19,5 +19,7 @@ void DanceClass::Start()
 	SetObj1(PM2RenderOrder::Menu2_Obj_2, 8, 11, { 55, 14 });
 	SetObj2(PM2RenderOrder::Menu2_Obj_2, 12, 15, { -55, 14 });
 	SetObj3(PM2RenderOrder::Menu2_Obj_2, 16, 17, { -155, 14 });
+	GetStatusVarianceMin().SetStatus({.Constitution = 1, .Charisma = 0, .Art = 0});
+	GetStatusVarianceMax().SetStatus({ .Constitution = 1, .Charisma = 1, .Art = 1 });
 	ClassesAndJobs::Start();
 }

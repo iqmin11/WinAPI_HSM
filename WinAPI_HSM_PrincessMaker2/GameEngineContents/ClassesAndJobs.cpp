@@ -11,6 +11,39 @@ ClassesAndJobs::~ClassesAndJobs()
 
 }
 
+Olive::Status& ClassesAndJobs::GetStatusVariance()
+{
+	GameEngineRandom Random = GameEngineRandom();
+	Beginner_StatusVariance.Constitution = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Constitution), static_cast<int>(Beginner_StatusVarianceMax.Constitution)));
+	Beginner_StatusVariance.Strength = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Strength), static_cast<int>(Beginner_StatusVarianceMax.Strength)));
+	Beginner_StatusVariance.Intelligence = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Intelligence), static_cast<int>(Beginner_StatusVarianceMax.Intelligence)));
+	Beginner_StatusVariance.Refinement = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Refinement), static_cast<int>(Beginner_StatusVarianceMax.Refinement)));
+	Beginner_StatusVariance.Charisma = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Charisma), static_cast<int>(Beginner_StatusVarianceMax.Charisma)));
+	Beginner_StatusVariance.Morality = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Morality), static_cast<int>(Beginner_StatusVarianceMax.Morality)));
+	Beginner_StatusVariance.Faith = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Faith), static_cast<int>(Beginner_StatusVarianceMax.Faith)));
+	Beginner_StatusVariance.Sin = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Sin), static_cast<int>(Beginner_StatusVarianceMax.Sin)));
+	Beginner_StatusVariance.Sensitivity = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Sensitivity), static_cast<int>(Beginner_StatusVarianceMax.Sensitivity)));
+	Beginner_StatusVariance.Stress = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Stress), static_cast<int>(Beginner_StatusVarianceMax.Stress)));
+	Beginner_StatusVariance.Fighter = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Fighter), static_cast<int>(Beginner_StatusVarianceMax.Fighter)));
+	Beginner_StatusVariance.CombatSkill = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.CombatSkill), static_cast<int>(Beginner_StatusVarianceMax.CombatSkill)));
+	Beginner_StatusVariance.CombatAttack = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.CombatAttack), static_cast<int>(Beginner_StatusVarianceMax.CombatAttack)));
+	Beginner_StatusVariance.CombatDefense = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.CombatDefense), static_cast<int>(Beginner_StatusVarianceMax.CombatDefense)));
+	Beginner_StatusVariance.Magical = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Magical), static_cast<int>(Beginner_StatusVarianceMax.Magical)));
+	Beginner_StatusVariance.MagicSkill = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.MagicSkill), static_cast<int>(Beginner_StatusVarianceMax.MagicSkill)));
+	Beginner_StatusVariance.MagicAttack = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.MagicAttack), static_cast<int>(Beginner_StatusVarianceMax.MagicAttack)));
+	Beginner_StatusVariance.MagicDefense = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.MagicDefense), static_cast<int>(Beginner_StatusVarianceMax.MagicDefense)));
+	Beginner_StatusVariance.Social = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Social), static_cast<int>(Beginner_StatusVarianceMax.Social)));
+	Beginner_StatusVariance.Decorum = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Decorum), static_cast<int>(Beginner_StatusVarianceMax.Decorum)));
+	Beginner_StatusVariance.Art = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Art), static_cast<int>(Beginner_StatusVarianceMax.Art)));
+	Beginner_StatusVariance.Conversation = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Conversation), static_cast<int>(Beginner_StatusVarianceMax.Conversation)));
+	Beginner_StatusVariance.HouseWork = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.HouseWork), static_cast<int>(Beginner_StatusVarianceMax.HouseWork)));
+	Beginner_StatusVariance.Cooking = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Cooking), static_cast<int>(Beginner_StatusVarianceMax.Cooking)));
+	Beginner_StatusVariance.Cleaning = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Cleaning), static_cast<int>(Beginner_StatusVarianceMax.Cleaning)));
+	Beginner_StatusVariance.Temperament = static_cast<float>(Random.RandomInt(static_cast<int>(Beginner_StatusVarianceMin.Temperament), static_cast<int>(Beginner_StatusVarianceMax.Temperament)));
+
+	return Beginner_StatusVariance;
+}
+
 void ClassesAndJobs::Start()
 {
 	if (nullptr != OliveObject)

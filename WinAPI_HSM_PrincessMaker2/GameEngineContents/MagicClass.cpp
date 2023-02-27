@@ -21,5 +21,7 @@ void MagicClass::Start()
 	SetObj3(PM2RenderOrder::Menu2_Obj_1, 20, 21, { 115, -30 });
 	SetObj4(PM2RenderOrder::Menu2_Obj_1, 22, 23, { -87, -30 });
 	SetObj5(PM2RenderOrder::Menu2_Obj_1, 24, 27, { -165, -37 });//280 42
+	GetStatusVarianceMin().SetStatus({.MagicSkill = 1, .MagicAttack = 0});
+	GetStatusVarianceMax().SetStatus({ .MagicSkill = 1, .MagicAttack = 2 });
 	ClassesAndJobs::Start();
 }

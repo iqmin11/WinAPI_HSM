@@ -1,4 +1,5 @@
 #pragma once
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineCore/GameEngineActor.h>
 #include "ContentsEnums.h"
 #include "Olive.h"
@@ -16,10 +17,18 @@ public:
 	ClassesAndJobs& operator=(const ClassesAndJobs& _Other) = delete;
 	ClassesAndJobs& operator=(ClassesAndJobs&& _Other) noexcept = delete;
 
-	Olive::Status& GetStatusVariance()
+	Olive::Status& GetStatusVarianceMin()
 	{
-		return StatusVariance;
+		return Beginner_StatusVarianceMin;
 	}
+
+	Olive::Status& GetStatusVarianceMax()
+	{
+		return Beginner_StatusVarianceMax;
+	}
+
+	Olive::Status& GetStatusVariance();
+	
 
 protected:
 	void Start() override;
@@ -38,7 +47,9 @@ protected:
 	void SetObj5(PM2RenderOrder _Order, int _Start, int _End, const float4& _Pos);
 
 private:
-	Olive::Status StatusVariance = {};
+	Olive::Status Beginner_StatusVarianceMin = {};
+	Olive::Status Beginner_StatusVarianceMax = {};
+	Olive::Status Beginner_StatusVariance = {};
 	float4 ActorPos = { 240, 380 };
 
 	//애니메이션

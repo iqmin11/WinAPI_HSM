@@ -20,5 +20,7 @@ void ProtocolClass::Start()
 	SetObj2(PM2RenderOrder::Menu2_Obj_2, 9, 10, { -165, 12 });
 	SetObj3(PM2RenderOrder::Menu2_Obj_2, 11, 12, { -85, 12 });
 	SetObj4(PM2RenderOrder::Menu2_Obj_2, 13, 17, { 5, -3 });
+	GetStatusVarianceMin().SetStatus({.Refinement = 1, .Decorum = 1});
+	GetStatusVarianceMax().SetStatus({ .Refinement = 1, .Decorum = 1 });
 	ClassesAndJobs::Start();
 }

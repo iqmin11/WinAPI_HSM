@@ -253,25 +253,12 @@ void Olive::Start()
 
 void Olive::Update(float _DeltaTime)
 {
-	/*if (true == GameEngineInput::IsPress("LeftMove"))
-	{
-		SetMove(float4::Left * MoveSpeed * _DeltaTime);
-	}
-
-	if (true == GameEngineInput::IsPress("RightMove"))
-	{
-		SetMove(float4::Right * MoveSpeed * _DeltaTime);
-	}
-
-	if (true == GameEngineInput::IsPress("UpMove"))
-	{
-		SetMove(float4::Up * MoveSpeed * _DeltaTime);
-	}
-
-	if (true == GameEngineInput::IsPress("DownMove"))
-	{
-		SetMove(float4::Down * MoveSpeed * _DeltaTime);
-	}*/
+	OliveStatus.UpdateMoreThanMin();
+	OliveStatus.UpdateLessThanMax();
+	UpdateFighter();
+	UpdateMagical();
+	UpdateSocial();
+	UpdateHouseWork();
 }
 
 void Olive::Render(float _Time)
@@ -319,6 +306,47 @@ Olive::Status& Olive::Status::operator+=(const Status& _Value)
 	return *this;
 }
 
+bool Olive::Status::operator==(const Status& _Value)
+{
+	if (
+		Constitution == _Value.Constitution &&
+		Strength == _Value.Strength &&
+		Intelligence == _Value.Intelligence &&
+		Refinement == _Value.Refinement &&
+		Charisma == _Value.Charisma &&
+		Morality == _Value.Morality &&
+		Faith == _Value.Faith &&
+		Sin == _Value.Sin &&
+		Sensitivity == _Value.Sensitivity &&
+		Stress == _Value.Stress &&
+		Fighter == _Value.Fighter &&
+		CombatSkill == _Value.CombatSkill &&
+		CombatAttack == _Value.CombatAttack &&
+		CombatDefense == _Value.CombatDefense &&
+		Magical == _Value.Magical &&
+		MagicSkill == _Value.MagicSkill &&
+		MagicAttack == _Value.MagicAttack &&
+		MagicDefense == _Value.MagicDefense &&
+		Social == _Value.Social &&
+		Decorum == _Value.Decorum &&
+		Art == _Value.Art &&
+		Conversation == _Value.Conversation &&
+		HouseWork == _Value.HouseWork &&
+		Cooking == _Value.Cooking &&
+		Cleaning == _Value.Cleaning &&
+		Temperament == _Value.Temperament
+		)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool Olive::Status::operator!=(const Status& _Value)
+{
+	return !Status::operator==(_Value);
+}
+
 void Olive::Status::SetStatus(const Status& _Para)
 {
 	Constitution = _Para.Constitution;
@@ -347,4 +375,230 @@ void Olive::Status::SetStatus(const Status& _Para)
 	Cooking = _Para.Cooking;
 	Cleaning = _Para.Cleaning;
 	Temperament = _Para.Temperament;
+}
+
+void Olive::Status::UpdateMoreThanMin()
+{
+	if (Constitution < 0)
+	{
+		Constitution = 0;
+	}
+	
+	if (Strength < 0)
+	{
+		Strength = 0;
+	}
+
+	if (Intelligence < 0)
+	{
+		Intelligence = 0;
+	}
+
+	if (Refinement < 0)
+	{
+		Refinement = 0;
+	}
+
+	if (Charisma < 0)
+	{
+		Charisma = 0;
+	}
+
+	if (Morality < 0)
+	{
+		Morality = 0;
+	}
+
+	if (Faith < 0)
+	{
+		Faith = 0;
+	}
+
+	if (Sin < 0)
+	{
+		Sin = 0;
+	}
+
+	if (Sensitivity < 0)
+	{
+		Sensitivity = 0;
+	}
+
+	if (Stress < 0)
+	{
+		Stress = 0;
+	}
+
+	if (CombatSkill < 0)
+	{
+		CombatSkill = 0;
+	}
+
+	if (CombatAttack < 0)
+	{
+		CombatAttack = 0;
+	}
+
+	if (CombatDefense < 0)
+	{
+		CombatDefense = 0;
+	}
+
+	if (MagicSkill < 0)
+	{
+		MagicSkill = 0;
+	}
+
+	if (MagicAttack < 0)
+	{
+		MagicAttack = 0;
+	}
+
+	if (MagicDefense < 0)
+	{
+		MagicDefense = 0;
+	}
+
+	if (Decorum < 0)
+	{
+		Decorum = 0;
+	}
+
+	if (Art < 0)
+	{
+		Art = 0;
+	}
+
+	if (Conversation < 0)
+	{
+		Conversation = 0;
+	}
+
+	if (Cooking < 0)
+	{
+		Cooking = 0;
+	}
+
+	if (Cleaning < 0)
+	{
+		Cleaning = 0;
+	}
+
+	if (Temperament < 0)
+	{
+		Temperament = 0;
+	}
+}
+
+void Olive::Status::UpdateLessThanMax()
+{
+	if (Constitution > 999)
+	{
+		Constitution = 999;
+	}
+
+	if (Strength > 999)
+	{
+		Strength = 999;
+	}
+
+	if (Intelligence > 999)
+	{
+		Intelligence = 999;
+	}
+
+	if (Refinement > 999)
+	{
+		Refinement = 999;
+	}
+
+	if (Charisma > 999)
+	{
+		Charisma = 999;
+	}
+
+	if (Morality > 999)
+	{
+		Morality = 999;
+	}
+
+	if (Faith > 999)
+	{
+		Faith = 999;
+	}
+
+	if (Sin > 999)
+	{
+		Sin = 999;
+	}
+
+	if (Sensitivity > 999)
+	{
+		Sensitivity = 999;
+	}
+
+	if (Stress > 999)
+	{
+		Stress = 999;
+	}
+
+	if (CombatSkill > 100)
+	{
+		CombatSkill = 100;
+	}
+
+	if (CombatAttack > 100)
+	{
+		CombatAttack = 100;
+	}
+
+	if (CombatDefense > 100)
+	{
+		CombatDefense = 100;
+	}
+
+	if (MagicSkill > 100)
+	{
+		MagicSkill = 100;
+	}
+
+	if (MagicAttack > 100)
+	{
+		MagicAttack = 100;
+	}
+
+	if (MagicDefense > 100)
+	{
+		MagicDefense = 100;
+	}
+
+	if (Decorum > 100)
+	{
+		Decorum = 100;
+	}
+
+	if (Art > 100)
+	{
+		Art = 100;
+	}
+
+	if (Conversation > 100)
+	{
+		Conversation = 100;
+	}
+
+	if (Cooking > 100)
+	{
+		Cooking = 100;
+	}
+
+	if (Cleaning > 100)
+	{
+		Cleaning = 100;
+	}
+
+	if (Temperament > 100)
+	{
+		Temperament = 100;
+	}
 }

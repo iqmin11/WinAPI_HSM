@@ -11,7 +11,12 @@ public:
 	{
 	public:
 		Status& operator +=(const Status& _Value);
+		bool operator ==(const Status& _Value);
+		bool operator !=(const Status& _Value);
+
 		void SetStatus(const Status& _Para);
+		void UpdateMoreThanMin();
+		void UpdateLessThanMax();
 
 		float Constitution = 0;
 		float Strength = 0;

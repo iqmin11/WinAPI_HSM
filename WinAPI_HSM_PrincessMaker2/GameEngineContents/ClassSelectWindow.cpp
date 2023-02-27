@@ -106,6 +106,15 @@ void ClassSelectWindow::Start()
 	AcTheologyClass = ParentLevel->AcTheologyClass;
 
 	Painting->GetButton()->SetClickCallBack(ClickPainting);
+	Dance->GetButton()->SetClickCallBack(ClickDance);
+	Magic->GetButton()->SetClickCallBack(ClickMagic);
+	Protocol->GetButton()->SetClickCallBack(ClickProtocol);
+	Fencing->GetButton()->SetClickCallBack(ClickFencing);
+	Fighting->GetButton()->SetClickCallBack(ClickFighting);
+	Theology->GetButton()->SetClickCallBack(ClickTheology);
+	Strategy->GetButton()->SetClickCallBack(ClickStrategy);
+	Science->GetButton()->SetClickCallBack(ClickScience);
+	Poetry->GetButton()->SetClickCallBack(ClickPoetry);
 
 	Off();
 }
@@ -115,5 +124,61 @@ void ClassSelectWindow::ClickPainting(Button* _Button)
 	ParentLevel->GoToNextDay();
 	Olive::OlivePlayer->OliveStatus += AcPaintingClass->GetStatusVariance();
 }
+
+void ClassSelectWindow::ClickDance(Button* _Button)
+{
+	ParentLevel->GoToNextDay();
+	Olive::OlivePlayer->OliveStatus += AcDanceClass->GetStatusVariance();
+}
+
+void ClassSelectWindow::ClickMagic(Button* _Button)
+{
+	ParentLevel->GoToNextDay();
+	Olive::OlivePlayer->OliveStatus += AcMagicClass->GetStatusVariance();
+}
+
+void ClassSelectWindow::ClickProtocol(Button* _Button)
+{
+	ParentLevel->GoToNextDay();
+	Olive::OlivePlayer->OliveStatus += AcProtocolClass->GetStatusVariance();
+}
+
+void ClassSelectWindow::ClickFencing(Button* _Button)
+{
+	ParentLevel->GoToNextDay();
+	Olive::OlivePlayer->OliveStatus += AcFencingClass->GetStatusVariance();
+}
+
+void ClassSelectWindow::ClickFighting(Button* _Button)
+{
+	ParentLevel->GoToNextDay();
+	Olive::OlivePlayer->OliveStatus += AcFightingClass->GetStatusVariance();
+}
+
+void ClassSelectWindow::ClickTheology(Button* _Button)
+{
+	ParentLevel->GoToNextDay();
+	Olive::OlivePlayer->OliveStatus += AcTheologyClass->GetStatusVariance();
+}
+
+void ClassSelectWindow::ClickStrategy(Button* _Button)
+{
+	ParentLevel->GoToNextDay();
+	Olive::OlivePlayer->OliveStatus += AcStrategyClass->GetStatusVariance();
+}
+
+void ClassSelectWindow::ClickScience(Button* _Button)
+{
+	ParentLevel->GoToNextDay();
+	Olive::OlivePlayer->OliveStatus += AcScienceClass->GetStatusVariance();
+}
+
+void ClassSelectWindow::ClickPoetry(Button* _Button)
+{
+	ParentLevel->GoToNextDay();
+	Olive::OlivePlayer->OliveStatus += AcPoetryClass->GetStatusVariance();
+}
+
+
 
 

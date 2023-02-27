@@ -19,5 +19,7 @@ void StrategyClass::Start()
 	SetObj1(PM2RenderOrder::Menu2_Obj_2, 7, 8, { -35, 12 });
 	SetObj2(PM2RenderOrder::Menu2_Obj_2, 9, 10, { 45, 12 });
 	SetObj3(PM2RenderOrder::Menu2_Obj_2, 11, 12, { -125, -11 });
+	GetStatusVarianceMin().SetStatus({.Intelligence = 1, .Sensitivity = -1, .CombatSkill = 0});
+	GetStatusVarianceMax().SetStatus({ .Intelligence = 2, .Sensitivity = 0, .CombatSkill = 1 });
 	ClassesAndJobs::Start();
 }
