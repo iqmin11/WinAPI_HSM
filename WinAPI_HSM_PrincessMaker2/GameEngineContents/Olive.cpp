@@ -286,3 +286,65 @@ void Olive::Render(float _Time)
 		ActorPos.iy() + 5
 	);*/ // µð¹ö±ë¿ë
 }
+
+Olive::Status& Olive::Status::operator+=(const Status& _Value)
+{
+	Constitution += _Value.Constitution;
+	Strength += _Value.Strength;
+	Intelligence += _Value.Intelligence;
+	Refinement += _Value.Refinement;
+	Charisma += _Value.Charisma;
+	Morality += _Value.Morality;
+	Faith += _Value.Faith;
+	Sin += _Value.Sin;
+	Sensitivity += _Value.Sensitivity;
+	Stress += _Value.Stress;
+	Fighter += _Value.Fighter;
+	CombatSkill += _Value.CombatSkill;
+	CombatAttack += _Value.CombatAttack;
+	CombatDefense += _Value.CombatDefense;
+	Magical += _Value.Magical;
+	MagicSkill += _Value.MagicSkill;
+	MagicAttack += _Value.MagicAttack;
+	MagicDefense += _Value.MagicDefense;
+	Social += _Value.Social;
+	Decorum += _Value.Decorum;
+	Art += _Value.Art;
+	Conversation += _Value.Conversation;
+	HouseWork += _Value.HouseWork;
+	Cooking += _Value.Cooking;
+	Cleaning += _Value.Cleaning;
+	Temperament += _Value.Temperament;
+
+	return *this;
+}
+
+void Olive::Status::SetStatus(const Status& _Para)
+{
+	Constitution = _Para.Constitution;
+	Strength = _Para.Strength;
+	Intelligence = _Para.Intelligence;
+	Refinement = _Para.Refinement;
+	Charisma = _Para.Charisma;
+	Morality = _Para.Morality;
+	Faith = _Para.Faith;
+	Sin = _Para.Sin;
+	Sensitivity = _Para.Sensitivity;
+	Stress = _Para.Stress;
+	Fighter = _Para.Fighter;
+	CombatSkill = _Para.CombatSkill;
+	CombatAttack = _Para.CombatAttack;
+	CombatDefense = _Para.CombatDefense;
+	Magical = _Para.Magical;
+	MagicSkill = _Para.MagicSkill;
+	MagicAttack = _Para.MagicAttack;
+	MagicDefense = _Para.MagicDefense;
+	Social = _Para.Social;
+	Decorum = _Para.Decorum;
+	Art = _Para.Art;
+	Conversation = _Para.Conversation;
+	HouseWork = _Para.HouseWork;
+	Cooking = _Para.Cooking;
+	Cleaning = _Para.Cleaning;
+	Temperament = _Para.Temperament;
+}

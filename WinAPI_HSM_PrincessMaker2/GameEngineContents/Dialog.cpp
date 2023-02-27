@@ -31,7 +31,7 @@ void Dialog::SetLeftMugDialog()
 void Dialog::SetTextRender()
 
 {
-	TextRender = CreateRender(PM2RenderOrder::Dialog_Display);
+	TextRender = CreateRender(PM2RenderOrder::Dialog1_Display);
 	TextRender->SetText(" ", TextHeight, TextType, TextAlign::Left, TextColor, TextBoxScale);
 	TextRender->SetPosition(-TextBoxScale.half());
 }
@@ -70,7 +70,7 @@ void Dialog::SetMugPic(const std::string_view& _ImageFileName)
 		
 		if (nullptr == MugShotFrame)
 		{
-			MugShotFrame = CreateRender("MugShotFrame_God.bmp",PM2RenderOrder::MugShotFrame);
+			MugShotFrame = CreateRender("MugShotFrame_God.bmp",PM2RenderOrder::Dialog1_MugShotFrame);
 		}
 		else
 		{
@@ -80,7 +80,7 @@ void Dialog::SetMugPic(const std::string_view& _ImageFileName)
 		
 		if (nullptr == MugShot)
 		{
-			MugShot = CreateRender(_ImageFileName, PM2RenderOrder::MugShot);
+			MugShot = CreateRender(_ImageFileName, PM2RenderOrder::Dialog1_MugShot);
 		}
 		else
 		{
@@ -92,7 +92,7 @@ void Dialog::SetMugPic(const std::string_view& _ImageFileName)
 	{
 		if (nullptr == MugShotFrame)
 		{
-			MugShotFrame = CreateRender("MugShotFrame_Nomal.bmp", PM2RenderOrder::MugShotFrame);
+			MugShotFrame = CreateRender("MugShotFrame_Nomal.bmp", PM2RenderOrder::Dialog1_MugShotFrame);
 		}
 		else
 		{
@@ -102,7 +102,7 @@ void Dialog::SetMugPic(const std::string_view& _ImageFileName)
 
 		if (nullptr == MugShot)
 		{
-			MugShot = CreateRender(_ImageFileName, PM2RenderOrder::MugShot);
+			MugShot = CreateRender(_ImageFileName, PM2RenderOrder::Dialog1_MugShot);
 		}
 		else
 		{
@@ -172,7 +172,7 @@ void Dialog::Off()
 
 void Dialog::Start()
 {
-	InitMenuFrameRender(PM2RenderOrder::Dialog); // 고정
+	InitMenuFrameRender(PM2RenderOrder::Dialog1); // 고정
 	SetMenuFrameScale(DialogFrameScale); // 고정
 	SetTextRender();
 	Off();

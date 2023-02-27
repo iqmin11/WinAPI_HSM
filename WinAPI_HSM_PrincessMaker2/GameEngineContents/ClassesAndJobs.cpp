@@ -42,6 +42,9 @@ void ClassesAndJobs::Start()
 	{
 		Object5->ChangeAnimation("Obj5");
 	}
+
+	SetPos(ActorPos);
+	Off();
 }
 
 void ClassesAndJobs::SetImageName(const std::string_view& _Obj, const std::string_view& _Back1, const std::string_view& _Back2)

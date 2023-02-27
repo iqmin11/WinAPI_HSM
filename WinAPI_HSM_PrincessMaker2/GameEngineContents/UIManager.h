@@ -3,6 +3,8 @@
 #include <GameEngineCore/Button.h>
 #include "ContentsEnums.h"
 
+class RaisingSimLevel;
+
 class MainMenu;
 class StatusWindowManager;
 
@@ -18,6 +20,7 @@ class ScheduleCalendar;
 class ScheduleSelectionMenu;
 class ScheduleAnimationPlayer;
 class ClassSelectWindow;
+
 class CubeDialog;
 
 class UIManager : public GameEngineActor
@@ -43,6 +46,7 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
+	static RaisingSimLevel* ParentLevel;
 
 	void SetButtonAndKey();
 	void SetEngineRightClick();
@@ -66,7 +70,7 @@ private:
 	//static void ClickMainMenu_13(Button* _Button);
 	static void ClickMainMenu_S(Button* _Button); // 스케줄 창
 	static void ClickMainMenu_S_0(Button* _Button); // 딸을 단련한다
-	static void ClickMainMenu_S_0_0(Button* _Button); // 미술
+	//static void ClickMainMenu_S_0_0(Button* _Button); // 미술
 	//static void ClickMainMenu_S_0_1(Button* _Button); // 무용
 	//static void ClickMainMenu_S_0_2(Button* _Button); // 마법
 	//static void ClickMainMenu_S_0_3(Button* _Button); // 예법

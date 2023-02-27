@@ -6,10 +6,13 @@
 class GameEngineRender;
 class Olive : public GameEngineActor
 {
-private:
+public:
 	class Status
 	{
 	public:
+		Status& operator +=(const Status& _Value);
+		void SetStatus(const Status& _Para);
+
 		float Constitution = 0;
 		float Strength = 0;
 		float Intelligence = 0;
@@ -41,6 +44,8 @@ private:
 		float Cleaning = 0;
 		float Temperament = 0;
 	};
+
+	Status OliveStatus = Status();
 
 	class PhysicalCondition
 	{
@@ -383,7 +388,6 @@ private:
 	PatronGod OlivePatronGod = PatronGod::화성신_마르스;
 	bool PatronGodSex = false; // false Male, true Female
 
-	Status OliveStatus = Status();
 	PhysicalCondition OlivePhysical = PhysicalCondition();
 	Diet OliveDiet = Diet::무리하지_않는다;
 

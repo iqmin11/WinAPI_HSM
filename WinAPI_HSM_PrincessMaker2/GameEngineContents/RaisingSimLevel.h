@@ -13,10 +13,30 @@ class UIManager;
 class CubeDialog;
 class Button;
 
+class DanceClass;
+class FencingClass;
+class FightingClass;
+class MagicClass;
+class PaintingClass;
+class PoetryClass;
+class ProtocolClass;
+class ScienceClass;
+class StrategyClass;
+class TheologyClass;
+
 class RaisingSimLevel : public GameEngineLevel
 {
 public:
-	
+	DanceClass* AcDanceClass = nullptr;
+	FencingClass* AcFencingClass = nullptr;
+	FightingClass* AcFightingClass = nullptr;
+	MagicClass* AcMagicClass = nullptr;
+	PaintingClass* AcPaintingClass = nullptr;
+	PoetryClass* AcPoetryClass = nullptr;
+	ProtocolClass* AcProtocolClass = nullptr;
+	ScienceClass* AcScienceClass = nullptr;
+	StrategyClass* AcStrategyClass = nullptr;
+	TheologyClass* AcTheologyClass = nullptr;
 
 	// construtor destructor
 	RaisingSimLevel();
@@ -43,6 +63,11 @@ public:
 		return Today;
 	}
 
+	void GoToNextDay()
+	{
+		++Today;
+	}
+
 	static CubeDialog* GetAcCubeDialog()
 	{
 		return AcCubeDialog;
@@ -60,6 +85,8 @@ private:
 	Flower* AcFlower = nullptr; 
 	Paint* AcPaint= nullptr; 
 	UIManager* AcUIManager = nullptr;
+
+	
 
 	void SoundLoad();
 	void ImageLoad();

@@ -26,6 +26,17 @@
 #include "PersonalInformationWindow.h"
 #include "HelthInformationWindow.h"
 
+#include "DanceClass.h"
+#include "FencingClass.h"
+#include "FightingClass.h"
+#include "MagicClass.h"
+#include "PaintingClass.h"
+#include "PoetryClass.h"
+#include "ProtocolClass.h"
+#include "ScienceClass.h"
+#include "StrategyClass.h"
+#include "TheologyClass.h"
+
 CubeDialog* RaisingSimLevel::AcCubeDialog = nullptr;
 
 RaisingSimLevel::RaisingSimLevel()
@@ -43,11 +54,21 @@ void RaisingSimLevel::Loading()
 	SoundLoad();
 	ImageLoad();
 
-	AcCubeDialog = CreateActor<CubeDialog>(PM2ActorOrder::Dialog);
+	AcCubeDialog = CreateActor<CubeDialog>(PM2ActorOrder::Dialog1);
 	AcBackground = CreateActor<Background>(static_cast<int>(PM2ActorOrder::BackGround));
 	CreateActor<DateViewer>(PM2ActorOrder::Menu0);
 	CreateActor<BasicInfo>(PM2ActorOrder::Menu0);
-	AcUIManager = CreateActor<UIManager>();
+	
+	AcDanceClass = CreateActor<DanceClass>(PM2ActorOrder::Menu2);
+	AcFencingClass = CreateActor<FencingClass>(PM2ActorOrder::Menu2);
+	AcFightingClass = CreateActor<FightingClass>(PM2ActorOrder::Menu2);
+	AcMagicClass = CreateActor<MagicClass>(PM2ActorOrder::Menu2);
+	AcPaintingClass = CreateActor<PaintingClass>(PM2ActorOrder::Menu2);
+	AcPoetryClass = CreateActor<PoetryClass>(PM2ActorOrder::Menu2);
+	AcProtocolClass = CreateActor<ProtocolClass>(PM2ActorOrder::Menu2);
+	AcScienceClass = CreateActor<ScienceClass>(PM2ActorOrder::Menu2);
+	AcStrategyClass = CreateActor<StrategyClass>(PM2ActorOrder::Menu2);
+	AcTheologyClass = CreateActor<TheologyClass>(PM2ActorOrder::Menu2);
 
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	CreateActor<Olive>(PM2ActorOrder::Olive);
@@ -55,6 +76,7 @@ void RaisingSimLevel::Loading()
 	CreateActor<Paint>(PM2ActorOrder::BackGround);
 
 	
+	AcUIManager = CreateActor<UIManager>();
 }
 
 void RaisingSimLevel::Update(float _DeltaTime)

@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 #include "ContentsEnums.h"
+#include "Olive.h"
 
 class ClassesAndJobs : public GameEngineActor
 {
@@ -14,6 +15,11 @@ public:
 	ClassesAndJobs(ClassesAndJobs&& _Other) noexcept = delete;
 	ClassesAndJobs& operator=(const ClassesAndJobs& _Other) = delete;
 	ClassesAndJobs& operator=(ClassesAndJobs&& _Other) noexcept = delete;
+
+	Olive::Status& GetStatusVariance()
+	{
+		return StatusVariance;
+	}
 
 protected:
 	void Start() override;
@@ -32,6 +38,10 @@ protected:
 	void SetObj5(PM2RenderOrder _Order, int _Start, int _End, const float4& _Pos);
 
 private:
+	Olive::Status StatusVariance = {};
+	float4 ActorPos = { 240, 380 };
+
+	//애니메이션
 	GameEngineRender* BackgroundLayer1 = nullptr;
 	GameEngineRender* BackgroundLayer2 = nullptr;
 

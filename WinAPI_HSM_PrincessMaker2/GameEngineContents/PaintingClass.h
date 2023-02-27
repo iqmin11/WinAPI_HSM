@@ -1,6 +1,7 @@
 #pragma once
 #include "ClassesAndJobs.h"
 #include "ContentsEnums.h"
+#include "Olive.h"
 
 class PaintingClass : public ClassesAndJobs
 {
@@ -20,6 +21,6 @@ protected:
 
 
 private:
-
+	
 };
 

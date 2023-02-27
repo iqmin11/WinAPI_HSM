@@ -19,5 +19,7 @@ void PaintingClass::Start()
 	SetObj1(PM2RenderOrder::Menu2_Obj_2, 7, 9, { -85, 12 });
 	SetObj2(PM2RenderOrder::Menu2_Obj_2, 10, 11, { -15, 12 });
 	SetObj3(PM2RenderOrder::Menu2_Obj_2, 12, 17, { 115, 12 });
+	GetStatusVariance().SetStatus({.Sensitivity = 1, .Art = 1});
+
 	ClassesAndJobs::Start();
 }

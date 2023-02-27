@@ -26,6 +26,8 @@
 
 #include "CubeDialog.h"
 
+RaisingSimLevel* UIManager::ParentLevel = nullptr;
+
 //메인메뉴
 MainMenu* UIManager::AcMainMenu = nullptr;
 
@@ -67,40 +69,40 @@ UIManager::~UIManager()
 
 void UIManager::Start()
 {
-	GameEngineLevel* Level = GetLevel();
-	AcMainMenu = Level->CreateActor<MainMenu>(PM2ActorOrder::Menu0);
+	ParentLevel = dynamic_cast<RaisingSimLevel*>(GetLevel());
+	AcMainMenu = ParentLevel->CreateActor<MainMenu>(PM2ActorOrder::Menu0);
 	AllMenu.push_back(AcMainMenu);
 
-	AcStatusWindowManager = Level->CreateActor<StatusWindowManager>(PM2ActorOrder::Menu1);
+	AcStatusWindowManager = ParentLevel->CreateActor<StatusWindowManager>(PM2ActorOrder::Menu1);
 	AllMenu.push_back(AcStatusWindowManager);
 
-	AcConverstionSelectionMenu = Level->CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
+	AcConverstionSelectionMenu = ParentLevel->CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
 	AllMenu.push_back(AcConverstionSelectionMenu);
 
-	AcDietSelectionMenu = Level->CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
+	AcDietSelectionMenu = ParentLevel->CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
 	AllMenu.push_back(AcDietSelectionMenu);
-	AcSelectDialog = Level->CreateActor<SelectDialog>(PM2ActorOrder::Menu1);
+	AcSelectDialog = ParentLevel->CreateActor<SelectDialog>(PM2ActorOrder::Menu1);
 	AllMenu.push_back(AcSelectDialog);
-	AcDietFinalConfirmSelectionMenu = Level->CreateActor<DietFinalConfirmSelectionMenu>(PM2ActorOrder::Menu2);
+	AcDietFinalConfirmSelectionMenu = ParentLevel->CreateActor<DietFinalConfirmSelectionMenu>(PM2ActorOrder::Menu2);
 	AllMenu.push_back(AcDietFinalConfirmSelectionMenu);
 
-	AcPersonalInformationWindow = Level->CreateActor<PersonalInformationWindow>(PM2ActorOrder::Menu1);
+	AcPersonalInformationWindow = ParentLevel->CreateActor<PersonalInformationWindow>(PM2ActorOrder::Menu1);
 	AllMenu.push_back(AcPersonalInformationWindow);
-	AcHelthInformationWindow = Level->CreateActor<HelthInformationWindow>(PM2ActorOrder::Menu1);
+	AcHelthInformationWindow = ParentLevel->CreateActor<HelthInformationWindow>(PM2ActorOrder::Menu1);
 	AllMenu.push_back(AcHelthInformationWindow);
-	AcPhysicalStatusWindow = Level->CreateActor<PhysicalStatusWindow>(PM2ActorOrder::Menu1);
+	AcPhysicalStatusWindow = ParentLevel->CreateActor<PhysicalStatusWindow>(PM2ActorOrder::Menu1);
 	AllMenu.push_back(AcPhysicalStatusWindow);
 
-	AcScheduleCalendar = Level->CreateActor<ScheduleCalendar>(PM2ActorOrder::Menu1);
+	AcScheduleCalendar = ParentLevel->CreateActor<ScheduleCalendar>(PM2ActorOrder::Menu1);
 	AllMenu.push_back(AcScheduleCalendar);
-	AcScheduleSelectionMenu = Level->CreateActor<ScheduleSelectionMenu>(PM2ActorOrder::Menu1);
+	AcScheduleSelectionMenu = ParentLevel->CreateActor<ScheduleSelectionMenu>(PM2ActorOrder::Menu1);
 	AllMenu.push_back(AcScheduleSelectionMenu);
-	AcClassSelectWindow = Level->CreateActor<ClassSelectWindow>(PM2ActorOrder::Menu2);
+	AcClassSelectWindow = ParentLevel->CreateActor<ClassSelectWindow>(PM2ActorOrder::Menu2);
 	AllMenu.push_back(AcClassSelectWindow);
-	AcScheduleAnimationPlayer = Level->CreateActor<ScheduleAnimationPlayer>(PM2ActorOrder::Menu2);
+	AcScheduleAnimationPlayer = ParentLevel->CreateActor<ScheduleAnimationPlayer>(PM2ActorOrder::Menu2);
 	AllMenu.push_back(AcScheduleAnimationPlayer);
 
-	AcCubeDialog = dynamic_cast<RaisingSimLevel*>(Level)->GetAcCubeDialog();
+	AcCubeDialog = ParentLevel->GetAcCubeDialog();
 
 	AcCubeDialog->SetUpdateText("「주인님, 안녕하십니까. 집사 \n큐브 입니다.」");
 
@@ -141,7 +143,7 @@ void UIManager::SetButtonAndKey()
 	//AcScheduleSelectionMenu->GetSelectButtons()[2]->SetClickCallBack(ClickMainMenu_S_2);
 	//AcScheduleSelectionMenu->GetSelectButtons()[3]->SetClickCallBack(ClickMainMenu_S_3);
 
-	AcClassSelectWindow->GetPaintingButton()->GetButton()->SetClickCallBack(ClickMainMenu_S_0_0);
+	//AcClassSelectWindow->GetPaintingButton()->GetButton()->SetClickCallBack(ClickMainMenu_S_0_0);
 }
 
 void UIManager::SetEngineRightClick()
@@ -319,10 +321,9 @@ void UIManager::ClickMainMenu_S_0(Button* _Button)
 	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "딸에게 무엇을 가르치시겠습니까?");
 }
 
-void UIManager::ClickMainMenu_S_0_0(Button* _Button)
-{
-	int a = 0;
-}
+//void UIManager::ClickMainMenu_S_0_0(Button* _Button)
+//{
+//}
 
 bool UIManager::IsAnyMenuUpdate()
 {
