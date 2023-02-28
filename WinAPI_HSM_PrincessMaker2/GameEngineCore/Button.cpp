@@ -61,18 +61,13 @@ void Button::Update(float _DeltaTime)
 {
 	State = ButtonState::Release;
 
-	if (true == GameEngineInput::IsPress("EngineMouseLeft"))
-	{
-		int a = 0;
-	}
-
 	if (true == ButtonCollision->Collision({ .TargetGroup = PointTargetGroup, .TargetColType = CollisionType::CT_Point, .ThisColType = ButtonCollisionType }))
 	{
 		if (true == GameEngineInput::IsPress("EngineMouseLeft") && nullptr != CurCollision)
 		{
 			State = ButtonState::Press;
 		}
-		if (true == GameEngineInput::IsUp("EngineMouseLeft") && nullptr != ClickPtr && ButtonCollision == CurCollision)
+		else if (true == GameEngineInput::IsUp("EngineMouseLeft") && nullptr != ClickPtr && ButtonCollision == CurCollision)
 		{
 			CurCollision = nullptr;
 			ClickPtr(this);
