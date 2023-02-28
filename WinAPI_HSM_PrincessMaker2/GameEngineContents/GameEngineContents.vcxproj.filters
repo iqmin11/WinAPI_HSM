@@ -144,9 +144,6 @@
     <ClInclude Include="DietFinalConfirmSelectionMenu.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\2. DietMenuActor</Filter>
     </ClInclude>
-    <ClInclude Include="ScheduleCalendar.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule</Filter>
-    </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClInclude>
@@ -176,9 +173,6 @@
     </ClInclude>
     <ClInclude Include="ConverstionSelectionMenu.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\1. Conversation</Filter>
-    </ClInclude>
-    <ClInclude Include="ScheduleAnimationPlayer.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule</Filter>
     </ClInclude>
     <ClInclude Include="ScienceClass.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
@@ -218,6 +212,21 @@
     </ClInclude>
     <ClInclude Include="SchedulingConfirmSelectionMenu.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule</Filter>
+    </ClInclude>
+    <ClInclude Include="OnedaySchedule.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\ScheduleCalendar</Filter>
+    </ClInclude>
+    <ClInclude Include="ScheduleCalendar.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\ScheduleCalendar</Filter>
+    </ClInclude>
+    <ClInclude Include="ScheduleFinalConfirm.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule</Filter>
+    </ClInclude>
+    <ClInclude Include="SchedulePlayer.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\SchedulePlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="ScheduleAnimationPlayer.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\SchedulePlayer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -363,9 +372,6 @@
     <ClCompile Include="DietFinalConfirmSelectionMenu.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\2. DietMenuActor</Filter>
     </ClCompile>
-    <ClCompile Include="ScheduleCalendar.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule</Filter>
-    </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>ContentsLevel\0. PM2Base</Filter>
     </ClCompile>
@@ -395,9 +401,6 @@
     </ClCompile>
     <ClCompile Include="ConverstionSelectionMenu.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\1. Conversation</Filter>
-    </ClCompile>
-    <ClCompile Include="ScheduleAnimationPlayer.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule</Filter>
     </ClCompile>
     <ClCompile Include="ScienceClass.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Classes</Filter>
@@ -437,6 +440,21 @@
     </ClCompile>
     <ClCompile Include="SchedulingConfirmSelectionMenu.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule</Filter>
+    </ClCompile>
+    <ClCompile Include="OnedaySchedule.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\ScheduleCalendar</Filter>
+    </ClCompile>
+    <ClCompile Include="ScheduleCalendar.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\ScheduleCalendar</Filter>
+    </ClCompile>
+    <ClCompile Include="ScheduleFinalConfirm.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule</Filter>
+    </ClCompile>
+    <ClCompile Include="SchedulePlayer.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\SchedulePlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="ScheduleAnimationPlayer.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\SchedulePlayer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -514,6 +532,12 @@
     </Filter>
     <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\Jobs">
       <UniqueIdentifier>{9c4ce4e6-ffce-4f8e-9d05-0a1b4c14faac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\ScheduleCalendar">
+      <UniqueIdentifier>{837d4136-2478-4e45-89fa-142c2caa1167}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\SchedulePlayer">
+      <UniqueIdentifier>{1789703b-bd30-444d-aa52-d3470a907bfb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

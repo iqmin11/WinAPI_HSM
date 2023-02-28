@@ -98,6 +98,11 @@ void RaisingSimLevel::Update(float _DeltaTime)
 	{
 		GameEngineCore::GetInst()->DebugSwitch();
 	}
+
+	if (GameEngineInput::IsDown("2"))
+	{
+		++Today;
+	}
 }
 
 void RaisingSimLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)

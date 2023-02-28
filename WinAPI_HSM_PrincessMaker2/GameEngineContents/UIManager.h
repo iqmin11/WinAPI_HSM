@@ -21,6 +21,7 @@ class ScheduleSelectionMenu;
 class ScheduleAnimationPlayer;
 class ClassSelectWindow;
 class SchedulingConfirmSelectionMenu;
+class ScheduleFinalConfirm;
 
 class CubeDialog;
 
@@ -69,6 +70,8 @@ private:
 	//static void ClickMainMenu_11(Button* _Button);
 	//static void ClickMainMenu_12(Button* _Button);
 	//static void ClickMainMenu_13(Button* _Button);
+	
+	static ScheduleLabel ScheduleSetConfirm;
 	static void ClickMainMenu_S(Button* _Button); // 스케줄 창
 	static void ClickMainMenu_S_0(Button* _Button); // 딸을 단련한다
 	static void ClickMainMenu_S_0_0(Button* _Button); // 미술
@@ -83,6 +86,8 @@ private:
 	//static void ClickMainMenu_S_0_9(Button* _Button); // 딸을 단련한다
 	static void ClickMainMenu_S_0_0_0(Button* _Button); // 스케줄에 편성한다
 	static void ClickMainMenu_S_0_0_1(Button* _Button); // 취소
+	static void ClickMainMenu_S_0_0_0_0(Button* _Button); // 스케줄 실행
+	static void ClickMainMenu_S_0_0_0_1(Button* _Button); // 취소
 
 
 	std::list<GameEngineActor*> AllMenu = std::list<GameEngineActor*>();
@@ -105,6 +110,7 @@ private:
 	static ClassSelectWindow* AcClassSelectWindow;
 	static ScheduleAnimationPlayer* AcScheduleAnimationPlayer;
 	static SchedulingConfirmSelectionMenu* AcSchedulingConfirmSelectionMenu;
+	static ScheduleFinalConfirm* AcScheduleFinalConfirm;
 
 	static CubeDialog* AcCubeDialog;
 

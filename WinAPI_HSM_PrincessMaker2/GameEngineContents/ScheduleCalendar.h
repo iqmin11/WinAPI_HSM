@@ -2,6 +2,8 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/NumberRenderObject.h>
 #include "Date.h"
+#include "OnedaySchedule.h"
+#include "ContentsEnums.h"
 
 class GameEngineRender;
 class ScheduleCalendar : public GameEngineActor
@@ -17,6 +19,22 @@ public:
 	ScheduleCalendar& operator=(const ScheduleCalendar& _Other) = delete;
 	ScheduleCalendar& operator=(ScheduleCalendar&& _Other) noexcept = delete;
 
+	void On() override;
+	void Off() override;
+
+	void ScheduleSetting(ScheduleLabel _Schedule);
+	void CancelSchedule();
+	void Reset();
+	std::vector<std::vector<OnedaySchedule*>>& GetThisMonthSchedule()
+	{
+		return ThisMonthSchedule;
+	}
+
+	bool FirstScheduleSet = false;
+	bool SecondScheduleSet = false;
+	bool ThirdScheduleSet = false;
+	bool ScheduleSetEnd = false;
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -25,16 +43,14 @@ private:
 	float4 ActorPos = {160,263};
 	Date Today = Date(1000,10,10);
 	Date NextDate = Date(1000, 10, 11);
-	std::vector<Date> ThisMonthCalendar = std::vector<Date>();
-
+	std::vector<std::vector<OnedaySchedule*>> ThisMonthSchedule = std::vector<std::vector<OnedaySchedule*>>();
+	void UpdateMonthCalendar();
+	void SetThisMonthSchedule();
+	
 	GameEngineRender* CalendarFrame = nullptr;
 	
-	NumberRenderObject DayNumRender[6][7] = {};
-	float4 DayNumRenderScale_1 = { 20,20 };
-	float4 DayNumRenderScale_2 = { 10,20 };
-	float4 FirstDayNumRenderPos_1 = { -110,-70 };
-	float4 FirstDayNumRenderPos_2 = { -105,-70 };
-	float4 DayNumRenderInterval = { 40,40 };
+	float4 FirstScheduleActorPos = { 40, 183 };
+	float4 ScheduleActorInterval = { 40,40 };
 
 	NumberRenderObject YearNumRender = {};
 	float4 YearNumRenderScale = { 10,20 };
@@ -46,14 +62,12 @@ private:
 
 	GameEngineRender* IconRender[6][7] = {};
 	float4 IconScale = { 34,34 };
-	float4 FirstIconPos = { -120,-80 };
+	float4 FirstIconPos = { -120,-80 }; // 280, 220
 
+	
 
-	void SetThisMonthCalendar();
-	void SetDayNumRender();
 	void SetYearNumRender();
 	void SetMonthRender();
-	void SetIconRender();
 
 	void UpdateDayNumRender();
 	void UpdateYearNumRender();

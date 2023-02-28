@@ -337,3 +337,8 @@ Week Date::GetWeekDay(int _YYYY, int _MM, int _DD)
     int ThisMonthFirstWeekDay = FindMonthFirstWeekday(_YYYY, _MM);
     return static_cast<Week>((ThisMonthFirstWeekDay + _DD - 1) % 7);
 }
+
+Date Date::GetMonthLastDate(const Date& _Date)
+{
+    return Date(_Date.Year, _Date.Month, GetMonthLenth(_Date.Year, _Date.Month));
+}

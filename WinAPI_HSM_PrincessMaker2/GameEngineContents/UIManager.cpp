@@ -24,6 +24,7 @@
 #include "ScheduleAnimationPlayer.h"
 #include "IconButton.h"
 #include "SchedulingConfirmSelectionMenu.h"
+#include "ScheduleFinalConfirm.h"
 
 #include "CubeDialog.h"
 
@@ -55,6 +56,8 @@ ScheduleSelectionMenu* UIManager::AcScheduleSelectionMenu = nullptr;
 ClassSelectWindow* UIManager::AcClassSelectWindow = nullptr;
 ScheduleAnimationPlayer* UIManager::AcScheduleAnimationPlayer = nullptr;
 SchedulingConfirmSelectionMenu* UIManager::AcSchedulingConfirmSelectionMenu = nullptr;
+ScheduleLabel UIManager::ScheduleSetConfirm = ScheduleLabel::Null;
+ScheduleFinalConfirm* UIManager::AcScheduleFinalConfirm = nullptr;
 
 //큐브의 대화창
 CubeDialog* UIManager::AcCubeDialog = nullptr;
@@ -105,6 +108,8 @@ void UIManager::Start()
 	AllMenu.push_back(AcScheduleAnimationPlayer);
 	AcSchedulingConfirmSelectionMenu = ParentLevel->CreateActor<SchedulingConfirmSelectionMenu>(PM2ActorOrder::Menu2);
 	AllMenu.push_back(AcSchedulingConfirmSelectionMenu);
+	AcScheduleFinalConfirm = ParentLevel->CreateActor<ScheduleFinalConfirm>(PM2ActorOrder::Menu2);
+	AllMenu.push_back(AcScheduleFinalConfirm);
 
 	AcCubeDialog = ParentLevel->GetAcCubeDialog();
 
@@ -150,6 +155,9 @@ void UIManager::SetButtonAndKey()
 	AcSchedulingConfirmSelectionMenu->GetSelectButtons()[0]->SetClickCallBack(ClickMainMenu_S_0_0_0);
 	AcSchedulingConfirmSelectionMenu->GetSelectButtons()[1]->SetClickCallBack(ClickMainMenu_S_0_0_1);
 
+	AcScheduleFinalConfirm->GetSelectButtons()[0]->SetClickCallBack(ClickMainMenu_S_0_0_0_0);
+	AcScheduleFinalConfirm->GetSelectButtons()[1]->SetClickCallBack(ClickMainMenu_S_0_0_0_1);
+
 	AcClassSelectWindow->GetPaintingButton()->SetClickCallBack(ClickMainMenu_S_0_0);
 }
 
@@ -173,23 +181,70 @@ void UIManager::SetEngineRightClick()
 			AcDietSelectionMenu->Off();
 			AcCubeDialog->Off();
 		}
-		else if (AcScheduleSelectionMenu->IsUpdate())
+		else if (AcScheduleSelectionMenu->IsUpdate()) // 스케줄 종류 선택(수업, 알바, 휴식 등)의 상황에서 오른쪽마우스 클릭하는 상황
 		{
-			AcMainMenu->On();
-			AcScheduleCalendar->Off();
-			AcScheduleSelectionMenu->Off();
-			AcCubeDialog->Off();
+			if (!AcScheduleCalendar->FirstScheduleSet && !AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+			{
+				AcMainMenu->On();
+				AcScheduleCalendar->Off();
+				AcScheduleSelectionMenu->Off();
+				AcCubeDialog->Off();
+			}
+			else if (AcScheduleCalendar->FirstScheduleSet && !AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+			{
+				AcScheduleCalendar->CancelSchedule();
+				AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
+			}
+			else if (AcScheduleCalendar->FirstScheduleSet && AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+			{
+				AcScheduleCalendar->CancelSchedule();
+				AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 2 번째 )");
+			}
+			else if (AcScheduleCalendar->FirstScheduleSet && AcScheduleCalendar->SecondScheduleSet && AcScheduleCalendar->ThirdScheduleSet)
+			{
+				AcScheduleCalendar->CancelSchedule();
+				AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 3 번째 )");
+			}
 		}
-		else if (AcClassSelectWindow->IsUpdate())
+		else if (AcClassSelectWindow->IsUpdate()) // 과목 선택하는 창에서 오른쪽 마우스 클릭하는 상황
 		{
 			AcClassSelectWindow->Off();
 			AcScheduleCalendar->On();
 			AcScheduleSelectionMenu->On();
-			AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
+			if (!AcScheduleCalendar->FirstScheduleSet && !AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+			{
+				AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
+			}
+			else if (AcScheduleCalendar->FirstScheduleSet && !AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+			{
+				AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 2 번째 )");
+			}
+			else if (AcScheduleCalendar->FirstScheduleSet && AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+			{
+				AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 3 번째 )");
+			}
 		}
 		else if (AcSchedulingConfirmSelectionMenu->IsUpdate())
 		{
 			AcSchedulingConfirmSelectionMenu->Off();
+			AcScheduleSelectionMenu->On();
+			if (!AcScheduleCalendar->FirstScheduleSet && !AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+			{
+				AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
+			}
+			else if (AcScheduleCalendar->FirstScheduleSet && !AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+			{
+				AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 2 번째 )");
+			}
+			else if (AcScheduleCalendar->FirstScheduleSet && AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+			{
+				AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 3 번째 )");
+			}
+		}
+		else if (AcScheduleFinalConfirm->IsUpdate())
+		{
+			AcScheduleFinalConfirm->Off();
+			AcScheduleCalendar->Reset();
 			AcScheduleSelectionMenu->On();
 			AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
 		}
@@ -324,7 +379,18 @@ void UIManager::ClickMainMenu_S(Button* _Button)
 	AcMainMenu->Off();
 	AcScheduleCalendar->On();
 	AcScheduleSelectionMenu->On();
-	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
+	if (!AcScheduleCalendar->FirstScheduleSet && !AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+	{
+		AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
+	}
+	else if (AcScheduleCalendar->FirstScheduleSet && !AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+	{
+		AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 2 번째 )");
+	}
+	else if (AcScheduleCalendar->FirstScheduleSet && AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+	{
+		AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 3 번째 )");
+	}
 }
 
 void UIManager::ClickMainMenu_S_0(Button* _Button)
@@ -337,20 +403,62 @@ void UIManager::ClickMainMenu_S_0(Button* _Button)
 void UIManager::ClickMainMenu_S_0_0(Button* _Button)
 {
 	AcClassSelectWindow->Off();
+	ScheduleSetConfirm = ScheduleLabel::미술;
 	AcSchedulingConfirmSelectionMenu->On();
 	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "미술. \n그림을 그려 예술적인 센스를\n갈고 닦는다");
 }
 
-void UIManager::ClickMainMenu_S_0_0_0(Button* _Button)
+void UIManager::ClickMainMenu_S_0_0_0(Button* _Button) // 스케줄에 편성한다
 {
-	AcSchedulingConfirmSelectionMenu->Off();
-	AcScheduleSelectionMenu->On();
-	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 2 번째 )");
+	AcScheduleCalendar->ScheduleSetting(ScheduleSetConfirm);
+	if (AcScheduleCalendar->ScheduleSetEnd)
+	{
+		AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "「예, 스케줄에 편성하겠습니다」\n이번달은 이 스케줄로\n좋습니까?");
+		AcScheduleFinalConfirm->On();
+		AcSchedulingConfirmSelectionMenu->Off();
+	}
+	else if (AcScheduleCalendar->FirstScheduleSet && !AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+	{
+		AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 2 번째 )");
+		AcSchedulingConfirmSelectionMenu->Off();
+		AcScheduleSelectionMenu->On();
+	}
+	else if (AcScheduleCalendar->FirstScheduleSet && AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+	{
+		AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 3 번째 )");
+		AcSchedulingConfirmSelectionMenu->Off();
+		AcScheduleSelectionMenu->On();
+	}
+
 }
 
 void UIManager::ClickMainMenu_S_0_0_1(Button* _Button)
 {
 	AcSchedulingConfirmSelectionMenu->Off();
+	AcScheduleSelectionMenu->On();
+	if (!AcScheduleCalendar->FirstScheduleSet && !AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+	{
+		AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
+	}
+	else if (AcScheduleCalendar->FirstScheduleSet && !AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+	{
+		AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 2 번째 )");
+	}
+	else if (AcScheduleCalendar->FirstScheduleSet && AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+	{
+		AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 3 번째 )");
+	}
+}
+
+void UIManager::ClickMainMenu_S_0_0_0_0(Button* _Button)
+{
+	int a = 0;
+}
+
+void UIManager::ClickMainMenu_S_0_0_0_1(Button* _Button)
+{
+	AcScheduleFinalConfirm->Off();
+	AcScheduleCalendar->Reset();
 	AcScheduleSelectionMenu->On();
 	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "이번 달 딸의 예정은? ( 1 번째 )");
 }

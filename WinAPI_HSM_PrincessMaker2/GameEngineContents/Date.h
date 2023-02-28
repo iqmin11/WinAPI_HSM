@@ -28,6 +28,7 @@ public:
 	static std::vector<int> GetMonthLenths(int _YYYY);
 	static int FindMonthFirstWeekday(int _YYYY,  int _MM);
 	static Week GetWeekDay(int _YYYY, int _MM, int _DD);
+	static Date GetMonthLastDate(const Date& _Date);
 	
 
 	// construtor destructor
@@ -57,6 +58,11 @@ public:
 	}
 
 	void SetWeekDay();
+
+	void SetDate(const Date& _Date)
+	{
+		SetDate(_Date.Year, _Date.Month, _Date.Day);
+	}
 
 	void SetDate(int _YYYY, int _MM, int _DD)
 	{
@@ -217,31 +223,28 @@ public:
 		return *this;
 	}
 
-	Date& operator + (int _Value)
+	Date operator + (int _Value)
 	{
+		Date Result = *this;
 		if (31 < _Value)
 		{
 			MsgAssert("31보다 큰숫자 넣기 금지")
 		}
 
-		Day += _Value;
+		Result.Day += _Value;
 		if (IsOverDay())
 		{
-			++Month;
-			Day = 1;
+			++Result.Month;
+			Result.Day = 1;
 			if (IsOverMonth())
 			{
-				++Year;
-				Month = 1;
+				++Result.Year;
+				Result.Month = 1;
 			}
 		}
 		SetWeekDay();
-
-		if (IsOverDay() || IsOverMonth())
-		{
-			MsgAssert("입력가능한 날짜를 벗어났습니다")
-		}
-		return *this;
+		
+		return Result;
 	}
 
 protected:
