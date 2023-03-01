@@ -1,7 +1,6 @@
 #pragma once
-//#include  <map>
+#include  <map>
 #include "Dialog.h"
-#include "GlobalButton.h"
 
 enum class CubeFace
 {

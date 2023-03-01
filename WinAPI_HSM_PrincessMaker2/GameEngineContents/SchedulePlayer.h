@@ -1,9 +1,19 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include "Date.h"
+#include "ContentsEnums.h"
 
-class ScheduleAnimation;
+struct ScheduleSave
+{
+	int Order = 0;
+	Date DateSave = Date();
+	ScheduleLabel ScheduleSave;
+};
+
+class ScheduleAnimationPlayer;
 class ScheduleCalendar;
 class PaintingClass;
+class RaisingSimLevel;
 class SchedulePlayer : public GameEngineActor
 {
 public:
@@ -17,6 +27,12 @@ public:
 	SchedulePlayer& operator=(const SchedulePlayer& _Other) = delete;
 	SchedulePlayer& operator=(SchedulePlayer&& _Other) noexcept = delete;
 	void PlayFirstOrderSchedule(float _DeltaTime);
+	void PlaySecondOrderSchedule(float _DeltaTime);
+	void PlayThirdOrderSchedule(float _DeltaTime);
+
+	void On() override;
+	void Off() override;
+
 
 protected:
 	void Start() override;
@@ -24,10 +40,20 @@ protected:
 
 private:
 	float Time = 0;
+	ScheduleSave Save[6][7] = {};
+	bool FirstUpdateCheck = false;
+	bool ScheduleEnd = true;
 
-	ScheduleAnimation* AcScheduleAnimation = nullptr;
+	RaisingSimLevel* ParentLevel = nullptr;
+
+	ScheduleAnimationPlayer* AcScheduleAnimationPlayer = nullptr;
 	ScheduleCalendar* AcScheduleCalendar = nullptr;
 	PaintingClass* AcPaintingClass = nullptr;
+
+	void PlayOneDaySchedule();
 	
+	void PlayerStart();
+	void PlayerUpdate(float _DeltaTime);
+	//void PlayerEnd();
 };
 

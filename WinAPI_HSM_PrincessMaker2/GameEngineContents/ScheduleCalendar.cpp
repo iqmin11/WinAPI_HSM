@@ -57,12 +57,12 @@ void ScheduleCalendar::ScheduleSetting(ScheduleLabel _Schedule)
 				{
 					ThisMonthSchedule[y][x]->ScheduleValue = _Schedule;
 					ThisMonthSchedule[y][x]->SetScheduleOrder(1);
-					ThisMonthSchedule[y][x]->SchedulePrepare();
+					FirstScheduleEndDate = ThisMonthSchedule[y][x]->DateValue;
 					if (ThisMonthSchedule[y][x]->DateValue == LastDate)
 					{
 						ThisMonthSchedule[y][x]->ScheduleValue = _Schedule;
 						ThisMonthSchedule[y][x]->SetScheduleOrder(1);
-						ThisMonthSchedule[y][x]->SchedulePrepare();
+						FirstScheduleEndDate = LastDate;
 						ScheduleSetEnd = true;
 						return;
 					}
@@ -85,14 +85,14 @@ void ScheduleCalendar::ScheduleSetting(ScheduleLabel _Schedule)
 				{
 					ThisMonthSchedule[y][x]->ScheduleValue = _Schedule;
 					ThisMonthSchedule[y][x]->SetScheduleOrder(2);
-					ThisMonthSchedule[y][x]->SchedulePrepare();
+					SecondScheduleEndDate = ThisMonthSchedule[y][x]->DateValue;
 					if (ThisMonthSchedule[y][x]->DateValue == LastDate)
 					{
 						ThisMonthSchedule[y][x]->ScheduleValue = _Schedule;
 						ThisMonthSchedule[y][x]->SetScheduleOrder(2);
-						ThisMonthSchedule[y][x]->SchedulePrepare();
+						SecondScheduleEndDate = LastDate;
 						ScheduleSetEnd = true;
-						return; 
+						return;
 					}
 				}
 			}
@@ -113,9 +113,9 @@ void ScheduleCalendar::ScheduleSetting(ScheduleLabel _Schedule)
 				{
 					ThisMonthSchedule[y][x]->ScheduleValue = _Schedule;
 					ThisMonthSchedule[y][x]->SetScheduleOrder(3);
-					ThisMonthSchedule[y][x]->SchedulePrepare();
+					ThirdScheduleEndDate = LastDate;
 				}
-					ScheduleSetEnd = true;
+				ScheduleSetEnd = true;
 			}
 		}
 	}
@@ -145,7 +145,6 @@ void ScheduleCalendar::CancelSchedule()
 				{
 					ThisMonthSchedule[y][x]->ScheduleValue = ScheduleLabel::Null;
 					ThisMonthSchedule[y][x]->SetScheduleOrder(0);
-					ThisMonthSchedule[y][x]->ScheduleEnd();
 					ScheduleSetEnd = false;
 				}
 			}
@@ -166,7 +165,6 @@ void ScheduleCalendar::CancelSchedule()
 				{
 					ThisMonthSchedule[y][x]->ScheduleValue = ScheduleLabel::Null;
 					ThisMonthSchedule[y][x]->SetScheduleOrder(0);
-					ThisMonthSchedule[y][x]->ScheduleEnd();
 					ScheduleSetEnd = false;
 				}
 			}
@@ -187,7 +185,6 @@ void ScheduleCalendar::CancelSchedule()
 				{
 					ThisMonthSchedule[y][x]->ScheduleValue = ScheduleLabel::Null;
 					ThisMonthSchedule[y][x]->SetScheduleOrder(0);
-					ThisMonthSchedule[y][x]->ScheduleEnd();
 					ScheduleSetEnd = false;
 				}
 			}
@@ -203,13 +200,27 @@ void ScheduleCalendar::Reset()
 		{
 			ThisMonthSchedule[y][x]->ScheduleValue = ScheduleLabel::Null;
 			ThisMonthSchedule[y][x]->SetScheduleOrder(0);
-			ThisMonthSchedule[y][x]->ScheduleEnd();
 		}
 	}
 	FirstScheduleSet = false;
 	SecondScheduleSet = false;
 	ThirdScheduleSet = false;
 	ScheduleSetEnd = false;
+}
+
+Date ScheduleCalendar::GetFirstScheduleEndDate()
+{
+	return FirstScheduleEndDate;
+}
+
+Date ScheduleCalendar::GetSecondScheduleEndDate()
+{
+	return SecondScheduleEndDate;
+}
+
+Date ScheduleCalendar::GetThirdScheduleEndDate()
+{
+	return ThirdScheduleEndDate;
 }
 
 void ScheduleCalendar::Start()
@@ -232,6 +243,7 @@ void ScheduleCalendar::Update(float _DeltaTime)
 		UpdateMonthCalendar();
 		UpdateYearNumRender();
 		UpdateMonthRender();
+		
 	}
 }
 
@@ -314,4 +326,3 @@ void ScheduleCalendar::UpdateMonthRender()
 {
 	MonthRender->SetFrame(NextDate.GetMonth() - 1);
 }
-

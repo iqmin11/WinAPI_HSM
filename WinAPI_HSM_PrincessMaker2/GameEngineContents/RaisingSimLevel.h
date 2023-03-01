@@ -11,6 +11,7 @@ class Paint;
 class UIManager;
 
 class CubeDialog;
+class ScheduleDialog;
 class Button;
 
 class DanceClass;
@@ -73,6 +74,16 @@ public:
 		return AcCubeDialog;
 	}
 
+	static ScheduleDialog* GetAcScheduleDialog()
+	{
+		return AcScheduleDialog;
+	}
+
+	UIManager* GetUIManager()
+	{
+		return AcUIManager;
+	}
+
 protected:
 
 
@@ -81,6 +92,7 @@ private:
 	Date Today = {1000,10,10};
 
 	static CubeDialog* AcCubeDialog;
+	static ScheduleDialog* AcScheduleDialog;
 	Background* AcBackground = nullptr;
 	Flower* AcFlower = nullptr; 
 	Paint* AcPaint= nullptr; 

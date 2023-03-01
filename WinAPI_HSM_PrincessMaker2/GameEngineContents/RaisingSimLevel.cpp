@@ -19,6 +19,7 @@
 #include "BasicInfo.h"
 
 #include "CubeDialog.h"
+#include "ScheduleDialog.h"
 #include "ContentsEnums.h"
 
 #include "IconButton.h"
@@ -38,6 +39,7 @@
 #include "TheologyClass.h"
 
 CubeDialog* RaisingSimLevel::AcCubeDialog = nullptr;
+ScheduleDialog* RaisingSimLevel::AcScheduleDialog = nullptr;
 
 RaisingSimLevel::RaisingSimLevel()
 {
@@ -55,6 +57,7 @@ void RaisingSimLevel::Loading()
 	ImageLoad();
 
 	AcCubeDialog = CreateActor<CubeDialog>(PM2ActorOrder::Dialog1);
+	AcScheduleDialog = CreateActor<ScheduleDialog>(PM2ActorOrder::Dialog2);
 	AcBackground = CreateActor<Background>(static_cast<int>(PM2ActorOrder::BackGround));
 	CreateActor<DateViewer>(PM2ActorOrder::Menu0);
 	CreateActor<BasicInfo>(PM2ActorOrder::Menu0);
@@ -195,6 +198,14 @@ void RaisingSimLevel::ImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Animation_Object_Strategy.bmp"))->Cut(13, 2);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Animation_Object_Theology.bmp"))->Cut(13, 2);
 
+	Dir.MoveParentToDirectory("Object");
+	Dir.Move("Mug");
+	AllFile.clear();
+	AllFile = Dir.GetAllFile();
+	for (size_t i = 0; i < AllFile.size(); i++)
+	{
+		GameEngineResources::GetInst().ImageLoad(AllFile[i].GetFullPath());
+	}
 }
 
 

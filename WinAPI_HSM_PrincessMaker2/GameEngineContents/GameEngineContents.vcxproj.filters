@@ -228,6 +228,9 @@
     <ClInclude Include="ScheduleAnimationPlayer.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\SchedulePlayer</Filter>
     </ClInclude>
+    <ClInclude Include="ScheduleDialog.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -455,6 +458,9 @@
     </ClCompile>
     <ClCompile Include="ScheduleAnimationPlayer.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\SchedulePlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="ScheduleDialog.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

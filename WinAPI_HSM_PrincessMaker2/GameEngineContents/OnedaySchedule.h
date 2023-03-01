@@ -32,21 +32,6 @@ public:
 		ScheduleOrder = _Order;
 	}
 
-	void SchedulePrepare()
-	{
-		SchelduleEnd = false;
-	}
-
-	void ScheduleEnd()
-	{
-		SchelduleEnd = true;
-	}
-	
-	bool IsSchedulePrepare() const
-	{
-		return !SchelduleEnd;
-	}
-
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -55,7 +40,6 @@ private:
 	Date Today = Date();
 	Date NextDate = Date();
 	int ScheduleOrder = 0;
-	bool SchelduleEnd = true;
 	
 	NumberRenderObject DayNumRender = NumberRenderObject();
 	float4 DayNumRenderScale_1 = { 20,20 };

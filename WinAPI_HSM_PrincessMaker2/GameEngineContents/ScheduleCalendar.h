@@ -35,6 +35,11 @@ public:
 	bool ThirdScheduleSet = false;
 	bool ScheduleSetEnd = false;
 
+	Date GetFirstScheduleEndDate();
+	Date GetSecondScheduleEndDate();
+	Date GetThirdScheduleEndDate();
+	
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -43,6 +48,11 @@ private:
 	float4 ActorPos = {160,263};
 	Date Today = Date(1000,10,10);
 	Date NextDate = Date(1000, 10, 11);
+	Date FirstScheduleEndDate = Date();
+	Date SecondScheduleEndDate = Date();
+	Date ThirdScheduleEndDate = Date();
+
+
 	std::vector<std::vector<OnedaySchedule*>> ThisMonthSchedule = std::vector<std::vector<OnedaySchedule*>>();
 	void UpdateMonthCalendar();
 	void SetThisMonthSchedule();
@@ -63,8 +73,6 @@ private:
 	GameEngineRender* IconRender[6][7] = {};
 	float4 IconScale = { 34,34 };
 	float4 FirstIconPos = { -120,-80 }; // 280, 220
-
-	
 
 	void SetYearNumRender();
 	void SetMonthRender();

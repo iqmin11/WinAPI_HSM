@@ -18,10 +18,12 @@ class PhysicalStatusWindow;
 
 class ScheduleCalendar;
 class ScheduleSelectionMenu;
-class ScheduleAnimationPlayer;
+//class ScheduleAnimationPlayer;
 class ClassSelectWindow;
 class SchedulingConfirmSelectionMenu;
 class ScheduleFinalConfirm;
+class SchedulePlayer;
+class ScheduleDialog;
 
 class CubeDialog;
 
@@ -42,6 +44,12 @@ public:
 	{
 		return AcMainMenu;
 	}
+	
+	ScheduleCalendar* GetScheduleCalendar() const
+	{
+		return AcScheduleCalendar;
+	}
+	
 
 protected:
 	void Start() override;
@@ -108,9 +116,11 @@ private:
 	static ScheduleCalendar* AcScheduleCalendar;
 	static ScheduleSelectionMenu* AcScheduleSelectionMenu;
 	static ClassSelectWindow* AcClassSelectWindow;
-	static ScheduleAnimationPlayer* AcScheduleAnimationPlayer;
+	//static ScheduleAnimationPlayer* AcScheduleAnimationPlayer;
 	static SchedulingConfirmSelectionMenu* AcSchedulingConfirmSelectionMenu;
 	static ScheduleFinalConfirm* AcScheduleFinalConfirm;
+	static SchedulePlayer* AcSchedulePlayer;
+	static ScheduleDialog* AcScheduleDialog;
 
 	static CubeDialog* AcCubeDialog;
 

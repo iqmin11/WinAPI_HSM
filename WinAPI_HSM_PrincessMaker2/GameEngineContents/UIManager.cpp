@@ -25,6 +25,8 @@
 #include "IconButton.h"
 #include "SchedulingConfirmSelectionMenu.h"
 #include "ScheduleFinalConfirm.h"
+#include "SchedulePlayer.h"
+#include "ScheduleDialog.h"
 
 #include "CubeDialog.h"
 
@@ -54,10 +56,13 @@ PhysicalStatusWindow* UIManager::AcPhysicalStatusWindow = nullptr;
 ScheduleCalendar* UIManager::AcScheduleCalendar = nullptr;
 ScheduleSelectionMenu* UIManager::AcScheduleSelectionMenu = nullptr;
 ClassSelectWindow* UIManager::AcClassSelectWindow = nullptr;
-ScheduleAnimationPlayer* UIManager::AcScheduleAnimationPlayer = nullptr;
+//ScheduleAnimationPlayer* UIManager::AcScheduleAnimationPlayer = nullptr;
 SchedulingConfirmSelectionMenu* UIManager::AcSchedulingConfirmSelectionMenu = nullptr;
 ScheduleLabel UIManager::ScheduleSetConfirm = ScheduleLabel::Null;
 ScheduleFinalConfirm* UIManager::AcScheduleFinalConfirm = nullptr;
+SchedulePlayer* UIManager::AcSchedulePlayer = nullptr;
+ScheduleDialog* UIManager::AcScheduleDialog = nullptr;
+
 
 //큐브의 대화창
 CubeDialog* UIManager::AcCubeDialog = nullptr;
@@ -76,40 +81,28 @@ void UIManager::Start()
 {
 	ParentLevel = dynamic_cast<RaisingSimLevel*>(GetLevel());
 	AcMainMenu = ParentLevel->CreateActor<MainMenu>(PM2ActorOrder::Menu0);
-	AllMenu.push_back(AcMainMenu);
 
 	AcStatusWindowManager = ParentLevel->CreateActor<StatusWindowManager>(PM2ActorOrder::Menu1);
-	AllMenu.push_back(AcStatusWindowManager);
 
 	AcConverstionSelectionMenu = ParentLevel->CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
-	AllMenu.push_back(AcConverstionSelectionMenu);
 
 	AcDietSelectionMenu = ParentLevel->CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
-	AllMenu.push_back(AcDietSelectionMenu);
 	AcSelectDialog = ParentLevel->CreateActor<SelectDialog>(PM2ActorOrder::Menu1);
-	AllMenu.push_back(AcSelectDialog);
 	AcDietFinalConfirmSelectionMenu = ParentLevel->CreateActor<DietFinalConfirmSelectionMenu>(PM2ActorOrder::Menu2);
-	AllMenu.push_back(AcDietFinalConfirmSelectionMenu);
 
 	AcPersonalInformationWindow = ParentLevel->CreateActor<PersonalInformationWindow>(PM2ActorOrder::Menu1);
-	AllMenu.push_back(AcPersonalInformationWindow);
 	AcHelthInformationWindow = ParentLevel->CreateActor<HelthInformationWindow>(PM2ActorOrder::Menu1);
-	AllMenu.push_back(AcHelthInformationWindow);
 	AcPhysicalStatusWindow = ParentLevel->CreateActor<PhysicalStatusWindow>(PM2ActorOrder::Menu1);
-	AllMenu.push_back(AcPhysicalStatusWindow);
 
 	AcScheduleCalendar = ParentLevel->CreateActor<ScheduleCalendar>(PM2ActorOrder::Menu1);
-	AllMenu.push_back(AcScheduleCalendar);
 	AcScheduleSelectionMenu = ParentLevel->CreateActor<ScheduleSelectionMenu>(PM2ActorOrder::Menu1);
-	AllMenu.push_back(AcScheduleSelectionMenu);
 	AcClassSelectWindow = ParentLevel->CreateActor<ClassSelectWindow>(PM2ActorOrder::Menu2);
-	AllMenu.push_back(AcClassSelectWindow);
-	AcScheduleAnimationPlayer = ParentLevel->CreateActor<ScheduleAnimationPlayer>(PM2ActorOrder::Menu2);
-	AllMenu.push_back(AcScheduleAnimationPlayer);
+	//AcScheduleAnimationPlayer = ParentLevel->CreateActor<ScheduleAnimationPlayer>(PM2ActorOrder::Menu2);
+	//AllMenu.push_back(AcScheduleAnimationPlayer);
 	AcSchedulingConfirmSelectionMenu = ParentLevel->CreateActor<SchedulingConfirmSelectionMenu>(PM2ActorOrder::Menu2);
-	AllMenu.push_back(AcSchedulingConfirmSelectionMenu);
 	AcScheduleFinalConfirm = ParentLevel->CreateActor<ScheduleFinalConfirm>(PM2ActorOrder::Menu2);
-	AllMenu.push_back(AcScheduleFinalConfirm);
+	AcSchedulePlayer = ParentLevel->CreateActor<SchedulePlayer>(PM2ActorOrder::Menu2);
+	AcScheduleDialog = ParentLevel->GetAcScheduleDialog();
 
 	AcCubeDialog = ParentLevel->GetAcCubeDialog();
 
@@ -452,7 +445,7 @@ void UIManager::ClickMainMenu_S_0_0_1(Button* _Button)
 
 void UIManager::ClickMainMenu_S_0_0_0_0(Button* _Button)
 {
-	int a = 0;
+	AcSchedulePlayer->On();
 }
 
 void UIManager::ClickMainMenu_S_0_0_0_1(Button* _Button)
