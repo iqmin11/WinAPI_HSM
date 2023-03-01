@@ -10,7 +10,7 @@ ScheduleDialog::~ScheduleDialog()
 
 }
 
-void ScheduleDialog::UpdateCubeDialog(const ScheduleLabel& _Mug, const std::string_view& _Dialog)
+void ScheduleDialog::UpdateScheduleDialog(const ScheduleLabel& _Mug, const std::string_view& _Dialog)
 {
 	On();
 	SetMugPic(ScheduleMugshot.find(_Mug)->second);

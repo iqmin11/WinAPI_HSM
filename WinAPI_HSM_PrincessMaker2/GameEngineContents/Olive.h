@@ -115,7 +115,7 @@ public:
 		return PatronGodSex;
 	}
 
-	int GetGold() const
+	int& GetGold()
 	{
 		return Gold;
 	}

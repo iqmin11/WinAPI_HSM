@@ -31,7 +31,10 @@ void Dialog::SetLeftMugDialog()
 void Dialog::SetTextRender()
 
 {
-	TextRender = CreateRender(PM2RenderOrder::Dialog1_Display);
+	if (TextRender == nullptr)
+	{
+		TextRender = CreateRender(PM2RenderOrder::Dialog1_Display);
+	}
 	TextRender->SetText(" ", TextHeight, TextType, TextAlign::Left, TextColor, TextBoxScale);
 	TextRender->SetPosition(-TextBoxScale.half());
 }

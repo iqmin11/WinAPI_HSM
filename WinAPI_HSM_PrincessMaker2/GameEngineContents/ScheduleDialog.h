@@ -16,7 +16,7 @@ public:
 	ScheduleDialog& operator=(const ScheduleDialog& _Other) = delete;
 	ScheduleDialog& operator=(ScheduleDialog&& _Other) noexcept = delete;
 
-	void UpdateCubeDialog(const ScheduleLabel& _Mug, const std::string_view& _Dialog);
+	void UpdateScheduleDialog(const ScheduleLabel& _Mug, const std::string_view& _Dialog);
 
 protected:
 	void Start() override;

@@ -101,7 +101,6 @@ void SchedulePlayer::On()
 {
 	GameEngineObject::On();
 	AcScheduleAnimationPlayer->On();
-	AcScheduleCalendar->On();
 	AcPaintingClass->On();
 }
 
@@ -109,7 +108,6 @@ void SchedulePlayer::Off()
 {
 	GameEngineObject::Off();
 	AcScheduleAnimationPlayer->Off();
-	AcScheduleCalendar->Off();
 	AcPaintingClass->Off();
 }
 

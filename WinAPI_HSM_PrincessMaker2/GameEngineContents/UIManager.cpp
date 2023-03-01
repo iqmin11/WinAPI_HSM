@@ -27,6 +27,7 @@
 #include "ScheduleFinalConfirm.h"
 #include "SchedulePlayer.h"
 #include "ScheduleDialog.h"
+#include "FoodCostDialog.h"
 
 #include "CubeDialog.h"
 
@@ -62,6 +63,7 @@ ScheduleLabel UIManager::ScheduleSetConfirm = ScheduleLabel::Null;
 ScheduleFinalConfirm* UIManager::AcScheduleFinalConfirm = nullptr;
 SchedulePlayer* UIManager::AcSchedulePlayer = nullptr;
 ScheduleDialog* UIManager::AcScheduleDialog = nullptr;
+FoodCostDialog* UIManager::AcFoodCostDialog = nullptr;
 
 
 //큐브의 대화창
@@ -103,6 +105,7 @@ void UIManager::Start()
 	AcScheduleFinalConfirm = ParentLevel->CreateActor<ScheduleFinalConfirm>(PM2ActorOrder::Menu2);
 	AcSchedulePlayer = ParentLevel->CreateActor<SchedulePlayer>(PM2ActorOrder::Menu2);
 	AcScheduleDialog = ParentLevel->GetAcScheduleDialog();
+	AcFoodCostDialog = ParentLevel->CreateActor<FoodCostDialog>(PM2ActorOrder::Menu2);
 
 	AcCubeDialog = ParentLevel->GetAcCubeDialog();
 
@@ -262,6 +265,41 @@ void UIManager::SetEngineRightClick()
 			AcMainMenu->On();	
 			AcSelectDialog->Off();
 			AcCubeDialog->Off();
+		}
+		else if (AcCubeDialog->GetUpdateText() == "스케줄을 실행합니다" && AcCubeDialog->IsUpdate())
+		{
+			AcCubeDialog->Off();
+			AcScheduleCalendar->Off();
+			AcFoodCostDialog->On();
+		}
+		else if (AcFoodCostDialog->IsUpdate())
+		{
+			AcFoodCostDialog->Off();
+			//여기서 식비를 깎아야함
+			switch (Olive::OlivePlayer->GetOliveDiet())
+			{
+			case Diet::무리하지_않는다:
+				Olive::OlivePlayer->GetGold() -= 30;
+				break;
+			case Diet::어쨌든_튼튼하게:
+				Olive::OlivePlayer->GetGold() -= 80;
+				break;
+			case Diet::얌전한_아이로:
+				Olive::OlivePlayer->GetGold() -= 10;
+				break;
+			case Diet::다이어트_시킨다:
+				Olive::OlivePlayer->GetGold() -= 5;
+				break;
+			default:
+				break;
+			}
+			AcScheduleDialog->UpdateScheduleDialog(ScheduleLabel::미술, "왕궁화가 필킨스\n「내가 왕궁화가인 필킨스다.\n그림을 통해서 예술의 심오함을\n 가르쳐 주도록 하지.」");
+		}
+		else if (AcScheduleDialog->GetUpdateText() == "왕궁화가 필킨스\n「내가 왕궁화가인 필킨스다.\n그림을 통해서 예술의 심오함을\n 가르쳐 주도록 하지.」")
+		{
+			AcScheduleDialog->Off();
+			AcScheduleCalendar->Off();
+			AcSchedulePlayer->On();
 		}
 	}
 }
@@ -445,7 +483,8 @@ void UIManager::ClickMainMenu_S_0_0_1(Button* _Button)
 
 void UIManager::ClickMainMenu_S_0_0_0_0(Button* _Button)
 {
-	AcSchedulePlayer->On();
+	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "스케줄을 실행합니다");
+	AcScheduleFinalConfirm->Off();
 }
 
 void UIManager::ClickMainMenu_S_0_0_0_1(Button* _Button)

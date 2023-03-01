@@ -24,6 +24,7 @@ class SchedulingConfirmSelectionMenu;
 class ScheduleFinalConfirm;
 class SchedulePlayer;
 class ScheduleDialog;
+class FoodCostDialog;
 
 class CubeDialog;
 
@@ -121,6 +122,7 @@ private:
 	static ScheduleFinalConfirm* AcScheduleFinalConfirm;
 	static SchedulePlayer* AcSchedulePlayer;
 	static ScheduleDialog* AcScheduleDialog;
+	static FoodCostDialog* AcFoodCostDialog;
 
 	static CubeDialog* AcCubeDialog;
 

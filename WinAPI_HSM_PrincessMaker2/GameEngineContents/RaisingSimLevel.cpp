@@ -166,6 +166,7 @@ void RaisingSimLevel::ImageLoad()
 
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Calendar.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("IconButton_Hover.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FoodCost.bmp"));
 	
 
 	Dir.Move("Cube");

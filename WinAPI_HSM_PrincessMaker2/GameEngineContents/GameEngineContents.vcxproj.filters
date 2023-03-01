@@ -231,6 +231,9 @@
     <ClInclude Include="ScheduleDialog.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClInclude>
+    <ClInclude Include="FoodCostDialog.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -461,6 +464,9 @@
     </ClCompile>
     <ClCompile Include="ScheduleDialog.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
+    </ClCompile>
+    <ClCompile Include="FoodCostDialog.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
