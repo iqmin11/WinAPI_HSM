@@ -6,67 +6,10 @@
 #include "Olive.h"
 
 #include "MainMenu.h"
-//#include "StatusWindowManager.h"
-
-//#include "ConverstionSelectionMenu.h"
-
-//#include "DietSelectionMenu.h"
-//#include "SelectDialog.h"
-//#include "DietFinalConfirmSelectionMenu.h"
-
-//#include "PersonalInformationWindow.h"
-//#include "HelthInformationWindow.h"
-//#include "PhysicalStatusWindow.h"
-
-//#include "ScheduleCalendar.h"
-//#include "ScheduleSelectionMenu.h"
-//#include "ClassSelectWindow.h"
-//#include "ScheduleAnimationPlayer.h"
-//#include "IconButton.h"
-//#include "SchedulingConfirmSelectionMenu.h"
-//#include "ScheduleFinalConfirm.h"
-//#include "SchedulePlayer.h"
-//#include "ScheduleDialog.h"
-//#include "FoodCostDialog.h"
-
 #include "CubeDialog.h"
 
 RaisingSimLevel* UIManager::ParentLevel = nullptr;
-
-//메인메뉴
 MainMenu* UIManager::AcMainMenu = nullptr;
-
-//스탯창
-//StatusWindowManager* UIManager::AcStatusWindowManager = nullptr;
-
-//딸과의 대화
-//ConverstionSelectionMenu* UIManager::AcConverstionSelectionMenu = nullptr;
-
-//식단
-//Diet UIManager::DietSetConfirm = Diet::Null;
-//DietSelectionMenu* UIManager::AcDietSelectionMenu = nullptr;
-//SelectDialog* UIManager::AcSelectDialog = nullptr;
-//DietFinalConfirmSelectionMenu* UIManager::AcDietFinalConfirmSelectionMenu = nullptr;
-
-//개인정보 및 신체정보
-//PersonalInformationWindow* UIManager::AcPersonalInformationWindow = nullptr;
-//HelthInformationWindow* UIManager::AcHelthInformationWindow = nullptr;
-//PhysicalStatusWindow* UIManager::AcPhysicalStatusWindow = nullptr;
-
-//스케줄창
-//ScheduleCalendar* UIManager::AcScheduleCalendar = nullptr;
-//ScheduleSelectionMenu* UIManager::AcScheduleSelectionMenu = nullptr;
-//ClassSelectWindow* UIManager::AcClassSelectWindow = nullptr;
-////ScheduleAnimationPlayer* UIManager::AcScheduleAnimationPlayer = nullptr;
-//SchedulingConfirmSelectionMenu* UIManager::AcSchedulingConfirmSelectionMenu = nullptr;
-//ScheduleLabel UIManager::ScheduleSetConfirm = ScheduleLabel::Null;
-//ScheduleFinalConfirm* UIManager::AcScheduleFinalConfirm = nullptr;
-//SchedulePlayer* UIManager::AcSchedulePlayer = nullptr;
-//ScheduleDialog* UIManager::AcScheduleDialog = nullptr;
-//FoodCostDialog* UIManager::AcFoodCostDialog = nullptr;
-
-
-//큐브의 대화창
 CubeDialog* UIManager::AcCubeDialog = nullptr;
 
 UIManager::UIManager()
@@ -83,86 +26,38 @@ void UIManager::Start()
 {
 	ParentLevel = dynamic_cast<RaisingSimLevel*>(GetLevel());
 	AcMainMenu = ParentLevel->CreateActor<MainMenu>(PM2ActorOrder::Menu0);
-
-	//AcStatusWindowManager = ParentLevel->CreateActor<StatusWindowManager>(PM2ActorOrder::Menu1);
-
-	//AcConverstionSelectionMenu = ParentLevel->CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
-
-	//AcDietSelectionMenu = ParentLevel->CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
-	//AcSelectDialog = ParentLevel->CreateActor<SelectDialog>(PM2ActorOrder::Menu1);
-	//AcDietFinalConfirmSelectionMenu = ParentLevel->CreateActor<DietFinalConfirmSelectionMenu>(PM2ActorOrder::Menu2);
-
-	//AcPersonalInformationWindow = ParentLevel->CreateActor<PersonalInformationWindow>(PM2ActorOrder::Menu1);
-	//AcHelthInformationWindow = ParentLevel->CreateActor<HelthInformationWindow>(PM2ActorOrder::Menu1);
-	//AcPhysicalStatusWindow = ParentLevel->CreateActor<PhysicalStatusWindow>(PM2ActorOrder::Menu1);
-
-	//AcScheduleCalendar = ParentLevel->CreateActor<ScheduleCalendar>(PM2ActorOrder::Menu1);
-	//AcScheduleSelectionMenu = ParentLevel->CreateActor<ScheduleSelectionMenu>(PM2ActorOrder::Menu1);
-	//AcClassSelectWindow = ParentLevel->CreateActor<ClassSelectWindow>(PM2ActorOrder::Menu2);
-	////AcScheduleAnimationPlayer = ParentLevel->CreateActor<ScheduleAnimationPlayer>(PM2ActorOrder::Menu2);
-	////AllMenu.push_back(AcScheduleAnimationPlayer);
-	//AcSchedulingConfirmSelectionMenu = ParentLevel->CreateActor<SchedulingConfirmSelectionMenu>(PM2ActorOrder::Menu2);
-	//AcScheduleFinalConfirm = ParentLevel->CreateActor<ScheduleFinalConfirm>(PM2ActorOrder::Menu2);
-	//AcSchedulePlayer = ParentLevel->CreateActor<SchedulePlayer>(PM2ActorOrder::Menu2);
-	//AcScheduleDialog = ParentLevel->GetAcScheduleDialog();
-	//AcFoodCostDialog = ParentLevel->CreateActor<FoodCostDialog>(PM2ActorOrder::Menu2);
-
 	AcCubeDialog = ParentLevel->GetAcCubeDialog();
 
 	AcCubeDialog->SetUpdateText("「주인님, 안녕하십니까. 집사 \n큐브 입니다.」");
-
-	SetButtonAndKey();
 }
 
 void UIManager::Update(float _DeltaTime)
 {
-	//SetEngineRightClick();
-	if (GameEngineInput::IsUp("EngineMouseRight"))
-	{
-		if (AcCubeDialog->IsUpdate() && AcCubeDialog->GetUpdateText() == "예, 알겠습니다. 다음달부터 그\n렇게 하겠습니다")
-		{
-			AcCubeDialog->Off();
-			AcMainMenu->On();
-		}
-	}
+	SetEngineRightClick();
 }
 
-void UIManager::SetButtonAndKey()
+void UIManager::SetEngineRightClick()
 {
-	//AcMainMenu->GetMainMenuButton()[0][0]->SetClickCallBack(ClickMainMenu_00);
-	//AcMainMenu->GetMainMenuButton()[0][1]->SetClickCallBack(ClickMainMenu_01);
-	//AcMainMenu->GetMainMenuButton()[0][2]->SetClickCallBack(ClickMainMenu_02);
-	//AcMainMenu->GetMainMenuButton()[0][3]->SetClickCallBack(ClickMainMenu_03);
-	//AcMainMenu->GetMainMenuButton()[1][0]->SetClickCallBack(ClickMainMenu_10);
-	//AcMainMenu->GetMainMenuButton()[1][1]->SetClickCallBack(ClickMainMenu_11);
-	//AcMainMenu->GetMainMenuButton()[1][2]->SetClickCallBack(ClickMainMenu_12);
-	//AcMainMenu->GetMainMenuButton()[1][3]->SetClickCallBack(ClickMainMenu_13);
-	//AcMainMenu->GetScheduleButton()->SetClickCallBack(ClickMainMenu_S);
-
-	//AcConverstionSelectionMenu->GetSelectButtons()[0]->SetClickCallBack(ClickMainMenu_01_0);
-	//AcConverstionSelectionMenu->GetSelectButtons()[1]->SetClickCallBack(ClickMainMenu_01_1);
-	//AcConverstionSelectionMenu->GetSelectButtons()[2]->SetClickCallBack(ClickMainMenu_01_2);
-
-	//AcDietSelectionMenu->GetSelectButtons()[0]->SetClickCallBack(ClickMainMenu_02_0);
-	//AcDietSelectionMenu->GetSelectButtons()[1]->SetClickCallBack(ClickMainMenu_02_1);
-	//AcDietSelectionMenu->GetSelectButtons()[2]->SetClickCallBack(ClickMainMenu_02_2);
-	//AcDietSelectionMenu->GetSelectButtons()[3]->SetClickCallBack(ClickMainMenu_02_3);
-	
-	//AcDietFinalConfirmSelectionMenu->GetSelectButtons()[0]->SetClickCallBack(ClickMainMenu_02_0_0);
-	//AcDietFinalConfirmSelectionMenu->GetSelectButtons()[1]->SetClickCallBack(ClickMainMenu_02_0_1);
-
-	//AcScheduleSelectionMenu->GetSelectButtons()[0]->SetClickCallBack(ClickMainMenu_S_0);
-	//AcScheduleSelectionMenu->GetSelectButtons()[1]->SetClickCallBack(ClickMainMenu_S_1);
-	//AcScheduleSelectionMenu->GetSelectButtons()[2]->SetClickCallBack(ClickMainMenu_S_2);
-	//AcScheduleSelectionMenu->GetSelectButtons()[3]->SetClickCallBack(ClickMainMenu_S_3);
-
-	//AcSchedulingConfirmSelectionMenu->GetSelectButtons()[0]->SetClickCallBack(ClickMainMenu_S_0_0_0);
-	//AcSchedulingConfirmSelectionMenu->GetSelectButtons()[1]->SetClickCallBack(ClickMainMenu_S_0_0_1);
-
-	//AcScheduleFinalConfirm->GetSelectButtons()[0]->SetClickCallBack(ClickMainMenu_S_0_0_0_0);
-	//AcScheduleFinalConfirm->GetSelectButtons()[1]->SetClickCallBack(ClickMainMenu_S_0_0_0_1);
-
-	//AcClassSelectWindow->GetPaintingButton()->SetClickCallBack(ClickMainMenu_S_0_0);
+	if (GameEngineInput::IsUp("EngineMouseRight"))
+	{
+		if (AcCubeDialog->IsUpdate())
+		{
+			if (AcCubeDialog->GetUpdateText() == "「주인님, 안녕하십니까. 집사 \n큐브 입니다.」")
+			{
+				AcCubeDialog->SetUpdateText("「아가씨는 오늘도 건강하십니\n다. 그럼 속히 아가씨의 이번 \n달 스케줄을 결정해 주십시오」");
+			}
+			else if (AcCubeDialog->GetUpdateText() == "「아가씨는 오늘도 건강하십니\n다. 그럼 속히 아가씨의 이번 \n달 스케줄을 결정해 주십시오」")
+			{
+				AcCubeDialog->Off();
+				AcMainMenu->On();
+			}
+			else if (AcCubeDialog->GetUpdateText() == "예, 알겠습니다. 다음달부터 그\n렇게 하겠습니다")
+			{
+				AcCubeDialog->Off();
+				AcMainMenu->On();
+			}
+		}
+	}
 }
 
 //void UIManager::SetEngineRightClick()

@@ -113,8 +113,8 @@ void RaisingSimLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	AcOlive = Olive::OlivePlayer;
 	Olive::OlivePlayer->On();
-	AcUIManager->GetMainMenu()->On();
-	//AcCubeDialog->On();
+	AcUIManager->GetMainMenu()->Off();
+	AcCubeDialog->On();
 }
 
 void RaisingSimLevel::SoundLoad()

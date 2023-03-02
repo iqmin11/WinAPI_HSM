@@ -4,11 +4,13 @@
 #include "RaisingSimLevel.h"
 #include "ScheduleSelectionMenu.h"
 #include "ScheduleCalendar.h"
+#include "SchedulePlayer.h"
 
 CubeDialog* ScheduleFinalConfirm::AcCubeDialog = nullptr;
 ScheduleFinalConfirm* ScheduleFinalConfirm::AcScheduleFinalConfirm = nullptr;
 ScheduleSelectionMenu* ScheduleFinalConfirm::AcScheduleSelectionMenu = nullptr;
 ScheduleCalendar* ScheduleFinalConfirm::AcScheduleCalendar = nullptr;
+SchedulePlayer* ScheduleFinalConfirm::AcSchedulePlayer = nullptr;
 
 ScheduleFinalConfirm::ScheduleFinalConfirm()
 {
@@ -25,6 +27,7 @@ void ScheduleFinalConfirm::Start()
 	AcCubeDialog = dynamic_cast<RaisingSimLevel*>(GetLevel())->GetAcCubeDialog();
 	AcScheduleSelectionMenu = ScheduleSelectionMenu::GetAcScheduleSelectionMenu();
 	AcScheduleCalendar = ScheduleCalendar::GetAcScheduleCalendar();
+	AcSchedulePlayer = GetLevel()->CreateActor<SchedulePlayer>(PM2ActorOrder::Menu2);
 
 	InitMenuFrameRender(PM2RenderOrder::Menu2, MenuFrameStyleEnum::Gold);
 	SetSelectionMenu(2, ActorPos, Xscale, PM2ActorOrder::Menu2_Button, PM2RenderOrder::Menu2_Button);
@@ -54,7 +57,10 @@ void ScheduleFinalConfirm::SetButtonClick()
 
 void ScheduleFinalConfirm::Click0(Button* _Button)
 {
-	int a = 0;
+	AcSchedulePlayer->On();
+	AcScheduleFinalConfirm->Off();
+	AcScheduleCalendar->Off();
+	AcCubeDialog->Off();
 }
 
 void ScheduleFinalConfirm::Click1(Button* _Button)

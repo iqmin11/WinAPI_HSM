@@ -98,14 +98,14 @@ private:
 	void SetButtonClick();
 
 	static void ClickPainting(Button* _Button);
-	//static void ClickDance(Button* _Button);
-	//static void ClickMagic(Button* _Button);
-	//static void ClickProtocol(Button* _Button);
-	//static void ClickFencing(Button* _Button);
-	//static void ClickFighting(Button* _Button);
-	//static void ClickTheology(Button* _Button);
-	//static void ClickStrategy(Button* _Button);
-	//static void ClickScience(Button* _Button);
-	//static void ClickPoetry(Button* _Button);
+	static void ClickDance(Button* _Button);
+	static void ClickMagic(Button* _Button);
+	static void ClickProtocol(Button* _Button);
+	static void ClickFencing(Button* _Button);
+	static void ClickFighting(Button* _Button);
+	static void ClickTheology(Button* _Button);
+	static void ClickStrategy(Button* _Button);
+	static void ClickScience(Button* _Button);
+	static void ClickPoetry(Button* _Button);
 };
 

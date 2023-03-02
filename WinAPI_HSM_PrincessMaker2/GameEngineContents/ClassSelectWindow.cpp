@@ -138,15 +138,15 @@ void ClassSelectWindow::Update(float _DeltaTime)
 void ClassSelectWindow::SetButtonClick()
 {
 	Painting->GetButton()->SetClickCallBack(ClickPainting);
-	//Dance->GetButton()->SetClickCallBack(ClickDance);
-	//Magic->GetButton()->SetClickCallBack(ClickMagic);
-	//Protocol->GetButton()->SetClickCallBack(ClickProtocol);
-	//Fencing->GetButton()->SetClickCallBack(ClickFencing);
-	//Fighting->GetButton()->SetClickCallBack(ClickFighting);
-	//Theology->GetButton()->SetClickCallBack(ClickTheology);
-	//Strategy->GetButton()->SetClickCallBack(ClickStrategy);
-	//Science->GetButton()->SetClickCallBack(ClickScience);
-	//Poetry->GetButton()->SetClickCallBack(ClickPoetry);
+	Dance->GetButton()->SetClickCallBack(ClickDance);
+	Magic->GetButton()->SetClickCallBack(ClickMagic);
+	Protocol->GetButton()->SetClickCallBack(ClickProtocol);
+	Fencing->GetButton()->SetClickCallBack(ClickFencing);
+	Fighting->GetButton()->SetClickCallBack(ClickFighting);
+	Theology->GetButton()->SetClickCallBack(ClickTheology);
+	Strategy->GetButton()->SetClickCallBack(ClickStrategy);
+	Science->GetButton()->SetClickCallBack(ClickScience);
+	Poetry->GetButton()->SetClickCallBack(ClickPoetry);
 }
 
 void ClassSelectWindow::ClickPainting(Button* _Button)
@@ -155,51 +155,69 @@ void ClassSelectWindow::ClickPainting(Button* _Button)
 	AcSchedulingConfirmSelectionMenu->SetScheduleState(ScheduleLabel::미술);
 	AcClassSelectWindow->Off();
 }
-//
-//void ClassSelectWindow::ClickDance(Button* _Button)
-//{
-//	AcDanceClass->DoClassAndJob();
-//}
-//
-//void ClassSelectWindow::ClickMagic(Button* _Button)
-//{
-//	AcMagicClass->DoClassAndJob();
-//}
-//
-//void ClassSelectWindow::ClickProtocol(Button* _Button)
-//{
-//	AcProtocolClass->DoClassAndJob();
-//}
-//
-//void ClassSelectWindow::ClickFencing(Button* _Button)
-//{
-//	AcFencingClass->DoClassAndJob();
-//}
-//
-//void ClassSelectWindow::ClickFighting(Button* _Button)
-//{
-//	AcFightingClass->DoClassAndJob();
-//}
-//
-//void ClassSelectWindow::ClickTheology(Button* _Button)
-//{
-//	AcTheologyClass->DoClassAndJob();
-//}
-//
-//void ClassSelectWindow::ClickStrategy(Button* _Button)
-//{
-//	AcStrategyClass->DoClassAndJob();
-//}
-//
-//void ClassSelectWindow::ClickScience(Button* _Button)
-//{
-//	AcScienceClass->DoClassAndJob();
-//}
-//
-//void ClassSelectWindow::ClickPoetry(Button* _Button)
-//{
-//	AcPoetryClass->DoClassAndJob();
-//}
+
+void ClassSelectWindow::ClickDance(Button* _Button)
+{
+	AcSchedulingConfirmSelectionMenu->On();
+	AcSchedulingConfirmSelectionMenu->SetScheduleState(ScheduleLabel::무용);
+	AcClassSelectWindow->Off();
+}
+
+void ClassSelectWindow::ClickMagic(Button* _Button)
+{
+	AcSchedulingConfirmSelectionMenu->On();
+	AcSchedulingConfirmSelectionMenu->SetScheduleState(ScheduleLabel::마법);
+	AcClassSelectWindow->Off();
+}
+
+void ClassSelectWindow::ClickProtocol(Button* _Button)
+{
+	AcSchedulingConfirmSelectionMenu->On();
+	AcSchedulingConfirmSelectionMenu->SetScheduleState(ScheduleLabel::예법);
+	AcClassSelectWindow->Off();
+}
+
+void ClassSelectWindow::ClickFencing(Button* _Button)
+{
+	AcSchedulingConfirmSelectionMenu->On();
+	AcSchedulingConfirmSelectionMenu->SetScheduleState(ScheduleLabel::검술);
+	AcClassSelectWindow->Off();
+}
+
+void ClassSelectWindow::ClickFighting(Button* _Button)
+{
+	AcSchedulingConfirmSelectionMenu->On();
+	AcSchedulingConfirmSelectionMenu->SetScheduleState(ScheduleLabel::격투술);
+	AcClassSelectWindow->Off();
+}
+
+void ClassSelectWindow::ClickTheology(Button* _Button)
+{
+	AcSchedulingConfirmSelectionMenu->On();
+	AcSchedulingConfirmSelectionMenu->SetScheduleState(ScheduleLabel::신학);
+	AcClassSelectWindow->Off();
+}
+
+void ClassSelectWindow::ClickStrategy(Button* _Button)
+{
+	AcSchedulingConfirmSelectionMenu->On();
+	AcSchedulingConfirmSelectionMenu->SetScheduleState(ScheduleLabel::군사학);
+	AcClassSelectWindow->Off();
+}
+
+void ClassSelectWindow::ClickScience(Button* _Button)
+{
+	AcSchedulingConfirmSelectionMenu->On();
+	AcSchedulingConfirmSelectionMenu->SetScheduleState(ScheduleLabel::자연과학);
+	AcClassSelectWindow->Off();
+}
+
+void ClassSelectWindow::ClickPoetry(Button* _Button)
+{
+	AcSchedulingConfirmSelectionMenu->On();
+	AcSchedulingConfirmSelectionMenu->SetScheduleState(ScheduleLabel::시문학);
+	AcClassSelectWindow->Off();
+}
 
 
 

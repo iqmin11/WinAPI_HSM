@@ -199,10 +199,10 @@
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\ScheduleCalendar</Filter>
     </ClInclude>
     <ClInclude Include="SchedulePlayer.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\SchedulePlayer</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower\SchedulePlayer</Filter>
     </ClInclude>
     <ClInclude Include="ScheduleAnimationPlayer.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\SchedulePlayer</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower\SchedulePlayer</Filter>
     </ClInclude>
     <ClInclude Include="ScheduleDialog.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
@@ -232,7 +232,7 @@
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower</Filter>
     </ClInclude>
     <ClInclude Include="FoodCostDialog.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\SchedulePlayer</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower\SchedulePlayer</Filter>
     </ClInclude>
     <ClInclude Include="ScheduleFinalConfirm.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower</Filter>
@@ -436,10 +436,10 @@
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\ScheduleCalendar</Filter>
     </ClCompile>
     <ClCompile Include="SchedulePlayer.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\SchedulePlayer</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower\SchedulePlayer</Filter>
     </ClCompile>
     <ClCompile Include="ScheduleAnimationPlayer.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\SchedulePlayer</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower\SchedulePlayer</Filter>
     </ClCompile>
     <ClCompile Include="ScheduleDialog.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
@@ -469,7 +469,7 @@
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower</Filter>
     </ClCompile>
     <ClCompile Include="FoodCostDialog.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\SchedulePlayer</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower\SchedulePlayer</Filter>
     </ClCompile>
     <ClCompile Include="ScheduleFinalConfirm.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower</Filter>
@@ -545,9 +545,6 @@
     <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule">
       <UniqueIdentifier>{c760122e-3b06-4461-9a7c-33ca9aa6b726}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\SchedulePlayer">
-      <UniqueIdentifier>{1789703b-bd30-444d-aa52-d3470a907bfb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information\InnerWindow">
       <UniqueIdentifier>{bfdabb54-27ea-4b38-8ce3-fde249b32f97}</UniqueIdentifier>
     </Filter>
@@ -574,6 +571,9 @@
     </Filter>
     <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower">
       <UniqueIdentifier>{a7268d23-cb00-4ff4-bb93-416504f0e321}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower\SchedulePlayer">
+      <UniqueIdentifier>{1789703b-bd30-444d-aa52-d3470a907bfb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

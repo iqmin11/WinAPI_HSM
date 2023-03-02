@@ -33,6 +33,13 @@ private:
 	NumberRenderObject FoodCostNumRender = NumberRenderObject();
 	float4 FoodCostNumRenderPos = {-48,-92}; // 47, 92
 
+	GameEngineRender* TextRender = nullptr;
+	int TextHeight = 18;
+	std::string TextType = "±¼¸²";
+	COLORREF TextColor = RGB(255, 255, 255);
+	float4 TextBoxScale = { 80, 21 };
+	float4 TextRenderPos = { -175, -103 };
+
 	void SetRender();
 };
 

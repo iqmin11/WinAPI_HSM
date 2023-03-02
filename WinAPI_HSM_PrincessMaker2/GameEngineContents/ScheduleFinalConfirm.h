@@ -4,6 +4,7 @@
 class CubeDialog;
 class ScheduleSelectionMenu;
 class ScheduleCalendar;
+class SchedulePlayer;
 class ScheduleFinalConfirm : public SelectionMenu
 {
 public:
@@ -30,6 +31,7 @@ private:
 	static CubeDialog* AcCubeDialog;
 	static ScheduleSelectionMenu* AcScheduleSelectionMenu;
 	static ScheduleCalendar* AcScheduleCalendar;
+	static SchedulePlayer* AcSchedulePlayer;
 	
 	void SetButtonClick();
 

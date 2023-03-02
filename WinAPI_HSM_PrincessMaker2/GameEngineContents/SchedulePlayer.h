@@ -14,6 +14,8 @@ class ScheduleAnimationPlayer;
 class ScheduleCalendar;
 class PaintingClass;
 class RaisingSimLevel;
+class FoodCostDialog;
+class ScheduleDialog;
 class SchedulePlayer : public GameEngineActor
 {
 public:
@@ -30,9 +32,7 @@ public:
 	void PlaySecondOrderSchedule(float _DeltaTime);
 	void PlayThirdOrderSchedule(float _DeltaTime);
 
-	void On() override;
 	void Off() override;
-
 
 protected:
 	void Start() override;
@@ -49,11 +49,19 @@ private:
 	ScheduleAnimationPlayer* AcScheduleAnimationPlayer = nullptr;
 	ScheduleCalendar* AcScheduleCalendar = nullptr;
 	PaintingClass* AcPaintingClass = nullptr;
+	FoodCostDialog* AcFoodCostDialog = nullptr;
+	ScheduleDialog* AcScheduleDialog = nullptr;
+	
 
 	void PlayOneDaySchedule();
 	
-	void PlayerStart();
-	void PlayerUpdate(float _DeltaTime);
+	void SchedulePlayerStart();
+	void SchedulePlayerUpdate(float _DeltaTime);
 	//void PlayerEnd();
+
+	void SetScheduleDialog(ScheduleLabel _Mug);
+	void SetFirstScheduleDialog();
+	void SetSecondScheduleDialog();
+	void SetThirdScheduleDialog();
 };
 

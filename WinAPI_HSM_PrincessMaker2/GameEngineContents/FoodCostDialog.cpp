@@ -26,6 +26,10 @@ void FoodCostDialog::Start()
 	FoodCostNumRender.SetAlign(Align::Right);
 	FoodCostNumRender.SetValue(30);
 	FoodCostNumRender.SetRenderPos(FoodCostNumRenderPos);
+	
+	TextRender = CreateRender(PM2RenderOrder::Menu1_Display);
+	TextRender->SetText("½Äºñ", TextHeight, TextType, TextAlign::Left, TextColor, {80, 21}); // 175, 103
+	TextRender->SetPosition(TextRenderPos);
 
 	Off();
 }

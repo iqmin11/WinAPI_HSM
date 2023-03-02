@@ -56,10 +56,17 @@ void ScheduleSelectionMenu::Update(float _DeltaTime)
 	
 	if (GameEngineInput::IsUp("EngineMouseRight"))
 	{
-		AcScheduleCalendar->Off();
-		AcCubeDialog->Off();
-		Off();
-		MainMenu::GetAcMainMenu()->On();
+		if (!AcScheduleCalendar->FirstScheduleSet && !AcScheduleCalendar->SecondScheduleSet && !AcScheduleCalendar->ThirdScheduleSet)
+		{
+			AcScheduleCalendar->Off();
+			AcCubeDialog->Off();
+			Off();
+			MainMenu::GetAcMainMenu()->On();
+		}
+		else
+		{
+			AcScheduleCalendar->CancelSchedule();
+		}
 	}
 }
 
