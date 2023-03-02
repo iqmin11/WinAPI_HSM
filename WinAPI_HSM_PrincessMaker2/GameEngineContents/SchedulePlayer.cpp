@@ -121,6 +121,34 @@ void SchedulePlayer::Start()
 
 void SchedulePlayer::Update(float _DeltaTime)
 {
+	//if (BackRenderer->IsUpdate())
+	//{
+
+	//}
+
+	//if (true == BackRenderer->IsAnimationEnd())
+	//{
+	//	// 이건 평범하게 돌리는 거고.
+	//	if (0 != AnimationName.size())
+	//	{
+	//		BackRenderer->ChangeAnimation(AnimationName.front());
+	//		AnimationName.pop_front();
+	//	}
+
+	//	// 터질수도 있다. 마지막 거라면
+	//	std::list<std::string>::iterator Start = AnimationName.begin();
+	//	std::list<std::string>::iterator Next = ++AnimationName.begin();
+
+	//	std::string CurName = *Start;
+	//	std::string NextName = *Next;
+
+	//	if (CurName != NextName)
+	//	{
+	//		BackRenderer->Off();
+	//	}
+	//}
+	
+
 	if (GameEngineInput::IsUp("EngineMouseRight"))
 	{
 		if (AcFoodCostDialog->IsUpdate())

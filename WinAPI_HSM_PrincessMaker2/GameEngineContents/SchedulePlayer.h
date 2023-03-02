@@ -63,5 +63,10 @@ private:
 	void SetFirstScheduleDialog();
 	void SetSecondScheduleDialog();
 	void SetThirdScheduleDialog();
+
+
+	// 랜더러가 하나 있을것이고.
+	GameEngineRender* BackRenderer = nullptr;
+	std::list<std::string> AnimationName;
 };
 

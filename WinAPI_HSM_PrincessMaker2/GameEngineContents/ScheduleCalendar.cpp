@@ -66,6 +66,8 @@ void ScheduleCalendar::ScheduleSetting(ScheduleLabel _Schedule)
 						ThisMonthSchedule[y][x]->SetScheduleOrder(1);
 						FirstScheduleEndDate = LastDate;
 						ScheduleSetEnd = true;
+
+						// AnimationName.push_back("애니메이션이 있을것이다.");
 						return;
 					}
 				}
