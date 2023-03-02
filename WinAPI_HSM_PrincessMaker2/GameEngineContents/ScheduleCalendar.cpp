@@ -3,9 +3,11 @@
 #include "RaisingSimLevel.h"
 #include "ContentsEnums.h"
 
+ScheduleCalendar* ScheduleCalendar::AcScheduleCalendar = nullptr;
+
 ScheduleCalendar::ScheduleCalendar()
 {
-
+	AcScheduleCalendar = this;
 }
 
 ScheduleCalendar::~ScheduleCalendar()

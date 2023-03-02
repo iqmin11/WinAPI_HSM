@@ -115,7 +115,7 @@ void SchedulePlayer::Start()
 {
 	ParentLevel = dynamic_cast<RaisingSimLevel*>(GetLevel());
 	AcScheduleAnimationPlayer = ParentLevel->CreateActor<ScheduleAnimationPlayer>(PM2ActorOrder::Menu2);
-	AcScheduleCalendar = ParentLevel->GetUIManager()->GetScheduleCalendar();
+	//AcScheduleCalendar = ParentLevel->GetUIManager()->GetScheduleCalendar();
 	AcPaintingClass = ParentLevel->AcPaintingClass;
 	Off();
 }

@@ -2,6 +2,8 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include "ContentsEnums.h"
 
+class MainMenu;
+
 class GlobalButton;
 class BasicStatusWindow;
 class EstimateStatusWindow;
@@ -25,8 +27,11 @@ public:
 
 protected:
 	void Start() override;
+	void Update(float _DeltaTime) override;
 
 private:
+	MainMenu* AcMainMenu = nullptr;
+
 	BasicStatusWindow* AcBasicStatusWindow = nullptr;
 	EstimateStatusWindow* AcEstimateStatusWindow = nullptr;
 	FighterAndMagicalStatusWindow* AcFighterAndMagicalStatusWindow = nullptr;

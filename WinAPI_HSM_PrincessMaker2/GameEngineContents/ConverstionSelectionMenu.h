@@ -1,6 +1,7 @@
 #pragma once
 #include "SelectionMenu.h"
 
+class MainMenu;
 class ConverstionSelectionMenu : public SelectionMenu
 {
 public:
@@ -17,8 +18,10 @@ public:
 protected:
 
 	void Start() override;
+	void Update(float _DeltaTime);
 
 private:
+	MainMenu* AcMainMenu = nullptr;
 	float4 ActorPos = { 685,334 };
 	float Xscale = 170.0f;
 };

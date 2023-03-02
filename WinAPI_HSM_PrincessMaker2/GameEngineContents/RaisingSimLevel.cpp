@@ -106,14 +106,15 @@ void RaisingSimLevel::Update(float _DeltaTime)
 	{
 		++Today;
 	}
+
 }
 
 void RaisingSimLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	AcOlive = Olive::OlivePlayer;
 	Olive::OlivePlayer->On();
-	AcUIManager->GetMainmenu()->Off();
-	AcCubeDialog->On();
+	AcUIManager->GetMainMenu()->On();
+	//AcCubeDialog->On();
 }
 
 void RaisingSimLevel::SoundLoad()

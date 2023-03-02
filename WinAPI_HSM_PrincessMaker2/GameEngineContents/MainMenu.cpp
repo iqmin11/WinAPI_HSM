@@ -2,13 +2,33 @@
 
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEnginePlatform/GameEngineInput.h>
 
 #include "GlobalButton.h"
 #include "ContentsEnums.h"
 
+#include "StatusWindowManager.h"
+#include "RaisingSimLevel.h"
+#include "UIManager.h"
+#include "ConverstionSelectionMenu.h"
+#include "DietSelectionMenu.h"
+#include "InformationWindowManager.h"
+
+#include "ScheduleCalendar.h"
+#include "ScheduleSelectionMenu.h"
+
+MainMenu* MainMenu::AcMainMenu = nullptr;
+StatusWindowManager* MainMenu::AcStatusWindowManager = nullptr;
+ConverstionSelectionMenu* MainMenu::AcConverstionSelectionMenu = nullptr;
+DietSelectionMenu* MainMenu::AcDietSelectionMenu = nullptr;
+InformationWindowManager* MainMenu::AcInformationWindowManager = nullptr;
+
+ScheduleCalendar* MainMenu::AcScheduleCalendar = nullptr;
+ScheduleSelectionMenu* MainMenu::AcScheduleSelectionMenu = nullptr;
+
 MainMenu::MainMenu()
 {
-
+	AcMainMenu = this;
 }
 
 MainMenu::~MainMenu()
@@ -48,14 +68,25 @@ void MainMenu::Off()
 
 void MainMenu::Start()
 {
+	GameEngineLevel* Level = GetLevel();
 	SetPos(ActorPos);
 	MainMenuRender = CreateRender("MainMenu.bmp", PM2RenderOrder::Menu0);
 	MainMenuRender->SetScaleToImage();
 	SetMainMenuButtons();
+
+	AcStatusWindowManager = Level->CreateActor<StatusWindowManager>(PM2ActorOrder::Menu1);
+	AcConverstionSelectionMenu = Level->CreateActor<ConverstionSelectionMenu>(PM2ActorOrder::Menu1);
+	AcDietSelectionMenu = Level->CreateActor<DietSelectionMenu>(PM2ActorOrder::Menu1);
+	AcInformationWindowManager = Level->CreateActor<InformationWindowManager>(PM2ActorOrder::Menu1);
+	
+	AcScheduleCalendar = Level->CreateActor<ScheduleCalendar>(PM2ActorOrder::Menu1);
+	AcScheduleSelectionMenu = Level->CreateActor<ScheduleSelectionMenu>(PM2ActorOrder::Menu1);
+	SetClickButton();
 }
 
 void MainMenu::Update(float _DeltaTime)
 {
+	
 }
 
 void MainMenu::Render(float _Time)
@@ -97,6 +128,47 @@ void MainMenu::SetMainMenuButtons()
 	ScheduleButton->SetHoverImage("MainMenu_Schedule.bmp");
 	ScheduleButton->SetPressImage("MainMenu_Schedule.bmp");
 	ScheduleButton->SetPos(ActorPos + ScheduleButtonPos);
+}
+
+void MainMenu::SetClickButton()
+{
+	MainMenuButtons[0][0]->SetClickCallBack(ClickMainMenu_00);
+	MainMenuButtons[0][1]->SetClickCallBack(ClickMainMenu_01);
+	MainMenuButtons[0][2]->SetClickCallBack(ClickMainMenu_02);
+	MainMenuButtons[0][3]->SetClickCallBack(ClickMainMenu_03);
+
+	ScheduleButton->SetClickCallBack(ClickMainMenu_S);
+}
+
+void MainMenu::ClickMainMenu_00(Button* _Btn)
+{
+	AcStatusWindowManager->On();
+	AcMainMenu->Off();
+}
+
+void MainMenu::ClickMainMenu_01(Button* _Btn)
+{
+	AcConverstionSelectionMenu->On();
+	AcMainMenu->Off();
+}
+
+void MainMenu::ClickMainMenu_02(Button* _Btn)
+{
+	AcDietSelectionMenu->On();
+	AcMainMenu->Off();
+}
+
+void MainMenu::ClickMainMenu_03(Button* _Btn)
+{
+	AcInformationWindowManager->On();
+	AcMainMenu->Off();
+}
+
+void MainMenu::ClickMainMenu_S(Button* _Btn)
+{
+	AcScheduleCalendar->On();
+	AcScheduleSelectionMenu->On();
+	AcMainMenu->Off();
 }
 
 

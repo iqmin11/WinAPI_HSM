@@ -1,7 +1,17 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/Button.h>
+
 class GameEngineRender;
 class GlobalButton;
+
+class StatusWindowManager;
+class ConverstionSelectionMenu;
+class DietSelectionMenu;
+class InformationWindowManager;
+
+class ScheduleCalendar;
+class ScheduleSelectionMenu;
 class MainMenu : public GameEngineActor
 {
 public:
@@ -21,6 +31,11 @@ public:
 		return ScheduleButton;
 	}
 
+	static MainMenu* GetAcMainMenu()
+	{
+		return AcMainMenu;
+	}
+	
 	void On() override;
 	void Off() override;
 
@@ -41,7 +56,26 @@ private:
 	float4 ScheduleButtonScale = { 200,40 };
 	float4 ScheduleButtonPos = { 0,40 };
 
+	static MainMenu* AcMainMenu;
+	static StatusWindowManager* AcStatusWindowManager;
+	static ConverstionSelectionMenu* AcConverstionSelectionMenu;
+	static DietSelectionMenu* AcDietSelectionMenu;
+	static InformationWindowManager* AcInformationWindowManager;
+
+	//Schedule
+	static ScheduleCalendar* AcScheduleCalendar;
+	static ScheduleSelectionMenu* AcScheduleSelectionMenu;
+
 	void SetMainMenuButtons();
+	void SetClickButton();
+
+	static void ClickMainMenu_01(Button* _Btn);
+	static void ClickMainMenu_00(Button* _Btn);
+	static void ClickMainMenu_02(Button* _Btn);
+	static void ClickMainMenu_03(Button* _Btn);
+
+	static void ClickMainMenu_S(Button* _Btn);
+
 	//static void ClickStatusWindowButton(Button* _Btn);
 };
 

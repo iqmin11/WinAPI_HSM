@@ -1,5 +1,6 @@
 #include "ClassSelectWindow.h"
 
+#include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/Button.h>
 //#include <GameEngineCore/GameEngineLevel.h>
 #include "RaisingSimLevel.h"
@@ -16,6 +17,11 @@
 #include "StrategyClass.h"
 #include "TheologyClass.h"
 
+#include "CubeDialog.h"
+#include "ScheduleSelectionMenu.h"
+#include "ScheduleCalendar.h"
+#include "SchedulingConfirmSelectionMenu.h"
+
 RaisingSimLevel* ClassSelectWindow::ParentLevel = nullptr;
 
 PaintingClass* ClassSelectWindow::AcPaintingClass = nullptr;
@@ -29,9 +35,13 @@ StrategyClass* ClassSelectWindow::AcStrategyClass = nullptr;
 ScienceClass* ClassSelectWindow::AcScienceClass = nullptr;
 PoetryClass* ClassSelectWindow::AcPoetryClass = nullptr;
 
+ScheduleCalendar* ClassSelectWindow::AcScheduleCalendar = nullptr;
+SchedulingConfirmSelectionMenu* ClassSelectWindow::AcSchedulingConfirmSelectionMenu = nullptr;
+ClassSelectWindow* ClassSelectWindow::AcClassSelectWindow = nullptr;
+
 ClassSelectWindow::ClassSelectWindow()
 {
-
+	AcClassSelectWindow = this;
 }
 
 ClassSelectWindow::~ClassSelectWindow()
@@ -72,6 +82,10 @@ void ClassSelectWindow::Off()
 void ClassSelectWindow::Start()
 {
 	ParentLevel = dynamic_cast<RaisingSimLevel*>(GetLevel());
+	AcCubeDialog = ParentLevel->GetAcCubeDialog();
+	AcScheduleCalendar = ScheduleCalendar::GetAcScheduleCalendar();
+	AcSchedulingConfirmSelectionMenu = ParentLevel->CreateActor<SchedulingConfirmSelectionMenu>(PM2ActorOrder::Menu2);
+
 	Painting = ParentLevel->CreateActor<IconButton>(PM2ActorOrder::Menu2_Button);
 	Dance = ParentLevel->CreateActor<IconButton>(PM2ActorOrder::Menu2_Button);
 	Magic = ParentLevel->CreateActor<IconButton>(PM2ActorOrder::Menu2_Button);
@@ -105,7 +119,25 @@ void ClassSelectWindow::Start()
 	AcStrategyClass = ParentLevel->AcStrategyClass;
 	AcTheologyClass = ParentLevel->AcTheologyClass;
 
-	//Painting->GetButton()->SetClickCallBack(ClickPainting);
+	SetButtonClick();
+
+	Off();
+}
+
+void ClassSelectWindow::Update(float _DeltaTime)
+{
+	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "딸에게 무엇을 가르치시겠습니\n까?");
+	
+	if (GameEngineInput::IsUp("EngineMouseRight"))
+	{
+		Off();
+		ScheduleSelectionMenu::GetAcScheduleSelectionMenu()->On();
+	}
+}
+
+void ClassSelectWindow::SetButtonClick()
+{
+	Painting->GetButton()->SetClickCallBack(ClickPainting);
 	//Dance->GetButton()->SetClickCallBack(ClickDance);
 	//Magic->GetButton()->SetClickCallBack(ClickMagic);
 	//Protocol->GetButton()->SetClickCallBack(ClickProtocol);
@@ -115,14 +147,14 @@ void ClassSelectWindow::Start()
 	//Strategy->GetButton()->SetClickCallBack(ClickStrategy);
 	//Science->GetButton()->SetClickCallBack(ClickScience);
 	//Poetry->GetButton()->SetClickCallBack(ClickPoetry);
-
-	Off();
 }
 
-//void ClassSelectWindow::ClickPainting(Button* _Button)
-//{
-//	AcPaintingClass->DoClassAndJob();
-//}
+void ClassSelectWindow::ClickPainting(Button* _Button)
+{
+	AcSchedulingConfirmSelectionMenu->On();
+	AcSchedulingConfirmSelectionMenu->SetScheduleState(ScheduleLabel::미술);
+	AcClassSelectWindow->Off();
+}
 //
 //void ClassSelectWindow::ClickDance(Button* _Button)
 //{

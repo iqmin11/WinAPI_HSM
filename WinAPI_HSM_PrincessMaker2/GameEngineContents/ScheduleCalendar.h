@@ -21,6 +21,11 @@ public:
 
 	void On() override;
 	void Off() override;
+	
+	static ScheduleCalendar* GetAcScheduleCalendar()
+	{
+		return AcScheduleCalendar;
+	}
 
 	void ScheduleSetting(ScheduleLabel _Schedule);
 	void CancelSchedule();
@@ -45,6 +50,8 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
+	static ScheduleCalendar* AcScheduleCalendar;
+
 	float4 ActorPos = {160,263};
 	Date Today = Date(1000,10,10);
 	Date NextDate = Date(1000, 10, 11);
@@ -80,5 +87,7 @@ private:
 	void UpdateDayNumRender();
 	void UpdateYearNumRender();
 	void UpdateMonthRender();
+
+
 };
 

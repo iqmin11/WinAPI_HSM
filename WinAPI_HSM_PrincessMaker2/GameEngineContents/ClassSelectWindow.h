@@ -6,6 +6,9 @@
 
 class RaisingSimLevel;
 class Button;
+class CubeDialog;
+class ScheduleCalendar;
+class SchedulingConfirmSelectionMenu;
 
 class DanceClass;
 class FencingClass;
@@ -42,9 +45,14 @@ public:
 protected:
 
 	void Start() override;
+	void Update(float _DeltaTime) override;
 
 private:
 	static RaisingSimLevel* ParentLevel;
+	CubeDialog* AcCubeDialog = nullptr;
+	static ScheduleCalendar* AcScheduleCalendar;
+	static SchedulingConfirmSelectionMenu* AcSchedulingConfirmSelectionMenu;
+	static ClassSelectWindow* AcClassSelectWindow;
 
 	static PaintingClass* AcPaintingClass;
 	static DanceClass* AcDanceClass;
@@ -87,7 +95,9 @@ private:
 	IconButton* Poetry = nullptr;
 	float4 Button10Pos = { 710 , 160 };
 
-	//static void ClickPainting(Button* _Button);
+	void SetButtonClick();
+
+	static void ClickPainting(Button* _Button);
 	//static void ClickDance(Button* _Button);
 	//static void ClickMagic(Button* _Button);
 	//static void ClickProtocol(Button* _Button);
