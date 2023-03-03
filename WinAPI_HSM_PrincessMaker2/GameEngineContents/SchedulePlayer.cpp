@@ -8,6 +8,8 @@
 #include "ScheduleDialog.h"
 #include "MainMenu.h"
 
+#include "SchedulePlayerStatusGauge1_1.h"
+
 #include "PaintingClass.h"
 #include "DanceClass.h"
 #include "FencingClass.h"
@@ -59,6 +61,8 @@ void SchedulePlayer::Start()
 	
 	AcFoodCostDialog = ParentLevel->CreateActor<FoodCostDialog>(PM2ActorOrder::Menu2);
 	AcScheduleDialog = ParentLevel->GetAcScheduleDialog();
+
+	AcSchedulePlayerStatusGauge1_1 = ParentLevel->CreateActor<SchedulePlayerStatusGauge1_1>(PM2ActorOrder::Menu2);
 	Off();
 }
 
@@ -81,14 +85,15 @@ void SchedulePlayer::Update(float _DeltaTime)
 			int Prev = Save.begin()->Order;
 
 			Time += _DeltaTime;
-			if (Time >= 1)
+			if (Time >= 1) // 스케줄이 진행되는 부분
 			{
 				Time = 0;
+				AcSchedulePlayerStatusGauge1_1->SetSchedule(Save.begin()->Schedule);
 				PlayOneDaySchedule();
 				Save.pop_front();
 			}
 
-			if (Save.size() == 0) // 여기서 끝남
+			if (Save.size() == 0) // 모든 스케줄이 끝나는 부분
 			{
 				FirstUpdateCheck = false;
 				FirstScheduleUpdateCheck = false;
@@ -101,7 +106,7 @@ void SchedulePlayer::Update(float _DeltaTime)
 
 			int Next = Save.begin()->Order;
 
-			if (Prev != Next)
+			if (Prev != Next) // 한주의 스케줄이 끝나는 부분
 			{
 				AnimationOff();
 				FirstScheduleUpdateCheck = false;
@@ -113,6 +118,7 @@ void SchedulePlayer::Update(float _DeltaTime)
 void SchedulePlayer::PlayOneDaySchedule()
 {
 	AcScheduleAnimationPlayer->On(); // 애니메이션 창을 띄운다
+	AcSchedulePlayerStatusGauge1_1->On();
 	switch (Save.begin()->Schedule)
 	{
 	case ScheduleLabel::무용:
@@ -175,5 +181,7 @@ void SchedulePlayer::AnimationOff()
 	AcScienceClass->Off();
 	AcStrategyClass->Off();
 	AcTheologyClass->Off();
+
+	AcSchedulePlayerStatusGauge1_1->Off();
 }
 

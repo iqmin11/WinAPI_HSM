@@ -33,6 +33,7 @@ class TheologyClass;
 class RaisingSimLevel;
 class FoodCostDialog;
 class ScheduleDialog;
+class SchedulePlayerStatusGauge1_1;
 class SchedulePlayer : public GameEngineActor
 {
 public:
@@ -76,7 +77,9 @@ private:
 
 	ScheduleAnimationPlayer* AcScheduleAnimationPlayer = nullptr;
 	ScheduleCalendar* AcScheduleCalendar = nullptr;
+	SchedulePlayerStatusGauge1_1* AcSchedulePlayerStatusGauge1_1 = nullptr;
 	
+
 	DanceClass* AcDanceClass = nullptr;
 	FencingClass* AcFencingClass = nullptr;
 	FightingClass* AcFightingClass = nullptr;

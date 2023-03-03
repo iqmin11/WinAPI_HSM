@@ -36,10 +36,14 @@ public:
 		Min = _Min;
 	}
 
-	//StatusName GetStatusName() const
-	//{
-	//	return Name;
-	//}
+	void SetMax(float _Max)
+	{
+		Max = _Max;
+	}
+
+	void SetNameRender(const std::string_view& _Name);
+	
+	
 
 protected:
 

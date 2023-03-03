@@ -48,6 +48,35 @@ public:
 		float Cooking = 0;
 		float Cleaning = 0;
 		float Temperament = 0;
+
+		/////////////////////////////
+
+		const float MaxConstitution = 999;
+		const float MaxStrength = 999;
+		const float MaxIntelligence = 999;
+		const float MaxRefinement = 999;
+		const float MaxCharisma = 999;
+		const float MaxMorality = 999;
+		const float MaxFaith = 999;
+		const float MaxSin = 999;
+		const float MaxSensitivity = 999;
+		const float MaxStress = 999;
+
+		const float MaxCombatSkill = 100;
+		const float MaxCombatAttack = 100;
+		const float MaxCombatDefense = 100;
+
+		const float MaxMagicSkill = 100;
+		const float MaxMagicAttack = 100;
+		const float MaxMagicDefense = 100;
+
+		const float MaxDecorum = 100;
+		const float MaxArt = 100;
+		const float MaxConversation = 100;
+
+		const float MaxCooking = 100;
+		const float MaxCleaning = 100;
+		const float MaxTemperament = 100;
 	};
 
 	Status OliveStatus = Status();

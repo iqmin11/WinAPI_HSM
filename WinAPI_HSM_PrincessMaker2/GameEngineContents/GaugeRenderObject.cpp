@@ -213,6 +213,12 @@ void GaugeRenderObject::SetPosition(float4 _Position)
 	UpdateValue(StatusValue);
 }
 
+void GaugeRenderObject::SetNameRender(const std::string_view& _Name)
+{
+	Name = _Name;
+	NameRender->SetText(Name, TextHeight, TextType, TextAlign::Left, TextColor, TextBoxScale);
+}
+
 
 
 
