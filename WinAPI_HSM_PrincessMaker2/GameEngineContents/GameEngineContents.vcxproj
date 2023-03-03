@@ -339,7 +339,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="SchedulePlayerStatusGauge1_1.h">
+    <ClInclude Include="SchedulePlayerGuage.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -682,7 +682,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="SchedulePlayerStatusGauge1_1.cpp">
+    <ClCompile Include="SchedulePlayerGuage.cpp">
       <SubType>
       </SubType>
     </ClCompile>

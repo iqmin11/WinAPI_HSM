@@ -8,7 +8,7 @@
 #include "ScheduleDialog.h"
 #include "MainMenu.h"
 
-#include "SchedulePlayerStatusGauge1_1.h"
+#include "SchedulePlayerGuage.h"
 
 #include "PaintingClass.h"
 #include "DanceClass.h"
@@ -62,20 +62,21 @@ void SchedulePlayer::Start()
 	AcFoodCostDialog = ParentLevel->CreateActor<FoodCostDialog>(PM2ActorOrder::Menu2);
 	AcScheduleDialog = ParentLevel->GetAcScheduleDialog();
 
-	AcSchedulePlayerStatusGauge1_1 = ParentLevel->CreateActor<SchedulePlayerStatusGauge1_1>(PM2ActorOrder::Menu2);
+	AcSchedulePlayerGuage = ParentLevel->CreateActor<SchedulePlayerGuage>(PM2ActorOrder::Menu2);
 	Off();
 }
 
 void SchedulePlayer::Update(float _DeltaTime)
 {
-	if (!FirstUpdateCheck)
+	if (!FirstUpdateCheck) // 한달의 스케줄 시작
 	{
 		FirstUpdateCheck = true;
+		PayDiet();
 		AcFoodCostDialog->On();
 	}
-	else if(!AcFoodCostDialog->IsUpdate() && Save.size() != 0 && !AcScheduleDialog->IsUpdate())
+	else if(!AcFoodCostDialog->IsUpdate())
 	{
-		if (!FirstScheduleUpdateCheck)
+		if (!FirstScheduleUpdateCheck)// 한주의 스케줄 시작
 		{
 			FirstScheduleUpdateCheck = true;
 			AcScheduleDialog->UpdateScheduleDialog(Save.begin()->Schedule, ScheduleSituation::ScheduleStart);
@@ -88,7 +89,7 @@ void SchedulePlayer::Update(float _DeltaTime)
 			if (Time >= 1) // 스케줄이 진행되는 부분
 			{
 				Time = 0;
-				AcSchedulePlayerStatusGauge1_1->SetSchedule(Save.begin()->Schedule);
+				AcSchedulePlayerGuage->SetSchedule(Save.begin()->Schedule);
 				PlayOneDaySchedule();
 				Save.pop_front();
 			}
@@ -118,7 +119,7 @@ void SchedulePlayer::Update(float _DeltaTime)
 void SchedulePlayer::PlayOneDaySchedule()
 {
 	AcScheduleAnimationPlayer->On(); // 애니메이션 창을 띄운다
-	AcSchedulePlayerStatusGauge1_1->On();
+	AcSchedulePlayerGuage->On();
 	switch (Save.begin()->Schedule)
 	{
 	case ScheduleLabel::무용:
@@ -182,6 +183,31 @@ void SchedulePlayer::AnimationOff()
 	AcStrategyClass->Off();
 	AcTheologyClass->Off();
 
-	AcSchedulePlayerStatusGauge1_1->Off();
+	AcSchedulePlayerGuage->Off();
+}
+
+void SchedulePlayer::PayDiet()
+{
+	Diet Value = Olive::OlivePlayer->GetOliveDiet();
+	switch (Value)
+	{
+	case Diet::Null:
+		break;
+	case Diet::무리하지_않는다:
+		Olive::OlivePlayer->GetGold() -= 30;
+		break;
+	case Diet::어쨌든_튼튼하게:
+		Olive::OlivePlayer->GetGold() -= 80;
+		break;
+	case Diet::얌전한_아이로:
+		Olive::OlivePlayer->GetGold() -= 10;
+		break;
+	case Diet::다이어트_시킨다:
+		Olive::OlivePlayer->GetGold() -= 5;
+		break;
+	default:
+		break;
+	}
+	
 }
 

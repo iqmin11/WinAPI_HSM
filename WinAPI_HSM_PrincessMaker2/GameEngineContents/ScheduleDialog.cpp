@@ -95,7 +95,7 @@ void ScheduleDialog::UpdateScheduleDialog(ScheduleLabel _Char, ScheduleSituation
 		switch (_Situ)
 		{
 		case ScheduleSituation::ScheduleStart:
-			SetUpdateText("마법사 패트남\n 「안녕하세요. 제가 마법교실의 선생입니다. 여러분과 함께 실용마법을 배우도록 하죠」");
+			SetUpdateText("마법사 패트남\n 「안녕하세요. 제가 마법교실의\n 선생입니다. 여러분과 함께 실\n용마법을 배우도록 하죠」");
 			break;
 		case ScheduleSituation::ScheduleEnd:
 			SetUpdateText("마법 끝");

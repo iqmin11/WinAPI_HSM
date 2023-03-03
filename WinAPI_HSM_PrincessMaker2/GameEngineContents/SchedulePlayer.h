@@ -33,7 +33,7 @@ class TheologyClass;
 class RaisingSimLevel;
 class FoodCostDialog;
 class ScheduleDialog;
-class SchedulePlayerStatusGauge1_1;
+class SchedulePlayerGuage;
 class SchedulePlayer : public GameEngineActor
 {
 public:
@@ -77,7 +77,7 @@ private:
 
 	ScheduleAnimationPlayer* AcScheduleAnimationPlayer = nullptr;
 	ScheduleCalendar* AcScheduleCalendar = nullptr;
-	SchedulePlayerStatusGauge1_1* AcSchedulePlayerStatusGauge1_1 = nullptr;
+	SchedulePlayerGuage* AcSchedulePlayerGuage = nullptr;
 	
 
 	DanceClass* AcDanceClass = nullptr;
@@ -99,7 +99,7 @@ private:
 	void PlayOneDaySchedule();
 	void AnimationOff();
 	
-
+	void PayDiet();
 	// 랜더러가 하나 있을것이고.
 	//GameEngineRender* BackRenderer = nullptr;
 	//std::list<std::string> AnimationName;

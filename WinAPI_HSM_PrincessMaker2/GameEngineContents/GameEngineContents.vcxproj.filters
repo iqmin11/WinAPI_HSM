@@ -237,7 +237,7 @@
     <ClInclude Include="ScheduleFinalConfirm.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower</Filter>
     </ClInclude>
-    <ClInclude Include="SchedulePlayerStatusGauge1_1.h">
+    <ClInclude Include="SchedulePlayerGuage.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower\SchedulePlayer</Filter>
     </ClInclude>
   </ItemGroup>
@@ -477,7 +477,7 @@
     <ClCompile Include="ScheduleFinalConfirm.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower</Filter>
     </ClCompile>
-    <ClCompile Include="SchedulePlayerStatusGauge1_1.cpp">
+    <ClCompile Include="SchedulePlayerGuage.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower\SchedulePlayer</Filter>
     </ClCompile>
   </ItemGroup>
