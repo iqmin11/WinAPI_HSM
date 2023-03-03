@@ -62,7 +62,6 @@ void ScheduleCalendar::ScheduleSetting(ScheduleLabel _Schedule)
 					ThisMonthSchedule[y][x]->ScheduleValue = _Schedule;
 					ThisMonthSchedule[y][x]->SetScheduleOrder(1);
 					FirstScheduleEndDate = ThisMonthSchedule[y][x]->DateValue;
-					Save.push_back(ScheduleSave(1, ThisMonthSchedule[y][x]->DateValue, _Schedule));
 					if (ThisMonthSchedule[y][x]->DateValue == LastDate)
 					{
 						ThisMonthSchedule[y][x]->ScheduleValue = _Schedule;
@@ -73,6 +72,7 @@ void ScheduleCalendar::ScheduleSetting(ScheduleLabel _Schedule)
 						// AnimationName.push_back("애니메이션이 있을것이다.");
 						return;
 					}
+					Save.push_back(ScheduleSave(1, ThisMonthSchedule[y][x]->DateValue, _Schedule));
 				}
 			}
 		}
@@ -93,7 +93,6 @@ void ScheduleCalendar::ScheduleSetting(ScheduleLabel _Schedule)
 					ThisMonthSchedule[y][x]->ScheduleValue = _Schedule;
 					ThisMonthSchedule[y][x]->SetScheduleOrder(2);
 					SecondScheduleEndDate = ThisMonthSchedule[y][x]->DateValue;
-					Save.push_back(ScheduleSave(2, ThisMonthSchedule[y][x]->DateValue, _Schedule));
 					if (ThisMonthSchedule[y][x]->DateValue == LastDate)
 					{
 						ThisMonthSchedule[y][x]->ScheduleValue = _Schedule;
@@ -103,6 +102,7 @@ void ScheduleCalendar::ScheduleSetting(ScheduleLabel _Schedule)
 						ScheduleSetEnd = true;
 						return;
 					}
+					Save.push_back(ScheduleSave(2, ThisMonthSchedule[y][x]->DateValue, _Schedule));
 				}
 			}
 		}

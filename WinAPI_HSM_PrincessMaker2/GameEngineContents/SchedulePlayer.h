@@ -71,7 +71,6 @@ private:
 	float Time = 1;
 	std::list<ScheduleSave> Save = std::list<ScheduleSave>();
 	bool FirstUpdateCheck = false;
-	bool IsScheduleEnd = true;
 
 	RaisingSimLevel* ParentLevel = nullptr;
 

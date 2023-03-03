@@ -64,10 +64,9 @@ void SchedulePlayer::Start()
 
 void SchedulePlayer::Update(float _DeltaTime)
 {
-	if (FirstUpdateCheck == false)
+	if (!FirstUpdateCheck)
 	{
 		FirstUpdateCheck = true;
-		IsScheduleEnd = false;
 		AcFoodCostDialog->On();
 	}
 	else if(!AcFoodCostDialog->IsUpdate() && Save.size() != 0 && !AcScheduleDialog->IsUpdate())
@@ -89,15 +88,14 @@ void SchedulePlayer::Update(float _DeltaTime)
 				Save.pop_front();
 			}
 
-			if (Save.size() == 0)
+			if (Save.size() == 0) // 여기서 끝남
 			{
 				FirstUpdateCheck = false;
-				IsScheduleEnd = true;
-				AnimationOff();
-				Off();
+				FirstScheduleUpdateCheck = false;
 				MainMenu::GetAcMainMenu()->On();
 				AcScheduleCalendar->Reset();
-				FirstScheduleUpdateCheck = false;
+				AnimationOff();
+				Off();
 				return;
 			}
 
