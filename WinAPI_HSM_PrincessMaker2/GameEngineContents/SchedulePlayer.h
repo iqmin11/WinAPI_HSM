@@ -5,14 +5,31 @@
 
 struct ScheduleSave
 {
+	ScheduleSave(int _Order, Date _Date, ScheduleLabel _Schedule)
+		: Order(_Order),
+		DateSave(_Date),
+		Schedule(_Schedule) {}
+
 	int Order = 0;
 	Date DateSave = Date();
-	ScheduleLabel ScheduleSave;
+	ScheduleLabel Schedule = ScheduleLabel::Null;
 };
 
 class ScheduleAnimationPlayer;
 class ScheduleCalendar;
+
 class PaintingClass;
+class DanceClass;
+class FencingClass;
+class FightingClass;
+class MagicClass;
+class PaintingClass;
+class PoetryClass;
+class ProtocolClass;
+class ScienceClass;
+class StrategyClass;
+class TheologyClass;
+
 class RaisingSimLevel;
 class FoodCostDialog;
 class ScheduleDialog;
@@ -28,9 +45,19 @@ public:
 	SchedulePlayer(SchedulePlayer&& _Other) noexcept = delete;
 	SchedulePlayer& operator=(const SchedulePlayer& _Other) = delete;
 	SchedulePlayer& operator=(SchedulePlayer&& _Other) noexcept = delete;
-	void PlayFirstOrderSchedule(float _DeltaTime);
-	void PlaySecondOrderSchedule(float _DeltaTime);
-	void PlayThirdOrderSchedule(float _DeltaTime);
+	//void PlayFirstOrderSchedule(float _DeltaTime);
+	//void PlaySecondOrderSchedule(float _DeltaTime);
+	//void PlayThirdOrderSchedule(float _DeltaTime);
+
+	static SchedulePlayer* GetAcSchedulePlayer()
+	{
+		return AcSchedulePlayer;
+	}
+
+	std::list<ScheduleSave>& GetSave()
+	{
+		return Save;
+	}
 
 	void Off() override;
 
@@ -39,34 +66,40 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
-	float Time = 0;
-	ScheduleSave Save[6][7] = {};
+	static SchedulePlayer* AcSchedulePlayer;
+
+	float Time = 1;
+	std::list<ScheduleSave> Save = std::list<ScheduleSave>();
 	bool FirstUpdateCheck = false;
-	bool ScheduleEnd = true;
+	bool IsScheduleEnd = true;
 
 	RaisingSimLevel* ParentLevel = nullptr;
 
 	ScheduleAnimationPlayer* AcScheduleAnimationPlayer = nullptr;
 	ScheduleCalendar* AcScheduleCalendar = nullptr;
+	
+	DanceClass* AcDanceClass = nullptr;
+	FencingClass* AcFencingClass = nullptr;
+	FightingClass* AcFightingClass = nullptr;
+	MagicClass* AcMagicClass = nullptr;
 	PaintingClass* AcPaintingClass = nullptr;
+	PoetryClass* AcPoetryClass = nullptr;
+	ProtocolClass* AcProtocolClass = nullptr;
+	ScienceClass* AcScienceClass = nullptr;
+	StrategyClass* AcStrategyClass = nullptr;
+	TheologyClass* AcTheologyClass = nullptr;
+
 	FoodCostDialog* AcFoodCostDialog = nullptr;
 	ScheduleDialog* AcScheduleDialog = nullptr;
 	
+	bool FirstScheduleUpdateCheck = false;
 
 	void PlayOneDaySchedule();
+	void AnimationOff();
 	
-	void SchedulePlayerStart();
-	void SchedulePlayerUpdate(float _DeltaTime);
-	//void PlayerEnd();
-
-	void SetScheduleDialog(ScheduleLabel _Mug);
-	void SetFirstScheduleDialog();
-	void SetSecondScheduleDialog();
-	void SetThirdScheduleDialog();
-
 
 	// 랜더러가 하나 있을것이고.
-	GameEngineRender* BackRenderer = nullptr;
-	std::list<std::string> AnimationName;
+	//GameEngineRender* BackRenderer = nullptr;
+	//std::list<std::string> AnimationName;
 };
 

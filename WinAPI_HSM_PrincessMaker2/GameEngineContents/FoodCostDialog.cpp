@@ -1,5 +1,6 @@
 #include "FoodCostDialog.h"
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEnginePlatform/GameEngineInput.h>
 
 FoodCostDialog::FoodCostDialog()
 {
@@ -36,6 +37,11 @@ void FoodCostDialog::Start()
 
 void FoodCostDialog::Update(float _DeltaTime)
 {
+	if (GameEngineInput::IsUp("EngineMouseRight"))
+	{
+		Off();
+	}
+
 	OliveDiet = Olive::OlivePlayer->GetOliveDiet();
 	SetRender();
 	Dialog::Update(_DeltaTime);

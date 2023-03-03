@@ -465,6 +465,8 @@ enum class ScheduleLabel
 	바캉스,
 	간호,
 	요양,
-	감시
+	감시,
+
+	End,
 
 };
