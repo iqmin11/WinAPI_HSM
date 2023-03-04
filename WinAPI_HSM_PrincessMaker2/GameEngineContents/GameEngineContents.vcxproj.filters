@@ -208,16 +208,16 @@
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClInclude>
     <ClInclude Include="InformationWindowManager.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\3. Information</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information</Filter>
     </ClInclude>
     <ClInclude Include="HelthInformationWindow.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\3. Information\InnerWindow</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information\InnerWindow</Filter>
     </ClInclude>
     <ClInclude Include="PersonalInformationWindow.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\3. Information\InnerWindow</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information\InnerWindow</Filter>
     </ClInclude>
     <ClInclude Include="PhysicalStatusWindow.h">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\3. Information\InnerWindow</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information\InnerWindow</Filter>
     </ClInclude>
     <ClInclude Include="ScheduleSelectionMenu.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu</Filter>
@@ -238,6 +238,9 @@
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower</Filter>
     </ClInclude>
     <ClInclude Include="SchedulePlayerGuage.h">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower\SchedulePlayer</Filter>
+    </ClInclude>
+    <ClInclude Include="ScheduleMessageBox.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower\SchedulePlayer</Filter>
     </ClInclude>
   </ItemGroup>
@@ -448,16 +451,16 @@
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor</Filter>
     </ClCompile>
     <ClCompile Include="InformationWindowManager.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\3. Information</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information</Filter>
     </ClCompile>
     <ClCompile Include="HelthInformationWindow.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\3. Information\InnerWindow</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information\InnerWindow</Filter>
     </ClCompile>
     <ClCompile Include="PersonalInformationWindow.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\3. Information\InnerWindow</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information\InnerWindow</Filter>
     </ClCompile>
     <ClCompile Include="PhysicalStatusWindow.cpp">
-      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\3. Information\InnerWindow</Filter>
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information\InnerWindow</Filter>
     </ClCompile>
     <ClCompile Include="ScheduleSelectionMenu.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu</Filter>
@@ -478,6 +481,9 @@
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower</Filter>
     </ClCompile>
     <ClCompile Include="SchedulePlayerGuage.cpp">
+      <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower\SchedulePlayer</Filter>
+    </ClCompile>
+    <ClCompile Include="ScheduleMessageBox.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower\SchedulePlayer</Filter>
     </ClCompile>
   </ItemGroup>
@@ -575,10 +581,10 @@
     <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower\SchedulePlayer">
       <UniqueIdentifier>{1789703b-bd30-444d-aa52-d3470a907bfb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\3. Information">
+    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information">
       <UniqueIdentifier>{917329dc-93c9-4900-92f8-e8f81a759af7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\3. Information\InnerWindow">
+    <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information\InnerWindow">
       <UniqueIdentifier>{bfdabb54-27ea-4b38-8ce3-fde249b32f97}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

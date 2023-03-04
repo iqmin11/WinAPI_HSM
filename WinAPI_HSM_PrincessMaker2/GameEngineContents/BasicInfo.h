@@ -111,6 +111,14 @@ private:
 	NumberRenderObject HipRender = NumberRenderObject();
 	float4 HipRenderPos = { 79, 89 };
 	float4 HipRenderScale = { 10, 20 };
+
+	bool DiseaseState = false;
+	GameEngineRender* DiseaseIcon = nullptr;
+	float4 DiseaseIconPos = { 0,27 };
+
+	bool DelinquentState = false;
+	GameEngineRender* DelinquentIcon = nullptr;
+	float4 DelinquentIconPos = { 40,27 };
 };
 
 

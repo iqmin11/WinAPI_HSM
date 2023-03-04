@@ -20,7 +20,8 @@ void FencingClass::Start()
 	SetObj2(PM2RenderOrder::Menu2_Obj_2, 12, 15, { -85, 12 });
 	SetObj3(PM2RenderOrder::Menu2_Obj_2, 16, 20, { -155, 12 });
 	SetObj4(PM2RenderOrder::Menu2_Obj_2, 21, 24, { 5, -20 });
-	GetStatusVarianceMin().SetStatus({.CombatSkill = 0, .CombatAttack = 1});
-	GetStatusVarianceMax().SetStatus({ .CombatSkill = 1, .CombatAttack = 1 });
+	GetStatusVarianceMin().SetStatus({ .Stress = 0, .CombatSkill = 0, .CombatAttack = 1});
+	GetStatusVarianceMax().SetStatus({ .Stress = 1,.CombatSkill = 1, .CombatAttack = 1 });
+	SetPayGold(-40);
 	ClassesAndJobs::Start();
 }

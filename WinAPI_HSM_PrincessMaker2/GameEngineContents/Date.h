@@ -226,9 +226,14 @@ public:
 	Date operator + (int _Value)
 	{
 		Date Result = *this;
-		if (31 < _Value)
+		for (size_t i = 0; i < _Value; i++)
 		{
-			MsgAssert("31보다 큰숫자 넣기 금지")
+			++Result;
+		}
+		/*Date Result = *this;
+		if (28 < _Value)
+		{
+			MsgAssert("28보다 큰숫자 넣기 금지")
 		}
 
 		Result.Day += _Value;
@@ -242,7 +247,7 @@ public:
 				Result.Month = 1;
 			}
 		}
-		SetWeekDay();
+		SetWeekDay();*/
 		
 		return Result;
 	}

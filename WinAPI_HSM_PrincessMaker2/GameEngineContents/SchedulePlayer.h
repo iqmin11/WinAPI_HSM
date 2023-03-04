@@ -34,6 +34,7 @@ class RaisingSimLevel;
 class FoodCostDialog;
 class ScheduleDialog;
 class SchedulePlayerGuage;
+class ScheduleMessageBox;
 class SchedulePlayer : public GameEngineActor
 {
 public:
@@ -61,6 +62,7 @@ public:
 	}
 
 	void Off() override;
+	static bool IsPartOfScheduleEnd;
 
 protected:
 	void Start() override;
@@ -78,7 +80,7 @@ private:
 	ScheduleAnimationPlayer* AcScheduleAnimationPlayer = nullptr;
 	ScheduleCalendar* AcScheduleCalendar = nullptr;
 	SchedulePlayerGuage* AcSchedulePlayerGuage = nullptr;
-	
+	ScheduleMessageBox* AcScheduleMessageBox = nullptr;
 
 	DanceClass* AcDanceClass = nullptr;
 	FencingClass* AcFencingClass = nullptr;
@@ -96,12 +98,14 @@ private:
 	
 	bool FirstScheduleUpdateCheck = false;
 
+	int DayCount = 0;
+
 	void PlayOneDaySchedule();
 	void AnimationOff();
 	
+	void AnimationPlay();
+	void AnimationStop();
+	
 	void PayDiet();
-	// 랜더러가 하나 있을것이고.
-	//GameEngineRender* BackRenderer = nullptr;
-	//std::list<std::string> AnimationName;
 };
 

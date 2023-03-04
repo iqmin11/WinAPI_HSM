@@ -44,7 +44,7 @@ void HelthInformationWindow::Start()
 	PopularityRender->SetText(std::to_string(static_cast<int>(Popularity)), TextHeight, TextType, TextAlign::Left, TextColor, TextBoxScale2);
 	PopularityRender->SetPosition(PopularityRenderPos);
 	DiseaseStateRender = CreateRender(PM2RenderOrder::Menu1_Display);
-	DiseaseState = Olive::OlivePlayer->IsDiseaseState();
+	DiseaseState = Olive::OlivePlayer->IsDisease();
 	switch (DiseaseState)
 	{
 	case false:
@@ -117,9 +117,9 @@ void HelthInformationWindow::UpdateHelthInformationWindow()
 		PopularityRender->SetText(std::to_string(static_cast<int>(Popularity)), TextHeight, TextType, TextAlign::Left, TextColor, TextBoxScale2);
 	}
 
-	if (DiseaseState != Olive::OlivePlayer->IsDiseaseState())
+	if (DiseaseState != Olive::OlivePlayer->IsDisease())
 	{
-		DiseaseState = Olive::OlivePlayer->IsDiseaseState();
+		DiseaseState = Olive::OlivePlayer->IsDisease();
 		switch (DiseaseState)
 		{
 		case false :
@@ -131,9 +131,9 @@ void HelthInformationWindow::UpdateHelthInformationWindow()
 		}
 	}
 	
-	if (DelinquentState != Olive::OlivePlayer->IsDelinquentState())
+	if (DelinquentState != Olive::OlivePlayer->IsDelinquent())
 	{
-		DelinquentState = Olive::OlivePlayer->IsDelinquentState();
+		DelinquentState = Olive::OlivePlayer->IsDelinquent();
 		switch (DelinquentState)
 		{
 		case false:

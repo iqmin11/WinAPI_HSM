@@ -80,18 +80,12 @@ void RaisingSimLevel::Loading()
 
 	
 	AcUIManager = CreateActor<UIManager>();
+	GameEngineInput::CreateKey("3", '3');
+	GameEngineInput::CreateKey("4", '4');
 }
 
 void RaisingSimLevel::Update(float _DeltaTime)
 {
-	//Time += _DeltaTime;
-	//if (1.0 <= Time)
-	//{
-	//	Time = 0;
-	//	AcPaintingClass->DoClassAndJob();
-	//} //°í¹ÎÁß ....
-
-
 	if (GameEngineInput::IsDown("LevelChange"))
 	{
 		GameEngineCore::GetInst()->ChangeLevel("RPG");
@@ -105,6 +99,16 @@ void RaisingSimLevel::Update(float _DeltaTime)
 	if (GameEngineInput::IsDown("2"))
 	{
 		++Today;
+	}
+
+	if (GameEngineInput::IsDown("3"))
+	{
+		Olive::OlivePlayer->GetGold() += 10000;
+	}
+
+	if (GameEngineInput::IsDown("4"))
+	{
+		Today = Today + 10;
 	}
 
 }

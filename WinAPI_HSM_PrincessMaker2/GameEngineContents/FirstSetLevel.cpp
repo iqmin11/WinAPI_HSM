@@ -3,6 +3,7 @@
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineBase/GameEngineFile.h>
 
 #include "MousePoint.h"
 #include "Olive.h"
@@ -171,9 +172,22 @@ void FirstSetLevel::ImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PressButton.BMP"));//Test`
 	
 	Dir.Move("Olive");
+	Dir.Move("Head");
+	std::vector<GameEngineFile> AllFile = Dir.GetAllFile();
+	for (size_t i = 0; i < AllFile.size(); i++)
+	{
+		GameEngineResources::GetInst().ImageLoad(AllFile[i].GetFullPath());
+	}
 
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("body_10_nomal.BMP"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("head_10_nomal.BMP"));
+	Dir.MoveParentToDirectory("Body");
+	Dir.Move("Body");
+
+	AllFile.clear();
+	AllFile = Dir.GetAllFile();
+	for (size_t i = 0; i < AllFile.size(); i++)
+	{
+		GameEngineResources::GetInst().ImageLoad(AllFile[i].GetFullPath());
+	}
 	
 	Dir.MoveParentToDirectory("ContentsResources");
 	Dir.Move("ContentsResources");

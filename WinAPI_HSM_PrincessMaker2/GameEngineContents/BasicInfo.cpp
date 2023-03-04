@@ -88,6 +88,18 @@ void BasicInfo::Start()
 	BloodTypeRender ->SetScale(BloodTypeRenderScale);
 	BloodTypeRender ->SetPosition(BloodTypeRenderPos);
 	//BloodTypeRender ->SetFrame(static_cast<int>(OliveBloodType));
+
+	DiseaseIcon = CreateRender("Icon.bmp", PM2RenderOrder::Menu0_Display);
+	DiseaseIcon->SetScale(IconScale);
+	DiseaseIcon->SetPosition(DiseaseIconPos);
+	DiseaseIcon->SetFrame(static_cast<int>(IconCode::질병상태));
+	DiseaseIcon->Off();
+
+	DelinquentIcon = CreateRender("Icon.bmp", PM2RenderOrder::Menu0_Display);
+	DelinquentIcon->SetScale(IconScale);
+	DelinquentIcon->SetPosition(DelinquentIconPos);
+	DelinquentIcon->SetFrame(static_cast<int>(IconCode::불량상태));
+	DelinquentIcon->Off();
 }
 
 void BasicInfo::Update(float _DeltaTime)
@@ -163,6 +175,34 @@ void BasicInfo::Update(float _DeltaTime)
 	{
 		Hip = Olive::OlivePlayer->GetHip();
 		HipRender.SetValue(static_cast<int>(Hip));
+	}
+
+	if (DiseaseState != Olive::OlivePlayer->IsDisease())
+	{
+		DiseaseState = Olive::OlivePlayer->IsDisease();
+		switch (DiseaseState)
+		{
+		case true:
+			DiseaseIcon->On();
+			break;
+		case false:
+			DiseaseIcon->Off();
+			break;
+		}
+	}
+
+	if (DelinquentState != Olive::OlivePlayer->IsDelinquent())
+	{
+		DelinquentState = Olive::OlivePlayer->IsDelinquent();
+		switch (DelinquentState)
+		{
+		case true:
+			DelinquentIcon->On();
+			break;
+		case false:
+			DelinquentIcon->Off();
+			break;
+		}
 	}
 }
 

@@ -32,6 +32,18 @@ public:
 	
 	void DoClassAndJob();
 	
+	void PlayObj();
+	void StopObj();
+
+	void SetPayGold(int _Pay)
+	{
+		Pay = _Pay;
+	}
+
+	int GetPayGold() const
+	{
+		return Pay;
+	}
 
 protected:
 	void Start() override;
@@ -49,9 +61,15 @@ protected:
 	void SetObj4(PM2RenderOrder _Order, int _Start, int _End, const float4& _Pos);
 	void SetObj5(PM2RenderOrder _Order, int _Start, int _End, const float4& _Pos);
 
+	
+
+
+
 private:
 	RaisingSimLevel* ParentLevel = nullptr;
 	
+	int Pay = 0;
+
 	Olive::Status Beginner_StatusVarianceMin = {};
 	Olive::Status Beginner_StatusVarianceMax = {};
 	Olive::Status Beginner_StatusVariance = {};
@@ -72,6 +90,7 @@ private:
 	std::string SuccessState = "Success";
 	std::string FailState = "Fail";
 	std::string DontState = "Dont";
+	std::string StopState = "Stop";
 
 	GameEngineRender* Object1 = nullptr;
 	float4 Object1Pos = float4::Zero;

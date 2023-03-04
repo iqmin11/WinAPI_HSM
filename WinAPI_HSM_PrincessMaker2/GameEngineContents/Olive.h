@@ -4,6 +4,7 @@
 #include "ContentsEnums.h"
 
 class GameEngineRender;
+class RaisingSimLevel;
 class Olive : public GameEngineActor
 {
 public:
@@ -13,6 +14,7 @@ public:
 		Status& operator +=(const Status& _Value);
 		bool operator ==(const Status& _Value);
 		bool operator !=(const Status& _Value);
+		Status& operator =(const Status& _Value);
 
 		void SetStatus(const Status& _Para);
 		void UpdateMoreThanMin();
@@ -280,7 +282,7 @@ public:
 
 	float GetDiseaseIndex()
 	{
-		float DiseaseIndex = OliveStatus.Stress - OliveStatus.Constitution;
+		DiseaseIndex = OliveStatus.Stress - OliveStatus.Constitution;
 		if (DiseaseIndex < 0)
 		{
 			DiseaseIndex = 0;
@@ -292,7 +294,7 @@ public:
 	{
 		float Higher = 0.0f;
 		OliveStatus.Morality > OliveStatus.Faith ? Higher = OliveStatus.Morality : Higher = OliveStatus.Faith;
-		float Delinquency = OliveStatus.Stress - Higher;
+		Delinquency = OliveStatus.Stress - Higher;
 		if (Delinquency < 0)
 		{
 			Delinquency = 0;
@@ -300,20 +302,14 @@ public:
 		return Delinquency;
 	}
 
-	bool IsDiseaseState() const
-	{
-		return DiseaseState;
-	}
-
-	bool IsDelinquentState() const
-	{
-		return DelinquentState;
-	}
-
 	float GetPopularity() const
 	{
 		return Popularity;
 	}
+
+	bool IsFat();
+	bool IsDisease();
+	bool IsDelinquent();
 
 protected:
 	void Start() override;
@@ -321,6 +317,10 @@ protected:
 	void Render(float _Time) override;
 
 private:
+	RaisingSimLevel* ParentLevel = nullptr;
+	
+	std::string HeadImageName = "Head_";
+	std::string BodyImageName = "Body_";
 	GameEngineRender* HeadRender = nullptr;
 	GameEngineRender* BodyRender = nullptr;
 
@@ -341,15 +341,35 @@ private:
 	PhysicalCondition OlivePhysical = PhysicalCondition();
 	Diet OliveDiet = Diet::무리하지_않는다;
 
-	int Gold = 500;
+	int Gold = 10000;
 
-	bool DiseaseState = 0;
-	bool DelinquentState = 0;
+	bool DiseaseState = false;
+	float DiseaseIndex = 0;
+	bool DelinquentState = false;
+	float Delinquency = 0;
+	bool FatState = false;
+
 
 	float Popularity = 0;
 
 	Date FatherBirthDay = Date();
 	int FatherAge = 10;
+
+	bool MonthChange = false;
+	void UpdateMonthChange();
+	void BloodTypeMonthUpdate();
+	void DietMonthUpdate();
+	void OliveStateUpdate();
+
+	bool UpdateFat();
+	bool UpdateDisease();
+	bool UpdateDelinquent();
+
+	void OliveRenderUpdate();
+	bool IsBirthDay = false;
+	void OliveBirthDayCheck();
+
+	
 
 };
 

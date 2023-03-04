@@ -6,6 +6,7 @@
 #include <GameEngineBase/GameEnginePath.h>
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineRender.h>
+#include "RaisingSimLevel.h"
 
 #include "ContentsEnums.h"
 
@@ -238,16 +239,18 @@ void Olive::UpdateZodiac()
 
 void Olive::Start()
 {
+	ParentLevel = dynamic_cast<RaisingSimLevel*>(GetLevel());
+	
 	OlivePlayer = this;
 
 	SetPos(GameEngineWindow::GetScreenSize().half());
-	BodyRender = CreateRender("body_10_nomal.BMP", PM2RenderOrder::Olive); 
+	BodyRender = CreateRender("Body_10_Common.BMP", PM2RenderOrder::Olive); 
 	BodyRender->SetScaleToImage();
-	SetMove(float4::Down * ((GameEngineWindow::GetScreenSize().half()) - (BodyRender->GetImage()->GetImageScale().half())));
-	HeadRender = CreateRender("head_10_nomal.BMP", PM2RenderOrder::Olive);
+	HeadRender = CreateRender("Head_10_Nomal_Common.BMP", PM2RenderOrder::Olive);
 	HeadRender->SetScaleToImage();
-	HeadRender->SetPosition(float4::Up * ((BodyRender->GetImage()->GetImageScale().half()) + (HeadRender->GetImage()->GetImageScale().half())));
-
+	BodyRender->SetPosition({ 0,300 - BodyRender->GetScale().hy()});
+	HeadRender->SetPosition({ 0,300 - HeadRender->GetScale().hy() - BodyRender->GetScale().y});
+	
 	Off();
 }
 
@@ -255,10 +258,15 @@ void Olive::Update(float _DeltaTime)
 {
 	OliveStatus.UpdateMoreThanMin();
 	OliveStatus.UpdateLessThanMax();
+	UpdateMonthChange();
+
 	UpdateFighter();
 	UpdateMagical();
 	UpdateSocial();
 	UpdateHouseWork();
+
+	OliveBirthDayCheck();
+
 }
 
 void Olive::Render(float _Time)
@@ -272,6 +280,236 @@ void Olive::Render(float _Time)
 		ActorPos.ix() + 5,
 		ActorPos.iy() + 5
 	);*/ // 디버깅용
+}
+
+void Olive::UpdateMonthChange()
+{
+	if (ParentLevel->GetToday() == Date::GetMonthLastDate(ParentLevel->GetToday()) && MonthChange == false)
+	{
+		MonthChange = true;
+		//무엇무엇을하고
+		BloodTypeMonthUpdate();
+		DietMonthUpdate();
+		OliveStateUpdate();
+		OliveRenderUpdate();
+	}
+	
+	if (ParentLevel->GetToday().GetDay() == 1 && MonthChange == true)
+	{
+		MonthChange = false;
+	}
+}
+
+void Olive::BloodTypeMonthUpdate()
+{
+	switch (OliveBloodType)
+	{
+	case BloodType::Null:
+		break;
+	case BloodType::A:
+		OliveStatus.Morality += 3;
+		OliveStatus.Stress += 2;
+		break;
+	case BloodType::B:
+		OliveStatus.Stress -= 2;
+		break;
+	case BloodType::O:
+		break;
+	case BloodType::AB:
+		OliveStatus.Sensitivity += 2;
+		break;
+	default:
+		break;
+	}
+}
+
+void Olive::DietMonthUpdate()
+{
+	GameEngineRandom Random = GameEngineRandom();
+	switch (OliveDiet)
+	{
+	case Diet::Null:
+		break;
+	case Diet::무리하지_않는다:
+		if (OliveAge <= 15)
+		{
+			OlivePhysical.Weight += Random.RandomFloat(0.19f, 0.22f);
+		}
+		else if (OliveAge > 15)
+		{
+			OlivePhysical.Weight += Random.RandomFloat(0.05f, 0.08f);
+		}
+		break;
+	case Diet::어쨌든_튼튼하게:
+		if (OliveAge <= 15)
+		{
+			OlivePhysical.Weight += Random.RandomFloat(0.28f, 0.35f);
+		}
+		else if (OliveAge > 15)
+		{
+			OlivePhysical.Weight += Random.RandomFloat(0.16f, 0.20f);
+		}
+		OliveStatus.Constitution += 10;
+		break;
+	case Diet::얌전한_아이로:
+		if (OliveAge <= 15)
+		{
+			OlivePhysical.Weight += Random.RandomFloat(0.10f, 0.13f);
+		}
+		else if (OliveAge > 15)
+		{
+			OlivePhysical.Weight += Random.RandomFloat(0.01f, 0.04f);
+		}
+		OliveStatus.Constitution += -5;
+		break;
+	case Diet::다이어트_시킨다:
+		if (OliveAge <= 15)
+		{
+			OlivePhysical.Weight += Random.RandomFloat(-0.6f, -0.0f);
+		}
+		else if (OliveAge > 15)
+		{
+			OlivePhysical.Weight += Random.RandomFloat(-1.00f, -0.5f);
+		}
+		OliveStatus.Constitution += -20; 
+		break;
+	default:
+		break;
+	}
+}
+
+void Olive::OliveStateUpdate()
+{
+	UpdateFat();
+	UpdateDisease();
+	UpdateDelinquent();
+}
+
+bool Olive::UpdateFat()
+{
+	if (OlivePhysical.Weight > OlivePhysical.Height * 0.95 - 87 - OliveAge)
+	{
+		FatState = true;
+		return FatState;
+	}
+	else
+	{
+		FatState = false;
+		return FatState;
+	}
+}
+
+bool Olive::UpdateDisease()
+{
+	if (OliveStatus.Stress > OliveStatus.Constitution)
+	{
+		DiseaseState = true;
+		return DiseaseState;
+	}
+	else
+	{
+		DiseaseState = false;
+		return DiseaseState;
+	}
+}
+
+bool Olive::UpdateDelinquent()
+{
+	if (OliveStatus.Stress > OliveStatus.Morality || OliveStatus.Stress > OliveStatus.Faith)
+	{
+		DelinquentState = true;
+		return DelinquentState;
+	}
+	else
+	{
+		DelinquentState = false;
+		return DelinquentState;
+	}
+}
+
+void Olive::OliveRenderUpdate()
+{
+	HeadImageName += std::to_string(OliveAge);
+	if (DiseaseState)
+	{
+		HeadImageName += "_Sick";
+	}
+	else if (DelinquentState)
+	{
+		HeadImageName += "_Degrade";
+	}
+	else if (OliveStatus.Stress == 0)
+	{
+		HeadImageName += "_Happy";
+	}
+	else
+	{
+		HeadImageName += "_Nomal";
+	}
+
+	if (!FatState)
+	{
+		HeadImageName += "_Common";
+	}
+	else
+	{
+		HeadImageName += "_Fat";
+	}
+
+	HeadImageName += ".bmp";
+	HeadRender->SetImage(HeadImageName);
+	HeadRender->SetScaleToImage();
+	HeadImageName = "Head_";
+
+	BodyImageName += std::to_string(OliveAge);
+	if (!FatState)
+	{
+		BodyImageName += "_Common";
+	}
+	else
+	{
+		BodyImageName += "_Fat";
+	}
+	
+	BodyImageName += ".bmp";
+	BodyRender->SetImage(BodyImageName);
+	BodyRender->SetScaleToImage();
+	BodyImageName = "Body_";
+
+	BodyRender->SetPosition({ 0,300 - BodyRender->GetScale().hy() });
+	HeadRender->SetPosition({ 0,300 - HeadRender->GetScale().hy() - BodyRender->GetScale().y });
+}
+
+void Olive::OliveBirthDayCheck()
+{
+	
+	if (IsBirthDay == false && ParentLevel->GetToday().GetYear() != 1210 && ParentLevel->GetToday().GetMonth() == OliveBirthDay.GetMonth() && ParentLevel->GetToday().GetDay() == OliveBirthDay.GetDay())
+	{
+		OliveAge++;
+		IsBirthDay = true;
+		OliveRenderUpdate();
+	}
+
+	if (IsBirthDay == true && ParentLevel->GetToday().GetMonth() != OliveBirthDay.GetMonth() || ParentLevel->GetToday().GetDay() != OliveBirthDay.GetDay())
+	{
+		IsBirthDay = false;
+	}
+}
+
+
+bool Olive::IsFat()
+{
+	return FatState;
+}
+
+bool Olive::IsDisease()
+{
+	return DiseaseState;
+}
+
+bool Olive::IsDelinquent()
+{
+	return DelinquentState;
 }
 
 Olive::Status& Olive::Status::operator+=(const Status& _Value)
@@ -345,6 +583,42 @@ bool Olive::Status::operator==(const Status& _Value)
 bool Olive::Status::operator!=(const Status& _Value)
 {
 	return !Status::operator==(_Value);
+}
+
+Olive::Status& Olive::Status::operator=(const Status& _Value)
+{
+	Constitution  = _Value.Constitution;
+	Strength      = _Value.Strength;
+	Intelligence  = _Value.Intelligence;
+	Refinement    = _Value.Refinement;
+	Charisma      = _Value.Charisma;
+	Morality      = _Value.Morality;
+	Faith         = _Value.Faith;
+	Sin           = _Value.Sin;
+	Sensitivity   = _Value.Sensitivity;
+	Stress        = _Value.Stress;
+
+	Fighter       = _Value.Fighter;
+	CombatSkill   = _Value.CombatSkill;
+	CombatAttack  = _Value.CombatAttack;
+	CombatDefense = _Value.CombatDefense;
+
+	Magical       = _Value.Magical;
+	MagicSkill    = _Value.MagicSkill;
+	MagicAttack   = _Value.MagicAttack;
+	MagicDefense  = _Value.MagicDefense;
+
+	Social        = _Value.Social;
+	Decorum       = _Value.Decorum;
+	Art           = _Value.Art;
+	Conversation  = _Value.Conversation;
+
+	HouseWork     = _Value.HouseWork;
+	Cooking       = _Value.Cooking;
+	Cleaning      = _Value.Cleaning;
+	Temperament   = _Value.Temperament;
+
+	return *this;
 }
 
 void Olive::Status::SetStatus(const Status& _Para)
