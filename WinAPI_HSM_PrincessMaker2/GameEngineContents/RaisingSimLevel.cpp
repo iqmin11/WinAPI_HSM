@@ -82,13 +82,18 @@ void RaisingSimLevel::Loading()
 	AcUIManager = CreateActor<UIManager>();
 	GameEngineInput::CreateKey("3", '3');
 	GameEngineInput::CreateKey("4", '4');
+	GameEngineInput::CreateKey("5", '5');
+	GameEngineInput::CreateKey("q", 'q');
+	GameEngineInput::CreateKey("w", 'w');
+	GameEngineInput::CreateKey("e", 'e');
+	GameEngineInput::CreateKey("r", 'r');
 }
 
 void RaisingSimLevel::Update(float _DeltaTime)
 {
 	if (GameEngineInput::IsDown("LevelChange"))
 	{
-		GameEngineCore::GetInst()->ChangeLevel("RPG");
+		GameEngineCore::GetInst()->ChangeLevel("Ending");
 	}
 
 	if (GameEngineInput::IsDown("1"))
@@ -103,13 +108,25 @@ void RaisingSimLevel::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown("3"))
 	{
-		Olive::OlivePlayer->GetGold() += 10000;
+		GoToBeforBirthDay();
 	}
 
 	if (GameEngineInput::IsDown("4"))
 	{
-		Today = Today + 10;
+		OliveAllStatMax();
 	}
+
+	if (GameEngineInput::IsDown("5"))
+	{
+		OliveAllStatMaxExeptSin();
+	}
+
+	if (Today.GetMonth() == AcOlive->GetOliveBirthDay().GetMonth() && Today.GetDay() == AcOlive->GetOliveBirthDay().GetDay() && AcOlive->GetOliveAge() == 18)
+	{
+		GameEngineCore::GetInst()->ChangeLevel("Ending");
+	}
+	
+	OliveStateChange();
 
 }
 
@@ -212,6 +229,104 @@ void RaisingSimLevel::ImageLoad()
 	{
 		GameEngineResources::GetInst().ImageLoad(AllFile[i].GetFullPath());
 	}
+}
+
+void RaisingSimLevel::GoToBeforBirthDay()
+{
+	Today.SetDate(Today.GetYear() + 1, AcOlive->GetOliveBirthDay().GetMonth(), AcOlive->GetOliveBirthDay().GetDay() -1);
+}
+
+void RaisingSimLevel::OliveAllStatMax()
+{
+	Olive::OlivePlayer->OliveStatus.Constitution = Olive::OlivePlayer->OliveStatus.MaxConstitution;
+	Olive::OlivePlayer->OliveStatus.Strength = Olive::OlivePlayer->OliveStatus.MaxStrength;
+	Olive::OlivePlayer->OliveStatus.Intelligence = Olive::OlivePlayer->OliveStatus.MaxIntelligence;
+	Olive::OlivePlayer->OliveStatus.Refinement = Olive::OlivePlayer->OliveStatus.MaxRefinement;
+	Olive::OlivePlayer->OliveStatus.Charisma = Olive::OlivePlayer->OliveStatus.MaxCharisma;
+	Olive::OlivePlayer->OliveStatus.Morality = Olive::OlivePlayer->OliveStatus.MaxMorality;
+	Olive::OlivePlayer->OliveStatus.Faith = Olive::OlivePlayer->OliveStatus.MaxFaith;
+	Olive::OlivePlayer->OliveStatus.Sin = Olive::OlivePlayer->OliveStatus.MaxSin;
+	Olive::OlivePlayer->OliveStatus.Sensitivity = Olive::OlivePlayer->OliveStatus.MaxSensitivity;
+	//Olive::OlivePlayer->OliveStatus.Stress = Olive::OlivePlayer->OliveStatus.MaxStress;
+	Olive::OlivePlayer->OliveStatus.CombatSkill = Olive::OlivePlayer->OliveStatus.MaxCombatSkill;
+	Olive::OlivePlayer->OliveStatus.CombatAttack = Olive::OlivePlayer->OliveStatus.MaxCombatAttack;
+	Olive::OlivePlayer->OliveStatus.CombatDefense = Olive::OlivePlayer->OliveStatus.MaxCombatDefense;
+	Olive::OlivePlayer->OliveStatus.MagicSkill = Olive::OlivePlayer->OliveStatus.MaxMagicSkill;
+	Olive::OlivePlayer->OliveStatus.MagicAttack = Olive::OlivePlayer->OliveStatus.MaxMagicAttack;
+	Olive::OlivePlayer->OliveStatus.MagicDefense = Olive::OlivePlayer->OliveStatus.MaxMagicDefense;
+	Olive::OlivePlayer->OliveStatus.Decorum = Olive::OlivePlayer->OliveStatus.MaxDecorum;
+	Olive::OlivePlayer->OliveStatus.Art = Olive::OlivePlayer->OliveStatus.MaxArt;
+	Olive::OlivePlayer->OliveStatus.Conversation = Olive::OlivePlayer->OliveStatus.MaxConversation;
+	Olive::OlivePlayer->OliveStatus.Cooking = Olive::OlivePlayer->OliveStatus.MaxCooking;
+	Olive::OlivePlayer->OliveStatus.Cleaning = Olive::OlivePlayer->OliveStatus.MaxCleaning;
+	Olive::OlivePlayer->OliveStatus.Temperament = Olive::OlivePlayer->OliveStatus.MaxTemperament;
+}
+
+void RaisingSimLevel::OliveAllStatMaxExeptSin()
+{
+	Olive::OlivePlayer->OliveStatus.Constitution = Olive::OlivePlayer->OliveStatus.MaxConstitution;
+	Olive::OlivePlayer->OliveStatus.Strength = Olive::OlivePlayer->OliveStatus.MaxStrength;
+	Olive::OlivePlayer->OliveStatus.Intelligence = Olive::OlivePlayer->OliveStatus.MaxIntelligence;
+	Olive::OlivePlayer->OliveStatus.Refinement = Olive::OlivePlayer->OliveStatus.MaxRefinement;
+	Olive::OlivePlayer->OliveStatus.Charisma = Olive::OlivePlayer->OliveStatus.MaxCharisma;
+	Olive::OlivePlayer->OliveStatus.Morality = Olive::OlivePlayer->OliveStatus.MaxMorality;
+	Olive::OlivePlayer->OliveStatus.Faith = Olive::OlivePlayer->OliveStatus.MaxFaith;
+	Olive::OlivePlayer->OliveStatus.Sin = 0;
+	Olive::OlivePlayer->OliveStatus.Sensitivity = Olive::OlivePlayer->OliveStatus.MaxSensitivity;
+	//Olive::OlivePlayer->OliveStatus.Stress = Olive::OlivePlayer->OliveStatus.MaxStress;
+	Olive::OlivePlayer->OliveStatus.CombatSkill = Olive::OlivePlayer->OliveStatus.MaxCombatSkill;
+	Olive::OlivePlayer->OliveStatus.CombatAttack = Olive::OlivePlayer->OliveStatus.MaxCombatAttack;
+	Olive::OlivePlayer->OliveStatus.CombatDefense = Olive::OlivePlayer->OliveStatus.MaxCombatDefense;
+	Olive::OlivePlayer->OliveStatus.MagicSkill = Olive::OlivePlayer->OliveStatus.MaxMagicSkill;
+	Olive::OlivePlayer->OliveStatus.MagicAttack = Olive::OlivePlayer->OliveStatus.MaxMagicAttack;
+	Olive::OlivePlayer->OliveStatus.MagicDefense = Olive::OlivePlayer->OliveStatus.MaxMagicDefense;
+	Olive::OlivePlayer->OliveStatus.Decorum = Olive::OlivePlayer->OliveStatus.MaxDecorum;
+	Olive::OlivePlayer->OliveStatus.Art = Olive::OlivePlayer->OliveStatus.MaxArt;
+	Olive::OlivePlayer->OliveStatus.Conversation = Olive::OlivePlayer->OliveStatus.MaxConversation;
+	Olive::OlivePlayer->OliveStatus.Cooking = Olive::OlivePlayer->OliveStatus.MaxCooking;
+	Olive::OlivePlayer->OliveStatus.Cleaning = Olive::OlivePlayer->OliveStatus.MaxCleaning;
+	Olive::OlivePlayer->OliveStatus.Temperament = Olive::OlivePlayer->OliveStatus.MaxTemperament;
+}
+
+void RaisingSimLevel::OliveStateChange()
+{
+	if (GameEngineInput::IsDown("q"))
+	{
+		Olive::OlivePlayer->OliveStatus.Constitution = 100;
+		Olive::OlivePlayer->OliveStatus.Stress = 150; // 아픈상태
+		Olive::OlivePlayer->OliveStateUpdate();
+		Olive::OlivePlayer->OliveRenderUpdate();
+	}
+	
+	if (GameEngineInput::IsDown("w"))
+	{
+		Olive::OlivePlayer->OliveStatus.Constitution = 100;
+		Olive::OlivePlayer->OliveStatus.Stress = 50;
+		Olive::OlivePlayer->OliveStatus.Morality = 0; // 불량상태
+		Olive::OlivePlayer->OliveStatus.Faith = 0; // 불량상태
+		Olive::OlivePlayer->OliveStateUpdate();
+		Olive::OlivePlayer->OliveRenderUpdate();
+	}
+
+	if (GameEngineInput::IsDown("e"))
+	{
+		Olive::OlivePlayer->OliveStatus.Stress = 0; //행복상태
+		Olive::OlivePlayer->OliveStateUpdate();
+		Olive::OlivePlayer->OliveRenderUpdate();
+	}
+
+	if (GameEngineInput::IsDown("r"))
+	{
+		Olive::OlivePlayer->OliveStatus.Stress = 1; // 일반상태
+		Olive::OlivePlayer->OliveStatus.Morality = 100; // 일반상태
+		Olive::OlivePlayer->OliveStatus.Faith = 100; // 일반상태
+		Olive::OlivePlayer->OliveStateUpdate();
+		Olive::OlivePlayer->OliveRenderUpdate();
+	}
+
+	
+
+
 }
 
 

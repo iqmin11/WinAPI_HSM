@@ -104,4 +104,9 @@ private:
 
 	void SoundLoad();
 	void ImageLoad();
+
+	void GoToBeforBirthDay();
+	void OliveAllStatMax();
+	void OliveAllStatMaxExeptSin();
+	void OliveStateChange();
 };

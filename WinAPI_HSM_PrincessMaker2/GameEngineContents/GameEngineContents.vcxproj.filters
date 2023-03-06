@@ -243,6 +243,24 @@
     <ClInclude Include="ScheduleMessageBox.h">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower\SchedulePlayer</Filter>
     </ClInclude>
+    <ClInclude Include="FirstScene.h">
+      <Filter>ContentsLevel\6. EndingLevel\EndingActor</Filter>
+    </ClInclude>
+    <ClInclude Include="SecondScene.h">
+      <Filter>ContentsLevel\6. EndingLevel\EndingActor</Filter>
+    </ClInclude>
+    <ClInclude Include="ThirdScene.h">
+      <Filter>ContentsLevel\6. EndingLevel\EndingActor</Filter>
+    </ClInclude>
+    <ClInclude Include="FourthScene.h">
+      <Filter>ContentsLevel\6. EndingLevel\EndingActor</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingPortrait.h">
+      <Filter>ContentsLevel\6. EndingLevel\EndingActor</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingDialog.h">
+      <Filter>ContentsLevel\6. EndingLevel\EndingActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PM2Core.cpp" />
@@ -486,6 +504,24 @@
     <ClCompile Include="ScheduleMessageBox.cpp">
       <Filter>ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\8. Schedule\TopMenu\Lower\Lower\Lower\SchedulePlayer</Filter>
     </ClCompile>
+    <ClCompile Include="FirstScene.cpp">
+      <Filter>ContentsLevel\6. EndingLevel\EndingActor</Filter>
+    </ClCompile>
+    <ClCompile Include="SecondScene.cpp">
+      <Filter>ContentsLevel\6. EndingLevel\EndingActor</Filter>
+    </ClCompile>
+    <ClCompile Include="ThirdScene.cpp">
+      <Filter>ContentsLevel\6. EndingLevel\EndingActor</Filter>
+    </ClCompile>
+    <ClCompile Include="FourthScene.cpp">
+      <Filter>ContentsLevel\6. EndingLevel\EndingActor</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingPortrait.cpp">
+      <Filter>ContentsLevel\6. EndingLevel\EndingActor</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingDialog.cpp">
+      <Filter>ContentsLevel\6. EndingLevel\EndingActor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ContentsLevel">
@@ -586,6 +622,9 @@
     </Filter>
     <Filter Include="ContentsLevel\4. RaisingSimLevel\RaisingSimActor\MainMenu\3. Information\InnerWindow">
       <UniqueIdentifier>{bfdabb54-27ea-4b38-8ce3-fde249b32f97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentsLevel\6. EndingLevel\EndingActor">
+      <UniqueIdentifier>{3ebf1223-3dd0-4bf5-b35a-964ce07753c8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -429,7 +429,14 @@ bool Olive::UpdateDelinquent()
 
 void Olive::OliveRenderUpdate()
 {
-	HeadImageName += std::to_string(OliveAge);
+	int AgeCopy = OliveAge;
+
+	if (OliveAge >= 18)
+	{
+		AgeCopy = 17;
+	}
+
+	HeadImageName += std::to_string(AgeCopy);
 	if (DiseaseState)
 	{
 		HeadImageName += "_Sick";
@@ -461,7 +468,7 @@ void Olive::OliveRenderUpdate()
 	HeadRender->SetScaleToImage();
 	HeadImageName = "Head_";
 
-	BodyImageName += std::to_string(OliveAge);
+	BodyImageName += std::to_string(AgeCopy);
 	if (!FatState)
 	{
 		BodyImageName += "_Common";

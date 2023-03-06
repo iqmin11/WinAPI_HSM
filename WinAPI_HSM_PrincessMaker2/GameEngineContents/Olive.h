@@ -310,6 +310,8 @@ public:
 	bool IsFat();
 	bool IsDisease();
 	bool IsDelinquent();
+	void OliveStateUpdate();
+	void OliveRenderUpdate();
 
 protected:
 	void Start() override;
@@ -359,13 +361,11 @@ private:
 	void UpdateMonthChange();
 	void BloodTypeMonthUpdate();
 	void DietMonthUpdate();
-	void OliveStateUpdate();
 
 	bool UpdateFat();
 	bool UpdateDisease();
 	bool UpdateDelinquent();
 
-	void OliveRenderUpdate();
 	bool IsBirthDay = false;
 	void OliveBirthDayCheck();
 
