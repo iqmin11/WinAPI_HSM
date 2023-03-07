@@ -470,3 +470,12 @@ enum class ScheduleLabel
 	End,
 
 };
+
+enum class Season
+{
+	Null = -1,
+	Spring,
+	Summer,
+	Fall,
+	Winter
+};

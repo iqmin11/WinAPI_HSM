@@ -1,7 +1,9 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include "ContentsEnums.h"
 
 class GameEngineRender;
+class RaisingSimLevel;
 class Flower : public GameEngineActor
 {
 public:
@@ -15,7 +17,7 @@ public:
 	Flower& operator=(const Flower& _Other) = delete;
 	Flower& operator=(Flower&& _Other) noexcept = delete;
 
-	void ChangeFlower();
+	void UpdateFlower();
 
 protected:
 	void Start() override;
@@ -23,12 +25,13 @@ protected:
 	void Render(float _Time) override;
 
 private:
-	GameEngineRender* FlowerRender = nullptr;
 	GameEngineRender* SpringFlower = nullptr;
 	GameEngineRender* SummerFlower = nullptr;
 	GameEngineRender* FallFlower = nullptr;
 	GameEngineRender* WinterFlower = nullptr;
 	GameEngineRender* DiseaseFlower = nullptr;
 
+	Season TodaySeason = Season::Null;
+	RaisingSimLevel* ParentLevel = nullptr;
 };
 

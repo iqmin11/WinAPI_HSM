@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include "ContentsEnums.h"
+#include "RaisingSimLevel.h"
 
 Flower::Flower()
 {
@@ -11,6 +12,11 @@ Flower::Flower()
 Flower::~Flower()
 {
 
+}
+
+void Flower::UpdateFlower()
+{
+	
 }
 
 void Flower::Start()
@@ -31,13 +37,46 @@ void Flower::Start()
 	DiseaseFlower = CreateRender("flower_disease.bmp", PM2RenderOrder::BackGroundObj);
 	DiseaseFlower->SetScaleToImage();
 	DiseaseFlower->Off();
-	FlowerRender = SpringFlower;
+
+	ParentLevel = dynamic_cast<RaisingSimLevel*>(GetLevel());
 
 }
 
 void Flower::Update(float _DeltaTime)
 {
-	FlowerRender->On();
+	if (TodaySeason != ParentLevel->GetTodaySeason())
+	{
+		TodaySeason = ParentLevel->GetTodaySeason();
+		switch (TodaySeason)
+		{
+		case Season::Spring:
+			SpringFlower->On();
+			SummerFlower->Off();
+			FallFlower->Off();
+			WinterFlower->Off();
+			break;
+		case Season::Summer:
+			SpringFlower->Off();
+			SummerFlower->On();
+			FallFlower->Off();
+			WinterFlower->Off();
+			break;
+		case Season::Fall:
+			SpringFlower->Off();
+			SummerFlower->Off();
+			FallFlower->On();
+			WinterFlower->Off();
+			break;
+		case Season::Winter:
+			SpringFlower->Off();
+			SummerFlower->Off();
+			FallFlower->Off();
+			WinterFlower->On();
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void Flower::Render(float _Time)

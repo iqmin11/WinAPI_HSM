@@ -87,6 +87,8 @@ void RaisingSimLevel::Loading()
 	GameEngineInput::CreateKey("w", 'w');
 	GameEngineInput::CreateKey("e", 'e');
 	GameEngineInput::CreateKey("r", 'r');
+	GameEngineInput::CreateKey("a", 'a');
+	GameEngineInput::CreateKey("s", 's');
 }
 
 void RaisingSimLevel::Update(float _DeltaTime)
@@ -127,7 +129,7 @@ void RaisingSimLevel::Update(float _DeltaTime)
 	}
 	
 	OliveStateChange();
-
+	UpdateSeason();
 }
 
 void RaisingSimLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
@@ -233,7 +235,7 @@ void RaisingSimLevel::ImageLoad()
 
 void RaisingSimLevel::GoToBeforBirthDay()
 {
-	Today.SetDate(Today.GetYear() + 1, AcOlive->GetOliveBirthDay().GetMonth(), AcOlive->GetOliveBirthDay().GetDay() -1);
+	Today.SetDate(Today.GetYear() + 1, AcOlive->GetOliveBirthDay().GetMonth(), AcOlive->GetOliveBirthDay().GetDay()-1);
 }
 
 void RaisingSimLevel::OliveAllStatMax()
@@ -324,9 +326,27 @@ void RaisingSimLevel::OliveStateChange()
 		Olive::OlivePlayer->OliveRenderUpdate();
 	}
 
-	
+}
 
-
+void RaisingSimLevel::UpdateSeason()
+{
+	int Month = Today.GetMonth();
+	if (Month >= 3 && Month < 6)
+	{
+		TodaySeason = Season::Spring;
+	}
+	else if (Month >= 6 && Month < 9)
+	{
+		TodaySeason = Season::Summer;
+	}
+	else if (Month >= 9 && Month < 12)
+	{
+		TodaySeason = Season::Fall;
+	}
+	else if (Month >= 1 && Month < 3 || Month == 12)
+	{
+		TodaySeason = Season::Winter;
+	}
 }
 
 

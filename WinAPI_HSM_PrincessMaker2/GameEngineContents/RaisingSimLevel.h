@@ -84,12 +84,18 @@ public:
 		return AcUIManager;
 	}
 
+	Season GetTodaySeason() const
+	{
+		return TodaySeason;
+	}
+
 protected:
 
 
 private:
 	Olive* AcOlive = nullptr;
 	Date Today = {1000,10,10};
+	Season TodaySeason = Season::Null;
 
 	static CubeDialog* AcCubeDialog;
 	static ScheduleDialog* AcScheduleDialog;
@@ -109,4 +115,5 @@ private:
 	void OliveAllStatMax();
 	void OliveAllStatMaxExeptSin();
 	void OliveStateChange();
+	void UpdateSeason();
 };
