@@ -94,8 +94,7 @@ void EndingLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 	AcFourthScene->Off();
 	AcEndingPortrait->Off();
 	BGMPlayer.Stop();
-
-	//AcOlive->SetOliveAge(17);
+	AcOlive->SetOliveAge(17);
 }
 
 void EndingLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
