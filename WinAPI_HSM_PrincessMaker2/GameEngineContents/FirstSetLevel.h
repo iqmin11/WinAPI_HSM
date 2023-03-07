@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 enum class ActorState
 {
@@ -40,8 +41,8 @@ public:
 
 	void Loading() override;
 	void Update(float _DeltaTime) override;
-	void LevelChangeEnd(GameEngineLevel* _NextLevel) override {};
-	void LevelChangeStart(GameEngineLevel* _PrevLevel) override {};
+	void LevelChangeEnd(GameEngineLevel* _NextLevel) override;
+	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 	
 protected:
 
@@ -59,6 +60,8 @@ private:
 	SetPlayerAge* AcSetPlayerAge = nullptr;
 	PlayerCalendar* AcPlayerCalendar = nullptr;
 	SetOliveBloodType* AcSetOliveBloodType = nullptr;
+
+	GameEngineSoundPlayer BGMPlayer = GameEngineSoundPlayer();
 
 	void SoundLoad();
 	void ImageLoad();

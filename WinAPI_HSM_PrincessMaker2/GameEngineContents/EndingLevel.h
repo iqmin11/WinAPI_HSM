@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 
 enum class Ending
@@ -88,7 +89,6 @@ public:
 	void Loading() override;
 	void Update(float _DeltaTime) override;
 	void LevelChangeEnd(GameEngineLevel* _NextLevel) override;
-
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 
 	Ending* GetOliveEnding()
@@ -116,7 +116,8 @@ private:
 	FourthScene* AcFourthScene = nullptr;
 
 	EndingPortrait* AcEndingPortrait = nullptr;
-	
+	GameEngineSoundPlayer BGMPlayer = GameEngineSoundPlayer();
+
 
 	void ImageLoad();
 	void SoundLoad();

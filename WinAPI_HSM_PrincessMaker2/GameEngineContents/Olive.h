@@ -307,6 +307,11 @@ public:
 		return Popularity;
 	}
 
+	void SetOliveAge(int _Age)
+	{
+		OliveAge = _Age;
+	}
+
 	bool IsFat();
 	bool IsDisease();
 	bool IsDelinquent();

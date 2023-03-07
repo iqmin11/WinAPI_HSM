@@ -65,6 +65,8 @@ void SchedulePlayer::Start()
 	AcScheduleDialog = ParentLevel->GetAcScheduleDialog();
 	AcSchedulePlayerGuage = ParentLevel->CreateActor<SchedulePlayerGuage>(PM2ActorOrder::Menu2);
 	AcScheduleMessageBox = ParentLevel->CreateActor<ScheduleMessageBox>(PM2ActorOrder::Menu2);
+
+	BGMPlayer = ParentLevel->GetBGMPlayer();
 	
 	Off();
 }
@@ -76,6 +78,8 @@ void SchedulePlayer::Update(float _DeltaTime)
 		FirstUpdateCheck = true;
 		PayDiet();
 		AcFoodCostDialog->On();
+		BGMPlayer->Stop();
+		*BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("13_Training.mp3");
 	}
 	else if(!AcFoodCostDialog->IsUpdate())
 	{
@@ -109,6 +113,24 @@ void SchedulePlayer::Update(float _DeltaTime)
 				MainMenu::GetAcMainMenu()->On();
 				AcScheduleCalendar->Reset();
 				Off();
+				BGMPlayer->Stop();
+				switch (ParentLevel->GetTodaySeason())
+				{
+				case Season::Spring:
+					*BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("04_Main_screen_(Spring).mp3");
+					break;
+				case Season::Summer:
+					*BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("05_Main_screen_(Summer).mp3");
+					break;
+				case Season::Fall:
+					*BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("06_Main_screen_(Autumn).mp3");
+					break;
+				case Season::Winter:
+					*BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("07_Main_screen_(Winter).mp3");
+					break;
+				default:
+					break;
+				}
 				return;
 			}
 

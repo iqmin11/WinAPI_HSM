@@ -222,6 +222,12 @@ void OpeningLevel::Update(float _DeltaTime)
 	}
 	else if (122 <= Time && 144 > Time)//(122 <= Time && 143 > Time)
 	{
+		if (BGMChange == false)
+		{
+			BGMChange = true;
+			BGMPlayer.Stop();
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("03_Opening_2.mp3");
+		}
 		AcCutScene->OnCutScene(3);
 		AcOpeningDate->Off();
 		if (125 <= Time && 130 > Time)
@@ -383,10 +389,12 @@ void OpeningLevel::Update(float _DeltaTime)
 void OpeningLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	dynamic_cast<RaisingSimLevel*>(_NextLevel)->SetToday({ 1210, Olive::OlivePlayer->GetOliveBirthDay().GetMonth(), Olive::OlivePlayer->GetOliveBirthDay().GetDay() });
+	BGMPlayer.Stop();
 }
 
 void OpeningLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("02_Opening_1.mp3");
 	AcOlive = Olive::OlivePlayer;
 	AcOpeningDate->UpdateOliveBirthDay();
 	FatherName = AcOlive->GetOliveLastName();
@@ -454,6 +462,14 @@ void OpeningLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void OpeningLevel::SoundLoad()
 {
+	GameEngineDirectory Dir;
+
+	Dir.MoveParentToDirectory("ContentsResources");
+	Dir.Move("ContentsResources");
+	Dir.Move("Sound");
+
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("02_Opening_1.mp3"));
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("03_Opening_2.mp3"));
 }
 
 void OpeningLevel::ImageLoad()

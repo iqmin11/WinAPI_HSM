@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 class OpeningCredit;
 class Cutscene;
@@ -45,6 +46,9 @@ private:
 	OpeningDate* AcOpeningDate = nullptr;
 	Logo* AcLogo = nullptr;
 	float Time = 0.0f;
+
+	GameEngineSoundPlayer BGMPlayer = GameEngineSoundPlayer();
+	bool BGMChange = false;
 
 	void SoundLoad();
 	void ImageLoad();

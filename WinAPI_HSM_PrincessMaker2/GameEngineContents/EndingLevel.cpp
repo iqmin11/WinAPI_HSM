@@ -31,6 +31,7 @@ void EndingLevel::Loading()
 	AcThirdScene = CreateActor<ThirdScene>(PM2ActorOrder::BackGround);
 	AcFourthScene = CreateActor<FourthScene>(PM2ActorOrder::BackGround);
 	AcEndingPortrait = CreateActor<EndingPortrait>(PM2ActorOrder::BackGround);
+
 }
 
 void EndingLevel::Update(float _DeltaTime)
@@ -92,10 +93,14 @@ void EndingLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 	AcThirdScene->Off();
 	AcFourthScene->Off();
 	AcEndingPortrait->Off();
+	BGMPlayer.Stop();
+
+	//AcOlive->SetOliveAge(17);
 }
 
 void EndingLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("30_Ending.mp3");
 	AcOlive = Olive::OlivePlayer;
 	if (AcOlive->OliveStatus.Fighter >= 300 && AcOlive->OliveStatus.Magical >= 200 && AcOlive->OliveStatus.Sin >= 500)
 	{
@@ -192,6 +197,13 @@ void EndingLevel::ImageLoad()
 
 void EndingLevel::SoundLoad()
 {
+	GameEngineDirectory Dir;
+
+	Dir.MoveParentToDirectory("ContentsResources");
+	Dir.Move("ContentsResources");
+	Dir.Move("Sound");
+
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("30_Ending.mp3"));
 }
 
 int EndingLevel::EstimateGrade(float _Estimate)

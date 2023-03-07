@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "Date.h"
 #include "ContentsEnums.h"
 
@@ -51,7 +52,7 @@ public:
 
 	void Loading() override;
 	void Update(float _DeltaTime) override;
-	void LevelChangeEnd(GameEngineLevel* _NextLevel) override {};
+	void LevelChangeEnd(GameEngineLevel* _NextLevel) override;
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 
 	void SetToday(Date _Today)
@@ -89,6 +90,11 @@ public:
 		return TodaySeason;
 	}
 
+	GameEngineSoundPlayer* GetBGMPlayer()
+	{
+		return &BGMPlayer;
+	}
+
 protected:
 
 
@@ -104,6 +110,7 @@ private:
 	Paint* AcPaint= nullptr; 
 	UIManager* AcUIManager = nullptr;
 
+	GameEngineSoundPlayer BGMPlayer = GameEngineSoundPlayer();
 	
 	float Time = 0;
 
@@ -116,4 +123,9 @@ private:
 	void OliveAllStatMaxExeptSin();
 	void OliveStateChange();
 	void UpdateSeason();
+
+	void BGMUpdate();
+	
+	bool IsFirstMonthOfSeason();
+	bool SeasonChange = false;
 };

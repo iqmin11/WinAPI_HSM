@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include "Date.h"
 #include "ContentsEnums.h"
+#include <GameEngineCore/GameEngineResources.h>
 
 struct ScheduleSave
 {
@@ -99,6 +100,9 @@ private:
 	bool FirstScheduleUpdateCheck = false;
 
 	int DayCount = 0;
+
+	GameEngineSoundPlayer* BGMPlayer = nullptr;
+
 
 	void PlayOneDaySchedule();
 	void AnimationOff();

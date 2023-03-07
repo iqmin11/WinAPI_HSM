@@ -1,6 +1,5 @@
 #include "FirstSetLevel.h"
 #include <GameEngineBase/GameEngineDirectory.h>
-#include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineBase/GameEngineFile.h>
@@ -51,6 +50,7 @@ void FirstSetLevel::Loading()
 	{
 		GameEngineInput::CreateKey("ESC", VK_ESCAPE);
 	}
+
 }
 
 void FirstSetLevel::Update(float _DeltaTime)
@@ -152,11 +152,30 @@ void FirstSetLevel::Update(float _DeltaTime)
 		break;
 	}
 
+
+
+}
+
+void FirstSetLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
+{
+	BGMPlayer.Stop();
+}
+
+void FirstSetLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("01_Profile_determination.mp3");
+	BGMPlayer.LoopCount(10000);
 }
 
 void FirstSetLevel::SoundLoad()
 {
+	GameEngineDirectory Dir;
 
+	Dir.MoveParentToDirectory("ContentsResources");
+	Dir.Move("ContentsResources");
+	Dir.Move("Sound");
+
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("01_Profile_determination.mp3"));
 }
 
 void FirstSetLevel::ImageLoad()

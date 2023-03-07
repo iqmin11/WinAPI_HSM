@@ -127,9 +127,15 @@ void RaisingSimLevel::Update(float _DeltaTime)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("Ending");
 	}
-	
+
 	OliveStateChange();
 	UpdateSeason();
+	BGMUpdate();
+}
+
+void RaisingSimLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
+{
+	BGMPlayer.Stop();
 }
 
 void RaisingSimLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
@@ -137,11 +143,40 @@ void RaisingSimLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	AcOlive = Olive::OlivePlayer;
 	Olive::OlivePlayer->On();
 	AcUIManager->GetMainMenu()->Off();
-	AcCubeDialog->On();
+	AcCubeDialog->UpdateCubeDialog(CubeFace::Nomal, "「주인님, 안녕하십니까. 집사 \n큐브 입니다.」");
+	UpdateSeason();
+	switch (TodaySeason)
+	{
+	case Season::Spring:
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("04_Main_screen_(Spring).mp3");
+		break;
+	case Season::Summer:
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("05_Main_screen_(Summer).mp3");
+		break;
+	case Season::Fall:
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("06_Main_screen_(Autumn).mp3");
+		break;
+	case Season::Winter:
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("07_Main_screen_(Winter).mp3");
+		break;
+	default:
+		break;
+	}
 }
 
 void RaisingSimLevel::SoundLoad()
 {
+	GameEngineDirectory Dir;
+
+	Dir.MoveParentToDirectory("ContentsResources");
+	Dir.Move("ContentsResources");
+	Dir.Move("Sound");
+
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("04_Main_screen_(Spring).mp3"));
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("05_Main_screen_(Summer).mp3"));
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("06_Main_screen_(Autumn).mp3"));
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("07_Main_screen_(Winter).mp3"));
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("13_Training.mp3"));
 }
 
 void RaisingSimLevel::ImageLoad()
@@ -347,6 +382,48 @@ void RaisingSimLevel::UpdateSeason()
 	{
 		TodaySeason = Season::Winter;
 	}
+}
+
+void RaisingSimLevel::BGMUpdate()
+{
+	if (IsFirstMonthOfSeason() && !SeasonChange && Date::GetMonthLastDate(Today) == Today)
+	{
+		SeasonChange = true;
+		switch (TodaySeason)
+		{
+		case Season::Spring:
+			BGMPlayer.Stop();
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("04_Main_screen_(Spring).mp3");
+			break;
+		case Season::Summer:
+			BGMPlayer.Stop();
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("05_Main_screen_(Summer).mp3");
+			break;
+		case Season::Fall:
+			BGMPlayer.Stop();
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("06_Main_screen_(Autumn).mp3");
+			break;
+		case Season::Winter:
+			BGMPlayer.Stop();
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("07_Main_screen_(Winter).mp3");
+			break;
+		default:
+			break;
+		}
+	}
+	else if (!IsFirstMonthOfSeason())
+	{
+		SeasonChange = false;
+	}
+}
+
+bool RaisingSimLevel::IsFirstMonthOfSeason()
+{
+	if (Today.GetMonth() == 12 || Today.GetMonth() == 3 || Today.GetMonth() == 6 || Today.GetMonth() == 9)
+	{
+		return true;
+	}
+	return false;
 }
 
 
