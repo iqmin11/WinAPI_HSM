@@ -48,9 +48,6 @@ bool GameEngineDirectory::MoveParent()
 	return true;
 }
 
-// .png
-// png
-
 std::vector<GameEngineFile> GameEngineDirectory::GetAllFile(const std::string_view& _Ext)
 {
 	std::filesystem::directory_iterator DirIter(Path.Path);
@@ -63,7 +60,6 @@ std::vector<GameEngineFile> GameEngineDirectory::GetAllFile(const std::string_vi
 	{
 		if (true == Entry.is_directory())
 		{
-			// 재귀를 돌리면 다 돌것이다.
 			continue;
 		}
 

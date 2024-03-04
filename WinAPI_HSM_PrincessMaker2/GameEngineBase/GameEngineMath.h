@@ -6,9 +6,6 @@
 #include <vector>
 
 
-// final 더이상 상속내릴지 못한다.
-// 상속도 못하고 만들지도 못하게 만든 상태로
-
 class GameEngineMath final
 {
 public:
@@ -50,7 +47,6 @@ public:
 	float y = 0.0f;
 	float z = 0.0f;
 	float w = 1.0f;
-	// 마지막이 1인지는 3d 때 배우게 될겁니다.
 
 	int ix() const
 	{
@@ -122,10 +118,6 @@ public:
 	{
 		float4 AngleCheck = (*this);
 		AngleCheck.Normalize();
-		// functon(1) == 50; 1을 50으로 바꾸는 함수
-		// afuncton(50) == 1; 50이 1로 바꿔주는 함수라고도 할수 있지만 functon에 들어갔던 인자값을 알아내는 함수라고도 할수 있죠? <= 역함수
-
-		// cosf(각도);
 
 		float Result = acosf(AngleCheck.x);
 
@@ -152,8 +144,6 @@ public:
 		return sqrtf(x * x + y * y);
 	}
 
-	// 2, 0
-	// 0, 2
 	void Normalize()
 	{
 		float SizeValue = Size();
@@ -165,7 +155,6 @@ public:
 
 	static float4 Lerp(const float4& Start, const float4& End, float Ratio)
 	{
-		// 1.5 + 0.5 * 2.5;
 		return Start * (1.0f - Ratio) + (End * Ratio);
 	}
 

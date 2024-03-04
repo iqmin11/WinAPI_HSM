@@ -13,17 +13,17 @@ private:
 	{
 		friend GameEngineInput;
 
-		bool Down = false; // 키가 들어갈때
-		bool Press = false; // 키가 눌려진 상태
-		bool Up = false;// 키가 나올때
-		bool Free = true; // 키가 안눌려 있는 상태
+		bool Down = false; 
+		bool Press = false; 
+		bool Up = false;
+		bool Free = true; 
 
-		float PressTime = 0; // 누르고 있던 시간
+		float PressTime = 0; 
 		int Key = -1;
 
-		bool KeyCheck() // 인풋이 있었냐 없었냐를 리턴하는 함수
+		bool KeyCheck() 
 		{
-			return 0 != GetAsyncKeyState(Key); // 안눌렀을땐 0, 누르면 그 이외의 값을 리턴
+			return 0 != GetAsyncKeyState(Key); 
 		}
 
 		void Update(float  _DeltaTime);
@@ -39,7 +39,7 @@ public:
 
 	static void Update(float _DeltaTime);
 
-	static void CreateKey(const std::string_view& _Name, int _Key); //키의 용도, 키의 아스키
+	static void CreateKey(const std::string_view& _Name, int _Key); 
 
 	static bool IsKey(const std::string_view& _Name);
 
