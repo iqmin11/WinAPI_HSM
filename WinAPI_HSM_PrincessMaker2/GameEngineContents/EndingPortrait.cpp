@@ -105,6 +105,7 @@ void EndingPortrait::Update(float _DeltaTime)
 	case Ending::궁녀:
 		Potrait->SetImage("LadyInWaiting.bmp");
 		AcEndingDialog->UpdateText("그리하여 " + Olive::OlivePlayer->GetOliveFirstName() + "는 성의 궁녀로서의 인생\n을 시작했다…");
+		break;
 	default:
 		break;
 	}

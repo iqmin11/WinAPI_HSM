@@ -24,20 +24,15 @@ void MenuFrame::SetMenuFrameScale(const float4& _Scale)
 
 	for (int i = 0; i < 9; i++)
 	{
-		if (i == 0 ||
-			i == 2 ||
-			i == 6 ||
-			i == 8)
+		if (i == 0 || i == 2 ||	i == 6 || i == 8)
 		{
 			FrameRender[i]->SetScale({ 16,16 });
 		}
-		else if (i == 1 ||
-			i == 7)
+		else if (i == 1 || i == 7)
 		{
 			FrameRender[i]->SetScale({ MenuFrameScale.x - 32 ,16 });
 		}
-		else if (i == 3 ||
-			i == 5)
+		else if (i == 3 || i == 5)
 		{
 			FrameRender[i]->SetScale({ 16, MenuFrameScale.y - 32 });
 		}
