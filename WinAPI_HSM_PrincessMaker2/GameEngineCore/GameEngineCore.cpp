@@ -39,7 +39,6 @@ void GameEngineCore::GlobalUpdate()
 		}
 	}
 	
-	//프레임 시작할 때 한번 델타타임을 정하고
 	GameEngineSound::SoundUpdate();
 	float TimeDeltaTime = GameEngineTime::GlobalTime.TimeCheck();
 	GameEngineInput::Update(TimeDeltaTime);
@@ -70,8 +69,6 @@ void GameEngineCore::GlobalEnd()
 GameEngineCore::GameEngineCore()
 {
 	GameEngineDebug::LeakCheck();
-	// 나는 자식중에 하나일수밖에 없다.
-	// 나는 절대만들어질수 없기 때문이다.
 	Core = this;
 }
 

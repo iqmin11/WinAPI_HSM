@@ -5,9 +5,9 @@
 
 enum class ButtonState
 {
-	Release, // 안눌렸다.
-	Press, // 눌렸다.
-	Hover, // 나를 누를수 있는 녀석이 위에서 맴돌고 있다.
+	Release, 
+	Press,
+	Hover,
 };
 
 // 설명 :

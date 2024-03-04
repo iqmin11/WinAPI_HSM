@@ -7,7 +7,6 @@ GameEngineResources GameEngineResources::Inst;
 
 void GameEngineResources::Relase()
 {
-	// 내가 원하는 시점에 원하는 순간 정확하게 
 	for (std::pair<std::string, GameEngineImage*> Pair : AllImage)
 	{
 		if (nullptr == Pair.second)
@@ -66,7 +65,6 @@ GameEngineImage* GameEngineResources::ImageFind(const std::string_view& _Name)
 	return FindIter->second;
 }
 
-//////////////////////////////////Sound
 
 GameEngineSound* GameEngineResources::SoundLoad(const GameEnginePath& _Path)
 {

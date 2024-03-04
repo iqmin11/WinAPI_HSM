@@ -11,9 +11,6 @@ enum class Align
 	Center
 };
 
-// 설명 : Image로 숫자출력을 해주는 클래스
-//        세팅되는 이미지는 무조건 10개로 컷팅되어있어야 한다.
-// 넣어줘야할건 무조건 Actor계열이여야 합니다.
 class GameEngineActor;
 class NumberRenderObject : public GameEngineObject
 {
@@ -51,11 +48,13 @@ public:
 		return Value;
 	}
 
-	inline void SetNumOfDigits(int _Num) { // 랜더 할 숫자 길이 설정
+	inline void SetNumOfDigits(int _Num) 
+	{ 
 		NumOfDigits = _Num;
 	}
 
-	inline void ResetDigits() { // 숫자길이 리셋 (Value만큼 랜더)
+	inline void ResetDigits() 
+	{ 
 		SetNumOfDigits(-1);
 	}
 
@@ -70,8 +69,7 @@ private:
 	Align AlignState = Align::Left;
 	bool Negative = false;
 
-	int NumOfDigits = -1; // 렌더할 숫자 길이
-	// GameEngineImage* NumberImage;
+	int NumOfDigits = -1;
 
 	bool CameraEffect = false;
 

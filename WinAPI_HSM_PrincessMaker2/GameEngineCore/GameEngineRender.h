@@ -2,7 +2,6 @@
 #include <GameEnginePlatform/GameEngineImage.h>
 #include <map>
 #include "GameEngineComponent.h"
-// 랜더링에 관련된 기능을 모두 집약한다.
 
 enum class TextAlign
 {
@@ -134,7 +133,6 @@ private:
 	{
 	public:
 		GameEngineRender* Parent = nullptr;
-		// 짤려있는 이미지여야 한다.
 		GameEngineImage* Image = nullptr;
 		std::vector<int> FrameIndex;
 		std::vector<float> FrameTime;
@@ -157,16 +155,11 @@ private:
 	std::map<std::string, FrameAnimation> Animation;
 	FrameAnimation* CurrentAnimation = nullptr;
 
-	/// <summary>
-	/// TextRender
-	/// </summary>
 	std::string RenderText = std::string();
 	int TextHeight = 0;
 	std::string TextType = std::string();
 	TextAlign Align = TextAlign::Left;
 	COLORREF TextColor = RGB(0, 0, 0);
 	float4 TextBoxScale;
-	// 그런걸 하면 HBRUSH 만드는데 사용하고 나면 Release
-	// GameEngineImage를 참조해라.
 };
 

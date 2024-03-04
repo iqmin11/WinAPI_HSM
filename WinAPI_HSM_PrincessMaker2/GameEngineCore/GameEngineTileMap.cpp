@@ -124,7 +124,6 @@ void GameEngineTileMap::SetFloorSetting(int _ZIndex, const std::string_view& _Im
         for (size_t x = 0; x < XLineRenders.size(); x++)
         {
             GameEngineRender* Render = XLineRenders[x];
-            // Render->On();
             Render->SetImage(_ImageName);
         }
     }
@@ -144,10 +143,7 @@ void GameEngineTileMap::SetTileFrame(int _ZIndex, int _X, int _Y, int _ImageFram
     IsValidIndex(_ZIndex, static_cast<float>(_Y), static_cast<float>(_X));
 
     std::vector<std::vector<GameEngineRender*>>& FloorRenders = TileRenders[_ZIndex];
-    // 캐칭
     GameEngineRender* TileRender = FloorRenders[_Y][_X];
-
-    // operator[]
 
     TileRender->On();
     TileRender->SetFrame(_ImageFrame);
@@ -189,38 +185,32 @@ bool GameEngineTileMap::IsValidIndex(int _Z, float _Y, float _X)
 {
     if (0 > _Z)
     {
-        // MsgAssert("Z인덱스가 오버했습니다.");
         return false;
     }
 
     if (0 > _Y)
     {
-        // MsgAssert("Y인덱스가 오버했습니다.");
         return false;
     }
 
     if (0 > _X)
     {
-        // MsgAssert("X인덱스가 오버했습니다.");
         return false;
     }
 
 
     if (TileRenders.size() <= _Z)
     {
-        // MsgAssert("Z인덱스가 오버했습니다.");
         return false;
     }
 
     if (TileRenders[_Z].size() <= _Y)
     {
-        // MsgAssert("Y인덱스가 오버했습니다.");
         return false;
     }
 
     if (TileRenders[_Z][static_cast<int>(_Y)].size() <= _X)
     {
-        // MsgAssert("X인덱스가 오버했습니다.");
         return false;
     }
 

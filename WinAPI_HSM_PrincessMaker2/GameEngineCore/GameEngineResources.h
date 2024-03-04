@@ -4,7 +4,6 @@
 #include <GameEnginePlatform/GameEngineImage.h>	
 #include <GameEnginePlatform/GameEngineSound.h>
 
-//모든 리소스 관리(사운드, 이미지 등)
 
 class GameEngineSoundPlayer
 {
