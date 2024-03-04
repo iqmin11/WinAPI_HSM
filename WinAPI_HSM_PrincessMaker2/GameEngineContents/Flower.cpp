@@ -21,7 +21,7 @@ void Flower::UpdateFlower()
 
 void Flower::Start()
 {
-	SetPos({85,285}); // 위치 고정
+	SetPos({85,285}); 
 	SpringFlower = CreateRender("flower_spring.bmp", PM2RenderOrder::BackGroundObj);
 	SpringFlower->SetScaleToImage();
 	SpringFlower->Off();

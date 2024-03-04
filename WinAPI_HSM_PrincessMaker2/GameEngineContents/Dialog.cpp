@@ -68,7 +68,7 @@ void Dialog::SetMugPic(const std::string_view& _ImageFileName)
 {
 	std::string Upper = GameEngineString::ToUpper(_ImageFileName);
 
-	if (std::string::npos != Upper.find("_GOD"))  // 신의 머그샷 이미지엔 _GOD를 꼭 붙일것
+	if (std::string::npos != Upper.find("_GOD")) 
 	{
 		
 		if (nullptr == MugShotFrame)
@@ -163,7 +163,6 @@ void Dialog::SetUpdateText(const std::string_view& _Text)
 	}
 	RenderText = UpdateText;
 	
-	//TextRender->SetText(UpdateText.substr(0, 0), TextHeight, TextType, TextAlign::Left, TextColor, TextBoxScale);
 }
 
 void Dialog::Off()
@@ -175,14 +174,10 @@ void Dialog::Off()
 
 void Dialog::Start()
 {
-	InitMenuFrameRender(PM2RenderOrder::Dialog1); // 고정
-	SetMenuFrameScale(DialogFrameScale); // 고정
+	InitMenuFrameRender(PM2RenderOrder::Dialog1); 
+	SetMenuFrameScale(DialogFrameScale); 
 	SetTextRender();
 	Off();
-	//사용법 예시
-	//SetPos({ GameEngineWindow::GetScreenSize().half()});
-	//SetMugPic("Mug_Uranos_God.bmp");
-	//SetMugLoc(MugShotLR::Left);
 }
 
 void Dialog::Update(float _DeltaTime)

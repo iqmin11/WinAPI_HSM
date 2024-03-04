@@ -22,7 +22,6 @@ void FightingClass::Start()
 	SetObj4(PM2RenderOrder::Menu2_Obj_2, 14, 18, { -175, 14 });
 	GetStatusVarianceMin().SetStatus({ .Stress = 0,.CombatSkill = 1, .CombatDefense = 0});
 	GetStatusVarianceMax().SetStatus({ .Stress = 1,.CombatSkill = 1, .CombatDefense = 0 });
-	//SetObj5(PM2RenderOrder::Menu2_Obj_2, 19, 19, { 0, 14 });
 	SetPayGold(-30);
 	ClassesAndJobs::Start();
 }

@@ -62,7 +62,6 @@ private:
 	static DietSelectionMenu* AcDietSelectionMenu;
 	static InformationWindowManager* AcInformationWindowManager;
 
-	//Schedule
 	static ScheduleCalendar* AcScheduleCalendar;
 	static ScheduleSelectionMenu* AcScheduleSelectionMenu;
 
@@ -76,6 +75,5 @@ private:
 
 	static void ClickMainMenu_S(Button* _Btn);
 
-	//static void ClickStatusWindowButton(Button* _Btn);
 };
 

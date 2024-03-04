@@ -58,7 +58,7 @@ void SetPlayerName::Start()
 
 void SetPlayerName::Update(float _DeltaTime)
 {
-	if (!FirstUpdate) // 초기화
+	if (!FirstUpdate)
 	{
 		FirstUpdate = true;
 		PrintLetter = "\0";
@@ -278,7 +278,7 @@ void SetPlayerName::SetUpperCaseButton()
 void SetPlayerName::SetUpperCaseRender()
 {
 	int Count = 0;
-	for (size_t y = 0; y < 6; y++) //세로정렬
+	for (size_t y = 0; y < 6; y++)
 	{
 		for (size_t x = 0; x < 5; x++)
 		{
@@ -351,7 +351,7 @@ void SetPlayerName::SetLowerCaseButton()
 void SetPlayerName::SetLowerCaseRender()
 {
 	int Count = 0;
-	for (size_t y = 0; y < 6; y++) //세로정렬
+	for (size_t y = 0; y < 6; y++)
 	{
 		for (size_t x = 0; x < 5; x++)
 		{

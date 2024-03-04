@@ -19,9 +19,8 @@ BasicInfo::~BasicInfo()
 void BasicInfo::Start()
 {
 	SetPos(ActorPos);
-	//SetStar(Zodiac::사자자리); // 이건 아이콘 액터를 만들고 렌더하자
 	
-	BasicInfoFrame = CreateRender("BasicInfo.bmp",PM2RenderOrder::Menu0); // 베이직 인포 프레임 렌더
+	BasicInfoFrame = CreateRender("BasicInfo.bmp",PM2RenderOrder::Menu0);
 	BasicInfoFrame->SetScaleToImage();
 
 	FirstNameRender = CreateRender(PM2RenderOrder::Menu0_Display);
@@ -82,12 +81,10 @@ void BasicInfo::Start()
 	PatronGodIconRender = CreateRender("Icon.bmp", PM2RenderOrder::Menu0_Display);
 	PatronGodIconRender->SetScale(IconScale);
 	PatronGodIconRender->SetPosition(PatronGodIconPos);
-	//PatronGodIconRender->SetFrame(static_cast<int>(OlivePatronGod));
 
 	BloodTypeRender = CreateRender("BloodTypeRender.bmp", PM2RenderOrder::Menu0_Display);
 	BloodTypeRender ->SetScale(BloodTypeRenderScale);
 	BloodTypeRender ->SetPosition(BloodTypeRenderPos);
-	//BloodTypeRender ->SetFrame(static_cast<int>(OliveBloodType));
 
 	DiseaseIcon = CreateRender("Icon.bmp", PM2RenderOrder::Menu0_Display);
 	DiseaseIcon->SetScale(IconScale);
@@ -208,6 +205,4 @@ void BasicInfo::Update(float _DeltaTime)
 
 void BasicInfo::Render(float _Time)
 {
-	//HDC TestDC = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
-	//TextOutA(TestDC, GetPos().ix(), GetPos().iy(), OliveName.c_str(), OliveName.size());
 }

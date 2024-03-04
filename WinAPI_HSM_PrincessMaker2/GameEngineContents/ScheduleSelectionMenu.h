@@ -38,6 +38,6 @@ private:
 
 	void SetButtonClick();
 
-	static void Click0(Button* _Button); // 딸을 단련시킨다.
+	static void Click0(Button* _Button);
 };
 

@@ -60,7 +60,7 @@ void SetOliveName::Start()
 
 void SetOliveName::Update(float _DeltaTime)
 {
-	if (!FirstUpdate) // 초기화
+	if (!FirstUpdate) 
 	{
 		FirstUpdate = true;
 		PrintLetter = "\0";
@@ -281,7 +281,7 @@ void SetOliveName::SetUpperCaseButton()
 void SetOliveName::SetUpperCaseRender()
 {
 	int Count = 0;
-	for (size_t y = 0; y < 6; y++) //세로정렬
+	for (size_t y = 0; y < 6; y++) 
 	{
 		for (size_t x = 0; x < 5; x++)
 		{
@@ -354,7 +354,7 @@ void SetOliveName::SetLowerCaseButton()
 void SetOliveName::SetLowerCaseRender()
 {
 	int Count = 0;
-	for (size_t y = 0; y < 6; y++) //세로정렬
+	for (size_t y = 0; y < 6; y++) 
 	{
 		for (size_t x = 0; x < 5; x++)
 		{

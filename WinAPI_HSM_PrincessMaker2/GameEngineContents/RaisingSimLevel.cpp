@@ -284,7 +284,6 @@ void RaisingSimLevel::OliveAllStatMax()
 	Olive::OlivePlayer->OliveStatus.Faith = Olive::OlivePlayer->OliveStatus.MaxFaith;
 	Olive::OlivePlayer->OliveStatus.Sin = Olive::OlivePlayer->OliveStatus.MaxSin;
 	Olive::OlivePlayer->OliveStatus.Sensitivity = Olive::OlivePlayer->OliveStatus.MaxSensitivity;
-	//Olive::OlivePlayer->OliveStatus.Stress = Olive::OlivePlayer->OliveStatus.MaxStress;
 	Olive::OlivePlayer->OliveStatus.CombatSkill = Olive::OlivePlayer->OliveStatus.MaxCombatSkill;
 	Olive::OlivePlayer->OliveStatus.CombatAttack = Olive::OlivePlayer->OliveStatus.MaxCombatAttack;
 	Olive::OlivePlayer->OliveStatus.CombatDefense = Olive::OlivePlayer->OliveStatus.MaxCombatDefense;
@@ -310,7 +309,6 @@ void RaisingSimLevel::OliveAllStatMaxExeptSin()
 	Olive::OlivePlayer->OliveStatus.Faith = Olive::OlivePlayer->OliveStatus.MaxFaith;
 	Olive::OlivePlayer->OliveStatus.Sin = 0;
 	Olive::OlivePlayer->OliveStatus.Sensitivity = Olive::OlivePlayer->OliveStatus.MaxSensitivity;
-	//Olive::OlivePlayer->OliveStatus.Stress = Olive::OlivePlayer->OliveStatus.MaxStress;
 	Olive::OlivePlayer->OliveStatus.CombatSkill = Olive::OlivePlayer->OliveStatus.MaxCombatSkill;
 	Olive::OlivePlayer->OliveStatus.CombatAttack = Olive::OlivePlayer->OliveStatus.MaxCombatAttack;
 	Olive::OlivePlayer->OliveStatus.CombatDefense = Olive::OlivePlayer->OliveStatus.MaxCombatDefense;
@@ -330,7 +328,7 @@ void RaisingSimLevel::OliveStateChange()
 	if (GameEngineInput::IsDown("q"))
 	{
 		Olive::OlivePlayer->OliveStatus.Constitution = 100;
-		Olive::OlivePlayer->OliveStatus.Stress = 150; // 아픈상태
+		Olive::OlivePlayer->OliveStatus.Stress = 150;
 		Olive::OlivePlayer->OliveStateUpdate();
 		Olive::OlivePlayer->OliveRenderUpdate();
 	}
@@ -339,24 +337,24 @@ void RaisingSimLevel::OliveStateChange()
 	{
 		Olive::OlivePlayer->OliveStatus.Constitution = 100;
 		Olive::OlivePlayer->OliveStatus.Stress = 50;
-		Olive::OlivePlayer->OliveStatus.Morality = 0; // 불량상태
-		Olive::OlivePlayer->OliveStatus.Faith = 0; // 불량상태
+		Olive::OlivePlayer->OliveStatus.Morality = 0;
+		Olive::OlivePlayer->OliveStatus.Faith = 0;
 		Olive::OlivePlayer->OliveStateUpdate();
 		Olive::OlivePlayer->OliveRenderUpdate();
 	}
 
 	if (GameEngineInput::IsDown("e"))
 	{
-		Olive::OlivePlayer->OliveStatus.Stress = 0; //행복상태
+		Olive::OlivePlayer->OliveStatus.Stress = 0;
 		Olive::OlivePlayer->OliveStateUpdate();
 		Olive::OlivePlayer->OliveRenderUpdate();
 	}
 
 	if (GameEngineInput::IsDown("r"))
 	{
-		Olive::OlivePlayer->OliveStatus.Stress = 1; // 일반상태
-		Olive::OlivePlayer->OliveStatus.Morality = 100; // 일반상태
-		Olive::OlivePlayer->OliveStatus.Faith = 100; // 일반상태
+		Olive::OlivePlayer->OliveStatus.Stress = 1; 
+		Olive::OlivePlayer->OliveStatus.Morality = 100;
+		Olive::OlivePlayer->OliveStatus.Faith = 100;
 		Olive::OlivePlayer->OliveStateUpdate();
 		Olive::OlivePlayer->OliveRenderUpdate();
 	}

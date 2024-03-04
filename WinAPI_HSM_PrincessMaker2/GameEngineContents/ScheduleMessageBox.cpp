@@ -102,7 +102,7 @@ void ScheduleMessageBox::Start()
 {
 	InitMenuFrameRender(PM2RenderOrder::Menu1);
 	SetMenuFrameScale({ Scale });
-	SetPos(ActorPos); // +26 -72 // +245 -192
+	SetPos(ActorPos);
 	TextRender = CreateRender(PM2RenderOrder::Menu1_Display);
 	TextRender->SetPosition(TextRenderPos);
 	TextRender->SetText(" ", TextHeight, TextType, TextAlign::Left, TextColor, TextBoxScale);

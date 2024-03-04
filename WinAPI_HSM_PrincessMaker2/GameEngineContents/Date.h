@@ -31,17 +31,10 @@ public:
 	static Date GetMonthLastDate(const Date& _Date);
 	
 
-	// construtor destructor
 	Date();
 	Date(int _YYYY, int _MM, int _DD);
 	~Date();
 
-	// delete Function
-	//Date(const Date& _Other) = delete;
-	//Date(Date&& _Other) noexcept = delete;
-	//Date& operator=(const Date& _Other) = delete;
-	//Date& operator=(Date&& _Other) noexcept = delete;
-	
 	bool IsOverMonth();
 	bool IsOverDay();
 	bool IsOverWeekDay();
@@ -230,25 +223,7 @@ public:
 		{
 			++Result;
 		}
-		/*Date Result = *this;
-		if (28 < _Value)
-		{
-			MsgAssert("28보다 큰숫자 넣기 금지")
-		}
-
-		Result.Day += _Value;
-		if (IsOverDay())
-		{
-			++Result.Month;
-			Result.Day = 1;
-			if (IsOverMonth())
-			{
-				++Result.Year;
-				Result.Month = 1;
-			}
-		}
-		SetWeekDay();*/
-		
+			
 		return Result;
 	}
 
@@ -257,11 +232,11 @@ protected:
 
 private:
 
-	int Year = 0; // 제한 없음
-	int Month = 0; // 1~12
-	int Day = 0; // 1~31
+	int Year = 0;
+	int Month = 0; 
+	int Day = 0; 
 	
-	Week WeekDay = Week::Null; // 0~6
+	Week WeekDay = Week::Null;
 	
 	
 };

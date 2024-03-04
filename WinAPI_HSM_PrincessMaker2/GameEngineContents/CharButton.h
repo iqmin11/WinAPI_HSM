@@ -1,7 +1,7 @@
 #pragma once
 #include "GlobalButton.h"
 
-// Ό³Έν :
+
 class CharButton : public GlobalButton
 {
 public:

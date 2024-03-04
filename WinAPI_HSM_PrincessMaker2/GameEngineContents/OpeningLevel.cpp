@@ -72,10 +72,7 @@ void OpeningLevel::Update(float _DeltaTime)
 		GameEngineCore::GetInst()->ChangeLevel("RaisingSim");
 	}
 	
-	// 오프닝 타임라인
-	// 0~20 오프닝 크레딧, ~35 컷신1,  ~75 컷신2, ~115 컷신3, ~119 검은화면, ~122 왕국력 날짜,
-	// ~143 컷신4, ~148 검은화면, ~ 172 컷신5, ~200 컷신6, ~205 검은화면, ~215 컷신7 
-	if (0 <= Time && 20 > Time)//(0 <= Time && 20 > Time)
+	if (0 <= Time && 20 > Time)
 	{
 		AcCutScene->On();
 		AcCutScene->SelectBackgroundColor(BackgroundColor::Black);
@@ -84,7 +81,7 @@ void OpeningLevel::Update(float _DeltaTime)
 		AcOpeningCredit->On();
 		AcOpeningCredit->UpdateScroll(LocalDeltaTime);
 	}
-	else if (20 <= Time && 35 > Time)//(20 <= Time && 35 > Time)
+	else if (20 <= Time && 35 > Time)
 	{
 		AcOpeningCredit->Off();
 		AcCutScene->SelectBackgroundColor(BackgroundColor::White);
@@ -113,7 +110,7 @@ void OpeningLevel::Update(float _DeltaTime)
 			AcCaption->SetUpdateText("성벽은 무너지고 거리는 불길에 휩싸였다.\n수도의 함락은 목전까지 닥친 상황이었다.");
 		}
 	}
-	else if (35 <= Time && 75 > Time)//(35 <= Time && 75 > Time)
+	else if (35 <= Time && 75 > Time)
 	{
 		AcCaption->Off();
 		AcCutScene->OnCutScene(1);
@@ -174,7 +171,7 @@ void OpeningLevel::Update(float _DeltaTime)
 			AcCaption->Off();
 		}
 	}
-	else if (75 <= Time && 115 > Time)//(75 <= Time && 115 > Time)
+	else if (75 <= Time && 115 > Time)
 	{
 		AcCutScene->OnCutScene(2);
 		if (77 <= Time && 83 > Time)
@@ -205,7 +202,7 @@ void OpeningLevel::Update(float _DeltaTime)
 			AcBottomDialog->Off();
 		}
 	}
-	else if (115 <= Time && 119 > Time)//(115 <= Time && 119> Time)
+	else if (115 <= Time && 119 > Time)
 	{
 		AcCutScene->SelectBackgroundColor(BackgroundColor::Black);
 		AcCutScene->OffCutScene();
@@ -215,12 +212,12 @@ void OpeningLevel::Update(float _DeltaTime)
 			AcCaption->SetUpdateText("이리하여 도시에 정착해 왕의 녹봉을 받게 된 용사 " + FatherName + std::string("."));
 		}
 	}
-	else if (119 <= Time && 122 > Time)//(119 <= Time && 122 > Time)
+	else if (119 <= Time && 122 > Time)
 	{
 		AcCaption->Off();
 		AcOpeningDate->On();
 	}
-	else if (122 <= Time && 144 > Time)//(122 <= Time && 143 > Time)
+	else if (122 <= Time && 144 > Time)
 	{
 		if (BGMChange == false)
 		{
@@ -259,12 +256,12 @@ void OpeningLevel::Update(float _DeltaTime)
 			AcCaption->SetUpdateText("올려다보니, 한 줄기의 유성이 긴 꼬리를 끌며 천천히 눈앞의 언덕에 떨어졌다.");
 		}
 	}
-	else if (144 <= Time && 149 > Time)//(143 <= Time && 148 > Time)
+	else if (144 <= Time && 149 > Time)
 	{
 		AcCaption->SetUpdateText("언덕으로 달려간 " + FatherName + std::string(". 그곳에는 커다란 빛덩어리가 떠 있었다."));
 		AcCutScene->OffCutScene();
 	}
-	else if (149 <= Time && 172 > Time)//(148 <= Time && 172 > Time)
+	else if (149 <= Time && 172 > Time)
 	{
 		AcCutScene->OnCutScene(4);
 		if (149 <= Time && 150 > Time)
@@ -309,7 +306,7 @@ void OpeningLevel::Update(float _DeltaTime)
 			AcBottomDialog->Off();
 		}
 	}
-	else if (172 <= Time && 200 > Time)//(172 <= Time && 200 > Time)
+	else if (172 <= Time && 200 > Time)
 	{
 		AcCutScene->OnCutScene(5);
 		if (174 <= Time && 178 > Time)
@@ -362,7 +359,7 @@ void OpeningLevel::Update(float _DeltaTime)
 			AcBottomDialog->Off();
 		}
 	}
-	else if (200 <= Time && 205 > Time)//(200 <= Time && 205 > Time)
+	else if (200 <= Time && 205 > Time)
 	{
 		AcCutScene->OffCutScene();
 		if (200 <= Time && 205 > Time)
@@ -371,7 +368,7 @@ void OpeningLevel::Update(float _DeltaTime)
 			AcCaption->SetUpdateText("그리고 1년이 지났다……");
 		}
 	}
-	else if (205 <= Time && 215 > Time)//(205 <= Time && 215> Time)
+	else if (205 <= Time && 215 > Time)
 	{
 		AcCaption->Off();
 		AcCutScene->OnCutScene(6);

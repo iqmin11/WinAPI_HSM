@@ -165,7 +165,6 @@ void ScheduleDialog::Start()
 {
 	Dialog::Start();
 	SetScheduleMugshot();
-	//SetSituation();
 
 	SetMugPic(ScheduleMugshot.find(ScheduleLabel::자연과학)->second);
 	SetMugLoc(MugShotLR::Left);
@@ -201,28 +200,3 @@ void ScheduleDialog::SetScheduleMugshot()
 	ScheduleMugshot.insert(std::make_pair(ScheduleLabel::신학, "Mug_SisterLee.bmp"));
 	ScheduleMugshot.insert(std::make_pair(ScheduleLabel::무용, "Mug_Tobi.bmp"));
 }
-
-//void ScheduleDialog::SetScript()
-//{
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::자연과학, ScheduleSituation::ScheduleStart), "연금술사 버크레오\n 「세상의 모든 일은 수학과 물\n리로 설명할 수 있지. 신비주의\n는 인간의 무지가 만들어낸 산\n물. 기적이나 마법도 과학적 현\n상에 지나지 않아.」"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::예법,     ScheduleSituation::ScheduleStart), "노사 바트사스\n 「잘 왔다. 이 늙은이는 예로부\n터 전해 내려오는 궁중예법과\n예의범절을 가르치는 사람이지」"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::격투술,   ScheduleSituation::ScheduleStart), "격투가 칼 폭스\n 「싸움은 검이 전부가 아니다.\n무기에 의존하지 않는 격투술의 \n극의는 공격을 한계까지 피하는\n체술의 습득에 있지.」"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::시문학,   ScheduleSituation::ScheduleStart), "시인 컴스톡\n 「시는 사람의 마음을 풍요롭게\n해줍니다. 옛 사람들의 시는 우\n리들에게 남겨진 보물, 창작은\n미래에 남기는 유산. 자, 함께\n공부합시다. 문학의 왕도를」"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::미술,     ScheduleSituation::ScheduleStart), "왕궁화가 필킨스\n 「내가 왕궁화가인 필킨스다. \n그림을 통해서 예술의 심오함을 \n가르쳐 주도록 하지.」"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::군사학,   ScheduleSituation::ScheduleStart), "크루거 장군\n 「제군. 내가 바로 왕국의 상장\n군, 『백승장군』 이라 불리우는 \n엘윈 요하네스 오이겐크루거다\n.」"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::검술,   ScheduleSituation::ScheduleStart), "검사 레프톨\n 「여어, 내가 이 도장의 사범.\n성은 올, 이름은 레프트다. 레\n프톨이라 불러줘. 내 지도는 조\n금 거칠지만 실전형이라 도움이\n될거다.」"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::마법,     ScheduleSituation::ScheduleStart), "마법사 패트남\n 「안녕하세요. 제가 마법교실의 선생입니다. 여러분과 함께 실용마법을 배우도록 하죠」"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::신학,     ScheduleSituation::ScheduleStart), "시스터 리이\n 「여러분, 저는 교회의 여신도\n인 리이입니다.」"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::무용,     ScheduleSituation::ScheduleStart), "무용 선생 트베\n 「사교계 데뷔를 목표하는 여성\n에게 있어, 무용 실력은 커다란 \n무기가 됩니다. 열심히 익히세\n요. 자신을 위해서」"));
-//	
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::자연과학, ScheduleSituation::ScheduleEnd), "자연과학 끝"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::예법,     ScheduleSituation::ScheduleEnd), "예법 끝"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::격투술,   ScheduleSituation::ScheduleEnd), "격투술 끝"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::시문학,   ScheduleSituation::ScheduleEnd), "시문학 끝"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::미술,     ScheduleSituation::ScheduleEnd), "미술 끝"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::군사학,   ScheduleSituation::ScheduleEnd), "군사학 끝"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::검술,   ScheduleSituation::ScheduleEnd), "검술 끝"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::마법,     ScheduleSituation::ScheduleEnd), "마법 끝"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::신학,     ScheduleSituation::ScheduleEnd), "신학 끝"));
-//	Script.insert(std::make_pair(ScheduleScript(ScheduleLabel::무용,     ScheduleSituation::ScheduleEnd), "무용 끝"));
-//}

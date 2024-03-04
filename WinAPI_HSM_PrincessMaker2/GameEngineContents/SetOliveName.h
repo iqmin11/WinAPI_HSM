@@ -8,6 +8,7 @@ class GameEngineRender;
 class SetOliveName : public GameEngineActor
 {
 public:
+	
 	// construtor destructor
 	SetOliveName();
 	~SetOliveName();

@@ -73,7 +73,7 @@ void SchedulePlayer::Start()
 
 void SchedulePlayer::Update(float _DeltaTime)
 {
-	if (!FirstUpdateCheck) // 한달의 스케줄 시작
+	if (!FirstUpdateCheck)
 	{
 		FirstUpdateCheck = true;
 		PayDiet();
@@ -83,7 +83,7 @@ void SchedulePlayer::Update(float _DeltaTime)
 	}
 	else if(!AcFoodCostDialog->IsUpdate())
 	{
-		if (!FirstScheduleUpdateCheck)// 한주의 스케줄 시작
+		if (!FirstScheduleUpdateCheck)
 		{
 			IsPartOfScheduleEnd = false;
 			FirstScheduleUpdateCheck = true;
@@ -94,7 +94,7 @@ void SchedulePlayer::Update(float _DeltaTime)
 			ScheduleSave Prev = *(Save.begin());
 
 			Time += _DeltaTime;
-			if (Time >= 1) // 스케줄이 진행되는 부분
+			if (Time >= 1)
 			{
 				IsPartOfScheduleEnd = false;
 				Time = 0;
@@ -103,7 +103,7 @@ void SchedulePlayer::Update(float _DeltaTime)
 				Save.pop_front();
 			}
 
-			if (Save.size() == 0) // 모든 스케줄이 끝나는 부분
+			if (Save.size() == 0)
 			{
 				IsPartOfScheduleEnd = true;
 				AnimationOff();
@@ -136,7 +136,7 @@ void SchedulePlayer::Update(float _DeltaTime)
 
 			ScheduleSave Next = *(Save.begin());
 
-			if (Prev.Order != Next.Order) // 한주의 스케줄이 끝나는 부분
+			if (Prev.Order != Next.Order)
 			{
 				IsPartOfScheduleEnd = true;
 				AnimationOff();
@@ -153,7 +153,7 @@ void SchedulePlayer::Update(float _DeltaTime)
 
 void SchedulePlayer::PlayOneDaySchedule()
 {
-	AcScheduleAnimationPlayer->On(); // 애니메이션 창을 띄운다
+	AcScheduleAnimationPlayer->On();
 	AcSchedulePlayerGuage->On();
 	AcScheduleMessageBox->On();
 	AcScheduleMessageBox->SetDayCount(++DayCount);
@@ -162,60 +162,60 @@ void SchedulePlayer::PlayOneDaySchedule()
 	switch (Save.begin()->Schedule)
 	{
 	case ScheduleLabel::무용:
-		AcDanceClass->On(); // 애니메이션을 띄운다
-		Olive::OlivePlayer->OliveStatus += AcDanceClass->GetStatusVariance(); // 능력치를 올린다
+		AcDanceClass->On();
+		Olive::OlivePlayer->OliveStatus += AcDanceClass->GetStatusVariance();
 		Olive::OlivePlayer->GetGold() += AcDanceClass->GetPayGold();
 		break;
 	case ScheduleLabel::검술:
-		AcFencingClass->On(); // 애니메이션을 띄운다
-		Olive::OlivePlayer->OliveStatus += AcFencingClass->GetStatusVariance(); // 능력치를 올린다
+		AcFencingClass->On();
+		Olive::OlivePlayer->OliveStatus += AcFencingClass->GetStatusVariance();
 		Olive::OlivePlayer->GetGold() += AcFencingClass->GetPayGold();
 		break;
 	case ScheduleLabel::격투술:
-		AcFightingClass->On(); // 애니메이션을 띄운다
-		Olive::OlivePlayer->OliveStatus += AcFightingClass->GetStatusVariance(); // 능력치를 올린다
+		AcFightingClass->On();
+		Olive::OlivePlayer->OliveStatus += AcFightingClass->GetStatusVariance();
 		Olive::OlivePlayer->GetGold() += AcFightingClass->GetPayGold();
 		break;
 	case ScheduleLabel::마법:
-		AcMagicClass->On(); // 애니메이션을 띄운다
-		Olive::OlivePlayer->OliveStatus += AcMagicClass->GetStatusVariance(); // 능력치를 올린다
+		AcMagicClass->On();
+		Olive::OlivePlayer->OliveStatus += AcMagicClass->GetStatusVariance();
 		Olive::OlivePlayer->GetGold() += AcMagicClass->GetPayGold();
 		break;
 	case ScheduleLabel::미술:
-		AcPaintingClass->On(); // 애니메이션을 띄운다
-		Olive::OlivePlayer->OliveStatus += AcPaintingClass->GetStatusVariance(); // 능력치를 올린다
+		AcPaintingClass->On();
+		Olive::OlivePlayer->OliveStatus += AcPaintingClass->GetStatusVariance();
 		Olive::OlivePlayer->GetGold() += AcPaintingClass->GetPayGold();
 		break;
 	case ScheduleLabel::시문학:
-		AcPoetryClass->On(); // 애니메이션을 띄운다
-		Olive::OlivePlayer->OliveStatus += AcPoetryClass->GetStatusVariance(); // 능력치를 올린다
+		AcPoetryClass->On();
+		Olive::OlivePlayer->OliveStatus += AcPoetryClass->GetStatusVariance();
 		Olive::OlivePlayer->GetGold() += AcPoetryClass->GetPayGold();
 		break;
 	case ScheduleLabel::예법:
-		AcProtocolClass->On(); // 애니메이션을 띄운다
-		Olive::OlivePlayer->OliveStatus += AcProtocolClass->GetStatusVariance(); // 능력치를 올린다
+		AcProtocolClass->On();
+		Olive::OlivePlayer->OliveStatus += AcProtocolClass->GetStatusVariance();
 		Olive::OlivePlayer->GetGold() += AcProtocolClass->GetPayGold();
 		break;
 	case ScheduleLabel::자연과학:
-		AcScienceClass->On(); // 애니메이션을 띄운다
-		Olive::OlivePlayer->OliveStatus += AcScienceClass->GetStatusVariance(); // 능력치를 올린다
+		AcScienceClass->On();
+		Olive::OlivePlayer->OliveStatus += AcScienceClass->GetStatusVariance();
 		Olive::OlivePlayer->GetGold() += AcScienceClass->GetPayGold();
 		break;
 	case ScheduleLabel::군사학:
-		AcStrategyClass->On(); // 애니메이션을 띄운다
-		Olive::OlivePlayer->OliveStatus += AcStrategyClass->GetStatusVariance(); // 능력치를 올린다
+		AcStrategyClass->On();
+		Olive::OlivePlayer->OliveStatus += AcStrategyClass->GetStatusVariance();
 		Olive::OlivePlayer->GetGold() += AcStrategyClass->GetPayGold();
 		break;
 	case ScheduleLabel::신학:
-		AcTheologyClass->On(); // 애니메이션을 띄운다
-		Olive::OlivePlayer->OliveStatus += AcTheologyClass->GetStatusVariance(); // 능력치를 올린다
+		AcTheologyClass->On();
+		Olive::OlivePlayer->OliveStatus += AcTheologyClass->GetStatusVariance();
 		Olive::OlivePlayer->GetGold() += AcTheologyClass->GetPayGold();
 		break;
 	default:
 		break;
 	}
 	
-	ParentLevel->GoToNextDay(); // 다음날로 간다
+	ParentLevel->GoToNextDay();
 }
 
 void SchedulePlayer::AnimationOff()

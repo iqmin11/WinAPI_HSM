@@ -41,9 +41,6 @@ void TitleLevel::Loading()
 	CreateActor<MousePoint>(PM2ActorOrder::MousePoint);
 	TitleSelectionMenu = CreateActor<TitleMenu>(PM2ActorOrder::Menu0);
 
-	//SoundTestCode
-	//BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Test.wav");
-	//BGMPlayer.LoopCount(3);
 }
 
 void TitleLevel::Update(float _DeltaTime)
@@ -66,8 +63,6 @@ void TitleLevel::SoundLoad()
 	Dir.Move("ContentsResources");
 	Dir.Move("Sound");
 
-	//SoundTestCode
-	//GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Test.wav"));
 }
 
 void TitleLevel::ImageLoad()

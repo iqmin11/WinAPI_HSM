@@ -17,7 +17,6 @@ void ConverstionSelectionMenu::Start()
 {
 	AcMainMenu = MainMenu::GetAcMainMenu();
 	
-	//사용법 예시
 	InitMenuFrameRender(PM2RenderOrder::Menu0, MenuFrameStyleEnum::Gold);
 	SetSelectionMenu(3, ActorPos, Xscale, PM2ActorOrder::Menu1_Button, PM2RenderOrder::Menu0_Button);
 	SetButtonString(static_cast<int>(PM2RenderOrder::Menu1_Display), 0, "부녀간의 이야기");

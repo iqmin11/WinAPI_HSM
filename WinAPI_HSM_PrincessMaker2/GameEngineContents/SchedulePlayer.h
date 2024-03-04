@@ -48,9 +48,6 @@ public:
 	SchedulePlayer(SchedulePlayer&& _Other) noexcept = delete;
 	SchedulePlayer& operator=(const SchedulePlayer& _Other) = delete;
 	SchedulePlayer& operator=(SchedulePlayer&& _Other) noexcept = delete;
-	//void PlayFirstOrderSchedule(float _DeltaTime);
-	//void PlaySecondOrderSchedule(float _DeltaTime);
-	//void PlayThirdOrderSchedule(float _DeltaTime);
 
 	static SchedulePlayer* GetAcSchedulePlayer()
 	{

@@ -13,7 +13,7 @@ SelectionMenu::~SelectionMenu()
 
 }
 
-void SelectionMenu::SetSelectionMenu(int _Count, float4 _Pos, float _xScale, int _ActorOrder, int _RenderOrder) // 이순간 세로크기는 정해지게
+void SelectionMenu::SetSelectionMenu(int _Count, float4 _Pos, float _xScale, int _ActorOrder, int _RenderOrder) 
 {
 	CountButton = _Count;
 	SetMenuFrameScale({ _xScale, (static_cast<float>(CountButton) * 26.0f) + 40.0f });
@@ -81,13 +81,7 @@ void SelectionMenu::Off()
 
 void SelectionMenu::Start()
 {
-	//사용법 예시
-	//InitMenuFrameRender(PM2RenderOrder::Menu0, 0);
-	//SetSelectionMenu(3, GameEngineWindow::GetScreenSize().half(), 230.0f, PM2ActorOrder::Menu0_Button, PM2RenderOrder::Menu0_Button);
-	//GetSelectButtons()[0]->SetClickCallBack(LevelChangeToFirstSet);
-	//GetSelectButtons()[1]->SetClickCallBack(LevelChangeToOpening);
-	//GetSelectButtons()[2]->SetClickCallBack(LevelChangeToRaisingSim);
-	//함수는 private static으로 구현
+	
 }
 
 void SelectionMenu::Update(float _Deltatime)

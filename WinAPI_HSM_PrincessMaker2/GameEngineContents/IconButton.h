@@ -20,8 +20,6 @@ public:
 
 	void SetPos(const float4& _Pos);
 
-	//아이콘 이름 난이도 가격 위치
-
 	void SetIconButton(IconCode _IconCode, const std::string_view& _Name, const std::string_view& _Difficulty, int _Price, const float4& _Pos);
 	GlobalButton* GetButton() const
 	{

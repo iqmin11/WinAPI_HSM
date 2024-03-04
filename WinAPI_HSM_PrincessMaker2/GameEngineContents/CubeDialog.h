@@ -40,7 +40,6 @@ protected:
 	void Start() override;
 
 private:
-	//GlobalButton* NextButton = nullptr;
 	std::map<CubeFace, std::string> CubeMugshot = std::map<CubeFace, std::string>();
 	float4 ActorPos = {250 , 500};
 

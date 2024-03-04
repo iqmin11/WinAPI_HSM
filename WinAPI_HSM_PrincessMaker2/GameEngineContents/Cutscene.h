@@ -37,6 +37,5 @@ private:
 	std::vector<GameEngineRender*> Background = std::vector<GameEngineRender*>();
 };
 
-// 컷신들은 렌더, 위치와 움직임이 있도록 만들기
-// 컷신 1~7 
+
 

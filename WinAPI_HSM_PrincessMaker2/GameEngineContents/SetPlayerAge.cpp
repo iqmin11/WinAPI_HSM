@@ -66,7 +66,7 @@ void SetPlayerAge::Start()
 
 void SetPlayerAge::Update(float _DeltaTime)
 {
-	if (!FirstUpdate) // 초기화
+	if (!FirstUpdate) 
 	{
 		FirstUpdate = true;
 		PrintLetter = "\0";
@@ -217,7 +217,6 @@ void SetPlayerAge::PushBack_Button(Button* _Button)
 	{
 		PrintLetter.push_back(Ptr->Chracter);
 	}
-	//두자리수 가득 차있는 상태에서 번호를 input하면 뒷자리부터 수정하면서 앞자리 수를 밀어냄
 	
 	if ("00" == PrintLetter)
 	{

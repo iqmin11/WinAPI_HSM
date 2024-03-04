@@ -51,7 +51,6 @@ public:
 		float Cleaning = 0;
 		float Temperament = 0;
 
-		/////////////////////////////
 
 		const float MaxConstitution = 999;
 		const float MaxStrength = 999;
@@ -186,7 +185,6 @@ public:
 		OliveBloodType = _BloodType;
 	}
 
-	/// ////////////////////////////////////////////////////////
 	Status GetStatue() const
 	{
 		return OliveStatus;
@@ -343,7 +341,7 @@ private:
 	Zodiac OliveZodiac = Zodiac::황소자리;
 	
 	PatronGod OlivePatronGod = PatronGod::화성신_마르스;
-	bool PatronGodSex = false; // false Male, true Female
+	bool PatronGodSex = false; 
 
 	PhysicalCondition OlivePhysical = PhysicalCondition();
 	Diet OliveDiet = Diet::무리하지_않는다;

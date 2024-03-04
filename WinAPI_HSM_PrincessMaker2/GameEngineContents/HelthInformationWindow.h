@@ -21,9 +21,9 @@ private:
 	float4 Scale = { 260, 184 };
 	float4 ActorPos = { 154, 380 };
 
-	float DiseaseIndex = 0; // 질병 지수
-	float Delinquency = 0; // 불량화 지수
-	float Popularity = 0; // 인맥
+	float DiseaseIndex = 0; 
+	float Delinquency = 0; 
+	float Popularity = 0; 
 
 	bool DiseaseState = 0;
 	bool DelinquentState = 0;

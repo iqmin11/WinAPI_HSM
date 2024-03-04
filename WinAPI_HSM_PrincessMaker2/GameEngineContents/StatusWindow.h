@@ -22,13 +22,10 @@ public:
 	StatusWindow& operator=(StatusWindow&& _Other) noexcept = delete;
 
 	GaugeRenderObject* InsertStatus(const std::string_view& _StatusName, float _Max, GaugeFrameStyle _Style);
-	//void SetStatusFrameRender(int _Order);
-	//void SetStatusFrameRender(PM2RenderOrder _Order);
 
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
-	//void Render(float _DeltaTime) override;
 
 private:
 	int StatusCount = 0;

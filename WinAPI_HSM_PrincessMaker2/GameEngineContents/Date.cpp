@@ -38,9 +38,6 @@ std::vector<Date> Date::GetOneMonthCalendar(int _YYYY, int _MM)
         Value[Day-1].SetDate(_YYYY, _MM, Day);
     }
 
-    //std::vector<Date> Result = Value;
-    //return Result;
-
     return Value;
 }
 
@@ -188,7 +185,7 @@ bool Date::IsOverWeekDay()
     return true;
 }
 
-bool Date::IsLeapYear() // ¿±≥‚¿Ã¥œ?
+bool Date::IsLeapYear() 
 {
     if ((0 == (Year % 4) && 0 != (Year % 100)) || 0 == (Year % 400))
     {

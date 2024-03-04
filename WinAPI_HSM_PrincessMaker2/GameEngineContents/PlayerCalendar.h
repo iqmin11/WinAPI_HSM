@@ -20,8 +20,8 @@ public:
 	PlayerCalendar& operator=(const PlayerCalendar& _Other) = delete;
 	PlayerCalendar& operator=(PlayerCalendar&& _Other) noexcept = delete;
 
-	void SetOliveBirth(int _YYYY, int _MM, int _DD); // 임시
-	void SetCalendarYear(int _YYYY);// 임시
+	void SetOliveBirth(int _YYYY, int _MM, int _DD);
+	void SetCalendarYear(int _YYYY);
 
 	static bool FirstUpdate;
 
@@ -41,20 +41,20 @@ private:
 
 	float4 EcahMonthCalendarInterval = { 250 , 105 };
 
-	Button_Date* DateButton[4][3][6][7] = {}; //달력 열, 행, 날짜 열, 행
+	Button_Date* DateButton[4][3][6][7] = {};
 	float4 DateButtonScale = { 20,14 };
 	float4 FirstDaySetPos = { -330, -177 };
 	float4 EachDayNumInterval = { 30,15 };
 	
-	GameEngineRender* WeekRender[4][3] = {}; //달력 열, 행, 날짜 열, 행
+	GameEngineRender* WeekRender[4][3] = {};
 	float4 WeekRenderScale = { 210,10 };
 	float4 FirstWeekSetPos = { -235, -192 };
 
-	GameEngineRender* YearRender[4][3][4] = {}; // 달력 열, 행, 년도 네글자
+	GameEngineRender* YearRender[4][3][4] = {}; 
 	float4 YearRenderScale = { 8,12 };
 	float4 FirstYearSetPos = { -370, -182 };
 
-	GameEngineRender* MonthRender[4][3] = {}; // 달력 열, 행 
+	GameEngineRender* MonthRender[4][3] = {};
 	float4 MonthRenderScale = { 20,16 };
 	float4 FirstMonthSetPos = { -360, -165};
 	

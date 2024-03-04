@@ -69,7 +69,6 @@ void ScheduleCalendar::ScheduleSetting(ScheduleLabel _Schedule)
 						Save.push_back(ScheduleSave(1, ThisMonthSchedule[y][x]->DateValue, _Schedule));
 						FirstScheduleEndDate = LastDate;
 						ScheduleSetEnd = true;
-						// AnimationName.push_back("애니메이션이 있을것이다.");
 						return;
 					}
 					Save.push_back(ScheduleSave(1, ThisMonthSchedule[y][x]->DateValue, _Schedule));

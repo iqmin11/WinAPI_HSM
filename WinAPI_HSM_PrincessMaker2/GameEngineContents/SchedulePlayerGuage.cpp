@@ -450,7 +450,6 @@ void SchedulePlayerGuage::InitGauge()
 
 void SchedulePlayerGuage::SetSchedule(ScheduleLabel _Schedule)
 {
-	//InitGauge();
 	switch (_Schedule)
 	{
 	case ScheduleLabel::Null:

@@ -24,14 +24,14 @@ protected:
 private:
 	Diet OliveDiet = Diet::무리하지_않는다;
 	
-	float4 ActorPos = { 235,475 }; // 206 239 -> 41, 64
+	float4 ActorPos = { 235,475 };
 	float4 ActorScale = { 390, 124 };
 	
 	GameEngineRender* FoodCostRedner = nullptr;
-	float4 FoodCostRednerPos = {-95, -91};// 95 91
+	float4 FoodCostRednerPos = {-95, -91};
 
 	NumberRenderObject FoodCostNumRender = NumberRenderObject();
-	float4 FoodCostNumRenderPos = {-48,-92}; // 47, 92
+	float4 FoodCostNumRenderPos = {-48,-92}; 
 
 	GameEngineRender* TextRender = nullptr;
 	int TextHeight = 18;

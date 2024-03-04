@@ -35,7 +35,7 @@ private:
 	
 	void SetButtonClick();
 
-	static void Click0(Button* _Button); //스케줄을 실행
-	static void Click1(Button* _Button); //취소
+	static void Click0(Button* _Button); 
+	static void Click1(Button* _Button);
 };
 

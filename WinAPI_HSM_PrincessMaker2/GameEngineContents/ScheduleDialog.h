@@ -49,6 +49,5 @@ private:
 	std::map<ScheduleLabel, std::string> ScheduleMugshot = std::map<ScheduleLabel, std::string>();
 	void SetScheduleMugshot();
 	bool IsFirstUpdate = true;
-	//void SetSituation();
 };
 

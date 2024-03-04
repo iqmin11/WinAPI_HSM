@@ -29,7 +29,7 @@ void FoodCostDialog::Start()
 	FoodCostNumRender.SetRenderPos(FoodCostNumRenderPos);
 	
 	TextRender = CreateRender(PM2RenderOrder::Menu1_Display);
-	TextRender->SetText("식비", TextHeight, TextType, TextAlign::Left, TextColor, {80, 21}); // 175, 103
+	TextRender->SetText("식비", TextHeight, TextType, TextAlign::Left, TextColor, {80, 21}); 
 	TextRender->SetPosition(TextRenderPos);
 
 	Off();

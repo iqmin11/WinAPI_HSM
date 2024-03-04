@@ -36,7 +36,7 @@ void GaugeRenderObject::SetGaugeRender(int _Order, const std::string_view& _Name
 		StatusGaugeRender->SetPosition({ -55.0f, -1.0 });
 
 		StatusValueRender.SetOwner(Actor);
-		StatusValueRender.SetImage("Num_Status.bmp", { 10, 20 }, _Order + 4, RGB(0, 0, 0)); // 숫자 리소스 나중에 편집
+		StatusValueRender.SetImage("Num_Status.bmp", { 10, 20 }, _Order + 4, RGB(0, 0, 0));
 		StatusValueRender.SetAlign(Align::Right);
 		StatusValueRender.SetRenderPos({ 5,0 });
 		StatusValueRender.SetValue(static_cast<int>(StatusValue));
@@ -64,7 +64,7 @@ void GaugeRenderObject::SetGaugeRender(int _Order, const std::string_view& _Name
 		StatusGaugeRender->SetPosition({ -55.0f, -1.0 });
 
 		StatusValueRender.SetOwner(Actor);
-		StatusValueRender.SetImage("Num_Status.bmp", { 10, 20 }, _Order + 4, RGB(0, 0, 0)); // 숫자 리소스 나중에 편집
+		StatusValueRender.SetImage("Num_Status.bmp", { 10, 20 }, _Order + 4, RGB(0, 0, 0)); 
 		StatusValueRender.SetAlign(Align::Right);
 		StatusValueRender.SetRenderPos({ 5,0 });
 		StatusValueRender.SetValue(static_cast<int>(StatusValue));
@@ -92,7 +92,7 @@ void GaugeRenderObject::SetGaugeRender(int _Order, const std::string_view& _Name
 		StatusGaugeRender->SetPosition({ -55.0f, -1.0 });
 
 		StatusValueRender.SetOwner(Actor);
-		StatusValueRender.SetImage("Num_Status.bmp", { 10, 20 }, _Order + 4, RGB(0, 0, 0)); // 숫자 리소스 나중에 편집
+		StatusValueRender.SetImage("Num_Status.bmp", { 10, 20 }, _Order + 4, RGB(0, 0, 0)); 
 		StatusValueRender.SetAlign(Align::Right);
 		StatusValueRender.SetRenderPos({ 5,0 });
 		StatusValueRender.SetValue(static_cast<int>(StatusValue));
@@ -120,7 +120,7 @@ void GaugeRenderObject::SetGaugeRender(int _Order, const std::string_view& _Name
 		StatusGaugeRender->SetPosition({ -55.0f, -1.0 });
 
 		StatusValueRender.SetOwner(Actor);
-		StatusValueRender.SetImage("Num_Status.bmp", { 10, 20 }, _Order + 4, RGB(0, 0, 0)); // 숫자 리소스 나중에 편집
+		StatusValueRender.SetImage("Num_Status.bmp", { 10, 20 }, _Order + 4, RGB(0, 0, 0));
 		StatusValueRender.SetAlign(Align::Right);
 		StatusValueRender.SetRenderPos({ -5,0 });
 		StatusValueRender.SetValue(static_cast<int>(StatusValue));
@@ -131,7 +131,7 @@ void GaugeRenderObject::SetGaugeRender(int _Order, const std::string_view& _Name
 		DemicalPoint->SetPosition({ 5,0 });
 
 		StatusValueDemicalRender.SetOwner(Actor);
-		StatusValueDemicalRender.SetImage("Num_Status.bmp", { 10, 20 }, _Order + 4, RGB(0, 0, 0)); // 숫자 리소스 나중에 편집
+		StatusValueDemicalRender.SetImage("Num_Status.bmp", { 10, 20 }, _Order + 4, RGB(0, 0, 0)); 
 		StatusValueDemicalRender.SetAlign(Align::Left);
 		StatusValueDemicalRender.SetRenderPos({ 15,0 });
 		StatusValueDemicalRender.SetNumOfDigits(2);

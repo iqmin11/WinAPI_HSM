@@ -186,9 +186,9 @@ void FirstSetLevel::ImageLoad()
 	Dir.Move("ContentsResources");
 	Dir.Move("Image");
 	
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ReleaseButton.BMP"));//Test
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("HoverButton.BMP"));//Test
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PressButton.BMP"));//Test`
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ReleaseButton.BMP"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("HoverButton.BMP"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PressButton.BMP"));
 	
 	Dir.Move("Olive");
 	Dir.Move("Head");

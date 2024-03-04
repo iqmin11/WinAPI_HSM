@@ -53,14 +53,13 @@ protected:
 	
 
 private:
-	bool IsMugShot = false; //머그샷 없는 대화창, 있는대화창
-	int MugShotLoc = -1; // 왼쪽 또는 오른쪽
+	bool IsMugShot = false; 
+	int MugShotLoc = -1; 
 	GameEngineRender* MugShotFrame = nullptr;
 	GameEngineRender* MugShot = nullptr;
 
 	float4 DialogFrameScale = { 310,150 };
 
-	//std::string PrevText = std::string();
 	std::string UpdateText = std::string();
 	std::string RenderText = std::string();
 
@@ -77,8 +76,8 @@ private:
 
 	void SetTextRender();
 	void SetTextRenderPos(float4 _Pos);
-	void SetRightMugDialog(); // 머그샷이 오른쪽에 있는 대화창
-	void SetLeftMugDialog(); // 머그샷이 왼쪽에 있는 대화창
+	void SetRightMugDialog(); 
+	void SetLeftMugDialog();
 	void SetMoveMugShotRender(const float4& _Move);
 	void SetPosMugShotRender(const float4& _Pos);
 	void InitRenderPos();

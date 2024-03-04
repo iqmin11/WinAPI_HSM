@@ -4,6 +4,7 @@
 class BasicStatusWindow : public StatusWindow
 {
 public:
+	
 	// construtor destructor
 	BasicStatusWindow();
 	~BasicStatusWindow();

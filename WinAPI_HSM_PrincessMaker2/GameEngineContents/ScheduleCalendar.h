@@ -79,7 +79,7 @@ private:
 
 	GameEngineRender* IconRender[6][7] = {};
 	float4 IconScale = { 34,34 };
-	float4 FirstIconPos = { -120,-80 }; // 280, 220
+	float4 FirstIconPos = { -120,-80 }; 
 
 	void SetYearNumRender();
 	void SetMonthRender();

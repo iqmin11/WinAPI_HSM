@@ -271,15 +271,7 @@ void Olive::Update(float _DeltaTime)
 
 void Olive::Render(float _Time)
 {
-	/*HDC DoubleDC = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
-	float4 ActorPos = GetPos();
-
-	Rectangle(DoubleDC,
-		ActorPos.ix() - 5,
-		ActorPos.iy() - 5,
-		ActorPos.ix() + 5,
-		ActorPos.iy() + 5
-	);*/ // 디버깅용
+	
 }
 
 void Olive::UpdateMonthChange()
@@ -287,7 +279,6 @@ void Olive::UpdateMonthChange()
 	if (ParentLevel->GetToday() == Date::GetMonthLastDate(ParentLevel->GetToday()) && MonthChange == false)
 	{
 		MonthChange = true;
-		//무엇무엇을하고
 		BloodTypeMonthUpdate();
 		DietMonthUpdate();
 		OliveStateUpdate();

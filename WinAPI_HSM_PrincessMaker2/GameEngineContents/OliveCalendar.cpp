@@ -93,10 +93,7 @@ void OliveCalendar::SetDateNumButton()
 	int FirstMonth = StartDate.GetMonth();
 	int Month = FirstMonth;
 	int Year = StartDate.GetYear();
-	//        1200                1201
-	//        8   9   10  11  12  1   2    3   4  5   6   7
-	//        31, 30, 31, 30, 31, 31, 29, 31, 30, 31, 30, 31    
-	int MonthLen[12] = {}; // 2월이 윤년이면이란 뜻으로 될듯->윤년 각 달의 날짜수
+	int MonthLen[12] = {};
 
 	for (size_t i = 0; i < 12; i++)
 	{
@@ -110,7 +107,7 @@ void OliveCalendar::SetDateNumButton()
 		Month++;
 	}
 
-	int FirstWeekday = Date::FindMonthFirstWeekday(StartDate.GetYear(), FirstMonth); // 1월 1일 요일 찾기 공식
+	int FirstWeekday = Date::FindMonthFirstWeekday(StartDate.GetYear(), FirstMonth); 
 	int MonthFirstWeekday = FirstWeekday;
 	Month = FirstMonth;
 	Year = StartDate.GetYear();
@@ -126,10 +123,10 @@ void OliveCalendar::SetDateNumButton()
 				Year++;
 			}
 			int Day = 1;
-			int FirstMonth = (z + 1) + (w * 3); // 순서상 첫번쨰 달을 말하는거 8월이 맨 앞에오면 8월이 first
-			for (int y = 0; y < 6; y++) // 한달
+			int FirstMonth = (z + 1) + (w * 3);
+			for (int y = 0; y < 6; y++)
 			{
-				for (int x = 0; x < 7; x++) // 일주일
+				for (int x = 0; x < 7; x++) 
 				{
 					float fx = static_cast<float>(x);
 					float fy = static_cast<float>(y);
@@ -144,9 +141,9 @@ void OliveCalendar::SetDateNumButton()
 					if (x + (y * 7) < MonthFirstWeekday)
 					{
 						DateButton[w][z][y][x]->Value.SetNullDate();
-						DateButton[w][z][y][x]->SetReleaseImage("OliveCalendarNum.bmp", 0);//
-						DateButton[w][z][y][x]->SetHoverImage("OliveCalendarNum.bmp", 0);	//
-						DateButton[w][z][y][x]->SetPressImage("OliveCalendarNum.bmp", 0);	//끌건데 해줄수밖에없음 나중에 최적화할라면 여기부터 고쳐야할듯
+						DateButton[w][z][y][x]->SetReleaseImage("OliveCalendarNum.bmp", 0);
+						DateButton[w][z][y][x]->SetHoverImage("OliveCalendarNum.bmp", 0);	
+						DateButton[w][z][y][x]->SetPressImage("OliveCalendarNum.bmp", 0);	
 					}
 					else if (x + (y * 7) < MonthFirstWeekday + MonthLen[FirstMonth - 1])
 					{
@@ -205,8 +202,8 @@ void OliveCalendar::SetYearRender()
 				float fx = static_cast<float>(x);
 				float fy = static_cast<float>(y);
 				float fz = static_cast<float>(z);
-				YearRender[z][y][x] = CreateRender("OliveYearNum.BMP", PM2RenderOrder::Contents); // 인덱스상 3이 1,  5가 2 (인덱스 -1 / 2가 원래 숫자임)
-				YearRender[z][y][x]->SetScale(YearRenderScale); //default {10,15} -> 8*6짜리 숫자가 년도로 들어가야함
+				YearRender[z][y][x] = CreateRender("OliveYearNum.BMP", PM2RenderOrder::Contents); 
+				YearRender[z][y][x]->SetScale(YearRenderScale); 
 				YearRender[z][y][x]->SetPosition(FirstYearSetPos + (EcahMonthCalendarInterval * float4{ fy, fz }) + (float4::Right * fx * YearRenderScale.x));
 			}
 
@@ -230,7 +227,7 @@ void OliveCalendar::SetWeekdayRender()
 			float fx = static_cast<float>(x);
 			float fy = static_cast<float>(y);
 			WeekRender[y][x] = CreateRender("OliveWeek.BMP", PM2RenderOrder::Contents);
-			WeekRender[y][x]->SetScale(WeekRenderScale); //default {10,15} -> 8*6짜리 숫자가 년도로 들어가야함
+			WeekRender[y][x]->SetScale(WeekRenderScale); 
 			WeekRender[y][x]->SetPosition(FirstWeekSetPos + (EcahMonthCalendarInterval * float4{ fx, fy }));
 		}
 	}

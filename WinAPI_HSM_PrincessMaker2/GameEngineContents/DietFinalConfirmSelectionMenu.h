@@ -35,7 +35,7 @@ private:
 	static DietFinalConfirmSelectionMenu* AcDietFinalConfirmSelectionMenu;
 
 	void SetButtonClick();
-	static void Click0(Button* _Button); // 이 방침으로
-	static void Click1(Button* _Button); // 지금까지 대로
+	static void Click0(Button* _Button); 
+	static void Click1(Button* _Button); 
 };
 

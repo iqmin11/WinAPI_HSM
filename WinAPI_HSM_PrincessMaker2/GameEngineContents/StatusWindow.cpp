@@ -32,13 +32,6 @@ GaugeRenderObject* StatusWindow::InsertStatus(const std::string_view& _StatusNam
 
 void StatusWindow::Start()
 {
-	//사용법 예시
-	//St = GaugeFrameStyle::Nomal;
-	//InitMenuFrameRender(PM2RenderOrder::Menu1);
-	//InsertStatus(이름, 능력치 맥스 수치)
-	//InsertStatus(이름, 능력치 맥스 수치)
-	//InsertStatus(이름, 능력치 맥스 수치) 넣고싶은만큼 넣고
-	//SetPos();
 
 }
 

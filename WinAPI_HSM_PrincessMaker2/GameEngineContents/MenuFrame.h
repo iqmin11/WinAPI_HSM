@@ -47,9 +47,6 @@ public:
 	
 	void FrameRenderOff();
 	
-	//void InitMenuFrame(const int _Order);
-	//void MenuFrameRender(PM2RenderOrder _Order);
-
 protected:
 	void SetMoveFrameRender(const float4& _Pos);
 	void SetPosFrameRender(const float4& _Pos);
@@ -59,7 +56,7 @@ protected:
 	void Render(float _Time);
 
 private:
-	float4 MenuFrameScale = {}; // 픽셀기준 사이즈
+	float4 MenuFrameScale = {};
 	MenuFrameStyleEnum MenuFrameStyle = MenuFrameStyleEnum::Null;
 	GameEngineRender* FrameRender[9] = {};
 	int FrameRenderOrder = 0;

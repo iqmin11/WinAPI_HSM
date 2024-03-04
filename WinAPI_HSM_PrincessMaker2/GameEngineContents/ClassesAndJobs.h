@@ -75,7 +75,6 @@ private:
 	Olive::Status Beginner_StatusVariance = {};
 	float4 ActorPos = { 240, 380 };
 
-	//애니메이션
 	GameEngineRender* BackgroundLayer1 = nullptr;
 	GameEngineRender* BackgroundLayer2 = nullptr;
 
@@ -119,8 +118,6 @@ private:
 	std::string BackgroundLayer2_Name = std::string();
 	std::string Object_Name = std::string();
 	
-	/////////////////////////////////////////////
-
 	float Time = 0;
 	int Count = 0;
 };

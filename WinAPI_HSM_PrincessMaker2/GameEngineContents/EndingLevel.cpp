@@ -209,23 +209,23 @@ int EndingLevel::EstimateGrade(float _Estimate)
 {
 	if (60 >= _Estimate)
 	{
-		return 0; //D
+		return 0;
 	}
 	else if (60 < _Estimate && 160 >= _Estimate)
 	{
-		return 1; //C
+		return 1; 
 	}
 	else if (160 < _Estimate && 230 >= _Estimate)
 	{
-		return 2; //B
+		return 2;
 	}
 	else if (230 < _Estimate && 270 >= _Estimate)
 	{
-		return 3; //A
+		return 3;
 	}
 	else if (270 < _Estimate)
 	{
-		return 4; //S
+		return 4;
 	}
 }
 
